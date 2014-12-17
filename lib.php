@@ -68,6 +68,54 @@ function theme_campus_set_customcss($css, $customcss) {
 }
 
 /**
+ * Returns variables for LESS.
+ *
+ * We will inject some LESS variables from the settings that the user has defined
+ * for the theme. No need to write some custom LESS for this.
+ *
+ * Ref: https://docs.moodle.org/dev/Themes_overview#Compiling_LESS_on_the_fly
+ *
+ * @param theme_config $theme The theme config object.
+ * @return array of LESS variables without the @.
+ */
+function theme_campus_less_variables($theme) {
+    $variables = array();
+    if (!empty($theme->settings->textcolour)) {
+        $variables['textColor'] = $theme->settings->textcolour;
+    }
+    if (!empty($theme->settings->headingcolour)) {
+        $variables['headingColor'] = $theme->settings->headingcolour;
+    }
+    if (!empty($theme->settings->navbartextcolour)) {
+        $variables['navbarText'] = $theme->settings->navbartextcolour;
+        $variables['navbarBrandColor'] = $theme->settings->navbartextcolour;
+        $variables['navbarLinkColor'] = $theme->settings->navbartextcolour;
+    }
+    if (!empty($theme->settings->blockheadingcolour)) {
+        $variables['blockHeadingColor'] = $theme->settings->blockheadingcolour;
+    }
+    if (!empty($theme->settings->blockbackgroundcolour)) {
+        $variables['wellBackground'] = $theme->settings->blockbackgroundcolour;
+    }
+    if (!empty($theme->settings->themecolour)) {
+        $variables['bodyBackgroundAlt'] = $theme->settings->themecolour;
+    }
+    if (!empty($theme->settings->themebackgroundcolour)) {
+        $variables['themeBackground'] = $theme->settings->themebackgroundcolour;
+    }
+    if (!empty($theme->settings->baseborderradius)) {
+        $variables['baseBorderRadius'] = $theme->settings->baseborderradius.'px';
+    }
+    if (!empty($theme->settings->borderradiussmall)) {
+        $variables['borderRadiusSmall'] = $theme->settings->borderradiussmall.'px';
+    }
+    if (!empty($theme->settings->borderradiuslarge)) {
+        $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge.'px';
+    }
+    return $variables;
+}
+
+/**
  * Serves any files associated with the theme settings.
  *
  * @param stdClass $course

@@ -1,5 +1,10 @@
 // Campus custom.
 
+// Theme background.
+body {
+    background-color: @themeBackground;
+}
+
 // Anti gravity.
 .antiGravity {
     background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.6);
@@ -8,6 +13,7 @@
     border-style: solid;
     border-width: 1px;
     bottom: 32px;
+    color: @navbarText;
     display: none;
     font-size: 32px;
     line-height: 1;
@@ -19,6 +25,7 @@
     &:hover {
         text-decoration: none;
         border-radius: 1em;
+        color: darken(@navbarText, 10%);
     }
     i.fa {
         padding-bottom: 2px;

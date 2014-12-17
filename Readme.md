@@ -52,8 +52,10 @@ Uninstallation
 Version Information
 ===================
 17th December 2014 - Version 2.7.0.1
-  1. Initial clone of Shoelace 2.7.2.
-  2. Removed Cabin and Varela Round fonts in favour of Source Sans Pro.
+  1. Initial clone of Shoelace 2.7.2.  Task #353.
+  2. Removed Cabin and Varela Round fonts in favour of Source Sans Pro.  Task #354.
+  3. Static top navbar.  Task #356.
+  4. Initial colour settings.  Task #355.
 
 Me
 ==

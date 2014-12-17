@@ -26,11 +26,19 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$settings = null;
+
 defined('MOODLE_INTERNAL') || die;
+if (is_siteadmin()) {
 
-if ($ADMIN->fulltree) {
+    $ADMIN->add('themes', new admin_category('theme_campus', 'Campus'));
 
-    /* CDN Fonts - 1 = no, 2 = yes. */
+    // Generic settings.
+    $settingpage = new admin_settingpage('theme_campus_generic', get_string('genericsettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_generalheading', get_string('generalheadingsub', 'theme_campus'),
+        format_text(get_string('generalheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    // CDN Fonts - 1 = no, 2 = yes.
     $name = 'theme_campus/cdnfonts';
     $title = get_string('cdnfonts', 'theme_campus');
     $description = get_string('cdnfonts_desc', 'theme_campus');
@@ -39,7 +47,7 @@ if ($ADMIN->fulltree) {
         1 => new lang_string('no'),   // No.
         2 => new lang_string('yes')   // Yes.
     );
-    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Invert Navbar to dark background.
     $name = 'theme_campus/invert';
@@ -47,7 +55,7 @@ if ($ADMIN->fulltree) {
     $description = get_string('invertdesc', 'theme_campus');
     $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
+    $settingpage->add($setting);
 
     // Logo file setting.
     $name = 'theme_campus/logo';
@@ -55,7 +63,7 @@ if ($ADMIN->fulltree) {
     $description = get_string('logodesc', 'theme_campus');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
+    $settingpage->add($setting);
 
     // Number of footer blocks.
     $name = 'theme_campus/numfooterblocks';
@@ -69,7 +77,7 @@ if ($ADMIN->fulltree) {
     );
     $default = 2;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $settings->add($setting);
+    $settingpage->add($setting);
 
     // Custom CSS file.
     $name = 'theme_campus/customcss';
@@ -78,7 +86,7 @@ if ($ADMIN->fulltree) {
     $default = '';
     $setting = new admin_setting_configtextarea($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
+    $settingpage->add($setting);
 
     // Footnote setting.
     $name = 'theme_campus/footnote';
@@ -87,5 +95,193 @@ if ($ADMIN->fulltree) {
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
+    $settingpage->add($setting);
+
+    $ADMIN->add('theme_campus', $settingpage);
+
+    // Look and feel settings.
+    $settingpage = new admin_settingpage('theme_campus_landf', get_string('landfsettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_landfheading', get_string('landfheadingsub', 'theme_campus'),
+        format_text(get_string('landfheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    // Text colour setting.
+    $name = 'theme_campus/textcolour';
+    $title = get_string('textcolour', 'theme_campus');
+    $description = get_string('textcolourdesc', 'theme_campus');
+    $default = '#653CAE';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Heading colour setting.
+    $name = 'theme_campus/headingcolour';
+    $title = get_string('headingcolour', 'theme_campus');
+    $description = get_string('headingcolourdesc', 'theme_campus');
+    $default = '#9057F9';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Navbar text colour setting.
+    $name = 'theme_campus/navbartextcolour';
+    $title = get_string('navbartextcolour', 'theme_campus');
+    $description = get_string('navbartextcolourdesc', 'theme_campus');
+    $default = '#9057F9';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Block heading colour setting.
+    $name = 'theme_campus/blockheadingcolour';
+    $title = get_string('blockheadingcolour', 'theme_campus');
+    $description = get_string('blockheadingcolourdesc', 'theme_campus');
+    $default = '#5600F7';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Block background colour setting.
+    $name = 'theme_campus/blockbackgroundcolour';
+    $title = get_string('blockbackgroundcolour', 'theme_campus');
+    $description = get_string('blockbackgroundcolourdesc', 'theme_campus');
+    $default = '#ffd974';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Theme colour setting.
+    $name = 'theme_campus/themecolour';
+    $title = get_string('themecolour', 'theme_campus');
+    $description = get_string('themecolourdesc', 'theme_campus');
+    $default = '#ffd974';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Theme background colour setting.
+    $name = 'theme_campus/themebackgroundcolour';
+    $title = get_string('themebackgroundcolour', 'theme_campus');
+    $description = get_string('themebackgroundcolourdesc', 'theme_campus');
+    $default = '#FFF4D8';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Border radius.
+    $name = 'theme_campus/baseborderradius';
+    $title = get_string('baseborderradius', 'theme_campus');
+    $description = get_string('baseborderradius_desc', 'theme_campus');
+    $default = '4';
+    $choices = array(
+        '0' => new lang_string('px00', 'theme_campus'),
+        '1' => new lang_string('px01', 'theme_campus'),
+        '2' => new lang_string('px02', 'theme_campus'),
+        '3' => new lang_string('px03', 'theme_campus'),
+        '4' => new lang_string('px04', 'theme_campus'),
+        '5' => new lang_string('px05', 'theme_campus'),
+        '6' => new lang_string('px06', 'theme_campus'),
+        '7' => new lang_string('px07', 'theme_campus'),
+        '8' => new lang_string('px08', 'theme_campus'),
+        '9' => new lang_string('px09', 'theme_campus'),
+        '10' => new lang_string('px10', 'theme_campus'),
+        '11' => new lang_string('px11', 'theme_campus'),
+        '12' => new lang_string('px12', 'theme_campus'),
+        '13' => new lang_string('px13', 'theme_campus'),
+        '14' => new lang_string('px14', 'theme_campus'),
+        '15' => new lang_string('px15', 'theme_campus'),
+        '16' => new lang_string('px16', 'theme_campus'),
+        '17' => new lang_string('px17', 'theme_campus'),
+        '18' => new lang_string('px18', 'theme_campus'),
+        '19' => new lang_string('px19', 'theme_campus'),
+        '20' => new lang_string('px20', 'theme_campus'),
+        '21' => new lang_string('px21', 'theme_campus'),
+        '22' => new lang_string('px22', 'theme_campus'),
+        '23' => new lang_string('px23', 'theme_campus'),
+        '24' => new lang_string('px24', 'theme_campus'),
+        '25' => new lang_string('px25', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+        $name = 'theme_campus/borderradiussmall';
+    $title = get_string('borderradiussmall', 'theme_campus');
+    $description = get_string('borderradiussmall_desc', 'theme_campus');
+    $default = '3';
+    $choices = array(
+        '0' => new lang_string('px00', 'theme_campus'),
+        '1' => new lang_string('px01', 'theme_campus'),
+        '2' => new lang_string('px02', 'theme_campus'),
+        '3' => new lang_string('px03', 'theme_campus'),
+        '4' => new lang_string('px04', 'theme_campus'),
+        '5' => new lang_string('px05', 'theme_campus'),
+        '6' => new lang_string('px06', 'theme_campus'),
+        '7' => new lang_string('px07', 'theme_campus'),
+        '8' => new lang_string('px08', 'theme_campus'),
+        '9' => new lang_string('px09', 'theme_campus'),
+        '10' => new lang_string('px10', 'theme_campus'),
+        '11' => new lang_string('px11', 'theme_campus'),
+        '12' => new lang_string('px12', 'theme_campus'),
+        '13' => new lang_string('px13', 'theme_campus'),
+        '14' => new lang_string('px14', 'theme_campus'),
+        '15' => new lang_string('px15', 'theme_campus'),
+        '16' => new lang_string('px16', 'theme_campus'),
+        '17' => new lang_string('px17', 'theme_campus'),
+        '18' => new lang_string('px18', 'theme_campus'),
+        '19' => new lang_string('px19', 'theme_campus'),
+        '20' => new lang_string('px20', 'theme_campus'),
+        '21' => new lang_string('px21', 'theme_campus'),
+        '22' => new lang_string('px22', 'theme_campus'),
+        '23' => new lang_string('px23', 'theme_campus'),
+        '24' => new lang_string('px24', 'theme_campus'),
+        '25' => new lang_string('px25', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    $name = 'theme_campus/borderradiuslarge';
+    $title = get_string('borderradiuslarge', 'theme_campus');
+    $description = get_string('borderradiuslarge_desc', 'theme_campus');
+    $default = '6';
+    $choices = array(
+        '0' => new lang_string('px00', 'theme_campus'),
+        '1' => new lang_string('px01', 'theme_campus'),
+        '2' => new lang_string('px02', 'theme_campus'),
+        '3' => new lang_string('px03', 'theme_campus'),
+        '4' => new lang_string('px04', 'theme_campus'),
+        '5' => new lang_string('px05', 'theme_campus'),
+        '6' => new lang_string('px06', 'theme_campus'),
+        '7' => new lang_string('px07', 'theme_campus'),
+        '8' => new lang_string('px08', 'theme_campus'),
+        '9' => new lang_string('px09', 'theme_campus'),
+        '10' => new lang_string('px10', 'theme_campus'),
+        '11' => new lang_string('px11', 'theme_campus'),
+        '12' => new lang_string('px12', 'theme_campus'),
+        '13' => new lang_string('px13', 'theme_campus'),
+        '14' => new lang_string('px14', 'theme_campus'),
+        '15' => new lang_string('px15', 'theme_campus'),
+        '16' => new lang_string('px16', 'theme_campus'),
+        '17' => new lang_string('px17', 'theme_campus'),
+        '18' => new lang_string('px18', 'theme_campus'),
+        '19' => new lang_string('px19', 'theme_campus'),
+        '20' => new lang_string('px20', 'theme_campus'),
+        '21' => new lang_string('px21', 'theme_campus'),
+        '22' => new lang_string('px22', 'theme_campus'),
+        '23' => new lang_string('px23', 'theme_campus'),
+        '24' => new lang_string('px24', 'theme_campus'),
+        '25' => new lang_string('px25', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    $ADMIN->add('theme_campus', $settingpage);
 }

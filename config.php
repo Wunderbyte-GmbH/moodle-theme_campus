@@ -29,7 +29,9 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'campus';
 $THEME->parents = array('bootstrapbase');
-$THEME->sheets = array('moodle', 'custom');
+$THEME->sheets = array('custom');
+$THEME->lessfile = 'moodleallcampus';
+$THEME->lessvariablescallback = 'theme_campus_less_variables';
 if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
     $THEME->sheets[] = 'font';
     $THEME->sheets[] = 'font-awesome';

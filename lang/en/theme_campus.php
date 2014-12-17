@@ -38,7 +38,7 @@ $string['choosereadme'] = '
 <h3>Parents</h3>
 <p>This theme is based upon the Bootstrap theme, which was created for Moodle 2.5, with the help of:<br>
 Stuart Lamour, Mark Aberdour, Paul Hibbitts, Mary Evans.</p>
-<h3>Theme Credits</h3>
+<h3>Theme credits</h3>
 <p>Author: G J Barnard<br>
 Contact: <a href="http://moodle.org/user/profile.php?id=442195">Moodle profile</a><br>
 Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
@@ -50,6 +50,24 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 </div></div>';
 
 $string['configtitle'] = 'Campus';
+
+$string['pluginname'] = 'Campus';
+
+$string['region-side-post'] = 'Right';
+$string['region-side-pre'] = 'Left';
+$string['region-footer'] = 'Footer';
+
+// Navbar.
+$string['gotobottom'] = 'Go to the bottom of the page';
+
+// Anti-gravity.
+$string['antigravity'] = 'Back to top';
+
+// Settings.
+// General settings.
+$string['genericsettings'] = 'General';
+$string['generalheadingsub'] = 'General settings';
+$string['generalheadingdesc'] = 'Configure the general settings for the theme here.';
 
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
@@ -73,17 +91,67 @@ $string['two'] = 'Two';
 $string['three'] = 'Three';
 $string['four'] = 'Four';
 
-$string['pluginname'] = 'Campus';
-
-$string['region-side-post'] = 'Right';
-$string['region-side-pre'] = 'Left';
-$string['region-footer'] = 'Footer';
-
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfonts_desc'] = 'Use content delivery network fonts';
 
-// Navbar.
-$string['gotobottom'] = 'Go to the bottom of the page';
+// Look and feel settings.
+$string['landfsettings'] = 'Look and feel';
+$string['landfheadingsub'] = 'Look and feel settings';
+$string['landfheadingdesc'] = 'Configure the look and feel settings for the theme here.';
 
-// Anti-gravity.
-$string['antigravity'] = 'Back to top';
+$string['textcolour'] = 'Text colour';
+$string['textcolourdesc'] = 'Set the text colour.';
+
+$string['headingcolour'] = 'Heading colour';
+$string['headingcolourdesc'] = 'Set the heading colour.';
+
+$string['navbartextcolour'] = 'Navbar text colour';
+$string['navbartextcolourdesc'] = 'Set the navigation bar text colour.';
+
+$string['blockheadingcolour'] = 'Block heading colour';
+$string['blockheadingcolourdesc'] = 'Set the block heading colour.';
+
+$string['blockbackgroundcolour'] = 'Block background colour';
+$string['blockbackgroundcolourdesc'] = 'Set the block background colour.';
+
+$string['themecolour'] = 'Theme colour';
+$string['themecolourdesc'] = 'Set the theme colour.';
+
+$string['themebackgroundcolour'] = 'Theme background colour';
+$string['themebackgroundcolourdesc'] = 'Set the theme background colour.';
+
+$string['baseborderradius'] = 'Base border radius';
+$string['baseborderradius_desc'] = 'Main border radius.';
+
+$string['borderradiussmall'] = 'Small border radius';
+$string['borderradiussmall_desc'] = 'Small border radius.';
+
+$string['borderradiuslarge'] = 'Large border radius';
+$string['borderradiuslarge_desc'] = 'Large border radius.';
+
+$string['px00'] = '0px';
+$string['px01'] = '1px';
+$string['px02'] = '2px';
+$string['px03'] = '3px';
+$string['px04'] = '4px';
+$string['px05'] = '5px';
+$string['px06'] = '6px';
+$string['px07'] = '7px';
+$string['px08'] = '8px';
+$string['px09'] = '9px';
+$string['px10'] = '10px';
+$string['px11'] = '11px';
+$string['px12'] = '12px';
+$string['px13'] = '13px';
+$string['px14'] = '14px';
+$string['px15'] = '15px';
+$string['px16'] = '16px';
+$string['px17'] = '17px';
+$string['px18'] = '18px';
+$string['px19'] = '19px';
+$string['px20'] = '20px';
+$string['px21'] = '21px';
+$string['px22'] = '22px';
+$string['px23'] = '23px';
+$string['px24'] = '24px';
+$string['px25'] = '25px';

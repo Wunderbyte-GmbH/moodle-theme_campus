@@ -36,6 +36,9 @@
 @bodyBackground:        @white;
 @bodyBackgroundAlt:     #ffd974;
 @textColor:             #653cae;
+@themeBackground:       @grayLighter;
+@headingColor:          #9057F9;
+@blockHeadingColor:     #5600F7;
 @textShadow:            @grayLighter;
 @iconColor:             #7575E0;
 
@@ -88,8 +91,8 @@
 
 // Buttons
 // -------------------------
-@btnBackground:                     darken(@bodyBackgroundAlt, 5%);
-@btnBackgroundHighlight:            darken(@bodyBackgroundAlt, 10%);
+@btnBackground:                     darken(@wellBackground, 5%);
+@btnBackgroundHighlight:            darken(@wellBackground, 10%);
 @btnBorder:                         darken(@grayLighter, 20%);
 
 @btnPrimaryBackground:              @linkColor;
@@ -112,12 +115,12 @@
 
 // Wells
 // -------------------------
-@wellBackground:                  lighten(@bodyBackgroundAlt, 20%);
+@wellBackground:                  @bodyBackgroundAlt;
 
 // Forms
 // -------------------------
-@inputBackground:               lighten(@wellBackground, 5%);
-@inputBorder:                   darken(@grayLighter, 20%);
+@inputBackground:               lighten(@themeBackground, 5%);
+@inputBorder:                   darken(@themeBackground, 20%);
 @inputBorderRadius:             @baseBorderRadius;
 @inputDisabledBackground:       @grayLighter;
 @formActionsBackground:         @bodyBackground;
@@ -126,7 +129,7 @@
 
 // Dropdowns
 // -------------------------
-@dropdownBackground:            @bodyBackgroundAlt;
+@dropdownBackground:            @themeBackground;
 @dropdownBorder:                rgba(0,0,0,.2);
 @dropdownDividerTop:            #e5e5e5;
 @dropdownDividerBottom:         @white;
@@ -135,7 +138,7 @@
 @dropdownLinkColorHover:        darken(@dropdownLinkColor, 10%);
 @dropdownLinkColorActive:       darken(@dropdownLinkColorHover, 10%);
 
-@dropdownLinkBackgroundActive:  @bodyBackgroundAlt;
+@dropdownLinkBackgroundActive:  @themeBackground;
 @dropdownLinkBackgroundHover:   lighten(@dropdownLinkBackgroundActive, 8%);
 
 
@@ -176,8 +179,8 @@
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
 @navbarText:                      @textColor;
-@navbarLinkColor:                 @linkColor;
-@navbarLinkColorHover:            darken(@linkColor, 5%);
+@navbarLinkColor:                 @navbarText;
+@navbarLinkColorHover:            darken(@navbarText, 5%);
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       transparent;
 @navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);

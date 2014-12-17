@@ -16,10 +16,6 @@ a.logo {
     float: right;
 }
 
-body {
-    background-image: url([[pix:theme|background]]);
-}
-
 #region-main-campus {
     background-color: #fff;
     box-shadow: 0 0 8px #888;
