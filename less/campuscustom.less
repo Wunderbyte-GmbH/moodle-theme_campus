@@ -1,0 +1,37 @@
+// Campus custom.
+
+// Anti gravity.
+.antiGravity {
+    background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.6);
+    border-color: @bodyBackgroundAlt;
+    border-radius: 1em;
+    border-style: solid;
+    border-width: 1px;
+    bottom: 32px;
+    display: none;
+    font-size: 32px;
+    line-height: 1;
+    padding: 10px 10px 6px 10px; 
+    position: fixed;
+    right: 40px;
+    text-align: center; 
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        border-radius: 1em;
+    }
+    i.fa {
+        padding-bottom: 2px;
+    }
+}
+
+// Goto bottom.
+@media (max-width: 979px) {
+    .navbar .nav {
+        &.slusermenu li:first-child {
+            position: absolute;
+            right: 0;
+            z-index: 1;
+        }
+    }
+}

@@ -1,0 +1,138 @@
+// My changes to Bootstrap
+
+// breadcrumbs.less
+// --------------------------------------------------
+
+.breadcrumb {
+  background-color: rgba(red(@wellBackground), green(@wellBackground), blue(@wellBackground), 0.7);
+  > li {
+    text-shadow: 0 1px 0 @textShadow;
+  }
+}
+
+// buttons.less
+// --------------------------------------------------
+.btn {
+  .buttonBackground(@btnBackground, @btnBackgroundHighlight, @navbarText, 0 1px 1px rgba(255,255,255,.75));
+
+  // Hover/focus state
+  &:hover,
+  &:focus {
+    color: @navbarText;
+  }
+}
+
+// Redo success buttons etc. as 'btn' class above overrode 'btn-success' etc. in CSS, so make more specialised.
+.btn.btn-primary {
+  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+}
+// Warning appears are orange
+.btn.btn-warning {
+  .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+}
+// Danger and error appear as red
+.btn.btn-danger {
+  .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+}
+// Success appears as green
+.btn.btn-success {
+  .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+}
+// Info appears as a neutral blue
+.btn.btn-info {
+  .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+}
+// Inverse appears as dark gray
+.btn.btn-inverse {
+  .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+}
+
+// code.less
+code, pre {
+  color: @textColor;
+}
+
+// dropdowns.less.
+
+// Hover/Focus state
+// -----------
+@media (max-width: @navbarCollapseWidth) {
+  .navbar-inverse .dropdown-menu > li > a:hover,
+  .navbar-inverse .dropdown-menu > li > a:focus,
+  .navbar-inverse .dropdown-submenu:hover > a,
+  .navbar-inverse .dropdown-submenu:focus > a {
+    #gradient > .vertical(@navbarInverseBackgroundHighlight, darken(@navbarInverseBackgroundHighlight, 5%));
+  }
+}
+
+// forms.less
+// --------------------------------------------------
+legend {
+  color: @textColor;
+}
+
+// Shared size and type resets
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  color: @textColor;
+}
+
+textarea, .uneditable-input {
+    width: 96%;
+}
+
+// navs.less
+// --------------------------------------------------
+.nav-header {
+  color: @textColor;
+}
+
+// navbar.less
+// --------------------------------------------------
+.navbar .btn-navbar .icon-bar {
+  background-color: @textColor;
+}
+
+.navbar-inverse .btn-navbar .icon-bar {
+  background-color: @navbarInverseText;
+}
+
+// responsive-navbar.less
+// --------------------------------------------------
+@media (max-width: @navbarCollapseWidth) {
+  .navbar-inverse .nav-collapse .nav > li > a:hover,
+  .navbar-inverse .nav-collapse .nav > li > a:focus,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:focus {
+    color: @bodyBackgroundAlt;
+  }
+}
+
+// scaffolding.less
+// --------------------------------------------------
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+// wells.less
+// --------------------------------------------------
+.well {
+  background-color: rgba(red(@wellBackground), green(@wellBackground), blue(@wellBackground), 0.7);
+  border: 1px dotted darken(@wellBackground, 7%);
+}

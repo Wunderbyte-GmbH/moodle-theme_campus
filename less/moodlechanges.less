@@ -1,0 +1,404 @@
+// Changes to Moodle Bootstrap.
+
+// moodle.less
+// --------------------------------------------------
+body {
+    padding-top: 0px; // Negate padding for fixed navbar.
+}
+
+// As a result, need:
+#page {
+    padding-top: 20px;
+}
+
+// backup-restore.less
+// --------------------------------------------------
+.backup-restore .backup-section > h2.header,
+.backup-restore .backup-section .backup-sub-section h3 {
+    color: @textColor;
+}
+
+// blocks.less
+// --------------------------------------------------
+.block {
+    border: 1px solid darken(@bodyBackgroundAlt, 5%);
+}
+
+.block .header .title h2,
+.block h3.main {
+  //.nav-header;
+  display: block;
+  padding: 3px 15px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: @baseLineHeight;
+  color: @textColor;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+// breadcrumbs.less - mine
+// --------------------------------------------------
+.breadcrumb > li {
+    margin-top: 4px;
+}
+.breadcrumb >li > .divider {
+    color: @iconColor;
+}
+
+.breadcrumb {
+    overflow: hidden;
+}
+
+li.breadcrumb-button {
+    float: right;
+    margin-top: 0px;
+}
+
+li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div input {
+    float: right;
+    margin-bottom: 0px;
+}
+
+// core.less
+// --------------------------------------------------
+.empty-region-side-post #region-bs-main-and-post.span9 .span9, .empty-region-side-post #region-bs-main-and-post.span9 .span8 {
+    /** RTL with no post area. **/
+    width:100%;
+}
+
+// course.less
+// --------------------------------------------------
+.course-content .section-summary {
+    border: 1px solid lighten(@grayLight, 20%);
+}
+
+.course-content ul li.section.main {
+    border-bottom: 2px solid @inputBorder;
+}
+
+/* Mary Evans changes - see https://moodle.org/mod/forum/discuss.php?d=230919#p1004239. */
+.coursebox > .info > .name {
+    width: auto;
+}
+
+/* Mary Evans changes - see https://moodle.org/mod/forum/discuss.php?d=230919#p1004239. */
+.coursebox .content .coursecat,
+.coursebox .content .summary,
+.coursebox .content .courseimage,
+.coursebox .content .coursefile,
+.coursebox .content .teachers,
+.coursebox.remotecoursebox .remotecourseinfo {
+    width: 100%;
+}
+.coursebox .teachers {
+    margin:0;
+}
+
+.courses .coursebox.collapsed {
+    border:1px solid lighten(@bodyBackground, 5%);
+}
+
+.courses .coursebox.even {
+    background-color: lighten(@bodyBackground, 3%);
+}
+
+.courses .coursebox:hover,
+.course_category_tree .courses > .paging.paging-morelink:hover {
+    background-color: lighten(@bodyBackground, 5%);
+}
+
+.course_category_tree .category .numberofcourse {
+    font-size: 0.85em;
+}
+
+.course_category_tree .paging.paging-morelink a {
+    font-size:90%;
+}
+
+/* My Overrides */
+.resourcelinkdetails {
+    color: @textColor !important;
+    font-size: 0.8em;
+}
+
+// course.less.
+.coursebox > .info > .coursename a {
+    background-position: left 0.2em;
+}
+
+// debug.less
+// --------------------------------------------------
+#page-footer .block-region p {
+    text-align: left;
+}
+
+// forms.less
+// --------------------------------------------------
+.form-defaultinfo, .form-label .form-shortname {
+    word-break: break-word;
+}
+
+.mform fieldset.collapsible legend a.fheader {
+    //margin-left: -20px;
+    margin-left: inherit;
+}
+.dir-rtl .mform fieldset.collapsible legend a.fheader {
+    //margin-right: -20px;
+    margin-right: inherit;
+}
+
+#adminsettings h3.main {
+    color: @textColor;
+}
+.mform legend a,
+.mform legend a:hover {
+    color: @textColor;
+}
+.dir-rtl .mform .fitem .fitemtitle {
+    float: right;
+}
+
+// My additions for https://moodle.org/mod/forum/discuss.php?d=234329.
+table {
+    input,
+    textarea,
+    .uneditable-input {
+       width: auto;
+    }
+}
+
+// grade.less
+// --------------------------------------------------
+.gradetreebox td.colspan,
+.gradetreebox tr.category .cell {
+    background-color: @bodyBackgroundAlt;
+}
+// My additions from https://moodle.org/mod/forum/discuss.php?d=234329:...
+.gradestable {
+    table {
+        border: 1px solid lighten(@grayLight, 20%);
+    }
+
+    tr.category th.cell.rowspan {
+        border-width:0; border-left:1px solid lighten(@grayLight, 20%);
+    }
+
+    tr.category th.cell.rowspan:hover {
+        background-color: @grayLighter;
+    }
+
+    td.name {
+        border-left: 0px;
+    }
+
+    td.colspan {
+        border-left: 1px solid lighten(@grayLight, 20%);
+        border-bottom: 1px solid lighten(@grayLight, 20%);
+        border-top: 0;
+        background-color: darken(@grayLighter, 20%);
+    }
+}
+
+table#user-grades {
+    .catlevel1,
+    .catlevel2,
+    .catlevel3,
+    .catlevel4 {
+        padding: 10px;
+        border-right: 1px solid darken(@grayLighter, 20%);
+    }
+}
+
+table#user-grades .catlevel1,
+.user-grade td.oddd1,
+.user-grade td.evend1,
+.user-grade th.oddd1,
+.user-grade th.evend1 {
+    background-color: @bodyBackgroundAlt !important;
+}
+
+table#user-grades .catlevel2,
+.user-grade td.oddd2,
+.user-grade td.evend2,
+.user-grade th.oddd2,
+.user-grade th.evend2 {
+    background-color: lighten(@textColor, 30%) !important;
+}
+
+table#user-grades .catlevel3,
+.user-grade td.oddd3,
+.user-grade td.evend3,
+.user-grade th.oddd3,
+.user-grade th.evend3 {
+    background-color: lighten(@bodyBackgroundAlt, 5%) !important;
+}
+
+table#user-grades .catlevel4,
+.user-grade td.oddd4,
+.user-grade td.evend4,
+.user-grade th.oddd4,
+.user-grade th.evend4 {
+    background-color: lighten(@textColor, 35%) !important;
+}
+
+table#user-grades .catlevel5,
+.user-grade td.oddd5,
+.user-grade td.evend5,
+.user-grade th.oddd5,
+.user-grade th.evend5 {
+    background-color: lighten(@bodyBackgroundAlt, 10%) !important;
+}
+
+table#user-grades .catlevel6,
+.user-grade td.oddd6,
+.user-grade td.evend6,
+.user-grade th.oddd6,
+.user-grade th.evend6 {
+    background-color: lighten(@textColor, 40%) !important;
+}
+
+table#user-grades .catlevel7,
+.user-grade td.oddd7,
+.user-grade td.evend7,
+.user-grade th.oddd7,
+.user-grade th.evend7 {
+    background-color: lighten(@bodyBackgroundAlt, 15%) !important;
+}
+
+table#user-grades .catlevel8,
+.user-grade td.oddd8,
+.user-grade td.evend8,
+.user-grade th.oddd8,
+.user-grade th.evend8 {
+    background-color: lighten(@textColor, 45%) !important;
+}
+
+.user-grade {
+    border-color: darken(@grayLighter, 20%);
+
+    thead,
+    td.b1t,
+    td.b2t,
+    td.b3t,
+    td.b4t,
+    td.b5t,
+    td.b1b,
+    td.b2b,
+    td.b3b,
+    td.b4b,
+    td.b5b {
+        border-color: darken(@grayLighter, 20%);
+    }
+
+    thead {
+        font-size: 1.2em;
+    }
+}
+
+table#user-grades {
+    .userpicture {
+        border-radius: 20px;
+        margin: 3px;
+        margin-right: 10px;
+        border: 1px solid lighten(@grayLight, 20%);
+    }
+
+    td.fixedcolumn.cell.topleft.cell.c0 {
+        background: transparent;
+        border: 0px none;
+    }
+
+    th.header.useremail {
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    th.userreport.c1 {
+        border: 1px solid darken(@grayLighter, 20%);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+// My additional additions:
+table.generaltable {
+    th.level1 {
+        width: 1%;
+    }
+    th.level2 {
+        width: 2%;
+    }
+    th.level3 {
+        width: 3%;
+    }
+    th.level4 {
+        width: 4%;
+    }
+    th.level5 {
+        width: 5%;
+    }
+    th.level6 {
+        width: 6%;
+    }
+    th.level7 {
+        width: 7%;
+    }
+    th.level8 {
+        width: 8%;
+    }
+    th.level9 {
+        width: 9%;
+    }
+    th.level10 {
+        width: 10%;
+    }
+}
+
+// Grade report wrapping.
+// gradereport_grader.css.
+.path-grade-report-grader .gradestable th.user, .path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader .flexible th, .path-grade-report-grader .flexible td,
+.path-grade-report-grader .flexible th a, .path-grade-report-grader .flexible td a,
+.path-grade-report-grader .gradestable th.range, .path-grade-report-grader td {
+    white-space: pre-line; // http://www.w3schools.com/cssref/pr_text_white-space.asp.
+}
+
+// responsive.less
+// --------------------------------------------------
+@media (max-width: 480px) {
+    // My alteration.
+    .path-admin .buttons,
+    .form-buttons {
+        padding-left: 0px;
+    }
+}
+
+// responsive.less
+@media (max-width: 979px) {
+    .nav-collapse {
+        .nav > li > a {
+            color: @textColor;
+        }
+        .nav > li > a:hover,
+        .nav > li > a:focus,
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus,
+        .dropdown-submenu a:focus,
+        .dropdown-submenu a:hover,
+        .dropdown-submenu a:active,
+        .dropdown-menu > li > a:hover,
+        .dropdown-menu > li > a:focus,
+        {
+            background-image: none;
+            color: @textColor;
+        }
+    }
+}
+
+// Fixes.
+
+// Fix opacity for hidden block menu - MDL-42634.
+.editing .block.invisible {
+    .opacity(100);
+    background: rgba(255, 255, 255, 0.4);
+}

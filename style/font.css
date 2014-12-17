@@ -1,0 +1,161 @@
+/* This file is part of Moodle - http://moodle.org/
+ *
+ * Moodle is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Moodle is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Campus theme with the underlying Bootstrap theme.
+ *
+ * @package    theme
+ * @subpackage campus
+ * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
+ * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+ 
+@charset "UTF-8";
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-ExtraLight.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-ExtraLight.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-ExtraLight.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-ExtraLight.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 200;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-ExtraLightIt.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-ExtraLightIt.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-ExtraLightIt.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-ExtraLightIt.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-Light.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-Light.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-Light.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-Light.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-LightIt.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-LightIt.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-LightIt.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-LightIt.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-Regular.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-Regular.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-Regular.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-Regular.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-It.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-It.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-It.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-It.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-Semibold.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-Semibold.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-Semibold.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-Semibold.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-SemiboldIt.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-SemiboldIt.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-SemiboldIt.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-SemiboldIt.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-Bold.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-Bold.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-Bold.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-Bold.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-BoldIt.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-BoldIt.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-BoldIt.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-BoldIt.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-Black.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-Black.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-Black.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-Black.ttf]]') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 900;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('[[font:theme|SourceSansPro-BlackIt.eot]]') format('embedded-opentype'),
+         url('[[font:theme|SourceSansPro-BlackIt.woff]]') format('woff'),
+         url('[[font:theme|SourceSansPro-BlackIt.otf]]') format('opentype'),
+         url('[[font:theme|SourceSansPro-BlackIt.ttf]]') format('truetype');
+}
