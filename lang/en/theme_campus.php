@@ -99,6 +99,14 @@ $string['landfsettings'] = 'Look and feel';
 $string['landfheadingsub'] = 'Look and feel settings';
 $string['landfheadingdesc'] = 'Configure the look and feel settings for the theme here.';
 
+$string['themelayout'] = 'Theme layout';
+$string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns';
+$string['themelayoutthreecolumns'] = 'Three columns';
+$string['themelayoutthreecolumnsfplefttwo'] = 'Three column front page and blocks left two columns elsewhere';
+$string['themelayoutthreecolumnsfprighttwo'] = 'Three column front page and blocks right two columns elsewhere';
+$string['themelayoutlefttwocolumns'] = 'Blocks left two columns';
+$string['themelayoutrighttwocolumns'] = 'Blocks right two columns';
+
 $string['textcolour'] = 'Text colour';
 $string['textcolourdesc'] = 'Set the text colour.';
 
