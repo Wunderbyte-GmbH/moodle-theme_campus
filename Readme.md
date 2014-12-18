@@ -53,6 +53,7 @@ Version Information
 ===================
 18th December 2014 - Version 2.7.0.2
   1. Added 'Theme layout' setting for 'Theme setting, that defines number of columns for the layout' requirement.
+  2. Theme layout options in 'config.php' file with TDM off proof of concept from Mutant Banjo theme.
 
 17th December 2014 - Version 2.7.0.1
   1. Initial clone of Shoelace 2.7.2.  Task #353.

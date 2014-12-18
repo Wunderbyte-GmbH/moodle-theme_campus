@@ -45,10 +45,12 @@ $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
 $contentclass = 'span8';
 $blockclass = 'span4';
+$rowclass = 'span9';
 if (!($hassidepre AND $hassidepost)) {
     // Two columns.
     $contentclass = 'span9';
     $blockclass = 'span3';
+    $rowclass = 'span12';
 }
 
 echo $OUTPUT->doctype() ?>
@@ -80,7 +82,7 @@ require_once(dirname(__FILE__).'/tiles/header.php');
     </header>
 
     <div id="page-content" class="row-fluid">
-        <div id="<?php echo $regionbsid ?>" class="span9">
+        <div id="<?php echo $regionbsid ?>" class="<?php echo $rowclass; ?>">
             <div class="row-fluid">
                 <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
                     <section id="region-main-campus" class="row-fluid">
@@ -93,7 +95,11 @@ require_once(dirname(__FILE__).'/tiles/header.php');
                 <?php echo $OUTPUT->campusblocks($pre, $blockclass.' desktop-first-column'); ?>
             </div>
         </div>
-        <?php echo $OUTPUT->campusblocks($post, 'span3'); ?>
+        <?php
+        if ($PAGE->theme->settings->themelayout != 4) {
+            echo $OUTPUT->campusblocks($post, 'span3'); 
+        }
+        ?>
     </div>
 
     <?php require_once(dirname(__FILE__).'/tiles/footer.php'); ?>
