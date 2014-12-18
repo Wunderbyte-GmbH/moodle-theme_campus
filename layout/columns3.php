@@ -88,7 +88,15 @@ echo $OUTPUT->doctype() ?>
 
 <?php
 echo $OUTPUT->standard_top_of_body_html();
+
+//print_r(theme_campus_get_top_level_category_ids());
+//print(theme_campus_get_current_category());
+
+$toplevel = (in_array(theme_campus_get_current_category(), theme_campus_get_top_level_category_ids())) ? 'Top level' : 'Not top level';
+//print($toplevel);
+
 require_once(dirname(__FILE__).'/tiles/header.php');
+
 ?>
 
 <div id="page" class="container-fluid">

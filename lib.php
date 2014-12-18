@@ -181,3 +181,31 @@ function theme_campus_page_init(moodle_page $page) {
     $page->requires->jquery();
     $page->requires->jquery_plugin('antigravity', 'theme_campus');
 }
+
+function theme_campus_get_top_level_category_ids() {
+    global $CFG;
+    include_once($CFG->libdir . '/coursecatlib.php');
+
+    $categoryids = array();
+    $categories = coursecat::get(0)->get_children();  // Parent = 0 i.e. top-level categories only.
+
+    foreach($categories as $category){
+        $categoryids[] = $category->id;
+    }
+
+    return $categoryids;
+}
+
+function theme_campus_get_current_category() {
+    global $PAGE;
+    $catid = 0;
+
+    if (is_array($PAGE->categories)) {
+        $catids = array_keys($PAGE->categories);
+        $catid = reset($catids);
+    } else if (!empty($PAGE->course->category)) {
+        $catid = $PAGE->course->category;
+    }
+
+    return $catid;
+}
