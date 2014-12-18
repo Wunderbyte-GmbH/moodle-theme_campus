@@ -49,51 +49,12 @@ if (is_siteadmin()) {
     );
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
-    // Invert Navbar to dark background.
-    $name = 'theme_campus/invert';
-    $title = get_string('invert', 'theme_campus');
-    $description = get_string('invertdesc', 'theme_campus');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
-
-    // Logo file setting.
-    $name = 'theme_campus/logo';
-    $title = get_string('logo','theme_campus');
-    $description = get_string('logodesc', 'theme_campus');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
-
-    // Number of footer blocks.
-    $name = 'theme_campus/numfooterblocks';
-    $title = get_string('numfooterblocks','theme_campus');
-    $description = get_string('numfooterblocksdesc', 'theme_campus');
-    $choices = array(
-        1 => new lang_string('one', 'theme_campus'),
-        2 => new lang_string('two', 'theme_campus'),
-        3 => new lang_string('three', 'theme_campus'),
-        4 => new lang_string('four', 'theme_campus')
-    );
-    $default = 2;
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $settingpage->add($setting);
-
     // Custom CSS file.
     $name = 'theme_campus/customcss';
     $title = get_string('customcss', 'theme_campus');
     $description = get_string('customcssdesc', 'theme_campus');
     $default = '';
     $setting = new admin_setting_configtextarea($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
-
-    // Footnote setting.
-    $name = 'theme_campus/footnote';
-    $title = get_string('footnote', 'theme_campus');
-    $description = get_string('footnotedesc', 'theme_campus');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
@@ -296,6 +257,59 @@ if (is_siteadmin()) {
         '25' => new lang_string('px25', 'theme_campus')
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    $ADMIN->add('theme_campus', $settingpage);
+
+    // Header settings.
+    $settingpage = new admin_settingpage('theme_campus_header', get_string('headersettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_headerheading', get_string('headerheadingsub', 'theme_campus'),
+        format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    // Invert Navbar to dark background.
+    $name = 'theme_campus/invert';
+    $title = get_string('invert', 'theme_campus');
+    $description = get_string('invertdesc', 'theme_campus');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Logo file setting.
+    $name = 'theme_campus/logo';
+    $title = get_string('logo','theme_campus');
+    $description = get_string('logodesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    $ADMIN->add('theme_campus', $settingpage);
+
+    // Footer settings.
+    $settingpage = new admin_settingpage('theme_campus_footer', get_string('footersettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_footerheading', get_string('footerheadingsub', 'theme_campus'),
+        format_text(get_string('footerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    // Number of footer blocks.
+    $name = 'theme_campus/numfooterblocks';
+    $title = get_string('numfooterblocks','theme_campus');
+    $description = get_string('numfooterblocksdesc', 'theme_campus');
+    $choices = array(
+        1 => new lang_string('one', 'theme_campus'),
+        2 => new lang_string('two', 'theme_campus'),
+        3 => new lang_string('three', 'theme_campus'),
+        4 => new lang_string('four', 'theme_campus')
+    );
+    $default = 2;
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $settingpage->add($setting);
+
+    // Footnote setting.
+    $name = 'theme_campus/footnote';
+    $title = get_string('footnote', 'theme_campus');
+    $description = get_string('footnotedesc', 'theme_campus');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 

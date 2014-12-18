@@ -69,30 +69,11 @@ $string['genericsettings'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for the theme here.';
 
-$string['customcss'] = 'Custom CSS';
-$string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
-
-$string['footnote'] = 'Footnote';
-$string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
-
-$string['invert'] = 'Invert navbar';
-$string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
-
-$string['logo'] = 'Logo';
-$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>
-If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
-a.logo {height: 100px;} or whatever height in pixels the logo is.';
-
-$string['numfooterblocks'] = 'Maximum number of blocks per row in the footer';
-$string['numfooterblocksdesc'] = 'The maximum blocks per row in the footer';
-
-$string['one'] = 'One';
-$string['two'] = 'Two';
-$string['three'] = 'Three';
-$string['four'] = 'Four';
-
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfonts_desc'] = 'Use content delivery network fonts';
+
+$string['customcss'] = 'Custom CSS';
+$string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
 
 // Look and feel settings.
 $string['landfsettings'] = 'Look and feel';
@@ -163,3 +144,33 @@ $string['px22'] = '22px';
 $string['px23'] = '23px';
 $string['px24'] = '24px';
 $string['px25'] = '25px';
+
+// Header.
+$string['headersettings'] = 'Header';
+$string['headerheadingsub'] = 'Header settings';
+$string['headerheadingdesc'] = 'Configure the header settings for the theme here.';
+
+$string['invert'] = 'Invert navbar';
+$string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
+
+$string['logo'] = 'Logo';
+$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>
+If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
+a.logo {height: 100px;} or whatever height in pixels the logo is.';
+
+// Footer.
+$string['footersettings'] = 'Footer';
+$string['footerheadingsub'] = 'Footer settings';
+$string['footerheadingdesc'] = 'Configure the footer settings for the theme here.';
+
+$string['numfooterblocks'] = 'Maximum number of blocks per row in the footer';
+$string['numfooterblocksdesc'] = 'The maximum blocks per row in the footer';
+
+$string['one'] = 'One';
+$string['two'] = 'Two';
+$string['three'] = 'Three';
+$string['four'] = 'Four';
+
+$string['footnote'] = 'Footnote';
+$string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
+
