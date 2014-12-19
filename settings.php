@@ -38,6 +38,22 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_generalheading', get_string('generalheadingsub', 'theme_campus'),
         format_text(get_string('generalheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
+    // Theme layout setting.
+    $name = 'theme_campus/themelayout';
+    $title = get_string('themelayout', 'theme_campus');
+    $description = get_string('themelayoutdesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => get_string('themelayoutthreecolumns', 'theme_campus'),
+        2 => get_string('themelayoutthreecolumnsfplefttwo', 'theme_campus'),
+        3 => get_string('themelayoutthreecolumnsfprighttwo', 'theme_campus'),
+        4 => get_string('themelayoutlefttwocolumns', 'theme_campus'),
+        5 => get_string('themelayoutrighttwocolumns', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // CDN Fonts - 1 = no, 2 = yes.
     $name = 'theme_campus/cdnfonts';
     $title = get_string('cdnfonts', 'theme_campus');
@@ -64,22 +80,6 @@ if (is_siteadmin()) {
     $settingpage = new admin_settingpage('theme_campus_landf', get_string('landfsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_landfheading', get_string('landfheadingsub', 'theme_campus'),
         format_text(get_string('landfheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
-
-    // Header title setting.
-    $name = 'theme_campus/themelayout';
-    $title = get_string('themelayout', 'theme_campus');
-    $description = get_string('themelayoutdesc', 'theme_campus');
-    $default = 1;
-    $choices = array(
-        1 => get_string('themelayoutthreecolumns', 'theme_campus'),
-        2 => get_string('themelayoutthreecolumnsfplefttwo', 'theme_campus'),
-        3 => get_string('themelayoutthreecolumnsfprighttwo', 'theme_campus'),
-        4 => get_string('themelayoutlefttwocolumns', 'theme_campus'),
-        5 => get_string('themelayoutrighttwocolumns', 'theme_campus')
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
 
     // Text colour setting.
     $name = 'theme_campus/textcolour';

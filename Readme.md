@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+19th December 2014 - Version 2.7.0.3
+  1. Theme layout setting in 'General settings'.  Task #362 - via 'They should be available in the general settings page of the theme.' on eMail.
+
 18th December 2014 - Version 2.7.0.2
   1. Added 'Theme layout' setting for 'Theme setting, that defines number of columns for the layout' requirement.
   2. Theme layout options in 'config.php' file with TDM off proof of concept from Mutant Banjo theme.
