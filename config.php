@@ -63,10 +63,37 @@ $col3regions = array('side-pre', 'side-post', 'footer');
 
 $themelayout = (!empty($THEME->settings->themelayout)) ? $THEME->settings->themelayout : 1;
 
-if ($themelayout == 4) {
-  $fpregions = $col2regions;
-} else {
-  $fpregions = $col3regions;
+switch ($themelayout) {
+    case 1: // Three columns.
+        $fpfile = 'frontpage3.php';
+        $fpregions = $col3regions;
+        $sitefile = 'columns3.php';
+        $siteregions = $col3regions;
+    break;
+    case 2: // Three column front page and two columns with blocks left elsewhere.
+        $fpfile = 'frontpage3.php';
+        $fpregions = $col3regions;
+        $sitefile = 'columns2l.php';
+        $siteregions = $col2regions;
+    break;
+    case 3: // Three column front page and two columns with blocks right elsewhere.
+        $fpfile = 'frontpage3.php';
+        $fpregions = $col3regions;
+        $sitefile = 'columns2r.php';
+        $siteregions = $col2regions;
+    break;
+    case 4: // Two columns with blocks on the left.
+        $fpfile = 'frontpage2l.php';
+        $fpregions = $col2regions;
+        $sitefile = 'columns2l.php';
+        $siteregions = $col2regions;
+    break;
+    case 5: // Two columns with blocks on the right.
+        $fpfile = 'frontpage2r.php';
+        $fpregions = $col2regions;
+        $sitefile = 'columns2r.php';
+        $siteregions = $col2regions;
+    break;
 }
 
 $THEME->layouts = array(
@@ -78,51 +105,51 @@ $THEME->layouts = array(
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-        'file' => 'columns3.php',
-        'regions' => $col3regions,
+        'file' => $sitefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
-        'file' => 'columns3.php',
-        'regions' => $col3regions,
+        'file' => $sitefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu'=>true),
     ),
     'coursecategory' => array(
-        'file' => 'columns3.php',
-        'regions' => $col3regions,
+        'file' => $sitefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre',
     ),
     // part of course, typical for modules - default page layout if $cm specified in require_login()
     'incourse' => array(
-        'file' => 'columns3.php',
-        'regions' => $col3regions,
+        'file' => $sitefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre',
     ),
     // The site home page.
     'frontpage' => array(
-        'file' => 'frontpage.php',
+        'file' => $fpfile,
         'regions' => $fpregions,
         'defaultregion' => 'side-pre'
     ),
     // Server administration scripts.
     'admin' => array(
-        'file' => 'columns2.php',
-        'regions' => $col2regions,
+        'file' => $sitefile,
+        'regions' => $col3regions,  // On purpose for when changing columns from 2r to 3 on General settings page of theme.
         'defaultregion' => 'side-pre',
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'file' => 'columns3.php',
-        'regions' => $col3regions,
+        'file' => $sitefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu'=>true),
     ),
     // My public page.
     'mypublic' => array(
-        'file' => 'columns3.php',
-        'regions' => $col3regions,
+        'file' => $sitefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre',
     ),
     'login' => array(
@@ -169,8 +196,8 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'file' => 'columns2.php',
-        'regions' => $col2regions,
+        'file' => $sitefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre',
     ),
     // The pagelayout used for safebrowser and securewindow.
