@@ -54,6 +54,7 @@ Version Information
 19th December 2014 - Version 2.7.0.3
   1. Theme layout setting in 'General settings'.  Task #362 - via 'They should be available in the general settings page of the theme.' on eMail.
   2. Implemented layout settings in config.php and adapted layout files.  Task #362.
+  3. Implemented separate header selection code.  Task #360.  Pending definition of separate headers and determination if 'page-header.php' is the better file to switch on.
 
 18th December 2014 - Version 2.7.0.2
   1. Added 'Theme layout' setting for 'Theme setting, that defines number of columns for the layout' requirement.

@@ -85,8 +85,8 @@ $string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three c
 $string['themelayoutthreecolumns'] = 'Three columns';
 $string['themelayoutthreecolumnsfplefttwo'] = 'Three column front page and two columns with blocks left elsewhere';
 $string['themelayoutthreecolumnsfprighttwo'] = 'Three column front page and two columns with blocks right elsewhere';
-$string['themelayoutlefttwocolumns'] = 'Blocks left two columns';
-$string['themelayoutrighttwocolumns'] = 'Blocks right two columns';
+$string['themelayoutlefttwocolumns'] = 'Two columns with blocks on the left';
+$string['themelayoutrighttwocolumns'] = 'Two columns with blocks on the right';
 
 $string['textcolour'] = 'Text colour';
 $string['textcolourdesc'] = 'Set the text colour.';

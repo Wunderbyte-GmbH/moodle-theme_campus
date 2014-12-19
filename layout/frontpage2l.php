@@ -74,7 +74,7 @@ echo $OUTPUT->doctype() ?>
 
 <?php
 echo $OUTPUT->standard_top_of_body_html();
-require_once(dirname(__FILE__).'/tiles/header.php');
+require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 ?>
 
 <div id="page" class="container-fluid">

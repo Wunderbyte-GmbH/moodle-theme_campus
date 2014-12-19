@@ -261,4 +261,64 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         return $anti_gravity;
     }
+
+    /**
+     * Returns the header file name in the 'tiles' folder to use for the current page.
+     */
+    public function get_header_file() {
+        $thefile = 'header.php'; // Default if not a specific header.
+
+        // TEMPORARY TEST CODE.
+        global $CFG;
+        $CFG->campusheader = 'default';
+
+        switch($this->page->pagelayout) {
+            case 'frontpage':
+                $CFG->campusheader = 'frontpage';
+            break;
+            case 'coursecategory':
+                if ($this->is_top_level_category()) {  // Set specific header.
+                    $CFG->campusheader = 'top level category';
+                }
+            break;
+            case 'course':
+            case 'incourse':
+                $CFG->campusheader = 'course / incourse';
+            break;
+        }
+
+        return $thefile;
+    }
+
+    private function is_top_level_category() {
+        return (in_array($this->get_current_category(), $this->get_top_level_category_ids()));
+    }
+
+    public function get_top_level_category_ids() {
+        global $CFG;
+        include_once($CFG->libdir . '/coursecatlib.php');
+
+        $categoryids = array();
+        $categories = coursecat::get(0)->get_children();  // Parent = 0 i.e. top-level categories only.
+
+        foreach($categories as $category){
+            $categoryids[] = $category->id;
+        }
+
+        return $categoryids;
+    }
+
+    private function get_current_category() {
+        $catid = 0;
+
+        if (is_array($this->page->categories)) {
+            $catids = array_keys($this->page->categories);
+            $catid = reset($catids);
+        } else if (!empty($$this->page->course->category)) {
+            $catid = $this->page->course->category;
+        }
+
+        return $catid;
+    }
+
 }
