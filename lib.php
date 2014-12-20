@@ -104,13 +104,13 @@ function theme_campus_less_variables($theme) {
         $variables['themeBackground'] = $theme->settings->themebackgroundcolour;
     }
     if (!empty($theme->settings->baseborderradius)) {
-        $variables['baseBorderRadius'] = $theme->settings->baseborderradius.'px';
+        $variables['baseBorderRadius'] = $theme->settings->baseborderradius;
     }
     if (!empty($theme->settings->borderradiussmall)) {
-        $variables['borderRadiusSmall'] = $theme->settings->borderradiussmall.'px';
+        $variables['borderRadiusSmall'] = $theme->settings->borderradiussmall;
     }
     if (!empty($theme->settings->borderradiuslarge)) {
-        $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge.'px';
+        $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
     }
     return $variables;
 }
