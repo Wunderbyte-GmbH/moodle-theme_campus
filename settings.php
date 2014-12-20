@@ -51,6 +51,7 @@ if (is_siteadmin()) {
         5 => get_string('themelayoutrighttwocolumns', 'theme_campus')
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    // No CSS change, but need to re-read config.php file, so needed.
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
@@ -63,6 +64,7 @@ if (is_siteadmin()) {
         1 => new lang_string('no'),   // No.
         2 => new lang_string('yes')   // Yes.
     );
+    // No CSS change, so no need to reset caches.
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Custom CSS file.
@@ -267,6 +269,15 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_headerheading', get_string('headerheadingsub', 'theme_campus'),
         format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
+    // Show login info.
+    $name = 'theme_campus/showlogininfo';
+    $title = get_string('showlogininfo', 'theme_campus');
+    $description = get_string('showlogininfodesc', 'theme_campus');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
     // Invert Navbar to dark background.
     $name = 'theme_campus/invert';
     $title = get_string('invert', 'theme_campus');
@@ -302,6 +313,7 @@ if (is_siteadmin()) {
     );
     $default = 2;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
     // Footnote setting.
@@ -310,7 +322,7 @@ if (is_siteadmin()) {
     $description = get_string('footnotedesc', 'theme_campus');
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
+    // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
     $ADMIN->add('theme_campus', $settingpage);

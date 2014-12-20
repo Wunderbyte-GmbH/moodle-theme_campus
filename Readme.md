@@ -53,6 +53,8 @@ Version Information
 ===================
 20th December 2014 - Version 2.7.0.4.
   1. Cross patch of Shoelace 2.7.1.1 part of Essential issue #409 for future proofing.
+  2. Fixed border issue on task #364.
+  3. Implemented 'General settings (does not depend on variant) - login link.' of task #359.
 
 19th December 2014 - Version 2.7.0.3
   1. Theme layout setting in 'General settings'.  Task #362 - via 'They should be available in the general settings page of the theme.' on eMail.

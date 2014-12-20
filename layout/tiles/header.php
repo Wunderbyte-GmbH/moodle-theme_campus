@@ -25,6 +25,8 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+$logininfo = (!isset($PAGE->theme->settings->showlogininfo)) ? true : $PAGE->theme->settings->showlogininfo;
 ?>
 <header role="banner" class="navbar navbar-static-top<?php echo $html->navbarclass ?>">
     <nav role="navigation" class="navbar-inner">
@@ -41,7 +43,9 @@
                 <?php echo $OUTPUT->user_menu(); ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
+                    <?php if ($logininfo) { ?>
                     <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
