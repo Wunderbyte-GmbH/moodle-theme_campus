@@ -55,6 +55,15 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Show login info.
+    $name = 'theme_campus/showlogininfo';
+    $title = get_string('showlogininfo', 'theme_campus');
+    $description = get_string('showlogininfodesc', 'theme_campus');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
     // CDN Fonts - 1 = no, 2 = yes.
     $name = 'theme_campus/cdnfonts';
     $title = get_string('cdnfonts', 'theme_campus');
@@ -270,15 +279,6 @@ if (is_siteadmin()) {
     $settingpage = new admin_settingpage('theme_campus_header', get_string('headersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_headerheading', get_string('headerheadingsub', 'theme_campus'),
         format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
-
-    // Show login info.
-    $name = 'theme_campus/showlogininfo';
-    $title = get_string('showlogininfo', 'theme_campus');
-    $description = get_string('showlogininfodesc', 'theme_campus');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    // No CSS change, so no need to reset caches.
-    $settingpage->add($setting);
 
     // Show page heading.
     $name = 'theme_campus/showpageheading';
