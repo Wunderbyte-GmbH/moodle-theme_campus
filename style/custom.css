@@ -18,15 +18,6 @@ a.logo {
 
 #region-main-campus {
     background-color: #fff;
-    box-shadow: 0 0 8px #888;
-}
-
-#region-main-campus-shadow {
-    background: url([[pix:theme|shadow]]) no-repeat scroll 50% 100% / 96% 12px transparent;
-    padding-bottom: 12px;
-    margin: 0 auto;
-    display: block;
-    clear: both; /* Clear floats that are sometimes used to make the #region-main-campus fit the content, i.e Editing Quiz. */
 }
 
 /* Negate core style so that browser renders drop target correctly. */

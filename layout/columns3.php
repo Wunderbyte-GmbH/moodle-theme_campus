@@ -106,7 +106,6 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                         echo $OUTPUT->course_content_footer();
                         ?>
                     </section>
-                    <div id="region-main-campus-shadow"></div>
                 </div>
                 <?php echo $OUTPUT->campusblocks($pre, $blockclass.' desktop-first-column'); ?>
             </div>
