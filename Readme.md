@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+21st December 2014 - Version 2.7.0.5.
+  1. Border radius changes task #371.
+
 20th December 2014 - Version 2.7.0.4.
   1. Cross patch of Shoelace 2.7.1.1 part of Essential issue #409 for future proofing.
   2. Fixed border issue on task #364.

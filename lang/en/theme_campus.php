@@ -109,11 +109,11 @@ $string['themecolourdesc'] = 'Set the theme colour.';
 $string['themebackgroundcolour'] = 'Theme background colour';
 $string['themebackgroundcolourdesc'] = 'Set the theme background colour.';
 
-$string['baseborderradius'] = 'Base border radius';
-$string['baseborderradius_desc'] = 'Main border radius.';
-
 $string['borderradiussmall'] = 'Small border radius';
 $string['borderradiussmall_desc'] = 'Small border radius.';
+
+$string['borderradiusmedium'] = 'Medium border radius';
+$string['borderradiusmedium_desc'] = 'Medium border radius.';
 
 $string['borderradiuslarge'] = 'Large border radius';
 $string['borderradiuslarge_desc'] = 'Large border radius.';

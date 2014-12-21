@@ -153,44 +153,8 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Border radius.
-    $name = 'theme_campus/baseborderradius';
-    $title = get_string('baseborderradius', 'theme_campus');
-    $description = get_string('baseborderradius_desc', 'theme_campus');
-    $default = '4px';
-    $choices = array(
-        '0px' => new lang_string('px00', 'theme_campus'),
-        '1px' => new lang_string('px01', 'theme_campus'),
-        '2px' => new lang_string('px02', 'theme_campus'),
-        '3px' => new lang_string('px03', 'theme_campus'),
-        '4px' => new lang_string('px04', 'theme_campus'),
-        '5px' => new lang_string('px05', 'theme_campus'),
-        '6px' => new lang_string('px06', 'theme_campus'),
-        '7px' => new lang_string('px07', 'theme_campus'),
-        '8px' => new lang_string('px08', 'theme_campus'),
-        '9px' => new lang_string('px09', 'theme_campus'),
-        '10px' => new lang_string('px10', 'theme_campus'),
-        '11px' => new lang_string('px11', 'theme_campus'),
-        '12px' => new lang_string('px12', 'theme_campus'),
-        '13px' => new lang_string('px13', 'theme_campus'),
-        '14px' => new lang_string('px14', 'theme_campus'),
-        '15px' => new lang_string('px15', 'theme_campus'),
-        '16px' => new lang_string('px16', 'theme_campus'),
-        '17px' => new lang_string('px17', 'theme_campus'),
-        '18px' => new lang_string('px18', 'theme_campus'),
-        '19px' => new lang_string('px19', 'theme_campus'),
-        '20px' => new lang_string('px20', 'theme_campus'),
-        '21px' => new lang_string('px21', 'theme_campus'),
-        '22px' => new lang_string('px22', 'theme_campus'),
-        '23px' => new lang_string('px23', 'theme_campus'),
-        '24px' => new lang_string('px24', 'theme_campus'),
-        '25px' => new lang_string('px25', 'theme_campus')
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
-
-        $name = 'theme_campus/borderradiussmall';
+    // Small border radius.
+    $name = 'theme_campus/borderradiussmall';
     $title = get_string('borderradiussmall', 'theme_campus');
     $description = get_string('borderradiussmall_desc', 'theme_campus');
     $default = '3px';
@@ -226,6 +190,44 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Medium border radius.
+    $name = 'theme_campus/borderradiusmedium';
+    $title = get_string('borderradiusmedium', 'theme_campus');
+    $description = get_string('borderradiusmedium_desc', 'theme_campus');
+    $default = '4px';
+    $choices = array(
+        '0px' => new lang_string('px00', 'theme_campus'),
+        '1px' => new lang_string('px01', 'theme_campus'),
+        '2px' => new lang_string('px02', 'theme_campus'),
+        '3px' => new lang_string('px03', 'theme_campus'),
+        '4px' => new lang_string('px04', 'theme_campus'),
+        '5px' => new lang_string('px05', 'theme_campus'),
+        '6px' => new lang_string('px06', 'theme_campus'),
+        '7px' => new lang_string('px07', 'theme_campus'),
+        '8px' => new lang_string('px08', 'theme_campus'),
+        '9px' => new lang_string('px09', 'theme_campus'),
+        '10px' => new lang_string('px10', 'theme_campus'),
+        '11px' => new lang_string('px11', 'theme_campus'),
+        '12px' => new lang_string('px12', 'theme_campus'),
+        '13px' => new lang_string('px13', 'theme_campus'),
+        '14px' => new lang_string('px14', 'theme_campus'),
+        '15px' => new lang_string('px15', 'theme_campus'),
+        '16px' => new lang_string('px16', 'theme_campus'),
+        '17px' => new lang_string('px17', 'theme_campus'),
+        '18px' => new lang_string('px18', 'theme_campus'),
+        '19px' => new lang_string('px19', 'theme_campus'),
+        '20px' => new lang_string('px20', 'theme_campus'),
+        '21px' => new lang_string('px21', 'theme_campus'),
+        '22px' => new lang_string('px22', 'theme_campus'),
+        '23px' => new lang_string('px23', 'theme_campus'),
+        '24px' => new lang_string('px24', 'theme_campus'),
+        '25px' => new lang_string('px25', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Large border radius.
     $name = 'theme_campus/borderradiuslarge';
     $title = get_string('borderradiuslarge', 'theme_campus');
     $description = get_string('borderradiuslarge_desc', 'theme_campus');
