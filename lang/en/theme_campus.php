@@ -153,6 +153,9 @@ $string['headerheadingdesc'] = 'Configure the header settings for the theme here
 $string['showlogininfo'] = 'Display login link';
 $string['showlogininfodesc'] = 'Display the login link.';
 
+$string['showpageheading'] = 'Display page heading';
+$string['showpageheadingdesc'] = 'Display the page heading.';
+
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 

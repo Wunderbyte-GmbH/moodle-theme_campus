@@ -280,6 +280,15 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
+    // Show page heading.
+    $name = 'theme_campus/showpageheading';
+    $title = get_string('showpageheading', 'theme_campus');
+    $description = get_string('showpageheadingdesc', 'theme_campus');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
     // Invert Navbar to dark background.
     $name = 'theme_campus/invert';
     $title = get_string('invert', 'theme_campus');

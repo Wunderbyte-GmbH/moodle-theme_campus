@@ -321,4 +321,20 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return $catid;
     }
 
+    /**
+     * Gets HTML for the page heading.
+     *
+     * @since Moodle 2.5.1 2.6
+     * @param string $tag The tag to encase the heading in. h1 by default.
+     * @return string HTML.
+     */
+    public function page_heading($tag = 'h1') {
+        $pageheading = (!isset($this->page->theme->settings->showpageheading)) ? true : $this->page->theme->settings->showpageheading;
+        if ($pageheading) {
+            return parent::page_heading($tag);
+        } else {
+            return '';
+        }
+    }
+
 }
