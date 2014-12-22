@@ -150,8 +150,11 @@ $string['headersettings'] = 'Header';
 $string['headerheadingsub'] = 'Header settings';
 $string['headerheadingdesc'] = 'Configure the header settings for the theme here.';
 
-$string['showlogininfo'] = 'Display login link';
-$string['showlogininfodesc'] = 'Display the login link.';
+$string['showlogininfoheader'] = 'Display header login link';
+$string['showlogininfoheaderdesc'] = 'Display the login link in the header.';
+
+$string['showlogininfofooter'] = 'Display footer login link';
+$string['showlogininfofooterdesc'] = 'Display the login link in the footer.';
 
 $string['showpageheading'] = 'Display page heading';
 $string['showpageheadingdesc'] = 'Display the page heading.';

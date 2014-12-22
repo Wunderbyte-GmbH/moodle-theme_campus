@@ -35,7 +35,10 @@
     <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
     <?php
     echo $html->footnote;
-    echo $OUTPUT->login_info();
+    $logininfofooter = (!isset($PAGE->theme->settings->showlogininfofooter)) ? true : $PAGE->theme->settings->showlogininfofooter;
+    if ($logininfofooter) {
+        echo $OUTPUT->login_info();
+    }
     echo $OUTPUT->home_link();
     echo $OUTPUT->standard_footer_html();
     ?>

@@ -55,10 +55,19 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Show login info.
-    $name = 'theme_campus/showlogininfo';
-    $title = get_string('showlogininfo', 'theme_campus');
-    $description = get_string('showlogininfodesc', 'theme_campus');
+    // Show login info header.
+    $name = 'theme_campus/showlogininfoheader';
+    $title = get_string('showlogininfoheader', 'theme_campus');
+    $description = get_string('showlogininfoheaderdesc', 'theme_campus');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
+    // Show login info footer.
+    $name = 'theme_campus/showlogininfofooter';
+    $title = get_string('showlogininfofooter', 'theme_campus');
+    $description = get_string('showlogininfofooterdesc', 'theme_campus');
     $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     // No CSS change, so no need to reset caches.

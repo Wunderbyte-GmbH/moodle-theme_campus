@@ -26,7 +26,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$logininfo = (!isset($PAGE->theme->settings->showlogininfo)) ? true : $PAGE->theme->settings->showlogininfo;
+$logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true : $PAGE->theme->settings->showlogininfoheader;
 ?>
 <header role="banner" class="navbar navbar-static-top<?php echo $html->navbarclass ?>">
     <nav role="navigation" class="navbar-inner">
@@ -43,7 +43,7 @@ $logininfo = (!isset($PAGE->theme->settings->showlogininfo)) ? true : $PAGE->the
                 <?php echo $OUTPUT->user_menu(); ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    <?php if ($logininfo) { ?>
+                    <?php if ($logininfoheader) { ?>
                     <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
                     <?php } ?>
                 </ul>

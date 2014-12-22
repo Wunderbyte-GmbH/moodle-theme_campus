@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+22nd December 2014 - Version 2.7.0.6.
+  1. Change "display login ling" setting - task #373.
+
 21st December 2014 - Version 2.7.0.5.
   1. Border radius changes - task #371.
   2. Region main - task #372.
