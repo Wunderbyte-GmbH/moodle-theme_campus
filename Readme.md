@@ -57,6 +57,7 @@ Version Information
   3. Site name in navbar on front page otherwise page header - task #374.
   4. Overriding Login renderer and theme setting for activation of the override - task #365.
   5. Render login link as button - task #369.
+  6. Fix svg files not having 'viewbox' property for IE.
 
 21st December 2014 - Version 2.7.0.5.
   1. Border radius changes - task #371.

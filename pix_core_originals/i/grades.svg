@@ -9,7 +9,7 @@
 	 xml:space="preserve" preserveAspectRatio="xMinYMid meet">
 <defs>
 </defs>
-<path style="fill:#7575E0;" d="M15,0H1C0.5,0,0,0.5,0,1v14c0,0.5,0.5,1,1,1h14c0.5,0,1-0.5,1-1V1C16,0.5,15.5,0,15,0z M8,14H2v-2h6
+<path style="fill:#1F4D87;" d="M15,0H1C0.5,0,0,0.5,0,1v14c0,0.5,0.5,1,1,1h14c0.5,0,1-0.5,1-1V1C16,0.5,15.5,0,15,0z M8,14H2v-2h6
 	V14z M8,11H2V9h6V11z M8,8H2V6h6V8z M11,14H9v-2h2V14z M11,11H9V9h2V11z M11,8H9V6h2V8z M14,14h-2v-2h2V14z M14,11h-2V9h2V11z M14,8
 	h-2V6h2V8z"/>
 </svg>
