@@ -325,7 +325,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $loggedinas = $realuserinfo.get_string('loggedinasguest');
                 if (!$loginpage && $withlinks) {
                     $loggedinas .= " <a class=\"standardbutton plainlogin\" href=\"$loginurl\">".get_string('login').'</a> 
-                      <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+                      <span class="loginlink btn"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
                 }
             } else if (is_role_switched($course->id)) { // Has switched roles
                 $rolename = '';
@@ -335,19 +335,19 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $loggedinas = '<span class="loggedintext">'. get_string('loggedinas', 'moodle', $username).$rolename.'</span>';
                 if ($withlinks) {
                     $url = new moodle_url('/course/switchrole.php', array('id'=>$course->id,'sesskey'=>sesskey(), 'switchrole'=>0, 'returnurl'=>$this->page->url->out_as_local_url(false)));
-                    $loggedinas .= '('.html_writer::tag('a', get_string('switchrolereturn'), array('href'=>$url)).')';
+                    $loggedinas .= '('.html_writer::tag('a', get_string('switchrolereturn'), array('href'=>$url, 'class' => 'btn')).')';
                 }
             } else {
                 $loggedinas = '<span class="loggedintext">'. $realuserinfo.get_string('loggedinas', 'moodle', $username).'</span>';
                 if ($withlinks) {
-                    $loggedinas .= html_writer::tag('div', $this->user_picture($USER, array('size'=>174)), array('class'=>'userimg2'))." <span class=\"loggedinlogout\"> <a href=\"$CFG->wwwroot/login/logout.php?sesskey=".sesskey()."\">".get_string('logout').'</a></span>';
+                    $loggedinas .= html_writer::tag('div', $this->user_picture($USER, array('size'=>174)), array('class'=>'userimg2'))." <span class=\"loggedinlogout btn\"> <a href=\"$CFG->wwwroot/login/logout.php?sesskey=".sesskey()."\">".get_string('logout').'</a></span>';
                 }
             }
         } else {
             $loggedinas = get_string('loggedinnot', 'moodle');
             if (!$loginpage && $withlinks) {
-                $loggedinas .= " <a class=\"standardbutton plainlogin\" href=\"$loginurl\">".get_string('login').'</a>
-                  <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+                $loggedinas .= "<a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>
+                  <span class="loginlink btn btn-info"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
             }
         }
 
