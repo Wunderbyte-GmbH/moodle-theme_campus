@@ -43,9 +43,9 @@
     return false;
   });
 
-  $("a[href='#region-main-campus-shadow']").click(function(e) {
+  $("a[href='#page-footer']").click(function(e) {
     e.preventDefault();
-    var target = $('#region-main-campus-shadow');
+    var target = $('#page-footer');
     $('html, body').animate({scrollTop : target.offset().top}, animateduration);
     return false;
   });

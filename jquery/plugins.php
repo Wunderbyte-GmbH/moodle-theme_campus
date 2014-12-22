@@ -26,5 +26,5 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $plugins = array(
-    'antigravity' => array('files' => array('anti_gravity_1_0.js'))
+    'antigravity' => array('files' => array('anti_gravity_1_1.js'))
 );

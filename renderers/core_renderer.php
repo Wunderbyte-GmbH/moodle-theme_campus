@@ -251,7 +251,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     protected function render_gotobottom_menu(custom_menu $menu) {
         if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout == 'admin')) { // Go to bottom.
             $gotobottom = html_writer::tag('i', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
-            $menu->add($gotobottom, new moodle_url('#region-main-campus-shadow'), get_string('gotobottom', 'theme_campus'), 10001);
+            $menu->add($gotobottom, new moodle_url('#page-footer'), get_string('gotobottom', 'theme_campus'), 10001);
         }
     }
 
