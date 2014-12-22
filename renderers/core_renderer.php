@@ -437,7 +437,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * Returns the header file name in the 'tiles' folder to use for the current page.
      */
     public function get_header_file() {
-        $thefile = 'header.php'; // Default if not a specific header.
+        $thefile = 'header'; // Default if not a specific header.
 
         // TEMPORARY TEST CODE.
         global $CFG;
@@ -450,6 +450,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             case 'coursecategory':
                 if ($this->is_top_level_category()) {  // Set specific header.
                     $CFG->campusheader = 'top level category';
+                    $thefile = 'coursecategory-header';
                 }
             break;
             case 'course':
@@ -458,28 +459,21 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             break;
         }
 
-        return $thefile;
+        return $thefile.'.php';
     }
 
     private function is_top_level_category() {
-        return (in_array($this->get_current_category(), $this->get_top_level_category_ids()));
-    }
-
-    public function get_top_level_category_ids() {
         global $CFG;
-        include_once($CFG->libdir . '/coursecatlib.php');
-
-        $categoryids = array();
-        $categories = coursecat::get(0)->get_children();  // Parent = 0 i.e. top-level categories only.
-
-        foreach($categories as $category){
-            $categoryids[] = $category->id;
+        include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+        $key = $this->get_current_category();
+        if ($key) {
+            return (array_key_exists($key, theme_campus_get_top_level_categories()));
+        } else {
+            return false;
         }
-
-        return $categoryids;
     }
 
-    private function get_current_category() {
+    public function get_current_category() {
         $catid = 0;
 
         if (is_array($this->page->categories)) {

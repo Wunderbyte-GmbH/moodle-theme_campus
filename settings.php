@@ -355,6 +355,30 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Course category header settings.
+    $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategorysettings', 'theme_campus'),
+            format_text(get_string('coursecategorysettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    global $CFG;
+    include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    $campuscategorytree = theme_campus_get_top_level_categories();
+    foreach($campuscategorytree as $key => $value){
+        $name = 'theme_campus/coursecategoryheading'.$key;
+        $heading = get_string('coursecategoryheading', 'theme_campus', array('categoryname' => $value));
+        //$information = get_string('coursecategoryheading_desc', 'theme_campus');
+        $information = ''; // TODO: Decide if better without description.
+        $setting = new admin_setting_heading($name, $heading, $information);
+        $settingpage->add($setting);
+
+        $name = 'theme_campus/coursecategorybgcolour'.$key;
+        $title = get_string('coursecategorybgcolour', 'theme_campus');
+        $description = get_string('coursecategorybgcolourdesc', 'theme_campus', array('categoryname' => $value));
+        $default = '#11847D';
+        $previewconfig = NULL;
+        $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+        $settingpage->add($setting);
+    }
+
     $ADMIN->add('theme_campus', $settingpage);
 
     // Footer settings.

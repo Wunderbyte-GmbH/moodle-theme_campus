@@ -173,6 +173,16 @@ $string['logodesc'] = 'Please upload your custom logo here if you want to add it
 If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
 a.logo {height: 100px;} or whatever height in pixels the logo is.';
 
+// Course category header.
+$string['coursecategorysettings']= 'Course category';
+$string['coursecategorysettings_desc']= 'Course category settings.';
+
+$string['coursecategoryheading']= 'Course category: {$a->categoryname}';
+$string['coursecategoryheading_desc']= 'Course category settings.';
+
+$string['coursecategorybgcolour']= 'Background colour';
+$string['coursecategorybgcolourdesc']= 'Course category {$a->categoryname} background colour.';
+
 // Footer.
 $string['footersettings'] = 'Footer';
 $string['footerheadingsub'] = 'Footer settings';

@@ -26,28 +26,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true : $PAGE->theme->settings->showlogininfoheader;
-?>
-<header role="banner" class="navbar navbar-static-top<?php echo $html->navbarclass ?>">
-    <nav role="navigation" class="navbar-inner">
-        <div class="container-fluid">
-            <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $OUTPUT->navbar_heading(); ?></a>
-            <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse collapse">
-                <?php echo $OUTPUT->custom_menu(); ?>
-                <?php echo $OUTPUT->user_menu(); ?>
-                <ul class="nav pull-right">
-                    <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    <?php if ($logininfoheader) { ?>
-                    <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+// TEMPORARY TEST CODE.
+global $CFG, $OUTPUT;
+if (!empty($CFG->campusheader)) {
+    echo '<div style="background-color: '.get_config('theme_campus', 'coursecategorybgcolour'.$OUTPUT->get_current_category()).'; color: #fff;">TEST CODE: Campus course category header: '.$CFG->campusheader.'</div>';
+}
+
+require_once(dirname(__FILE__).'/navbar.php');
