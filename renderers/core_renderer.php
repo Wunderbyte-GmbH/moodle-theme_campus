@@ -446,6 +446,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         switch($this->page->pagelayout) {
             case 'frontpage':
                 $CFG->campusheader = 'frontpage';
+                $thefile = 'frontpage-header';
             break;
             case 'coursecategory':
                 if ($this->is_top_level_category()) {  // Set specific header.
@@ -456,6 +457,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             case 'course':
             case 'incourse':
                 $CFG->campusheader = 'course / incourse';
+                 $thefile = 'course-header';
             break;
         }
 
