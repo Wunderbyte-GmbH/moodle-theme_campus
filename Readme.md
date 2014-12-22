@@ -54,6 +54,7 @@ Version Information
 22nd December 2014 - Version 2.7.0.6.
   1. Change "display login ling" setting - task #373.
   2. Fix 'go to bottom' functionality after removal of shadow.
+  3. Site name in navbar on front page otherwise page header - task #374.
 
 21st December 2014 - Version 2.7.0.5.
   1. Border radius changes - task #371.

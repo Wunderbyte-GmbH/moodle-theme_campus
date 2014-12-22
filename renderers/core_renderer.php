@@ -337,4 +337,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
     }
 
+    public function navbar_heading() {
+        if ($this->page->pagelayout == 'frontpage') {
+            global $SITE;
+            return $SITE->shortname;
+        } else {
+            return parent::page_heading('span');
+        }
+    }
 }
