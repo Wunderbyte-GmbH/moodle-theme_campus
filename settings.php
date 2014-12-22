@@ -55,6 +55,47 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Login alternative URL setting.
+    $name = 'theme_campus/alternateloginurl';
+    $title = get_string('alternateloginurl', 'theme_campus');
+    $description = get_string('alternateloginurldesc', 'theme_campus');
+    $default = 0;
+    $sql = "SELECT DISTINCT h.id, h.wwwroot, h.name, a.sso_jump_url, a.name as application
+            FROM {mnet_host} h
+            JOIN {mnet_host2service} m ON h.id = m.hostid
+            JOIN {mnet_service} s ON s.id = m.serviceid
+            JOIN {mnet_application} a ON h.applicationid = a.id
+            WHERE s.name = ? AND h.deleted = ? AND m.publish = ?";
+    $params = array('sso_sp', 0, 1);
+
+    if (!empty($CFG->mnet_all_hosts_id)) {
+        $sql .= " AND h.id <> ?";
+        $params[] = $CFG->mnet_all_hosts_id;
+    }
+
+    if ($hosts = $DB->get_records_sql($sql, $params)) {
+        $choices = array();
+        $choices[0] = 'notset';
+        foreach ($hosts as $id => $host){
+            $choices[$id] = $host->name;
+        }    
+    } else {
+        $choices = array();
+        $choices[0] = 'notset';
+    }
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
+    // Hide local login on login page.
+    $name = 'theme_campus/hidelocallogin';
+    $title = get_string('hidelocallogin', 'theme_campus');
+    $description = get_string('hidelocallogindesc', 'theme_campus');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
     // Show login info header.
     $name = 'theme_campus/showlogininfoheader';
     $title = get_string('showlogininfoheader', 'theme_campus');

@@ -263,6 +263,177 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * Return the standard string that says whether you are logged in (and switched
+     * roles/logged in as another user).
+     * @param bool $withlinks if false, then don't include any links in the HTML produced.
+     * If not set, the default is the nologinlinks option from the theme config.php file,
+     * and if that is not set, then links are included.
+     * @return string HTML fragment.
+     */
+    public function login_info($withlinks = null) {
+        global $USER, $CFG, $DB, $SESSION;
+
+        if (during_initial_install()) {
+            return '';
+        }
+
+        if (is_null($withlinks)) {
+            $withlinks = empty($this->page->layout_options['nologinlinks']);
+        }
+
+        $loginurl = $this->campus_get_login_url();
+        $loginpage = ((string)$this->page->url === $loginurl);
+        $course = $this->page->course;
+        if (\core\session\manager::is_loggedinas()) {
+            $realuser = \core\session\manager::get_realuser();
+            $fullname = fullname($realuser, true);
+            if ($withlinks) {
+                $loginastitle = get_string('loginas');
+                $realuserinfo = " [<a href=\"$CFG->wwwroot/course/loginas.php?id=$course->id&amp;sesskey=".sesskey()."\"";
+                $realuserinfo .= "title =\"".$loginastitle."\">$fullname</a>] ";
+            } else {
+                $realuserinfo = " [$fullname] ";
+            }
+        } else {
+            $realuserinfo = '';
+        }
+
+        $subscribeurl = preg_replace('/login\/index\.php/i', 'login/signup.php', $loginurl);
+
+        if (empty($course->id)) {
+            // $course->id is not defined during installation
+            return '';
+        } else if (isloggedin()) {
+            $context = context_course::instance($course->id);
+
+            $fullname = fullname($USER, true);
+            // Since Moodle 2.0 this link always goes to the public profile page (not the course profile page)
+            if ($withlinks) {
+                $linktitle = get_string('viewprofile');
+                $username = "<a href=\"$CFG->wwwroot/user/profile.php?id=$USER->id\" title=\"$linktitle\">$fullname</a>";
+            } else {
+                $username = $fullname;
+            }
+            if (is_mnet_remote_user($USER) and $idprovider = $DB->get_record('mnet_host', array('id'=>$USER->mnethostid))) {
+                if ($withlinks) {
+                    $username .= " from <a href=\"{$idprovider->wwwroot}\">{$idprovider->name}</a>";
+                } else {
+                    $username .= " from {$idprovider->name}";
+                }
+            }
+            if (isguestuser()) {
+                $loggedinas = $realuserinfo.get_string('loggedinasguest');
+                if (!$loginpage && $withlinks) {
+                    $loggedinas .= " <a class=\"standardbutton plainlogin\" href=\"$loginurl\">".get_string('login').'</a> 
+                      <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+                }
+            } else if (is_role_switched($course->id)) { // Has switched roles
+                $rolename = '';
+                if ($role = $DB->get_record('role', array('id'=>$USER->access['rsw'][$context->path]))) {
+                    $rolename = ': '.role_get_name($role, $context);
+                }
+                $loggedinas = '<span class="loggedintext">'. get_string('loggedinas', 'moodle', $username).$rolename.'</span>';
+                if ($withlinks) {
+                    $url = new moodle_url('/course/switchrole.php', array('id'=>$course->id,'sesskey'=>sesskey(), 'switchrole'=>0, 'returnurl'=>$this->page->url->out_as_local_url(false)));
+                    $loggedinas .= '('.html_writer::tag('a', get_string('switchrolereturn'), array('href'=>$url)).')';
+                }
+            } else {
+                $loggedinas = '<span class="loggedintext">'. $realuserinfo.get_string('loggedinas', 'moodle', $username).'</span>';
+                if ($withlinks) {
+                    $loggedinas .= html_writer::tag('div', $this->user_picture($USER, array('size'=>174)), array('class'=>'userimg2'))." <span class=\"loggedinlogout\"> <a href=\"$CFG->wwwroot/login/logout.php?sesskey=".sesskey()."\">".get_string('logout').'</a></span>';
+                }
+            }
+        } else {
+            $loggedinas = get_string('loggedinnot', 'moodle');
+            if (!$loginpage && $withlinks) {
+                $loggedinas .= " <a class=\"standardbutton plainlogin\" href=\"$loginurl\">".get_string('login').'</a>
+                  <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+            }
+        }
+
+        $loggedinas = '<div class="logininfo">'.$loggedinas.'</div>';
+
+        if (isset($SESSION->justloggedin)) {
+            unset($SESSION->justloggedin);
+            if (!empty($CFG->displayloginfailures)) {
+                if (!isguestuser()) {
+                    if ($count = count_login_failures($CFG->displayloginfailures, $USER->username, $USER->lastlogin)) {
+                        $loggedinas .= '&nbsp;<div class="loginfailures">';
+                        if (empty($count->accounts)) {
+                            $loggedinas .= get_string('failedloginattempts', '', $count);
+                        } else {
+                            $loggedinas .= get_string('failedloginattemptsall', '', $count);
+                        }
+                        if (file_exists("$CFG->dirroot/report/log/index.php") and has_capability('report/log:view', context_system::instance())) {
+                            $loggedinas .= ' (<a href="'.$CFG->wwwroot.'/report/log/index.php'.
+                                                 '?chooselog=1&amp;id=1&amp;modid=site_errors">'.get_string('logs').'</a>)';
+                        }
+                        $loggedinas .= '</div>';
+                    }
+                }
+            }
+        }
+
+        return $loggedinas;
+    }
+
+    /**
+     * Returns MNET Login URL instead of standard login URL. Checks the wanted url
+     * of user in order to provide correct redirect url for the identity provider
+     *
+     * @return string login url
+     */
+    private function campus_get_login_url() {
+        global $DB, $SESSION, $CFG;
+        if ($this->page->url->out() === $CFG->wwwroot."/login/index.php"){
+            $urltogo = $SESSION->wantsurl;
+        } else {
+            $urltogo = $this->page->url->out();
+        }
+        $authplugin = get_auth_plugin('mnet');
+        $authurl = $authplugin->loginpage_idp_list($urltogo);
+
+        // Check the id of the MNET host for the idp
+        $host = $DB->get_field('mnet_host', 'name', array('id' => $this->page->theme->settings->alternateloginurl));
+        if(!empty($authurl)){
+            foreach($authurl as $key => $urlarray){
+                if($urlarray['name'] == $host){
+                    $loginurl = $authurl[$key]['url'];
+                    return $loginurl;
+                } else {
+                    $loginurl = "$CFG->wwwroot/login/index.php";
+                    if (!empty($CFG->loginhttps)) {
+                        $loginurl = str_replace('http:', 'https:', $loginurl);
+                    }
+                }
+            }
+        } else {
+            $loginurl = "$CFG->wwwroot/login/index.php";
+            if (!empty($CFG->loginhttps)) {
+                $loginurl = str_replace('http:', 'https:', $loginurl);
+            }
+        }
+        return $loginurl;
+    }
+
+    /**
+     * Returns HTML attributes to use within the body tag. This includes an ID and classes.
+     *
+     * @since Moodle 2.5.1 2.6
+     * @param string|array $additionalclasses Any additional classes to give the body tag,
+     * @return string
+     */
+    public function body_attributes($additionalclasses = array()) {
+        if ($this->page->pagelayout == 'login') {
+            $hidelocallogin = (!isset($this->page->theme->settings->hidelocallogin)) ? false : $this->page->theme->settings->hidelocallogin;
+            if ($hidelocallogin) {
+                $additionalclasses[] = 'hidelocallogin';
+            }
+        }
+        return parent::body_attributes($additionalclasses);
+    }
+
+    /**
      * Returns the header file name in the 'tiles' folder to use for the current page.
      */
     public function get_header_file() {

@@ -69,6 +69,18 @@ $string['genericsettings'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for the theme here.';
 
+$string['alternateloginurl'] = 'Alternative login URL.';
+$string['alternateloginurldesc'] = 'Alternative login URL.';
+
+$string['hidelocallogin'] = 'Hide local login';
+$string['hidelocallogindesc'] = 'Hide the local login on login page.';
+
+$string['showlogininfoheader'] = 'Display header login link';
+$string['showlogininfoheaderdesc'] = 'Display the login link in the header.';
+
+$string['showlogininfofooter'] = 'Display footer login link';
+$string['showlogininfofooterdesc'] = 'Display the login link in the footer.';
+
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfonts_desc'] = 'Use content delivery network fonts';
 
@@ -149,12 +161,6 @@ $string['px25'] = '25px';
 $string['headersettings'] = 'Header';
 $string['headerheadingsub'] = 'Header settings';
 $string['headerheadingdesc'] = 'Configure the header settings for the theme here.';
-
-$string['showlogininfoheader'] = 'Display header login link';
-$string['showlogininfoheaderdesc'] = 'Display the login link in the header.';
-
-$string['showlogininfofooter'] = 'Display footer login link';
-$string['showlogininfofooterdesc'] = 'Display the login link in the footer.';
 
 $string['showpageheading'] = 'Display page heading';
 $string['showpageheadingdesc'] = 'Display the page heading.';
