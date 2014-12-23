@@ -499,20 +499,18 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function page_heading($tag = 'h1') {
-        $pageheading = (!isset($this->page->theme->settings->showpageheading)) ? true : $this->page->theme->settings->showpageheading;
-        if ($pageheading) {
-            return parent::page_heading($tag);
+        $showpageheading = (!isset($this->page->theme->settings->showpageheading)) ? true : $this->page->theme->settings->showpageheading;
+        if ($showpageheading) {
+            if ($this->page->pagelayout == 'frontpage') {
+                global $SITE;
+                $pageheading = $SITE->shortname;
+            } else {
+                $pageheading = parent::page_heading('span');
+            }
+            global $CFG;
+            return '<a class="brand" href="'.$CFG->wwwroot.'">'.$pageheading.'</a>';
         } else {
             return '';
-        }
-    }
-
-    public function navbar_heading() {
-        if ($this->page->pagelayout == 'frontpage') {
-            global $SITE;
-            return $SITE->shortname;
-        } else {
-            return parent::page_heading('span');
         }
     }
 }

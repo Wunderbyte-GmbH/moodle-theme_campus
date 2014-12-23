@@ -166,7 +166,7 @@ function theme_campus_get_html_for_settings(renderer_base $output, moodle_page $
     if (!empty($page->theme->settings->logo)) {
         $return->heading = html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
     } else {
-        $return->heading = $output->page_heading();
+        $return->heading = '';
     }
 
     $return->footnote = '';

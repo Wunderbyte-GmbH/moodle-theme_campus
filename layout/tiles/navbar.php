@@ -31,7 +31,7 @@ $logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true 
 <header role="banner" class="navbar navbar-static-top<?php echo $html->navbarclass ?>">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
-            <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $OUTPUT->navbar_heading(); ?></a>
+            <?php echo $OUTPUT->page_heading(); ?>
             <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+23rd December 2014 - Version 2.7.0.7.
+  1. Update site name in navbar on front page otherwise page header - task 374.
+
 22nd December 2014 - Version 2.7.0.6.
   1. Change "display login ling" setting - task #373.
   2. Fix 'go to bottom' functionality after removal of shadow.
