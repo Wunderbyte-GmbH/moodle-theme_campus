@@ -56,6 +56,7 @@ Version Information
   2. Add warning to hide local login - task #365.
   3. Remove button from subscribe, link and text still there as per supplied code - task #373.
   4. Create integer range admin setting - task #377.
+  5. Update fix in 'Default value for setting alternateloginurl in settings.php not correct' - task #376.
 
 22nd December 2014 - Version 2.7.0.6.
   1. Change "display login ling" setting - task #373.

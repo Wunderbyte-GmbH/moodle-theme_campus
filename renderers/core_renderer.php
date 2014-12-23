@@ -385,7 +385,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     private function campus_get_login_url() {
         global $DB, $SESSION, $CFG;
-        if(!$this->page->theme->settings->alternateloginurl){
+        if (empty($this->page->theme->settings->alternateloginurl)) {
             return get_login_url();
         }        
         if ($this->page->url->out() === $CFG->wwwroot."/login/index.php"){
