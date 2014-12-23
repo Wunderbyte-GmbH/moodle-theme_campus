@@ -168,6 +168,9 @@ $string['showpageheadingdesc'] = 'Display the page heading.';
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 
+$string['frontpageheaderheight'] = 'Frontpage header height';
+$string['frontpageheaderheightdesc'] = 'Set the header height between {$a->lower} and {$a->upper} pixels.';
+
 $string['logo'] = 'Logo';
 $string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>
 If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
@@ -199,3 +202,6 @@ $string['four'] = 'Four';
 $string['footnote'] = 'Footnote';
 $string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
 
+// admin_setting_configinteger.
+$string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
+$string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';

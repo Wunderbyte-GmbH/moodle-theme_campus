@@ -55,6 +55,7 @@ Version Information
   1. Update site name in navbar on front page otherwise page header - task #374.
   2. Add warning to hide local login - task #365.
   3. Remove button from subscribe, link and text still there as per supplied code - task #373.
+  4. Create integer range admin setting - task #377.
 
 22nd December 2014 - Version 2.7.0.6.
   1. Change "display login ling" setting - task #373.
