@@ -325,7 +325,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $loggedinas = $realuserinfo.get_string('loggedinasguest');
                 if (!$loginpage && $withlinks) {
                     $loggedinas .= " <a class=\"standardbutton plainlogin\" href=\"$loginurl\">".get_string('login').'</a> 
-                      <span class="loginlink btn"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+                      <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
                 }
             } else if (is_role_switched($course->id)) { // Has switched roles
                 $rolename = '';
@@ -347,7 +347,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $loggedinas = get_string('loggedinnot', 'moodle');
             if (!$loginpage && $withlinks) {
                 $loggedinas .= "<a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>
-                  <span class="loginlink btn btn-info"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+                  <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
             }
         }
 
