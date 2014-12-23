@@ -52,7 +52,8 @@ Uninstallation
 Version Information
 ===================
 23rd December 2014 - Version 2.7.0.7.
-  1. Update site name in navbar on front page otherwise page header - task 374.
+  1. Update site name in navbar on front page otherwise page header - task #374.
+  2. Add warning to hide local login - task #365.
 
 22nd December 2014 - Version 2.7.0.6.
   1. Change "display login ling" setting - task #373.

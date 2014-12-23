@@ -73,7 +73,7 @@ $string['alternateloginurl'] = 'Alternative login URL.';
 $string['alternateloginurldesc'] = 'Alternative login URL.';
 
 $string['hidelocallogin'] = 'Hide local login';
-$string['hidelocallogindesc'] = 'Hide the local login on login page.';
+$string['hidelocallogindesc'] = 'Hide the local login on login page.  NOTE: Only enable this if all users are remote.';
 
 $string['showlogininfoheader'] = 'Display header login link';
 $string['showlogininfoheaderdesc'] = 'Display the login link in the header.';
