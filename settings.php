@@ -348,6 +348,10 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Course category header settings.
+    $settingpage->add(new admin_setting_heading('theme_campus_frontpage', get_string('frontpagesettings', 'theme_campus'),
+            format_text(get_string('frontpagesettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
+
     // Frontpage header height.
     $name = 'theme_campus/frontpageheaderheight';
     $title = get_string('frontpageheaderheight', 'theme_campus');
@@ -360,10 +364,29 @@ if (is_siteadmin()) {
     $settingpage->add($setting);
 
     // Logo file setting.
-    $name = 'theme_campus/logo';
-    $title = get_string('logo','theme_campus');
-    $description = get_string('logodesc', 'theme_campus');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
+    $name = 'theme_campus/frontpagelogo';
+    $title = get_string('frontpagelogo','theme_campus');
+    $description = get_string('frontpagelogodesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagelogo');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Logo height setting.
+    $name = 'theme_campus/frontpagelogoheight';
+    $title = get_string('frontpagelogoheight', 'theme_campus');
+    $default = 50;
+    $lower = 40;
+    $upper = 200;
+    $description = get_string('frontpagelogoheightdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
+    $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Background image file setting.
+    $name = 'theme_campus/frontpagebackgroundimage';
+    $title = get_string('frontpagebackgroundimage','theme_campus');
+    $description = get_string('frontpagebackgroundimagedesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 

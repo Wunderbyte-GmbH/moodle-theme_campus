@@ -27,10 +27,6 @@
  */
 
 function theme_campus_process_css($css, $theme) {
-    // Set the background image for the logo.
-    $logo = $theme->setting_file_url('logo', 'logo');
-    $css = theme_campus_set_logo($css, $logo);
-
     // Set custom CSS.
     if (!empty($theme->settings->customcss)) {
         $customcss = $theme->settings->customcss;
@@ -38,19 +34,6 @@ function theme_campus_process_css($css, $theme) {
         $customcss = null;
     }
     $css = theme_campus_set_customcss($css, $customcss);
-
-    return $css;
-}
-
-function theme_campus_set_logo($css, $logo) {
-    global $OUTPUT;
-    $tag = '[[setting:logo]]';
-    $replacement = $logo;
-    if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
 
     return $css;
 }
@@ -112,6 +95,12 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->borderradiuslarge)) {
         $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
     }
+    if (!empty($theme->settings->frontpageheaderheight)) {
+        $variables['frontpageHeaderHeight'] = $theme->settings->frontpageheaderheight.'px';
+    }
+    if (!empty($theme->settings->frontpagelogoheight)) {
+        $variables['frontpageLogoHeight'] = $theme->settings->frontpagelogoheight.'px';
+    }
     return $variables;
 }
 
@@ -129,13 +118,20 @@ function theme_campus_less_variables($theme) {
  */
 function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
     if ($context->contextlevel == CONTEXT_SYSTEM) {
-        if ($filearea === 'logo') {
+        if ($filearea === 'frontpagelogo') {
             $theme = theme_config::load('campus');
             // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
             if (!array_key_exists('cacheability', $options)) {
                 $options['cacheability'] = 'public';
             }
-            return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
+            return $theme->setting_file_serve('frontpagelogo', $args, $forcedownload, $options);
+        } else if ($filearea === 'frontpagebackgroundimage') {
+            $theme = theme_config::load('campus');
+            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+            if (!array_key_exists('cacheability', $options)) {
+                $options['cacheability'] = 'public';
+            }
+            return $theme->setting_file_serve('frontpagebackgroundimage', $args, $forcedownload, $options);
         } else {
             send_file_not_found();
         }

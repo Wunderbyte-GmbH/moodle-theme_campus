@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+27th December 2014 - Version 2.7.0.8.
+  1. Create frontpage header settings and implement their intent - work in progress, not finished - task #375.
+
 23rd December 2014 - Version 2.7.0.7.
   1. Update site name in navbar on front page otherwise page header - task #374.
   2. Add warning to hide local login - task #365.

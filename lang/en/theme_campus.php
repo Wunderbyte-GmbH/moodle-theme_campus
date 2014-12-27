@@ -168,13 +168,21 @@ $string['showpageheadingdesc'] = 'Display the page heading.';
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 
-$string['frontpageheaderheight'] = 'Frontpage header height';
+// Frontpage header.
+$string['frontpagesettings']= 'Front page';
+$string['frontpagesettings_desc']= 'Front page settings.';
+
+$string['frontpageheaderheight'] = 'Header height';
 $string['frontpageheaderheightdesc'] = 'Set the header height between {$a->lower} and {$a->upper} pixels.';
 
-$string['logo'] = 'Logo';
-$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>
-If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
-a.logo {height: 100px;} or whatever height in pixels the logo is.';
+$string['frontpagelogo'] = 'Logo';
+$string['frontpagelogodesc'] = 'Please upload your custom logo here for the header.';
+
+$string['frontpagelogoheight'] = 'Logo height';
+$string['frontpagelogoheightdesc'] = 'Set the logo height between {$a->lower} and {$a->upper} pixels.';
+
+$string['frontpagebackgroundimage'] = 'Background image';
+$string['frontpagebackgroundimagedesc'] = 'Please upload your custom background image here for the header.';
 
 // Course category header.
 $string['coursecategorysettings']= 'Course category';

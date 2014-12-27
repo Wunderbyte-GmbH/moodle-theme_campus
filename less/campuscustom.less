@@ -53,6 +53,27 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     margin-left: 5px;
 }
 
+// Frontpage.
+.frontpageheader {
+    position: relative;
+    height: @frontpageHeaderHeight;
+    max-height: @frontpageHeaderHeight;
+    .logotitle {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        z-index: 1;
+    }
+    .frontpagelogoheight {
+        height: @frontpageLogoHeight;
+    }
+    .backgroundimage {
+        position: absolute;
+        max-height: inherit;
+    }
+}
+
+// Footer.
 #page-footer .logininfo {
     margin-bottom: 5px;
 }

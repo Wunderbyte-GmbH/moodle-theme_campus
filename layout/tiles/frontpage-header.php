@@ -32,4 +32,28 @@ if (!empty($CFG->campusheader)) {
     echo '<div style="display: none;">TEST CODE: Campus frontpage header: '.$CFG->campusheader.'</div>';
 }
 
+// Image files.
+$frontpagelogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
+$frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
+
+?>
+
+<div class="frontpageheader">
+    <div class="logotitle">
+    <?php
+    if ($frontpagelogo) {
+        echo '<img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive">';
+    } else {
+        echo '<h1>'.$SITE->shortname.'</h1>';
+    }
+    ?>
+    </div>
+    <?php
+    if ($frontpagebackgroundimage) {
+        echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
+    }
+    ?>
+</div>
+
+<?php
 require_once(dirname(__FILE__).'/navbar.php');
