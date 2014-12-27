@@ -35,7 +35,6 @@ if (!empty($CFG->campusheader)) {
 // Image files.
 $frontpagelogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
-
 ?>
 
 <div class="frontpageheader">
@@ -44,7 +43,8 @@ $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundi
     if ($frontpagelogo) {
         echo '<img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive">';
     } else {
-        echo '<h1>'.$SITE->shortname.'</h1>';
+        global $CFG;
+        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }
     ?>
     </div>
