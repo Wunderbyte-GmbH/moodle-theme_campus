@@ -181,8 +181,14 @@ $string['frontpagelogodesc'] = 'Please upload your custom logo here for the head
 $string['frontpagelogoheight'] = 'Logo height';
 $string['frontpagelogoheightdesc'] = 'Set the logo height between {$a->lower} and {$a->upper} pixels.';
 
+$string['frontpagelogoposition'] = 'Logo position';
+$string['frontpagelogopositiondesc'] = 'Set the logo position.';
+
 $string['frontpagebackgroundimage'] = 'Background image';
 $string['frontpagebackgroundimagedesc'] = 'Please upload your custom background image here for the header.';
+
+$string['frontpagebackgroundposition'] = 'Background position';
+$string['frontpagebackgroundpositiondesc'] = 'Set the background position.';
 
 // Course category header.
 $string['coursecategorysettings']= 'Course category';
@@ -193,6 +199,14 @@ $string['coursecategoryheading_desc']= 'Course category settings.';
 
 $string['coursecategorybgcolour']= 'Background colour';
 $string['coursecategorybgcolourdesc']= 'Course category {$a->categoryname} background colour.';
+
+// Image positions.
+$string['imageleft']= 'Left';
+$string['imageright']= 'Right';
+$string['imagetopleft']= 'Top left';
+$string['imagetopright']= 'Top right';
+$string['imagebottomleft']= 'Bottom left';
+$string['imagebottomright']= 'Bottom right';
 
 // Footer.
 $string['footersettings'] = 'Footer';

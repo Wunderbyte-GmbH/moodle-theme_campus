@@ -101,6 +101,36 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->frontpagelogoheight)) {
         $variables['frontpageLogoHeight'] = $theme->settings->frontpagelogoheight.'px';
     }
+    if (!empty($theme->settings->frontpagelogoposition)) {
+        switch ($theme->settings->frontpagelogoposition) {
+            case 1:
+                $variables['frontpageLogoPositionLeft'] = '20px';
+            break;
+            case 2:
+                $variables['frontpageLogoPositionRight'] = '20px';
+            break;
+        }
+    }
+    if (!empty($theme->settings->frontpagebackgroundposition)) {
+        switch ($theme->settings->frontpagebackgroundposition) {
+            case 1:
+                $variables['frontpageBackgroundPositionTop'] = '0px';
+                $variables['frontpageBackgroundPositionLeft'] = '0px';
+            break;
+            case 2:
+                $variables['frontpageBackgroundPositionTop'] = '0px';
+                $variables['frontpageBackgroundPositionRight'] = '0px';
+            break;
+            case 3:
+                $variables['frontpageBackgroundPositionBottom'] = '0px';
+                $variables['frontpageBackgroundPositionLeft'] = '0px';
+            break;
+            case 4:
+                $variables['frontpageBackgroundPositionBottom'] = '0px';
+                $variables['frontpageBackgroundPositionRight'] = '0px';
+            break;
+        }
+    }
     return $variables;
 }
 

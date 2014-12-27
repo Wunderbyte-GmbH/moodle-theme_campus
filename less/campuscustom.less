@@ -61,7 +61,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .logotitle {
         position: absolute;
         top: 10px;
-        left: 20px;
+        left: @frontpageLogoPositionLeft;
+        right: @frontpageLogoPositionRight;
         z-index: 1;
     }
     .frontpagelogoheight {
@@ -70,6 +71,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .backgroundimage {
         position: absolute;
         max-height: inherit;
+        left: @frontpageBackgroundPositionLeft;
+        right: @frontpageBackgroundPositionRight;
+        top: @frontpageBackgroundPositionTop;
+        bottom: @frontpageBackgroundPositionBottom;
     }
 }
 

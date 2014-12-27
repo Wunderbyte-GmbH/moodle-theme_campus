@@ -348,7 +348,7 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Course category header settings.
+    // Frontpage header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage', get_string('frontpagesettings', 'theme_campus'),
             format_text(get_string('frontpagesettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -382,6 +382,18 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Logo position setting.
+    $name = 'theme_campus/frontpagelogoposition';
+    $title = get_string('frontpagelogoposition', 'theme_campus');
+    $description = get_string('frontpagelogopositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('imageleft', 'theme_campus'),
+        2 => new lang_string('imageright', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Background image file setting.
     $name = 'theme_campus/frontpagebackgroundimage';
     $title = get_string('frontpagebackgroundimage','theme_campus');
@@ -389,6 +401,20 @@ if (is_siteadmin()) {
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
+
+    // Background position setting.
+    $name = 'theme_campus/frontpagebackgroundposition';
+    $title = get_string('frontpagebackgroundposition', 'theme_campus');
+    $description = get_string('frontpagebackgroundpositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('imagetopleft', 'theme_campus'),
+        2 => new lang_string('imagetopright', 'theme_campus'),
+        3 => new lang_string('imagebottomleft', 'theme_campus'),
+        4 => new lang_string('imagebottomright', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Course category header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategorysettings', 'theme_campus'),
