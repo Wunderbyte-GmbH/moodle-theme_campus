@@ -48,7 +48,7 @@ $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundi
     }
     ?>
     </div>
+</div>
 <?php
     require_once(dirname(__FILE__).'/navbar.php');
 ?>
-</div>
