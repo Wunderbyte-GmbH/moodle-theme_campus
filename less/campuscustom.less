@@ -56,7 +56,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Frontpage.
 .frontpageheader {
     position: relative;
-    height: @frontpageHeaderHeight;
     max-height: @frontpageHeaderHeight;
     .logotitle {
         position: absolute;
@@ -69,12 +68,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         height: @frontpageLogoHeight;
     }
     .backgroundimage {
-        position: absolute;
         max-height: inherit;
-        left: @frontpageBackgroundPositionLeft;
-        right: @frontpageBackgroundPositionRight;
-        top: @frontpageBackgroundPositionTop;
-        bottom: @frontpageBackgroundPositionBottom;
+        float: @frontpageBackgroundPosition;
     }
 }
 
@@ -82,6 +77,18 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .frontpageheader {
         margin-left: -20px;
         margin-right: -20px;
+    }
+}
+
+// Navbar.
+.navbar {
+    clear: both;
+    img.userpicture {
+        vertical-align: top;
+        width: auto;
+        height: auto;
+        max-width: 20px;
+        max-height: 20px;
     }
 }
 
