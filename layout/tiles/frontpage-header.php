@@ -48,12 +48,7 @@ $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundi
     }
     ?>
     </div>
-    <?php
-    if ($frontpagebackgroundimage) {
-        echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
-    }
-    ?>
-</div>
-
 <?php
-require_once(dirname(__FILE__).'/navbar.php');
+    require_once(dirname(__FILE__).'/navbar.php');
+?>
+</div>

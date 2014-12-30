@@ -111,23 +111,23 @@ function theme_campus_less_variables($theme) {
             break;
         }
     }
+    $frontpagebackgroundimage = $theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
+    if (!empty($frontpagebackgroundimage)) {
+        $variables['frontpageBackground'] = "url('".$frontpagebackgroundimage."')";
+    }
     if (!empty($theme->settings->frontpagebackgroundposition)) {
         switch ($theme->settings->frontpagebackgroundposition) {
             case 1:
-                $variables['frontpageBackgroundPositionTop'] = '0px';
-                $variables['frontpageBackgroundPositionLeft'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'left top';
             break;
             case 2:
-                $variables['frontpageBackgroundPositionTop'] = '0px';
-                $variables['frontpageBackgroundPositionRight'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'right top';
             break;
             case 3:
-                $variables['frontpageBackgroundPositionBottom'] = '0px';
-                $variables['frontpageBackgroundPositionLeft'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'left bottom';
             break;
             case 4:
-                $variables['frontpageBackgroundPositionBottom'] = '0px';
-                $variables['frontpageBackgroundPositionRight'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'right bottom';
             break;
         }
     }

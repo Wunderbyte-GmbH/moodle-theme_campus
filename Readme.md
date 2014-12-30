@@ -51,6 +51,11 @@ Uninstallation
 
 Version Information
 ===================
+30th December 2014 - Version 2.7.0.9
+  1. Update user picture in line with comments on task #375 of 30/12/14.
+  2. Update 'Use front page' setting in line with comments on task #375 of 30/12/14.
+  3. Attempt to attain layout as described on: http://development.edulabs.org/redmine/attachments/download/49/Bildschirmfoto%20vom%202014-12-30%2010_59_26.png.
+
 27th December 2014 - Version 2.7.0.8.
   1. Create frontpage header settings and implement their intent - needs review - task #375.
 

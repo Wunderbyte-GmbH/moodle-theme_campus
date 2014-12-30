@@ -360,71 +360,69 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    if (get_config('theme_campus', 'usefrontpageheader')) {
-        // Frontpage header height.
-        $name = 'theme_campus/frontpageheaderheight';
-        $title = get_string('frontpageheaderheight', 'theme_campus');
-        $default = 75;
-        $lower = 40;
-        $upper = 900;
-        $description = get_string('frontpageheaderheightdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
-        $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add($setting);
+    // Frontpage header height.
+    $name = 'theme_campus/frontpageheaderheight';
+    $title = get_string('frontpageheaderheight', 'theme_campus');
+    $default = 75;
+    $lower = 40;
+    $upper = 900;
+    $description = get_string('frontpageheaderheightdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
+    $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
 
-        // Logo file setting.
-        $name = 'theme_campus/frontpagelogo';
-        $title = get_string('frontpagelogo','theme_campus');
-        $description = get_string('frontpagelogodesc', 'theme_campus');
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagelogo');
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add($setting);
+    // Logo file setting.
+    $name = 'theme_campus/frontpagelogo';
+    $title = get_string('frontpagelogo','theme_campus');
+    $description = get_string('frontpagelogodesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagelogo');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
 
-        // Logo height setting.
-        $name = 'theme_campus/frontpagelogoheight';
-        $title = get_string('frontpagelogoheight', 'theme_campus');
-        $default = 50;
-        $lower = 40;
-        $upper = 200;
-        $description = get_string('frontpagelogoheightdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
-        $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add($setting);
+    // Logo height setting.
+    $name = 'theme_campus/frontpagelogoheight';
+    $title = get_string('frontpagelogoheight', 'theme_campus');
+    $default = 50;
+    $lower = 40;
+    $upper = 200;
+    $description = get_string('frontpagelogoheightdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
+    $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
 
-        // Logo position setting.
-        $name = 'theme_campus/frontpagelogoposition';
-        $title = get_string('frontpagelogoposition', 'theme_campus');
-        $description = get_string('frontpagelogopositiondesc', 'theme_campus');
-        $default = 1;
-        $choices = array(
-            1 => new lang_string('imageleft', 'theme_campus'),
-            2 => new lang_string('imageright', 'theme_campus')
-        );
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    // Logo position setting.
+    $name = 'theme_campus/frontpagelogoposition';
+    $title = get_string('frontpagelogoposition', 'theme_campus');
+    $description = get_string('frontpagelogopositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('imageleft', 'theme_campus'),
+        2 => new lang_string('imageright', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
-        // Background image file setting.
-        $name = 'theme_campus/frontpagebackgroundimage';
-        $title = get_string('frontpagebackgroundimage','theme_campus');
-        $description = get_string('frontpagebackgroundimagedesc', 'theme_campus');
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add($setting);
+    // Background image file setting.
+    $name = 'theme_campus/frontpagebackgroundimage';
+    $title = get_string('frontpagebackgroundimage','theme_campus');
+    $description = get_string('frontpagebackgroundimagedesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
 
-        // Background position setting.
-        $name = 'theme_campus/frontpagebackgroundposition';
-        $title = get_string('frontpagebackgroundposition', 'theme_campus');
-        $description = get_string('frontpagebackgroundpositiondesc', 'theme_campus');
-        $default = 1;
-        $choices = array(
-            1 => new lang_string('imagetopleft', 'theme_campus'),
-            2 => new lang_string('imagetopright', 'theme_campus'),
-            3 => new lang_string('imagebottomleft', 'theme_campus'),
-            4 => new lang_string('imagebottomright', 'theme_campus')
-        );
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-    }
+    // Background position setting.
+    $name = 'theme_campus/frontpagebackgroundposition';
+    $title = get_string('frontpagebackgroundposition', 'theme_campus');
+    $description = get_string('frontpagebackgroundpositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('imagetopleft', 'theme_campus'),
+        2 => new lang_string('imagetopright', 'theme_campus'),
+        3 => new lang_string('imagebottomleft', 'theme_campus'),
+        4 => new lang_string('imagebottomright', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Course category header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategorysettings', 'theme_campus'),
