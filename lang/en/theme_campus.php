@@ -172,8 +172,8 @@ $string['invertdesc'] = 'Swaps text and background for the navbar at the top of 
 $string['frontpagesettings']= 'Front page';
 $string['frontpagesettings_desc']= 'Front page settings.';
 
-$string['usefrontpageheader'] = 'Use custom front page header';
-$string['usefrontpageheaderdesc'] = 'Have a custom front page header.';
+$string['usefrontpageheader'] = 'Use frontpage header for all pages';
+$string['usefrontpageheaderdesc'] = 'Use the front page header on all pages.';
 
 $string['frontpageheaderheight'] = 'Header height';
 $string['frontpageheaderheightdesc'] = 'Set the header height between {$a->lower} and {$a->upper} pixels.';

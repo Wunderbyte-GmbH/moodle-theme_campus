@@ -114,20 +114,16 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->frontpagebackgroundposition)) {
         switch ($theme->settings->frontpagebackgroundposition) {
             case 1:
-                $variables['frontpageBackgroundPositionTop'] = '0px';
-                $variables['frontpageBackgroundPositionLeft'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'left';
             break;
             case 2:
-                $variables['frontpageBackgroundPositionTop'] = '0px';
-                $variables['frontpageBackgroundPositionRight'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'right';
             break;
             case 3:
-                $variables['frontpageBackgroundPositionBottom'] = '0px';
-                $variables['frontpageBackgroundPositionLeft'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'left';
             break;
             case 4:
-                $variables['frontpageBackgroundPositionBottom'] = '0px';
-                $variables['frontpageBackgroundPositionRight'] = '0px';
+                $variables['frontpageBackgroundPosition'] = 'right';
             break;
         }
     }

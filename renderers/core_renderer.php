@@ -441,6 +441,9 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     public function get_header_file() {
         $thefile = 'header'; // Default if not a specific header.
+        if (get_config('theme_campus', 'usefrontpageheader')) {  // If set then use the front page header on all unless specific header set.
+            $thefile = 'frontpage-header';
+        }
 
         // TEMPORARY TEST CODE.
         global $CFG;
@@ -448,10 +451,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         switch($this->page->pagelayout) {
             case 'frontpage':
-                if (get_config('theme_campus', 'usefrontpageheader')) {
-                    $CFG->campusheader = 'frontpage';
-                    $thefile = 'frontpage-header';
-                }
+                $CFG->campusheader = 'frontpage';
+                $thefile = 'frontpage-header';
             break;
             case 'coursecategory':
                 if ($this->is_top_level_category()) {  // Set specific header.
