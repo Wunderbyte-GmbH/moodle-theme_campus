@@ -57,6 +57,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .frontpageheader {
     position: relative;
     max-height: @frontpageHeaderHeight;
+    max-width: 1680px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
     .logotitle {
         position: absolute;
         top: 0px;
@@ -86,17 +90,20 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
 }
-
 @media (max-width: 767px) {
     .frontpageheader {
-        margin-left: -20px;
-        margin-right: -20px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 
 // Navbar.
 .navbar {
     clear: both;
+    max-width: 1680px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
     img.userpicture {
         vertical-align: top;
         width: auto;
@@ -115,6 +122,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .nav-collapse.collapse.active {
             display: block;
         }
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 

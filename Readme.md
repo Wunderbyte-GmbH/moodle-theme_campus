@@ -57,6 +57,7 @@ Version Information
   3. Cleaned settings for image background - task #375.
   4. Logo height now same as header height - task #375.  Note: When less than 960px shrinks to uploaded size such that suitable for such devices.  Currently seems impossible to be responsive as absolute positioning used to place on top of background.
   5. Page header as per http://development.edulabs.org/redmine/attachments/download/56/variant01-smallscreen.jpg and http://development.edulabs.org/redmine/attachments/download/57/variant01-smallscreen-flipped.jpg - Frontpage only has no sitename in navbar as previously requested - task #375.
+  6. Header same width as #page - task 385.
 
 30th December 2014 - Version 2.7.0.9.
   1. Update user picture in line with comments on task #375 of 30/12/14.
