@@ -60,6 +60,7 @@ Version Information
   6. Header same width as #page - #task 385.
   7. Update login button as per task #375 comment: http://development.edulabs.org/redmine/issues/375#note-24 - unsure of what to do when logged in as not stated and previously user picture theme attributes described.
   8. Implement Shoelace block fixes in core_renderer.php from: https://github.com/gjb2048/moodle-theme_shoelace/commit/3d05319a4172796c4816c91af095c93caa3b66d9.
+  9. Remove text shadow from navbar, block headings and buttons - task #390.
 
 30th December 2014 - Version 2.7.0.9.
   1. Update user picture in line with comments on task #375 of 30/12/14.
