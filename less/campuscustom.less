@@ -59,7 +59,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     max-height: @frontpageHeaderHeight;
     .logotitle {
         position: absolute;
-        top: 10px;
+        top: 0px;
         left: @frontpageLogoPositionLeft;
         right: @frontpageLogoPositionRight;
         z-index: 1;
@@ -67,9 +67,23 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .frontpagelogoheight {
         height: @frontpageLogoHeight;
     }
+    .sitename {
+        position: absolute;
+        top: 10px;
+        left: @frontpageSitenamePositionLeft;
+        right: @frontpageSitenamePositionRight;
+        z-index: 1;
+    }
     .backgroundimage {
         max-height: inherit;
         float: @frontpageBackgroundPosition;
+    }
+}
+@media (max-width: @navbarCollapseWidth) {
+    .frontpageheader {
+        .frontpagelogoheight {
+            height: auto;
+        }
     }
 }
 

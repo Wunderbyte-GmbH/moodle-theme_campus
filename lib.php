@@ -102,10 +102,12 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->frontpagelogoposition)) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:
-                $variables['frontpageLogoPositionLeft'] = '20px';
+                $variables['frontpageLogoPositionLeft'] = '0px';
+                $variables['frontpageSitenamePositionRight'] = '10px';
             break;
             case 2:
-                $variables['frontpageLogoPositionRight'] = '20px';
+                $variables['frontpageLogoPositionRight'] = '0px';
+                $variables['frontpageSitenamePositionLeft'] = '10px';
             break;
         }
     }

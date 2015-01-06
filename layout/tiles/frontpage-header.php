@@ -49,6 +49,10 @@ $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundi
     ?>
     </div>
     <?php
+    $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
+    if (($showpageheading) && ($frontpagelogo)) {
+        echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+    }
     if ($frontpagebackgroundimage) {
         echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
     }

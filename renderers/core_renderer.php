@@ -505,8 +505,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $showpageheading = (!isset($this->page->theme->settings->showpageheading)) ? true : $this->page->theme->settings->showpageheading;
         if ($showpageheading) {
             if ($this->page->pagelayout == 'frontpage') {
-                global $SITE;
-                $pageheading = $SITE->shortname;
+                return '';
             } else {
                 $pageheading = parent::page_heading('span');
             }
