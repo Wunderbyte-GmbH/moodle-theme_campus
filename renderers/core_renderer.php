@@ -344,14 +344,18 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 }
             }
         } else {
-            $loggedinas = get_string('loggedinnot', 'moodle');
+            //$loggedinas = get_string('loggedinnot', 'moodle');
             if (!$loginpage && $withlinks) {
-                $loggedinas .= "<a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>
-                  <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+                $loggedinas = "<a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>';
+                //<span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
             }
         }
 
-        $loggedinas = '<div class="logininfo">'.$loggedinas.'</div>';
+        if (!empty($loggedinas)) {
+            $loggedinas = '<div class="logininfo">'.$loggedinas.'</div>';
+        } else {
+            $loggedinas = '';
+        }
 
         if (isset($SESSION->justloggedin)) {
             unset($SESSION->justloggedin);
