@@ -92,6 +92,18 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+@media (max-width: @navbarCollapseWidth) {
+    .navbar {
+        display: inline-table;
+        .nav-collapse.collapse {
+            display: none;
+        }
+        .nav-collapse.collapse.active {
+            display: block;
+        }
+    }
+}
+
 // Footer.
 #page-footer .logininfo {
     margin-bottom: 5px;
