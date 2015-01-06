@@ -59,6 +59,7 @@ Version Information
   5. Page header as per http://development.edulabs.org/redmine/attachments/download/56/variant01-smallscreen.jpg and http://development.edulabs.org/redmine/attachments/download/57/variant01-smallscreen-flipped.jpg - Frontpage only has no sitename in navbar as previously requested - task #375.
   6. Header same width as #page - #task 385.
   7. Update login button as per task #375 comment: http://development.edulabs.org/redmine/issues/375#note-24 - unsure of what to do when logged in as not stated and previously user picture theme attributes described.
+  8. Implement Shoelace block fixes in core_renderer.php from: https://github.com/gjb2048/moodle-theme_shoelace/commit/3d05319a4172796c4816c91af095c93caa3b66d9.
 
 30th December 2014 - Version 2.7.0.9.
   1. Update user picture in line with comments on task #375 of 30/12/14.
