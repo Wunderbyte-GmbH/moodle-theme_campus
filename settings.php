@@ -360,6 +360,18 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Frontpage layout setting.
+    $name = 'theme_campus/frontpagelayout';
+    $title = get_string('frontpagelayout', 'theme_campus');
+    $description = get_string('frontpagelayoutdesc', 'theme_campus');
+    $default = 'absolutelayout';
+    $choices = array(
+        'absolutelayout' => new lang_string('frontpagelayoutontop', 'theme_campus'),
+        'flexlayout' => new lang_string('frontpagelayoutonside', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Frontpage header height.
     $name = 'theme_campus/frontpageheaderheight';
     $title = get_string('frontpageheaderheight', 'theme_campus');

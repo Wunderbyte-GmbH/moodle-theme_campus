@@ -175,6 +175,11 @@ $string['frontpagesettings_desc']= 'Front page settings.';
 $string['usefrontpageheader'] = 'Use frontpage header for all pages';
 $string['usefrontpageheaderdesc'] = 'Use the front page header on all pages.';
 
+$string['frontpagelayout'] = 'Layout';
+$string['frontpagelayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
+$string['frontpagelayoutontop']= 'On top';
+$string['frontpagelayoutonside']= 'Side';
+
 $string['frontpageheaderheight'] = 'Header height';
 $string['frontpageheaderheightdesc'] = 'Set the header height between {$a->lower} and {$a->upper} pixels.';
 

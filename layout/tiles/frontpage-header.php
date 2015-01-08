@@ -35,26 +35,53 @@ if (!empty($CFG->campusheader)) {
 // Image files.
 $frontpagelogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
-?>
 
-<div class="frontpageheader">
-    <div class="logotitle">
-    <?php
-    global $CFG;
-    if ($frontpagelogo) {
-        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
+// Layout.
+$frontpagelayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
+$fpflexlayout = ($frontpagelayout == 'flexlayout');
+if ($fpflexlayout) {
+    $fplogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
+    if ($fplogoextrapos == 2) {
+        $fplogoextra = ' right';
     } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+        $fplogoextra = ' left';
     }
-    ?>
-    </div>
-    <?php
+} else {
+    $fplogoextra = '';
+    $fplogoextrapos = 1;
+}
+echo '<div class="frontpageheader '.$frontpagelayout.'">';
+    global $CFG;
+    if ($fplogoextrapos == 1) {
+        echo '<div class="logotitle'.$fplogoextra.'">';
+        if ($frontpagelogo) {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
+        } else {
+            echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+        }
+        echo '</div>';
+    }
+    if ($frontpagebackgroundimage) {
+        if ($fpflexlayout) {
+            echo '<div class="backgroundcontainer">';
+        }
+        echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
+        if ($fpflexlayout) {
+            echo '</div>';
+        }
+    }
+    if ($fplogoextrapos == 2) {
+        echo '<div class="logotitle'.$fplogoextra.'">';
+        if ($frontpagelogo) {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
+        } else {
+            echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+        }
+        echo '</div>';
+    }
     $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
     if (($showpageheading) && ($frontpagelogo)) {
         echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
-    }
-    if ($frontpagebackgroundimage) {
-        echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
     }
     ?>
 </div>

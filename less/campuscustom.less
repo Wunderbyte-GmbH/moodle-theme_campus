@@ -54,7 +54,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Frontpage.
-.frontpageheader {
+.frontpageheader.absolutelayout {
     position: relative;
     max-height: @frontpageHeaderHeight;
     max-width: 1680px;
@@ -84,14 +84,55 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 @media (max-width: @navbarCollapseWidth) {
-    .frontpageheader {
+    .frontpageheader.absolutelayout {
         .frontpagelogoheight {
             height: auto;
         }
     }
 }
+
 @media (max-width: 767px) {
-    .frontpageheader {
+    .frontpageheader.absolutelayout {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+.frontpageheader.flexlayout {
+    position: relative;
+    max-height: @frontpageHeaderHeight;
+    max-width: 1680px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    .logotitle {
+        display: inline;
+    }
+    .logotitle.left {
+        margin: auto auto auto 0;
+    }
+    .logotitle.right {
+        margin: auto 0 auto auto;
+    }
+    .backgroundcontainer {
+        max-height: inherit;
+        .backgroundimage {
+            max-height: inherit;
+        }
+    }
+    .sitename {
+        position: absolute;
+        top: 10px;
+        left: @frontpageSitenamePositionLeft;
+        right: @frontpageSitenamePositionRight;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .frontpageheader.flexlayout {
         padding-left: 0px;
         padding-right: 0px;
     }
