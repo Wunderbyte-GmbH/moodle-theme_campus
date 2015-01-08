@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+ 8th January 2014 - Version 2.7.0.11.
+  1. Frontpage header logo to link to front page - task #375.
+
  6th January 2014 - Version 2.7.0.10.
   1. Changed navbar collapse with to 960px - task #375.
   2. Implemented small navbar when < 960px - note: 'brand' tricky to show / hide and was a requirement to show when menu not open and collapsed - task #375.

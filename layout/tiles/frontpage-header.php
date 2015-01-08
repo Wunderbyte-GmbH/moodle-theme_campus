@@ -40,10 +40,10 @@ $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundi
 <div class="frontpageheader">
     <div class="logotitle">
     <?php
+    global $CFG;
     if ($frontpagelogo) {
-        echo '<img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive">';
+        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
     } else {
-        global $CFG;
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }
     ?>
