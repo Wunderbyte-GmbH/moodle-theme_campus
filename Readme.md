@@ -53,6 +53,7 @@ Version Information
 ===================
  9th January 2014 - Version 2.7.0.11.
   1. Use 'table' display attribute for 'Side option' so that responsive on Firefox and IE - task #375.
+  2. Fix navbar menu item text colour when collapsed.
 
  8th January 2014 - Version 2.7.0.11.
   1. Frontpage header logo to link to front page - task #375.
