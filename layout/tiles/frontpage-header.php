@@ -42,18 +42,21 @@ $fpflexlayout = ($frontpagelayout == 'flexlayout');
 if ($fpflexlayout) {
     $fplogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
     if ($fplogoextrapos == 2) {
-        $fplogoextra = ' right';
+        $fpalignextra = ' right';
     } else {
-        $fplogoextra = ' left';
+        $fpalignextra = ' left';
     }
 } else {
-    $fplogoextra = '';
+    $fpalignextra = '';
     $fplogoextrapos = 1;
 }
 echo '<div class="frontpageheader '.$frontpagelayout.'">';
+if ($fpflexlayout) {
+    echo '<div class="flexlayouttable">';
+}
     global $CFG;
     if ($fplogoextrapos == 1) {
-        echo '<div class="logotitle'.$fplogoextra.'">';
+        echo '<div class="logotitle'.$fpalignextra.'">';
         if ($frontpagelogo) {
             echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
         } else {
@@ -63,7 +66,7 @@ echo '<div class="frontpageheader '.$frontpagelayout.'">';
     }
     if ($frontpagebackgroundimage) {
         if ($fpflexlayout) {
-            echo '<div class="backgroundcontainer">';
+            echo '<div class="backgroundcontainer'.$fpalignextra.'">';
         }
         echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
         if ($fpflexlayout) {
@@ -71,7 +74,7 @@ echo '<div class="frontpageheader '.$frontpagelayout.'">';
         }
     }
     if ($fplogoextrapos == 2) {
-        echo '<div class="logotitle'.$fplogoextra.'">';
+        echo '<div class="logotitle'.$fpalignextra.'">';
         if ($frontpagelogo) {
             echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
         } else {
@@ -82,6 +85,9 @@ echo '<div class="frontpageheader '.$frontpagelayout.'">';
     $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
     if (($showpageheading) && ($frontpagelogo)) {
         echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+    }
+    if ($fpflexlayout) {
+        echo '</div>';
     }
     ?>
 </div>

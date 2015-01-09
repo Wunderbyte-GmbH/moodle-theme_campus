@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+ 9th January 2014 - Version 2.7.0.11.
+  1. Use 'table' display attribute for 'Side option' so that responsive on Firefox and IE - task #375.
+
  8th January 2014 - Version 2.7.0.11.
   1. Frontpage header logo to link to front page - task #375.
   2. Side option for logo and background image on the frontpage - depends on 'flex' display layout: http://caniuse.com/#search=flex - so not good with less than IE11 - task #375.
