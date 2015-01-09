@@ -67,9 +67,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         left: @frontpageLogoPositionLeft;
         right: @frontpageLogoPositionRight;
         z-index: 1;
+        max-height: @frontpageLogoHeight;
     }
     .frontpagelogoheight {
-        height: @frontpageLogoHeight;
+        max-height: @frontpageLogoHeight;
     }
     .sitename {
         position: absolute;
@@ -86,7 +87,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 @media (max-width: @navbarCollapseWidth) {
     .frontpageheader.absolutelayout {
         .frontpagelogoheight {
-            height: auto;
+            max-height: auto;
         }
     }
 }
