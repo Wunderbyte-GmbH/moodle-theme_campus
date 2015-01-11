@@ -160,6 +160,29 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
     }
 }
 
+function theme_campus_get_image_dimensions($setting, $filearea) {
+    $theme = theme_config::load('campus');
+
+    if (empty($theme->settings->$setting)) {
+        return null;
+    }
+
+    $component = 'theme_campus';
+    $filepath = $theme->settings->$setting;
+    $syscontext = context_system::instance();
+    $fullpath = "/$syscontext->id/$component/$filearea/0".$filepath;
+    $fullpath = rtrim($fullpath, '/');
+
+    $fs = get_file_storage();
+    if ($file = $fs->get_file_by_hash(sha1($fullpath))) {
+        //return print_r($file, true);
+        if ($imageinfo = $file->get_imageinfo()) {
+            return print_r($imageinfo, true);
+        }
+    }
+    return null;
+}
+
 /**
  * Returns an object containing HTML for the areas affected by settings.
  *
