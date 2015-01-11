@@ -25,25 +25,7 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-?>
-<header id="page-header" class="clearfix">
-    <div id="page-navbar" class="clearfix">
-    <?php if ($rtl) { ?>
-        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
-        <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-        <?php if (!$rtl) { ?>
-        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
-    </div>
-    <?php echo $html->heading; ?>
-    <div id="course-header">
-        <?php echo $OUTPUT->course_header(); ?>
-    </div>
-</header>
 
-<?php
-// Note: $numberofslides established in the header file as pulled in by $OUTPUT->get_header_file() if there are any.
-if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 1)) {
+if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 2)) {
     require_once(dirname(__FILE__).'/slideshow.php');
 }

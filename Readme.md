@@ -54,6 +54,7 @@ Version Information
 11th January 2014 - Version 2.7.0.13.
   1. Added 'breadcrumb' to list of non-text shadow components - task #390.
   2. Implement automatic header dimension resizing for 'side' option based upon automatic detection of image size.  See calculations-widths_3.ods on task #393.
+  3. Slide show preparation work to establish two positions for the slider - task #394.
 
  9th January 2014 - Version 2.7.0.12.
   1. Use 'table' display attribute for 'Side option' so that responsive on Firefox and IE - task #375.

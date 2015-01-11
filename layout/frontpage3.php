@@ -77,14 +77,13 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
 <div id="page" class="container-fluid">
 
-    <header id="page-header" class="clearfix">
-        <?php echo $html->heading; ?>
-    </header>
+    <?php require_once(dirname(__FILE__).'/tiles/page-header_frontpage.php'); ?>
 
     <div id="page-content" class="row-fluid">
         <div id="<?php echo $regionbsid ?>" class="<?php echo $rowclass; ?>">
             <div class="row-fluid">
                 <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
+                <?php require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php'); ?>
                     <section id="region-main-campus" class="row-fluid">
                         <?php
                         echo $OUTPUT->main_content();

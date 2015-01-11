@@ -26,20 +26,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 ?>
+
 <header id="page-header" class="clearfix">
-    <div id="page-navbar" class="clearfix">
-    <?php if ($rtl) { ?>
-        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
-        <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-        <?php if (!$rtl) { ?>
-        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
-    </div>
     <?php echo $html->heading; ?>
-    <div id="course-header">
-        <?php echo $OUTPUT->course_header(); ?>
-    </div>
 </header>
 
 <?php

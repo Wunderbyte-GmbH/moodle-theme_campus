@@ -88,7 +88,9 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
         <div id="region-main" class="span9<?php if (!$right) { echo ' pull-right'; } ?>">
         <?php } else { ?>
         <div id="region-main" class="span12">
-        <?php } ?>
+        <?php }
+                require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
+                ?>
                 <section id="region-main-campus" class="row-fluid">
                 <?php
                 echo $OUTPUT->course_content_header();

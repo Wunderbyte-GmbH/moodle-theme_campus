@@ -118,11 +118,23 @@ if (is_siteadmin()) {
     // CDN Fonts - 1 = no, 2 = yes.
     $name = 'theme_campus/cdnfonts';
     $title = get_string('cdnfonts', 'theme_campus');
-    $description = get_string('cdnfonts_desc', 'theme_campus');
+    $description = get_string('cdnfontsdesc', 'theme_campus');
     $default = 1;
     $choices = array(
         1 => new lang_string('no'),   // No.
         2 => new lang_string('yes')   // Yes.
+    );
+    // No CSS change, so no need to reset caches.
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Slider position setting.
+    $name = 'theme_campus/sliderposition';
+    $title = get_string('sliderposition', 'theme_campus');
+    $description = get_string('sliderpositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('sliderpositionheader', 'theme_campus'),
+        2 => new lang_string('sliderpositionpage', 'theme_campus')
     );
     // No CSS change, so no need to reset caches.
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
