@@ -51,7 +51,10 @@ Uninstallation
 
 Version Information
 ===================
- 9th January 2014 - Version 2.7.0.11.
+11th January 2014 - Version 2.7.0.13.
+  1. Added 'breadcrumb' to list of non-text shadow components - task #390.
+
+ 9th January 2014 - Version 2.7.0.12.
   1. Use 'table' display attribute for 'Side option' so that responsive on Firefox and IE - task #375.
   2. Fix navbar menu item text colour when collapsed.
   3. Improve side height - task #393.
