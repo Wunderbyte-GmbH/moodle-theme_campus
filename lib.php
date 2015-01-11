@@ -121,6 +121,17 @@ function theme_campus_less_variables($theme) {
             break;
         }
     }
+    if ((!empty($theme->settings->frontpagelogo)) && (!empty($theme->settings->frontpageheaderheight))) {
+        if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
+            $imageratio = $dimensions['width'] / $dimensions['height'];
+            $newimagewidth = $theme->settings->frontpageheaderheight * $imageratio;
+            $fplogowidth = ($newimagewidth / 1680) * 100; // Currently 1680 is the max px of #page.
+            $fpbackgroundwidth = 100 - $fplogowidth;
+            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+       }
+    }
+
     return $variables;
 }
 
@@ -160,27 +171,35 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
     }
 }
 
-function theme_campus_get_image_dimensions($setting, $filearea) {
-    $theme = theme_config::load('campus');
-
-    if (empty($theme->settings->$setting)) {
-        return null;
+/**
+ * Serves any files associated with the theme settings.
+ *
+ * @param stdClass $theme null or theme object.
+ * @param string $setting setting name for the admin_setting_configstoredfile setting.
+ * @param string $filearea filearea for the admin_setting_configstoredfile setting.
+ * @return bool|array false if not an image / no file uploaded or array of image dimensions and mime type as returned by 'get_imageinfo()' of 'stored_file.php'.
+ */
+function theme_campus_get_image_dimensions($theme, $setting, $filearea) {
+    if ($theme == null) {
+        $theme = theme_config::load('campus');
     }
 
-    $component = 'theme_campus';
+    if (empty($theme->settings->$setting)) {
+        return false;
+    }
+
     $filepath = $theme->settings->$setting;
     $syscontext = context_system::instance();
-    $fullpath = "/$syscontext->id/$component/$filearea/0".$filepath;
+    $fullpath = "/$syscontext->id/theme_campus/$filearea/0".$filepath;
     $fullpath = rtrim($fullpath, '/');
 
     $fs = get_file_storage();
     if ($file = $fs->get_file_by_hash(sha1($fullpath))) {
-        //return print_r($file, true);
         if ($imageinfo = $file->get_imageinfo()) {
-            return print_r($imageinfo, true);
+            return $imageinfo; // E.g. Array ( [width] => 150 [height] => 106 [mimetype] => image/jpeg ).
         }
     }
-    return null;
+    return false;
 }
 
 /**

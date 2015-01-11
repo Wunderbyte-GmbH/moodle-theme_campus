@@ -384,13 +384,9 @@ if (is_siteadmin()) {
     $settingpage->add($setting);
 
     // Logo file setting.
-    require_once(dirname(__FILE__).'/lib.php');
     $name = 'theme_campus/frontpagelogo';
     $title = get_string('frontpagelogo','theme_campus');
     $description = get_string('frontpagelogodesc', 'theme_campus');
-    if ($dimensions = theme_campus_get_image_dimensions('frontpagelogo', 'frontpagelogo')) {
-        $description .= $dimensions;
-    }
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagelogo');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
