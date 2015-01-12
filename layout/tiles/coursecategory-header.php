@@ -33,3 +33,7 @@ if (!empty($CFG->campusheader)) {
 }
 
 require_once(dirname(__FILE__).'/navbar.php');
+
+// Slider pre-loading.
+$numberofslides = get_config('theme_campus', 'numberofslidesforcategory'.$OUTPUT->get_current_category());
+$settingprefix = 'coursecategory'.$OUTPUT->get_current_category().'_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.

@@ -55,4 +55,3 @@ if (!empty($numberofslides)) {
         </div>
     </div>
 <?php } ?>
-}

@@ -98,7 +98,7 @@ $string['landfheadingsub'] = 'Look and feel settings';
 $string['landfheadingdesc'] = 'Configure the look and feel settings for the theme here.';
 
 $string['themelayout'] = 'Theme layout';
-$string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns';
+$string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns.';
 $string['themelayoutthreecolumns'] = 'Three columns';
 $string['themelayoutthreecolumnsfplefttwo'] = 'Three column front page and two columns with blocks left elsewhere';
 $string['themelayoutthreecolumnsfprighttwo'] = 'Three column front page and two columns with blocks right elsewhere';
@@ -176,6 +176,17 @@ $string['slidebuttoncolour'] = 'Slide button colour';
 $string['slidebuttoncolourdesc'] = 'What colour the slide navigation button should be.';
 $string['slidebuttonhovercolour'] = 'Slide button hover colour';
 $string['slidebuttonhovercolourdesc'] = 'What colour the slide navigation button hover should be.';
+
+$string['numberofslides'] = 'Number of slides';
+$string['numberofslidesdesc'] = 'Number of slides on the slider between {$a->lower} and {$a->upper}.';
+$string['slideno'] = 'Slide {$a->slide}';
+$string['slidenodesc'] = 'Enter the settings for slide {$a->slide}.';
+$string['slidetitle'] = 'Slide title';
+$string['slidetitledesc'] = 'Enter a descriptive title for your slide';
+$string['slideimage'] = 'Slide image';
+$string['slideimagedesc'] = 'Image works best if it is transparent.';
+$string['slidecaption'] = 'Slide caption';
+$string['slidecaptiondesc'] = 'Enter the caption text to use for the slide';
 
 // Header.
 $string['headersettings'] = 'Header';

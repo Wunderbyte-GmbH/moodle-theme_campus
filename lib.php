@@ -206,12 +206,10 @@ function theme_campus_get_setting($setting, $format = false) {
 function theme_campus_render_slide($i, $settingprefix) {
     global $PAGE, $OUTPUT;
 
-    $slideurl = theme_campus_get_setting($settingprefix . $i . 'url');
-    $slideurltarget = theme_campus_get_setting($settingprefix . $i . 'target');
-    $slidetitle = theme_campus_get_setting($settingprefix . $i, true);
+    $slidetitle = theme_campus_get_setting($settingprefix . $i . 'title', true);
     $slidecaption = theme_campus_get_setting($settingprefix . $i . 'caption', true);
-    $slideextraclass .= ($i === 1) ? ' active' : '';
-    $slideimagealt = strip_tags(theme_campus_get_setting($settingprefix . $i, true));
+    $slideextraclass = ($i === 1) ? ' active' : '';
+    $slideimagealt = strip_tags($slidetitle);
 
     // Get slide image or fallback to default
     if (theme_campus_get_setting($settingprefix . $i . 'image')) {
@@ -220,11 +218,7 @@ function theme_campus_render_slide($i, $settingprefix) {
         $slideimage = $OUTPUT->pix_url('default_slide', 'theme');
     }
 
-    if ($slideurl) {
-        $slide = '<a href="' . $slideurl . '" target="' . $slideurltarget . '" class="item' . $slideextraclass . '">';
-    } else {
-        $slide = '<div class="item' . $slideextraclass . '">';
-    }
+    $slide = '<div class="item' . $slideextraclass . '">';
 
     $nocaption = (!($slidetitle || $slidecaption)) ? ' nocaption' : '';
     $slide .= '<div class="carousel-image-container'.$nocaption.'">';
@@ -240,7 +234,7 @@ function theme_campus_render_slide($i, $settingprefix) {
         $slide .= '</div>';
         $slide .= '</div>';
     }
-    $slide .= ($slideurl) ? '</a>' : '</div>';
+    $slide .= '</div>';
 
     return $slide;
 }

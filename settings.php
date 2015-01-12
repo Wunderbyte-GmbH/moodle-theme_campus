@@ -127,18 +127,6 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
-    // Slider position setting.
-    $name = 'theme_campus/sliderposition';
-    $title = get_string('sliderposition', 'theme_campus');
-    $description = get_string('sliderpositiondesc', 'theme_campus');
-    $default = 1;
-    $choices = array(
-        1 => new lang_string('sliderpositionheader', 'theme_campus'),
-        2 => new lang_string('sliderpositionpage', 'theme_campus')
-    );
-    // No CSS change, so no need to reset caches.
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
     // Custom CSS file.
     $name = 'theme_campus/customcss';
     $title = get_string('customcss', 'theme_campus');
@@ -339,6 +327,18 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage', get_string('carouselsettings', 'theme_campus'),
             format_text(get_string('carouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
+    // Slider position setting.
+    $name = 'theme_campus/sliderposition';
+    $title = get_string('sliderposition', 'theme_campus');
+    $description = get_string('sliderpositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('sliderpositionheader', 'theme_campus'),
+        2 => new lang_string('sliderpositionpage', 'theme_campus')
+    );
+    // No CSS change, so no need to reset caches.
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Slide interval.
     $name = 'theme_campus/slideinterval';
     $title = get_string('slideinterval', 'theme_campus');
@@ -347,7 +347,7 @@ if (is_siteadmin()) {
     $upper = 100000;
     $description = get_string('slideintervaldesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
     $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
-    $setting->set_updatedcallback('theme_reset_all_caches');
+    // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
     // Carousel text colour setting.
@@ -492,6 +492,7 @@ if (is_siteadmin()) {
         $setting = new admin_setting_heading($name, $heading, $information);
         $settingpage->add($setting);
 
+        // Bacground colour.
         $name = 'theme_campus/coursecategorybgcolour'.$key;
         $title = get_string('coursecategorybgcolour', 'theme_campus');
         $description = get_string('coursecategorybgcolourdesc', 'theme_campus', array('categoryname' => $value));
@@ -499,6 +500,52 @@ if (is_siteadmin()) {
         $previewconfig = NULL;
         $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
         $settingpage->add($setting);
+
+        // Number of slides.
+        $name = 'theme_campus/numberofslidesforcategory'.$key;
+        $title = get_string('numberofslides', 'theme_campus');
+        $default = 0;
+        $lower = 0;
+        $upper = 4;
+        $description = get_string('numberofslidesdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
+        $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+        $settingpage->add($setting);
+
+        $numberofslides = get_config('theme_campus', 'numberofslidesforcategory'.$key);
+        for ($i = 1; $i <= $numberofslides; $i++) {
+            // This is the information.
+            $name = 'theme_campus/coursecategory'.$key.'_slide'.$i.'info';
+            $heading = get_string('slideno', 'theme_campus', array('slide' => $i));
+            $information = get_string('slidenodesc', 'theme_campus', array('slide' => $i));
+            $setting = new admin_setting_heading($name, $heading, $information);
+            $settingpage->add($setting);
+
+            // Title.
+            $name = 'theme_campus/coursecategory'.$key.'_' . $i .'title';
+            $title = get_string('slidetitle', 'theme_campus');
+            $description = get_string('slidetitledesc', 'theme_campus');
+            $default = '';
+            $setting = new admin_setting_configtext($name, $title, $description, $default);
+            // No CSS change, so no need to reset caches.
+            $settingpage->add($setting);
+
+            // Image.
+            $name = 'theme_campus/coursecategory'.$key.'_'.$i.'image';
+            $title = get_string('slideimage', 'theme_campus');
+            $description = get_string('slideimagedesc', 'theme_campus');
+            $setting = new admin_setting_configstoredfile($name, $title, $description, 'slide' . $i . 'image');
+            // No CSS change, so no need to reset caches.
+            $settingpage->add($setting);
+
+            // Caption text.
+            $name = 'theme_campus/coursecategory'.$key.'_'. $i . 'caption';
+            $title = get_string('slidecaption', 'theme_campus');
+            $description = get_string('slidecaptiondesc', 'theme_campus');
+            $default = '';
+            $setting = new admin_setting_configtextarea($name, $title, $description, $default, PARAM_TEXT);
+            // No CSS change, so no need to reset caches.
+            $settingpage->add($setting);
+        }
     }
 
     $ADMIN->add('theme_campus', $settingpage);
