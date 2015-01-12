@@ -26,6 +26,33 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// Note: Need $numberofslides and $settingprefix as preloaded variables to determine what the slideshow shows.
 if (!empty($numberofslides)) {
-
+    $slideinterval  = theme_campus_get_setting('slideinterval');
+    $captionscenter = (theme_campus_get_setting('slidecaptioncentred'))? ' centred' : '';
+    ?>
+    <div class="row-fluid">
+        <div class="span12">
+            <div id="campusCarousel" class="carousel slide" data-interval="<?php echo $slideinterval;?>">
+                <ol class="carousel-indicators">
+                    <?php
+                    for ($indicatorslideindex = 0; $indicatorslideindex < $numberofslides; $indicatorslideindex++) {
+                        echo '<li data-target="#campusCarousel" data-slide-to="'.$indicatorslideindex.'"';
+                        if ($indicatorslideindex == 0) {
+                            echo 'class="active"';
+                        }
+                        echo '></li>';
+                    }
+                    ?>
+                </ol>
+                <div class="carousel-inner<?php echo $captionscenter;?>">
+                    <?php for ($slideindex = 1; $slideindex <= $numberofslides; $slideindex++) {
+                        echo theme_campus_render_slide($slideindex, $settingprefix);
+                    } ?>
+                </div>
+                <?php echo theme_campus_render_slide_controls(!$rtl); ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 }

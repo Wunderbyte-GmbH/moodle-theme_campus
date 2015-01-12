@@ -144,27 +144,108 @@ function theme_campus_less_variables($theme) {
  * @return bool
  */
 function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('campus');
+    }
+
     if ($context->contextlevel == CONTEXT_SYSTEM) {
         if ($filearea === 'frontpagelogo') {
-            $theme = theme_config::load('campus');
             // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
             if (!array_key_exists('cacheability', $options)) {
                 $options['cacheability'] = 'public';
             }
             return $theme->setting_file_serve('frontpagelogo', $args, $forcedownload, $options);
         } else if ($filearea === 'frontpagebackgroundimage') {
-            $theme = theme_config::load('campus');
             // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
             if (!array_key_exists('cacheability', $options)) {
                 $options['cacheability'] = 'public';
             }
             return $theme->setting_file_serve('frontpagebackgroundimage', $args, $forcedownload, $options);
+        } else if (preg_match("/coursecategory[1-9][0-9]*_[1-9][0-9]*image/", $filearea) !== false) { // http://regexpal.com/ useful.
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else {
             send_file_not_found();
         }
     } else {
         send_file_not_found();
     }
+}
+
+function theme_campus_get_setting($setting, $format = false) {
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/weblib.php');
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('campus');
+    }
+    if (empty($theme->settings->$setting)) {
+        return false;
+    } else if (!$format) {
+        return $theme->settings->$setting;
+    } else if ($format === 'format_text') {
+        return format_text($theme->settings->$setting, FORMAT_PLAIN);
+    } else if ($format === 'format_html') {
+        return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
+    } else {
+        return format_string($theme->settings->$setting);
+    }
+}
+
+function theme_campus_render_slide($i, $settingprefix) {
+    global $PAGE, $OUTPUT;
+
+    $slideurl = theme_campus_get_setting($settingprefix . $i . 'url');
+    $slideurltarget = theme_campus_get_setting($settingprefix . $i . 'target');
+    $slidetitle = theme_campus_get_setting($settingprefix . $i, true);
+    $slidecaption = theme_campus_get_setting($settingprefix . $i . 'caption', true);
+    $slideextraclass .= ($i === 1) ? ' active' : '';
+    $slideimagealt = strip_tags(theme_campus_get_setting($settingprefix . $i, true));
+
+    // Get slide image or fallback to default
+    if (theme_campus_get_setting($settingprefix . $i . 'image')) {
+        $slideimage = $PAGE->theme->setting_file_url($settingprefix . $i . 'image', $settingprefix . $i . 'image');
+    } else {
+        $slideimage = $OUTPUT->pix_url('default_slide', 'theme');
+    }
+
+    if ($slideurl) {
+        $slide = '<a href="' . $slideurl . '" target="' . $slideurltarget . '" class="item' . $slideextraclass . '">';
+    } else {
+        $slide = '<div class="item' . $slideextraclass . '">';
+    }
+
+    $nocaption = (!($slidetitle || $slidecaption)) ? ' nocaption' : '';
+    $slide .= '<div class="carousel-image-container'.$nocaption.'">';
+    $slide .= '<img src="' . $slideimage . '" alt="' . $slideimagealt . '" class="carousel-image"/>';
+    $slide .= '</div>';
+
+    // Output title and caption if either is present
+    if ($slidetitle || $slidecaption) {
+        $slide .= '<div class="carousel-caption">';
+        $slide .= '<div class="carousel-caption-inner">';
+        $slide .= '<h4>' . $slidetitle . '</h4>';
+        $slide .= '<p>' . $slidecaption . '</p>';
+        $slide .= '</div>';
+        $slide .= '</div>';
+    }
+    $slide .= ($slideurl) ? '</a>' : '</div>';
+
+    return $slide;
+}
+
+function theme_campus_render_slide_controls($left) {
+    $faleft = 'left';
+    $faright = 'right';
+    if (!$left) {
+        $temp = $faleft;
+        $faleft = $faright;
+        $faright = $temp;
+    }
+    $prev = '<a class="left carousel-control" href="#campusCarousel" data-slide="prev"><i class="fa fa-chevron-circle-' . $faleft . '"></i></a>';
+    $next = '<a class="right carousel-control" href="#campusCarousel" data-slide="next"><i class="fa fa-chevron-circle-' . $faright . '"></i></a>';
+
+    return $prev . $next;
 }
 
 /**

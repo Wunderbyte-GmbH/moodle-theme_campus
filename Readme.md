@@ -53,6 +53,7 @@ Version Information
 ===================
 12th January 2014 - Version 2.7.0.14.
   1. Update to frontpage header - task #393 comment 25.
+  2. Started work on slider - task #394.
 
 11th January 2014 - Version 2.7.0.13.
   1. Added 'breadcrumb' to list of non-text shadow components - task #390.
