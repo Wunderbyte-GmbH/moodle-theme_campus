@@ -533,7 +533,7 @@ if (is_siteadmin()) {
             $name = 'theme_campus/coursecategory'.$key.'_'.$i.'image';
             $title = get_string('slideimage', 'theme_campus');
             $description = get_string('slideimagedesc', 'theme_campus');
-            $setting = new admin_setting_configstoredfile($name, $title, $description, 'slide' . $i . 'image');
+            $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategory'.$key.'_'.$i.'image');
             // No CSS change, so no need to reset caches.
             $settingpage->add($setting);
 
