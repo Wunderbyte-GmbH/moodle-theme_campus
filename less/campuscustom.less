@@ -374,33 +374,33 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
   .carousel-inner {
     // Caption for text below images.
     .carousel-caption {
-      background-color: ~"[[setting:carouselcolor]]";
+      background-color: @carouselColour; // Same as theme colour.
       .carousel-caption-inner {
         //max-width: ~"[[setting:pagewidth]]";
         max-width: 1680px;
       }
       h4, p {
-        color: ~"[[setting:slidecolor]]";
+        color: @carouselTextColour;
       }
     }
   }
   // Left/right controls for nav.
   .carousel-control {
-    color: ~"[[setting:slidebuttoncolor]]";
+    color: @slideButtonColour;
     &:hover,
     &:focus {
-      color: ~"[[setting:slidebuttonhovercolor]]";
+      color: @slideButtonHoverColour;
     }
   }
 
   // Carousel indicator pips.
   .carousel-indicators {
-    box-shadow: 0px 0px 8px ~"[[setting:carouselcolor]]";
+    box-shadow: 0px 0px 8px @carouselColour;
     li {
-      background-color: ~"[[setting:carouselcolor]]";
+      background-color: @carouselColour;
     }
     .active {
-      background-color: ~"[[setting:carouselactivecolor]]";
+      background-color: @carouselActiveColour;  // Same as theme colour.
     }
   }
 }

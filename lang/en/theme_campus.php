@@ -162,6 +162,21 @@ $string['px23'] = '23px';
 $string['px24'] = '24px';
 $string['px25'] = '25px';
 
+// Carousel.
+$string['carouselsettings']= 'Carousel';
+$string['carouselsettings_desc']= 'Carousel settings.';
+
+$string['slideinterval'] = 'Slide interval';
+$string['slideintervaldesc'] = 'Set the transition interval between {$a->lower} and {$a->upper} milliseconds.';
+$string['carouseltextcolour'] = 'Slide text colour';
+$string['carouseltextcolourdesc'] = 'What colour the slide caption text should be.';
+$string['slidecaptioncentred'] = 'Slide caption centred';
+$string['slidecaptioncentreddesc'] = 'If the slide caption should be centred.';
+$string['slidebuttoncolour'] = 'Slide button colour';
+$string['slidebuttoncolourdesc'] = 'What colour the slide navigation button should be.';
+$string['slidebuttonhovercolour'] = 'Slide button hover colour';
+$string['slidebuttonhovercolourdesc'] = 'What colour the slide navigation button hover should be.';
+
 // Header.
 $string['headersettings'] = 'Header';
 $string['headerheadingsub'] = 'Header settings';
@@ -184,9 +199,6 @@ $string['frontpagelayout'] = 'Layout';
 $string['frontpagelayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
 $string['frontpagelayoutontop']= 'On top';
 $string['frontpagelayoutonside']= 'Side';
-
-$string['frontpageheaderheight'] = 'Header height';
-$string['frontpageheaderheightdesc'] = 'Set the header height between {$a->lower} and {$a->upper} pixels.';
 
 $string['frontpagelogo'] = 'Logo';
 $string['frontpagelogodesc'] = 'Please upload your custom logo here for the header.';

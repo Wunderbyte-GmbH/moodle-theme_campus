@@ -82,6 +82,8 @@ function theme_campus_less_variables($theme) {
     }
     if (!empty($theme->settings->themecolour)) {
         $variables['bodyBackgroundAlt'] = $theme->settings->themecolour;
+        $variables['carouselColour'] = $theme->settings->themecolour;
+        $variables['carouselActiveColour'] = $theme->settings->themecolour;
     }
     if (!empty($theme->settings->themebackgroundcolour)) {
         $variables['themeBackground'] = $theme->settings->themebackgroundcolour;
@@ -126,6 +128,15 @@ function theme_campus_less_variables($theme) {
             $variables['frontpageHeaderHeight'] = $dimensions['height'].'px';
             $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
        }
+    }
+    if (!empty($theme->settings->carouseltextcolour)) {
+        $variables['carouselTextColour'] = $theme->settings->carouseltextcolour;
+    }
+    if (!empty($theme->settings->slidebuttoncolour)) {
+        $variables['slideButtonColour'] = $theme->settings->slidebuttoncolour;
+    }
+    if (!empty($theme->settings->slidebuttonhovercolour)) {
+        $variables['slideButtonHoverColour'] = $theme->settings->slidebuttonhovercolour;
     }
 
     return $variables;

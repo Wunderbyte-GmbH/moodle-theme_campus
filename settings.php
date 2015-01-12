@@ -30,7 +30,7 @@ $settings = null;
 
 defined('MOODLE_INTERNAL') || die;
 if (is_siteadmin()) {
-    //require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
+    require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
 
     $ADMIN->add('themes', new admin_category('theme_campus', 'Campus'));
 
@@ -333,6 +333,59 @@ if (is_siteadmin()) {
         '25px' => new lang_string('px25', 'theme_campus')
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    $settingpage->add(new admin_setting_heading('theme_campus_frontpage', get_string('carouselsettings', 'theme_campus'),
+            format_text(get_string('carouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    // Slide interval.
+    $name = 'theme_campus/slideinterval';
+    $title = get_string('slideinterval', 'theme_campus');
+    $default = 5000;
+    $lower = 1000;
+    $upper = 100000;
+    $description = get_string('slideintervaldesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
+    $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Carousel text colour setting.
+    $name = 'theme_campus/carouseltextcolour';
+    $title = get_string('carouseltextcolour', 'theme_campus');
+    $description = get_string('carouseltextcolourdesc', 'theme_campus');
+    $default = '#ffffff';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Show caption centred.
+    $name = 'theme_campus/slidecaptioncentred';
+    $title = get_string('slidecaptioncentred', 'theme_campus');
+    $description = get_string('slidecaptioncentreddesc', 'theme_campus');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Slide button colour setting.
+    $name = 'theme_campus/slidebuttoncolour';
+    $title = get_string('slidebuttoncolour', 'theme_campus');
+    $description = get_string('slidebuttoncolourdesc', 'theme_campus');
+    $default = '#30add1';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Slide button hover colour setting.
+    $name = 'theme_campus/slidebuttonhovercolour';
+    $title = get_string('slidebuttonhovercolour', 'theme_campus');
+    $description = get_string('slidebuttonhovercolourdesc', 'theme_campus');
+    $default = '#217a94';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
