@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+12th January 2014 - Version 2.7.0.14.
+  1. Update to frontpage header - task #393 comment 25.
+
 11th January 2014 - Version 2.7.0.13.
   1. Added 'breadcrumb' to list of non-text shadow components - task #390.
   2. Implement automatic header dimension resizing for 'side' option based upon automatic detection of image size.  See calculations-widths_3.ods on task #393.

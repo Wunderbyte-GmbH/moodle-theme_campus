@@ -30,7 +30,7 @@ $settings = null;
 
 defined('MOODLE_INTERNAL') || die;
 if (is_siteadmin()) {
-    require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
+    //require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
 
     $ADMIN->add('themes', new admin_category('theme_campus', 'Campus'));
 
@@ -383,17 +383,6 @@ if (is_siteadmin()) {
     );
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
-    // Frontpage header height.
-    $name = 'theme_campus/frontpageheaderheight';
-    $title = get_string('frontpageheaderheight', 'theme_campus');
-    $default = 75;
-    $lower = 40;
-    $upper = 900;
-    $description = get_string('frontpageheaderheightdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
-    $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
 
     // Logo file setting.
     $name = 'theme_campus/frontpagelogo';

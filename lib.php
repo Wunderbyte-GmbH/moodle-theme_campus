@@ -95,10 +95,6 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->borderradiuslarge)) {
         $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
     }
-    if (!empty($theme->settings->frontpageheaderheight)) {
-        $variables['frontpageHeaderHeight'] = $theme->settings->frontpageheaderheight.'px';
-        $variables['frontpageLogoHeight'] = $theme->settings->frontpageheaderheight.'px';
-    }
     if (!empty($theme->settings->frontpagelogoposition)) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:
@@ -121,14 +117,14 @@ function theme_campus_less_variables($theme) {
             break;
         }
     }
-    if ((!empty($theme->settings->frontpagelogo)) && (!empty($theme->settings->frontpageheaderheight))) {
+    if (!empty($theme->settings->frontpagelogo)) {
         if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
-            $imageratio = $dimensions['width'] / $dimensions['height'];
-            $newimagewidth = $theme->settings->frontpageheaderheight * $imageratio;
-            $fplogowidth = ($newimagewidth / 1680) * 100; // Currently 1680 is the max px of #page.
+            $fplogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageHeaderHeight'] = $dimensions['height'].'px';
+            $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
        }
     }
 
