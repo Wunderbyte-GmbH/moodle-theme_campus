@@ -31,7 +31,8 @@ $html = theme_campus_get_html_for_settings($OUTPUT, $PAGE);
 
 $pre = 'side-pre';
 $post = 'side-post';
-if (right_to_left()) {
+$rtl = right_to_left(); // Used later on in slider.
+if ($rtl) {
     $regionbsid = 'region-bs-main-and-post';
     // In RTL the sides are reversed, so swap the 'campusblocks' method parameter....
     $temp = $pre;

@@ -471,7 +471,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             case 'course':
             case 'incourse':
                 $CFG->campusheader = 'course / incourse';
-                 $thefile = 'course-header';
+                $thefile = 'course-header';
             break;
         }
 

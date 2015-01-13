@@ -94,3 +94,9 @@ if ($fpflexlayout) {
 
 <?php
 require_once(dirname(__FILE__).'/navbar.php');
+
+// Slider pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.
+if ($PAGE->pagelayout == 'frontpage') {
+    $numberofslides = get_config('theme_campus', 'numberofslidesforfrontpage');
+    $settingprefix = 'frontpage'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+}

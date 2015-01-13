@@ -173,6 +173,8 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
                 $options['cacheability'] = 'public';
             }
             return $theme->setting_file_serve('frontpagebackgroundimage', $args, $forcedownload, $options);
+        } else if (preg_match("/frontpage[1-9][0-9]*image/", $filearea) !== false) { // http://regexpal.com/ useful.
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/coursecategory[1-9][0-9]*_[1-9][0-9]*image/", $filearea) !== false) { // http://regexpal.com/ useful.
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else {

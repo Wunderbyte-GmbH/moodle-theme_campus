@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+13th January 2014 - Version 2.7.0.15.
+  1. Frontpage slider - task #394.
+
 12th January 2014 - Version 2.7.0.14.
   1. Update to frontpage header - task #393 comment 25.
   2. Started work on slider - task #394.
