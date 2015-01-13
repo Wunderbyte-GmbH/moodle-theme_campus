@@ -30,6 +30,7 @@ $settings = null;
 
 defined('MOODLE_INTERNAL') || die;
 if (is_siteadmin()) {
+    global $CFG;
     require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
 
     $ADMIN->add('themes', new admin_category('theme_campus', 'Campus'));
@@ -431,15 +432,15 @@ if (is_siteadmin()) {
     $description = get_string('frontpagelayoutdesc', 'theme_campus');
     $default = 'absolutelayout';
     $choices = array(
-        'absolutelayout' => new lang_string('frontpagelayoutontop', 'theme_campus'),
-        'flexlayout' => new lang_string('frontpagelayoutonside', 'theme_campus')
+        'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
+        'flexlayout' => new lang_string('layoutonside', 'theme_campus')
     );
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Logo file setting.
     $name = 'theme_campus/frontpagelogo';
-    $title = get_string('frontpagelogo','theme_campus');
+    $title = get_string('frontpagelogo', 'theme_campus');
     $description = get_string('frontpagelogodesc', 'theme_campus');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagelogo');
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -459,7 +460,7 @@ if (is_siteadmin()) {
 
     // Background image file setting.
     $name = 'theme_campus/frontpagebackgroundimage';
-    $title = get_string('frontpagebackgroundimage','theme_campus');
+    $title = get_string('frontpagebackgroundimage', 'theme_campus');
     $description = get_string('frontpagebackgroundimagedesc', 'theme_campus');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -527,7 +528,42 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategorysettings', 'theme_campus'),
             format_text(get_string('coursecategorysettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
-    global $CFG;
+    // Course category layout setting.
+    $name = 'theme_campus/coursecategorylayout';
+    $title = get_string('coursecategorylayout', 'theme_campus');
+    $description = get_string('coursecategorylayoutdesc', 'theme_campus');
+    $default = 'absolutelayout';
+    $choices = array(
+        'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
+        'flexlayout' => new lang_string('layoutonside', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Logo position setting.
+    $name = 'theme_campus/coursecategorylogoposition';
+    $title = get_string('coursecategorylogoposition', 'theme_campus');
+    $description = get_string('coursecategorylogopositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('imageleft', 'theme_campus'),
+        2 => new lang_string('imageright', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Background position setting.
+    $name = 'theme_campus/coursecategorybackgroundposition';
+    $title = get_string('coursecategorybackgroundposition', 'theme_campus');
+    $description = get_string('coursecategorybackgroundpositiondesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('imageleft', 'theme_campus'),
+        2 => new lang_string('imageright', 'theme_campus')
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
     $campuscategorytree = theme_campus_get_top_level_categories();
     foreach($campuscategorytree as $key => $value){
@@ -545,6 +581,22 @@ if (is_siteadmin()) {
         $default = '#11847D';
         $previewconfig = NULL;
         $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+        $settingpage->add($setting);
+
+        // Logo file setting.
+        $name = 'theme_campus/coursecategorylogo'.$key;
+        $title = get_string('coursecategorylogo', 'theme_campus');
+        $description = get_string('coursecategorylogodesc', 'theme_campus');
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorylogo'.$key);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingpage->add($setting);
+
+        // Background image file setting.
+        $name = 'theme_campus/coursecategorybackgroundimage'.$key;
+        $title = get_string('coursecategorybackgroundimage', 'theme_campus');
+        $description = get_string('coursecategorybackgroundimagedesc', 'theme_campus');
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorybackgroundimage'.$key);
+        $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
         // Number of slides.

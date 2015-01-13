@@ -208,8 +208,8 @@ $string['usefrontpageheaderdesc'] = 'Use the front page header on all pages.';
 
 $string['frontpagelayout'] = 'Layout';
 $string['frontpagelayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
-$string['frontpagelayoutontop']= 'On top';
-$string['frontpagelayoutonside']= 'Side';
+$string['layoutontop']= 'On top';
+$string['layoutonside']= 'Side';
 
 $string['frontpagelogo'] = 'Logo';
 $string['frontpagelogodesc'] = 'Please upload your custom logo here for the header.';
@@ -232,6 +232,21 @@ $string['coursecategoryheading_desc']= 'Course category settings.';
 
 $string['coursecategorybgcolour']= 'Background colour';
 $string['coursecategorybgcolourdesc']= 'Course category {$a->categoryname} background colour.';
+
+$string['coursecategorylayout'] = 'Layout';
+$string['coursecategorylayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
+
+$string['coursecategorylogo'] = 'Logo';
+$string['coursecategorylogodesc'] = 'Please upload your custom logo here for the header.';
+
+$string['coursecategorylogoposition'] = 'Logo position';
+$string['coursecategorylogopositiondesc'] = 'Set the logo position.';
+
+$string['coursecategorybackgroundimage'] = 'Background image';
+$string['coursecategorybackgroundimagedesc'] = 'Please upload your custom background image here for the header.';
+
+$string['coursecategorybackgroundposition'] = 'Background position';
+$string['coursecategorybackgroundpositiondesc'] = 'Set the background position.';
 
 // Image positions.
 $string['imageleft']= 'Left';

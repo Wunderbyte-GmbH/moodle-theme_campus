@@ -405,6 +405,118 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
   }
 }
 
+// Course category.
+.coursecategoryheader.absolutelayout {
+    position: relative;
+    max-height: @courseCategoryHeaderHeight;
+    max-width: 1680px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    .logotitle {
+        position: absolute;
+        top: 0px;
+        left: @courseCategoryLogoPositionLeft;
+        right: @courseCategoryLogoPositionRight;
+        z-index: 1;
+        max-height: @courseCategoryLogoHeight;
+    }
+    .frontpagelogoheight {
+        max-height: @courseCategoryLogoHeight;
+    }
+    .sitename {
+        position: absolute;
+        top: 10px;
+        left: @courseCategorySitenamePositionLeft;
+        right: @courseCategorySitenamePositionRight;
+        z-index: 1;
+    }
+    .backgroundimage {
+        max-height: inherit;
+        float: @frontpageBackgroundPosition;
+    }
+}
+@media (max-width: @navbarCollapseWidth) {
+    .coursecategoryheader.absolutelayout {
+        .frontpagelogoheight {
+            max-height: auto;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .coursecategoryheader.absolutelayout {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+.coursecategoryheader.flexlayout {
+    position: relative;
+    max-height: @courseCategoryHeaderHeight;
+    max-width: 1680px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    .flexlayouttable {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        max-height: inherit;
+    }
+    .logotitle {
+        display: table-cell;
+        width: @courseCategoryLogoWidth;
+        max-height: inherit;
+        a {
+            max-height: inherit;
+            img {
+                max-height: inherit;
+            }
+        }
+    }
+    .logotitle.left {
+        text-align: left;
+    }
+    .logotitle.right {
+        text-align: right;
+    }
+    .backgroundcontainer {
+        display: table-cell;
+        width: @courseCategoryBackgroundWidth;
+        max-height: inherit;
+        .backgroundimage {
+            max-height: inherit;
+        }
+    }
+    .backgroundcontainer.left {
+        text-align: right;
+    }
+    .backgroundcontainer.right {
+        text-align: left;
+    }
+    .sitename {
+        position: absolute;
+        top: 10px;
+        left: @courseCategorySitenamePositionLeft;
+        right: @courseCategorySitenamePositionRight;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .coursecategoryheader.flexlayout {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+// TEMP Parametric Mixin test.
+.ccpmt(@courseCategoryKey) {
+    .coursecategorytest@{courseCategoryKey} {
+        display: none;
+    }
+}
 
 // Footer.
 #page-footer .logininfo {

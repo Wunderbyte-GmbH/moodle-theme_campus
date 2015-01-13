@@ -138,9 +138,63 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->slidebuttonhovercolour)) {
         $variables['slideButtonHoverColour'] = $theme->settings->slidebuttonhovercolour;
     }
+    if (!empty($theme->settings->coursecategorylogoposition)) {
+        switch ($theme->settings->coursecategorylogoposition) {
+            case 1:
+                $variables['courseCategoryLogoPositionLeft'] = '20px';
+                $variables['courseCategorySitenamePositionRight'] = '30px';
+            break;
+            case 2:
+                $variables['courseCategoryLogoPositionRight'] = '20px';
+                $variables['courseCategorySitenamePositionLeft'] = '30px';
+            break;
+        }
+    }
+    if (!empty($theme->settings->coursecategorybackgroundposition)) {
+        switch ($theme->settings->coursecategorybackgroundposition) {
+            case 1:
+                $variables['courseCategoryBackgroundPosition'] = 'left';
+            break;
+            case 2:
+                $variables['courseCategoryBackgroundPosition'] = 'right';
+            break;
+        }
+    }
+    /*
+    if (!empty($theme->settings->frontpagelogo)) {
+        if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
+            $fplogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
+            $fpbackgroundwidth = 100 - $fplogowidth;
+            $variables['courseCategoryLogoWidth'] = $fplogowidth.'%';
+            $variables['courseCategoryBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['courseCategoryHeaderHeight'] = $dimensions['height'].'px';
+            $variables['courseCategoryLogoHeight'] = $dimensions['height'].'px';
+       }
+    }
+    */
 
     return $variables;
 }
+
+/**
+ * Extra LESS code to inject.
+ *
+ * This will generate some LESS code from the settings used by the user. We cannot use
+ * the {@link theme_more_less_variables()} here because we need to create selectors or
+ * alter existing ones.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string Raw LESS code.
+ */
+function theme_campus_extra_less($theme) {
+    $content = '';
+
+    $content .= '.ccpmt(1);';
+    $content .= '.ccpmt(3);';
+
+    return $content;
+}
+
 
 /**
  * Serves any files associated with the theme settings.
@@ -173,9 +227,29 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
                 $options['cacheability'] = 'public';
             }
             return $theme->setting_file_serve('frontpagebackgroundimage', $args, $forcedownload, $options);
+        } else if (preg_match("/coursecategorylogo[1-9][0-9]*/", $filearea) !== false) { // http://regexpal.com/ useful.
+            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+            if (!array_key_exists('cacheability', $options)) {
+                $options['cacheability'] = 'public';
+            }
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+        } else if (preg_match("/coursecategorybackgroundimage[1-9][0-9]*/", $filearea) !== false) { // http://regexpal.com/ useful.
+            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+            if (!array_key_exists('cacheability', $options)) {
+                $options['cacheability'] = 'public';
+            }
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/frontpage[1-9][0-9]*image/", $filearea) !== false) { // http://regexpal.com/ useful.
+            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+            if (!array_key_exists('cacheability', $options)) {
+                $options['cacheability'] = 'public';
+            }
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/coursecategory[1-9][0-9]*_[1-9][0-9]*image/", $filearea) !== false) { // http://regexpal.com/ useful.
+            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+            if (!array_key_exists('cacheability', $options)) {
+                $options['cacheability'] = 'public';
+            }
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else {
             send_file_not_found();
