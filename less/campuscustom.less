@@ -69,6 +69,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         z-index: 1;
         max-height: @frontpageLogoHeight;
     }
+    .logotitle.sitename {
+        right: @frontpageSitenamePositionLeft;
+        left: @frontpageSitenamePositionRight;
+    }
     .logoheight {
         max-height: @frontpageLogoHeight;
     }
@@ -408,6 +412,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Course category header.
 .coursecategoryheader.absolutelayout {
     position: relative;
+    height: @courseCategoryHeaderHeightDefault;
     max-height: @courseCategoryHeaderHeightDefault;
     max-width: 1680px;
     padding-left: 20px;
@@ -453,6 +458,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 .coursecategoryheader.flexlayout {
     position: relative;
+    height: @courseCategoryHeaderHeightDefault;
     max-height: @courseCategoryHeaderHeightDefault;
     max-width: 1680px;
     padding-left: 20px;
@@ -518,6 +524,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     @courseCategoryMixinLogoWidth;
     @courseCategoryMixinBackgroundWidth) {
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
+        height: auto;
         max-height: @courseCategoryMixinHeaderHeight;
         .logotitle {
             max-height: @courseCategoryMixinLogoHeight;
@@ -527,6 +534,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
     .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
+        height: auto;
         max-height: @courseCategoryMixinHeaderHeight;
         .logotitle {
             width: @courseCategoryMixinLogoWidth;
@@ -546,6 +554,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .logotitle {
             left: @courseCategoryMixinLogoPositionLeft;
             right: @courseCategoryMixinLogoPositionRight;
+        }
+        .logotitle.sitename {
+            right: @courseCategoryMixinSitenamePositionLeft;
+            left: @courseCategoryMixinSitenamePositionRight;
         }
         .sitename {
             left: @courseCategoryMixinSitenamePositionLeft;
@@ -573,6 +585,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
           @courseCategoryMixinBackgroundColour) {
     .coursecategoryheader.category@{courseCategoryKey} {
         background-color: @courseCategoryMixinBackgroundColour;
+        background-clip: content-box;
     }
 }
 

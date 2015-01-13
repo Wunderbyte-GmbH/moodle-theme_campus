@@ -453,24 +453,21 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $thefile = 'frontpage-header';
         }
 
-        // TEMPORARY TEST CODE.
-        global $CFG;
-        $CFG->campusheader = 'default';
-
         switch($this->page->pagelayout) {
             case 'frontpage':
-                $CFG->campusheader = 'frontpage';
                 $thefile = 'frontpage-header';
             break;
             case 'coursecategory':
                 if ($this->is_top_level_category()) {  // Set specific header.
-                    $CFG->campusheader = 'top level category';
                     $thefile = 'coursecategory-header';
                 }
             break;
             case 'course':
             case 'incourse':
+                // TEMPORARY TEST CODE.
+                global $CFG;
                 $CFG->campusheader = 'course / incourse';
+
                 $thefile = 'course-header';
             break;
         }

@@ -26,13 +26,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// TEMPORARY TEST CODE.
 global $CFG, $OUTPUT;
-if (!empty($CFG->campusheader)) {
-    echo '<div style="background-color: '.get_config('theme_campus', 'coursecategorybgcolour'.$OUTPUT->get_current_category()).'; color: #fff;">TEST CODE: Campus course category header: '.$CFG->campusheader.'</div>';
-}
-
-// Real code begins.
 $currentcategory = $OUTPUT->get_current_category();
 
 // Image files.
@@ -54,6 +48,9 @@ if ($ccflexlayout) {
 } else {
     $ccalignextra = '';
     $cclogoextrapos = 1;
+}
+if ((!$ccflexlayout) && (!$coursecategorylogo)) {
+    $ccalignextra .= ' sitename';
 }
 echo '<div class="coursecategoryheader '.$coursecategorylayout.' category'.$currentcategory.'">';
 if ($ccflexlayout) {

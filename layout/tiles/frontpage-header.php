@@ -26,12 +26,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// TEMPORARY TEST CODE.
-global $CFG, $OUTPUT;
-if (!empty($CFG->campusheader)) {
-    echo '<div style="display: none;">TEST CODE: Campus frontpage header: '.$CFG->campusheader.'</div>';
-}
-
 // Image files.
 $frontpagelogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
@@ -50,6 +44,10 @@ if ($fpflexlayout) {
     $fpalignextra = '';
     $fplogoextrapos = 1;
 }
+if ((!$fpflexlayout) && (!$frontpagelogo)) {
+    $fpalignextra .= ' sitename';
+}
+
 echo '<div class="frontpageheader '.$frontpagelayout.'">';
 if ($fpflexlayout) {
     echo '<div class="flexlayoutcontainer">';

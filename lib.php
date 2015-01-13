@@ -101,11 +101,11 @@ function theme_campus_less_variables($theme) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:
                 $variables['frontpageLogoPositionLeft'] = '20px';
-                $variables['frontpageSitenamePositionRight'] = '30px';
+                $variables['frontpageSitenamePositionRight'] = '50px';
             break;
             case 2:
                 $variables['frontpageLogoPositionRight'] = '20px';
-                $variables['frontpageSitenamePositionLeft'] = '30px';
+                $variables['frontpageSitenamePositionLeft'] = '50px';
             break;
         }
     }
@@ -176,10 +176,10 @@ function theme_campus_extra_less($theme) {
                   @courseCategoryMixinSitenamePositionLeft;
                   @courseCategoryMixinSitenamePositionRight) */
                 case 1:
-                    $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 30px);';
+                    $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 50px);';
                 break;
                 case 2:
-                    $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 30px; auto);';
+                    $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 50px; auto);';
                 break;
             }
         }
