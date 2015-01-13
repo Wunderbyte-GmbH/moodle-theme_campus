@@ -69,7 +69,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         z-index: 1;
         max-height: @frontpageLogoHeight;
     }
-    .frontpagelogoheight {
+    .logoheight {
         max-height: @frontpageLogoHeight;
     }
     .sitename {
@@ -86,7 +86,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 @media (max-width: @navbarCollapseWidth) {
     .frontpageheader.absolutelayout {
-        .frontpagelogoheight {
+        .logoheight {
             max-height: auto;
         }
     }
@@ -106,7 +106,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
-    .flexlayouttable {
+    .flexlayoutcontainer {
         display: table;
         width: 100%;
         table-layout: fixed;
@@ -405,10 +405,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
   }
 }
 
-// Course category.
+// Course category header.
 .coursecategoryheader.absolutelayout {
     position: relative;
-    max-height: @courseCategoryHeaderHeight;
+    max-height: @courseCategoryHeaderHeightDefault;
     max-width: 1680px;
     padding-left: 20px;
     padding-right: 20px;
@@ -416,29 +416,29 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .logotitle {
         position: absolute;
         top: 0px;
-        left: @courseCategoryLogoPositionLeft;
-        right: @courseCategoryLogoPositionRight;
+        left: @courseCategoryLogoPositionLeftDefault;
+        right: @courseCategoryLogoPositionRightDefault;
         z-index: 1;
-        max-height: @courseCategoryLogoHeight;
+        max-height: @courseCategoryLogoHeightDefault;
     }
-    .frontpagelogoheight {
-        max-height: @courseCategoryLogoHeight;
+    .logoheight {
+        max-height: @courseCategoryLogoHeightDefault;
     }
     .sitename {
         position: absolute;
         top: 10px;
-        left: @courseCategorySitenamePositionLeft;
-        right: @courseCategorySitenamePositionRight;
+        left: @courseCategorySitenamePositionLeftDefault;
+        right: @courseCategorySitenamePositionRightDefault;
         z-index: 1;
     }
     .backgroundimage {
         max-height: inherit;
-        float: @frontpageBackgroundPosition;
+        float: @courseCategoryBackgroundPositionDefault;
     }
 }
 @media (max-width: @navbarCollapseWidth) {
     .coursecategoryheader.absolutelayout {
-        .frontpagelogoheight {
+        .logoheight {
             max-height: auto;
         }
     }
@@ -453,12 +453,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 .coursecategoryheader.flexlayout {
     position: relative;
-    max-height: @courseCategoryHeaderHeight;
+    max-height: @courseCategoryHeaderHeightDefault;
     max-width: 1680px;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
-    .flexlayouttable {
+    .flexlayoutcontainer {
         display: table;
         width: 100%;
         table-layout: fixed;
@@ -466,7 +466,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .logotitle {
         display: table-cell;
-        width: @courseCategoryLogoWidth;
+        width: @courseCategoryLogoWidthDefault;
         max-height: inherit;
         a {
             max-height: inherit;
@@ -483,7 +483,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .backgroundcontainer {
         display: table-cell;
-        width: @courseCategoryBackgroundWidth;
+        width: @courseCategoryBackgroundWidthDefault;
         max-height: inherit;
         .backgroundimage {
             max-height: inherit;
@@ -498,8 +498,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .sitename {
         position: absolute;
         top: 10px;
-        left: @courseCategorySitenamePositionLeft;
-        right: @courseCategorySitenamePositionRight;
+        left: @courseCategorySitenamePositionLeftDefault;
+        right: @courseCategorySitenamePositionRightDefault;
         z-index: 1;
     }
 }
@@ -511,10 +511,68 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
-// TEMP Parametric Mixin test.
-.ccpmt(@courseCategoryKey) {
-    .coursecategorytest@{courseCategoryKey} {
-        display: none;
+// Course category header parametric mixins.
+.ccheaderlogo(@courseCategoryKey;
+    @courseCategoryMixinHeaderHeight;
+    @courseCategoryMixinLogoHeight;
+    @courseCategoryMixinLogoWidth;
+    @courseCategoryMixinBackgroundWidth) {
+    .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
+        max-height: @courseCategoryMixinHeaderHeight;
+        .logotitle {
+            max-height: @courseCategoryMixinLogoHeight;
+        }
+        .logoheight {
+            max-height: @courseCategoryMixinLogoHeight;
+        }
+    }
+    .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
+        max-height: @courseCategoryMixinHeaderHeight;
+        .logotitle {
+            width: @courseCategoryMixinLogoWidth;
+        }
+        .backgroundcontainer {
+            width: @courseCategoryMixinBackgroundWidth;
+        }
+    }
+}
+
+.ccheaderlogoposition(@courseCategoryKey;
+          @courseCategoryMixinLogoPositionLeft;
+          @courseCategoryMixinLogoPositionRight;
+          @courseCategoryMixinSitenamePositionLeft;
+          @courseCategoryMixinSitenamePositionRight) {
+    .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
+        .logotitle {
+            left: @courseCategoryMixinLogoPositionLeft;
+            right: @courseCategoryMixinLogoPositionRight;
+        }
+        .sitename {
+            left: @courseCategoryMixinSitenamePositionLeft;
+            right: @courseCategoryMixinSitenamePositionRight;
+        }
+    }
+    .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
+        .sitename {
+            left: @courseCategoryMixinSitenamePositionLeft;
+            right: @courseCategoryMixinSitenamePositionRight;
+        }
+    }
+}
+
+.ccheaderbackgroundposition(@courseCategoryKey;
+    @courseCategoryMixinBackgroundPosition) {
+    .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
+        .backgroundimage {
+            float: @courseCategoryMixinBackgroundPosition;
+        }
+    }
+}
+
+.ccheaderbackgroundcolour(@courseCategoryKey;
+          @courseCategoryMixinBackgroundColour) {
+    .coursecategoryheader.category@{courseCategoryKey} {
+        background-color: @courseCategoryMixinBackgroundColour;
     }
 }
 

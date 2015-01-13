@@ -528,42 +528,6 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategorysettings', 'theme_campus'),
             format_text(get_string('coursecategorysettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
-    // Course category layout setting.
-    $name = 'theme_campus/coursecategorylayout';
-    $title = get_string('coursecategorylayout', 'theme_campus');
-    $description = get_string('coursecategorylayoutdesc', 'theme_campus');
-    $default = 'absolutelayout';
-    $choices = array(
-        'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
-        'flexlayout' => new lang_string('layoutonside', 'theme_campus')
-    );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
-    // Logo position setting.
-    $name = 'theme_campus/coursecategorylogoposition';
-    $title = get_string('coursecategorylogoposition', 'theme_campus');
-    $description = get_string('coursecategorylogopositiondesc', 'theme_campus');
-    $default = 1;
-    $choices = array(
-        1 => new lang_string('imageleft', 'theme_campus'),
-        2 => new lang_string('imageright', 'theme_campus')
-    );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
-    // Background position setting.
-    $name = 'theme_campus/coursecategorybackgroundposition';
-    $title = get_string('coursecategorybackgroundposition', 'theme_campus');
-    $description = get_string('coursecategorybackgroundpositiondesc', 'theme_campus');
-    $default = 1;
-    $choices = array(
-        1 => new lang_string('imageleft', 'theme_campus'),
-        2 => new lang_string('imageright', 'theme_campus')
-    );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
     include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
     $campuscategorytree = theme_campus_get_top_level_categories();
     foreach($campuscategorytree as $key => $value){
@@ -583,6 +547,18 @@ if (is_siteadmin()) {
         $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
         $settingpage->add($setting);
 
+        // Course category layout setting.
+        $name = 'theme_campus/coursecategorylayout'.$key;
+        $title = get_string('coursecategorylayout', 'theme_campus');
+        $description = get_string('coursecategorylayoutdesc', 'theme_campus');
+        $default = 'absolutelayout';
+        $choices = array(
+            'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
+            'flexlayout' => new lang_string('layoutonside', 'theme_campus')
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
         // Logo file setting.
         $name = 'theme_campus/coursecategorylogo'.$key;
         $title = get_string('coursecategorylogo', 'theme_campus');
@@ -591,6 +567,18 @@ if (is_siteadmin()) {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
+        // Logo position setting.
+        $name = 'theme_campus/coursecategorylogoposition'.$key;
+        $title = get_string('coursecategorylogoposition', 'theme_campus');
+        $description = get_string('coursecategorylogopositiondesc', 'theme_campus');
+        $default = 1;
+        $choices = array(
+            1 => new lang_string('imageleft', 'theme_campus'),
+            2 => new lang_string('imageright', 'theme_campus')
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
         // Background image file setting.
         $name = 'theme_campus/coursecategorybackgroundimage'.$key;
         $title = get_string('coursecategorybackgroundimage', 'theme_campus');
@@ -598,6 +586,18 @@ if (is_siteadmin()) {
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorybackgroundimage'.$key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
+
+        // Background position setting.
+        $name = 'theme_campus/coursecategorybackgroundposition'.$key;
+        $title = get_string('coursecategorybackgroundposition', 'theme_campus');
+        $description = get_string('coursecategorybackgroundpositiondesc', 'theme_campus');
+        $default = 1;
+        $choices = array(
+            1 => new lang_string('imageleft', 'theme_campus'),
+            2 => new lang_string('imageright', 'theme_campus')
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
         // Number of slides.
         $name = 'theme_campus/numberofslidesforcategory'.$key;

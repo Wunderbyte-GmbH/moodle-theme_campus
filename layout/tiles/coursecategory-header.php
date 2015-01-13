@@ -32,8 +32,73 @@ if (!empty($CFG->campusheader)) {
     echo '<div style="background-color: '.get_config('theme_campus', 'coursecategorybgcolour'.$OUTPUT->get_current_category()).'; color: #fff;">TEST CODE: Campus course category header: '.$CFG->campusheader.'</div>';
 }
 
+// Real code begins.
+$currentcategory = $OUTPUT->get_current_category();
+
+// Image files.
+$coursecategorylogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
+$coursecategorybackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
+
+// Layout.
+$coursecategorylayout = 'coursecategorylayout'.$currentcategory;
+$coursecategorylayout = (!empty($PAGE->theme->settings->$coursecategorylayout)) ? $PAGE->theme->settings->$coursecategorylayout : 'absolutelayout';
+$ccflexlayout = ($coursecategorylayout == 'flexlayout');
+if ($ccflexlayout) {
+    $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
+    $cclogoextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
+    if ($cclogoextrapos == 2) {
+        $ccalignextra = ' right';
+    } else {
+        $ccalignextra = ' left';
+    }
+} else {
+    $ccalignextra = '';
+    $cclogoextrapos = 1;
+}
+echo '<div class="coursecategoryheader '.$coursecategorylayout.' category'.$currentcategory.'">';
+if ($ccflexlayout) {
+    echo '<div class="flexlayoutcontainer">';
+}
+
+global $CFG;
+if ($cclogoextrapos == 1) {
+    echo '<div class="logotitle'.$ccalignextra.'">';
+    if ($coursecategorylogo) {
+        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
+    } else {
+        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+    }
+    echo '</div>';
+}
+if ($coursecategorybackgroundimage) {
+    if ($ccflexlayout) {
+        echo '<div class="backgroundcontainer'.$ccalignextra.'">';
+    }
+    echo '<img src="'.$coursecategorybackgroundimage.'" class="backgroundimage img-responsive">';
+    if ($ccflexlayout) {
+        echo '</div>';
+    }
+}
+if ($cclogoextrapos == 2) {
+    echo '<div class="logotitle'.$ccalignextra.'">';
+    if ($coursecategorylogo) {
+        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
+    } else {
+        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+    }
+    echo '</div>';
+}
+$showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
+if (($showpageheading) && ($coursecategorylogo)) {
+    echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+}
+if ($ccflexlayout) {
+    echo '</div>';
+}
+echo '</div>';
+
 require_once(dirname(__FILE__).'/navbar.php');
 
-// Slider pre-loading.
+// Carousel pre-loading.
 $numberofslides = get_config('theme_campus', 'numberofslidesforcategory'.$OUTPUT->get_current_category());
 $settingprefix = 'coursecategory'.$OUTPUT->get_current_category().'_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.

@@ -52,50 +52,49 @@ if ($fpflexlayout) {
 }
 echo '<div class="frontpageheader '.$frontpagelayout.'">';
 if ($fpflexlayout) {
-    echo '<div class="flexlayouttable">';
+    echo '<div class="flexlayoutcontainer">';
 }
-    global $CFG;
-    if ($fplogoextrapos == 1) {
-        echo '<div class="logotitle'.$fpalignextra.'">';
-        if ($frontpagelogo) {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
-        }
-        echo '</div>';
+
+global $CFG;
+if ($fplogoextrapos == 1) {
+    echo '<div class="logotitle'.$fpalignextra.'">';
+    if ($frontpagelogo) {
+        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+    } else {
+        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }
-    if ($frontpagebackgroundimage) {
-        if ($fpflexlayout) {
-            echo '<div class="backgroundcontainer'.$fpalignextra.'">';
-        }
-        echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
-        if ($fpflexlayout) {
-            echo '</div>';
-        }
+    echo '</div>';
+}
+if ($frontpagebackgroundimage) {
+    if ($fpflexlayout) {
+        echo '<div class="backgroundcontainer'.$fpalignextra.'">';
     }
-    if ($fplogoextrapos == 2) {
-        echo '<div class="logotitle'.$fpalignextra.'">';
-        if ($frontpagelogo) {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="frontpagelogoheight img-responsive"></a>';
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
-        }
-        echo '</div>';
-    }
-    $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
-    if (($showpageheading) && ($frontpagelogo)) {
-        echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
-    }
+    echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
     if ($fpflexlayout) {
         echo '</div>';
     }
-    ?>
-</div>
+}
+if ($fplogoextrapos == 2) {
+    echo '<div class="logotitle'.$fpalignextra.'">';
+    if ($frontpagelogo) {
+        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+    } else {
+        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+    }
+    echo '</div>';
+}
+$showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
+if (($showpageheading) && ($frontpagelogo)) {
+    echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+}
+if ($fpflexlayout) {
+    echo '</div>';
+}
+echo '</div>';
 
-<?php
 require_once(dirname(__FILE__).'/navbar.php');
 
-// Slider pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.
+// Carousel pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.
 if ($PAGE->pagelayout == 'frontpage') {
     $numberofslides = get_config('theme_campus', 'numberofslidesforfrontpage');
     $settingprefix = 'frontpage'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.

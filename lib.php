@@ -138,40 +138,6 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->slidebuttonhovercolour)) {
         $variables['slideButtonHoverColour'] = $theme->settings->slidebuttonhovercolour;
     }
-    if (!empty($theme->settings->coursecategorylogoposition)) {
-        switch ($theme->settings->coursecategorylogoposition) {
-            case 1:
-                $variables['courseCategoryLogoPositionLeft'] = '20px';
-                $variables['courseCategorySitenamePositionRight'] = '30px';
-            break;
-            case 2:
-                $variables['courseCategoryLogoPositionRight'] = '20px';
-                $variables['courseCategorySitenamePositionLeft'] = '30px';
-            break;
-        }
-    }
-    if (!empty($theme->settings->coursecategorybackgroundposition)) {
-        switch ($theme->settings->coursecategorybackgroundposition) {
-            case 1:
-                $variables['courseCategoryBackgroundPosition'] = 'left';
-            break;
-            case 2:
-                $variables['courseCategoryBackgroundPosition'] = 'right';
-            break;
-        }
-    }
-    /*
-    if (!empty($theme->settings->frontpagelogo)) {
-        if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
-            $fplogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
-            $fpbackgroundwidth = 100 - $fplogowidth;
-            $variables['courseCategoryLogoWidth'] = $fplogowidth.'%';
-            $variables['courseCategoryBackgroundWidth'] = $fpbackgroundwidth.'%';
-            $variables['courseCategoryHeaderHeight'] = $dimensions['height'].'px';
-            $variables['courseCategoryLogoHeight'] = $dimensions['height'].'px';
-       }
-    }
-    */
 
     return $variables;
 }
@@ -187,10 +153,65 @@ function theme_campus_less_variables($theme) {
  * @return string Raw LESS code.
  */
 function theme_campus_extra_less($theme) {
+    global $CFG;
+    include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    $campuscategorytree = theme_campus_get_top_level_categories();
+
     $content = '';
 
-    $content .= '.ccpmt(1);';
-    $content .= '.ccpmt(3);';
+    foreach($campuscategorytree as $key => $value){
+        $ccsetting = 'coursecategorybgcolour'.$key;
+        if (!empty($theme->settings->$ccsetting)) {
+            /* .ccheaderbackgroundcolour(@courseCategoryKey;
+                 @courseCategoryMixinBackgroundColour) */
+            $content .= '.ccheaderbackgroundcolour('.$key.'; '.$theme->settings->$ccsetting.');';
+        }
+
+        $ccsetting = 'coursecategorylogoposition'.$key;
+        if (!empty($theme->settings->$ccsetting)) {
+            switch ($theme->settings->$ccsetting) {
+            /* .ccheaderlogoposition(@courseCategoryKey;
+                  @courseCategoryMixinLogoPositionLeft;
+                  @courseCategoryMixinLogoPositionRight;
+                  @courseCategoryMixinSitenamePositionLeft;
+                  @courseCategoryMixinSitenamePositionRight) */
+                case 1:
+                    $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 30px);';
+                break;
+                case 2:
+                    $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 30px; auto);';
+                break;
+            }
+        }
+
+        $ccsetting = 'coursecategorybackgroundposition'.$key;
+        if (!empty($theme->settings->$ccsetting)) {
+            switch ($theme->settings->$ccsetting) {
+            /* .ccheaderbackgroundposition(@courseCategoryKey;
+                 @courseCategoryMixinBackgroundPosition) */
+                case 1:
+                    $content .= '.ccheaderbackgroundposition('.$key.'; left);';
+                break;
+                case 2:
+                    $content .= '.ccheaderbackgroundposition('.$key.'; right);';
+                break;
+            }
+        }
+
+        $ccsetting = 'coursecategorylogo'.$key;
+        if (!empty($theme->settings->$ccsetting)) {
+            if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
+                $cclogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccbackgroundwidth = 100 - $cclogowidth;
+                /* ccheaderlogo(@courseCategoryKey;
+                     @courseCategoryMixinHeaderHeight;
+                     @courseCategoryMixinLogoHeight;
+                     @courseCategoryMixinLogoWidth;
+                     @courseCategoryMixinBackgroundWidth) */
+                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccbackgroundwidth.'%);';
+            }
+        }
+    }
 
     return $content;
 }
