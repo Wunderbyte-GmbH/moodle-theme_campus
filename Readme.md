@@ -51,32 +51,33 @@ Uninstallation
 
 Version Information
 ===================
-14th January 2014 - Version 2.7.0.16.
+14th January 2015 - Version 2.7.0.16.
   1. Implement 'proof of concept' for frontpage and course category flexible headers - task #393.
+  2. Implement course category logo fallback - task #378 comment 6 - from online meeting of 13th January 2015.
 
-13th January 2014 - Version 2.7.0.15.
+13th January 2015 - Version 2.7.0.15.
   1. Frontpage slider - task #394.
   2. Course category header - task #378.
 
-12th January 2014 - Version 2.7.0.14.
+12th January 2015 - Version 2.7.0.14.
   1. Update to frontpage header - task #393 comment 25.
   2. Started work on slider - task #394.
 
-11th January 2014 - Version 2.7.0.13.
+11th January 2015 - Version 2.7.0.13.
   1. Added 'breadcrumb' to list of non-text shadow components - task #390.
   2. Implement automatic header dimension resizing for 'side' option based upon automatic detection of image size.  See calculations-widths_3.ods on task #393.
   3. Slide show preparation work to establish two positions for the slider - task #394.
 
- 9th January 2014 - Version 2.7.0.12.
+ 9th January 2015 - Version 2.7.0.12.
   1. Use 'table' display attribute for 'Side option' so that responsive on Firefox and IE - task #375.
   2. Fix navbar menu item text colour when collapsed.
   3. Improve side height - task #393.
 
- 8th January 2014 - Version 2.7.0.11.
+ 8th January 2015 - Version 2.7.0.11.
   1. Frontpage header logo to link to front page - task #375.
   2. Side option for logo and background image on the frontpage - depends on 'flex' display layout: http://caniuse.com/#search=flex - so not good with less than IE11 - task #375.
 
- 6th January 2014 - Version 2.7.0.10.
+ 6th January 2015 - Version 2.7.0.10.
   1. Changed navbar collapse with to 960px - task #375.
   2. Implemented small navbar when < 960px - note: 'brand' tricky to show / hide and was a requirement to show when menu not open and collapsed - task #375.
   3. Cleaned settings for image background - task #375.

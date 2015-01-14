@@ -33,6 +33,17 @@ $currentcategory = $OUTPUT->get_current_category();
 $coursecategorylogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
 $coursecategorybackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
 
+// Fallback to front page logo if no course category logo.
+if (!$coursecategorylogo) {
+    $coursecategorylogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
+    // TODO: Should this happen?  i.e. that if no logo then the background of the front page should be used instead as it matches.
+    //$coursecategorybackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
+}
+// Fallback to theme logo if no frontpage logo.
+if (!$coursecategorylogo) {
+    $coursecategorylogo = $OUTPUT->pix_url('logo', 'theme');  // $coursecategorylogo can still be false if there is no image called 'logo' in the 'pix' folder of the theme.
+}
+
 // Layout.
 $coursecategorylayout = 'coursecategorylayout'.$currentcategory;
 $coursecategorylayout = (!empty($PAGE->theme->settings->$coursecategorylayout)) ? $PAGE->theme->settings->$coursecategorylayout : 'absolutelayout';

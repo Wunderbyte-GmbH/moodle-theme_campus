@@ -127,6 +127,7 @@ function theme_campus_less_variables($theme) {
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
             $variables['frontpageHeaderHeight'] = $dimensions['height'].'px';
+            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
             $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
             $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
        }
@@ -155,7 +156,7 @@ function theme_campus_less_variables($theme) {
  * @return string Raw LESS code.
  */
 function theme_campus_extra_less($theme) {
-    global $CFG;
+    global $CFG, $OUTPUT;
     include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
     $campuscategorytree = theme_campus_get_top_level_categories();
 
@@ -214,6 +215,33 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinBackgroundWidth) */
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
             }
+        } else if (!empty($theme->settings->frontpagelogo)) {
+            if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
+                $cclogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccpaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccbackgroundwidth = 100 - $cclogowidth;
+                /* ccheaderlogo(@courseCategoryKey;
+                     @courseCategoryMixinHeaderHeight;
+                     @courseCategoryMixinLogoHeight;
+                     @courseCategoryMixinLogoWidth;
+                     @courseCategoryMixinPaddingBottom;
+                     @courseCategoryMixinBackgroundWidth) */
+                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+            }
+        } else if (!empty($OUTPUT->pix_url('logo', 'theme'))) {
+            //if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
+                $dimensions = array('width' => 588, 'height' => 150);  // TODO - make automatic!
+                $cclogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccpaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccbackgroundwidth = 100 - $cclogowidth;
+                /* ccheaderlogo(@courseCategoryKey;
+                     @courseCategoryMixinHeaderHeight;
+                     @courseCategoryMixinLogoHeight;
+                     @courseCategoryMixinLogoWidth;
+                     @courseCategoryMixinPaddingBottom;
+                     @courseCategoryMixinBackgroundWidth) */
+                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+            //}
         }
     }
 
