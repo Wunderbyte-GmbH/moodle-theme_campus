@@ -122,11 +122,13 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->frontpagelogo)) {
         if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
             $fplogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
+            $fppaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
             $variables['frontpageHeaderHeight'] = $dimensions['height'].'px';
             $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
+            $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
        }
     }
     if (!empty($theme->settings->carouseltextcolour)) {

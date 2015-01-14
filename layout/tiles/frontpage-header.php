@@ -35,17 +35,13 @@ $frontpagelayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->th
 $fpflexlayout = ($frontpagelayout == 'flexlayout');
 if ($fpflexlayout) {
     $fplogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
-    if ($fplogoextrapos == 2) {
-        $fpalignextra = ' right';
-    } else {
-        $fpalignextra = ' left';
-    }
 } else {
-    $fpalignextra = '';
-    $fplogoextrapos = 1;
+    $fplogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
 }
 if ((!$fpflexlayout) && (!$frontpagelogo)) {
-    $fpalignextra .= ' sitename';
+    $fpextra = ' sitename';
+} else {
+    $fpextra = '';
 }
 
 echo '<div class="frontpageheader '.$frontpagelayout.'">';
@@ -55,9 +51,13 @@ if ($fpflexlayout) {
 
 global $CFG;
 if ($fplogoextrapos == 1) {
-    echo '<div class="logotitle'.$fpalignextra.'">';
+    echo '<div class="logotitle'.$fpextra.'">';
     if ($frontpagelogo) {
-        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+        if ($fpflexlayout) {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'"></a>';
+        } else {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+        }
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }
@@ -65,17 +65,21 @@ if ($fplogoextrapos == 1) {
 }
 if ($frontpagebackgroundimage) {
     if ($fpflexlayout) {
-        echo '<div class="backgroundcontainer'.$fpalignextra.'">';
-    }
-    echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
-    if ($fpflexlayout) {
+        echo '<div class="backgroundcontainer">';
+        echo '<img src="'.$frontpagebackgroundimage.'">';
         echo '</div>';
+    } else {
+        echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
     }
 }
 if ($fplogoextrapos == 2) {
-    echo '<div class="logotitle'.$fpalignextra.'">';
+    echo '<div class="logotitle">';
     if ($frontpagelogo) {
-        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+        if ($fpflexlayout) {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'"></a>';
+        } else {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+        }
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }

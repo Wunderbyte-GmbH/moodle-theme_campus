@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+14th January 2014 - Version 2.7.0.16.
+  1. Implement 'proof of concept' for frontpage and course category flexible headers - task #393.
+
 13th January 2014 - Version 2.7.0.15.
   1. Frontpage slider - task #394.
   2. Course category header - task #378.
