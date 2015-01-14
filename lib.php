@@ -229,10 +229,29 @@ function theme_campus_extra_less($theme) {
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
             }
         } else if (!empty($OUTPUT->pix_url('logo', 'theme'))) {
-            //if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
-                $dimensions = array('width' => 588, 'height' => 150);  // TODO - make automatic!
-                $cclogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
-                $ccpaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
+            if (!empty($CFG->themedir)) {
+                $thelogofile = $CFG->themedir . '/campus/pix/logo';
+            } else {
+                $thelogofile = $CFG->dirroot . '/theme/campus/pix/logo';
+            }
+            // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting.
+            if (file_exists("$thelogofile.png")) {
+                $logofile = "$thelogofile.png";
+            } else if (file_exists("$thelogofile.gif")) {
+                $logofile = "$thelogofile.gif";
+            } else if (file_exists("$thelogofile.jpg")) {
+                $logofile = "$thelogofile.jpg";
+            } else if (file_exists("$thelogofile.jpeg")) {
+                $logofile = "$thelogofile.jpeg";
+            } else if (file_exists("$thelogofile.ico")) {
+                $logofile = "$thelogofile.ico";
+            } else {
+                $logofile = false; // Can only happen if 'svg' file as 'pix_url' would return.  But 'getimagesize()' does not support svg files.
+            }
+            if (($logofile) && ($dimensions = getimagesize($logofile))) {
+                // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                $cclogowidth = ($dimensions[0] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccpaddingbottom = ($dimensions[1] / 1680) * 100; // Currently 1680 is the max px of #page.
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinHeaderHeight;
@@ -240,8 +259,8 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinLogoWidth;
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
-            //}
+                $content .= '.ccheaderlogo('.$key.'; '.$dimensions[1].'px; '.$dimensions[1].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+            }
         }
     }
 
