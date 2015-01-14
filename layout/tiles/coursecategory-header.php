@@ -114,5 +114,11 @@ echo '</div>';
 require_once(dirname(__FILE__).'/navbar.php');
 
 // Carousel pre-loading.
-$numberofslides = get_config('theme_campus', 'numberofslidesforcategory'.$OUTPUT->get_current_category());
-$settingprefix = 'coursecategory'.$OUTPUT->get_current_category().'_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+$currentcoursecategory = $OUTPUT->get_current_category();
+$coursecategorycarouselstatus = 'coursecategorycarouselstatus'.$currentcoursecategory;
+$coursecategorycarouselstatus = (!empty($PAGE->theme->settings->$coursecategorycarouselstatus)) ? $PAGE->theme->settings->$coursecategorycarouselstatus : 1;  // 1 is 'Draft'.
+if ($coursecategorycarouselstatus == 2) { // Only if published.
+    $numberofslides = 'numberofslidesforcategory'.$currentcoursecategory;
+    $numberofslides = (!empty($PAGE->theme->settings->$numberofslides)) ? $PAGE->theme->settings->$numberofslides : 0;
+    $settingprefix = 'coursecategory'.$OUTPUT->get_current_category().'_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+}

@@ -57,6 +57,10 @@ $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['region-footer'] = 'Footer';
 
+// Draft or published.
+$string['draft'] = 'Draft';
+$string['published'] = 'Published';
+
 // Navbar.
 $string['gotobottom'] = 'Go to the bottom of the page';
 
@@ -184,6 +188,8 @@ $string['slidebuttoncolourdesc'] = 'What colour the slide navigation button shou
 $string['slidebuttonhovercolour'] = 'Slide button hover colour';
 $string['slidebuttonhovercolourdesc'] = 'What colour the slide navigation button hover should be.';
 
+$string['carouselstatus']= 'Carousel status';
+$string['carouselstatus_desc']= 'States if the carousel is visible, draft = no and published = yes.  This allows you to prepare the carousel beforehand without it being live to the users.';
 $string['numberofslides'] = 'Number of slides';
 $string['numberofslidesdesc'] = 'Number of slides on the slider between {$a->lower} and {$a->upper}.';
 $string['slideno'] = 'Slide {$a->slide}';

@@ -596,6 +596,17 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_carousel_frontpage', get_string('frontpagecarouselsettings', 'theme_campus'),
             format_text(get_string('frontpagecarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
+    // Status.
+    $name = 'theme_campus/frontpagecarouselstatus';
+    $title = get_string('carouselstatus', 'theme_campus');
+    $description = get_string('carouselstatus_desc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('draft', 'theme_campus'),
+        2 => new lang_string('published', 'theme_campus')
+    );
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Number of slides.
     $name = 'theme_campus/numberofslidesforfrontpage';
     $title = get_string('numberofslides', 'theme_campus');
@@ -655,6 +666,17 @@ if (is_siteadmin()) {
         $information = ''; // TODO: Decide if better without description.
         $setting = new admin_setting_heading($name, $heading, $information);
         $settingpage->add($setting);
+
+        // Status.
+        $name = 'theme_campus/coursecategorycarouselstatus'.$key;
+        $title = get_string('carouselstatus', 'theme_campus');
+        $description = get_string('carouselstatus_desc', 'theme_campus');
+        $default = 1;
+        $choices = array(
+            1 => new lang_string('draft', 'theme_campus'),
+            2 => new lang_string('published', 'theme_campus')
+        );
+        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
         // Number of slides.
         $name = 'theme_campus/numberofslidesforcategory'.$key;

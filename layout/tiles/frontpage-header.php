@@ -98,6 +98,9 @@ require_once(dirname(__FILE__).'/navbar.php');
 
 // Carousel pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.
 if ($PAGE->pagelayout == 'frontpage') {
-    $numberofslides = get_config('theme_campus', 'numberofslidesforfrontpage');
-    $settingprefix = 'frontpage'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+    $frontpagecarouselstatus = (!empty($PAGE->theme->settings->frontpagecarouselstatus)) ? $PAGE->theme->settings->frontpagecarouselstatus : 1;  // 1 is 'Draft'.
+    if ($frontpagecarouselstatus == 2) { // Only if published.
+        $numberofslides = (!empty($PAGE->theme->settings->numberofslidesforfrontpage)) ? $PAGE->theme->settings->numberofslidesforfrontpage : 0;
+        $settingprefix = 'frontpage'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+    }
 }

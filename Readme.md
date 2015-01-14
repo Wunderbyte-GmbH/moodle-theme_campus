@@ -55,6 +55,7 @@ Version Information
   1. Implement 'proof of concept' for frontpage and course category flexible headers - task #393.
   2. Implement course category logo fallback - task #378 comment 6 - from online meeting of 13th January 2015.
   3. Implement separate settings page for the carousel - task #394 comment 15.
+  4. Implement draft / published status for the carousel - task #394 comment 18.
 
 13th January 2015 - Version 2.7.0.15.
   1. Frontpage slider - task #394.
