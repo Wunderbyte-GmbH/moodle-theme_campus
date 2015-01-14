@@ -66,7 +66,6 @@ $string['antigravity'] = 'Back to top';
 // Settings.
 // General settings.
 $string['genericsettings'] = 'General';
-$string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for the theme here.';
 
 $string['alternateloginurl'] = 'Alternative login URL.';
@@ -94,7 +93,6 @@ $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be 
 
 // Look and feel settings.
 $string['landfsettings'] = 'Look and feel';
-$string['landfheadingsub'] = 'Look and feel settings';
 $string['landfheadingdesc'] = 'Configure the look and feel settings for the theme here.';
 
 $string['themelayout'] = 'Theme layout';
@@ -164,7 +162,16 @@ $string['px25'] = '25px';
 
 // Carousel.
 $string['carouselsettings']= 'Carousel';
-$string['carouselsettings_desc']= 'Carousel settings.';
+$string['carouselsettingsdesc']= 'Configure the carousel settings for the theme here.';
+
+$string['carouselgeneralsettings']= 'General';
+$string['carouselgeneralsettings_desc'] = 'General carousel settings.';
+
+$string['frontpagecarouselsettings']= 'Front page';
+$string['frontpagecarouselsettings_desc']= 'Front page carousel settings.';
+
+$string['coursecategorycarouselsettings']= 'Course category';
+$string['coursecategorycarouselsettings_desc']= 'Course category carousel settings.';
 
 $string['slideinterval'] = 'Slide interval';
 $string['slideintervaldesc'] = 'Set the transition interval between {$a->lower} and {$a->upper} milliseconds.';
@@ -190,7 +197,6 @@ $string['slidecaptiondesc'] = 'Enter the caption text to use for the slide';
 
 // Header.
 $string['headersettings'] = 'Header';
-$string['headerheadingsub'] = 'Header settings';
 $string['headerheadingdesc'] = 'Configure the header settings for the theme here.';
 
 $string['showpageheading'] = 'Display page heading';
@@ -200,8 +206,8 @@ $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 
 // Frontpage header.
-$string['frontpagesettings']= 'Front page';
-$string['frontpagesettings_desc']= 'Front page settings.';
+$string['frontpageheadersettings']= 'Front page';
+$string['frontpageheadersettings_desc']= 'Front page header settings.';
 
 $string['usefrontpageheader'] = 'Use frontpage header for all pages';
 $string['usefrontpageheaderdesc'] = 'Use the front page header on all pages.';
@@ -224,8 +230,8 @@ $string['frontpagebackgroundposition'] = 'Background position';
 $string['frontpagebackgroundpositiondesc'] = 'Set the background position.';
 
 // Course category header.
-$string['coursecategorysettings']= 'Course category';
-$string['coursecategorysettings_desc']= 'Course category settings.';
+$string['coursecategoryheadersettings']= 'Course category';
+$string['coursecategoryheadersettings_desc']= 'Course category header settings.';
 
 $string['coursecategoryheading']= 'Course category: {$a->categoryname}';
 $string['coursecategoryheading_desc']= 'Course category settings.';
@@ -254,7 +260,6 @@ $string['imageright']= 'Right';
 
 // Footer.
 $string['footersettings'] = 'Footer';
-$string['footerheadingsub'] = 'Footer settings';
 $string['footerheadingdesc'] = 'Configure the footer settings for the theme here.';
 
 $string['numfooterblocks'] = 'Maximum number of blocks per row in the footer';
