@@ -204,13 +204,15 @@ function theme_campus_extra_less($theme) {
         if (!empty($theme->settings->$ccsetting)) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                 $cclogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccpaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinHeaderHeight;
                      @courseCategoryMixinLogoHeight;
                      @courseCategoryMixinLogoWidth;
+                     @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
             }
         }
     }

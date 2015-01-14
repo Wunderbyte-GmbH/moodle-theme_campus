@@ -124,9 +124,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .logotitle {
         width: @frontpageLogoWidth;
+        padding-bottom: @frontpagePaddingBottom;
         max-height: inherit;
         position: relative;
-        padding-bottom: @frontpagePaddingBottom;
         float: left;
         height: 0;
         margin: 0;
@@ -490,41 +490,53 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     padding-right: 20px;
     margin: 0 auto;
     .flexlayoutcontainer {
-        display: table;
         width: 100%;
-        table-layout: fixed;
+        height: 100%;
         max-height: inherit;
+        max-width: 1680px;
+        margin: auto;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
     .logotitle {
-        display: table-cell;
         width: @courseCategoryLogoWidthDefault;
+        padding-bottom: @courseCategoryPaddingBottomDefault;
         max-height: inherit;
+        position: relative;
+        float: left;
+        height: 0;
+        margin: 0;
         a {
             max-height: inherit;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
             img {
+                width: 100%;
+                height: 100%;
                 max-height: inherit;
             }
         }
     }
-    .logotitle.left {
-        text-align: left;
-    }
-    .logotitle.right {
-        text-align: right;
-    }
     .backgroundcontainer {
-        display: table-cell;
-        width: @courseCategoryBackgroundWidthDefault;
         max-height: inherit;
-        .backgroundimage {
+        position: relative;
+        width: @courseCategoryBackgroundWidthDefault;
+        padding-bottom: @courseCategoryPaddingBottomDefault;
+        float: left;
+        height: 0;
+        margin: 0;
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
             max-height: inherit;
         }
-    }
-    .backgroundcontainer.left {
-        text-align: right;
-    }
-    .backgroundcontainer.right {
-        text-align: left;
     }
     .sitename {
         position: absolute;
@@ -542,11 +554,25 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+@media (max-width: 540px) {
+    .coursecategoryheader.flexlayout {
+        .sitename {
+            h1 {
+                font-size: 24px;
+                line-height: 24px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
 // Course category header parametric mixins.
 .ccheaderlogo(@courseCategoryKey;
     @courseCategoryMixinHeaderHeight;
     @courseCategoryMixinLogoHeight;
     @courseCategoryMixinLogoWidth;
+    @courseCategoryMixinPaddingBottom;
     @courseCategoryMixinBackgroundWidth) {
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
         height: auto;
@@ -563,9 +589,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         max-height: @courseCategoryMixinHeaderHeight;
         .logotitle {
             width: @courseCategoryMixinLogoWidth;
+            padding-bottom: @courseCategoryMixinPaddingBottom;
         }
         .backgroundcontainer {
             width: @courseCategoryMixinBackgroundWidth;
+            padding-bottom: @courseCategoryMixinPaddingBottom;
         }
     }
 }

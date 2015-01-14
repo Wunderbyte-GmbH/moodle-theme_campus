@@ -40,18 +40,15 @@ $ccflexlayout = ($coursecategorylayout == 'flexlayout');
 if ($ccflexlayout) {
     $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
     $cclogoextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
-    if ($cclogoextrapos == 2) {
-        $ccalignextra = ' right';
-    } else {
-        $ccalignextra = ' left';
-    }
 } else {
-    $ccalignextra = '';
-    $cclogoextrapos = 1;
+    $cclogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
 }
 if ((!$ccflexlayout) && (!$coursecategorylogo)) {
-    $ccalignextra .= ' sitename';
+    $ccextra = ' sitename';
+} else {
+    $ccextra = '';
 }
+
 echo '<div class="coursecategoryheader '.$coursecategorylayout.' category'.$currentcategory.'">';
 if ($ccflexlayout) {
     echo '<div class="flexlayoutcontainer">';
@@ -59,9 +56,13 @@ if ($ccflexlayout) {
 
 global $CFG;
 if ($cclogoextrapos == 1) {
-    echo '<div class="logotitle'.$ccalignextra.'">';
+    echo '<div class="logotitle'.$ccextra.'">';
     if ($coursecategorylogo) {
-        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
+        if ($ccflexlayout) {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'"></a>';
+        } else {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
+        }
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }
@@ -69,17 +70,21 @@ if ($cclogoextrapos == 1) {
 }
 if ($coursecategorybackgroundimage) {
     if ($ccflexlayout) {
-        echo '<div class="backgroundcontainer'.$ccalignextra.'">';
-    }
-    echo '<img src="'.$coursecategorybackgroundimage.'" class="backgroundimage img-responsive">';
-    if ($ccflexlayout) {
+        echo '<div class="backgroundcontainer">';
+        echo '<img src="'.$coursecategorybackgroundimage.'">';
         echo '</div>';
+    } else {
+        echo '<img src="'.$coursecategorybackgroundimage.'" class="backgroundimage img-responsive">';
     }
 }
 if ($cclogoextrapos == 2) {
-    echo '<div class="logotitle'.$ccalignextra.'">';
+    echo '<div class="logotitle">';
     if ($coursecategorylogo) {
-        echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
+        if ($ccflexlayout) {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'"></a>';
+        } else {
+            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
+        }
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }
