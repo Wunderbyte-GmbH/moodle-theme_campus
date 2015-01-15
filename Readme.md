@@ -53,6 +53,7 @@ Version Information
 ===================
 15th January 2015 - Version 2.7.0.17.
   1. Improve course category logo fallback refactor (bug) - task #378.
+  2. Added methods to assist with determining the top level category for a course such that if no course header, then the category header could be used.
 
 14th January 2015 - Version 2.7.0.16.
   1. Implement 'proof of concept' for frontpage and course category flexible headers - task #393.

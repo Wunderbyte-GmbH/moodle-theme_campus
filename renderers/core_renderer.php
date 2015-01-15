@@ -499,6 +499,24 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return $catid;
     }
 
+    public function get_current_top_level_catetgory() {
+        $catid = false;
+
+        if (is_array($this->page->categories)) {
+            $catids = array_keys($this->page->categories);
+            // The last entry in the array is the top level category.
+            $catid = $catids[(count($catids) - 1)];
+        } else if (!empty($$this->page->course->category)) {
+            $catid = $this->page->course->category;
+            // See if the course category is a top level one.
+            if (!array_key_exists($key, theme_campus_get_top_level_categories())) {
+                $catid = false;
+            }
+        }
+
+        return $catid;
+    }
+
     /**
      * Gets HTML for the page heading.
      *

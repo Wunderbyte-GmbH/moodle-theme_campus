@@ -29,7 +29,7 @@
 // TEMPORARY TEST CODE.
 global $CFG, $OUTPUT;
 if (!empty($CFG->campusheader)) {
-    echo '<div style="display: none;">TEST CODE: Campus course header: '.$CFG->campusheader.'</div>';
+    echo '<div style="display: none;">TEST CODE: Campus course header: '.$CFG->campusheader.'<span>Top level category: '.$OUTPUT->get_current_top_level_catetgory().'</span></div>';
 }
 
 require_once(dirname(__FILE__).'/navbar.php');
