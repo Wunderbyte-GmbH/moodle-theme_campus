@@ -55,6 +55,7 @@ Version Information
   1. Improve course category logo fallback refactor (bug) - task #378 comment 16.
   2. Added methods to assist with determining the top level category for a course such that if no course header, then the category header could be used.
   3. Update logic of fallback for task #378 - comment 23.
+  4. Sitename stying - task #393 - comment 39.
 
 14th January 2015 - Version 2.7.0.16.
   1. Implement 'proof of concept' for frontpage and course category flexible headers - task #393.
