@@ -34,10 +34,27 @@ $coursecategorylogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$curre
 $coursecategorybackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
 
 // Fallback to front page logo if no course category logo.
+$frontpagesettings = false;
 if (!$coursecategorylogo) {
     $coursecategorylogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
-    // TODO: Should this happen?  i.e. that if no logo then the background of the front page should be used instead as it matches.
-    //$coursecategorybackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
+
+    if ($coursecategorylogo) {
+        // Use Frontpage settings.
+        $coursecategorybackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
+        $coursecategorylayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
+        $ccflexlayout = ($coursecategorylayout == 'flexlayout');
+        if ($ccflexlayout) {
+            $cclogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
+        } else {
+            $cclogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
+        }
+        if ((!$ccflexlayout) && (!$coursecategorylogo)) {
+            $ccextra = ' sitename';
+        } else {
+            $ccextra = '';
+        }
+        $frontpagesettings = true;
+    }
 }
 // Fallback to theme logo if no frontpage logo.
 if (!$coursecategorylogo) {
@@ -45,22 +62,26 @@ if (!$coursecategorylogo) {
     if ($logodetails = theme_campus_get_theme_logo()) {
         $coursecategorylogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $coursecategorylogo can still be false if 'pix_url' fails for some unknown reason.
     }
+    // There is no theme background.
+    $coursecategorybackgroundimage = false;
 }
 
-// Layout.
-$coursecategorylayout = 'coursecategorylayout'.$currentcategory;
-$coursecategorylayout = (!empty($PAGE->theme->settings->$coursecategorylayout)) ? $PAGE->theme->settings->$coursecategorylayout : 'absolutelayout';
-$ccflexlayout = ($coursecategorylayout == 'flexlayout');
-if ($ccflexlayout) {
-    $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
-    $cclogoextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
-} else {
-    $cclogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
-}
-if ((!$ccflexlayout) && (!$coursecategorylogo)) {
-    $ccextra = ' sitename';
-} else {
-    $ccextra = '';
+// Layout only if not using front page fallback.
+if (!$frontpagesettings) {
+    $coursecategorylayout = 'coursecategorylayout'.$currentcategory;
+    $coursecategorylayout = (!empty($PAGE->theme->settings->$coursecategorylayout)) ? $PAGE->theme->settings->$coursecategorylayout : 'absolutelayout';
+    $ccflexlayout = ($coursecategorylayout == 'flexlayout');
+    if ($ccflexlayout) {
+        $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
+        $cclogoextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
+    } else {
+        $cclogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
+    }
+    if ((!$ccflexlayout) && (!$coursecategorylogo)) {
+        $ccextra = ' sitename';
+    } else {
+        $ccextra = '';
+    }
 }
 
 echo '<div class="coursecategoryheader '.$coursecategorylayout.' category'.$currentcategory.'">';

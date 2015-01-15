@@ -163,44 +163,7 @@ function theme_campus_extra_less($theme) {
     $content = '';
 
     foreach($campuscategorytree as $key => $value){
-        $ccsetting = 'coursecategorybgcolour'.$key;
-        if (!empty($theme->settings->$ccsetting)) {
-            /* .ccheaderbackgroundcolour(@courseCategoryKey;
-                 @courseCategoryMixinBackgroundColour) */
-            $content .= '.ccheaderbackgroundcolour('.$key.'; '.$theme->settings->$ccsetting.');';
-        }
-
-        $ccsetting = 'coursecategorylogoposition'.$key;
-        if (!empty($theme->settings->$ccsetting)) {
-            switch ($theme->settings->$ccsetting) {
-            /* .ccheaderlogoposition(@courseCategoryKey;
-                  @courseCategoryMixinLogoPositionLeft;
-                  @courseCategoryMixinLogoPositionRight;
-                  @courseCategoryMixinSitenamePositionLeft;
-                  @courseCategoryMixinSitenamePositionRight) */
-                case 1:
-                    $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 50px);';
-                break;
-                case 2:
-                    $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 50px; auto);';
-                break;
-            }
-        }
-
-        $ccsetting = 'coursecategorybackgroundposition'.$key;
-        if (!empty($theme->settings->$ccsetting)) {
-            switch ($theme->settings->$ccsetting) {
-            /* .ccheaderbackgroundposition(@courseCategoryKey;
-                 @courseCategoryMixinBackgroundPosition) */
-                case 1:
-                    $content .= '.ccheaderbackgroundposition('.$key.'; left);';
-                break;
-                case 2:
-                    $content .= '.ccheaderbackgroundposition('.$key.'; right);';
-                break;
-            }
-        }
-
+        $frontpagelogoused = false;
         $ccsetting = 'coursecategorylogo'.$key;
         if (!empty($theme->settings->$ccsetting)) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
@@ -227,6 +190,37 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+
+                // Using front page, so use those settings.
+                if (!empty($theme->settings->frontpagelogoposition)) {
+                    switch ($theme->settings->frontpagelogoposition) {
+                    /* .ccheaderlogoposition(@courseCategoryKey;
+                          @courseCategoryMixinLogoPositionLeft;
+                          @courseCategoryMixinLogoPositionRight;
+                          @courseCategoryMixinSitenamePositionLeft;
+                          @courseCategoryMixinSitenamePositionRight) */
+                        case 1:
+                            $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 50px);';
+                        break;
+                        case 2:
+                            $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 50px; auto);';
+                        break;
+                    }
+                }
+
+                if (!empty($theme->settings->frontpagebackgroundposition)) {
+                    switch ($theme->settings->frontpagebackgroundposition) {
+                    /* .ccheaderbackgroundposition(@courseCategoryKey;
+                          @courseCategoryMixinBackgroundPosition) */
+                        case 1:
+                            $content .= '.ccheaderbackgroundposition('.$key.'; left);';
+                        break;
+                        case 2:
+                            $content .= '.ccheaderbackgroundposition('.$key.'; right);';
+                        break;
+                    }
+                }
+                $frontpagelogoused = true;
             }
         } else if ($logodetails = theme_campus_get_theme_logo()) {
             if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
@@ -241,6 +235,46 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions[1].'px; '.$dimensions[1].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+            }
+        }
+
+        if ($frontpagelogoused == false) {
+            $ccsetting = 'coursecategorybgcolour'.$key;
+            if (!empty($theme->settings->$ccsetting)) {
+                /* .ccheaderbackgroundcolour(@courseCategoryKey;
+                     @courseCategoryMixinBackgroundColour) */
+                $content .= '.ccheaderbackgroundcolour('.$key.'; '.$theme->settings->$ccsetting.');';
+            }
+
+            $ccsetting = 'coursecategorylogoposition'.$key;
+            if (!empty($theme->settings->$ccsetting)) {
+                switch ($theme->settings->$ccsetting) {
+                /* .ccheaderlogoposition(@courseCategoryKey;
+                      @courseCategoryMixinLogoPositionLeft;
+                      @courseCategoryMixinLogoPositionRight;
+                      @courseCategoryMixinSitenamePositionLeft;
+                      @courseCategoryMixinSitenamePositionRight) */
+                    case 1:
+                        $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 50px);';
+                    break;
+                    case 2:
+                        $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 50px; auto);';
+                    break;
+                }
+            }
+
+            $ccsetting = 'coursecategorybackgroundposition'.$key;
+            if (!empty($theme->settings->$ccsetting)) {
+                switch ($theme->settings->$ccsetting) {
+                /* .ccheaderbackgroundposition(@courseCategoryKey;
+                     @courseCategoryMixinBackgroundPosition) */
+                    case 1:
+                        $content .= '.ccheaderbackgroundposition('.$key.'; left);';
+                    break;
+                    case 2:
+                        $content .= '.ccheaderbackgroundposition('.$key.'; right);';
+                    break;
+                }
             }
         }
     }
