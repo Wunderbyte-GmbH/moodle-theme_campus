@@ -42,7 +42,9 @@ if (!$coursecategorylogo) {
 // Fallback to theme logo if no frontpage logo.
 if (!$coursecategorylogo) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
-    $coursecategorylogo = $OUTPUT->pix_url('logo', 'theme');  // $coursecategorylogo can still be false if there is no image called 'logo' in the 'pix' folder of the theme.
+    if ($logodetails = theme_campus_get_theme_logo()) {
+        $coursecategorylogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $coursecategorylogo can still be false if 'pix_url' fails for some unknown reason.
+    }
 }
 
 // Layout.

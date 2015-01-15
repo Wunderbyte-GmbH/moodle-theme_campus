@@ -228,27 +228,8 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinBackgroundWidth) */
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
             }
-        } else if (!empty($OUTPUT->pix_url('logo', 'theme'))) {
-            if (!empty($CFG->themedir)) {
-                $thelogofile = $CFG->themedir . '/campus/pix/logo';
-            } else {
-                $thelogofile = $CFG->dirroot . '/theme/campus/pix/logo';
-            }
-            // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting.
-            if (file_exists("$thelogofile.png")) {
-                $logofile = "$thelogofile.png";
-            } else if (file_exists("$thelogofile.gif")) {
-                $logofile = "$thelogofile.gif";
-            } else if (file_exists("$thelogofile.jpg")) {
-                $logofile = "$thelogofile.jpg";
-            } else if (file_exists("$thelogofile.jpeg")) {
-                $logofile = "$thelogofile.jpeg";
-            } else if (file_exists("$thelogofile.ico")) {
-                $logofile = "$thelogofile.ico";
-            } else {
-                $logofile = false; // Can only happen if 'svg' file as 'pix_url' would return.  But 'getimagesize()' does not support svg files.
-            }
-            if (($logofile) && ($dimensions = getimagesize($logofile))) {
+        } else if ($logodetails = theme_campus_get_theme_logo()) {
+            if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
                 // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                 $cclogowidth = ($dimensions[0] / 1680) * 100; // Currently 1680 is the max px of #page.
                 $ccpaddingbottom = ($dimensions[1] / 1680) * 100; // Currently 1680 is the max px of #page.
@@ -267,6 +248,38 @@ function theme_campus_extra_less($theme) {
     return $content;
 }
 
+/**
+ * Gets the details of the logo for the theme in the 'pix' folder.
+ *
+ * @return boolean|array false if not found|array with 'name' of image and 'fullname' with complete path and name.
+ */
+function theme_campus_get_theme_logo() {
+    global $CFG;
+
+    $logodetails = array();
+    $logodetails['name'] = 'logo';
+    if (!empty($CFG->themedir)) {
+        $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
+    } else {
+        $thelogofile = $CFG->dirroot . '/theme/campus/pix/'.$logodetails['name'];
+    }
+    // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
+    if (file_exists("$thelogofile.png")) {
+        $logodetails['fullname'] = "$thelogofile.png";
+    } else if (file_exists("$thelogofile.gif")) {
+        $logodetails['fullname'] = "$thelogofile.gif";
+    } else if (file_exists("$thelogofile.jpg")) {
+        $logodetails['fullname'] = "$thelogofile.jpg";
+    } else if (file_exists("$thelogofile.jpeg")) {
+        $logodetails['fullname'] = "$thelogofile.jpeg";
+    } else if (file_exists("$thelogofile.ico")) {
+        $logodetails['fullname'] = "$thelogofile.ico";
+    } else {
+        $logodetails = false; // 'getimagesize()' does not support svg files.
+    }
+
+    return $logodetails;
+}
 
 /**
  * Serves any files associated with the theme settings.

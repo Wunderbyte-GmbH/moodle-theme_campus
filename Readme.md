@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+15th January 2015 - Version 2.7.0.17.
+  1. Improve course category logo fallback refactor (bug) - task #378.
+
 14th January 2015 - Version 2.7.0.16.
   1. Implement 'proof of concept' for frontpage and course category flexible headers - task #393.
   2. Implement course category logo fallback - task #378 comment 6 - from online meeting of 13th January 2015.
