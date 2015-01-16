@@ -518,7 +518,5 @@ function theme_campus_get_html_for_settings(renderer_base $output, moodle_page $
 function theme_campus_page_init(moodle_page $page) {
     $page->requires->jquery();
     $page->requires->jquery_plugin('antigravity', 'theme_campus');
-    if (($page->pagelayout == 'frontpage') || ($page->pagelayout == 'coursecategory')) {
-        $page->requires->jquery_plugin('bootstrap', 'theme_campus');
-    }
+    $page->requires->jquery_plugin('bootstrap', 'theme_campus');  // Used for dropdown menu and carousel.
 }

@@ -277,18 +277,24 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             return false;
         }
 
+        if (!isloggedin()) {
+            return $this->login_info();
+        }
+
         global $USER, $CFG, $DB, $SESSION;
         $loginurl = get_login_url();
 
         $usermenu = html_writer::start_tag('ul', array('class' => 'nav'));
         $usermenu .= html_writer::start_tag('li', array('class' => 'dropdown'));
 
+        /*
         if (!isloggedin()) {
             if ($this->page->pagelayout != 'login') {
                 $userpic = '<em><i class="fa fa-sign-in"></i>' . get_string('login') . '</em>';
                 $usermenu .= html_writer::link($loginurl, $userpic, array('class' => 'loginurl'));
             }
-        } else if (isguestuser()) {
+        } else */
+        if (isguestuser()) {
             $userurl = new moodle_url('#');
             $userpic = parent::user_picture($USER, array('link' => false));
             $caret = '<i class="fa fa-caret-right"></i>';
@@ -415,12 +421,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $branchurl = new moodle_url('/badges/mybadges.php');
                 $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
             }
-            $usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
+            //$usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
 
             // Render direct logout link
+            /*
             $branchlabel = '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>';
             $branchurl = new moodle_url('/login/logout.php?sesskey=' . sesskey());
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+            */
 
             // Render Help Link
             //$usermenu .= $this->theme_essential_render_helplink();
@@ -512,7 +520,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             } else {
                 $loggedinas = '<span class="loggedintext">'. $realuserinfo.get_string('loggedinas', 'moodle', $username).'</span>';
                 if ($withlinks) {
-                    $loggedinas .= html_writer::tag('div', $this->user_picture($USER, array('size'=>174)), array('class'=>'userimg2'))." <span class=\"loggedinlogout btn\"> <a href=\"$CFG->wwwroot/login/logout.php?sesskey=".sesskey()."\">".get_string('logout').'</a></span>';
+                    //$loggedinas .= html_writer::tag('div', $this->user_picture($USER, array('size'=>174)), array('class'=>'userimg2'))." <span class=\"loggedinlogout btn\"> <a href=\"$CFG->wwwroot/login/logout.php?sesskey=".sesskey()."\">".get_string('logout').'</a></span>';
+                    $loggedinas .= html_writer::tag('div', html_writer::link(new moodle_url('/login/logout.php?sesskey=' . sesskey()), '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>'));
                 }
             }
         } else {
@@ -716,8 +725,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         if (is_array($this->page->categories)) {
             $catids = array_keys($this->page->categories);
-            // The last entry in the array is the top level category.
-            $catid = $catids[(count($catids) - 1)];
+            if (!empty($catids)) {
+                // The last entry in the array is the top level category.
+                $catid = $catids[(count($catids) - 1)];
+            }
         } else if (!empty($$this->page->course->category)) {
             $catid = $this->page->course->category;
             // See if the course category is a top level one.
