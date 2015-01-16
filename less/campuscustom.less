@@ -728,6 +728,44 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,.3) 100%); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
 }
 
+// Fancy navbar.
+.frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
+    .backgroundcontainer {
+        margin-bottom: 20px;
+        .navbar {
+            z-index: 2;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            .navbar-inner {
+                border-width: 0;
+                #gradient > .vertical(rgba(red(@navbarBackgroundHighlight), green(@navbarBackgroundHighlight), blue(@navbarBackgroundHighlight), 0.75), rgba(red(@navbarBackground), green(@navbarBackground), blue(@navbarBackground), 0.75));
+                .usermenu .dropdown a.dropdown-toggle {
+                    padding: 9px 25px;
+                }
+                .container-fluid {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+           }
+        }
+    }
+}
+
+@media (max-width: @navbarCollapseWidth) {
+    .frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
+        .backgroundcontainer .navbar {
+            bottom: auto;
+        }
+        .sitename {
+            top: auto;
+            bottom: 0px;
+        }
+    }
+}
+
 // Footer.
 #page-footer .logininfo {
     margin-bottom: 5px;

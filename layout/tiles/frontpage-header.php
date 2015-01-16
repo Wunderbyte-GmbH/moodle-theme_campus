@@ -33,8 +33,16 @@ $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundi
 // Layout.
 $frontpagelayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
 $fpflexlayout = ($frontpagelayout == 'flexlayout');
+
+$fpfancynavbar = false;
+
 if ($fpflexlayout) {
     $fplogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
+    $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
+    if ($navbartype == 2) { // 2 is 'Fancy'.
+        $fpfancynavbar = true;
+        $frontpagelayout .= ' fancynavbar';
+    }
 } else {
     $fplogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
 }
@@ -64,13 +72,20 @@ if ($fplogoextrapos == 1) {
     echo '</div>';
 }
 if ($frontpagebackgroundimage) {
+    echo '<div class="backgroundcontainer">';
     if ($fpflexlayout) {
-        echo '<div class="backgroundcontainer">';
         echo '<img src="'.$frontpagebackgroundimage.'">';
-        echo '</div>';
+        if ($fpfancynavbar) {
+            require_once(dirname(__FILE__).'/navbar.php');
+        }
     } else {
         echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
     }
+    $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
+    if (($showpageheading) && ($frontpagelogo)) {
+        echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+    }
+    echo '</div>';
 }
 if ($fplogoextrapos == 2) {
     echo '<div class="logotitle">';
@@ -85,16 +100,14 @@ if ($fplogoextrapos == 2) {
     }
     echo '</div>';
 }
-$showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
-if (($showpageheading) && ($frontpagelogo)) {
-    echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
-}
 if ($fpflexlayout) {
     echo '</div>';
 }
 echo '</div>';
 
-require_once(dirname(__FILE__).'/navbar.php');
+if (!$fpfancynavbar) {
+    require_once(dirname(__FILE__).'/navbar.php');
+}
 
 // Carousel pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.
 if ($PAGE->pagelayout == 'frontpage') {

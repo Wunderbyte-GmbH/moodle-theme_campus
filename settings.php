@@ -359,6 +359,18 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Navbar type.
+    $name = 'theme_campus/navbartype';
+    $title = get_string('navbartype', 'theme_campus');
+    $description = get_string('navbartypedesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('standardnavbar', 'theme_campus'),
+        2 => new lang_string('fancynavbar', 'theme_campus')
+    );
+    // No CSS change, so no need to reset caches.
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Frontpage header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage', get_string('frontpageheadersettings', 'theme_campus'),
             format_text(get_string('frontpageheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
