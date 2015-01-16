@@ -55,6 +55,7 @@ Version Information
   1. Slideshow optimizations - carousel caption - task #398.
   2. Slideshow optimizations - autoplay setting - task #398.
   3. Block header background colour - task #399.
+  4. Custom login menu - task #400.
 
 15th January 2015 - Version 2.7.0.17.
   1. Improve course category logo fallback refactor (bug) - task #378 comment 16.

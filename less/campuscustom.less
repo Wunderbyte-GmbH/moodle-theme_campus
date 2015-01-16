@@ -224,6 +224,55 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         max-width: 20px;
         max-height: 20px;
     }
+
+    .navbar-inner {
+        .usermenu {
+            .dropdown {
+                img.userpicture {
+                    vertical-align: top;
+                    width: auto;
+                    height: auto;
+                    max-width: 20px;
+                    max-height: 20px;
+                    border-radius: 4px;
+                    margin-right: 2px;
+                }
+                a.dropdown-toggle {
+                    padding: 9px 15px;
+                }
+                .dropdown-submenu.preferences {
+                    a.dropdown-toggle {
+                        padding: 3px 25px 3px 15px;
+                    }
+                }
+                ul.dropdown-menu {
+                    margin: 0px;
+                    i {
+                        margin-right: 5px;
+                        width: 15px;
+                    }
+                    hr.sep {
+                        margin: 0px;
+                        height: 0px;
+                        border: none;
+                    }
+                }
+            }
+        }
+        .usermenu {
+            .dropdown {
+                img.userpicture {
+                    border: 1px solid @navbarBackground;
+                }
+                ul.dropdown-menu {
+                    border: 1px solid @bodyBackgroundAlt;
+                    hr.sep {
+                        border-bottom: 1px dotted @bodyBackgroundAlt;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: @navbarCollapseWidth) {

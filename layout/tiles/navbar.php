@@ -44,7 +44,7 @@ $logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true 
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                     <?php if ($logininfoheader) { ?>
-                    <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
+                    <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
                     <?php } ?>
                 </ul>
             </div>

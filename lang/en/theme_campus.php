@@ -64,6 +64,13 @@ $string['published'] = 'Published';
 // Navbar.
 $string['gotobottom'] = 'Go to the bottom of the page';
 
+// Login custom menu.
+$string['mygrades'] = 'My grades';
+$string['coursegrades'] = 'Course grades';
+$string['blogpreferences'] = 'Blog preferences';
+$string['badgepreferences'] = 'Badge preferences';
+$string['messagepreferences'] = 'Message preferences';
+
 // Anti-gravity.
 $string['antigravity'] = 'Back to top';
 
