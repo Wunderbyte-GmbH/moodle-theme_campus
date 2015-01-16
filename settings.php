@@ -184,6 +184,16 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Block heading background colour setting.
+    $name = 'theme_campus/blockheadingbackgroundcolour';
+    $title = get_string('blockheadingbackgroundcolour', 'theme_campus');
+    $description = get_string('blockheadingbackgroundcolourdesc', 'theme_campus');
+    $default = '#ffd974';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Block background colour setting.
     $name = 'theme_campus/blockbackgroundcolour';
     $title = get_string('blockbackgroundcolour', 'theme_campus');

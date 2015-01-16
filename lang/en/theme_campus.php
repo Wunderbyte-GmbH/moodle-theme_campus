@@ -119,6 +119,9 @@ $string['navbartextcolourdesc'] = 'Set the navigation bar text colour.';
 $string['blockheadingcolour'] = 'Block heading colour';
 $string['blockheadingcolourdesc'] = 'Set the block heading colour.';
 
+$string['blockheadingbackgroundcolour'] = 'Block heading background colour';
+$string['blockheadingbackgroundcolourdesc'] = 'Set the block heading background colour.';
+
 $string['blockbackgroundcolour'] = 'Block background colour';
 $string['blockbackgroundcolourdesc'] = 'Set the block background colour.';
 

@@ -53,6 +53,26 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     margin-left: 5px;
 }
 
+// Blocks.
+.block {
+    padding-top: 0;
+    padding-bottom: 0;
+    .header {
+        background-color: @blockHeadingBackgroundColour;
+        padding-top: 4px; // Hardcoded in bootstrapbase/less/moodle/blocks.less.  Half here because of padding-bottom so looks good.
+        padding-bottom: 4px;
+        border-top-left-radius: @borderRadiusLarge; // Our changes to .block in 'bootstrapchanges.less'.
+        border-top-right-radius: @borderRadiusLarge;
+        .block_action {
+            padding: 2px 15px;
+        }
+    }
+    &.hidden .header {
+        border-bottom-left-radius: @borderRadiusLarge;
+        border-bottom-right-radius: @borderRadiusLarge;
+    }
+}
+
 // Frontpage.
 .frontpageheader.absolutelayout {
     position: relative;

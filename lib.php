@@ -77,6 +77,9 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->blockheadingcolour)) {
         $variables['blockHeadingColor'] = $theme->settings->blockheadingcolour;
     }
+    if (!empty($theme->settings->blockheadingbackgroundcolour)) {
+        $variables['blockHeadingBackgroundColour'] = $theme->settings->blockheadingbackgroundcolour;
+    }
     if (!empty($theme->settings->blockbackgroundcolour)) {
         $variables['wellBackground'] = $theme->settings->blockbackgroundcolour;
     }
