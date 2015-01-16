@@ -57,6 +57,7 @@ Version Information
   3. Block header background colour - task #399.
   4. Custom login menu - task #400.
   5. Fancy navbar in 'flexlayout' ('absolutelayout' (deferred) needs refactoring to make work) - task #400.
+  6. Page heading in navbar maximum - task #400.
 
 15th January 2015 - Version 2.7.0.17.
   1. Improve course category logo fallback refactor (bug) - task #378 comment 16.

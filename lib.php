@@ -100,6 +100,9 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->borderradiuslarge)) {
         $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
     }
+    if (!empty($theme->settings->navbarpageheadingmax)) {
+        $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax.'px';
+    }
     if (!empty($theme->settings->frontpagelogoposition)) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:

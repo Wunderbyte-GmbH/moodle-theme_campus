@@ -753,7 +753,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             if ($this->page->pagelayout == 'frontpage') {
                 return '';
             } else {
-                $pageheading = parent::page_heading('span');
+                //$pageheading = parent::page_heading('span');
+                $pageheading = $this->page->heading; // Removes the containing tag required in the method call, so simpler markup to style, but leaving old code as might need to put back.
             }
             global $CFG;
             return '<a class="brand" href="'.$CFG->wwwroot.'">'.$pageheading.'</a>';

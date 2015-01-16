@@ -371,6 +371,17 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
+    // Slide interval.
+    $name = 'theme_campus/navbarpageheadingmax';
+    $title = get_string('navbarpageheadingmax', 'theme_campus');
+    $default = 200;
+    $lower = 40;
+    $upper = 400;
+    $description = get_string('navbarpageheadingmaxdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
+    $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Frontpage header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage', get_string('frontpageheadersettings', 'theme_campus'),
             format_text(get_string('frontpageheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));

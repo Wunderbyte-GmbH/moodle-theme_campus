@@ -64,9 +64,11 @@ $string['published'] = 'Published';
 // Navbar.
 $string['gotobottom'] = 'Go to the bottom of the page';
 $string['navbartype'] = 'Navbar type';
-$string['navbartypedesc'] = 'Choose between \'Standard\' or \'Fancy\'.  Only applicable when the layout is \'Side\', for \'On top\' the default \'Standard\' will be used.  Note: '\'Fancy\' will only apply when there is a background image in the header.';
+$string['navbartypedesc'] = 'Choose between \'Standard\' or \'Fancy\'.  Only applicable when the layout is \'Side\', for \'On top\' the default \'Standard\' will be used.  Note: \'Fancy\' will only apply when there is a background image in the header.';
 $string['standardnavbar'] = 'Standard';
 $string['fancynavbar'] = 'Fancy';
+$string['navbarpageheadingmax'] = 'Navbar page heading maximum.';
+$string['navbarpageheadingmaxdesc'] = 'Set the navbar page heading maximum between {$a->lower} and {$a->upper} pixels.';
 
 // Login custom menu.
 $string['mygrades'] = 'My grades';

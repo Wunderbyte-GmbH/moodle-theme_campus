@@ -766,6 +766,17 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+// Navbar brand.
+.navbar .brand {
+    // Vertically center the text given @navbarHeight.
+    padding: 0;
+    margin: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: @navbarPageHeadingMax;
+}
+
 // Footer.
 #page-footer .logininfo {
     margin-bottom: 5px;
