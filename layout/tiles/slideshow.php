@@ -28,7 +28,12 @@
 
 // Note: Need $numberofslides and $settingprefix as preloaded variables to determine what the slideshow shows.
 if (!empty($numberofslides)) {
-    $slideinterval  = theme_campus_get_setting('slideinterval');
+    $autoplay = (!empty($PAGE->theme->settings->carouselautoplay)) ? $PAGE->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+    if ($autoplay == 2) {
+        $slideinterval = theme_campus_get_setting('slideinterval');
+    } else {
+        $slideinterval = 0;
+    }
     $captionscenter = (theme_campus_get_setting('slidecaptioncentred'))? ' centred' : '';
     ?>
     <div class="row-fluid">

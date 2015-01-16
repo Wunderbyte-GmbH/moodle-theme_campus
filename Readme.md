@@ -53,6 +53,7 @@ Version Information
 ===================
 16th January 2015 - Version 2.7.0.18.
   1. Slideshow optimizations - carousel caption - task #398.
+  1. Slideshow optimizations - autoplay setting - task #398.
 
 15th January 2015 - Version 2.7.0.17.
   1. Improve course category logo fallback refactor (bug) - task #378 comment 16.

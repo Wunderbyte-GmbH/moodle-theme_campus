@@ -177,6 +177,8 @@ $string['frontpagecarouselsettings_desc']= 'Front page carousel settings.';
 $string['coursecategorycarouselsettings']= 'Course category';
 $string['coursecategorycarouselsettings_desc']= 'Course category carousel settings.';
 
+$string['carouselautoplay'] = 'Autoplay';
+$string['carouselautoplaydesc'] = 'If set then the slides will transition at the slide interval rate.';
 $string['slideinterval'] = 'Slide interval';
 $string['slideintervaldesc'] = 'Set the transition interval between {$a->lower} and {$a->upper} milliseconds.';
 $string['carouseltextcolour'] = 'Slide text colour';

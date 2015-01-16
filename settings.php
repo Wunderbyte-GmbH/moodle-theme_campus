@@ -542,6 +542,18 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
+    // Autoplay.
+    $name = 'theme_campus/carouselautoplay';
+    $title = get_string('carouselautoplay', 'theme_campus');
+    $description = get_string('carouselautoplaydesc', 'theme_campus');
+    $default = 2;
+    $choices = array(
+        1 => new lang_string('no'),   // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    // No CSS change, so no need to reset caches.
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Slide interval.
     $name = 'theme_campus/slideinterval';
     $title = get_string('slideinterval', 'theme_campus');
