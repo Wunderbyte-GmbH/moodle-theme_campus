@@ -33,8 +33,12 @@ $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundi
 // Layout.
 $frontpagelayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
 $fpflexlayout = ($frontpagelayout == 'flexlayout');
-
 $fpfancynavbar = false;
+if ($fpflexlayout) {
+    $fpcontainer = 'flexlayoutcontainer';
+} else {
+    $fpcontainer = 'absolutelayoutcontainer';
+}
 
 if ($fpflexlayout) {
     $fplogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
@@ -53,9 +57,7 @@ if ((!$fpflexlayout) && (!$frontpagelogo)) {
 }
 
 echo '<div class="frontpageheader '.$frontpagelayout.'">';
-if ($fpflexlayout) {
-    echo '<div class="flexlayoutcontainer">';
-}
+echo '<div class="'.$fpcontainer.'">';
 
 global $CFG;
 if ($fplogoextrapos == 1) {
@@ -71,8 +73,8 @@ if ($fplogoextrapos == 1) {
     }
     echo '</div>';
 }
+echo '<div class="backgroundcontainer">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
 if ($frontpagebackgroundimage) {
-    echo '<div class="backgroundcontainer">';
     if ($fpflexlayout) {
         echo '<img src="'.$frontpagebackgroundimage.'">';
         if ($fpfancynavbar) {
@@ -81,12 +83,12 @@ if ($frontpagebackgroundimage) {
     } else {
         echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
     }
-    $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
-    if (($showpageheading) && ($frontpagelogo)) {
-        echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
-    }
-    echo '</div>';
 }
+$showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
+if (($showpageheading) && ($frontpagelogo)) {
+    echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+}
+echo '</div>';
 if ($fplogoextrapos == 2) {
     echo '<div class="logotitle">';
     if ($frontpagelogo) {
@@ -100,10 +102,7 @@ if ($fplogoextrapos == 2) {
     }
     echo '</div>';
 }
-if ($fpflexlayout) {
-    echo '</div>';
-}
-echo '</div>';
+echo '</div></div>';
 
 if (!$fpfancynavbar) {
     require_once(dirname(__FILE__).'/navbar.php');
