@@ -38,7 +38,7 @@ if (!empty($numberofslides)) {
     ?>
     <div class="row-fluid">
         <div class="span12">
-            <div id="campusCarousel" class="carousel slide" data-interval="<?php echo $slideinterval;?>">
+            <div id="campusCarousel" class="carousel slide">
                 <ol class="carousel-indicators">
                     <?php
                     for ($indicatorslideindex = 0; $indicatorslideindex < $numberofslides; $indicatorslideindex++) {
@@ -59,4 +59,11 @@ if (!empty($numberofslides)) {
             </div>
         </div>
     </div>
+    <script>
+    $( document ).ready(function() {
+        $('.carousel').carousel({
+            interval: <?php echo $slideinterval; ?>
+        });
+    });
+    </script>
 <?php } ?>
