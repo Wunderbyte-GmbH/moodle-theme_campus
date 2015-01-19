@@ -32,13 +32,13 @@ $logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true 
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
-            <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target=".nav-collapse">
+            <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target="#campusnav">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <div class="nav-collapse collapse">
+            <div id="campusnav" class="nav-collapse collapse">
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <?php echo $OUTPUT->user_menu(); ?>
                 <ul class="nav pull-right">

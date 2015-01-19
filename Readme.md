@@ -55,6 +55,9 @@ Version Information
   1. Fix drop down menu only working from claret icon.
   2. Fix carousel autostart, known BS 2.3.2 bug - https://github.com/twbs/bootstrap/issues/7508 - so remove if update to BS3.
   3. When logged in as guest only have login button - task #400.
+  4. Fix collapsed navbar not working by reverting back to known working YUI version and only using carousel component instead of
+     complete set of Bootstrap jQuery.  This means a lighter footprint and also implements a different solution for '2' in the
+     file 'jquery/bootstrap-carousel-init_2_3_2.js'.
 
 16th January 2015 - Version 2.7.0.18.
   1. Slideshow optimizations - carousel caption - task #398.

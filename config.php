@@ -55,12 +55,6 @@ $THEME->plugins_exclude_sheets = array(
     )
 );
 
-$THEME->parents_exclude_javascripts = array(
-    'bootstrapbase' => array(
-        'moodlebootstrap'
-    )
-); // Exclude the conflicting YUI JS now that we are using the jQuery based Bootstrap original in theme_campus_page_init() of lib.php.
-
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 $empty = array();
