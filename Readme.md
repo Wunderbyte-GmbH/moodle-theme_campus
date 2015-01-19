@@ -53,6 +53,7 @@ Version Information
 ===================
 19th January 2015 - Version 2.7.0.19.
   1. Fix drop down menu only working from claret icon.
+  2. Fix carousel autostart, known BS 2.3.2 bug - https://github.com/twbs/bootstrap/issues/7508 - so remove if update to BS3.
 
 16th January 2015 - Version 2.7.0.18.
   1. Slideshow optimizations - carousel caption - task #398.

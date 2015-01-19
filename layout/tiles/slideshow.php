@@ -59,4 +59,12 @@ if (!empty($numberofslides)) {
             </div>
         </div>
     </div>
+    <script>
+    // https://github.com/twbs/bootstrap/issues/7508.
+    !function ($) {
+        $(function(){
+            $('#campusCarousel').carousel()
+        })
+    }(window.jQuery)
+    </script>
 <?php } ?>
