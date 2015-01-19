@@ -272,12 +272,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     public function custom_menu_user()
     {
-        // die if executed during install
+        // Die if executed during install.
         if (during_initial_install()) {
             return false;
         }
 
-        if (!isloggedin()) {
+        if ((!isloggedin()) || (isguestuser())) {
             return $this->login_info();
         }
 
@@ -287,154 +287,90 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $usermenu = html_writer::start_tag('ul', array('class' => 'nav'));
         $usermenu .= html_writer::start_tag('li', array('class' => 'dropdown'));
 
-        /*
-        if (!isloggedin()) {
-            if ($this->page->pagelayout != 'login') {
-                $userpic = '<em><i class="fa fa-sign-in"></i>' . get_string('login') . '</em>';
-                $usermenu .= html_writer::link($loginurl, $userpic, array('class' => 'loginurl'));
-            }
-        } else */
-        if (isguestuser()) {
-            $userurl = new moodle_url('#');
-            $userpic = parent::user_picture($USER, array('link' => false));
-            $caret = '<i class="fa fa-caret-right"></i>';
-            $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');
-            $usermenu .= html_writer::link($userurl, $userpic . get_string('guest') . $caret, $userclass);
+        $course = $this->page->course;
+        $context = context_course::instance($course->id);
 
-            // Render direct logout link
-            $usermenu .= html_writer::start_tag('ul', array('class' => 'dropdown-menu pull-right'));
-            $branchlabel = '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>';
-            $branchurl = new moodle_url('/login/logout.php?sesskey=' . sesskey());
+        // Output Profile link
+        $userurl = new moodle_url('#');
+        $userpic = parent::user_picture($USER, array('link' => false));
+        $caret = '<i class="fa fa-caret-right"></i>';
+        $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');
+
+        $usermenu .= html_writer::link($userurl, $userpic . $USER->firstname . $caret, $userclass);
+
+        // Start dropdown menu items
+        $usermenu .= html_writer::start_tag('ul', array('class' => 'dropdown-menu pull-right'));
+        $usermenu .= html_writer::tag('li', $this->login_info());
+
+        // Add preferences submenu
+        $usermenu .= $this->theme_campus_render_preferences($context);
+
+        $usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
+
+        // Output Calendar link if user is allowed to edit own calendar entries
+        if (has_capability('moodle/calendar:manageownentries', $context)) {
+            $branchlabel = '<em><i class="fa fa-calendar"></i>' . get_string('pluginname', 'block_calendar_month') . '</em>';
+            $branchurl = new moodle_url('/calendar/view.php');
+            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+        }
+
+        // Check if messaging is enabled.
+        if (!empty($CFG->messaging)) {
+            $branchlabel = '<em><i class="fa fa-envelope"></i>' . get_string('pluginname', 'block_messages') . '</em>';
+            $branchurl = new moodle_url('/message/index.php');
+            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+        }
+
+        // Check if user is allowed to manage files
+        if (has_capability('moodle/user:manageownfiles', $context)) {
+            $branchlabel = '<em><i class="fa fa-file"></i>' . get_string('privatefiles', 'block_private_files') . '</em>';
+            $branchurl = new moodle_url('/user/files.php');
+            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+        }
+
+        // Check if user is allowed to view discussions
+        if (has_capability('mod/forum:viewdiscussion', $context)) {
+            $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('forumposts', 'mod_forum') . '</em>';
+            $branchurl = new moodle_url('/mod/forum/user.php', array('id' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
-            // Render Help Link
-            //$usermenu .= $this->theme_essential_render_helplink();
-
-            $usermenu .= html_writer::end_tag('ul');
-
-        } else {
-            $course = $this->page->course;
-            $context = context_course::instance($course->id);
-
-            // Output Profile link
-            $userurl = new moodle_url('#');
-            $userpic = parent::user_picture($USER, array('link' => false));
-            $caret = '<i class="fa fa-caret-right"></i>';
-            $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');
-
-            $usermenu .= html_writer::link($userurl, $userpic . $USER->firstname . $caret, $userclass);
-
-            // Start dropdown menu items
-            $usermenu .= html_writer::start_tag('ul', array('class' => 'dropdown-menu pull-right'));
-
-            /*
-            if (\core\session\manager::is_loggedinas()) {
-                $realuser = \core\session\manager::get_realuser();
-                $branchlabel = '<em><i class="fa fa-key"></i>' . fullname($realuser, true) . get_string('loggedinas', 'theme_essential') . fullname($USER, true) . '</em>';
-                $branchurl = new moodle_url('/user/profile.php', array('id' => $USER->id));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            } else {
-                $branchlabel = '<em><i class="fa fa-user"></i>' . fullname($USER, true) . '</em>';
-                $branchurl = new moodle_url('/user/profile.php', array('id' => $USER->id));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-
-            if (is_mnet_remote_user($USER) && $idprovider = $DB->get_record('mnet_host', array('id' => $USER->mnethostid))) {
-                $branchlabel = '<em><i class="fa fa-users"></i>' . get_string('loggedinfrom', 'theme_essential') . $idprovider->name . '</em>';
-                $branchurl = new moodle_url($idprovider->wwwroot);
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-
-            if (is_role_switched($course->id)) { // Has switched roles
-                $branchlabel = '<em><i class="fa fa-users"></i>' . get_string('switchrolereturn') . '</em>';
-                $branchurl = new moodle_url('/course/switchrole.php', array('id' => $course->id, 'sesskey' => sesskey(), 'switchrole' => 0, 'returnurl' => $this->page->url->out_as_local_url(false)));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-            */
-
-            $usermenu .= html_writer::tag('li', $this->login_info());
-
-            // Add preferences submenu
-            $usermenu .= $this->theme_campus_render_preferences($context);
+            $branchlabel = '<em><i class="fa fa-list"></i>' . get_string('discussions', 'mod_forum') . '</em>';
+            $branchurl = new moodle_url('/mod/forum/user.php', array('id' => $USER->id, 'mode' => 'discussions'));
+            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
             $usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
-
-            // Output Calendar link if user is allowed to edit own calendar entries
-            if (has_capability('moodle/calendar:manageownentries', $context)) {
-                $branchlabel = '<em><i class="fa fa-calendar"></i>' . get_string('pluginname', 'block_calendar_month') . '</em>';
-                $branchurl = new moodle_url('/calendar/view.php');
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-
-            // Check if messaging is enabled.
-            if (!empty($CFG->messaging)) {
-                $branchlabel = '<em><i class="fa fa-envelope"></i>' . get_string('pluginname', 'block_messages') . '</em>';
-                $branchurl = new moodle_url('/message/index.php');
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-
-            // Check if user is allowed to manage files
-            if (has_capability('moodle/user:manageownfiles', $context)) {
-                $branchlabel = '<em><i class="fa fa-file"></i>' . get_string('privatefiles', 'block_private_files') . '</em>';
-                $branchurl = new moodle_url('/user/files.php');
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-
-            // Check if user is allowed to view discussions
-            if (has_capability('mod/forum:viewdiscussion', $context)) {
-                $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('forumposts', 'mod_forum') . '</em>';
-                $branchurl = new moodle_url('/mod/forum/user.php', array('id' => $USER->id));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-
-                $branchlabel = '<em><i class="fa fa-list"></i>' . get_string('discussions', 'mod_forum') . '</em>';
-                $branchurl = new moodle_url('/mod/forum/user.php', array('id' => $USER->id, 'mode' => 'discussions'));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-
-                $usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
-            }
-
-            // Output user grade links course sensitive, workaround for frontpage, selecting first enrolled course
-            if ($course->id == 1) {
-                $hascourses = enrol_get_my_courses(NULL, 'visible DESC,id ASC', 1);
-                foreach ($hascourses as $hascourse) {
-                    $reportcontext = context_course::instance($hascourse->id);
-                    if (has_capability('gradereport/user:view', $reportcontext) && $hascourse->visible) {
-                        $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
-                        $branchurl = new moodle_url('/grade/report/overview/index.php' , array('id' => $hascourse->id, 'userid' => $USER->id));
-                        $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-                    }
-                }
-            } else if (has_capability('gradereport/user:view', $context)) {
-                $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
-                $branchurl = new moodle_url('/grade/report/overview/index.php' , array('id' => $course->id, 'userid' => $USER->id));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-
-                // In Course also output Course grade links
-                $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('coursegrades', 'theme_campus') . '</em>';
-                $branchurl = new moodle_url('/grade/report/user/index.php' , array('id' => $course->id, 'userid' => $USER->id));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-
-            // Check if badges are enabled.
-            if (!empty($CFG->enablebadges) && has_capability('moodle/badges:manageownbadges', $context)) {
-                $branchlabel = '<em><i class="fa fa-certificate"></i>' . get_string('badges') . '</em>';
-                $branchurl = new moodle_url('/badges/mybadges.php');
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            }
-            //$usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
-
-            // Render direct logout link
-            /*
-            $branchlabel = '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>';
-            $branchurl = new moodle_url('/login/logout.php?sesskey=' . sesskey());
-            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-            */
-
-            // Render Help Link
-            //$usermenu .= $this->theme_essential_render_helplink();
-
-            $usermenu .= html_writer::end_tag('ul');
         }
+
+        // Output user grade links course sensitive, workaround for frontpage, selecting first enrolled course
+        if ($course->id == 1) {
+            $hascourses = enrol_get_my_courses(NULL, 'visible DESC,id ASC', 1);
+            foreach ($hascourses as $hascourse) {
+                $reportcontext = context_course::instance($hascourse->id);
+                if (has_capability('gradereport/user:view', $reportcontext) && $hascourse->visible) {
+                    $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
+                    $branchurl = new moodle_url('/grade/report/overview/index.php' , array('id' => $hascourse->id, 'userid' => $USER->id));
+                    $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+                }
+            }
+        } else if (has_capability('gradereport/user:view', $context)) {
+            $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
+            $branchurl = new moodle_url('/grade/report/overview/index.php' , array('id' => $course->id, 'userid' => $USER->id));
+            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+
+            // In Course also output Course grade links
+            $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('coursegrades', 'theme_campus') . '</em>';
+            $branchurl = new moodle_url('/grade/report/user/index.php' , array('id' => $course->id, 'userid' => $USER->id));
+            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+        }
+
+        // Check if badges are enabled.
+        if (!empty($CFG->enablebadges) && has_capability('moodle/badges:manageownbadges', $context)) {
+            $branchlabel = '<em><i class="fa fa-certificate"></i>' . get_string('badges') . '</em>';
+            $branchurl = new moodle_url('/badges/mybadges.php');
+            $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+        }
+
+        $usermenu .= html_writer::end_tag('ul');
 
         $usermenu .= html_writer::end_tag('li');
         $usermenu .= html_writer::end_tag('ul');
@@ -502,10 +438,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 }
             }
             if (isguestuser()) {
-                $loggedinas = $realuserinfo.get_string('loggedinasguest');
+                //$loggedinas = $realuserinfo.get_string('loggedinasguest');
                 if (!$loginpage && $withlinks) {
-                    $loggedinas .= " <a class=\"standardbutton plainlogin\" href=\"$loginurl\">".get_string('login').'</a> 
-                      <span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
+                    $loggedinas = " <a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>';
+                    //<span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
                 }
             } else if (is_role_switched($course->id)) { // Has switched roles
                 $rolename = '';
