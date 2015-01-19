@@ -127,8 +127,14 @@ function theme_campus_less_variables($theme) {
     }
     if (!empty($theme->settings->frontpagelogo)) {
         if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
-            $fplogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
-            $fppaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
+            if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpagebackgroundimage', 'frontpagebackgroundimage')) {
+                $backgroundwidth = $backgrounddimensions['width'];
+            } else {
+                $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+            }
+            $totalwidth = $dimensions['width'] + $backgroundwidth;
+            $fplogowidth = ($dimensions['width'] / $totalwidth) * 100;
+            $fppaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
@@ -173,8 +179,15 @@ function theme_campus_extra_less($theme) {
         $ccsetting = 'coursecategorylogo'.$key;
         if (!empty($theme->settings->$ccsetting)) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
-                $cclogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
-                $ccpaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $ccsetting = 'coursecategorybackgroundimage'.$key;
+                if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
+                    $backgroundwidth = $backgrounddimensions['width'];
+                } else {
+                    $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                }
+                $totalwidth = $dimensions['width'] + $backgroundwidth;
+                $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
+                $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinHeaderHeight;
@@ -186,8 +199,14 @@ function theme_campus_extra_less($theme) {
             }
         } else if (!empty($theme->settings->frontpagelogo)) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
-                $cclogowidth = ($dimensions['width'] / 1680) * 100; // Currently 1680 is the max px of #page.
-                $ccpaddingbottom = ($dimensions['height'] / 1680) * 100; // Currently 1680 is the max px of #page.
+                if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpagebackgroundimage', 'frontpagebackgroundimage')) {
+                    $backgroundwidth = $backgrounddimensions['width'];
+                } else {
+                    $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                }
+                $totalwidth = $dimensions['width'] + $backgroundwidth;
+                $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
+                $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinHeaderHeight;
@@ -231,8 +250,9 @@ function theme_campus_extra_less($theme) {
         } else if ($logodetails = theme_campus_get_theme_logo()) {
             if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
                 // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
-                $cclogowidth = ($dimensions[0] / 1680) * 100; // Currently 1680 is the max px of #page.
-                $ccpaddingbottom = ($dimensions[1] / 1680) * 100; // Currently 1680 is the max px of #page.
+                $totalwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                $cclogowidth = ($dimensions[0] / $totalwidth) * 100;
+                $ccpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinHeaderHeight;

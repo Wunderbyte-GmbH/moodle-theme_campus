@@ -58,6 +58,7 @@ Version Information
   4. Fix collapsed navbar not working by reverting back to known working YUI version and only using carousel component instead of
      complete set of Bootstrap jQuery.  This means a lighter footprint and also implements the JavaScript initialisatiion for the
      interval - http://getbootstrap.com/2.3.2/javascript.html#carousel - which is a different solution for '2'.
+  5. Improvements to header image layout calculation - task #401.
 
 16th January 2015 - Version 2.7.0.18.
   1. Slideshow optimizations - carousel caption - task #398.
