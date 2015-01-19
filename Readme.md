@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+19th January 2015 - Version 2.7.0.19.
+  1. Fix drop down menu only working from claret icon.
+
 16th January 2015 - Version 2.7.0.18.
   1. Slideshow optimizations - carousel caption - task #398.
   2. Slideshow optimizations - autoplay setting - task #398.
