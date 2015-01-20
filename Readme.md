@@ -51,6 +51,12 @@ Uninstallation
 
 Version Information
 ===================
+20th January 2015 - Version 2.7.0.20.
+  1. Fixed #402 - missing bootstrap-transition.js - obtained from source: https://github.com/twbs/bootstrap/releases/tag/v2.3.2 then
+     minififed with: node ./node_modules/uglify-js\bin\uglifyjs ./jquery/bootstrap-transition_2_3_2.js > ./jquery/bootstrap-transition_2_3_2_min.js
+     after package.json updated to correct version from bootstrap source package.json and 'npm install'.
+     Might need to consider using this sort of thing to produce a 'campus-bootstrap.js' file at the end when all known modules are in.
+
 19th January 2015 - Version 2.7.0.19.
   1. Fix drop down menu only working from claret icon.
   2. Fix carousel autostart, known BS 2.3.2 bug - https://github.com/twbs/bootstrap/issues/7508 - so remove if update to BS3.

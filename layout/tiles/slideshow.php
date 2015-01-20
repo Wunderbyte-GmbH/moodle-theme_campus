@@ -61,7 +61,7 @@ if (!empty($numberofslides)) {
     </div>
     <script>
     $( document ).ready(function() {
-        $('.carousel').carousel({
+        $('#campusCarousel').carousel({
             interval: <?php echo $slideinterval; ?>
         });
     });
