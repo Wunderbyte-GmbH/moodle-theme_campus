@@ -125,8 +125,9 @@ if (is_siteadmin()) {
         1 => new lang_string('no'),   // No.
         2 => new lang_string('yes')   // Yes.
     );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     // No CSS change, so no need to reset caches.
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $settingpage->add($setting);
 
     // Custom CSS file.
     $name = 'theme_campus/customcss';
@@ -403,8 +404,9 @@ if (is_siteadmin()) {
         'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
         'flexlayout' => new lang_string('layoutonside', 'theme_campus')
     );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $settingpage->add($setting);
 
     // Logo file setting.
     $name = 'theme_campus/frontpagelogo';
@@ -423,8 +425,9 @@ if (is_siteadmin()) {
         1 => new lang_string('imageleft', 'theme_campus'),
         2 => new lang_string('imageright', 'theme_campus')
     );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $settingpage->add($setting);
 
     // Background image file setting.
     $name = 'theme_campus/frontpagebackgroundimage';
@@ -458,6 +461,7 @@ if (is_siteadmin()) {
         //$information = get_string('coursecategoryheading_desc', 'theme_campus');
         $information = ''; // TODO: Decide if better without description.
         $setting = new admin_setting_heading($name, $heading, $information);
+        // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 
         // Background colour.
@@ -467,6 +471,7 @@ if (is_siteadmin()) {
         $default = '#11847D';
         $previewconfig = NULL;
         $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+        $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
         // Course category layout setting.
@@ -478,8 +483,9 @@ if (is_siteadmin()) {
             'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
             'flexlayout' => new lang_string('layoutonside', 'theme_campus')
         );
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+        $settingpage->add($setting);
 
         // Logo file setting.
         $name = 'theme_campus/coursecategorylogo'.$key;
@@ -498,8 +504,9 @@ if (is_siteadmin()) {
             1 => new lang_string('imageleft', 'theme_campus'),
             2 => new lang_string('imageright', 'theme_campus')
         );
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+        $settingpage->add($setting);
 
         // Background image file setting.
         $name = 'theme_campus/coursecategorybackgroundimage'.$key;
@@ -518,8 +525,9 @@ if (is_siteadmin()) {
             1 => new lang_string('imageleft', 'theme_campus'),
             2 => new lang_string('imageright', 'theme_campus')
         );
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+        $settingpage->add($setting);
     }
 
     $ADMIN->add('theme_campus', $settingpage);
@@ -572,8 +580,9 @@ if (is_siteadmin()) {
         1 => new lang_string('sliderpositionheader', 'theme_campus'),
         2 => new lang_string('sliderpositionpage', 'theme_campus')
     );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     // No CSS change, so no need to reset caches.
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $settingpage->add($setting);
 
     // Autoplay.
     $name = 'theme_campus/carouselautoplay';
@@ -584,8 +593,9 @@ if (is_siteadmin()) {
         1 => new lang_string('no'),   // No.
         2 => new lang_string('yes')   // Yes.
     );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     // No CSS change, so no need to reset caches.
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $settingpage->add($setting);
 
     // Slide interval.
     $name = 'theme_campus/slideinterval';
@@ -650,7 +660,9 @@ if (is_siteadmin()) {
         1 => new lang_string('draft', 'theme_campus'),
         2 => new lang_string('published', 'theme_campus')
     );
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
 
     // Number of slides.
     $name = 'theme_campus/numberofslidesforfrontpage';
@@ -660,6 +672,7 @@ if (is_siteadmin()) {
     $upper = 4;
     $description = get_string('numberofslidesdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
     $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
     $numberofslides = get_config('theme_campus', 'numberofslidesforfrontpage');
@@ -669,6 +682,7 @@ if (is_siteadmin()) {
         $heading = get_string('slideno', 'theme_campus', array('slide' => $i));
         $information = get_string('slidenodesc', 'theme_campus', array('slide' => $i));
         $setting = new admin_setting_heading($name, $heading, $information);
+        // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 
         // Title.
@@ -710,6 +724,7 @@ if (is_siteadmin()) {
         //$information = get_string('coursecategoryheading_desc', 'theme_campus');
         $information = ''; // TODO: Decide if better without description.
         $setting = new admin_setting_heading($name, $heading, $information);
+        // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 
         // Status.
@@ -721,7 +736,9 @@ if (is_siteadmin()) {
             1 => new lang_string('draft', 'theme_campus'),
             2 => new lang_string('published', 'theme_campus')
         );
-        $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        // No CSS change, so no need to reset caches.
+        $settingpage->add($setting);
 
         // Number of slides.
         $name = 'theme_campus/numberofslidesforcategory'.$key;
@@ -731,6 +748,7 @@ if (is_siteadmin()) {
         $upper = 4;
         $description = get_string('numberofslidesdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
         $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+        // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 
         $numberofslides = get_config('theme_campus', 'numberofslidesforcategory'.$key);
@@ -740,6 +758,7 @@ if (is_siteadmin()) {
             $heading = get_string('slideno', 'theme_campus', array('slide' => $i));
             $information = get_string('slidenodesc', 'theme_campus', array('slide' => $i));
             $setting = new admin_setting_heading($name, $heading, $information);
+            // No CSS change, so no need to reset caches.
             $settingpage->add($setting);
 
             // Title.
