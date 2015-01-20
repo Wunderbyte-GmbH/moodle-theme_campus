@@ -57,6 +57,8 @@ Version Information
      after package.json updated to correct version from bootstrap source package.json and 'npm install'.
      Might need to consider using this sort of thing to produce a 'campus-bootstrap.js' file at the end when all known modules are in.
   2. Improve header - task #401.  Code currently commented out until complete solution established, then remove.
+  3. Improve header - task #401.  Fallbacks to theme background if no frontpage logo for frontpage and the same for the course category if it and
+     the front page have no logo.
 
 19th January 2015 - Version 2.7.0.19.
   1. Fix drop down menu only working from claret icon.

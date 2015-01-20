@@ -30,6 +30,17 @@
 $frontpagelogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
 
+// Fallback to theme logo if no frontpage logo.
+if (!$frontpagelogo) {
+    // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
+    if ($logodetails = theme_campus_get_theme_logo()) {
+        $frontpagelogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $frontpagelogo can still be false if 'pix_url' fails for some unknown reason.
+    }
+    if ($backgrounddetails = theme_campus_get_theme_background()) {
+        $frontpagebackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $frontpagebackgroundimage can still be false if 'pix_url' fails for some unknown reason.
+    }
+}
+
 // Layout.
 $frontpagelayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
 $fpflexlayout = ($frontpagelayout == 'flexlayout');

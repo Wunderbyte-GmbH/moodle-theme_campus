@@ -143,6 +143,26 @@ function theme_campus_less_variables($theme) {
             $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
             $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
        }
+    } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
+        // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+        if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
+            $backgrounddetails = theme_campus_get_theme_background();
+            if (($backgrounddetails['fullname']) && ($backgrounddimensions = getimagesize($backgrounddetails['fullname']))) {
+                $backgroundwidth = $backgrounddimensions[0];
+            } else {
+                $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+            }
+            $totalwidth = $dimensions[0] + $backgroundwidth;
+            $fplogowidth = ($dimensions[0] / $totalwidth) * 100;
+            $fppaddingbottom = ($dimensions[1] / $totalwidth) * 100;
+            $fpbackgroundwidth = 100 - $fplogowidth;
+            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageHeaderHeight'] = $dimensions['height'].'px';
+            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
+            $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
+        }
     }
     if (!empty($theme->settings->carouseltextcolour)) {
         $variables['carouselTextColour'] = $theme->settings->carouseltextcolour;
@@ -250,7 +270,13 @@ function theme_campus_extra_less($theme) {
         } else if ($logodetails = theme_campus_get_theme_logo()) {
             if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
                 // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
-                $totalwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                $backgrounddetails = theme_campus_get_theme_background();
+                if (($backgrounddetails['fullname']) && ($backgrounddimensions = getimagesize($backgrounddetails['fullname']))) {
+                    $backgroundwidth = $backgrounddimensions[0];
+                } else {
+                    $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                }
+                $totalwidth = $dimensions[0] + $backgroundwidth;
                 $cclogowidth = ($dimensions[0] / $totalwidth) * 100;
                 $ccpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
@@ -339,6 +365,39 @@ function theme_campus_get_theme_logo() {
     }
 
     return $logodetails;
+}
+
+/**
+ * Gets the details of the background for the theme in the 'pix' folder.
+ *
+ * @return boolean|array false if not found|array with 'name' of image and 'fullname' with complete path and name.
+ */
+function theme_campus_get_theme_background() {
+    global $CFG;
+
+    $backgrounddetails = array();
+    $backgrounddetails['name'] = 'background';
+    if (!empty($CFG->themedir)) {
+        $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
+    } else {
+        $thebackgroundfile = $CFG->dirroot . '/theme/campus/pix/'.$backgrounddetails['name'];
+    }
+    // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
+    if (file_exists("$thebackgroundfile.png")) {
+        $backgrounddetails['fullname'] = "$thebackgroundfile.png";
+    } else if (file_exists("$thebackgroundfile.gif")) {
+        $backgrounddetails['fullname'] = "$thebackgroundfile.gif";
+    } else if (file_exists("$thebackgroundfile.jpg")) {
+        $backgrounddetails['fullname'] = "$thebackgroundfile.jpg";
+    } else if (file_exists("$thebackgroundfile.jpeg")) {
+        $backgrounddetails['fullname'] = "$thebackgroundfile.jpeg";
+    } else if (file_exists("$thebackgroundfile.ico")) {
+        $backgrounddetails['fullname'] = "$thebackgroundfile.ico";
+    } else {
+        $backgrounddetails = false; // 'getimagesize()' does not support svg files.
+    }
+
+    return $backgrounddetails;
 }
 
 /**

@@ -36,6 +36,7 @@ $coursecategorybackgroundimage = $PAGE->theme->setting_file_url('coursecategoryb
 // Fallback to front page logo if no course category logo.
 $frontpagesettings = false;
 $ccfancynavbar = false;
+$coursecategorylayout = 'absolutelayout';
 if (!$coursecategorylogo) {
     $coursecategorylogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 
@@ -67,14 +68,16 @@ if (!$coursecategorylogo) {
         $frontpagesettings = true;
     }
 }
+
 // Fallback to theme logo if no frontpage logo.
 if (!$coursecategorylogo) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
         $coursecategorylogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $coursecategorylogo can still be false if 'pix_url' fails for some unknown reason.
     }
-    // There is no theme background.
-    $coursecategorybackgroundimage = false;
+    if ($backgrounddetails = theme_campus_get_theme_background()) {
+        $coursecategorybackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $coursecategorybackgroundimage can still be false if 'pix_url' fails for some unknown reason.
+    }
 }
 
 // Layout only if not using front page fallback.
