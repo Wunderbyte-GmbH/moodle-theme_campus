@@ -59,6 +59,7 @@ Version Information
   2. Improve header - task #401.  Code currently commented out until complete solution established, then remove.
   3. Improve header - task #401.  Fallbacks to theme background if no frontpage logo for frontpage and the same for the course category if it and
      the front page have no logo.
+  4. Add fallback images to 'pix' folder for > 960px - task #401.
 
 19th January 2015 - Version 2.7.0.19.
   1. Fix drop down menu only working from claret icon.
