@@ -51,8 +51,14 @@ if ($fpflexlayout) {
     $fpcontainer = 'absolutelayoutcontainer';
 }
 
+$fpbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
+if ($fpbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $fplogoextrapos because its adjusted for absolute layout.
+    $fpbackgroundextra = 'right';
+} else {
+    $fpbackgroundextra = 'left';
+}
 if ($fpflexlayout) {
-    $fplogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
+    $fplogoextrapos = $fpbackgroundextrapos;
     $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
     if ($navbartype == 2) { // 2 is 'Fancy'.
         $fpfancynavbar = true;
@@ -84,7 +90,7 @@ if ($fplogoextrapos == 1) {
     }
     echo '</div>';
 }
-echo '<div class="backgroundcontainer">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
+echo '<div class="backgroundcontainer '.$fpbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
 if ($frontpagebackgroundimage) {
     if ($fpflexlayout) {
         echo '<img src="'.$frontpagebackgroundimage.'">';

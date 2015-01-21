@@ -51,6 +51,10 @@ Uninstallation
 
 Version Information
 ===================
+21th January 2015 - Version 2.7.0.21.
+  1. Adjusted standard navbar to be full width and implemented compact fancy navbar as required by (variant01-smallscreen.jpg and
+     variant01-smallscreen-flipped.jpg) on task #375 - task #405.
+
 20th January 2015 - Version 2.7.0.20.
   1. Fixed #402 - missing bootstrap-transition.js - obtained from source: https://github.com/twbs/bootstrap/releases/tag/v2.3.2 then
      minififed with: node ./node_modules/uglify-js\bin\uglifyjs ./jquery/bootstrap-transition_2_3_2.js > ./jquery/bootstrap-transition_2_3_2_min.js

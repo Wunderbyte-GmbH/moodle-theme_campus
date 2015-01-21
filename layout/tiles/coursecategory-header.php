@@ -36,7 +36,6 @@ $coursecategorybackgroundimage = $PAGE->theme->setting_file_url('coursecategoryb
 // Fallback to front page logo if no course category logo.
 $frontpagesettings = false;
 $ccfancynavbar = false;
-$coursecategorylayout = 'absolutelayout';
 if (!$coursecategorylogo) {
     $coursecategorylogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 
@@ -50,8 +49,9 @@ if (!$coursecategorylogo) {
         } else {
             $cccontainer = 'absolutelayoutcontainer';
         }
+        $ccbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
         if ($ccflexlayout) {
-            $cclogoextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1;
+            $cclogoextrapos = $ccbackgroundextrapos;
             $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
             if ($navbartype == 2) { // 2 is 'Fancy'.
                 $ccfancynavbar = true;
@@ -78,6 +78,10 @@ if (!$coursecategorylogo) {
     if ($backgrounddetails = theme_campus_get_theme_background()) {
         $coursecategorybackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $coursecategorybackgroundimage can still be false if 'pix_url' fails for some unknown reason.
     }
+    // Theme default to logo on left and flex layout.
+    $cclogoextrapos = 1;
+    $ccbackgroundextrapos = 1;
+    $coursecategorylayout = 'flexlayout';
 }
 
 // Layout only if not using front page fallback.
@@ -90,9 +94,10 @@ if (!$frontpagesettings) {
     } else {
         $cccontainer = 'absolutelayoutcontainer';
     }
+    $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
+    $ccbackgroundextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
     if ($ccflexlayout) {
-        $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
-        $cclogoextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
+        $cclogoextrapos = $ccbackgroundextrapos;
         $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
         if ($navbartype == 2) { // 2 is 'Fancy'.
             $ccfancynavbar = true;
@@ -106,6 +111,12 @@ if (!$frontpagesettings) {
     } else {
         $ccextra = '';
     }
+}
+
+if ($ccbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $cclogoextrapos because its adjusted for absolute layout.
+    $ccbackgroundextra = 'right';
+} else {
+    $ccbackgroundextra = 'left';
 }
 
 echo '<div class="coursecategoryheader '.$coursecategorylayout.' category'.$currentcategory.'">';
@@ -125,7 +136,7 @@ if ($cclogoextrapos == 1) {
     }
     echo '</div>';
 }
-echo '<div class="backgroundcontainer">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
+echo '<div class="backgroundcontainer '.$ccbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
     if ($coursecategorybackgroundimage) {
     if ($ccflexlayout) {
         echo '<img src="'.$coursecategorybackgroundimage.'">';

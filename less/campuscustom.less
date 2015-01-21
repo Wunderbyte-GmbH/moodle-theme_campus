@@ -278,25 +278,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
-@media (max-width: @navbarCollapseWidth) {
-    .navbar {
-        display: inline-table;
-        .nav-collapse.collapse {
-            display: none;
-        }
-        .nav-collapse.collapse.active {
-            display: block;
-        }
-    }
-}
-
-@media (max-width: 767px) {
-    .navbar {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-}
-
 // Slideshow.
 #campusCarousel.carousel {
     margin-bottom: 10px;
@@ -759,6 +740,36 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             top: auto;
             bottom: 0px;
         }
+    }
+}
+
+@media (max-width: @navbarCollapseWidth) {
+    .frontpageheader.flexlayout, .coursecategoryheader.flexlayout {
+        &.fancynavbar .backgroundcontainer .navbar {
+            display: inline-table;
+            width: auto;
+            .nav-collapse.collapse {
+                display: none;
+            }
+            .nav-collapse.collapse.active {
+                display: block;
+            }
+        }
+        &.fancynavbar .backgroundcontainer.left .navbar {
+            left: 0;
+            right: auto;
+        }
+        &.fancynavbar .backgroundcontainer.right .navbar {
+            left: auto;
+            right: 0;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 
