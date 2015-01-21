@@ -256,9 +256,6 @@ $string['frontpagebackgroundimagedesc'] = 'Please upload your custom background 
 $string['frontpageresponsivebackgroundimage'] = 'Background image for small devices';
 $string['frontpageresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The total width of the small device logo and background should be 960px.';
 
-$string['frontpagebackgroundposition'] = 'Background position';
-$string['frontpagebackgroundpositiondesc'] = 'Set the background position.';
-
 // Course category header.
 $string['coursecategoryheadersettings']= 'Course category';
 $string['coursecategoryheadersettings_desc']= 'Course category header settings.';

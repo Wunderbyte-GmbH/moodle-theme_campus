@@ -58,6 +58,7 @@ Version Information
   3. Implement front page responsive header images - task #401.
   4. Refactoring for course category responsive header images - task #401.
   5. Implement course category responsive header images - task #401.
+  6. Adjust absolute layout - task #407 - work in progress.
 
 20th January 2015 - Version 2.7.0.20.
   1. Fixed #402 - missing bootstrap-transition.js - obtained from source: https://github.com/twbs/bootstrap/releases/tag/v2.3.2 then

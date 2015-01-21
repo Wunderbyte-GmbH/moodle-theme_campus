@@ -76,26 +76,58 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Frontpage.
 .frontpageheader.absolutelayout {
     position: relative;
-    height: @frontpageHeaderHeightDefault;
-    max-height: @frontpageHeaderHeight;
     max-width: 1680px;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
+    .flexlayoutcontainer {
+        width: 100%;
+        height: 100%;
+        max-height: inherit;
+        max-width: 1680px;
+        margin: auto;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
     .logotitle {
-        position: absolute;
-        top: 0px;
-        left: @frontpageLogoPositionLeft;
-        right: @frontpageLogoPositionRight;
-        z-index: 1;
-        max-height: @frontpageLogoHeight;
+        width: @frontpageLogoWidth;
+        padding-bottom: @frontpagePaddingBottom;
+        max-height: inherit;
+        position: relative;
+        float: @frontpageLogoPosition;  // Change from flexlayout.
+        height: 0;
+        margin-top: -@frontpagePaddingBottom;  // Change from flexlayout.
+        a {
+            max-height: inherit;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            img {
+                width: 100%;
+                height: 100%;
+                max-height: inherit;
+            }
+        }
     }
-    .logotitle.sitename {
-        right: @frontpageSitenamePositionLeft;
-        left: @frontpageSitenamePositionRight;
-    }
-    .logoheight {
-        max-height: @frontpageLogoHeight;
+    .backgroundcontainer {
+        max-height: inherit;
+        position: relative;
+        width: 100%;  // Change from flexlayout.
+        padding-bottom: @frontpagePaddingBottom;
+        float: left;
+        height: 0;
+        margin: 0;
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            max-height: inherit;
+        }
     }
     .sitename {
         position: absolute;
@@ -104,30 +136,29 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         right: @frontpageSitenamePositionRight;
         z-index: 1;
     }
-    .backgroundimage {
-        max-height: inherit;
-        float: @frontpageBackgroundPosition;
-    }
 }
-@media (max-width: @navbarCollapseWidth) {
-    .frontpageheader.absolutelayout {
-        .logoheight {
-            max-height: auto;
-        }
-    }
-}
-
 @media (max-width: 767px) {
     .frontpageheader.absolutelayout {
         padding-left: 0px;
         padding-right: 0px;
     }
 }
+@media (max-width: 540px) {
+    .frontpageheader.absolutelayout {
+        .sitename {
+            h1 {
+                font-size: 24px;
+                line-height: 24px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
 
 .frontpageheader.flexlayout {
     position: relative;
     height: @frontpageHeaderHeightDefault;
-    //max-height: @frontpageHeaderHeight;
     max-width: 1680px;
     padding-left: 20px;
     padding-right: 20px;
@@ -211,7 +242,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 .fpresponsiveheaderlogo(@frontpageMixinHeaderHeight;
-    @frontpageMixinLogoHeight;
+    @frontpageMixinLogoHeight;  // REMOVE if #407 ok.
     @frontpageMixinLogoWidth;
     @frontpageMixinPaddingBottom;
     @frontpageMixinBackgroundWidth) {
@@ -237,9 +268,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     @media (max-width: @navbarCollapseWidth) {
         .frontpageheader.absolutelayout {
             height: auto;
-            max-height: @frontpageMixinHeaderHeight;
             .logotitle {
-                max-height: @frontpageMixinLogoHeight;
+                width: @frontpageMixinLogoWidth;
+                padding-bottom: @frontpageMixinPaddingBottom;
+                margin-top: -@frontpageMixinPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -247,10 +279,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     display: block;
                 }
             }
-            .logoheight {
-                max-height: @frontpageMixinLogoHeight;
-            }
             .backgroundcontainer {
+                padding-bottom: @frontpageMixinPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }

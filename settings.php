@@ -453,18 +453,6 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Background position setting.
-    $name = 'theme_campus/frontpagebackgroundposition';
-    $title = get_string('frontpagebackgroundposition', 'theme_campus');
-    $description = get_string('frontpagebackgroundpositiondesc', 'theme_campus');
-    $default = 1;
-    $choices = array(
-        1 => new lang_string('imageleft', 'theme_campus'),
-        2 => new lang_string('imageright', 'theme_campus')
-    );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
     // Course category header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategoryheadersettings', 'theme_campus'),
             format_text(get_string('coursecategoryheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));

@@ -114,15 +114,15 @@ function theme_campus_less_variables($theme) {
                 $variables['frontpageSitenamePositionLeft'] = '50px';
             break;
         }
-    }
-    if (!empty($theme->settings->frontpagebackgroundposition)) {
-        switch ($theme->settings->frontpagebackgroundposition) {
-            case 1:
-                $variables['frontpageBackgroundPosition'] = 'left';
-            break;
-            case 2:
-                $variables['frontpageBackgroundPosition'] = 'right';
-            break;
+        if ((!empty($theme->settings->frontpagelayout)) && ($theme->settings->frontpagelayout == 'absolutelayout')) {
+            switch ($theme->settings->frontpagelogoposition) {
+                case 1:
+                    $variables['frontpageLogoPosition'] = 'left';
+                break;
+                case 2:
+                    $variables['frontpageLogoPosition'] = 'right';
+                break;
+            }
         }
     }
     if ((!empty($theme->settings->frontpagelogo)) && (!empty($theme->settings->frontpagebackgroundimage))) {
