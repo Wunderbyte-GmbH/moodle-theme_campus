@@ -54,6 +54,7 @@ Version Information
 21th January 2015 - Version 2.7.0.21.
   1. Adjusted standard navbar to be full width and implemented compact fancy navbar as required by (variant01-smallscreen.jpg and
      variant01-smallscreen-flipped.jpg) on task #375 - task #405.
+  2. Adjusted drop down user menu caret on navbar - task #404.
 
 20th January 2015 - Version 2.7.0.20.
   1. Fixed #402 - missing bootstrap-transition.js - obtained from source: https://github.com/twbs/bootstrap/releases/tag/v2.3.2 then
