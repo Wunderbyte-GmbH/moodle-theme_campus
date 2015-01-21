@@ -244,11 +244,17 @@ $string['layoutonside']= 'Side';
 $string['frontpagelogo'] = 'Logo';
 $string['frontpagelogodesc'] = 'Please upload your custom logo here for the header.';
 
+$string['frontpageresponsivelogo'] = 'Logo for small devices';
+$string['frontpageresponsivelogodesc'] = 'Please upload your custom logo here for the header on small devices.  The total width of the small device logo and background should be 960px.';
+
 $string['frontpagelogoposition'] = 'Logo position';
 $string['frontpagelogopositiondesc'] = 'Set the logo position.';
 
 $string['frontpagebackgroundimage'] = 'Background image';
 $string['frontpagebackgroundimagedesc'] = 'Please upload your custom background image here for the header.';
+
+$string['frontpageresponsivebackgroundimage'] = 'Background image for small devices';
+$string['frontpageresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The total width of the small device logo and background should be 960px.';
 
 $string['frontpagebackgroundposition'] = 'Background position';
 $string['frontpagebackgroundpositiondesc'] = 'Set the background position.';
@@ -269,11 +275,17 @@ $string['coursecategorylayoutdesc'] = 'Logo on top or to the side as set by the 
 $string['coursecategorylogo'] = 'Logo';
 $string['coursecategorylogodesc'] = 'Please upload your custom logo here for the header.';
 
+$string['coursecategoryresponsivelogo'] = 'Logo for small devices';
+$string['coursecategoryresponsivelogodesc'] = 'Please upload your custom logo here for the header on small devices.  The total width of the small device logo and background should be 960px.';
+
 $string['coursecategorylogoposition'] = 'Logo position';
 $string['coursecategorylogopositiondesc'] = 'Set the logo position.';
 
 $string['coursecategorybackgroundimage'] = 'Background image';
 $string['coursecategorybackgroundimagedesc'] = 'Please upload your custom background image here for the header.';
+
+$string['coursecategoryresponsivebackgroundimage'] = 'Background image on small devicess';
+$string['coursecategoryresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The total width of the small device logo and background should be 960px.';
 
 $string['coursecategorybackgroundposition'] = 'Background position';
 $string['coursecategorybackgroundpositiondesc'] = 'Set the background position.';

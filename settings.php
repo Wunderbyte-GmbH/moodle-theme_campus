@@ -416,6 +416,14 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Logo file setting on small devices.
+    $name = 'theme_campus/frontpageresponsivelogo';
+    $title = get_string('frontpageresponsivelogo', 'theme_campus');
+    $description = get_string('frontpageresponsivelogodesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpageresponsivelogo');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Logo position setting.
     $name = 'theme_campus/frontpagelogoposition';
     $title = get_string('frontpagelogoposition', 'theme_campus');
@@ -434,6 +442,14 @@ if (is_siteadmin()) {
     $title = get_string('frontpagebackgroundimage', 'theme_campus');
     $description = get_string('frontpagebackgroundimagedesc', 'theme_campus');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Background image file setting on small devices.
+    $name = 'theme_campus/frontpageresponsivebackgroundimage';
+    $title = get_string('frontpageresponsivebackgroundimage', 'theme_campus');
+    $description = get_string('frontpageresponsivebackgroundimagedesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpageresponsivebackgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
@@ -495,6 +511,14 @@ if (is_siteadmin()) {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
+        // Logo file setting on small devices.
+        $name = 'theme_campus/coursecategoryresponsivelogo'.$key;
+        $title = get_string('coursecategoryresponsivelogo', 'theme_campus');
+        $description = get_string('coursecategoryresponsivelogodesc', 'theme_campus');
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategoryresponsivelogo'.$key);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingpage->add($setting);
+
         // Logo position setting.
         $name = 'theme_campus/coursecategorylogoposition'.$key;
         $title = get_string('coursecategorylogoposition', 'theme_campus');
@@ -513,6 +537,14 @@ if (is_siteadmin()) {
         $title = get_string('coursecategorybackgroundimage', 'theme_campus');
         $description = get_string('coursecategorybackgroundimagedesc', 'theme_campus');
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorybackgroundimage'.$key);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settingpage->add($setting);
+
+        // Background image file setting on small devices.
+        $name = 'theme_campus/coursecategoryresponsivebackgroundimage'.$key;
+        $title = get_string('coursecategoryresponsivebackgroundimage', 'theme_campus');
+        $description = get_string('coursecategoryresponsivebackgroundimagedesc', 'theme_campus');
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategoryresponsivebackgroundimage'.$key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 

@@ -210,6 +210,81 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+.fpresponsiveheaderlogo(@frontpageMixinHeaderHeight;
+    @frontpageMixinLogoHeight;
+    @frontpageMixinLogoWidth;
+    @frontpageMixinPaddingBottom;
+    @frontpageMixinBackgroundWidth) {
+    // Only called if responsive images exist, so hide them here when showing desktop versions.
+    .frontpageheader.absolutelayout, .frontpageheader.flexlayout {
+        .logotitle {
+            .campusdesktop {
+                display: block;
+            }
+            .campussmalldevice {
+                display: none;
+            }
+        }
+        .backgroundcontainer {
+            .campusdesktop {
+                display: block;
+            }
+            .campussmalldevice {
+                display: none;
+            }
+        }
+    }
+    @media (max-width: @navbarCollapseWidth) {
+        .frontpageheader.absolutelayout {
+            height: auto;
+            max-height: @frontpageMixinHeaderHeight;
+            .logotitle {
+                max-height: @frontpageMixinLogoHeight;
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+            .logoheight {
+                max-height: @frontpageMixinLogoHeight;
+            }
+            .backgroundcontainer {
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+        }
+        .frontpageheader.flexlayout {
+            height: auto;
+            .logotitle {
+                width: @frontpageMixinLogoWidth;
+                padding-bottom: @frontpageMixinPaddingBottom;
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+            .backgroundcontainer {
+                width: @frontpageMixinBackgroundWidth;
+                padding-bottom: @frontpageMixinPaddingBottom;
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
 // Navbar.
 .navbar {
     clear: both;

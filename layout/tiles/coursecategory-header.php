@@ -78,10 +78,6 @@ if (!$coursecategorylogo) {
     if ($backgrounddetails = theme_campus_get_theme_background()) {
         $coursecategorybackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $coursecategorybackgroundimage can still be false if 'pix_url' fails for some unknown reason.
     }
-    // Theme default to logo on left and flex layout.
-    $cclogoextrapos = 1;
-    $ccbackgroundextrapos = 1;
-    $coursecategorylayout = 'flexlayout';
 }
 
 // Layout only if not using front page fallback.

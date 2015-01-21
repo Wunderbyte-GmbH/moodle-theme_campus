@@ -29,9 +29,11 @@
 // Image files.
 $frontpagelogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 $frontpagebackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
+$frontpageresponsivelogo = $PAGE->theme->setting_file_url('frontpageresponsivelogo', 'frontpageresponsivelogo');
+$frontpageresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage');
 
-// Fallback to theme logo if no frontpage logo.
-if (!$frontpagelogo) {
+// Fall back to theme logo and background if no frontpage logo and background.
+if ((!$frontpagelogo) && (!$frontpagebackgroundimage)) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
         $frontpagelogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $frontpagelogo can still be false if 'pix_url' fails for some unknown reason.
@@ -39,6 +41,22 @@ if (!$frontpagelogo) {
     if ($backgrounddetails = theme_campus_get_theme_background()) {
         $frontpagebackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $frontpagebackgroundimage can still be false if 'pix_url' fails for some unknown reason.
     }
+    // Use theme responsive versions.
+    if ($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) {
+        $frontpageresponsivelogo = $OUTPUT->pix_url($logoresponsivedetails['name'], 'theme');  // $frontpageresponsivelogo can still be false if 'pix_url' fails for some unknown reason.
+    }
+    $frontpageresponsivelogo = $frontpagelogo;
+    if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
+        $frontpageresponsivebackgroundimage = $OUTPUT->pix_url($backgroundresponsivedetails['name'], 'theme');  // $frontpageresponsivebackgroundimage can still be false if 'pix_url' fails for some unknown reason.
+    }
+}
+// End of fall back section.
+
+if (($frontpageresponsivelogo) && ($frontpageresponsivebackgroundimage)) {
+    // Responsive images available.
+    $fpresponsive = true;
+} else {
+    $fpresponsive = false;
 }
 
 // Layout.
@@ -81,9 +99,15 @@ if ($fplogoextrapos == 1) {
     echo '<div class="logotitle'.$fpextra.'">';
     if ($frontpagelogo) {
         if ($fpflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'"></a>';
+            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$frontpagelogo.'"></a>';
+            if ($fpresponsive) {
+                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$frontpageresponsivelogo.'"></a>';
+            }
         } else {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+            if ($fpresponsive) {
+                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$frontpageresponsivelogo.'" class="logoheight img-responsive"></a>';
+            }
         }
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
@@ -93,12 +117,18 @@ if ($fplogoextrapos == 1) {
 echo '<div class="backgroundcontainer '.$fpbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
 if ($frontpagebackgroundimage) {
     if ($fpflexlayout) {
-        echo '<img src="'.$frontpagebackgroundimage.'">';
+        echo '<img class="campusdesktop" src="'.$frontpagebackgroundimage.'">';
+        if ($fpresponsive) {
+            echo '<img class="campussmalldevice" src="'.$frontpageresponsivebackgroundimage.'">';
+        }
         if ($fpfancynavbar) {
             require_once(dirname(__FILE__).'/navbar.php');
         }
     } else {
-        echo '<img src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
+        echo '<img class="campusdesktop" src="'.$frontpagebackgroundimage.'" class="backgroundimage img-responsive">';
+        if ($fpresponsive) {
+            echo '<img class="campussmalldevice" src="'.$frontpageresponsivebackgroundimage.'" class="backgroundimage img-responsive">';
+        }
     }
 }
 $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
@@ -110,9 +140,15 @@ if ($fplogoextrapos == 2) {
     echo '<div class="logotitle">';
     if ($frontpagelogo) {
         if ($fpflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'"></a>';
+            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$frontpagelogo.'"></a>';
+            if ($fpresponsive) {
+                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$frontpageresponsivelogo.'"></a>';
+            }
         } else {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$frontpagelogo.'" class="logoheight img-responsive"></a>';
+            if ($fpresponsive) {
+                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$frontpageresponsivelogo.'" class="logoheight img-responsive"></a>';
+            }
         }
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
