@@ -775,6 +775,82 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+.ccresponsiveheaderlogo(@courseCategoryKey;
+    @courseCategoryMixinHeaderHeight;
+    @courseCategoryMixinLogoHeight;
+    @courseCategoryMixinLogoWidth;
+    @courseCategoryMixinPaddingBottom;
+    @courseCategoryMixinBackgroundWidth) {
+    // Only called if responsive images exist, so hide them here when showing desktop versions.
+    .coursecategoryheader.absolutelayout.category@{courseCategoryKey}, .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
+        .logotitle {
+            .campusdesktop {
+                display: block;
+            }
+            .campussmalldevice {
+                display: none;
+            }
+        }
+        .backgroundcontainer {
+            .campusdesktop {
+                display: block;
+            }
+            .campussmalldevice {
+                display: none;
+            }
+        }
+    }
+    @media (max-width: @navbarCollapseWidth) {
+        .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
+            height: auto;
+            max-height: @courseCategoryMixinHeaderHeight;
+            .logotitle {
+                max-height: @courseCategoryMixinLogoHeight;
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+            .logoheight {
+                max-height: @courseCategoryMixinLogoHeight;
+            }
+            .backgroundcontainer {
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+        }
+        .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
+            height: auto;
+            .logotitle {
+                width: @courseCategoryMixinLogoWidth;
+                padding-bottom: @courseCategoryMixinPaddingBottom;
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+            .backgroundcontainer {
+                width: @courseCategoryMixinBackgroundWidth;
+                padding-bottom: @courseCategoryMixinPaddingBottom;
+                .campusdesktop {
+                    display: none;
+                }
+                .campussmalldevice {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
 // Sitename styling.
 .sitename h1 {
     text-transform: uppercase;

@@ -201,7 +201,7 @@ function theme_campus_extra_less($theme) {
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage')) {
                     $backgroundwidth = $backgrounddimensions['width'];
                 } else {
-                    $backgroundwidth = 960; // Fallback, where 1680 is the max px of #page.
+                    $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
                 }
                 $totalwidth = $dimensions['width'] + $backgroundwidth;
                 $fplogowidth = ($dimensions['width'] / $totalwidth) * 100;
@@ -223,7 +223,7 @@ function theme_campus_extra_less($theme) {
                 if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
                     $backgroundwidth = $backgrounddimensions[0];
                 } else {
-                    $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                    $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
                 }
                 $totalwidth = $dimensions[0] + $backgroundwidth;
                 $fplogowidth = ($dimensions[0] / $totalwidth) * 100;
@@ -243,10 +243,10 @@ function theme_campus_extra_less($theme) {
     foreach($campuscategorytree as $key => $value){
         $frontpagelogoused = false;
         $ccsetting = 'coursecategorylogo'.$key;
-        if (!empty($theme->settings->$ccsetting)) {
+        $ccbsetting = 'coursecategorybackgroundimage'.$key;
+        if ((!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
-                $ccsetting = 'coursecategorybackgroundimage'.$key;
-                if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
+                if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
                     $backgroundwidth = $backgrounddimensions['width'];
                 } else {
                     $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
@@ -262,9 +262,33 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+
+                $ccsetting = 'coursecategoryresponsivelogo'.$key;
+                $ccbsetting = 'coursecategoryresponsivebackgroundimage'.$key;
+                if ((!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
+                    if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
+                        if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
+                            $backgroundwidth = $backgrounddimensions['width'];
+                        } else {
+                            $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                        }
+                        $totalwidth = $dimensions['width'] + $backgroundwidth;
+                        $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
+                        $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+                        $ccbackgroundwidth = 100 - $cclogowidth;
+                        /* .ccresponsiveheaderlogo(@courseCategoryKey;
+                             @courseCategoryMixinHeaderHeight;
+                             @courseCategoryMixinLogoHeight;
+                             @courseCategoryMixinLogoWidth;
+                             @courseCategoryMixinPaddingBottom;
+                             @courseCategoryMixinBackgroundWidth) */
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                    }
+                }
             }
-        } else if (!empty($theme->settings->frontpagelogo)) {
+        } else if ((!empty($theme->settings->frontpagelogo)) && (!empty($theme->settings->frontpagebackgroundimage))) { // Front page fall back.
             if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
+                // Front page campus desktop images.
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpagebackgroundimage', 'frontpagebackgroundimage')) {
                     $backgroundwidth = $backgrounddimensions['width'];
                 } else {
@@ -281,6 +305,27 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+
+                if ((!empty($theme->settings->frontpageresponsivelogo)) && (!empty($theme->settings->frontpageresponsivebackgroundimage))) {
+                    if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivelogo', 'frontpageresponsivelogo')) {
+                        if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage')) {
+                            $backgroundwidth = $backgrounddimensions['width'];
+                        } else {
+                            $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                        }
+                        $totalwidth = $dimensions['width'] + $backgroundwidth;
+                        $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
+                        $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+                        $ccbackgroundwidth = 100 - $cclogowidth;
+                        /* .ccresponsiveheaderlogo(@courseCategoryKey;
+                             @courseCategoryMixinHeaderHeight;
+                             @courseCategoryMixinLogoHeight;
+                             @courseCategoryMixinLogoWidth;
+                             @courseCategoryMixinPaddingBottom;
+                             @courseCategoryMixinBackgroundWidth) */
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                    }
+                }
 
                 // Using front page, so use those settings.
                 if (!empty($theme->settings->frontpagelogoposition)) {
@@ -313,7 +358,7 @@ function theme_campus_extra_less($theme) {
                 }
                 $frontpagelogoused = true;
             }
-        } else if ($logodetails = theme_campus_get_theme_logo()) {
+        } else if ($logodetails = theme_campus_get_theme_logo()) { // Theme images fall back.
             if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
                 // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                 $backgrounddetails = theme_campus_get_theme_background();
@@ -333,6 +378,29 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
                 $content .= '.ccheaderlogo('.$key.'; '.$dimensions[1].'px; '.$dimensions[1].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+
+                // Theme responsive images fall back.
+                if (($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) && ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background())) {
+                    if (($logoresponsivedetails['fullname']) && ($dimensions = getimagesize($logoresponsivedetails['fullname']))) {
+                        // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                        if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
+                            $backgroundwidth = $backgrounddimensions[0];
+                        } else {
+                            $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                        }
+                        $totalwidth = $dimensions[0] + $backgroundwidth;
+                        $cclogowidth = ($dimensions[0] / $totalwidth) * 100;
+                        $ccpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
+                        $ccbackgroundwidth = 100 - $cclogowidth;
+                        /* ccheaderlogo(@courseCategoryKey;
+                             @courseCategoryMixinHeaderHeight;
+                             @courseCategoryMixinLogoHeight;
+                             @courseCategoryMixinLogoWidth;
+                             @courseCategoryMixinPaddingBottom;
+                             @courseCategoryMixinBackgroundWidth) */
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$dimensions[1].'px; '.$dimensions[1].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                    }
+                }
             }
         }
 

@@ -32,8 +32,8 @@ $hdbackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 
 $hdresponsivelogo = $PAGE->theme->setting_file_url('frontpageresponsivelogo', 'frontpageresponsivelogo');
 $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage');
 
-// Fall back to theme logo and background if no frontpage logo and background.
-if ((!$hdlogo) && (!$hdbackgroundimage)) {
+// Fall back to theme logo and background if no frontpage logo or background.
+if ((!$hdlogo) || (!$hdbackgroundimage)) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
         $hdlogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $hdlogo can still be false if 'pix_url' fails for some unknown reason.
@@ -51,16 +51,9 @@ if ((!$hdlogo) && (!$hdbackgroundimage)) {
 }
 // End of fall back section.
 
-if (($hdresponsivelogo) && ($hdresponsivebackgroundimage)) {
-    // Responsive images available.
-    $hdresponsive = true;
-} else {
-    $hdresponsive = false;
-}
-
 // Layout.
-$headerpagelayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
-$hdflexlayout = ($headerpagelayout == 'flexlayout');
+$hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
+$hdflexlayout = ($hdlayout == 'flexlayout');
 $hdfancynavbar = false;
 if ($hdflexlayout) {
     $hdcontainer = 'flexlayoutcontainer';
@@ -79,88 +72,15 @@ if ($hdflexlayout) {
     $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
     if ($navbartype == 2) { // 2 is 'Fancy'.
         $hdfancynavbar = true;
-        $headerpagelayout .= ' fancynavbar';
+        $hdlayout .= ' fancynavbar';
     }
 } else {
     $hdlogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
 }
-if ((!$hdflexlayout) && (!$hdlogo)) {
-    $hdextra = ' sitename';
-} else {
-    $hdextra = '';
-}
 
-$headertype = 'frontpageheader '.$headerpagelayout;
+$hdtype = 'frontpageheader '.$hdlayout;
 
-echo '<div class="'.$headertype.'">';
-echo '<div class="'.$hdcontainer.'">';
-
-global $CFG;
-if ($hdlogoextrapos == 1) {
-    echo '<div class="logotitle'.$hdextra.'">';
-    if ($hdlogo) {
-        if ($hdflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$hdlogo.'"></a>';
-            if ($hdresponsive) {
-                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$hdresponsivelogo.'"></a>';
-            }
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$hdlogo.'" class="logoheight img-responsive"></a>';
-            if ($hdresponsive) {
-                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$hdresponsivelogo.'" class="logoheight img-responsive"></a>';
-            }
-        }
-    } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
-    }
-    echo '</div>';
-}
-echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
-if ($hdbackgroundimage) {
-    if ($hdflexlayout) {
-        echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'">';
-        if ($hdresponsive) {
-            echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'">';
-        }
-        if ($hdfancynavbar) {
-            require_once(dirname(__FILE__).'/navbar.php');
-        }
-    } else {
-        echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'" class="backgroundimage img-responsive">';
-        if ($hdresponsive) {
-            echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'" class="backgroundimage img-responsive">';
-        }
-    }
-}
-$showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
-if (($showpageheading) && ($hdlogo)) {
-    echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
-}
-echo '</div>';
-if ($hdlogoextrapos == 2) {
-    echo '<div class="logotitle">';
-    if ($hdlogo) {
-        if ($hdflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$hdlogo.'"></a>';
-            if ($hdresponsive) {
-                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$hdresponsivelogo.'"></a>';
-            }
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'"><img class="campusdesktop" src="'.$hdlogo.'" class="logoheight img-responsive"></a>';
-            if ($hdresponsive) {
-                echo '<a href="'.$CFG->wwwroot.'"><img class="campussmalldevice" src="'.$hdresponsivelogo.'" class="logoheight img-responsive"></a>';
-            }
-        }
-    } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
-    }
-    echo '</div>';
-}
-echo '</div></div>';
-
-if (!$hdfancynavbar) {
-    require_once(dirname(__FILE__).'/navbar.php');
-}
+require_once(dirname(__FILE__).'/header-tile.php');
 
 // Carousel pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.
 if ($PAGE->pagelayout == 'frontpage') {

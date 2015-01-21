@@ -30,142 +30,98 @@ global $CFG, $OUTPUT;
 $currentcategory = $OUTPUT->get_current_category();
 
 // Image files.
-$coursecategorylogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
-$coursecategorybackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
+$hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
+$hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
+$hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo'.$currentcategory, 'coursecategoryresponsivelogo'.$currentcategory);
+$hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('coursecategoryresponsivebackgroundimage'.$currentcategory, 'coursecategoryresponsivebackgroundimage'.$currentcategory);
 
 // Fallback to front page logo if no course category logo.
 $frontpagesettings = false;
-$ccfancynavbar = false;
-if (!$coursecategorylogo) {
-    $coursecategorylogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
+$hdfancynavbar = false;
+if ((!$hdlogo) || (!$hdbackgroundimage)) {
+    $hdlogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 
-    if ($coursecategorylogo) {
+    if ($hdlogo) {
         // Use Frontpage settings.
-        $coursecategorybackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
-        $coursecategorylayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
-        $ccflexlayout = ($coursecategorylayout == 'flexlayout');
-        if ($ccflexlayout) {
-            $cccontainer = 'flexlayoutcontainer';
+        $hdbackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
+        $hdresponsivelogo = $PAGE->theme->setting_file_url('frontpageresponsivelogo', 'frontpageresponsivelogo');
+        $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage');
+        $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
+        $hdflexlayout = ($hdlayout == 'flexlayout');
+        if ($hdflexlayout) {
+            $hdcontainer = 'flexlayoutcontainer';
         } else {
-            $cccontainer = 'absolutelayoutcontainer';
+            $hdcontainer = 'absolutelayoutcontainer';
         }
-        $ccbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
-        if ($ccflexlayout) {
-            $cclogoextrapos = $ccbackgroundextrapos;
+        $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
+        if ($hdflexlayout) {
+            $hdlogoextrapos = $hdbackgroundextrapos;
             $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
             if ($navbartype == 2) { // 2 is 'Fancy'.
-                $ccfancynavbar = true;
-                $coursecategorylayout .= ' fancynavbar';
+                $hdfancynavbar = true;
+                $hdlayout .= ' fancynavbar';
             }
         } else {
-            $cclogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
-        }
-        if ((!$ccflexlayout) && (!$coursecategorylogo)) {
-            $ccextra = ' sitename';
-        } else {
-            $ccextra = '';
+            $hdlogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
         }
         $frontpagesettings = true;
     }
 }
 
-// Fallback to theme logo if no frontpage logo.
-if (!$coursecategorylogo) {
+// Fall back to theme logo and background if no frontpage logo or background and technically if the course category logo or background do not exist too.
+if ((!$hdlogo) || (!$hdbackgroundimage)) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
-        $coursecategorylogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $coursecategorylogo can still be false if 'pix_url' fails for some unknown reason.
+        $hdlogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $hdlogo can still be false if 'pix_url' fails for some unknown reason.
     }
     if ($backgrounddetails = theme_campus_get_theme_background()) {
-        $coursecategorybackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $coursecategorybackgroundimage can still be false if 'pix_url' fails for some unknown reason.
+        $hdbackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $hdbackgroundimage can still be false if 'pix_url' fails for some unknown reason.
     }
+    // Use theme responsive versions.
+    if ($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) {
+        $hdresponsivelogo = $OUTPUT->pix_url($logoresponsivedetails['name'], 'theme');  // $hdresponsivelogo can still be false if 'pix_url' fails for some unknown reason.
+    }
+    if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
+        $hdresponsivebackgroundimage = $OUTPUT->pix_url($backgroundresponsivedetails['name'], 'theme');  // $hdresponsivebackgroundimage can still be false if 'pix_url' fails for some unknown reason.
+    }
+    // Use flex layout.
+    $hdflexlayout = true;
 }
 
 // Layout only if not using front page fallback.
 if (!$frontpagesettings) {
-    $coursecategorylayout = 'coursecategorylayout'.$currentcategory;
-    $coursecategorylayout = (!empty($PAGE->theme->settings->$coursecategorylayout)) ? $PAGE->theme->settings->$coursecategorylayout : 'absolutelayout';
-    $ccflexlayout = ($coursecategorylayout == 'flexlayout');
-    if ($ccflexlayout) {
-        $cccontainer = 'flexlayoutcontainer';
+    $hdlayout = 'coursecategorylayout'.$currentcategory;
+    $hdlayout = (!empty($PAGE->theme->settings->$hdlayout)) ? $PAGE->theme->settings->$hdlayout : 'absolutelayout';
+    $hdflexlayout = ($hdlayout == 'flexlayout');
+    if ($hdflexlayout) {
+        $hdcontainer = 'flexlayoutcontainer';
     } else {
-        $cccontainer = 'absolutelayoutcontainer';
+        $hdcontainer = 'absolutelayoutcontainer';
     }
     $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
-    $ccbackgroundextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
-    if ($ccflexlayout) {
-        $cclogoextrapos = $ccbackgroundextrapos;
+    $hdbackgroundextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
+    if ($hdflexlayout) {
+        $hdlogoextrapos = $hdbackgroundextrapos;
         $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
         if ($navbartype == 2) { // 2 is 'Fancy'.
-            $ccfancynavbar = true;
-            $coursecategorylayout .= ' fancynavbar';
+            $hdfancynavbar = true;
+            $hdlayout .= ' fancynavbar';
         }
     } else {
-        $cclogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
-    }
-    if ((!$ccflexlayout) && (!$coursecategorylogo)) {
-        $ccextra = ' sitename';
-    } else {
-        $ccextra = '';
+        $hdlogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
     }
 }
+// End of fall back section.
 
-if ($ccbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $cclogoextrapos because its adjusted for absolute layout.
-    $ccbackgroundextra = 'right';
+if ($hdbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
+    $hdbackgroundextra = 'right';
 } else {
-    $ccbackgroundextra = 'left';
+    $hdbackgroundextra = 'left';
 }
 
-echo '<div class="coursecategoryheader '.$coursecategorylayout.' category'.$currentcategory.'">';
-echo '<div class="'.$cccontainer.'">';
+$hdtype = 'coursecategoryheader '.$hdlayout.' category'.$currentcategory;
 
-global $CFG;
-if ($cclogoextrapos == 1) {
-    echo '<div class="logotitle'.$ccextra.'">';
-    if ($coursecategorylogo) {
-        if ($ccflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'"></a>';
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
-        }
-    } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
-    }
-    echo '</div>';
-}
-echo '<div class="backgroundcontainer '.$ccbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
-    if ($coursecategorybackgroundimage) {
-    if ($ccflexlayout) {
-        echo '<img src="'.$coursecategorybackgroundimage.'">';
-        if ($ccfancynavbar) {
-            require_once(dirname(__FILE__).'/navbar.php');
-        }
-    } else {
-        echo '<img src="'.$coursecategorybackgroundimage.'" class="backgroundimage img-responsive">';
-    }
-}
-$showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
-if (($showpageheading) && ($coursecategorylogo)) {
-    echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
-}
-echo '</div>';
-if ($cclogoextrapos == 2) {
-    echo '<div class="logotitle">';
-    if ($coursecategorylogo) {
-        if ($ccflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'"></a>';
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'"><img src="'.$coursecategorylogo.'" class="logoheight img-responsive"></a>';
-        }
-    } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
-    }
-    echo '</div>';
-}
-echo '</div></div>';
-
-if (!$ccfancynavbar) {
-    require_once(dirname(__FILE__).'/navbar.php');
-}
+require_once(dirname(__FILE__).'/header-tile.php');
 
 // Carousel pre-loading.
 $currentcoursecategory = $OUTPUT->get_current_category();
