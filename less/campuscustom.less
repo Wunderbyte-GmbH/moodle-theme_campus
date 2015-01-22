@@ -93,13 +93,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         right: 0;
     }
     .logotitle {
-        width: @frontpageLogoWidth;
-        padding-bottom: @frontpagePaddingBottom;
+        width: @frontpageAbsolutePaddingBottom;
+        padding-bottom: @frontpageAbsolutePaddingBottom;
         max-height: inherit;
         position: relative;
         float: @frontpageLogoPosition;  // Change from flexlayout.
         height: 0;
-        margin-top: -@frontpagePaddingBottom;  // Change from flexlayout.
+        margin-top: -@frontpageAbsolutePaddingBottom;  // Change from flexlayout.
         a {
             max-height: inherit;
             width: 100%;
@@ -117,7 +117,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         max-height: inherit;
         position: relative;
         width: 100%;  // Change from flexlayout.
-        padding-bottom: @frontpagePaddingBottom;
+        padding-bottom: @frontpageAbsolutePaddingBottom;
         float: left;
         height: 0;
         margin: 0;
@@ -177,7 +177,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .logotitle {
         width: @frontpageLogoWidth;
-        padding-bottom: @frontpagePaddingBottom;
+        padding-bottom: @frontpageFlexPaddingBottom;
         max-height: inherit;
         position: relative;
         float: left;
@@ -200,7 +200,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         max-height: inherit;
         position: relative;
         width: @frontpageBackgroundWidth;
-        padding-bottom: @frontpagePaddingBottom;
+        padding-bottom: @frontpageFlexPaddingBottom;
         float: left;
         height: 0;
         margin: 0;
@@ -242,7 +242,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 .fpresponsiveheaderlogo(@frontpageMixinLogoWidth;
-    @frontpageMixinPaddingBottom;
+    @frontpageAbsoluteMixinPaddingBottom;
+    @frontpageFlexMixinPaddingBottom;
     @frontpageMixinBackgroundWidth) {
     // Only called if responsive images exist, so hide them here when showing desktop versions.
     .frontpageheader.absolutelayout, .frontpageheader.flexlayout {
@@ -267,9 +268,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .frontpageheader.absolutelayout {
             height: auto;
             .logotitle {
-                width: @frontpageMixinLogoWidth;
-                padding-bottom: @frontpageMixinPaddingBottom;
-                margin-top: -@frontpageMixinPaddingBottom;
+                width: @frontpageAbsoluteMixinPaddingBottom;
+                padding-bottom: @frontpageAbsoluteMixinPaddingBottom;
+                margin-top: -@frontpageAbsoluteMixinPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -278,7 +279,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
             .backgroundcontainer {
-                padding-bottom: @frontpageMixinPaddingBottom;
+                padding-bottom: @frontpageAbsoluteMixinPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -291,7 +292,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             height: auto;
             .logotitle {
                 width: @frontpageMixinLogoWidth;
-                padding-bottom: @frontpageMixinPaddingBottom;
+                padding-bottom: @frontpageFlexMixinPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -301,7 +302,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             }
             .backgroundcontainer {
                 width: @frontpageMixinBackgroundWidth;
-                padding-bottom: @frontpageMixinPaddingBottom;
+                padding-bottom: @frontpageFlexMixinPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -769,29 +770,30 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Course category header parametric mixins.
 .ccheaderlogo(@courseCategoryKey;
     @courseCategoryMixinLogoWidth;
-    @courseCategoryMixinPaddingBottom;
+    @courseCategoryMixinAbsolutePaddingBottom;
+    @courseCategoryMixinFlexPaddingBottom;
     @courseCategoryMixinBackgroundWidth) {
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
         height: auto;
         .logotitle {
-            width: @courseCategoryMixinLogoWidth;
-            padding-bottom: @courseCategoryMixinPaddingBottom;
-            margin-top: -@courseCategoryMixinPaddingBottom;  // Change from flexlayout.
+            width: @courseCategoryMixinAbsolutePaddingBottom;
+            padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
+            margin-top: -@courseCategoryMixinAbsolutePaddingBottom;  // Change from flexlayout.
         }
         .backgroundcontainer {
             // No width change - a change from flexlayout.
-            padding-bottom: @courseCategoryMixinPaddingBottom;
+            padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
         }
     }
     .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
         height: auto;
         .logotitle {
             width: @courseCategoryMixinLogoWidth;
-            padding-bottom: @courseCategoryMixinPaddingBottom;
+            padding-bottom: @courseCategoryMixinFlexPaddingBottom;
         }
         .backgroundcontainer {
             width: @courseCategoryMixinBackgroundWidth;
-            padding-bottom: @courseCategoryMixinPaddingBottom;
+            padding-bottom: @courseCategoryMixinFlexPaddingBottom;
         }
     }
 }
@@ -823,7 +825,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 .ccresponsiveheaderlogo(@courseCategoryKey;
     @courseCategoryMixinLogoWidth;
-    @courseCategoryMixinPaddingBottom;
+    @courseCategoryMixinAbsolutePaddingBottom;
+    @courseCategoryMixinFlexPaddingBottom;
     @courseCategoryMixinBackgroundWidth) {
     // Only called if responsive images exist, so hide them here when showing desktop versions.
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey}, .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
@@ -848,9 +851,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
             height: auto;
             .logotitle {
-                width: @courseCategoryMixinLogoWidth;
-                padding-bottom: @courseCategoryMixinPaddingBottom;
-                margin-top: -@courseCategoryMixinPaddingBottom;  // Change from flexlayout.
+                width: @courseCategoryMixinAbsolutePaddingBottom;
+                padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
+                margin-top: -@courseCategoryMixinAbsolutePaddingBottom;  // Change from flexlayout.
                 .campusdesktop {
                     display: none;
                 }
@@ -859,7 +862,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
             .backgroundcontainer {
-                padding-bottom: @courseCategoryMixinPaddingBottom;
+                padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -872,7 +875,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             height: auto;
             .logotitle {
                 width: @courseCategoryMixinLogoWidth;
-                padding-bottom: @courseCategoryMixinPaddingBottom;
+                padding-bottom: @courseCategoryMixinFlexPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -882,7 +885,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             }
             .backgroundcontainer {
                 width: @courseCategoryMixinBackgroundWidth;
-                padding-bottom: @courseCategoryMixinPaddingBottom;
+                padding-bottom: @courseCategoryMixinFlexPaddingBottom;
                 .campusdesktop {
                     display: none;
                 }
@@ -905,7 +908,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Fancy navbar.
 .frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
     .backgroundcontainer {
-        //margin-bottom: 20px;
         .navbar {
             z-index: 2;
             position: absolute;

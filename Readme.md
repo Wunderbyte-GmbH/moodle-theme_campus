@@ -52,7 +52,8 @@ Uninstallation
 Version Information
 ===================
 22nd January 2015 - Version 2.7.0.22.
-  1. Adjust absolute layout for course category - task #407 - work in progress - pre-test.
+  1. Adjust absolute layout for course category - task #407.
+  2. Adjust absolute layout logo width calculation to prevent skewing - task #407.
 
 21st January 2015 - Version 2.7.0.21.
   1. Adjusted standard navbar to be full width and implemented compact fancy navbar as required by (variant01-smallscreen.jpg and

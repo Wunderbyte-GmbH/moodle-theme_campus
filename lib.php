@@ -127,17 +127,21 @@ function theme_campus_less_variables($theme) {
         if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
             if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpagebackgroundimage', 'frontpagebackgroundimage')) {
                 $backgroundwidth = $backgrounddimensions['width'];
+                $backgroundheight = $backgrounddimensions['height'];
             } else {
                 $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                $backgroundheight = $dimensions['height'];
             }
             $totalwidth = $dimensions['width'] + $backgroundwidth;
             $fplogowidth = ($dimensions['width'] / $totalwidth) * 100;
-            $fppaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+            $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+            $fpflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
             $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
-            $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
        }
     } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
         // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
@@ -145,17 +149,21 @@ function theme_campus_less_variables($theme) {
             $backgrounddetails = theme_campus_get_theme_background();
             if (($backgrounddetails['fullname']) && ($backgrounddimensions = getimagesize($backgrounddetails['fullname']))) {
                 $backgroundwidth = $backgrounddimensions[0];
+                $backgroundheight = $backgrounddimensions[1];
             } else {
                 $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                $backgroundheight = $dimensions[1];
             }
             $totalwidth = $dimensions[0] + $backgroundwidth;
             $fplogowidth = ($dimensions[0] / $totalwidth) * 100;
-            $fppaddingbottom = ($dimensions[1] / $totalwidth) * 100;
+            $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+            $fpflexpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
             $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
-            $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
         }
     }
     if (!empty($theme->settings->carouseltextcolour)) {
@@ -194,17 +202,21 @@ function theme_campus_extra_less($theme) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivelogo', 'frontpageresponsivelogo')) {
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage')) {
                     $backgroundwidth = $backgrounddimensions['width'];
+                    $backgroundheight = $backgrounddimensions['height'];
                 } else {
                     $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                    $backgroundheight = $dimensions['height'];
                 }
                 $totalwidth = $dimensions['width'] + $backgroundwidth;
                 $fplogowidth = ($dimensions['width'] / $totalwidth) * 100;
-                $fppaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+                $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                $fpflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $fpbackgroundwidth = 100 - $fplogowidth;
                 /* .fpresponsiveheaderlogo(@frontpageMixinLogoWidth;
-                       @frontpageMixinPaddingBottom;
+                       @frontpageAbsoluteMixinPaddingBottom;
+                       @frontpageFlexMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fppaddingbottom.'%; '.$fpbackgroundwidth.'%);';
+                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fpabsolutepaddingbottom.'%; '.$fpflexpaddingbottom.'%; '.$fpbackgroundwidth.'%);';
             }
         }
     } else {
@@ -214,17 +226,21 @@ function theme_campus_extra_less($theme) {
                 // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                 if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
                     $backgroundwidth = $backgrounddimensions[0];
+                    $backgroundheight = $backgrounddimensions[1];
                 } else {
                     $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                    $backgroundheight = $dimensions[1];
                 }
                 $totalwidth = $dimensions[0] + $backgroundwidth;
                 $fplogowidth = ($dimensions[0] / $totalwidth) * 100;
-                $fppaddingbottom = ($dimensions[1] / $totalwidth) * 100;
+                $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                $fpflexpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                 $fpbackgroundwidth = 100 - $fplogowidth;
                 /* .fpresponsiveheaderlogo(@frontpageMixinLogoWidth;
-                       @frontpageMixinPaddingBottom;
+                       @frontpageAbsoluteMixinPaddingBottom;
+                       @frontpageFlexMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fppaddingbottom.'%; '.$fpbackgroundwidth.'%);';
+                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fpabsolutepaddingbottom.'%; '.$fpflexpaddingbottom.'%; '.$fpbackgroundwidth.'%);';
             }
         }
     }
@@ -238,18 +254,22 @@ function theme_campus_extra_less($theme) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
                     $backgroundwidth = $backgrounddimensions['width'];
+                    $backgroundheight = $backgrounddimensions['height'];
                 } else {
                     $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                    $backgroundheight = $dimensions['height'];
                 }
                 $totalwidth = $dimensions['width'] + $backgroundwidth;
                 $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
-                $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+                $ccabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                $ccflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinLogoWidth;
-                     @courseCategoryMixinPaddingBottom;
+                     @courseCategoryMixinAbsolutePaddingBottom;
+                     @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
 
                 $ccsetting = 'coursecategoryresponsivelogo'.$key;
                 $ccbsetting = 'coursecategoryresponsivebackgroundimage'.$key;
@@ -257,18 +277,22 @@ function theme_campus_extra_less($theme) {
                     if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                         if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
                             $backgroundwidth = $backgrounddimensions['width'];
+                            $backgroundheight = $backgrounddimensions['height'];
                         } else {
                             $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                            $backgroundheight = $dimensions['height'];
                         }
                         $totalwidth = $dimensions['width'] + $backgroundwidth;
                         $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
-                        $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+                        $ccabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                        $ccflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                         $ccbackgroundwidth = 100 - $cclogowidth;
                         /* .ccresponsiveheaderlogo(@courseCategoryKey;
                              @courseCategoryMixinLogoWidth;
-                             @courseCategoryMixinPaddingBottom;
+                             @courseCategoryMixinAbsolutePaddingBottom;
+                             @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
                     }
                 }
             }
@@ -277,35 +301,43 @@ function theme_campus_extra_less($theme) {
                 // Front page campus desktop images.
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpagebackgroundimage', 'frontpagebackgroundimage')) {
                     $backgroundwidth = $backgrounddimensions['width'];
+                    $backgroundheight = $backgrounddimensions['height'];
                 } else {
                     $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                    $backgroundheight = $dimensions['height'];
                 }
                 $totalwidth = $dimensions['width'] + $backgroundwidth;
                 $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
-                $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+                $ccabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                $ccflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinLogoWidth;
-                     @courseCategoryMixinPaddingBottom;
+                     @courseCategoryMixinAbsolutePaddingBottom;
+                     @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
 
                 if ((!empty($theme->settings->frontpageresponsivelogo)) && (!empty($theme->settings->frontpageresponsivebackgroundimage))) {
                     if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivelogo', 'frontpageresponsivelogo')) {
                         if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage')) {
                             $backgroundwidth = $backgrounddimensions['width'];
+                            $backgroundheight = $backgrounddimensions['height'];
                         } else {
                             $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                            $backgroundheight = $dimensions['height'];
                         }
                         $totalwidth = $dimensions['width'] + $backgroundwidth;
                         $cclogowidth = ($dimensions['width'] / $totalwidth) * 100;
-                        $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+                        $ccabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                        $ccflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                         $ccbackgroundwidth = 100 - $cclogowidth;
-                        /* .ccresponsiveheaderlogo(@courseCategoryKey;
+                        /* ccheaderlogo(@courseCategoryKey;
                              @courseCategoryMixinLogoWidth;
-                             @courseCategoryMixinPaddingBottom;
+                             @courseCategoryMixinAbsolutePaddingBottom;
+                             @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
                     }
                 }
 
@@ -332,18 +364,22 @@ function theme_campus_extra_less($theme) {
                 $backgrounddetails = theme_campus_get_theme_background();
                 if (($backgrounddetails['fullname']) && ($backgrounddimensions = getimagesize($backgrounddetails['fullname']))) {
                     $backgroundwidth = $backgrounddimensions[0];
+                    $backgroundheight = $backgrounddimensions[1];
                 } else {
                     $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                    $backgroundheight = $dimensions[1];
                 }
                 $totalwidth = $dimensions[0] + $backgroundwidth;
                 $cclogowidth = ($dimensions[0] / $totalwidth) * 100;
-                $ccpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
+                $ccabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                $ccflexpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
                      @courseCategoryMixinLogoWidth;
-                     @courseCategoryMixinPaddingBottom;
+                     @courseCategoryMixinAbsolutePaddingBottom;
+                     @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
 
                 // Theme responsive images fall back.
                 if (($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) && ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background())) {
@@ -351,18 +387,22 @@ function theme_campus_extra_less($theme) {
                         // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                         if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
                             $backgroundwidth = $backgrounddimensions[0];
+                            $backgroundheight = $backgrounddimensions[1];
                         } else {
                             $backgroundwidth = 960; // Fallback, where 960 is the value of @navbarCollapseWidth.
+                            $backgroundheight = $dimensions[1];
                         }
                         $totalwidth = $dimensions[0] + $backgroundwidth;
                         $cclogowidth = ($dimensions[0] / $totalwidth) * 100;
-                        $ccpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
+                        $ccabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+                        $ccflexpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                         $ccbackgroundwidth = 100 - $cclogowidth;
                         /* ccheaderlogo(@courseCategoryKey;
                              @courseCategoryMixinLogoWidth;
-                             @courseCategoryMixinPaddingBottom;
+                             @courseCategoryMixinAbsolutePaddingBottom;
+                             @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
                     }
                 }
             }
