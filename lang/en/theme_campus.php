@@ -242,19 +242,19 @@ $string['layoutontop']= 'On top';
 $string['layoutonside']= 'Side';
 
 $string['frontpagelogo'] = 'Logo';
-$string['frontpagelogodesc'] = 'Please upload your custom logo here for the header.';
+$string['frontpagelogodesc'] = 'Please upload your custom logo here for the header.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 1680px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 1680px.';
 
 $string['frontpageresponsivelogo'] = 'Logo for small devices';
-$string['frontpageresponsivelogodesc'] = 'Please upload your custom logo here for the header on small devices.  The total width of the small device logo and background should be 960px.';
+$string['frontpageresponsivelogodesc'] = 'Please upload your custom logo here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
 $string['frontpagelogoposition'] = 'Logo position';
 $string['frontpagelogopositiondesc'] = 'Set the logo position.';
 
 $string['frontpagebackgroundimage'] = 'Background image';
-$string['frontpagebackgroundimagedesc'] = 'Please upload your custom background image here for the header.';
+$string['frontpagebackgroundimagedesc'] = 'Please upload your custom background image here for the header.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 1680px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 1680px.';
 
 $string['frontpageresponsivebackgroundimage'] = 'Background image for small devices';
-$string['frontpageresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The total width of the small device logo and background should be 960px.';
+$string['frontpageresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
 // Course category header.
 $string['coursecategoryheadersettings']= 'Course category';
@@ -270,19 +270,19 @@ $string['coursecategorylayout'] = 'Layout';
 $string['coursecategorylayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
 
 $string['coursecategorylogo'] = 'Logo';
-$string['coursecategorylogodesc'] = 'Please upload your custom logo here for the header.';
+$string['coursecategorylogodesc'] = 'Please upload your custom logo here for the header.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 1680px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 1680px.';
 
 $string['coursecategoryresponsivelogo'] = 'Logo for small devices';
-$string['coursecategoryresponsivelogodesc'] = 'Please upload your custom logo here for the header on small devices.  The total width of the small device logo and background should be 960px.';
+$string['coursecategoryresponsivelogodesc'] = 'Please upload your custom logo here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
 $string['coursecategorylogoposition'] = 'Logo position';
 $string['coursecategorylogopositiondesc'] = 'Set the logo position.';
 
 $string['coursecategorybackgroundimage'] = 'Background image';
-$string['coursecategorybackgroundimagedesc'] = 'Please upload your custom background image here for the header.';
+$string['coursecategorybackgroundimagedesc'] = 'Please upload your custom background image here for the header.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 1680px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 1680px.';
 
 $string['coursecategoryresponsivebackgroundimage'] = 'Background image on small devicess';
-$string['coursecategoryresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The total width of the small device logo and background should be 960px.';
+$string['coursecategoryresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
 // Image positions.
 $string['imageleft']= 'Left';
