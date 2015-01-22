@@ -27,9 +27,3 @@
  */
 
 require_once(dirname(__FILE__).'/navbar.php');
-
-// TEMPORARY TEST CODE.
-global $CFG;
-if (!empty($CFG->campusheader)) {
-    echo '<span style="display: none;">Campus header: '.$CFG->campusheader.'</span>';
-}

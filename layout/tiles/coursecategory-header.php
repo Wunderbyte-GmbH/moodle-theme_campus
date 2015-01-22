@@ -27,7 +27,12 @@
  */
 
 global $CFG, $OUTPUT;
-$currentcategory = $OUTPUT->get_current_category();
+
+if ($OUTPUT->is_course_page()) {
+    $currentcategory = $OUTPUT->get_current_top_level_catetgory();
+} else {
+    $currentcategory = $OUTPUT->get_current_category();
+}
 
 // Image files.
 $hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
@@ -115,12 +120,14 @@ $hdtype = 'coursecategoryheader '.$hdlayout.' category'.$currentcategory;
 
 require_once(dirname(__FILE__).'/header-tile.php');
 
-// Carousel pre-loading.
-$currentcoursecategory = $OUTPUT->get_current_category();
-$coursecategorycarouselstatus = 'coursecategorycarouselstatus'.$currentcoursecategory;
-$coursecategorycarouselstatus = (!empty($PAGE->theme->settings->$coursecategorycarouselstatus)) ? $PAGE->theme->settings->$coursecategorycarouselstatus : 1;  // 1 is 'Draft'.
-if ($coursecategorycarouselstatus == 2) { // Only if published.
-    $numberofslides = 'numberofslidesforcategory'.$currentcoursecategory;
-    $numberofslides = (!empty($PAGE->theme->settings->$numberofslides)) ? $PAGE->theme->settings->$numberofslides : 0;
-    $settingprefix = 'coursecategory'.$OUTPUT->get_current_category().'_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+if (!$OUTPUT->is_course_page()) {
+    // Carousel pre-loading.
+    $currentcoursecategory = $currentcategory;
+    $coursecategorycarouselstatus = 'coursecategorycarouselstatus'.$currentcoursecategory;
+    $coursecategorycarouselstatus = (!empty($PAGE->theme->settings->$coursecategorycarouselstatus)) ? $PAGE->theme->settings->$coursecategorycarouselstatus : 1;  // 1 is 'Draft'.
+    if ($coursecategorycarouselstatus == 2) { // Only if published.
+        $numberofslides = 'numberofslidesforcategory'.$currentcoursecategory;
+        $numberofslides = (!empty($PAGE->theme->settings->$numberofslides)) ? $PAGE->theme->settings->$numberofslides : 0;
+        $settingprefix = 'coursecategory'.$currentcoursecategory.'_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+    }
 }

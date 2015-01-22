@@ -621,15 +621,26 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             break;
             case 'course':
             case 'incourse':
-                // TEMPORARY TEST CODE.
-                global $CFG;
-                $CFG->campusheader = 'course / incourse';
-
-                $thefile = 'course-header';
+                $thefile = 'coursecategory-header';
             break;
         }
 
         return $thefile.'.php';
+    }
+
+    /**
+     * States if we are in a course or module of a course.
+     */
+    public function is_course_page() {
+        switch($this->page->pagelayout) {
+            case 'course':
+            case 'incourse':
+                $iscourse = true;
+            break;
+            default:
+                $iscourse = false;
+        }
+        return $iscourse;
     }
 
     private function is_top_level_category() {

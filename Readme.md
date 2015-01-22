@@ -56,6 +56,7 @@ Version Information
   2. Adjust absolute layout logo width calculation to prevent skewing - task #407.
   3. Update setting instructions for absolute and side layouts - task #407.
   4. Adjust navbar standard smaller than 960: make menu icon fit nicely into the navbar - task #406.
+  5. Implement 'Create course and module pages header' - task #361.
 
 21st January 2015 - Version 2.7.0.21.
   1. Adjusted standard navbar to be full width and implemented compact fancy navbar as required by (variant01-smallscreen.jpg and
