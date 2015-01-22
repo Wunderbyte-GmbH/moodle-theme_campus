@@ -55,11 +55,6 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
 $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
 $hdflexlayout = ($hdlayout == 'flexlayout');
 $hdfancynavbar = false;
-if ($hdflexlayout) {
-    $hdcontainer = 'flexlayoutcontainer';
-} else {
-    $hdcontainer = 'flexlayoutcontainer'; //'absolutelayoutcontainer'; // TEMP #407 change.
-}
 
 $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
 if ($hdbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
@@ -76,7 +71,6 @@ if ($hdflexlayout) {
     }
 } else {
     $hdlogoextrapos = 2; // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top of the background.
-    $hdflexlayout = true;  // TEMP #407 fixed.
     // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
 }
 

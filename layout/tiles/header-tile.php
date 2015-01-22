@@ -40,27 +40,18 @@ if ((!$hdflexlayout) && (!$hdlogo)) {
 }
 
 echo '<div class="'.$hdtype.'">';
-echo '<div class="'.$hdcontainer.'">';
+echo '<div class="container">';
 
 global $CFG;
 if ($hdlogoextrapos == 1) {
     echo '<div class="logotitle'.$hdextra.'">';
     if ($hdlogo) {
-        if ($hdflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'">';
-            echo '<img class="campusdesktop" src="'.$hdlogo.'">';
-            if ($hdresponsive) {
-                echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'">';
-            }
-            echo '</a>';
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'">';
-            echo '<img class="campusdesktop" src="'.$hdlogo.'" class="logoheight img-responsive">';
-            if ($hdresponsive) {
-                echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'" class="logoheight img-responsive">';
-            }
-            echo '</a>';
+        echo '<a href="'.$CFG->wwwroot.'">';
+        echo '<img class="campusdesktop" src="'.$hdlogo.'">';
+        if ($hdresponsive) {
+            echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'">';
         }
+        echo '</a>';
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }
@@ -68,19 +59,12 @@ if ($hdlogoextrapos == 1) {
 }
 echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
 if ($hdbackgroundimage) {
-    if ($hdflexlayout) {
-        echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'">';
-        if ($hdresponsive) {
-            echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'">';
-        }
-        if ($hdfancynavbar) {
-            require_once(dirname(__FILE__).'/navbar.php');
-        }
-    } else {
-        echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'" class="backgroundimage img-responsive">';
-        if ($hdresponsive) {
-            echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'" class="backgroundimage img-responsive">';
-        }
+    echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'">';
+    if ($hdresponsive) {
+        echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'">';
+    }
+    if ($hdfancynavbar) {
+        require_once(dirname(__FILE__).'/navbar.php');
     }
 }
 $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
@@ -91,21 +75,12 @@ echo '</div>';
 if ($hdlogoextrapos == 2) {
     echo '<div class="logotitle">';
     if ($hdlogo) {
-        if ($hdflexlayout) {
-            echo '<a href="'.$CFG->wwwroot.'">';
-            echo '<img class="campusdesktop" src="'.$hdlogo.'">';
-            if ($hdresponsive) {
-                echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'">';
-            }
-            echo '</a>';
-        } else {
-            echo '<a href="'.$CFG->wwwroot.'">';
-            echo '<img class="campusdesktop" src="'.$hdlogo.'" class="logoheight img-responsive">';
-            if ($hdresponsive) {
-                echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'" class="logoheight img-responsive">';
-            }
-            echo '</a>';
+        echo '<a href="'.$CFG->wwwroot.'">';
+        echo '<img class="campusdesktop" src="'.$hdlogo.'">';
+        if ($hdresponsive) {
+            echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'">';
         }
+        echo '</a>';
     } else {
         echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
     }

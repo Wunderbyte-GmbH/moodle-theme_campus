@@ -106,11 +106,9 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->frontpagelogoposition)) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:
-                $variables['frontpageLogoPositionLeft'] = '20px';
                 $variables['frontpageSitenamePositionRight'] = '50px';
             break;
             case 2:
-                $variables['frontpageLogoPositionRight'] = '20px';
                 $variables['frontpageSitenamePositionLeft'] = '50px';
             break;
         }
@@ -138,9 +136,7 @@ function theme_campus_less_variables($theme) {
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
-            $variables['frontpageHeaderHeight'] = $dimensions['height'].'px';
             $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
-            $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
             $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
        }
     } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
@@ -158,9 +154,7 @@ function theme_campus_less_variables($theme) {
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
-            $variables['frontpageHeaderHeight'] = $dimensions['height'].'px';
             $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
-            $variables['frontpageLogoHeight'] = $dimensions['height'].'px';
             $variables['frontpagePaddingBottom'] = $fppaddingbottom.'%';
         }
     }
@@ -207,12 +201,10 @@ function theme_campus_extra_less($theme) {
                 $fplogowidth = ($dimensions['width'] / $totalwidth) * 100;
                 $fppaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $fpbackgroundwidth = 100 - $fplogowidth;
-                /* .fpresponsiveheaderlogo(@frontpageMixinHeaderHeight;
-                       @frontpageMixinLogoHeight;
-                       @frontpageMixinLogoWidth;
+                /* .fpresponsiveheaderlogo(@frontpageMixinLogoWidth;
                        @frontpageMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '.fpresponsiveheaderlogo('.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$fplogowidth.'%; '.$fppaddingbottom.'%; '.$fpbackgroundwidth.'%);';
+                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fppaddingbottom.'%; '.$fpbackgroundwidth.'%);';
             }
         }
     } else {
@@ -229,12 +221,10 @@ function theme_campus_extra_less($theme) {
                 $fplogowidth = ($dimensions[0] / $totalwidth) * 100;
                 $fppaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                 $fpbackgroundwidth = 100 - $fplogowidth;
-                /* .fpresponsiveheaderlogo(@frontpageMixinHeaderHeight;
-                       @frontpageMixinLogoHeight;
-                       @frontpageMixinLogoWidth;
+                /* .fpresponsiveheaderlogo(@frontpageMixinLogoWidth;
                        @frontpageMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '.fpresponsiveheaderlogo('.$dimensions[1].'px; '.$dimensions[1].'px; '.$fplogowidth.'%; '.$fppaddingbottom.'%; '.$fpbackgroundwidth.'%);';
+                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fppaddingbottom.'%; '.$fpbackgroundwidth.'%);';
             }
         }
     }
@@ -256,12 +246,10 @@ function theme_campus_extra_less($theme) {
                 $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
-                     @courseCategoryMixinHeaderHeight;
-                     @courseCategoryMixinLogoHeight;
                      @courseCategoryMixinLogoWidth;
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
 
                 $ccsetting = 'coursecategoryresponsivelogo'.$key;
                 $ccbsetting = 'coursecategoryresponsivebackgroundimage'.$key;
@@ -277,12 +265,10 @@ function theme_campus_extra_less($theme) {
                         $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                         $ccbackgroundwidth = 100 - $cclogowidth;
                         /* .ccresponsiveheaderlogo(@courseCategoryKey;
-                             @courseCategoryMixinHeaderHeight;
-                             @courseCategoryMixinLogoHeight;
                              @courseCategoryMixinLogoWidth;
                              @courseCategoryMixinPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
                     }
                 }
             }
@@ -299,12 +285,10 @@ function theme_campus_extra_less($theme) {
                 $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
-                     @courseCategoryMixinHeaderHeight;
-                     @courseCategoryMixinLogoHeight;
                      @courseCategoryMixinLogoWidth;
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
 
                 if ((!empty($theme->settings->frontpageresponsivelogo)) && (!empty($theme->settings->frontpageresponsivebackgroundimage))) {
                     if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivelogo', 'frontpageresponsivelogo')) {
@@ -318,12 +302,10 @@ function theme_campus_extra_less($theme) {
                         $ccpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
                         $ccbackgroundwidth = 100 - $cclogowidth;
                         /* .ccresponsiveheaderlogo(@courseCategoryKey;
-                             @courseCategoryMixinHeaderHeight;
-                             @courseCategoryMixinLogoHeight;
                              @courseCategoryMixinLogoWidth;
                              @courseCategoryMixinPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$dimensions['height'].'px; '.$dimensions['height'].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
                     }
                 }
 
@@ -331,28 +313,14 @@ function theme_campus_extra_less($theme) {
                 if (!empty($theme->settings->frontpagelogoposition)) {
                     switch ($theme->settings->frontpagelogoposition) {
                     /* .ccheaderlogoposition(@courseCategoryKey;
-                          @courseCategoryMixinLogoPositionLeft;
-                          @courseCategoryMixinLogoPositionRight;
+                          @courseCategoryMixinLogoPosition;
                           @courseCategoryMixinSitenamePositionLeft;
                           @courseCategoryMixinSitenamePositionRight) */
                         case 1:
-                            $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 50px);';
+                            $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
                         break;
                         case 2:
-                            $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 50px; auto);';
-                        break;
-                    }
-                }
-
-                if (!empty($theme->settings->frontpagebackgroundposition)) {
-                    switch ($theme->settings->frontpagebackgroundposition) {
-                    /* .ccheaderbackgroundposition(@courseCategoryKey;
-                          @courseCategoryMixinBackgroundPosition) */
-                        case 1:
-                            $content .= '.ccheaderbackgroundposition('.$key.'; left);';
-                        break;
-                        case 2:
-                            $content .= '.ccheaderbackgroundposition('.$key.'; right);';
+                            $content .= '.ccheaderlogoposition('.$key.'; right; 50px; auto);';
                         break;
                     }
                 }
@@ -372,12 +340,10 @@ function theme_campus_extra_less($theme) {
                 $ccpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                 $ccbackgroundwidth = 100 - $cclogowidth;
                 /* ccheaderlogo(@courseCategoryKey;
-                     @courseCategoryMixinHeaderHeight;
-                     @courseCategoryMixinLogoHeight;
                      @courseCategoryMixinLogoWidth;
                      @courseCategoryMixinPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$dimensions[1].'px; '.$dimensions[1].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
 
                 // Theme responsive images fall back.
                 if (($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) && ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background())) {
@@ -393,12 +359,10 @@ function theme_campus_extra_less($theme) {
                         $ccpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
                         $ccbackgroundwidth = 100 - $cclogowidth;
                         /* ccheaderlogo(@courseCategoryKey;
-                             @courseCategoryMixinHeaderHeight;
-                             @courseCategoryMixinLogoHeight;
                              @courseCategoryMixinLogoWidth;
                              @courseCategoryMixinPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$dimensions[1].'px; '.$dimensions[1].'px; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
                     }
                 }
             }
@@ -416,29 +380,14 @@ function theme_campus_extra_less($theme) {
             if (!empty($theme->settings->$ccsetting)) {
                 switch ($theme->settings->$ccsetting) {
                 /* .ccheaderlogoposition(@courseCategoryKey;
-                      @courseCategoryMixinLogoPositionLeft;
-                      @courseCategoryMixinLogoPositionRight;
+                      @courseCategoryMixinLogoPosition;
                       @courseCategoryMixinSitenamePositionLeft;
                       @courseCategoryMixinSitenamePositionRight) */
                     case 1:
-                        $content .= '.ccheaderlogoposition('.$key.'; 20px; auto; auto; 50px);';
+                        $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
                     break;
                     case 2:
-                        $content .= '.ccheaderlogoposition('.$key.'; auto; 20px; 50px; auto);';
-                    break;
-                }
-            }
-
-            $ccsetting = 'coursecategorybackgroundposition'.$key;
-            if (!empty($theme->settings->$ccsetting)) {
-                switch ($theme->settings->$ccsetting) {
-                /* .ccheaderbackgroundposition(@courseCategoryKey;
-                     @courseCategoryMixinBackgroundPosition) */
-                    case 1:
-                        $content .= '.ccheaderbackgroundposition('.$key.'; left);';
-                    break;
-                    case 2:
-                        $content .= '.ccheaderbackgroundposition('.$key.'; right);';
+                        $content .= '.ccheaderlogoposition('.$key.'; right; 50px; auto);';
                     break;
                 }
             }

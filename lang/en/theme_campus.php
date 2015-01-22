@@ -284,9 +284,6 @@ $string['coursecategorybackgroundimagedesc'] = 'Please upload your custom backgr
 $string['coursecategoryresponsivebackgroundimage'] = 'Background image on small devicess';
 $string['coursecategoryresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The total width of the small device logo and background should be 960px.';
 
-$string['coursecategorybackgroundposition'] = 'Background position';
-$string['coursecategorybackgroundpositiondesc'] = 'Set the background position.';
-
 // Image positions.
 $string['imageleft']= 'Left';
 $string['imageright']= 'Right';

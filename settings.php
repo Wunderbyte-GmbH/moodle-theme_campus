@@ -535,19 +535,6 @@ if (is_siteadmin()) {
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategoryresponsivebackgroundimage'.$key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
-
-        // Background position setting.
-        $name = 'theme_campus/coursecategorybackgroundposition'.$key;
-        $title = get_string('coursecategorybackgroundposition', 'theme_campus');
-        $description = get_string('coursecategorybackgroundpositiondesc', 'theme_campus');
-        $default = 1;
-        $choices = array(
-            1 => new lang_string('imageleft', 'theme_campus'),
-            2 => new lang_string('imageright', 'theme_campus')
-        );
-        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $settingpage->add($setting);
     }
 
     $ADMIN->add('theme_campus', $settingpage);

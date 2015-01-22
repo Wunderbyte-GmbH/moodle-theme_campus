@@ -51,7 +51,10 @@ Uninstallation
 
 Version Information
 ===================
-21th January 2015 - Version 2.7.0.21.
+22nd January 2015 - Version 2.7.0.22.
+  1. Adjust absolute layout for course category - task #407 - work in progress - pre-test.
+
+21st January 2015 - Version 2.7.0.21.
   1. Adjusted standard navbar to be full width and implemented compact fancy navbar as required by (variant01-smallscreen.jpg and
      variant01-smallscreen-flipped.jpg) on task #375 - task #405.
   2. Adjusted drop down user menu caret on navbar - task #404.

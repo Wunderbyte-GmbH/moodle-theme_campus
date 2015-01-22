@@ -48,11 +48,6 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
         $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage');
         $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
         $hdflexlayout = ($hdlayout == 'flexlayout');
-        if ($hdflexlayout) {
-            $hdcontainer = 'flexlayoutcontainer';
-        } else {
-            $hdcontainer = 'absolutelayoutcontainer';
-        }
         $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
         if ($hdflexlayout) {
             $hdlogoextrapos = $hdbackgroundextrapos;
@@ -62,7 +57,8 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
                 $hdlayout .= ' fancynavbar';
             }
         } else {
-            $hdlogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
+            $hdlogoextrapos = 2; // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top of the background.
+            // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
         }
         $frontpagesettings = true;
     }
@@ -93,11 +89,6 @@ if (!$frontpagesettings) {
     $hdlayout = 'coursecategorylayout'.$currentcategory;
     $hdlayout = (!empty($PAGE->theme->settings->$hdlayout)) ? $PAGE->theme->settings->$hdlayout : 'absolutelayout';
     $hdflexlayout = ($hdlayout == 'flexlayout');
-    if ($hdflexlayout) {
-        $hdcontainer = 'flexlayoutcontainer';
-    } else {
-        $hdcontainer = 'absolutelayoutcontainer';
-    }
     $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
     $hdbackgroundextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
     if ($hdflexlayout) {
@@ -108,7 +99,8 @@ if (!$frontpagesettings) {
             $hdlayout .= ' fancynavbar';
         }
     } else {
-        $hdlogoextrapos = 1; // Absolute layout has markup in the same order regardless of position of logo.
+        $hdlogoextrapos = 2; // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top of the background.
+        // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
     }
 }
 // End of fall back section.
