@@ -341,14 +341,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     border-radius: 4px;
                     margin-right: 2px;
                 }
-                a.dropdown-toggle {
-                    padding: 9px 15px;
+                > a.dropdown-toggle {
+                    padding: ((@navbarHeight - @baseLineHeight) / 2) 30px;
                     .fa {
                         padding-left: 5px;
                     }
-                }
-                > a.dropdown-toggle {
-                    padding: 9px 30px;
                     img {
                         margin-left: 5px;
                     }
@@ -388,6 +385,30 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .logininfo {
             padding: 6px 20px 4px 8px;
         }
+    }
+}
+
+@media (max-width: @navbarCollapseWidth) {
+    .navbar {
+        .navbar-inner {
+            padding-left: 0;
+            padding-right: 0;
+            .container-fluid {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .btn-navbar {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 
@@ -960,17 +981,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 display: block;
             }
             .navbar-inner {
-                min-height: 0;
-                padding-left: 0;
-                padding-right: 0;
                 background-image: none;
                 background-color: transparent;
                 .box-shadow(none);
-                // Navbar hamburger icon.
-                .btn-navbar {
-                    margin-left: 0;
-                    margin-right: 0;
-                }
                 .nav-collapse.active {
                     #gradient > .vertical(rgba(red(@navbarBackgroundHighlight), green(@navbarBackgroundHighlight), blue(@navbarBackgroundHighlight), 0.75), rgba(red(@navbarBackground), green(@navbarBackground), blue(@navbarBackground), 0.75));
                     .box-shadow(~"0 1px 10px rgba(0,0,0,.1)");
@@ -985,13 +998,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             left: auto;
             right: 0;
         }
-    }
-}
-
-@media (max-width: 767px) {
-    .navbar {
-        padding-left: 0px;
-        padding-right: 0px;
     }
 }
 

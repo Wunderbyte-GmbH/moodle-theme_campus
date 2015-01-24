@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+24th January 2015 - Version 2.7.0.24.
+  1. Adjust navbar standard smaller than 960: make menu icon fit nicely into the navbar - task #406.
+
 22nd January 2015 - Version 2.7.0.22.
   1. Adjust absolute layout for course category - task #407.
   2. Adjust absolute layout logo width calculation to prevent skewing - task #407.
