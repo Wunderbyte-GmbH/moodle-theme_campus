@@ -52,7 +52,8 @@ Uninstallation
 Version Information
 ===================
 24th January 2015 - Version 2.7.0.24.
-  1. Adjust navbar standard smaller than 960: make menu icon fit nicely into the navbar - task #406.
+  1. Adjust 'navbar standard smaller than 960: make menu icon fit nicely into the navbar' - task #406.
+  2. Implement 'Block header heading' - task #408.
 
 22nd January 2015 - Version 2.7.0.22.
   1. Adjust absolute layout for course category - task #407.
