@@ -54,6 +54,7 @@ Version Information
 26th January 2015 - Version 2.7.0.24.
   1. Fix text and heading colour settings - task #411.
   2. Theme settings mechanism for category header - task #409.
+  3. Add font setting for headings - work in progress - task #410.
 
 24th January 2015 - Version 2.7.0.23.
   1. Adjust 'navbar standard smaller than 960: make menu icon fit nicely into the navbar' - task #406.

@@ -63,6 +63,9 @@ function theme_campus_set_customcss($css, $customcss) {
  */
 function theme_campus_less_variables($theme) {
     $variables = array();
+    if (!empty($theme->settings->headingfont)) {
+        $variables['headingsFontName'] = $theme->settings->headingfont;
+    }
     if (!empty($theme->settings->textcolour)) {
         $variables['textColor'] = $theme->settings->textcolour;
     }

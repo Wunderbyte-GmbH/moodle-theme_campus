@@ -145,6 +145,18 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_landfheading', null,
         format_text(get_string('landfheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
+    // Heading font.
+    $name = 'theme_campus/headingfont';
+    $title = get_string('headingfont', 'theme_campus');
+    $description = get_string('headingfontdesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        'Source Sans Pro' => 'Source Sans Pro'
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Text colour setting.
     $name = 'theme_campus/textcolour';
     $title = get_string('textcolour', 'theme_campus');

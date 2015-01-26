@@ -112,6 +112,9 @@ $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be 
 $string['landfsettings'] = 'Look and feel';
 $string['landfheadingdesc'] = 'Configure the look and feel settings for the theme here.';
 
+$string['headingfont'] = 'Headings font';
+$string['headingfontdesc'] = 'Set the font for the headings.';
+
 $string['themelayout'] = 'Theme layout';
 $string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns.';
 $string['themelayoutthreecolumns'] = 'Three columns';
