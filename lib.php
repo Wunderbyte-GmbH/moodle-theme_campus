@@ -247,10 +247,11 @@ function theme_campus_extra_less($theme) {
 
     // Course catetgory.
     foreach($campuscategorytree as $key => $value){
-        $frontpagelogoused = false;
+        $categorylogoused = false;
+        $cchavecustomsetting = 'coursecategoryhavecustomheader'.$key;
         $ccsetting = 'coursecategorylogo'.$key;
         $ccbsetting = 'coursecategorybackgroundimage'.$key;
-        if ((!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
+        if ((!empty($theme->settings->$cchavecustomsetting)) && (!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
                     $backgroundwidth = $backgrounddimensions['width'];
@@ -295,6 +296,7 @@ function theme_campus_extra_less($theme) {
                         $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
                     }
                 }
+                $categorylogoused = true;
             }
         } else if ((!empty($theme->settings->frontpagelogo)) && (!empty($theme->settings->frontpagebackgroundimage))) { // Front page fall back.
             if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
@@ -356,7 +358,6 @@ function theme_campus_extra_less($theme) {
                         break;
                     }
                 }
-                $frontpagelogoused = true;
             }
         } else if ($logodetails = theme_campus_get_theme_logo()) { // Theme images fall back.
             if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
@@ -408,7 +409,7 @@ function theme_campus_extra_less($theme) {
             }
         }
 
-        if ($frontpagelogoused == false) {
+        if ($categorylogoused == true) {
             $ccsetting = 'coursecategorybgcolour'.$key;
             if (!empty($theme->settings->$ccsetting)) {
                 /* .ccheaderbackgroundcolour(@courseCategoryKey;

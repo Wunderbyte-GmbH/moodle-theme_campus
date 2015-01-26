@@ -257,15 +257,15 @@ $string['frontpageresponsivebackgroundimage'] = 'Background image for small devi
 $string['frontpageresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
 // Course category settings on the header settings page.
-$string['coursecategoryhavecustomheaderheader']= 'Select the categories you want to create a custom header';
+$string['coursecategoryhavecustomheaderheader']= 'Select the categories that you want to create a custom header for';
 $string['coursecategoryhavecustomheaderheader_desc']= 'After selecting the categories, edit the header in the settings page \'category headers\'.';
 
-$string['coursecategoryhavecustomheader'] = 'Use custom header for category \'{$a->categoryname}\'';
+$string['coursecategoryhavecustomheader'] = 'Use custom header for the category \'{$a->categoryname}\'';
 $string['coursecategoryhavecustomheaderdesc'] = 'Have a custom header for the category \'{$a->categoryname}\'.';
 
 // Course category header.
 $string['coursecategoryheadersettings'] = 'Category headers';
-$string['coursecategoryheadersettings_desc'] = 'In order to create custom category headers, please select the categories you want to customize in "Header" settings. Right now these categories have been selected for customization:';
+$string['coursecategoryheadersettings_desc'] = 'In order to create custom category headers, please select the categories you want to customise in "Header" settings.  Right now these categories have been selected for customisation:';
 
 $string['coursecategoryhavecustomheadernone'] = 'No categories selected.';
 

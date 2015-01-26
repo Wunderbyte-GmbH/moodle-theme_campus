@@ -35,13 +35,22 @@ if ($OUTPUT->is_course_page()) {
 }
 
 // Image files.
-$hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
-$hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
-$hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo'.$currentcategory, 'coursecategoryresponsivelogo'.$currentcategory);
-$hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('coursecategoryresponsivebackgroundimage'.$currentcategory, 'coursecategoryresponsivebackgroundimage'.$currentcategory);
+$cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
+if (!empty($PAGE->theme->settings->$cchavecustomsetting)) {
+    $hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
+    $hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
+    $hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo'.$currentcategory, 'coursecategoryresponsivelogo'.$currentcategory);
+    $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('coursecategoryresponsivebackgroundimage'.$currentcategory, 'coursecategoryresponsivebackgroundimage'.$currentcategory);
+} else {
+    $hdlogo = false;
+    $hdbackgroundimage = false;
+    $hdresponsivelogo = false;
+    $hdresponsivebackgroundimage = false;
+}
 
 // Fallback to front page logo if no course category logo.
 $frontpagesettings = false;
+$themesettings = false;
 $hdfancynavbar = false;
 if ((!$hdlogo) || (!$hdbackgroundimage)) {
     $hdlogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
@@ -85,12 +94,16 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
         $hdresponsivebackgroundimage = $OUTPUT->pix_url($backgroundresponsivedetails['name'], 'theme');  // $hdresponsivebackgroundimage can still be false if 'pix_url' fails for some unknown reason.
     }
-    // Use flex layout.
+    // Use flex layout with the logo on the left.
+    $hdlayout = 'flexlayout';
+    $hdbackgroundextrapos = 1;
+    $hdlogoextrapos = $hdbackgroundextrapos;
     $hdflexlayout = true;
+    $themesettings = true;
 }
 
-// Layout only if not using front page fallback.
-if (!$frontpagesettings) {
+// Layout only if not using front page or theme fallback.
+if ((!$frontpagesettings) && (!$themesettings)) {
     $hdlayout = 'coursecategorylayout'.$currentcategory;
     $hdlayout = (!empty($PAGE->theme->settings->$hdlayout)) ? $PAGE->theme->settings->$hdlayout : 'absolutelayout';
     $hdflexlayout = ($hdlayout == 'flexlayout');
