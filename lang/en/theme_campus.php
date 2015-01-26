@@ -256,15 +256,24 @@ $string['frontpagebackgroundimagedesc'] = 'Please upload your custom background 
 $string['frontpageresponsivebackgroundimage'] = 'Background image for small devices';
 $string['frontpageresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
+// Course category settings on the header settings page.
+$string['coursecategoryhavecustomheaderheader']= 'Select the categories you want to create a custom header';
+$string['coursecategoryhavecustomheaderheader_desc']= 'After selecting the categories, edit the header in the settings page \'category headers\'.';
+
+$string['coursecategoryhavecustomheader'] = 'Use custom header for category \'{$a->categoryname}\'';
+$string['coursecategoryhavecustomheaderdesc'] = 'Have a custom header for the category \'{$a->categoryname}\'.';
+
 // Course category header.
-$string['coursecategoryheadersettings']= 'Course category';
-$string['coursecategoryheadersettings_desc']= 'Course category header settings.';
+$string['coursecategoryheadersettings'] = 'Category headers';
+$string['coursecategoryheadersettings_desc'] = 'In order to create custom category headers, please select the categories you want to customize in "Header" settings. Right now these categories have been selected for customization:';
 
-$string['coursecategoryheading']= 'Course category: {$a->categoryname}';
-$string['coursecategoryheading_desc']= 'Course category settings.';
+$string['coursecategoryhavecustomheadernone'] = 'No categories selected.';
 
-$string['coursecategorybgcolour']= 'Background colour';
-$string['coursecategorybgcolourdesc']= 'Course category {$a->categoryname} background colour.';
+$string['coursecategoryheading'] = 'Course category: {$a->categoryname}';
+$string['coursecategoryheading_desc'] = 'Course category settings.';
+
+$string['coursecategorybgcolour'] = 'Background colour';
+$string['coursecategorybgcolourdesc'] = 'Course category {$a->categoryname} background colour.';
 
 $string['coursecategorylayout'] = 'Layout';
 $string['coursecategorylayoutdesc'] = 'Logo on top or to the side as set by the logo position.';

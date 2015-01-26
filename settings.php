@@ -453,13 +453,36 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Course category header settings.
-    $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategoryheadersettings', 'theme_campus'),
-            format_text(get_string('coursecategoryheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
+    $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategoryhavecustomheaderheader', 'theme_campus'),
+            format_text(get_string('coursecategoryhavecustomheaderheader_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
     $campuscategorytree = theme_campus_get_top_level_categories();
     foreach($campuscategorytree as $key => $value){
+        // Have a custom header for the course category.
+        $name = 'theme_campus/coursecategoryhavecustomheader'.$key;
+        $title = get_string('coursecategoryhavecustomheader', 'theme_campus', array('categoryname' => $value));
+        $description = get_string('coursecategoryhavecustomheaderdesc', 'theme_campus', array('categoryname' => $value));
+        $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+        // No CSS change, so no need to reset caches.
+        $settingpage->add($setting);
+    }
+
+    $ADMIN->add('theme_campus', $settingpage);
+
+    // Course category header settings.
+    $settingpage = new admin_settingpage('theme_campus_category_header', get_string('coursecategoryheadersettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_category_header_heading', null,
+        format_text(get_string('coursecategoryheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    $havecategories = false;
+    foreach($campuscategorytree as $key => $value){
+        $havecustomheader = get_config('theme_campus', 'coursecategoryhavecustomheader'.$key);
+        if (empty($havecustomheader)) {
+            continue;
+        }
+        $havecategories = true;
+
         $name = 'theme_campus/coursecategoryheading'.$key;
         $heading = get_string('coursecategoryheading', 'theme_campus', array('categoryname' => $value));
         //$information = get_string('coursecategoryheading_desc', 'theme_campus');
@@ -535,6 +558,10 @@ if (is_siteadmin()) {
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategoryresponsivebackgroundimage'.$key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
+    }
+    if ($havecategories == false) {
+        $settingpage->add(new admin_setting_heading('theme_campus_category_header_none_heading', null,
+            format_text(get_string('coursecategoryhavecustomheadernone', 'theme_campus'), FORMAT_MARKDOWN)));
     }
 
     $ADMIN->add('theme_campus', $settingpage);
