@@ -67,7 +67,7 @@ function theme_campus_less_variables($theme) {
         $variables['textColor'] = $theme->settings->textcolour;
     }
     if (!empty($theme->settings->headingcolour)) {
-        $variables['headingColor'] = $theme->settings->headingcolour;
+        $variables['headingsColor'] = $theme->settings->headingcolour;
     }
     if (!empty($theme->settings->navbartextcolour)) {
         $variables['navbarText'] = $theme->settings->navbartextcolour;

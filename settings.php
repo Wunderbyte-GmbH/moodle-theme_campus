@@ -149,7 +149,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/textcolour';
     $title = get_string('textcolour', 'theme_campus');
     $description = get_string('textcolourdesc', 'theme_campus');
-    $default = '#653CAE';
+    $default = '#333333';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -159,7 +159,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/headingcolour';
     $title = get_string('headingcolour', 'theme_campus');
     $description = get_string('headingcolourdesc', 'theme_campus');
-    $default = '#9057F9';
+    $default = '#555555';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');

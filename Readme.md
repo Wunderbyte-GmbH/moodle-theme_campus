@@ -51,7 +51,10 @@ Uninstallation
 
 Version Information
 ===================
-24th January 2015 - Version 2.7.0.24.
+26th January 2015 - Version 2.7.0.24.
+  1. Fix text and heading colour settings - task #411.
+
+24th January 2015 - Version 2.7.0.23.
   1. Adjust 'navbar standard smaller than 960: make menu icon fit nicely into the navbar' - task #406.
   2. Implement 'Block header heading' - task #408.
 
