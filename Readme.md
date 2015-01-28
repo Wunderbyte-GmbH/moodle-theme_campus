@@ -56,6 +56,7 @@ Version Information
   2. Added Ubuntu font and use of 'local' (http://www.w3.org/TR/css3-fonts/#descdef-src) where possible - task #410.
   3. Added EB Garamond, Droid Serif, Jura and Vollkorn - task #410.
   4. Added TitilliumText http://www.cufonfonts.com/de/font/437/titillium-text - task #410.
+  5. Added TitilliumText Italic version from FontSquirrel - SIL Licence as stated on: http://www.fontsquirrel.com/fonts/titillium - task #410.
 
 26th January 2015 - Version 2.7.0.24.
   1. Fix text and heading colour settings - task #411.

@@ -155,7 +155,7 @@ if (is_siteadmin()) {
         'EB Garamond' => 'EB Garamond',
         'Jura' => 'Jura',
         'Source Sans Pro' => 'Source Sans Pro',
-        'TitilliumText' => 'TitilliumText',
+        'Titillium Text' => 'Titillium Text',
         'Ubuntu' => 'Ubuntu',
         'Vollkorn' => 'Vollkorn'
     );
