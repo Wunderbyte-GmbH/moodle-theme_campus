@@ -28,12 +28,14 @@
  
 @charset "UTF-8";
 
+/* Source Sans Pro */
 @font-face{
     font-family: 'Source Sans Pro';
     font-weight: 200;
     font-style: normal;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-ExtraLight.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro ExtraLight'), local('SourceSansPro-ExtraLight'),
+         url('[[font:theme|SourceSansPro-ExtraLight.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-ExtraLight.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-ExtraLight.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-ExtraLight.ttf]]') format('truetype');
@@ -44,7 +46,8 @@
     font-weight: 200;
     font-style: italic;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-ExtraLightIt.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro ExtraLight Italic'), local('SourceSansPro-ExtraLightIt'),
+         url('[[font:theme|SourceSansPro-ExtraLightIt.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-ExtraLightIt.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-ExtraLightIt.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-ExtraLightIt.ttf]]') format('truetype');
@@ -55,7 +58,8 @@
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-Light.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'),
+         url('[[font:theme|SourceSansPro-Light.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-Light.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-Light.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-Light.ttf]]') format('truetype');
@@ -66,7 +70,8 @@
     font-weight: 300;
     font-style: italic;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-LightIt.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Light Italic'), local('SourceSansPro-LightIt'),
+         url('[[font:theme|SourceSansPro-LightIt.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-LightIt.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-LightIt.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-LightIt.ttf]]') format('truetype');
@@ -77,7 +82,8 @@
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-Regular.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'),
+         url('[[font:theme|SourceSansPro-Regular.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-Regular.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-Regular.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-Regular.ttf]]') format('truetype');
@@ -88,7 +94,8 @@
     font-weight: 400;
     font-style: italic;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-It.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Italic'), local('SourceSansPro-It'),
+         url('[[font:theme|SourceSansPro-It.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-It.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-It.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-It.ttf]]') format('truetype');
@@ -99,7 +106,8 @@
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-Semibold.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Semibold'), local('SourceSansPro-Semibold'),
+         url('[[font:theme|SourceSansPro-Semibold.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-Semibold.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-Semibold.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-Semibold.ttf]]') format('truetype');
@@ -110,7 +118,8 @@
     font-weight: 600;
     font-style: italic;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-SemiboldIt.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Semibold Italic'), local('SourceSansPro-SemiboldIt'),
+         url('[[font:theme|SourceSansPro-SemiboldIt.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-SemiboldIt.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-SemiboldIt.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-SemiboldIt.ttf]]') format('truetype');
@@ -121,7 +130,8 @@
     font-weight: 700;
     font-style: normal;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-Bold.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+         url('[[font:theme|SourceSansPro-Bold.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-Bold.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-Bold.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-Bold.ttf]]') format('truetype');
@@ -132,7 +142,8 @@
     font-weight: 700;
     font-style: italic;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-BoldIt.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Bold Italic'), local('SourceSansPro-BoldIt'),
+         url('[[font:theme|SourceSansPro-BoldIt.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-BoldIt.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-BoldIt.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-BoldIt.ttf]]') format('truetype');
@@ -143,7 +154,8 @@
     font-weight: 900;
     font-style: normal;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-Black.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Black'), local('SourceSansPro-Black'),
+         url('[[font:theme|SourceSansPro-Black.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-Black.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-Black.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-Black.ttf]]') format('truetype');
@@ -154,8 +166,67 @@
     font-weight: 900;
     font-style: italic;
     font-stretch: normal;
-    src: url('[[font:theme|SourceSansPro-BlackIt.eot]]') format('embedded-opentype'),
+    src: local('Source Sans Pro Black Italic'), local('SourceSansPro-BlackIt'),
+         url('[[font:theme|SourceSansPro-BlackIt.eot]]') format('embedded-opentype'),
          url('[[font:theme|SourceSansPro-BlackIt.woff]]') format('woff'),
          url('[[font:theme|SourceSansPro-BlackIt.otf]]') format('opentype'),
          url('[[font:theme|SourceSansPro-BlackIt.ttf]]') format('truetype');
+}
+
+/* Ubuntu */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Ubuntu Light'), local('Ubuntu-Light'),
+       url('[[font:theme|Ubuntu-L.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'),
+       url('[[font:theme|Ubuntu-R.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Ubuntu Medium'), local('Ubuntu-Medium'),
+       url('[[font:theme|Ubuntu-M.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'),
+       url('[[font:theme|Ubuntu-B.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'),
+       url('[[font:theme|Ubuntu-LI.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Ubuntu Italic'), local('Ubuntu-Italic'),
+       url('[[font:theme|Ubuntu-RI.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'),
+       url('[[font:theme|Ubuntu-MI.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'),
+       url('[[font:theme|Ubuntu-BI.ttf]]') format('truetype');
 }

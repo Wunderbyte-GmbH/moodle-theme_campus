@@ -151,7 +151,8 @@ if (is_siteadmin()) {
     $description = get_string('headingfontdesc', 'theme_campus');
     $default = 1;
     $choices = array(
-        'Source Sans Pro' => 'Source Sans Pro'
+        'Source Sans Pro' => 'Source Sans Pro',
+        'Ubuntu' => 'Ubuntu'
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
