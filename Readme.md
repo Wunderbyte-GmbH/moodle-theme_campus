@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+28th January 2015 - Version 2.7.0.25.
+  1. Update to FontAwesome 4.3.0 - task #410.
+
 26th January 2015 - Version 2.7.0.24.
   1. Fix text and heading colour settings - task #411.
   2. Theme settings mechanism for category header - task #409.
