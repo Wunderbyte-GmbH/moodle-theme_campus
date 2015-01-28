@@ -267,6 +267,67 @@
          url('[[font:theme|SourceSansPro-BlackIt.ttf]]') format('truetype');
 }
 
+/* TitilliumText */
+@font-face {
+    font-family: 'TitilliumText';
+    font-weight: 200; /* Guess as no info on: http://www.cufonfonts.com/de/font/437/titillium-text ! */
+    font-style: normal;
+    font-weight: normal;
+    src: local('TitilliumText22L Thin'), local('TitilliumText22L-Thin'),
+         url('[[font:theme|TitilliumText22L001.woff]]') format('woff'),
+         url('[[font:theme|TitilliumText22L001.otf]]') format('opentype');
+}
+
+@font-face {
+    font-family: 'TitilliumText';
+    font-weight: 300; /* Guess as no info on: http://www.cufonfonts.com/de/font/437/titillium-text ! */
+    font-style: normal;
+    font-weight: normal;
+    src: local('TitilliumText22L Light'), local('TitilliumText22L-Light'),
+         url('[[font:theme|TitilliumText22L002.woff]]') format('woff'),
+         url('[[font:theme|TitilliumText22L002.otf]]') format('opentype');
+}
+
+@font-face {
+    font-family: 'TitilliumText';
+    font-weight: 400; /* Guess as no info on: http://www.cufonfonts.com/de/font/437/titillium-text ! */
+    font-style: normal;
+    font-weight: normal;
+    src: local('TitilliumText22L Regular'), local('TitilliumText22L-Regular'),
+         url('[[font:theme|TitilliumText22L003.woff]]') format('woff'),
+         url('[[font:theme|TitilliumText22L003.otf]]') format('opentype');
+}
+
+@font-face {
+    font-family: 'TitilliumText';
+    font-weight: 500; /* Guess as no info on: http://www.cufonfonts.com/de/font/437/titillium-text ! */
+    font-style: normal;
+    font-weight: normal;
+    src: local('TitilliumText22L Medium'), local('TitilliumText22L-Medium'),
+         url('[[font:theme|TitilliumText22L004.woff]]') format('woff'),
+         url('[[font:theme|TitilliumText22L004.otf]]') format('opentype');
+}
+
+@font-face {
+    font-family: 'TitilliumText';
+    font-weight: 700; /* Guess as no info on: http://www.cufonfonts.com/de/font/437/titillium-text ! */
+    font-style: normal;
+    font-weight: normal;
+    src: local('TitilliumText22L Bold'), local('TitilliumText22L-Bold'),
+         url('[[font:theme|TitilliumText22L005.woff]]') format('woff'),
+         url('[[font:theme|TitilliumText22L005.otf]]') format('opentype');
+}
+
+@font-face {
+    font-family: 'TitilliumText';
+    font-weight: 900; /* Guess as no info on: http://www.cufonfonts.com/de/font/437/titillium-text ! */
+    font-style: normal;
+    font-weight: normal;
+    src: local('TitilliumText22L XBold'), local('TitilliumText22L-XBold'),
+         url('[[font:theme|TitilliumText22L006.woff]]') format('woff'),
+         url('[[font:theme|TitilliumText22L006.otf]]') format('opentype');
+}
+
 /* Ubuntu */
 @font-face {
   font-family: 'Ubuntu';
