@@ -386,6 +386,29 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             padding: 6px 20px 4px 8px;
         }
     }
+    &.affix {
+        top: 0;
+        left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        max-width: none;
+        z-index: 200;
+    }
+}
+
+.frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
+    .backgroundcontainer .navbar.affix {
+        top: 0;
+        left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        max-width: none;
+        z-index: 200;
+        position: fixed;
+        bottom: auto;
+    }
 }
 
 @media (max-width: @navbarCollapseWidth) {
