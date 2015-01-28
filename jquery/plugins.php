@@ -26,6 +26,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $plugins = array(
-    'carousel'     => array('files' => array('bootstrap-transition_2_3_2_min.js', 'bootstrap-carousel_2_3_2_min.js')),
+    'affix'       => array('files' => array('bootstrap-affix_2_3_2_min.js', 'affix_navbar_1_0.js')),
+    'carousel'    => array('files' => array('bootstrap-transition_2_3_2_min.js', 'bootstrap-carousel_2_3_2_min.js')),
     'antigravity' => array('files' => array('anti_gravity_1_1.js'))
 );

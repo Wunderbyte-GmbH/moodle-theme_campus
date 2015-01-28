@@ -28,7 +28,7 @@
 
 $logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true : $PAGE->theme->settings->showlogininfoheader;
 ?>
-<header role="banner" class="navbar navbar-static-top<?php echo $html->navbarclass ?>">
+<header id="campusnavbar" role="banner" class="navbar navbar-static-top<?php echo $html->navbarclass ?>">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
