@@ -33,7 +33,7 @@ $THEME->sheets = array('custom');
 $THEME->lessfile = 'moodleallcampus';
 $THEME->lessvariablescallback = 'theme_campus_less_variables';
 $THEME->extralesscallback = 'theme_campus_extra_less';
-if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
+if ((empty($THEME->settings->cdnfonts)) || ((!empty($THEME->settings->cdnfonts)) && ($THEME->settings->cdnfonts == 1))) {
     $THEME->sheets[] = 'font';
     $THEME->sheets[] = 'font-awesome';
 }

@@ -122,6 +122,102 @@
        url('[[font:theme|Jura-DemiBold.otf]]') format('opentype');
 }
 
+/* Nunito */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito Light'), local('Nunito-Light'),
+       url('[[font:theme|Nunito-Light.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito Regular'), local('Nunito-Regular'),
+       url('[[font:theme|Nunito-Regular.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito Bold'), local('Nunito-Bold'),
+       url('[[font:theme|Nunito-Bold.ttf]]') format('truetype');
+}
+
+/* Roboto Condensed */
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Condensed Light'), local('RobotoCondensed-Light');
+  src: url('[[font:theme|RobotoCondensed-Light-webfont.eot]]');
+  src: url('[[font:theme|RobotoCondensed-Light-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|RobotoCondensed-Light-webfont.woff]]') format('woff'),
+       url('[[font:theme|RobotoCondensed-Light-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|RobotoCondensed-Light-webfont.svg]]') format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed'), local('RobotoCondensed-Regular');
+  src: url('[[font:theme|RobotoCondensed-Regular-webfont.eot]]');
+  src: url('[[font:theme|RobotoCondensed-Regular-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|RobotoCondensed-Regular-webfont.woff]]') format('woff'),
+       url('[[font:theme|RobotoCondensed-Regular-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|RobotoCondensed-Regular-webfont.svg]]') format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold');
+  src: url('[[font:theme|RobotoCondensed-Bold-webfont.eot]]');
+  src: url('[[font:theme|RobotoCondensed-Bold-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|RobotoCondensed-Bold-webfont.woff]]') format('woff'),
+       url('[[font:theme|RobotoCondensed-Bold-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|RobotoCondensed-Bold-webfont.svg]]') format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Roboto Condensed Light Italic'), local('RobotoCondensed-LightItalic');
+  src: url('[[font:theme|RobotoCondensed-LightItalic-webfont.eot]]');
+  src: url('[[font:theme|RobotoCondensed-LightItalic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|RobotoCondensed-LightItalic-webfont.woff]]') format('woff'),
+       url('[[font:theme|RobotoCondensed-LightItalic-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|RobotoCondensed-LightItalic-webfont.svg]]') format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Roboto Condensed Italic'), local('RobotoCondensed-Italic');
+  src: url('[[font:theme|RobotoCondensed-Italic-webfont.eot]]');
+  src: url('[[font:theme|RobotoCondensed-Italic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|RobotoCondensed-Italic-webfont.woff]]') format('woff'),
+       url('[[font:theme|RobotoCondensed-Italic-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|RobotoCondensed-Italic-webfont.svg]]') format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic');
+  src: url('[[font:theme|RobotoCondensed-BoldItalic-webfont.eot]]');
+  src: url('[[font:theme|RobotoCondensed-BoldItalic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|RobotoCondensed-BoldItalic-webfont.woff]]') format('woff'),
+       url('[[font:theme|RobotoCondensed-BoldItalic-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|RobotoCondensed-BoldItalic-webfont.svg]]') format('svg');
+}
+
 /* Source Sans Pro */
 @font-face{
     font-family: 'Source Sans Pro';

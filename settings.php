@@ -154,6 +154,8 @@ if (is_siteadmin()) {
         'Droid Serif' => 'Droid Serif',
         'EB Garamond' => 'EB Garamond',
         'Jura' => 'Jura',
+        'Nunito' => 'Nunito',
+        'Roboto Condensed' => 'Roboto Condensed',
         'Source Sans Pro' => 'Source Sans Pro',
         'Titillium Text' => 'Titillium Text',
         'Ubuntu' => 'Ubuntu',
