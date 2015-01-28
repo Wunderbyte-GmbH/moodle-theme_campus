@@ -54,6 +54,7 @@ Version Information
 28th January 2015 - Version 2.7.0.25.
   1. Update to FontAwesome 4.3.0 - task #410.
   2. Added Ubuntu font and use of 'local' (http://www.w3.org/TR/css3-fonts/#descdef-src) where possible - task #410.
+  3. Added EB Garamond, Droid Serif, Jura and Vollkorn - task #410.
 
 26th January 2015 - Version 2.7.0.24.
   1. Fix text and heading colour settings - task #411.

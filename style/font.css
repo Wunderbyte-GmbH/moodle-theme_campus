@@ -28,6 +28,100 @@
  
 @charset "UTF-8";
 
+/* Droid Serif */
+@font-face {
+  font-family: 'Droid Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Serif'), local('DroidSerif');
+  src: url('[[font:theme|DroidSerif-Regular-webfont.eot]]');
+  src: url('[[font:theme|DroidSerif-Regular-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|DroidSerif-Regular-webfont.woff]]') format('woff'),
+       url('[[font:theme|DroidSerif-Regular-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|DroidSerif-Regular-webfont.svg]]') format('svg');
+}
+@font-face {
+  font-family: 'Droid Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Droid Serif Bold'), local('DroidSerif-Bold');
+  src: url('[[font:theme|DroidSerif-Bold-webfont.eot]]');
+  src: url('[[font:theme|DroidSerif-Bold-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|DroidSerif-Bold-webfont.woff]]') format('woff'),
+       url('[[font:theme|DroidSerif-Bold-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|DroidSerif-Bold-webfont.svg]]') format('svg');
+}
+@font-face {
+  font-family: 'Droid Serif';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Droid Serif Italic'), local('DroidSerif-Italic');
+  src: url('[[font:theme|DroidSerif-Italic-webfont.eot]]');
+  src: url('[[font:theme|DroidSerif-Italic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|DroidSerif-Italic-webfont.woff]]') format('woff'),
+       url('[[font:theme|DroidSerif-Italic-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|DroidSerif-Italic-webfont.svg]]') format('svg');
+}
+@font-face {
+  font-family: 'Droid Serif';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic');
+  src: url('[[font:theme|DroidSerif-BoldItalic-webfont.eot]]');
+  src: url('[[font:theme|DroidSerif-BoldItalic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|DroidSerif-BoldItalic-webfont.woff]]') format('woff'),
+       url('[[font:theme|DroidSerif-BoldItalic-webfont.ttf]]') format('truetype'),
+       url('[[font:theme|DroidSerif-BoldItalic-webfont.svg]]') format('svg');
+}
+
+/* EB Garamond */
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400;
+  src: local('EB Garamond'), local('EBGaramond'), 
+       url('[[font:theme|EBGaramond.otf]]') format('opentype');
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-variant: small-caps;
+  src: local('EB Garamond'), local('EBGaramond'), 
+       url('[[font:theme|EBGaramondSC.otf]]') format('opentype');
+}
+
+/* Jura */
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Jura Light'), local('Jura-Light'),
+       url('[[font:theme|Jura-Light.otf]]') format('opentype');
+}
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Jura Regular'), local('Jura-Regular'),
+       url('[[font:theme|Jura-Regular.otf]]') format('opentype');
+}
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Jura Medium'), local('Jura-Medium'),
+       url('[[font:theme|Jura-Medium.otf]]') format('opentype');
+}
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Jura DemiBold'), local('Jura-DemiBold'),
+       url('[[font:theme|Jura-DemiBold.otf]]') format('opentype');
+}
+
 /* Source Sans Pro */
 @font-face{
     font-family: 'Source Sans Pro';
@@ -229,4 +323,94 @@
   font-weight: 700;
   src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'),
        url('[[font:theme|Ubuntu-BI.ttf]]') format('truetype');
+}
+
+/* Vollkorn */
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Vollkorn Regular'), local('Vollkorn-Regular');
+  src: url('[[font:theme|vollkorn-regular-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-regular-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-regular-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-Regular.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-Regular.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Vollkorn Medium'), local('Vollkorn-Medium');
+  src: url('[[font:theme|vollkorn-medium-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-medium-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-medium-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-Medium.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-Medium.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Vollkorn Semibold'), local('Vollkorn-Semibold');
+  src: url('[[font:theme|vollkorn-semibold-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-semibold-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-semibold-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-Semibold.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-Semibold.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Vollkorn Bold'), local('Vollkorn-Bold');
+  src: url('[[font:theme|vollkorn-bold-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-bold-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-bold-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-Bold.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-Bold.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Vollkorn Italic'), local('Vollkorn-Italic');
+  src: url('[[font:theme|vollkorn-italic-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-italic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-italic-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-Italic.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-Italic.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Vollkorn Medium Italic'), local('Vollkorn-Medium-Italic');
+  src: url('[[font:theme|vollkorn-mediumitalic-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-mediumitalic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-mediumitalic-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-MediumItalic.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-MediumItalic.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Vollkorn Semibold Italic'), local('Vollkorn-Semibold-Italic');
+  src: url('[[font:theme|vollkorn-semibolditalic-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-semibolditalic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-semibolditalic-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-SemiboldItalic.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-SemiboldItalic.ttf]]') format('truetype');
+}
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Vollkorn Bold Italic'), local('Vollkorn-BoldItalic');
+  src: url('[[font:theme|vollkorn-bolditalic-webfont.eot]]');
+  src: url('[[font:theme|vollkorn-bolditalic-webfont.eot]]') format('embedded-opentype'),
+       url('[[font:theme|vollkorn-bolditalic-webfont.woff]]') format('woff'),
+       url('[[font:theme|Vollkorn-BoldItalic.otf]]') format('opentype'),
+       url('[[font:theme|Vollkorn-BoldItalic.ttf]]') format('truetype');
 }

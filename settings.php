@@ -149,10 +149,14 @@ if (is_siteadmin()) {
     $name = 'theme_campus/headingfont';
     $title = get_string('headingfont', 'theme_campus');
     $description = get_string('headingfontdesc', 'theme_campus');
-    $default = 1;
+    $default = 'Source Sans Pro';
     $choices = array(
+        'Droid Serif' => 'Droid Serif',
+        'EB Garamond' => 'EB Garamond',
+        'Jura' => 'Jura',
         'Source Sans Pro' => 'Source Sans Pro',
-        'Ubuntu' => 'Ubuntu'
+        'Ubuntu' => 'Ubuntu',
+        'Vollkorn' => 'Vollkorn'
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
