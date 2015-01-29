@@ -695,8 +695,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function page_heading($tag = 'h1') {
-        $showpageheading = (!isset($this->page->theme->settings->showpageheading)) ? true : $this->page->theme->settings->showpageheading;
-        if ($showpageheading) {
+        //$showpageheading = (!isset($this->page->theme->settings->showpageheading)) ? true : $this->page->theme->settings->showpageheading;
+        //if ($showpageheading) {
             if ($this->page->pagelayout == 'frontpage') {
                 return '';
             } else {
@@ -705,8 +705,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             }
             global $CFG;
             return '<a class="brand" href="'.$CFG->wwwroot.'">'.$pageheading.'</a>';
-        } else {
-            return '';
-        }
+        //} else {
+        //    return '';
+        //}
     }
 }

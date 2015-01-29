@@ -67,10 +67,12 @@ if ($hdbackgroundimage) {
         require_once(dirname(__FILE__).'/navbar.php');
     }
 }
+/*
 $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
 if (($showpageheading) && ($hdlogo)) {
     echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
 }
+*/
 echo '</div>';
 if ($hdlogoextrapos == 2) {
     echo '<div class="logotitle">';
