@@ -947,13 +947,17 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Sitename styling.
-.sitename h1 {
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 6px rgba(255,255,255,0.05);
-    text-shadow: rgba(245,245,255,0.6) 0 0px 0px, rgba(0,0,30,0.3) 0px 0.04em 0.02em;
-    &:hover a h1 {
-        text-decoration: none;
+.sitename {
+    h1 {
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 6px rgba(255,255,255,0.05);
+        text-shadow: rgba(245,245,255,0.6) 0 0px 0px, rgba(0,0,30,0.3) 0px 0.04em 0.02em;
+    }
+    a {
+        &:hover, &:focus {
+            text-decoration: none;
+        }
     }
 }
 
