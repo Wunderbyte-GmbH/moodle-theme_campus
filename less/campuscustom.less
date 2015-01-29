@@ -71,6 +71,24 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         border-bottom-left-radius: @borderRadiusLarge;
         border-bottom-right-radius: @borderRadiusLarge;
     }
+    border-style: @blockBorderStyle;
+    border-color: @blockBorderColour;
+    border-width: 0;
+    .header {
+        border-width: @blockHeadingBorderTopWidth @blockHeadingBorderRightWidth @blockHeadingBorderBottomWidth @blockHeadingBorderLeftWidth; // top right bottom left.
+        border-style: inherit;
+        border-color: inherit;
+    }
+    &.hidden .header {
+        border-width: @blockHeadingBorderTopWidth @blockHeadingBorderRightWidth @blockHeadingBorderTopWidth @blockHeadingBorderLeftWidth; // top right bottom left.
+    }
+    .content {
+        border-width: @blockContentBorderTopWidth @blockContentBorderRightWidth @blockContentBorderBottomWidth @blockContentBorderLeftWidth; // top right bottom left.
+        border-style: inherit;
+        border-color: inherit;
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+    }
 }
 
 // Frontpage.

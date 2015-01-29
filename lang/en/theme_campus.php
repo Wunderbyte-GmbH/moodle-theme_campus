@@ -141,6 +141,33 @@ $string['blockheadingbackgroundcolourdesc'] = 'Set the block heading background 
 $string['blockbackgroundcolour'] = 'Block background colour';
 $string['blockbackgroundcolourdesc'] = 'Set the block background colour.';
 
+$string['blockborderoptions'] = 'Block borders';
+$string['blockborderoptionsdesc'] = 'Border options for the blocks.';
+$string['blocknoborder'] = 'No border';
+$string['blockborderall'] = 'Border around the whole block';
+$string['blockborderheader'] = 'Border on header only';
+$string['blockbordercontent'] = 'Border on content only';
+$string['blockborderthreelines'] = 'Three horizontal lines: above header, between header/content and bottom';
+
+$string['blockbordercolour'] = 'Block border colour';
+$string['blockbordercolourdesc'] = 'Set the block border colour.';
+
+$string['blockborderthickness'] = 'Block border thickness';
+$string['blockborderthicknessdesc'] = 'Border thickness of the block.';
+
+$string['blockborderstyle'] = 'Block border style';
+$string['blockborderstyledesc'] = 'Border style of the block.';
+$string['blockborderstylenone'] = 'None';
+$string['blockborderstylehidden'] = 'Hidden';
+$string['blockborderstyledotted'] = 'Dotted';
+$string['blockborderstyledashed'] = 'Dashed';
+$string['blockborderstylesolid'] = 'Solid';
+$string['blockborderstyledouble'] = 'Double';
+$string['blockborderstylegroove'] = 'Groove';
+$string['blockborderstylenridge'] = 'Ridge';
+$string['blockborderstyleninset'] = 'Inset';
+$string['blockborderstylenoutset'] = 'Outset';
+
 $string['themecolour'] = 'Theme colour';
 $string['themecolourdesc'] = 'Set the theme colour.';
 

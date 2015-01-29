@@ -86,6 +86,67 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->blockbackgroundcolour)) {
         $variables['wellBackground'] = $theme->settings->blockbackgroundcolour;
     }
+    if (!empty($theme->settings->blockborderoptions)) {
+        $blockborderthickness = (!empty($theme->settings->blockborderthickness)) ? $theme->settings->blockborderthickness : '1px';
+        switch ($theme->settings->blockborderoptions) {
+            case 1: // No border.
+                $variables['blockHeadingBorderTopWidth'] = '0';
+                $variables['blockHeadingBorderRightWidth'] = '0';
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = '0';
+                $variables['blockContentBorderTopWidth'] = '0';
+                $variables['blockContentBorderRightWidth'] = '0';
+                $variables['blockContentBorderBottomWidth'] = '0';
+                $variables['blockContentBorderLeftWidth'] = '0';
+            break;
+            case 2: // Border around the whole block.
+                $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = $blockborderthickness;
+                $variables['blockContentBorderTopWidth'] = '0';
+                $variables['blockContentBorderRightWidth'] = $blockborderthickness;
+                $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
+            break;
+            case 3: // Border on header only.
+                $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderLeftWidth'] = $blockborderthickness;
+                $variables['blockContentBorderTopWidth'] = '0';
+                $variables['blockContentBorderRightWidth'] = '0';
+                $variables['blockContentBorderBottomWidth'] = '0';
+                $variables['blockContentBorderLeftWidth'] = '0';
+            break;
+            case 4: // Border on content only.
+                $variables['blockHeadingBorderTopWidth'] = '0';
+                $variables['blockHeadingBorderRightWidth'] = '0';
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = '0';
+                $variables['blockContentBorderTopWidth'] = $blockborderthickness;
+                $variables['blockContentBorderRightWidth'] = $blockborderthickness;
+                $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
+            break;
+            case 5: // Three horizontal lines: above header, between header/content and bottom.
+                $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderRightWidth'] = '0';
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = '0';
+                $variables['blockContentBorderTopWidth'] = $blockborderthickness;
+                $variables['blockContentBorderRightWidth'] = '0';
+                $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockContentBorderLeftWidth'] = '0';
+            break;
+        }
+    }
+    if (!empty($theme->settings->blockbordercolour)) {
+        $variables['blockBorderColour'] = $theme->settings->blockbordercolour;
+    }
+    if (!empty($theme->settings->blockborderstyle)) {
+        $variables['blockBorderStyle'] = $theme->settings->blockborderstyle;
+    }
     if (!empty($theme->settings->themecolour)) {
         $variables['bodyBackgroundAlt'] = $theme->settings->themecolour;
         $variables['carouselColour'] = $theme->settings->themecolour;

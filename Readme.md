@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+29th January 2015 - Version 2.7.0.26.
+  1. Added block border options - task #417.
+
 28th January 2015 - Version 2.7.0.25.
   1. Update to FontAwesome 4.3.0 - task #410.
   2. Added Ubuntu font and use of 'local' (http://www.w3.org/TR/css3-fonts/#descdef-src) where possible - task #410.

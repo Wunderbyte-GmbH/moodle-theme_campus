@@ -225,6 +225,74 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Block border options.
+    $name = 'theme_campus/blockborderoptions';
+    $title = get_string('blockborderoptions', 'theme_campus');
+    $description = get_string('blockborderoptionsdesc', 'theme_campus');
+    $default = 2;
+    $choices = array(
+        1 => new lang_string('blocknoborder', 'theme_campus'),
+        2 => new lang_string('blockborderall', 'theme_campus'),
+        3 => new lang_string('blockborderheader', 'theme_campus'),
+        4 => new lang_string('blockbordercontent', 'theme_campus'),
+        5 => new lang_string('blockborderthreelines', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Block border colour setting.
+    $name = 'theme_campus/blockbordercolour';
+    $title = get_string('blockbordercolour', 'theme_campus');
+    $description = get_string('blockbordercolourdesc', 'theme_campus');
+    $default = '#ffbd0e';  // Calculated value by examining output of LESS 'darken(@wellBackground, 20%)' where @wellBackground is the same as @bodyBackgroundAlt which is #ffd974 default, so rgb(255, 189, 14) = #ffbd0e.
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Block border thickness.
+    $name = 'theme_campus/blockborderthickness';
+    $title = get_string('blockborderthickness', 'theme_campus');
+    $description = get_string('blockborderthicknessdesc', 'theme_campus');
+    $default = '1px';
+    $choices = array(
+        '1px' => new lang_string('px01', 'theme_campus'),
+        '2px' => new lang_string('px02', 'theme_campus'),
+        '3px' => new lang_string('px03', 'theme_campus'),
+        '4px' => new lang_string('px04', 'theme_campus'),
+        '5px' => new lang_string('px05', 'theme_campus'),
+        '6px' => new lang_string('px06', 'theme_campus'),
+        '7px' => new lang_string('px07', 'theme_campus'),
+        '8px' => new lang_string('px08', 'theme_campus'),
+        '9px' => new lang_string('px09', 'theme_campus'),
+        '10px' => new lang_string('px10', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Block border style.
+    $name = 'theme_campus/blockborderstyle';
+    $title = get_string('blockborderstyle', 'theme_campus');
+    $description = get_string('blockborderstyledesc', 'theme_campus');
+    $default = 'solid';
+    $choices = array(
+        'none' => new lang_string('blockborderstylenone', 'theme_campus'),
+        'hidden' => new lang_string('blockborderstylehidden', 'theme_campus'),
+        'dotted' => new lang_string('blockborderstyledotted', 'theme_campus'),
+        'dashed' => new lang_string('blockborderstyledashed', 'theme_campus'),
+        'solid' => new lang_string('blockborderstylesolid', 'theme_campus'),
+        'double' => new lang_string('blockborderstyledouble', 'theme_campus'),
+        'groove' => new lang_string('blockborderstylegroove', 'theme_campus'),
+        'ridge' => new lang_string('blockborderstylenridge', 'theme_campus'),
+        'inset' => new lang_string('blockborderstyleninset', 'theme_campus'),
+        'outset' => new lang_string('blockborderstylenoutset', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Theme colour setting.
     $name = 'theme_campus/themecolour';
     $title = get_string('themecolour', 'theme_campus');
