@@ -351,6 +351,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 
     .navbar-inner {
+        padding-left: 10px;
+        padding-right: 10px;
         .usermenu {
             .dropdown {
                 img.userpicture {
@@ -363,7 +365,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     margin-right: 2px;
                 }
                 > a.dropdown-toggle {
-                    padding: ((@navbarHeight - @baseLineHeight) / 2) 30px;
+                    padding: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2) 30px;
                     .fa {
                         padding-left: 5px;
                     }
@@ -406,18 +408,17 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .logininfo {
             padding: 6px 20px 4px 8px;
         }
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 }
 
 @media (max-width: @navbarCollapseWidth) {
     .navbar {
         .navbar-inner {
-            padding-left: 0;
             padding-right: 0;
-            .container-fluid {
-                padding-left: 0;
-                padding-right: 0;
-            }
             .btn-navbar {
                 margin-left: 0;
                 margin-right: 0;
@@ -966,10 +967,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             .navbar-inner {
                 border-width: 0;
                 #gradient > .vertical(rgba(red(@navbarBackgroundHighlight), green(@navbarBackgroundHighlight), blue(@navbarBackgroundHighlight), 0.75), rgba(red(@navbarBackground), green(@navbarBackground), blue(@navbarBackground), 0.75));
-                .container-fluid {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
            }
         }
         &.left .navbar .navbar-inner .btn-navbar.active {
@@ -1026,7 +1023,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .navbar .brand {
     // Vertically center the text given @navbarHeight.
     padding: 0;
-    margin: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+    margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
     max-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
