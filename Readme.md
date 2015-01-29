@@ -54,6 +54,7 @@ Version Information
 29th January 2015 - Version 2.7.0.26.
   1. Added block border options - task #417.
   2. Adjusted login block because of 'max-width: 280px;' for .block_login .content in 'bootstrapbase/less/moodle/blocks.less' - task #417.
+  3. Adjusted 'Minor style optimizations' - task #421.
 
 28th January 2015 - Version 2.7.0.25.
   1. Update to FontAwesome 4.3.0 - task #410.
