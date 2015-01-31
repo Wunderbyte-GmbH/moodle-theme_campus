@@ -616,6 +616,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
     /**
      * Returns the header file name in the 'tiles' folder to use for the current page.
+     * If logic in optional_jquery() changes, then change this too.
      */
     public function get_header_file() {
         $thefile = 'header'; // Default if not a specific header.
@@ -642,6 +643,73 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * Works out and adds optional jQuery on the page if needed by criteria.
+     * If logic in get_header_file() changes, then change this too.
+     * MUST be called before any page output happens.
+     */
+    public function optional_jquery() {
+        $stickynavbar = false;
+
+        switch($this->page->pagelayout) {
+            case 'frontpage':
+                $this->page->requires->jquery_plugin('carousel', 'theme_campus'); // Carousel can only exist on front page or top level category pages.
+                // We are the front page setting enforce the intent.
+                if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
+                    $stickynavbar = true;
+                }
+            break;
+            default:
+                if (get_config('theme_campus', 'usefrontpageheader')) { // If set then the front page header settings apply on all unless specific header set.
+                    if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
+                        $stickynavbar = true;
+                    }
+                } else {
+                    if (!empty($this->page->theme->settings->stickynavbar)) {
+                        $stickynavbar = true;
+                    }
+                }
+            break;
+        }
+
+        switch($this->page->pagelayout) {
+            case 'coursecategory':
+                $currentcategory = $this->get_current_category();
+                if ($this->is_top_level_category($currentcategory)) {
+                    $this->page->requires->jquery_plugin('carousel', 'theme_campus'); // Carousel can only exist on front page or top level category pages.
+                    $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
+                    if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
+                        // We have a custom setting so enforce the intent.
+                        $cchavestickysetting = 'coursecategorystickynavbar'.$currentcategory;
+                        if (!empty($this->page->theme->settings->$cchavestickysetting)) {
+                            $stickynavbar = true;
+                        } else {
+                            $stickynavbar = false;
+                        }
+                    }
+                }
+            break;
+            case 'course':
+            case 'incourse':
+                // From our point of view, the same as is_course_page().
+                $currentcategory = $this->get_current_top_level_catetgory();
+                $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
+                if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
+                    // We have a custom setting so enforce the intent.
+                    $cchavestickysetting = 'coursecategorystickynavbar'.$currentcategory;
+                    if (!empty($this->page->theme->settings->$cchavestickysetting)) {
+                        $stickynavbar = true;
+                    } else {
+                        $stickynavbar = false;
+                    }
+                }
+            break;
+        }
+        if ($stickynavbar) {
+            $this->page->requires->jquery_plugin('affix', 'theme_campus');
+        }
+    }
+
+    /**
      * States if we are in a course or module of a course.
      */
     public function is_course_page() {
@@ -656,10 +724,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return $iscourse;
     }
 
-    private function is_top_level_category() {
+    private function is_top_level_category($key = null) {
         global $CFG;
         include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
-        $key = $this->get_current_category();
+        if (empty($key)) {
+            $key = $this->get_current_category();
+        }
         if ($key) {
             return (array_key_exists($key, theme_campus_get_top_level_categories()));
         } else {
@@ -708,18 +778,11 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function page_heading($tag = 'h1') {
-        //$showpageheading = (!isset($this->page->theme->settings->showpageheading)) ? true : $this->page->theme->settings->showpageheading;
-        //if ($showpageheading) {
-            if ($this->page->pagelayout == 'frontpage') {
-                return '';
-            } else {
-                //$pageheading = parent::page_heading('span');
-                $pageheading = $this->page->heading; // Removes the containing tag required in the method call, so simpler markup to style, but leaving old code as might need to put back.
-            }
-            global $CFG;
-            return '<a class="brand" href="'.$CFG->wwwroot.'">'.$pageheading.'</a>';
-        //} else {
-        //    return '';
-        //}
+        if ($this->page->pagelayout == 'frontpage') {
+            return '';
+        } else {
+            $pageheading = $this->page->heading;
+        }
+        global $CFG;
     }
 }

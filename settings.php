@@ -468,7 +468,7 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
-    // Slide interval.
+    // Page heading range.
     $name = 'theme_campus/navbarpageheadingmax';
     $title = get_string('navbarpageheadingmax', 'theme_campus');
     $default = 200;
@@ -477,6 +477,15 @@ if (is_siteadmin()) {
     $description = get_string('navbarpageheadingmaxdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
     $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
     $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Sticky navbar.
+    $name = 'theme_campus/stickynavbar';
+    $title = get_string('stickynavbar', 'theme_campus');
+    $description = get_string('stickynavbardesc', 'theme_campus');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
     // Frontpage header settings.
@@ -502,6 +511,15 @@ if (is_siteadmin()) {
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Sticky navbar.
+    $name = 'theme_campus/frontpagestickynavbar';
+    $title = get_string('frontpagestickynavbar', 'theme_campus');
+    $description = get_string('frontpagestickynavbardesc', 'theme_campus');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
     // Logo file setting.
@@ -584,6 +602,15 @@ if (is_siteadmin()) {
         //$information = get_string('coursecategoryheading_desc', 'theme_campus');
         $information = ''; // TODO: Decide if better without description.
         $setting = new admin_setting_heading($name, $heading, $information);
+        // No CSS change, so no need to reset caches.
+        $settingpage->add($setting);
+
+        // Sticky navbar.
+        $name = 'theme_campus/coursecategorystickynavbar'.$key;
+        $title = get_string('coursecategorystickynavbar', 'theme_campus');
+        $description = get_string('coursecategorystickynavbardesc', 'theme_campus', array('categoryname' => $value));
+        $default = false;
+        $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 

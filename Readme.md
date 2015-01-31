@@ -52,7 +52,8 @@ Uninstallation
 Version Information
 ===================
 31st January 2015 - Version 2.7.0.27.
-  1. Custom favicon - task #424.
+  1. Added custom favicon - task #424.
+  2. Added sticky navbar on scroll - task #418.
 
 29th January 2015 - Version 2.7.0.26.
   1. Added block border options - task #417.
