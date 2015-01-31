@@ -841,4 +841,10 @@ function theme_campus_page_init(moodle_page $page) {
     $page->requires->jquery();
     $page->requires->jquery_plugin('antigravity', 'theme_campus');
     $page->requires->jquery_plugin('carousel', 'theme_campus');
+    /* Hopefully could do something like 'if (!empty($page->theme->settings->fixnavbar))' here to turn on / off
+       like: https://github.com/gjb2048/moodle-theme_shoehorn/blob/MOODLE_27/layout/tiles/jquery.php ish!
+       but that uses: https://github.com/gjb2048/moodle-theme_shoehorn/blob/MOODLE_27/layout/default.php#L36 sort
+       of thing to add requirements before page output.  Just a different solution and if this does not work, then
+       one for here. */
+    $page->requires->jquery_plugin('affix', 'theme_campus');
 }
