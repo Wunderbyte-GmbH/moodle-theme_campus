@@ -129,6 +129,14 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
+    // Favicon file setting.
+    $name = 'theme_campus/favicon';
+    $title = get_string('favicon', 'theme_campus');
+    $description = get_string('favicondesc', 'theme_campus');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'favicon');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Custom CSS file.
     $name = 'theme_campus/customcss';
     $title = get_string('customcss', 'theme_campus');

@@ -100,10 +100,8 @@ $string['showlogininfofooterdesc'] = 'Display the login link in the footer.';
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfontsdesc'] = 'Use content delivery network fonts.';
 
-$string['sliderposition'] = 'Slider position';
-$string['sliderpositiondesc'] = 'Position of the slider on the page.';
-$string['sliderpositionheader'] = 'Underneath the navbar';
-$string['sliderpositionpage'] = 'With the page content';
+$string['favicon'] = 'Favicon';
+$string['favicondesc'] = 'Upload your \'favicon\' here.';
 
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
@@ -216,6 +214,11 @@ $string['carouselsettingsdesc']= 'Configure the carousel settings for the theme 
 
 $string['carouselgeneralsettings']= 'General';
 $string['carouselgeneralsettings_desc'] = 'General carousel settings.';
+
+$string['sliderposition'] = 'Slider position';
+$string['sliderpositiondesc'] = 'Position of the slider on the page.';
+$string['sliderpositionheader'] = 'Underneath the navbar';
+$string['sliderpositionpage'] = 'With the page content';
 
 $string['frontpagecarouselsettings']= 'Front page';
 $string['frontpagecarouselsettings_desc']= 'Front page carousel settings.';

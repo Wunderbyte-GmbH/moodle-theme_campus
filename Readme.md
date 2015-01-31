@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+31st January 2015 - Version 2.7.0.27.
+  1. Custom favicon - task #424.
+
 29th January 2015 - Version 2.7.0.26.
   1. Added block border options - task #417.
   2. Adjusted login block because of 'max-width: 280px;' for .block_login .content in 'bootstrapbase/less/moodle/blocks.less' - task #417.

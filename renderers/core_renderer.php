@@ -95,6 +95,19 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * Returns the URL for the favicon.
+     *
+     * @since Moodle 2.5.1 2.6
+     * @return string The favicon URL
+     */
+    public function favicon() {
+        if (!empty($this->page->theme->settings->favicon)) {
+            return $this->page->theme->setting_file_url('favicon', 'favicon');
+        }
+        return parent::favicon();
+    }
+
+    /**
      * Get the HTML for blocks in the given region.
      *
      * @since 2.5.1 2.6
