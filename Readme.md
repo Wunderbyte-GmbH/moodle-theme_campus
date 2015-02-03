@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+ 3rd February 2015 - Version 2.7.0.28.
+  1. Update FontAwesome note about WOFF2 support in Moodle - see: MDL-46728 and MDL-49074.
+
 31st January 2015 - Version 2.7.0.27.
   1. Added custom favicon - task #424.
   2. Added sticky navbar on scroll - task #418.
