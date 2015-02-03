@@ -55,6 +55,7 @@ Version Information
   1. Update FontAwesome note about WOFF2 support in Moodle - see: MDL-46728 and MDL-49074.
   2. Adjust dropdown menu margin - task #427.
   3. Adjust login button on navbar padding - task #427.
+  4. Footer display - task #430.
 
 31st January 2015 - Version 2.7.0.27.
   1. Added custom favicon - task #424.

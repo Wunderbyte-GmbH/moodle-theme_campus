@@ -1061,8 +1061,20 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Footer.
-#page-footer .logininfo {
-    margin-bottom: 5px;
+#page-footer {
+    padding: 1em 0 0 0;
+    .helplink, .logininfo, {
+        display: inline;
+    }
+    .helplink {
+        float: left;
+    }
+    .logininfo {
+        float: right;
+    }
+    .helplink, .performanceinfo {
+        margin: 0;
+    }
 }
 
 // Remove text shadow from navbar, block headings and buttons - task 390.
