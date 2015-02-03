@@ -153,6 +153,26 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_landfheading', null,
         format_text(get_string('landfheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
+    // Page width maximum.
+    $name = 'theme_campus/pagewidthmax';
+    $title = get_string('pagewidthmax', 'theme_campus');
+    $description = get_string('pagewidthmaxdesc', 'theme_campus');
+    $default = '1680';
+    $choices = array(
+        '1000' => new lang_string('px1000', 'theme_campus'),
+        '1200' => new lang_string('px1200', 'theme_campus'),
+        '1400' => new lang_string('px1400', 'theme_campus'),
+        '1680' => new lang_string('px1680', 'theme_campus'),
+        '100' => new lang_string('per100', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+    $currentpagewidthmaxheaders = get_config('theme_campus', 'pagewidthmax');  // Current value for other setting information descriptions below.
+    if ($currentpagewidthmaxheaders == 100) { // Percentage value.
+        $currentpagewidthmaxheaders = 1680; // Default for headers as need px max width.
+    }
+
     // Heading font.
     $name = 'theme_campus/headingfont';
     $title = get_string('headingfont', 'theme_campus');
@@ -525,7 +545,7 @@ if (is_siteadmin()) {
     // Logo file setting.
     $name = 'theme_campus/frontpagelogo';
     $title = get_string('frontpagelogo', 'theme_campus');
-    $description = get_string('frontpagelogodesc', 'theme_campus');
+    $description = get_string('frontpagelogodesc', 'theme_campus', array('pagewidthmax' => $currentpagewidthmaxheaders));
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagelogo');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
@@ -554,7 +574,7 @@ if (is_siteadmin()) {
     // Background image file setting.
     $name = 'theme_campus/frontpagebackgroundimage';
     $title = get_string('frontpagebackgroundimage', 'theme_campus');
-    $description = get_string('frontpagebackgroundimagedesc', 'theme_campus');
+    $description = get_string('frontpagebackgroundimagedesc', 'theme_campus', array('pagewidthmax' => $currentpagewidthmaxheaders));
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
@@ -640,7 +660,7 @@ if (is_siteadmin()) {
         // Logo file setting.
         $name = 'theme_campus/coursecategorylogo'.$key;
         $title = get_string('coursecategorylogo', 'theme_campus');
-        $description = get_string('coursecategorylogodesc', 'theme_campus');
+        $description = get_string('coursecategorylogodesc', 'theme_campus', array('pagewidthmax' => $currentpagewidthmaxheaders));
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorylogo'.$key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
@@ -669,7 +689,7 @@ if (is_siteadmin()) {
         // Background image file setting.
         $name = 'theme_campus/coursecategorybackgroundimage'.$key;
         $title = get_string('coursecategorybackgroundimage', 'theme_campus');
-        $description = get_string('coursecategorybackgroundimagedesc', 'theme_campus');
+        $description = get_string('coursecategorybackgroundimagedesc', 'theme_campus', array('pagewidthmax' => $currentpagewidthmaxheaders));
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorybackgroundimage'.$key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);

@@ -5,6 +5,11 @@ body {
     background-color: @themeBackground;
 }
 
+// Page.
+.container-fluid {
+    max-width: @pageWidthMaximum;
+}
+
 // Anti gravity.
 .antiGravity {
     background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.6);
@@ -97,7 +102,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Frontpage.
 .frontpageheader.absolutelayout {
     position: relative;
-    max-width: 1680px;
+    max-width: @pageWidthMaximumHeaders;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
@@ -105,7 +110,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         width: 100%;
         height: 100%;
         max-height: inherit;
-        max-width: 1680px;
+        max-width: @pageWidthMaximumHeaders;
         margin: auto;
         position: relative;
         top: 0;
@@ -180,7 +185,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .frontpageheader.flexlayout {
     position: relative;
     height: @frontpageHeaderHeightDefault;
-    max-width: 1680px;
+    max-width: @pageWidthMaximumHeaders;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
@@ -188,7 +193,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         width: 100%;
         height: 100%;
         max-height: inherit;
-        max-width: 1680px;
+        max-width: @pageWidthMaximumHeaders;
         margin: auto;
         position: relative;
         top: 0;
@@ -338,7 +343,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Navbar.
 .navbar {
     clear: both;
-    max-width: 1680px;
+    max-width: @pageWidthMaximum;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
@@ -639,8 +644,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .carousel-caption {
       background-color: rgba(red(@carouselColour), green(@carouselColour), blue(@carouselColour), 0.75); // Same as theme colour.
       .carousel-caption-inner {
-        //max-width: ~"[[setting:pagewidth]]";
-        max-width: 1680px;
+        max-width: @pageWidthMaximum;
       }
       h4, p {
         color: @carouselTextColour;
@@ -672,7 +676,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .coursecategoryheader.absolutelayout {
     position: relative;
     height: @courseCategoryHeaderHeightDefault;
-    max-width: 1680px;
+    max-width: @pageWidthMaximumHeaders;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
@@ -680,7 +684,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         width: 100%;
         height: 100%;
         max-height: inherit;
-        max-width: 1680px;
+        max-width: @pageWidthMaximumHeaders;
         margin: auto;
         position: relative;
         top: 0;
@@ -757,7 +761,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .coursecategoryheader.flexlayout {
     position: relative;
     height: @courseCategoryHeaderHeightDefault;
-    max-width: 1680px;
+    max-width: @pageWidthMaximumHeaders;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
@@ -765,7 +769,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         width: 100%;
         height: 100%;
         max-height: inherit;
-        max-width: 1680px;
+        max-width: @pageWidthMaximumHeaders;
         margin: auto;
         position: relative;
         top: 0;

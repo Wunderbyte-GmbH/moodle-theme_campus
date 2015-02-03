@@ -63,6 +63,16 @@ function theme_campus_set_customcss($css, $customcss) {
  */
 function theme_campus_less_variables($theme) {
     $variables = array();
+    if (!empty($theme->settings->pagewidthmax)) {
+        if ($theme->settings->pagewidthmax == 100) { // Percentage value.
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'%';
+            // $variables['pageWidthMaximumHeaders'] = '1680px';
+            $variables['pageWidthMaximumHeaders'] = $theme->settings->pagewidthmax.'%';  // TODO:  Possibly might be ok when images have a combined max of 1680px!
+        } else {
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'px';
+            $variables['pageWidthMaximumHeaders'] = $theme->settings->pagewidthmax.'px';
+        }
+    }
     if (!empty($theme->settings->headingfont)) {
         $variables['headingsFontName'] = $theme->settings->headingfont;
     }
@@ -193,7 +203,14 @@ function theme_campus_less_variables($theme) {
                 $backgroundwidth = $backgrounddimensions['width'];
                 $backgroundheight = $backgrounddimensions['height'];
             } else {
-                $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                if (!empty($theme->settings->pagewidthmax)) {
+                    $backgroundwidth = $theme->settings->pagewidthmax; // Fallback, default max px of #page unless a percentage.
+                    if ($backgroundwidth == 100) { // Percentage value, cannot use in calculation!
+                        $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                    }
+                } else {
+                    $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                }
                 $backgroundheight = $dimensions['height'];
             }
             $totalwidth = $dimensions['width'] + $backgroundwidth;
@@ -215,7 +232,14 @@ function theme_campus_less_variables($theme) {
                 $backgroundwidth = $backgrounddimensions[0];
                 $backgroundheight = $backgrounddimensions[1];
             } else {
-                $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                if (!empty($theme->settings->pagewidthmax)) {
+                    $backgroundwidth = $theme->settings->pagewidthmax; // Fallback, default max px of #page unless a percentage.
+                    if ($backgroundwidth == 100) { // Percentage value, cannot use in calculation!
+                        $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                    }
+                } else {
+                    $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                }
                 $backgroundheight = $dimensions[1];
             }
             $totalwidth = $dimensions[0] + $backgroundwidth;
@@ -321,7 +345,14 @@ function theme_campus_extra_less($theme) {
                     $backgroundwidth = $backgrounddimensions['width'];
                     $backgroundheight = $backgrounddimensions['height'];
                 } else {
-                    $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                    if (!empty($theme->settings->pagewidthmax)) {
+                        $backgroundwidth = $theme->settings->pagewidthmax; // Fallback, default max px of #page unless a percentage.
+                        if ($backgroundwidth == 100) { // Percentage value, cannot use in calculation!
+                            $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                        }
+                    } else {
+                        $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                    }
                     $backgroundheight = $dimensions['height'];
                 }
                 $totalwidth = $dimensions['width'] + $backgroundwidth;
@@ -369,7 +400,14 @@ function theme_campus_extra_less($theme) {
                     $backgroundwidth = $backgrounddimensions['width'];
                     $backgroundheight = $backgrounddimensions['height'];
                 } else {
-                    $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                    if (!empty($theme->settings->pagewidthmax)) {
+                        $backgroundwidth = $theme->settings->pagewidthmax; // Fallback, default max px of #page unless a percentage.
+                        if ($backgroundwidth == 100) { // Percentage value, cannot use in calculation!
+                            $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                        }
+                    } else {
+                        $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                    }
                     $backgroundheight = $dimensions['height'];
                 }
                 $totalwidth = $dimensions['width'] + $backgroundwidth;
@@ -431,7 +469,14 @@ function theme_campus_extra_less($theme) {
                     $backgroundwidth = $backgrounddimensions[0];
                     $backgroundheight = $backgrounddimensions[1];
                 } else {
-                    $backgroundwidth = 1680; // Fallback, where 1680 is the max px of #page.
+                    if (!empty($theme->settings->pagewidthmax)) {
+                        $backgroundwidth = $theme->settings->pagewidthmax; // Fallback, default max px of #page unless a percentage.
+                        if ($backgroundwidth == 100) { // Percentage value, cannot use in calculation!
+                            $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                        }
+                    } else {
+                        $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                    }
                     $backgroundheight = $dimensions[1];
                 }
                 $totalwidth = $dimensions[0] + $backgroundwidth;
