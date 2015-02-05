@@ -121,6 +121,16 @@ textarea, .uneditable-input {
     width: 96%;
 }
 
+// mixins.less
+// --------------------------------------------------
+.tab-focus() {
+  // Default
+  outline: thin dotted @textColor;
+  // Webkit
+  outline: 2px auto @textColor;
+  outline-offset: -2px;
+}
+
 // navs.less
 // --------------------------------------------------
 .nav-header {

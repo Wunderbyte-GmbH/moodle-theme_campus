@@ -358,6 +358,20 @@ table.generaltable {
     }
 }
 
+// modules.less
+// --------------------------------------------------
+.jsenabled {
+    .usermenu {
+        .moodle-actionmenu {
+            > .menu {
+                .filler {
+                    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
+                }
+            }
+        }
+    }
+}
+
 // Grade report wrapping.
 // gradereport_grader.css.
 .path-grade-report-grader .gradestable th.user, .path-grade-report-grader .gradestable th.range,
