@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+ 5th February 2015 - Version 2.7.0.29.
+  1. Slight tweak to coursename icon in front page combo list.  Bug fix from Shoelace.
+
  3rd February 2015 - Version 2.7.0.28.
   1. Update FontAwesome note about WOFF2 support in Moodle - see: MDL-46728 and MDL-49074.
   2. Adjust dropdown menu margin - task #427.
