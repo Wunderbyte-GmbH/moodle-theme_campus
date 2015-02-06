@@ -46,6 +46,7 @@ $logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true 
                     <?php if ($logininfoheader) { ?>
                     <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
                     <?php } ?>
+                    <?php echo $OUTPUT->header_toggle_menu(); ?>
                 </ul>
             </div>
         </div>

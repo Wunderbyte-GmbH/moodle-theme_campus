@@ -26,6 +26,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
+
+    private $hasspecificheader = false;  // States if we have a specific header and therefore header toggle functionality is needed.
+
     /*
      * This renders the navbar.
      * Uses bootstrap compatible html.
@@ -246,17 +249,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     public function user_menu() {
-        global $CFG;
         $usermenu = new custom_menu('', current_language());
         return $this->render_user_menu($usermenu);
     }
 
     protected function render_user_menu(custom_menu $menu) {
-        global $CFG, $USER;
-
         $this->render_gotobottom_menu($menu);
 
-        $content = html_writer::start_tag('ul', array('class' => 'nav slusermenu'));
+        $content = html_writer::start_tag('ul', array('class' => 'nav cpusermenu'));
         foreach ($menu->get_children() as $item) {
             $content .= $this->render_custom_menu_item($item, 1);
         }
@@ -277,6 +277,27 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $anti_gravity = html_writer::tag('a', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_campus')));
 
         return $anti_gravity;
+    }
+
+    public function header_toggle_menu() {
+        if ($this->hasspecificheader) {
+            $usermenu = new custom_menu('', current_language());
+            return $this->render_header_toggle_menu($usermenu);
+        }
+        return '';
+    }
+
+    protected function render_header_toggle_menu(custom_menu $menu) {
+        $headertoggle = html_writer::tag('i', '', array('class' => 'headertoggle fa fa-expand'));
+        $menu->add($headertoggle, new moodle_url('#'), get_string('headertoggle', 'theme_campus'), 10001);
+
+        $content = html_writer::start_tag('ul', array('class' => 'nav headertogglemenu'));
+        foreach ($menu->get_children() as $item) {
+            $content .= $this->render_custom_menu_item($item, 1);
+        }
+        $content .= html_writer::end_tag('ul');
+
+        return $content;
     }
 
     /**
@@ -657,12 +678,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
                     $stickynavbar = true;
                 }
+                $this->hasspecificheader = true;
             break;
             default:
                 if (get_config('theme_campus', 'usefrontpageheader')) { // If set then the front page header settings apply on all unless specific header set.
                     if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
                         $stickynavbar = true;
                     }
+                    $this->hasspecificheader = true;
                 } else {
                     if (!empty($this->page->theme->settings->stickynavbar)) {
                         $stickynavbar = true;
@@ -676,6 +699,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $currentcategory = $this->get_current_category();
                 if ($this->is_top_level_category($currentcategory)) {
                     $this->page->requires->jquery_plugin('carousel', 'theme_campus'); // Carousel can only exist on front page or top level category pages.
+                    $this->hasspecificheader = true;
                     $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
                     if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
                         // We have a custom setting so enforce the intent.
@@ -691,6 +715,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             case 'course':
             case 'incourse':
                 // From our point of view, the same as is_course_page().
+                $this->hasspecificheader = true;
                 $currentcategory = $this->get_current_top_level_catetgory();
                 $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
                 if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
@@ -706,6 +731,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
         if ($stickynavbar) {
             $this->page->requires->jquery_plugin('affix', 'theme_campus');
+        }
+
+        if ($this->hasspecificheader) {
+            $this->page->requires->jquery_plugin('headertoggle', 'theme_campus');
         }
     }
 
