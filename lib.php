@@ -546,10 +546,20 @@ function theme_campus_extra_less($theme) {
     }
 
     // Header toggle.
-    if ((!empty($theme->settings->pagewidthmax)) && ($theme->settings->pagewidthmax != 100)) {
-        // Settings exists and is not a percentage.
-        // .headertogglemenuhide(@screenWidth)
-        $content .= '.headertogglemenuhide('.$theme->settings->pagewidthmax.'px);';
+    if (!empty($theme->settings->showheadertoggle)) {
+        if ((!empty($theme->settings->pagewidthmax)) && ($theme->settings->pagewidthmax != 100)) {
+            // Settings exists and is not a percentage.
+            // .headertogglesetup(@screenWidth)
+            $content .= '.headertogglesetup('.($theme->settings->pagewidthmax+1).'px);';
+            // .headertogglemenuhide(@screenWidth)
+            $content .= '.headertogglemenuhide('.$theme->settings->pagewidthmax.'px);';
+        } else {
+            // NOTE: If @navbarCollapseWidth changes in the variables-campus.less file, then change this.
+            // .headertogglesetup(@screenWidth)
+            $content .= '.headertogglesetup(961px);';
+            // .headertogglemenuhide(@screenWidth)
+            $content .= '.headertogglemenuhide(960px);';
+        }
     }
 
     return $content;

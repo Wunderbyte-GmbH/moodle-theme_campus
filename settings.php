@@ -116,6 +116,15 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
+    // Show headertoggle.
+    $name = 'theme_campus/showheadertoggle';
+    $title = get_string('showheadertoggle', 'theme_campus');
+    $description = get_string('showheadertoggledesc', 'theme_campus');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // CDN Fonts - 1 = no, 2 = yes.
     $name = 'theme_campus/cdnfonts';
     $title = get_string('cdnfonts', 'theme_campus');

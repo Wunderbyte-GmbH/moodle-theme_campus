@@ -274,10 +274,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // Only called if responsive images exist, so hide them here when showing desktop versions.
     .frontpageheader.absolutelayout, .frontpageheader.flexlayout {
         .logotitle {
-            .campusdesktop {
+            .campuslogodesktop {
                 display: block;
             }
-            .campussmalldevice {
+            .campuslogosmalldevice {
                 display: none;
             }
         }
@@ -297,10 +297,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 width: @frontpageAbsoluteMixinPaddingBottom;
                 padding-bottom: @frontpageAbsoluteMixinPaddingBottom;
                 margin-top: -@frontpageAbsoluteMixinPaddingBottom;
-                .campusdesktop {
+                .campuslogodesktop {
                     display: none;
                 }
-                .campussmalldevice {
+                .campuslogosmalldevice {
                     display: block;
                 }
             }
@@ -319,10 +319,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             .logotitle {
                 width: @frontpageMixinLogoWidth;
                 padding-bottom: @frontpageFlexMixinPaddingBottom;
-                .campusdesktop {
+                .campuslogodesktop {
                     display: none;
                 }
-                .campussmalldevice {
+                .campuslogosmalldevice {
                     display: block;
                 }
             }
@@ -446,12 +446,17 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 @media (max-width: @navbarCollapseWidth) {
     .navbar {
         .navbar-inner {
+            padding-left: 0;
             padding-right: 0;
             .btn-navbar {
                 margin-left: 0;
                 margin-right: 0;
             }
         }
+    }
+    .backgroundcontainer.left .navbar .navbar-inner .brand {
+        float: right;
+        padding-left: 10px;
     }
 }
 
@@ -912,10 +917,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // Only called if responsive images exist, so hide them here when showing desktop versions.
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey}, .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
         .logotitle {
-            .campusdesktop {
+            .campuslogodesktop {
                 display: block;
             }
-            .campussmalldevice {
+            .campuslogosmalldevice {
                 display: none;
             }
         }
@@ -935,10 +940,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 width: @courseCategoryMixinAbsolutePaddingBottom;
                 padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
                 margin-top: -@courseCategoryMixinAbsolutePaddingBottom;  // Change from flexlayout.
-                .campusdesktop {
+                .campuslogodesktop {
                     display: none;
                 }
-                .campussmalldevice {
+                .campuslogosmalldevice {
                     display: block;
                 }
             }
@@ -957,10 +962,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             .logotitle {
                 width: @courseCategoryMixinLogoWidth;
                 padding-bottom: @courseCategoryMixinFlexPaddingBottom;
-                .campusdesktop {
+                .campuslogodesktop {
                     display: none;
                 }
-                .campussmalldevice {
+                .campuslogosmalldevice {
                     display: block;
                 }
             }
@@ -1070,33 +1075,31 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Header toggle.
-body.hideheader {
-    .frontpageheader.flexlayout, .coursecategoryheader.flexlayout {
-        .backgroundcontainer {
-            width: 100%;
-            padding-bottom: 0;
+.headertogglesetup(@screenWidth) {
+    @media (min-width: @screenWidth) {
+        body.hideheader {
+            .frontpageheader.flexlayout, .coursecategoryheader.flexlayout {
+                .backgroundcontainer {
+                    width: 100%;
+                    padding-bottom: 0;
+                }
+            }
+            .frontpageheader.absolutelayout, .coursecategoryheader.absolutelayout {
+                .backgroundcontainer {
+                    padding-bottom: 0;
+                }
+            }
+            #campusnavbar.affix-top {
+                width: 100%;
+                top: 0;
+                left: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            &.hasaffix #page {
+                padding-top: @navbarHeight + 10;
+            }
         }
-    }
-    .frontpageheader.absolutelayout, .coursecategoryheader.absolutelayout {
-        .backgroundcontainer {
-            padding-bottom: 0;
-        }
-    }
-    #campusnavbar.affix-top {
-        width: 100%;
-        top: 0;
-        left: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    &.hasaffix #page {
-        padding-top: @navbarHeight + 10;
-    }
-}
-
-@media (max-width: @navbarCollapseWidth) {
-    .navbar .nav.headertogglemenu {
-        display: none;
     }
 }
 
@@ -1104,6 +1107,11 @@ body.hideheader {
     @media (max-width: @screenWidth) {
         .navbar .nav.headertogglemenu {
             display: none;
+        }
+        body.hideheader {
+            .logotitle {
+                display: block !important; // Override jQuery!
+            }
         }
     }
 }

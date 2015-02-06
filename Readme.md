@@ -54,7 +54,7 @@ Version Information
  6th February 2015 - Version 2.7.0.29.
   1. Fix page heading in navbar occured in task #418 - task #437.
   2. Adjust 'Footer display' - task #430.
-  3. For views with max-width setting <100% add a "expand" functionality - work in progress - #task 438.
+  3. For views with max-width setting <100% add a "expand" functionality - #task 438.
 
  5th February 2015 - Version 2.7.0.29.
   1. Slight tweak to coursename icon in front page combo list.  Bug fix from Shoelace.

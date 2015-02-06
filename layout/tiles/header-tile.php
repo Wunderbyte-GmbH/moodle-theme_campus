@@ -47,9 +47,9 @@ if ($hdlogoextrapos == 1) {
     echo '<div class="logotitle'.$hdextra.'">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
-        echo '<img class="campusdesktop" src="'.$hdlogo.'">';
+        echo '<img class="campuslogodesktop" src="'.$hdlogo.'">';
         if ($hdresponsive) {
-            echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'">';
+            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'">';
         }
         echo '</a>';
     } else {
@@ -76,9 +76,9 @@ if ($hdlogoextrapos == 2) {
     echo '<div class="logotitle">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
-        echo '<img class="campusdesktop" src="'.$hdlogo.'">';
+        echo '<img class="campuslogodesktop" src="'.$hdlogo.'">';
         if ($hdresponsive) {
-            echo '<img class="campussmalldevice" src="'.$hdresponsivelogo.'">';
+            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'">';
         }
         echo '</a>';
     } else {

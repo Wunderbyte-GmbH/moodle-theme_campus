@@ -100,6 +100,9 @@ $string['showlogininfoheaderdesc'] = 'Display the login link in the header.';
 $string['showlogininfofooter'] = 'Display footer login link';
 $string['showlogininfofooterdesc'] = 'Display the login link in the footer.';
 
+$string['showheadertoggle'] = 'Display button for fullscreen mode';
+$string['showheadertoggledesc'] = 'Display the button to hide / show the full screen.';
+
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfontsdesc'] = 'Use content delivery network fonts.';
 

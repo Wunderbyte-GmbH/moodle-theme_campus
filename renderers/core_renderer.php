@@ -280,9 +280,11 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     public function header_toggle_menu() {
-        if ($this->hasspecificheader) {
-            $usermenu = new custom_menu('', current_language());
-            return $this->render_header_toggle_menu($usermenu);
+        if (!empty($this->page->theme->settings->showheadertoggle)) {
+            if ($this->hasspecificheader) {
+                $usermenu = new custom_menu('', current_language());
+                return $this->render_header_toggle_menu($usermenu);
+            }
         }
         return '';
     }
@@ -733,8 +735,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $this->page->requires->jquery_plugin('affix', 'theme_campus');
         }
 
-        if ($this->hasspecificheader) {
-            $this->page->requires->jquery_plugin('headertoggle', 'theme_campus');
+        if (!empty($this->page->theme->settings->showheadertoggle)) {
+            if ($this->hasspecificheader) {
+                $this->page->requires->jquery_plugin('headertoggle', 'theme_campus');
+            }
         }
     }
 
