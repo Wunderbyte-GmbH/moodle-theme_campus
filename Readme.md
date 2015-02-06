@@ -53,6 +53,7 @@ Version Information
 ===================
  6th February 2015 - Version 2.7.0.29.
   1. Fix page heading in navbar occured in task #418 - task #437.
+  2. Adjust 'Footer display' - task #430.
 
  5th February 2015 - Version 2.7.0.29.
   1. Slight tweak to coursename icon in front page combo list.  Bug fix from Shoelace.
