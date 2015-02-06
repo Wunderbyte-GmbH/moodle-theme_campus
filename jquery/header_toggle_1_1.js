@@ -27,7 +27,6 @@
  
 $(document).ready(function() {
   $("body").on( "click", ".headertoggle", function() {
-    $("body").toggleClass("hideheader");
     if ($(this).hasClass("fa-expand")) {
        $(this).removeClass("fa-expand");
        $(this).addClass("fa-compress");
@@ -35,5 +34,9 @@ $(document).ready(function() {
        $(this).removeClass("fa-compress");
        $(this).addClass("fa-expand");
     }
+    $(".logotitle").toggle(500);
+    $(".campusdesktop").toggle(500);
+    $(".sitename").toggle(500);
+    $("body").toggleClass("hideheader", 500);
   });
 });

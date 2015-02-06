@@ -32,4 +32,5 @@ $(document).ready(function() {
       top: $('#page-header').height()
     }
   });
+  $("body").addClass("hasaffix");
 });

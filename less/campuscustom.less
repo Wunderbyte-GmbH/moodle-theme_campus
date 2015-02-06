@@ -897,6 +897,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         background-color: @courseCategoryMixinBackgroundColour;
         background-clip: content-box;
     }
+    body.hideheader {
+        .coursecategoryheader.category@{courseCategoryKey} {
+            background-color: transparent;
+        }
+    }
 }
 
 .ccresponsiveheaderlogo(@courseCategoryKey;
@@ -1062,6 +1067,45 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: @navbarPageHeadingMax;
+}
+
+// Header toggle.
+body.hideheader {
+    .frontpageheader.flexlayout, .coursecategoryheader.flexlayout {
+        .backgroundcontainer {
+            width: 100%;
+            padding-bottom: 0;
+        }
+    }
+    .frontpageheader.absolutelayout, .coursecategoryheader.absolutelayout {
+        .backgroundcontainer {
+            padding-bottom: 0;
+        }
+    }
+    #campusnavbar.affix-top {
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    &.hasaffix #page {
+        padding-top: @navbarHeight + 10;
+    }
+}
+
+@media (max-width: @navbarCollapseWidth) {
+    .navbar .nav.headertogglemenu {
+        display: none;
+    }
+}
+
+.headertogglemenuhide(@screenWidth) {
+    @media (max-width: @screenWidth) {
+        .navbar .nav.headertogglemenu {
+            display: none;
+        }
+    }
 }
 
 // Footer.
