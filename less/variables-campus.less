@@ -86,8 +86,11 @@
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             lighten(@bodyBackgroundAlt, 12%); // for striping
-@tableBackgroundHover:              lighten(@bodyBackgroundAlt, 15%); // for hover
+@tableBackgroundAccentOdd:          rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.5); // for striping
+@tableBackgroundHoverOdd:           lighten(@tableBackgroundAccentOdd, 3%); // for hover
+@tableBackgroundEven:               darken(@bodyBackgroundAlt, 20%);
+@tableBackgroundAccentEven:         rgba(red(@tableBackgroundEven), green(@tableBackgroundEven), blue(@tableBackgroundEven), 0.5); // for striping
+@tableBackgroundHoverEven:          darken(@tableBackgroundAccentEven, 3%); // for hover
 @tableBorder:                       #ddd; // table and cell border
 
 // Buttons

@@ -181,6 +181,40 @@ a:focus {
   text-decoration: none;
 }
 
+// tables.less
+// --------------------------------------------------
+
+// ZEBRA-STRIPING
+// --------------
+.table-striped {
+  tbody {
+    > tr:nth-child(odd) > td,
+    > tr:nth-child(odd) > th {
+      background-color: @tableBackgroundAccentOdd;
+    }
+    > tr:nth-child(even) > td,
+    > tr:nth-child(even) > th {
+      background-color: @tableBackgroundAccentEven;
+    }
+  }
+}
+
+// HOVER EFFECT
+// ------------
+// Placed here since it has to come after the potential zebra striping
+.table-hover {
+  tbody {
+    tr:nth-child(odd):hover > td,
+    tr:nth-child(odd):hover > th {
+      background-color: @tableBackgroundHoverOdd;
+    }
+    tr:nth-child(even):hover > td,
+    tr:nth-child(even):hover > th {
+      background-color: @tableBackgroundHoverEven;
+    }
+  }
+}
+
 // wells.less
 // --------------------------------------------------
 .well {
