@@ -58,6 +58,7 @@ Version Information
   4. Adjust affix such that it recalculates the top position of '#page-header' when the heading toggle
      collapses the header as the page is now dynamic in that dimension - task #438.
   5. Adapt code to use front page header when an module is a part of the site course - task #440.
+  6. Finish 'Max width definition in theme settings' by tidying up code - task #428.
 
  6th February 2015 - Version 2.7.0.30.
   1. Fix page heading in navbar occured in task #418 - task #437.

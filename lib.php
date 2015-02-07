@@ -66,11 +66,8 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->pagewidthmax)) {
         if ($theme->settings->pagewidthmax == 100) { // Percentage value.
             $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'%';
-            // $variables['pageWidthMaximumHeaders'] = '1680px';
-            $variables['pageWidthMaximumHeaders'] = $theme->settings->pagewidthmax.'%';  // TODO:  Possibly might be ok when images have a combined max of 1680px!
         } else {
             $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'px';
-            $variables['pageWidthMaximumHeaders'] = $theme->settings->pagewidthmax.'px';
         }
     }
     if (!empty($theme->settings->headingfont)) {
