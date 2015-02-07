@@ -647,7 +647,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $thefile = 'frontpage-header';
         }
 
-        switch($this->page->pagelayout) {
+        $pagelayout = $this->page->pagelayout;
+        if ($this->page->course->format == 'site') {
+            $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
+        }
+
+        switch($pagelayout) {
             case 'frontpage':
                 $thefile = 'frontpage-header';
             break;
@@ -673,7 +678,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     public function optional_jquery() {
         $stickynavbar = false;
 
-        switch($this->page->pagelayout) {
+        $pagelayout = $this->page->pagelayout;
+        if ($this->page->course->format == 'site') {
+            $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
+        }
+
+        switch($pagelayout) {
             case 'frontpage':
                 $this->page->requires->jquery_plugin('carousel', 'theme_campus'); // Carousel can only exist on front page or top level category pages.
                 // We are the front page setting enforce the intent.
@@ -696,7 +706,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             break;
         }
 
-        switch($this->page->pagelayout) {
+        switch($pagelayout) {
             case 'coursecategory':
                 $currentcategory = $this->get_current_category();
                 if ($this->is_top_level_category($currentcategory)) {
