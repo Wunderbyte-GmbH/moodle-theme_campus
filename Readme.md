@@ -55,6 +55,8 @@ Version Information
   1. Fix click on expand icon needs two clicks - padding issue - task #438.
   2. Adjust page heading in navbar menu padding left and right - task #438.
   3. Adjust expand icon to the extreme right - task #438.
+  4. Adjust affix such that it recalculates the top position of '#page-header' when the heading toggle
+     collapses the header as the page is now dynamic in that dimension - task #438.
 
  6th February 2015 - Version 2.7.0.30.
   1. Fix page heading in navbar occured in task #418 - task #437.

@@ -29,7 +29,9 @@
 $(document).ready(function() {
   jQuery('#campusnavbar').affix({
     offset: {
-      top: $('#page-header').height()
+      top: function() {
+           return $('#page-header').height()
+      }
     }
   });
   $("body").addClass("hasaffix");
