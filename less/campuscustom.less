@@ -1063,10 +1063,18 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+// Navbar.
+.navbar .nav.pull-right {
+    margin: 0;
+    .usermenu {
+        margin: 0 10px 0 0;
+    }
+}
+
 // Navbar brand.
 .navbar .brand {
     // Vertically center the text given @navbarHeight.
-    padding: 0;
+    padding: 0 5px 0 5px;
     margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
     max-height: 20px;
     overflow: hidden;
@@ -1075,6 +1083,17 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Header toggle.
+.navbar .nav.headertogglemenu {
+    margin: 0;
+    > li > a {
+        padding: 0;
+        i {
+            margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
+            font-size: 20px;
+        }
+    }
+}
+
 .headertogglesetup(@screenWidth) {
     @media (min-width: @screenWidth) {
         body.hideheader {
@@ -1089,12 +1108,19 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     padding-bottom: 0;
                 }
             }
-            #campusnavbar.affix-top {
-                width: 100%;
-                top: 0;
-                left: 0;
-                padding-left: 0;
-                padding-right: 0;
+            #campusnavbar {
+                position: static;
+                &.affix-top {
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                &.affix {
+                    position: fixed;
+                }
             }
             &.hasaffix #page {
                 padding-top: @navbarHeight + 10;

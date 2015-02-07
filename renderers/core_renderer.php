@@ -683,7 +683,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $this->hasspecificheader = true;
             break;
             default:
-                if (get_config('theme_campus', 'usefrontpageheader')) { // If set then the front page header settings apply on all unless specific header set.
+                if (!empty($this->page->theme->settings->usefrontpageheader)) { // If set then the front page header settings apply on all unless specific header set.
                     if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
                         $stickynavbar = true;
                     }

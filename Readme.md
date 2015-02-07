@@ -51,7 +51,12 @@ Uninstallation
 
 Version Information
 ===================
- 6th February 2015 - Version 2.7.0.29.
+ 7th February 2015 - Version 2.7.0.31.
+  1. Fix click on expand icon needs two clicks - padding issue - task #438.
+  2. Adjust page heading in navbar menu padding left and right - task #438.
+  3. Adjust expand icon to the extreme right - task #438.
+
+ 6th February 2015 - Version 2.7.0.30.
   1. Fix page heading in navbar occured in task #418 - task #437.
   2. Adjust 'Footer display' - task #430.
   3. Implement 'For views with max-width setting <100% add a "expand" functionality' - #task 438.
