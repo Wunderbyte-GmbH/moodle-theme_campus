@@ -62,7 +62,8 @@ Version Information
   7. Change hamburger icon bar colour to navbar text colour - task #442.
   8. Fix course category headers after task #440.
   9. Full page with header toggle - task #443.
- 10. Quick fix to '.block_course_overview .content' margin whilst testing '/my' for #443.
+ 10. Quick fix to '.block_course_overview .content' margin whilst testing '/my' for task #443.
+ 11. Adjusted 'Forum design' against new design information - task #420.
 
  6th February 2015 - Version 2.7.0.30.
   1. Fix page heading in navbar occured in task #418 - task #437.

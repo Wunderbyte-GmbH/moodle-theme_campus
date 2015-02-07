@@ -5,6 +5,10 @@ body {
     background-color: @themeBackground;
 }
 
+#region-main-campus {
+    background-color: @themeContent;
+}
+
 // Page.
 .container-fluid {
     max-width: @pageWidthMaximum;
@@ -1195,4 +1199,68 @@ body.hideheader {
 // Forum.
 .path-mod-forum .indent {
     margin-left: 15px;
+}
+
+.path-mod-forum table.forumheaderlist {
+    border: 0px solid transparent;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+
+    color: darken(@navbarText, 15%);
+    a {
+        color: @navbarText;
+    }
+    tr:nth-child(odd) > td a {
+        color: darken(@navbarText, 15%);
+    }
+
+    thead, tbody {
+        border-top: 1px solid @grayLightOrig;
+        border-left: 1px solid @grayLightOrig;
+        border-right: 1px solid @gray;
+        border-bottom: 1px solid @gray;
+        box-shadow: 1px 2px 3px @grayLightish;
+    }
+    thead {
+        background-color: @tableBackgroundAccentOdd;
+    }
+    th {
+        padding: 5px 4px;
+    }
+    .forumblank {
+        height: 8px;
+    }
+    tbody {
+        tr {
+            border: 0px solid transparent;
+        }
+    }
+    td {
+        padding: 5px 4px;
+    }
+}
+
+.forumpost {
+    background-color: transparent;
+    border: 0px solid transparent;
+    box-shadow: none;
+    .row {
+        &.header {
+            margin-bottom: 8px;
+            height: 43px;
+            background-color: @tableBackgroundAccentOdd;
+            border: 1px solid @grayLightish;
+        }
+        .topic, &.maincontent, &.header {
+            padding: 5px 4px;
+        }
+        &.header, &.maincontent {
+            //box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.23);
+            box-shadow: 1px 2px 3px @grayLightish;
+            width: auto;
+        }
+        &.side {
+            padding-top: 10px;
+        }
+    }
 }
