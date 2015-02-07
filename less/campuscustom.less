@@ -1122,9 +1122,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     position: fixed;
                 }
             }
-            &.hasaffix #page {
-                padding-top: @navbarHeight + 10;
-            }
         }
     }
 }
@@ -1139,6 +1136,27 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 display: block !important; // Override jQuery!
             }
         }
+    }
+}
+
+body.hideheader {
+    .navbar,
+    .navbar .navbar-inner .container-fluid,
+    #page, 
+    .frontpageheader.absolutelayout,
+    .frontpageheader.flexlayout,
+    .frontpageheader.flexlayout .container,
+    .coursecategoryheader.absolutelayout,
+    .coursecategoryheader.flexlayout,
+    .coursecategoryheader.flexlayout .container {
+        max-width: 100%;
+    }
+    #page-header.fancynavbar {
+        padding-bottom: 30px;
+    }
+    #page-header.fancynavbar, #campusnavbar {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
