@@ -60,6 +60,7 @@ Version Information
   5. Adapt code to use front page header when an module is a part of the site course - task #440.
   6. Finish 'Max width definition in theme settings' by tidying up code - task #428.
   7. Change hamburger icon bar colour to navbar text colour - task #442.
+  8. Fix course category headers after task #440.
 
  6th February 2015 - Version 2.7.0.30.
   1. Fix page heading in navbar occured in task #418 - task #437.

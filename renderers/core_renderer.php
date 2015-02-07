@@ -648,7 +648,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
 
         $pagelayout = $this->page->pagelayout;
-        if ($this->page->course->format == 'site') {
+        if (($this->page->course->format == 'site') && ($pagelayout == 'incourse')) {
             $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
         }
 
@@ -679,7 +679,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $stickynavbar = false;
 
         $pagelayout = $this->page->pagelayout;
-        if ($this->page->course->format == 'site') {
+        if (($this->page->course->format == 'site') && ($pagelayout == 'incourse')) {
             $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
         }
 
