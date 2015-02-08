@@ -27,7 +27,7 @@
  */
  
 $(document).ready(function() {
-  jQuery('#campusnavbar').affix({
+  jQuery('.campusnavbar').affix({
     offset: {
       top: function() {
            return $('#page-header').height()

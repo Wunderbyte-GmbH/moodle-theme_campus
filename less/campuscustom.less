@@ -1079,6 +1079,32 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+// No fancy navbar on < @navbarCollapseWidth.
+.headertogglemenuhidenofancy(@screenWidth) {
+    @media (min-width: @navbarCollapseDesktopWidth) and (max-width: @screenWidth) {
+        body.hideheader {
+            > header.iamfancy {
+                display: none;
+            }
+        }
+    }
+}
+@media (max-width: @navbarCollapseWidth) {
+    #page-header header.iamfancy {
+        display: none;
+    }
+    body.hideheader > header.iamfancy {
+        display: block;
+    }
+}
+@media (min-width: @navbarCollapseDesktopWidth) {
+    body {
+        > header.iamfancy {
+            display: none;
+        }
+    }
+}
+
 // Navbar brand.
 .navbar .brand {
     // Vertically center the text given @navbarHeight.
@@ -1116,7 +1142,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     padding-bottom: 0;
                 }
             }
-            .fancynavbar #campusnavbar {
+            .fancynavbar .campusnavbar {
                 position: static;
                 &.affix-top {
                     position: absolute;
@@ -1130,6 +1156,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     position: fixed;
                 }
             }
+            #page-header.fancynavbar {
+                padding-bottom: 30px;
+            }
+            #page-header.fancynavbar, .campusnavbar {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     }
 }
@@ -1140,7 +1173,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             display: none;
         }
         body.hideheader {
-            .logotitle {
+            .logotitle, .campusdesktop {
                 display: block !important; // Override jQuery!
             }
         }
@@ -1158,13 +1191,6 @@ body.hideheader {
     .coursecategoryheader.flexlayout,
     .coursecategoryheader.flexlayout .container {
         max-width: 100%;
-    }
-    #page-header.fancynavbar {
-        padding-bottom: 30px;
-    }
-    #page-header.fancynavbar, #campusnavbar {
-        padding-left: 0;
-        padding-right: 0;
     }
 }
 

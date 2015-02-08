@@ -64,7 +64,7 @@ if ($hdbackgroundimage) {
         echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'">';
     }
     if ($hdfancynavbar) {
-        require_once(dirname(__FILE__).'/navbar.php');
+        include(dirname(__FILE__).'/navbar.php');
     }
 }
 $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
@@ -88,6 +88,6 @@ if ($hdlogoextrapos == 2) {
 }
 echo '</div></div>';
 
-if (!$hdfancynavbar) {
-    require_once(dirname(__FILE__).'/navbar.php');
-}
+//if (!$hdfancynavbar) {
+    include(dirname(__FILE__).'/navbar.php');
+//}

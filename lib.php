@@ -550,12 +550,16 @@ function theme_campus_extra_less($theme) {
             $content .= '.headertogglesetup('.($theme->settings->pagewidthmax+1).'px);';
             // .headertogglemenuhide(@screenWidth)
             $content .= '.headertogglemenuhide('.$theme->settings->pagewidthmax.'px);';
+            // .headertogglemenuhidenofancy(@screenWidth)
+            $content .= '.headertogglemenuhidenofancy('.$theme->settings->pagewidthmax.'px);';
         } else {
             // NOTE: If @navbarCollapseWidth changes in the variables-campus.less file, then change this.
             // .headertogglesetup(@screenWidth)
             $content .= '.headertogglesetup(961px);';
             // .headertogglemenuhide(@screenWidth)
             $content .= '.headertogglemenuhide(960px);';
+            // .headertogglemenuhidenofancy(@screenWidth)
+            $content .= '.headertogglemenuhidenofancy(960px);';
         }
     }
 

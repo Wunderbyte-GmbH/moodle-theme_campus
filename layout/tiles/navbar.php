@@ -27,8 +27,12 @@
  */
 
 $logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true : $PAGE->theme->settings->showlogininfoheader;
+$navbarclasses = $html->navbarclass;
+if (!empty($hdfancynavbar)) {
+    $navbarclasses .= ' iamfancy';
+}
 ?>
-<header id="campusnavbar" role="banner" class="navbar navbar-static-top<?php echo $html->navbarclass ?>">
+<header role="banner" class="campusnavbar navbar navbar-static-top<?php echo $navbarclasses ?>">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
