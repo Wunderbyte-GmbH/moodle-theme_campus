@@ -52,7 +52,7 @@ Uninstallation
 Version Information
 ===================
  8th February 2015 - Version 2.7.0.32.
-  1. Fancy navbar <960px use same navbar style as standard - work in progress - task #441.
+  1. Fancy navbar <960px use same navbar style as standard - task #441.
   2. Slight fix to header background image not showing when header < pagewidthmax but > navbarCollapseWidth - task #438.
 
  7th February 2015 - Version 2.7.0.31.
