@@ -66,6 +66,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .block {
     padding-top: 0;
     padding-bottom: 0;
+    background-color: @blockBackgroundColour;
+    //background-color: rgba(red(@blockBackgroundColour), green(@blockBackgroundColour), blue(@blockBackgroundColour), 0.7);
     .header {
         background-color: @blockHeadingBackgroundColour;
         padding-top: 4px; // Hardcoded in bootstrapbase/less/moodle/blocks.less.  Half here because of padding-bottom so looks good.

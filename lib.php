@@ -91,7 +91,7 @@ function theme_campus_less_variables($theme) {
         $variables['blockHeadingBackgroundColour'] = $theme->settings->blockheadingbackgroundcolour;
     }
     if (!empty($theme->settings->blockbackgroundcolour)) {
-        $variables['wellBackground'] = $theme->settings->blockbackgroundcolour;
+        $variables['blockBackgroundColour'] = $theme->settings->blockbackgroundcolour;
     }
     if (!empty($theme->settings->blockborderoptions)) {
         $blockborderthickness = (!empty($theme->settings->blockborderthickness)) ? $theme->settings->blockborderthickness : '1px';
@@ -170,6 +170,9 @@ function theme_campus_less_variables($theme) {
     }
     if (!empty($theme->settings->borderradiuslarge)) {
         $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
+    }
+    if (!empty($theme->settings->wellbackgroundcolour)) {
+        $variables['wellBackground'] = $theme->settings->wellbackgroundcolour;
     }
     if (!empty($theme->settings->alertinfotextcolour)) {
         $variables['infoText'] = $theme->settings->alertinfotextcolour;
