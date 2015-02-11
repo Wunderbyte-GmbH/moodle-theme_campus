@@ -461,6 +461,26 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Alert info text setting.
+    $name = 'theme_campus/alertinfotextcolour';
+    $title = get_string('alertinfotextcolour', 'theme_campus');
+    $description = get_string('alertinfotextcolourdesc', 'theme_campus');
+    $default = '#3a87ad';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Alert info background setting.
+    $name = 'theme_campus/alertinfobackgroundcolour';
+    $title = get_string('alertinfobackgroundcolour', 'theme_campus');
+    $description = get_string('alertinfobackgroundcolourdesc', 'theme_campus');
+    $default = '#d9edf7';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     $ADMIN->add('theme_campus', $settingpage);
 
     // Header settings.

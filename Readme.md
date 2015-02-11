@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+11th February 2015 - Version 2.7.0.33.
+  1. Implement solution for core 'Fix text colour/bg colour issue' issue - work in progress - task #446.
+
  8th February 2015 - Version 2.7.0.32.
   1. Fancy navbar <960px use same navbar style as standard - task #441.
   2. Slight fix to header background image not showing when header < pagewidthmax but > navbarCollapseWidth - task #438.

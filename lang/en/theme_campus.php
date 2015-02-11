@@ -222,6 +222,12 @@ $string['px23'] = '23px';
 $string['px24'] = '24px';
 $string['px25'] = '25px';
 
+$string['alertinfotextcolour'] = 'Alert info text colour';
+$string['alertinfotextcolourdesc'] = 'Set the text colour for the alert information box.  This affects the quiz question box.';
+
+$string['alertinfobackgroundcolour'] = 'Alert info background colour';
+$string['alertinfobackgroundcolourdesc'] = 'Set the background colour for the alert information box.  This affects the quiz question box.';
+
 // Carousel.
 $string['carouselsettings']= 'Carousel';
 $string['carouselsettingsdesc']= 'Configure the carousel settings for the theme here.';

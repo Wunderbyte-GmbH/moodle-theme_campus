@@ -171,6 +171,12 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->borderradiuslarge)) {
         $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
     }
+    if (!empty($theme->settings->alertinfotextcolour)) {
+        $variables['infoText'] = $theme->settings->alertinfotextcolour;
+    }
+    if (!empty($theme->settings->alertinfobackgroundcolour)) {
+        $variables['infoBackground'] = $theme->settings->alertinfobackgroundcolour;
+    }
     if (!empty($theme->settings->navbarpageheadingmax)) {
         $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax.'px';
     }

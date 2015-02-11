@@ -11,6 +11,30 @@ body {
     padding-top: 10px;
 }
 
+// admin.less
+// --------------------------------------------------
+#page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release,
+#plugins-check .status-upgrade .status,
+#plugins-check .status-delete .status {
+    color: @infoText;
+    background-color: @infoBackground;
+}
+
+#plugins-check .status .pluginupdateinfo {
+    color: @infoText;
+    background-color: @infoBackground;
+}
+
+#plugins-overview-panel .info.updatable {
+    color: @infoText;
+    background-color: @infoBackground;
+}
+
+#plugins-control-panel .notes .pluginupdateinfo {
+    color: @infoText;
+    background-color: @infoBackground;
+}
+
 // backup-restore.less
 // --------------------------------------------------
 .backup-restore .backup-section > h2.header,
@@ -67,6 +91,11 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     width:100%;
 }
 
+.highlight {
+    color: @infoText;
+    background: @infoBackground;
+}
+
 // course.less
 // --------------------------------------------------
 .course-content .section-summary {
@@ -75,6 +104,10 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 .course-content ul li.section.main {
     border-bottom: 2px solid @inputBorder;
+}
+
+.course-content .current {
+    background-color: @wellBackground;
 }
 
 /* Mary Evans changes - see https://moodle.org/mod/forum/discuss.php?d=230919#p1004239. */
@@ -128,7 +161,6 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
         background-position: left 0.2em;
     }
 }
-
 
 // debug.less
 // --------------------------------------------------
@@ -380,6 +412,14 @@ table.generaltable {
 .path-grade-report-grader .gradestable th.range, .path-grade-report-grader td {
     white-space: pre-line; // http://www.w3schools.com/cssref/pr_text_white-space.asp.
 }
+
+// question.less
+// --------------------------------------------------
+.que .formulation {
+    color: @infoText;
+    background-color: @infoBackground;
+}
+
 
 // responsive.less
 // --------------------------------------------------
