@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+12th February 2015 - Version 2.7.0.34.
+  1. Fixed drop down caret being white on white on front page section when editing on if navbar text is white.  Fix from Shoelace 2.8.2.1.
+
 11th February 2015 - Version 2.7.0.33.
   1. Implement solution for core 'Fix text colour/bg colour issue' issue - task #446.
 

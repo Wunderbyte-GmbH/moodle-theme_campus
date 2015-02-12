@@ -96,6 +96,26 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     background: @infoBackground;
 }
 
+// core.less and modules.less
+// --------------------------------------------------
+.jsenabled {
+    .moodle-actionmenu[data-enhance] .toggle-display.textmenu .caret {
+        border-top-color: @linkColor;
+        &:hover,
+        &:active {
+            border-top-color: @linkColorHover;
+        }
+    }
+
+    .usermenu .moodle-actionmenu[data-enhance] .toggle-display .caret {
+        border-top-color: @navbarLinkColor;
+        &:hover,
+        &:active {
+            border-top-color: @navbarLinkColorActive;
+        }
+    }
+}
+
 // course.less
 // --------------------------------------------------
 .course-content .section-summary {
