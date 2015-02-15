@@ -125,19 +125,6 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // CDN Fonts - 1 = no, 2 = yes.
-    $name = 'theme_campus/cdnfonts';
-    $title = get_string('cdnfonts', 'theme_campus');
-    $description = get_string('cdnfontsdesc', 'theme_campus');
-    $default = 1;
-    $choices = array(
-        1 => new lang_string('no'),   // No.
-        2 => new lang_string('yes')   // Yes.
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    // No CSS change, so no need to reset caches.
-    $settingpage->add($setting);
-
     // Favicon file setting.
     $name = 'theme_campus/favicon';
     $title = get_string('favicon', 'theme_campus');

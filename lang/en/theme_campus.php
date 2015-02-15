@@ -103,9 +103,6 @@ $string['showlogininfofooterdesc'] = 'Display the login link in the footer.';
 $string['showheadertoggle'] = 'Display button for fullscreen mode';
 $string['showheadertoggledesc'] = 'Display the button to hide / show the full screen.';
 
-$string['cdnfonts'] = 'Content delivery network fonts';
-$string['cdnfontsdesc'] = 'Use content delivery network fonts.';
-
 $string['favicon'] = 'Favicon';
 $string['favicondesc'] = 'Upload your \'favicon\' here.';
 

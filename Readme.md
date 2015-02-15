@@ -54,6 +54,7 @@ Version Information
 15th February 2015 - Version 2.7.0.35.
   1. Adjustments to 'Forum design' - task #420.
   2. Add body font with 'Source sans pro', 'Questrial' and 'Open sans' - task #410.
+  3. Remove CDN - task #410.
 
 12th February 2015 - Version 2.7.0.34.
   1. Fixed drop down caret being white on white on front page section when editing on if navbar text is white.  Fix from Shoelace 2.8.2.1.
