@@ -73,6 +73,9 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->headingfont)) {
         $variables['headingsFontName'] = $theme->settings->headingfont;
     }
+    if (!empty($theme->settings->bodyfont)) {
+        $variables['baseFontName'] = $theme->settings->bodyfont;
+    }
     if (!empty($theme->settings->textcolour)) {
         $variables['textColor'] = $theme->settings->textcolour;
     }

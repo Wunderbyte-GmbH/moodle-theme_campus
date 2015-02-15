@@ -127,6 +127,9 @@ $string['per100'] = '100%';
 $string['headingfont'] = 'Headings font';
 $string['headingfontdesc'] = 'Set the font for the headings.';
 
+$string['bodyfont'] = 'Body font';
+$string['bodyfontdesc'] = 'Set the font for the body.';
+
 $string['themelayout'] = 'Theme layout';
 $string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns.';
 $string['themelayoutthreecolumns'] = 'Three columns';

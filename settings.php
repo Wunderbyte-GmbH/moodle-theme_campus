@@ -202,6 +202,20 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Body font.
+    $name = 'theme_campus/bodyfont';
+    $title = get_string('bodyfont', 'theme_campus');
+    $description = get_string('bodyfontdesc', 'theme_campus');
+    $default = 'Source Sans Pro';
+    $choices = array(
+        'Open Sans' => 'Open Sans',
+        'Questrial' => 'Questrial',
+        'Source Sans Pro' => 'Source Sans Pro'
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Text colour setting.
     $name = 'theme_campus/textcolour';
     $title = get_string('textcolour', 'theme_campus');
