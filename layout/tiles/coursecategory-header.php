@@ -100,6 +100,7 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
     $hdlogoextrapos = $hdbackgroundextrapos;
     $hdflexlayout = true;
     $themesettings = true;
+    $frontpagesettings = true;
 }
 
 // Layout only if not using front page or theme fallback.
@@ -129,7 +130,11 @@ if ($hdbackgroundextrapos == 1) { // Background is an inversion of logo position
     $hdbackgroundextra = 'left';
 }
 
-$hdtype = 'coursecategoryheader '.$hdlayout.' category'.$currentcategory;
+if ($frontpagesettings) {
+    $hdtype = 'frontpageheader '.$hdlayout;
+} else {
+    $hdtype = 'coursecategoryheader '.$hdlayout.' category'.$currentcategory;
+}
 
 require_once(dirname(__FILE__).'/header-tile.php');
 

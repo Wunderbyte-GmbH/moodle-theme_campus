@@ -54,6 +54,7 @@ Version Information
 16th February 2015 - Version 2.7.0.36.
   1. Adjust invisible block background - discovered whilst investigating task #451.
   2. Fix 'If there is no block in "aside" is it possible to switch to single column layout?' - task #451.
+  3. Adjust logic for 'When I add a new top level course category, then the header images are not displayed within this category' - task #452.
 
 15th February 2015 - Version 2.7.0.35.
   1. Adjustments to 'Forum design' - task #420.

@@ -638,7 +638,7 @@ if (is_siteadmin()) {
         $title = get_string('coursecategoryhavecustomheader', 'theme_campus', array('categoryname' => $value));
         $description = get_string('coursecategoryhavecustomheaderdesc', 'theme_campus', array('categoryname' => $value));
         $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-        // No CSS change, so no need to reset caches.
+        $setting->set_updatedcallback('theme_reset_all_caches');  // CSS change to generate extra selectors if turning on for a new category for the first time.
         $settingpage->add($setting);
     }
 
