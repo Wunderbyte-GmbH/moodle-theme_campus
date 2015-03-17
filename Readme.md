@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+17th March 2015 - Version 2.7.0.37.
+  1. Move category slide settings to a separate setting page - task #528.
+
 16th February 2015 - Version 2.7.0.36.
   1. Adjust invisible block background - discovered whilst investigating task #451.
   2. Fix 'If there is no block in "aside" is it possible to switch to single column layout?' - task #451.

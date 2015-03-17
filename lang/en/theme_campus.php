@@ -232,21 +232,18 @@ $string['alertinfobackgroundcolour'] = 'Alert info background colour';
 $string['alertinfobackgroundcolourdesc'] = 'Set the background colour for the alert information box.';
 
 // Carousel.
-$string['carouselsettings']= 'Carousel';
-$string['carouselsettingsdesc']= 'Configure the carousel settings for the theme here.';
-
-$string['carouselgeneralsettings']= 'General';
-$string['carouselgeneralsettings_desc'] = 'General carousel settings.';
+$string['carouselsettings']= 'Carousel general';
+$string['carouselsettingsdesc']= 'Configure the general carousel settings for the theme here.';
 
 $string['sliderposition'] = 'Slider position';
 $string['sliderpositiondesc'] = 'Position of the slider on the page.';
 $string['sliderpositionheader'] = 'Underneath the navbar';
 $string['sliderpositionpage'] = 'With the page content';
 
-$string['frontpagecarouselsettings']= 'Front page';
+$string['frontpagecarouselsettings']= 'Front page carousel';
 $string['frontpagecarouselsettings_desc']= 'Front page carousel settings.';
 
-$string['coursecategorycarouselsettings']= 'Course category';
+$string['coursecategorycarouselsettings']= 'Course category carousel';
 $string['coursecategorycarouselsettings_desc']= 'Course category carousel settings.';
 
 $string['carouselautoplay'] = 'Autoplay';

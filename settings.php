@@ -785,9 +785,6 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_carouselheading', null,
         format_text(get_string('carouselsettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
-    $settingpage->add(new admin_setting_heading('theme_campus_carousel_general', get_string('carouselgeneralsettings', 'theme_campus'),
-            format_text(get_string('carouselgeneralsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
-
     // Slider position setting.
     $name = 'theme_campus/sliderposition';
     $title = get_string('sliderposition', 'theme_campus');
@@ -864,8 +861,11 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    $ADMIN->add('theme_campus', $settingpage);
+
     // Frontpage carousel settings.
-    $settingpage->add(new admin_setting_heading('theme_campus_carousel_frontpage', get_string('frontpagecarouselsettings', 'theme_campus'),
+    $settingpage = new admin_settingpage('theme_campus_frontpage_carousel', get_string('frontpagecarouselsettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_carousel_frontpage', null,
             format_text(get_string('frontpagecarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Status.
@@ -929,8 +929,11 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
     }
 
-    // Course category carousel settings.
-    $settingpage->add(new admin_setting_heading('theme_campus_carousel_coursecategory', get_string('coursecategorycarouselsettings', 'theme_campus'),
+    $ADMIN->add('theme_campus', $settingpage);
+
+     // Course category carousel settings.
+    $settingpage = new admin_settingpage('theme_campus_category_carousel', get_string('coursecategorycarouselsettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_carousel_coursecategory', null,
             format_text(get_string('coursecategorycarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
