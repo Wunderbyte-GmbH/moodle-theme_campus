@@ -44,7 +44,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/themelayout';
     $title = get_string('themelayout', 'theme_campus');
     $description = get_string('themelayoutdesc', 'theme_campus');
-    $default = 1;
+    $default = 5;
     $choices = array(
         1 => get_string('themelayoutthreecolumns', 'theme_campus'),
         2 => get_string('themelayoutthreecolumnsfplefttwo', 'theme_campus'),
@@ -120,7 +120,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/showheadertoggle';
     $title = get_string('showheadertoggle', 'theme_campus');
     $description = get_string('showheadertoggledesc', 'theme_campus');
-    $default = false;
+    $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
@@ -173,7 +173,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/headingfont';
     $title = get_string('headingfont', 'theme_campus');
     $description = get_string('headingfontdesc', 'theme_campus');
-    $default = 'Source Sans Pro';
+    $default = 'Roboto Condensed';
     $choices = array(
         'Droid Serif' => 'Droid Serif',
         'EB Garamond' => 'EB Garamond',
@@ -193,7 +193,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/bodyfont';
     $title = get_string('bodyfont', 'theme_campus');
     $description = get_string('bodyfontdesc', 'theme_campus');
-    $default = 'Source Sans Pro';
+    $default = 'Questrial';
     $choices = array(
         'Open Sans' => 'Open Sans',
         'Questrial' => 'Questrial',
@@ -227,7 +227,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/navbartextcolour';
     $title = get_string('navbartextcolour', 'theme_campus');
     $description = get_string('navbartextcolourdesc', 'theme_campus');
-    $default = '#9057F9';
+    $default = '#190500';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -237,7 +237,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/blockheadingcolour';
     $title = get_string('blockheadingcolour', 'theme_campus');
     $description = get_string('blockheadingcolourdesc', 'theme_campus');
-    $default = '#5600F7';
+    $default = '#190300';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -247,7 +247,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/blockheadingbackgroundcolour';
     $title = get_string('blockheadingbackgroundcolour', 'theme_campus');
     $description = get_string('blockheadingbackgroundcolourdesc', 'theme_campus');
-    $default = '#ffd974';
+    $default = '#a1d6de';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -257,7 +257,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/blockbackgroundcolour';
     $title = get_string('blockbackgroundcolour', 'theme_campus');
     $description = get_string('blockbackgroundcolourdesc', 'theme_campus');
-    $default = '#ffd974';
+    $default = '#ffffff';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -283,7 +283,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/blockbordercolour';
     $title = get_string('blockbordercolour', 'theme_campus');
     $description = get_string('blockbordercolourdesc', 'theme_campus');
-    $default = '#ffbd0e';  // Calculated value by examining output of LESS 'darken(@wellBackground, 20%)' where @wellBackground is the same as @bodyBackgroundAlt which is #ffd974 default, so rgb(255, 189, 14) = #ffbd0e.
+    $default = '#a1d6de';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -293,7 +293,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/blockborderthickness';
     $title = get_string('blockborderthickness', 'theme_campus');
     $description = get_string('blockborderthicknessdesc', 'theme_campus');
-    $default = '1px';
+    $default = '2px';
     $choices = array(
         '1px' => new lang_string('px01', 'theme_campus'),
         '2px' => new lang_string('px02', 'theme_campus'),
@@ -335,7 +335,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/themecolour';
     $title = get_string('themecolour', 'theme_campus');
     $description = get_string('themecolourdesc', 'theme_campus');
-    $default = '#ffd974';
+    $default = '#feee36';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -345,7 +345,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/themebackgroundcolour';
     $title = get_string('themebackgroundcolour', 'theme_campus');
     $description = get_string('themebackgroundcolourdesc', 'theme_campus');
-    $default = '#FFF4D8';
+    $default = '#ffffff';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -392,7 +392,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/borderradiusmedium';
     $title = get_string('borderradiusmedium', 'theme_campus');
     $description = get_string('borderradiusmedium_desc', 'theme_campus');
-    $default = '4px';
+    $default = '6px';
     $choices = array(
         '0px' => new lang_string('px00', 'theme_campus'),
         '1px' => new lang_string('px01', 'theme_campus'),
@@ -429,7 +429,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/borderradiuslarge';
     $title = get_string('borderradiuslarge', 'theme_campus');
     $description = get_string('borderradiuslarge_desc', 'theme_campus');
-    $default = '6px';
+    $default = '8px';
     $choices = array(
         '0px' => new lang_string('px00', 'theme_campus'),
         '1px' => new lang_string('px01', 'theme_campus'),
@@ -543,7 +543,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/stickynavbar';
     $title = get_string('stickynavbar', 'theme_campus');
     $description = get_string('stickynavbardesc', 'theme_campus');
-    $default = false;
+    $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
@@ -564,7 +564,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/frontpagelayout';
     $title = get_string('frontpagelayout', 'theme_campus');
     $description = get_string('frontpagelayoutdesc', 'theme_campus');
-    $default = 'absolutelayout';
+    $default = 'flexlayout';
     $choices = array(
         'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
         'flexlayout' => new lang_string('layoutonside', 'theme_campus')
@@ -577,7 +577,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/frontpagestickynavbar';
     $title = get_string('frontpagestickynavbar', 'theme_campus');
     $description = get_string('frontpagestickynavbardesc', 'theme_campus');
-    $default = false;
+    $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
@@ -602,7 +602,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/frontpagelogoposition';
     $title = get_string('frontpagelogoposition', 'theme_campus');
     $description = get_string('frontpagelogopositiondesc', 'theme_campus');
-    $default = 1;
+    $default = 2;
     $choices = array(
         1 => new lang_string('imageleft', 'theme_campus'),
         2 => new lang_string('imageright', 'theme_campus')
@@ -668,7 +668,7 @@ if (is_siteadmin()) {
         $name = 'theme_campus/coursecategorystickynavbar'.$key;
         $title = get_string('coursecategorystickynavbar', 'theme_campus');
         $description = get_string('coursecategorystickynavbardesc', 'theme_campus', array('categoryname' => $value));
-        $default = false;
+        $default = true;
         $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
@@ -687,7 +687,7 @@ if (is_siteadmin()) {
         $name = 'theme_campus/coursecategorylayout'.$key;
         $title = get_string('coursecategorylayout', 'theme_campus');
         $description = get_string('coursecategorylayoutdesc', 'theme_campus');
-        $default = 'absolutelayout';
+        $default = 'flexlayout';
         $choices = array(
             'absolutelayout' => new lang_string('layoutontop', 'theme_campus'),
             'flexlayout' => new lang_string('layoutonside', 'theme_campus')
@@ -716,7 +716,7 @@ if (is_siteadmin()) {
         $name = 'theme_campus/coursecategorylogoposition'.$key;
         $title = get_string('coursecategorylogoposition', 'theme_campus');
         $description = get_string('coursecategorylogopositiondesc', 'theme_campus');
-        $default = 1;
+        $default = 2;
         $choices = array(
             1 => new lang_string('imageleft', 'theme_campus'),
             2 => new lang_string('imageright', 'theme_campus')
