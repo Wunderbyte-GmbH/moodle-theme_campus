@@ -7,6 +7,9 @@ body {
 
 #region-main {
     background-color: @themeContent;
+    #campusCarousel.carousel {
+        background-color: darken(@themeContent, 20%);
+    }
 }
 
 // Page.
@@ -483,7 +486,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 // Slideshow.
 #campusCarousel.carousel {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     .carousel-inner {
         > .item {
             .carousel-image-container {

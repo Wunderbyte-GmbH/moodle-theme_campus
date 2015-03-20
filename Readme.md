@@ -51,13 +51,14 @@ Uninstallation
 
 Version Information
 ===================
-20th March 2015 - Version 2.7.0.39.
+20th March 2015 - Version 2.7.0.38.
   1. Enable WOFF2 support for FontAwesome.  If other fonts supply that format in future then it can be added.  Task #533.
   2. Tidy up config.php file for correct order of styles.
   3. Tidy up Gruntfile.js to remove old style creation mechanism.
   4. Update package.json for newer versions.
   5. Enabling full screen mode should be single column - task #534.
   6. When slideshow has blocks on side, then should have background colour of content area - task #536.
+  7. Update to '6' - When slideshow has blocks on side, then should have background colour of content area darkened by 20% - task #536.
 
 17th March 2015 - Version 2.7.0.37.
   1. Move category slide settings to a separate setting page - task #528.
