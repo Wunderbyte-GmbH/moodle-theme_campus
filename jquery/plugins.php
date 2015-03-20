@@ -30,5 +30,5 @@ $plugins = array(
     'antigravity'  => array('files' => array('anti_gravity_1_1.js')),
     'carousel'     => array('files' => array('bootstrap-transition_2_3_2_min.js', 'bootstrap-carousel_2_3_2_min.js')),
     'custom'       => array('files' => array('custom_1_0.js')),
-    'headertoggle' => array('files' => array('header_toggle_1_1.js'))
+    'headertoggle' => array('files' => array('header_toggle_1_2.js'))
 );

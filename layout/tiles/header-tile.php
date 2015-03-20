@@ -44,7 +44,7 @@ echo '<div class="container">';
 
 global $CFG;
 if ($hdlogoextrapos == 1) {
-    echo '<div class="logotitle'.$hdextra.'">';
+    echo '<div class="logotitle headertoggled'.$hdextra.'">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
         echo '<img class="campuslogodesktop" src="'.$hdlogo.'">';
@@ -59,7 +59,7 @@ if ($hdlogoextrapos == 1) {
 }
 echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
 if ($hdbackgroundimage) {
-    echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'">';
+    echo '<img class="campusdesktop headertoggled" src="'.$hdbackgroundimage.'">';
     if ($hdresponsive) {
         echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'">';
     }
@@ -69,11 +69,11 @@ if ($hdbackgroundimage) {
 }
 $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
 if (($showpageheading) && ($hdlogo)) {
-    echo '<div class="sitename"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+    echo '<div class="sitename headertoggled"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
 }
 echo '</div>';
 if ($hdlogoextrapos == 2) {
-    echo '<div class="logotitle">';
+    echo '<div class="logotitle headertoggled">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
         echo '<img class="campuslogodesktop" src="'.$hdlogo.'">';

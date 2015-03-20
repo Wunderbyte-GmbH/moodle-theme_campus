@@ -34,9 +34,7 @@ $(document).ready(function() {
        $(this).removeClass("fa-compress");
        $(this).addClass("fa-expand");
     }
-    $(".logotitle").toggle(500);
-    $(".campusdesktop").toggle(500);
-    $(".sitename").toggle(500);
+    $(".headertoggled").toggle(500);
     $("body").toggleClass("hideheader", 500);
   });
 });
