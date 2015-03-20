@@ -60,6 +60,7 @@ Version Information
   6. When slideshow has blocks on side, then should have background colour of content area - task #536.
   7. Update to '6' - When slideshow has blocks on side, then should have background colour of content area darkened by 20% - task #536.
   8. Make exiting full screen mode smoother - task #538.
+  9. Adjust setting "On top" for logo: Logo gets scewed when rectangular even if it has same height as background image - task #539.
 
 17th March 2015 - Version 2.7.0.37.
   1. Move category slide settings to a separate setting page - task #528.
