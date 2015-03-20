@@ -51,6 +51,12 @@ Uninstallation
 
 Version Information
 ===================
+20th March 2015 - Version 2.7.0.39.
+  1. Enable WOFF2 support for FontAwesome.  If other fonts supply that format in future then it can be added.  Task #533.
+  2. Tidy up config.php file for correct order of styles.
+  3. Tidy up Gruntfile.js to remove old style creation mechanism.
+  4. Update package.json for newer versions.
+
 17th March 2015 - Version 2.7.0.37.
   1. Move category slide settings to a separate setting page - task #528.
 

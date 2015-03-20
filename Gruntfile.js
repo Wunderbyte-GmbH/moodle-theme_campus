@@ -144,29 +144,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         less: {
-            // Compile moodle styles.
-            moodle_d: {
-                options: {
-                    compress: false,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: true,
-                    sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'style/moodle.treasure.map'
-                },
-                src: 'less/moodleallcampus.less',
-                dest: 'style/moodle.css'
-            },
-            moodle_p: {
-                options: {
-                    compress: true,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: false
-                },
-                src: 'less/moodleallcampus.less',
-                dest: 'style/moodle.css'
-            },
             // Compile editor styles.
             editor_d: {
                 options: {
@@ -189,19 +166,6 @@ module.exports = function(grunt) {
                 },
                 src: 'less/editorallcampus.less',
                 dest: 'style/editor.css'
-            }
-        },
-        cssmin: {
-            options: {
-                compatibility: 'ie8',
-                keepSpecialComments: '*',
-                noAdvanced: true
-            }, 
-            core: {
-                files: {
-                    'style/moodle_min.css': 'style/moodle.css',
-                    'style/editor_min.css': 'style/editor.css'
-                }
             }
         },
         exec: {
@@ -292,14 +256,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks("grunt-text-replace");
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-svgmin');
 
     // Register tasks.
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
 
-    grunt.registerTask("compile", ["less:moodle_"+build, "less:editor_"+build, "cssmin", "decache"]);
+    grunt.registerTask("compile", ["less:editor_"+build, "decache"]);
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
     grunt.registerTask("svg", ["copy:svg", "svgmin", "replace:svg_colours"]);

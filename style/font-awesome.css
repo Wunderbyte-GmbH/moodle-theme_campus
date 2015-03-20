@@ -7,7 +7,7 @@
 @font-face {
   font-family: 'FontAwesome';
   src: url('[[font:theme|fontawesome-webfont.eot]]') format('embedded-opentype'),
-       /* url('[[font:theme|fontawesome-webfont.woff2]]') format('woff2'), Put back if using M2.9, check MDL-46728.  If using M2.7 / M2.8 check MDL-49074 for support in core. */
+       url('[[font:theme|fontawesome-webfont.woff2]]') format('woff2'),
        url('[[font:theme|fontawesome-webfont.woff]]') format('woff'),
        url('[[font:theme|fontawesome-webfont.ttf]]') format('truetype'),
        url('[[font:theme|fontawesome-webfont.svg]]#fontawesomeregular') format('svg');

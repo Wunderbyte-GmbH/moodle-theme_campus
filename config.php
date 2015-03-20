@@ -29,12 +29,12 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'campus';
 $THEME->parents = array('bootstrapbase');
-$THEME->sheets = array('custom');
+$THEME->sheets = array('font');
 $THEME->lessfile = 'moodleallcampus';
 $THEME->lessvariablescallback = 'theme_campus_less_variables';
 $THEME->extralesscallback = 'theme_campus_extra_less';
-$THEME->sheets[] = 'font';
 $THEME->sheets[] = 'font-awesome';
+$THEME->sheets[] = 'custom';
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
