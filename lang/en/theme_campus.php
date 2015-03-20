@@ -329,7 +329,6 @@ $string['coursecategoryheadersettings_desc'] = 'In order to create custom catego
 $string['coursecategoryhavecustomheadernone'] = 'No categories selected.';
 
 $string['coursecategoryheading'] = 'Course category: {$a->categoryname}';
-$string['coursecategoryheading_desc'] = 'Course category settings.';
 
 $string['coursecategorystickynavbar'] = 'Sticky navbar';
 $string['coursecategorystickynavbardesc'] = 'Have a sticky navbar for category \'{$a->categoryname}\'.  Note: This overrides the header / front page sticky navbar setting on the \'Header\' settings page.';

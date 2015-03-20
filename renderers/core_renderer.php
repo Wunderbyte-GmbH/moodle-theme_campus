@@ -474,10 +474,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 }
             }
             if (isguestuser()) {
-                //$loggedinas = $realuserinfo.get_string('loggedinasguest');
                 if (!$loginpage && $withlinks) {
                     $loggedinas = " <a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>';
-                    //<span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
                 }
             } else if (is_role_switched($course->id)) { // Has switched roles
                 $rolename = '';
@@ -492,15 +490,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             } else {
                 $loggedinas = '<span class="loggedintext">'. $realuserinfo.get_string('loggedinas', 'moodle', $username).'</span>';
                 if ($withlinks) {
-                    //$loggedinas .= html_writer::tag('div', $this->user_picture($USER, array('size'=>174)), array('class'=>'userimg2'))." <span class=\"loggedinlogout btn\"> <a href=\"$CFG->wwwroot/login/logout.php?sesskey=".sesskey()."\">".get_string('logout').'</a></span>';
                     $loggedinas .= html_writer::tag('div', html_writer::link(new moodle_url('/login/logout.php?sesskey=' . sesskey()), '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>'));
                 }
             }
         } else {
-            //$loggedinas = get_string('loggedinnot', 'moodle');
             if (!$loginpage && $withlinks) {
                 $loggedinas = "<a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>';
-                //<span class="loginlink"><a href="'.$subscribeurl.'">'.get_string('createaccount').'</a></span>';
             }
         }
 

@@ -88,6 +88,4 @@ if ($hdlogoextrapos == 2) {
 }
 echo '</div></div>';
 
-//if (!$hdfancynavbar) {
-    include(dirname(__FILE__).'/navbar.php');
-//}
+include(dirname(__FILE__).'/navbar.php');

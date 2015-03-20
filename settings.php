@@ -659,8 +659,7 @@ if (is_siteadmin()) {
 
         $name = 'theme_campus/coursecategoryheading'.$key;
         $heading = get_string('coursecategoryheading', 'theme_campus', array('categoryname' => $value));
-        //$information = get_string('coursecategoryheading_desc', 'theme_campus');
-        $information = ''; // TODO: Decide if better without description.
+        $information = '';
         $setting = new admin_setting_heading($name, $heading, $information);
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
@@ -941,8 +940,7 @@ if (is_siteadmin()) {
     foreach($campuscategorytree as $key => $value){
         $name = 'theme_campus/coursecategoryheading'.$key;
         $heading = get_string('coursecategoryheading', 'theme_campus', array('categoryname' => $value));
-        //$information = get_string('coursecategoryheading_desc', 'theme_campus');
-        $information = ''; // TODO: Decide if better without description.
+        $information = '';
         $setting = new admin_setting_heading($name, $heading, $information);
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
