@@ -57,6 +57,7 @@ Version Information
   3. Tidy up Gruntfile.js to remove old style creation mechanism.
   4. Update package.json for newer versions.
   5. Enabling full screen mode should be single column - task #534.
+  6. When slideshow has blocks on side, then should have background colour of content area - task #536.
 
 17th March 2015 - Version 2.7.0.37.
   1. Move category slide settings to a separate setting page - task #528.
