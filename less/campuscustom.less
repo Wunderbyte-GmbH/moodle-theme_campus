@@ -1122,6 +1122,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     max-width: @navbarPageHeadingMax;
 }
 
+// Responsive.
+@media (max-width: 767px) {
+    aside.block-region {
+        margin-top: 20px;
+    }
+}
+
 // Header toggle.
 .navbar .nav.headertogglemenu {
     margin: 0;
@@ -1176,6 +1183,23 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 padding-left: 0;
                 padding-right: 0;
             }
+            .navbar,
+            .navbar .navbar-inner .container-fluid,
+            #page, 
+            .frontpageheader.absolutelayout,
+            .frontpageheader.flexlayout,
+            .frontpageheader.flexlayout .container,
+            .coursecategoryheader.absolutelayout,
+            .coursecategoryheader.flexlayout,
+            .coursecategoryheader.flexlayout .container {
+                max-width: 100%;
+            }
+            #region-main, aside.block-region {
+                width: 100%;
+            }
+            aside.block-region {
+                margin-top: 20px;
+            }
         }
     }
 }
@@ -1190,20 +1214,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 display: block !important; // Override jQuery!
             }
         }
-    }
-}
-
-body.hideheader {
-    .navbar,
-    .navbar .navbar-inner .container-fluid,
-    #page, 
-    .frontpageheader.absolutelayout,
-    .frontpageheader.flexlayout,
-    .frontpageheader.flexlayout .container,
-    .coursecategoryheader.absolutelayout,
-    .coursecategoryheader.flexlayout,
-    .coursecategoryheader.flexlayout .container {
-        max-width: 100%;
     }
 }
 
