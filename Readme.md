@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+23rd March 2015 - Version 2.7.0.39.
+  1. Update responsive default images - task #540.
+
 20th March 2015 - Version 2.7.0.38.
   1. Enable WOFF2 support for FontAwesome.  If other fonts supply that format in future then it can be added.  Task #533.
   2. Tidy up config.php file for correct order of styles.
