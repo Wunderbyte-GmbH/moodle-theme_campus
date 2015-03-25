@@ -1008,4 +1008,76 @@ if (is_siteadmin()) {
     }
 
     $ADMIN->add('theme_campus', $settingpage);
+
+    // Social links page....
+    // Number of social links.
+    $name = 'theme_campus/numberofsociallinks';
+    $title = get_string('numberofsociallinks', 'theme_campus');
+    $description = get_string('numberofsociallinks_desc', 'theme_campus');
+    $default = 2;
+    $choices = array(
+        0 => '0',
+        1 => '1',
+        2 => '2',
+        3 => '3',
+        4 => '4',
+        5 => '5',
+        6 => '6',
+        7 => '7',
+        8 => '8',
+        9 => '9',
+        10 => '10',
+        11 => '11',
+        12 => '12',
+        13 => '13',
+        14 => '14',
+        15 => '15',
+        16 => '16'
+    );
+
+    $socialsettings = new admin_settingpage('theme_campus_social', get_string('socialheading', 'theme_campus'));
+    $socialsettings->add(new admin_setting_heading('theme_campus_social', get_string('socialheadingsub', 'theme_campus'),
+            format_text(get_string('socialheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+    $socialsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    $numberofsociallinks = get_config('theme_campus', 'numberofsociallinks');
+    for ($i = 1; $i <= $numberofsociallinks; $i++) {
+        // Social url setting.
+        $name = 'theme_campus/social'.$i;
+        $title = get_string('socialnetworklink', 'theme_campus').$i;
+        $description = get_string('socialnetworklink_desc', 'theme_campus').$i;
+        $default = '';
+        $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $socialsettings->add($setting);
+
+        // Social icon setting.
+        $name = 'theme_campus/socialicon'.$i;
+        $title = get_string('socialnetworkicon', 'theme_campus').$i;
+        $description = get_string('socialnetworkicon_desc', 'theme_campus').$i;
+        $default = 'globe';
+        $choices = array(
+            'dropbox' => 'Dropbox',
+            'facebook-square' => 'Facebook',
+            'flickr' => 'Flickr',
+            'github' => 'Github',
+            'google-plus-square' => 'Google Plus',
+            'instagram' => 'Instagram',
+            'linkedin-square' => 'Linkedin',
+            'pinterest-square' => 'Pinterest',
+            'skype' => 'Skype',
+            'tumblr-square' => 'Tumblr',
+            'twitter-square' => 'Twitter',
+            'users' => 'Unlisted',
+            'vimeo-square' => 'Vimeo',
+            'vk' => 'Vk',
+            'globe' => 'Website',
+            'youtube-square' => 'YouTube'
+        );
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $socialsettings->add($setting);
+    }
+
+    $ADMIN->add('theme_campus', $socialsettings);
 }

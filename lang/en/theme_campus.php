@@ -373,6 +373,17 @@ $string['four'] = 'Four';
 $string['footnote'] = 'Footnote';
 $string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
 
+// Social links settings.
+$string['numberofsociallinks'] = 'Number of social network links';
+$string['numberofsociallinks_desc'] = 'Number of social network links you want to add.';
+$string['socialheading'] = 'Social networking';
+$string['socialheadingsub'] = 'Gather followers with social networking';
+$string['socialheadingdesc'] = "Provide direct links to your social networks.  To change the number of social networks change the 'Number of social network links' below and save the page to update.";
+$string['socialnetworklink'] = 'Social network link ';
+$string['socialnetworklink_desc'] = 'Social network link number ';
+$string['socialnetworkicon'] = 'Social network icon ';
+$string['socialnetworkicon_desc'] = 'Social network icon number ';
+
 // admin_setting_configinteger.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
 $string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';

@@ -1317,3 +1317,121 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
 }
+
+// Social icons.
+#page-footer {
+    ul.socialnetworks {
+        display: inline-block;
+        margin-left: 0px;
+        border-radius: @baseBorderRadius;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+        padding: 4px;
+        background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.2);
+        border-color: @bodyBackgroundAlt;
+        li {
+            display: inline;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        a {
+            color: #1F4D87;
+            &:hover {
+                background-color: transparent;
+                color: #2B6EBF;
+            }
+        }
+    }
+}
+
+/* Specific icon colours.... */
+#page-footer .socialnetworks a {
+    .fa-dropbox {
+        color: #007EE5;
+    }
+    .fa-facebook-square {
+        color: #4862A3;
+    }
+    .fa-github {
+        color: #000;
+    }
+    .fa-google-plus-square {
+        color: #DD4B39;
+    }
+    .fa-linkedin-square {
+        color: #007ABB;
+    }
+    .fa-pinterest-square {
+        color: #D73532;
+    }
+    .fa-skype {
+        color: #01AEF2;
+    }
+    .fa-tumblr-square {
+        color: #3B5876;
+    }
+    .fa-twitter-square {
+        color: #55acee;
+    }
+    .fa-vimeo-square {
+        color: #20B9EB;
+    }
+    .fa-vk {
+        color: #44678D;
+    }
+    .fa-youtube-square {
+        color: #E12C27;
+    }
+    &:hover {
+        .fa-dropbox {
+            color: #0090FF;
+        }
+        .fa-facebook-square {
+            color: #668BE2;
+        }
+        .fa-github {
+            color: #707070;
+        }
+        .fa-google-plus-square {
+            color: #FF5542;
+        }
+        .fa-linkedin-square {
+            color: #0097E2;
+        }
+        .fa-pinterest-square {
+            color: #EF3C39;
+        }
+        .fa-skype {
+            color: #02BBFF;
+        }
+        .fa-tumblr-square {
+            color: #547EA8;
+        }
+        .fa-twitter-square {
+            color: #5BBBFF;
+        }
+        .fa-vimeo-square {
+            color: #23CFFF;
+        }
+        .fa-vk {
+            color: #5E8EC1;
+        }
+        .fa-youtube-square {
+            color: #FF2D2D;
+        }
+    }
+}
+
+// TODO: Remove if update to Bootstrap Version 3.
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

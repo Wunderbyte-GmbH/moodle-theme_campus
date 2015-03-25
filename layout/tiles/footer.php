@@ -25,12 +25,17 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+require_once(dirname(__FILE__).'/social.php');
 ?>
 <footer id="page-footer">
     <?php
     if ($PAGE->blocks->is_known_region('footer')) {
         require_once(dirname(__FILE__).'/footer_blocks.php');
-    }?>
+    }
+    if ($haveicons) {
+        echo $icons;
+    }
+    ?>
     <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
     <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
     <?php

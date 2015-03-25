@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+25th March 2015 - Version 2.7.0.40.
+  1. Integrate social icons - task #546.
+
 23rd March 2015 - Version 2.7.0.39.
   1. Update responsive default images - task #540.
   2. Add screenshot to pix folder - task #542.
