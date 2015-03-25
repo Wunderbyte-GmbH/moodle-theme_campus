@@ -53,6 +53,7 @@ Version Information
 ===================
 25th March 2015 - Version 2.7.0.40.
   1. Integrate social icons - task #546.
+  2. Fix blocks have left margin when in full screen mode.
 
 23rd March 2015 - Version 2.7.0.39.
   1. Update responsive default images - task #540.
