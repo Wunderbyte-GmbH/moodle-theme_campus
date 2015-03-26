@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+26th March 2015 - Version 2.7.0.41.
+  1. Adjust 'showpageheading' setting - task #540.
+
 25th March 2015 - Version 2.7.0.40.
   1. Integrate social icons - task #546.
   2. Fix blocks have left margin when in full screen mode.

@@ -503,7 +503,7 @@ if (is_siteadmin()) {
     $name = 'theme_campus/showpageheading';
     $title = get_string('showpageheading', 'theme_campus');
     $description = get_string('showpageheadingdesc', 'theme_campus');
-    $default = true;
+    $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
