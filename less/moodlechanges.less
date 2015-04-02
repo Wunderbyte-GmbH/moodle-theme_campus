@@ -229,6 +229,25 @@ table {
 .gradetreebox tr.category .cell {
     background-color: @bodyBackgroundAlt;
 }
+
+.path-grade-report-grader #region-main {
+    width: auto;
+    float: left;
+}
+
+.path-grade-report-grader .gradeparent tr:nth-of-type(even) .cell {
+    background-color: @bodyBackground;
+}
+
+.path-grade-report-grader .gradeparent .floater {
+    .cell:nth-of-type(odd), &.lastrow .cell.header {
+        background-color: @bodyBackgroundAlt;
+    }
+    .cell:nth-of-type(even), .cell.header {
+        background-color: @bodyBackground;
+    }
+}
+
 // My additions from https://moodle.org/mod/forum/discuss.php?d=234329:...
 .gradestable {
     table {
@@ -252,127 +271,6 @@ table {
         border-bottom: 1px solid lighten(@grayLight, 20%);
         border-top: 0;
         background-color: darken(@grayLighter, 20%);
-    }
-}
-
-table#user-grades {
-    .catlevel1,
-    .catlevel2,
-    .catlevel3,
-    .catlevel4 {
-        padding: 10px;
-        border-right: 1px solid darken(@grayLighter, 20%);
-    }
-}
-
-table#user-grades .catlevel1,
-.user-grade td.oddd1,
-.user-grade td.evend1,
-.user-grade th.oddd1,
-.user-grade th.evend1 {
-    background-color: @bodyBackgroundAlt !important;
-}
-
-table#user-grades .catlevel2,
-.user-grade td.oddd2,
-.user-grade td.evend2,
-.user-grade th.oddd2,
-.user-grade th.evend2 {
-    background-color: lighten(@textColor, 30%) !important;
-}
-
-table#user-grades .catlevel3,
-.user-grade td.oddd3,
-.user-grade td.evend3,
-.user-grade th.oddd3,
-.user-grade th.evend3 {
-    background-color: lighten(@bodyBackgroundAlt, 5%) !important;
-}
-
-table#user-grades .catlevel4,
-.user-grade td.oddd4,
-.user-grade td.evend4,
-.user-grade th.oddd4,
-.user-grade th.evend4 {
-    background-color: lighten(@textColor, 35%) !important;
-}
-
-table#user-grades .catlevel5,
-.user-grade td.oddd5,
-.user-grade td.evend5,
-.user-grade th.oddd5,
-.user-grade th.evend5 {
-    background-color: lighten(@bodyBackgroundAlt, 10%) !important;
-}
-
-table#user-grades .catlevel6,
-.user-grade td.oddd6,
-.user-grade td.evend6,
-.user-grade th.oddd6,
-.user-grade th.evend6 {
-    background-color: lighten(@textColor, 40%) !important;
-}
-
-table#user-grades .catlevel7,
-.user-grade td.oddd7,
-.user-grade td.evend7,
-.user-grade th.oddd7,
-.user-grade th.evend7 {
-    background-color: lighten(@bodyBackgroundAlt, 15%) !important;
-}
-
-table#user-grades .catlevel8,
-.user-grade td.oddd8,
-.user-grade td.evend8,
-.user-grade th.oddd8,
-.user-grade th.evend8 {
-    background-color: lighten(@textColor, 45%) !important;
-}
-
-.user-grade {
-    border-color: darken(@grayLighter, 20%);
-
-    thead,
-    td.b1t,
-    td.b2t,
-    td.b3t,
-    td.b4t,
-    td.b5t,
-    td.b1b,
-    td.b2b,
-    td.b3b,
-    td.b4b,
-    td.b5b {
-        border-color: darken(@grayLighter, 20%);
-    }
-
-    thead {
-        font-size: 1.2em;
-    }
-}
-
-table#user-grades {
-    .userpicture {
-        border-radius: 20px;
-        margin: 3px;
-        margin-right: 10px;
-        border: 1px solid lighten(@grayLight, 20%);
-    }
-
-    td.fixedcolumn.cell.topleft.cell.c0 {
-        background: transparent;
-        border: 0px none;
-    }
-
-    th.header.useremail {
-        text-align: left;
-        padding-left: 10px;
-    }
-
-    th.userreport.c1 {
-        border: 1px solid darken(@grayLighter, 20%);
-        padding-left: 10px;
-        padding-right: 10px;
     }
 }
 
@@ -478,6 +376,27 @@ table.generaltable {
 .editing .block.invisible {
     .opacity(100);
     background: rgba(255, 255, 255, 0.4);
+}
+
+// Two page columns no blocks.
+body.editing {
+    &.content-only #region-main.span9, // Two column layout with no block or all blocks docked.
+    &.empty-region-side-post #region-bs-main-and-pre.span9, // LTR with no post area.
+    &.empty-region-side-pre #region-bs-main-and-post.span9, // RTL with no pre area.
+    &.empty-region-side-post #region-bs-main-and-post.span9 #region-main.span8, // RTL with no post area.
+    &.jsenabled.docked-region-side-post #region-bs-main-and-pre.span9, // LTR with all post blocks docked.
+    &.jsenabled.docked-region-side-post #region-bs-main-and-post.span9 #region-main.span8,
+    &.jsenabled.docked-region-side-pre #region-bs-main-and-post.span9 { // RTL with all pre blocks docked.
+        .fluid-span(9);
+    }
+    &.empty-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8, // LTR with no pre area.
+    &.jsenabled.docked-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8 { // LTR with all pre blocks docked.
+        .fluid-span(8);
+        float: left;
+        &.pull-right {
+            float: right;
+        }
+    }
 }
 
 // Two page coloumns no blocks.

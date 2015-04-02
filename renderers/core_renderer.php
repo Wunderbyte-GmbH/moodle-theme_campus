@@ -248,7 +248,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return $output;
     }
 
-    public function user_menu() {
+    public function user_menu($user = NULL, $withlinks = NULL) {
         $usermenu = new custom_menu('', current_language());
         return $this->render_user_menu($usermenu);
     }

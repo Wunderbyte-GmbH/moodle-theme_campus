@@ -14,11 +14,11 @@ About
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2014051200.00 release 2.7 (Build: 20140512) and above within the 2.7 branch until the
+This version works with Moodle version 2014111000.00 release 2.8 (Build: 20141110) and above within the 2.8 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/27/en/Installing_Moodle'.
+'docs.moodle.org/28/en/Installing_Moodle'.
 
 Installation
 ============
@@ -51,6 +51,11 @@ Uninstallation
 
 Version Information
 ===================
+ 2nd April 2015 - Version 2.8.1.
+  1. Stable.
+  2. Fix white strip in background image.
+  3. Get shoelace M2.8 fixes into campus - task #552.
+
 26th March 2015 - Version 2.7.0.41.
   1. Adjust 'showpageheading' setting - task #540.
 
