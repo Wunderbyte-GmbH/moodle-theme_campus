@@ -51,6 +51,10 @@ Uninstallation
 
 Version Information
 ===================
+ 2nd April 2015 - Version 2.7.1.
+  1. Stable.
+  2. Fix white strip in background image.
+
 26th March 2015 - Version 2.7.0.41.
   1. Adjust 'showpageheading' setting - task #540.
 
