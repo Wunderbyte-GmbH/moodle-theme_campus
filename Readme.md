@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+ 7th April 2015 - Version 2.8.1.1.
+  1. Fixed position of new message popup - transposed from Shoelace.
+
  2nd April 2015 - Version 2.8.1.
   1. Stable.
   2. Fix white strip in background image.
