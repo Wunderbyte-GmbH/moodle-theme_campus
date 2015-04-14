@@ -53,6 +53,12 @@ $THEME->plugins_exclude_sheets = array(
     )
 );
 
+$THEME->parents_exclude_javascripts = array(
+    'bootstrapbase' => array(
+        'moodlebootstrap'
+    )
+); // Exclude the parent JS.
+
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 $empty = array();
@@ -206,5 +212,13 @@ $THEME->layouts = array(
         'defaultregion' => 'side-pre'
     ),
 );
+
+$THEME->javascripts_footer = array(
+    'campus'
+);
+
+if (core_useragent::is_ie() && !core_useragent::check_ie_version('9.0')) {
+    $THEME->javascripts[] = 'html5shiv';
+}
 
 $THEME->csspostprocess = 'theme_campus_process_css';
