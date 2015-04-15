@@ -51,8 +51,9 @@ Uninstallation
 
 Version Information
 ===================
-14th April 2015 - Version 2.9.0.1.
+15th April 2015 - Version 2.9.0.1.
   1. Moodle 2.9 development version - task #556.
+  2. Fixed full screen mode: id="region-bs-main-and-pre" class9 remains at 74% instead of 100% - task #578.
 
  7th April 2015 - Version 2.8.1.1.
   1. Fixed position of new message popup - transposed from Shoelace.
