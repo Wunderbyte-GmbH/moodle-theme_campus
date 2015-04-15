@@ -31,7 +31,11 @@ $settings = null;
 defined('MOODLE_INTERNAL') || die;
 if (is_siteadmin()) {
     global $CFG;
-    require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
+    if (!empty($CFG->themedir)) {
+    	require_once($CFG->themedir . '/campus/admin_setting_configinteger.php');
+    } else {
+   	    require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
+    }
 
     $ADMIN->add('themes', new admin_category('theme_campus', 'Campus'));
 
@@ -630,7 +634,11 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategoryhavecustomheaderheader', 'theme_campus'),
             format_text(get_string('coursecategoryhavecustomheaderheader_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
-    include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    if (!empty($CFG->themedir)) {
+    	include_once($CFG->themedir . '/campus/campus-lib.php');
+    } else {
+    	include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    }
     $campuscategorytree = theme_campus_get_top_level_categories();
     foreach($campuscategorytree as $key => $value){
         // Have a custom header for the course category.
@@ -935,7 +943,11 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_carousel_coursecategory', null,
             format_text(get_string('coursecategorycarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
-    include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    if (!empty($CFG->themedir)) {
+    	include_once($CFG->themedir . '/campus/campus-lib.php');
+    } else {
+    	include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    }
     $campuscategorytree = theme_campus_get_top_level_categories();
     foreach($campuscategorytree as $key => $value){
         $name = 'theme_campus/coursecategoryheading'.$key;
