@@ -51,7 +51,10 @@ Uninstallation
 
 Version Information
 ===================
- 7th April 2015 - Version 2.7.1.1.
+15th April 2015 - Version 2.7.1.2.
+  1. Fixed full screen mode: id="region-bs-main-and-pre" class9 remains at 74% instead of 100% - task #578.
+
+  7th April 2015 - Version 2.7.1.1.
   1. Fixed position of new message popup - transposed from Shoelace.
 
  2nd April 2015 - Version 2.7.1.
