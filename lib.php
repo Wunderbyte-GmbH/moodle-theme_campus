@@ -288,7 +288,12 @@ function theme_campus_less_variables($theme) {
  */
 function theme_campus_extra_less($theme) {
     global $CFG, $OUTPUT;
-    include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    if (!empty($CFG->themedir)) {
+    	include_once($CFG->themedir . '/campus/campus-lib.php');
+    } else {
+    	include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    }
+    
     $campuscategorytree = theme_campus_get_top_level_categories();
 
     $content = '';
