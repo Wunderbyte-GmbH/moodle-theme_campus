@@ -292,9 +292,9 @@ function theme_campus_less_variables($theme) {
 function theme_campus_extra_less($theme) {
     global $CFG, $OUTPUT;
     if (!empty($CFG->themedir)) {
-    	include_once($CFG->themedir . '/campus/campus-lib.php');
+        include_once($CFG->themedir . '/campus/campus-lib.php');
     } else {
-    	include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+        include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
     }
     
     $campuscategorytree = theme_campus_get_top_level_categories();
@@ -812,6 +812,7 @@ function theme_campus_render_slide($i, $settingprefix) {
 
     $slidetitle = theme_campus_get_setting($settingprefix . $i . 'title', true);
     $slidecaption = theme_campus_get_setting($settingprefix . $i . 'caption', true);
+    $slidelink = theme_campus_get_setting($settingprefix . $i . 'link', true);
     $slideextraclass = ($i === 1) ? ' active' : '';
     $slideimagealt = strip_tags($slidetitle);
 
@@ -822,7 +823,12 @@ function theme_campus_render_slide($i, $settingprefix) {
         $slideimage = $OUTPUT->pix_url('default_slide', 'theme');
     }
 
-    $slide = '<div class="item' . $slideextraclass . '">';
+    if ($slidelink) {
+        $slidelinktarget = theme_campus_get_setting($settingprefix . $i . 'linktarget', true);
+        $slide = '<a href="'.$slidelink.'" target="'.$slidelinktarget.'" class="item' . $slideextraclass . '">';
+    } else {
+        $slide = '<div class="item' . $slideextraclass . '">';
+    }
 
     $nocaption = (!($slidetitle || $slidecaption)) ? ' nocaption' : '';
     $slide .= '<div class="carousel-image-container'.$nocaption.'">';
@@ -838,7 +844,11 @@ function theme_campus_render_slide($i, $settingprefix) {
         $slide .= '</div>';
         $slide .= '</div>';
     }
-    $slide .= '</div>';
+    if ($slidelink) {
+        $slide .= '</a>';
+    } else {
+        $slide .= '</div>';
+    }
 
     return $slide;
 }

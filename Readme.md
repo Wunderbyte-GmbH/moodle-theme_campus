@@ -54,6 +54,7 @@ Version Information
 28th April 2015 - Version 2.9.0.2.
   1. Added link colour setting - task #645.
   2. Fix carousel control icon so does not have a flattened circle.
+  3. Add link to slides in slideshow - task #646.
 
 15th April 2015 - Version 2.9.0.1.
   1. Moodle 2.9 development version - task #556.
