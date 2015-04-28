@@ -645,9 +645,9 @@ if (is_siteadmin()) {
             format_text(get_string('coursecategoryhavecustomheaderheader_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     if (!empty($CFG->themedir)) {
-    	include_once($CFG->themedir . '/campus/campus-lib.php');
+        include_once($CFG->themedir . '/campus/campus-lib.php');
     } else {
-    	include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+        include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
     }
     $campuscategorytree = theme_campus_get_top_level_categories();
     foreach($campuscategorytree as $key => $value){
@@ -944,6 +944,28 @@ if (is_siteadmin()) {
         $setting = new admin_setting_configtextarea($name, $title, $description, $default, PARAM_TEXT);
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
+
+        // Link.
+        $name = 'theme_campus/frontpage' . $i .'link';
+        $title = get_string('slidelink', 'theme_campus');
+        $description = get_string('slidelinkdesc', 'theme_campus');
+        $default = '';
+        $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+        // No CSS change, so no need to reset caches.
+        $settingpage->add($setting);
+
+        // Link target.
+        $name = 'theme_campus/frontpage' . $i .'linktarget';
+        $title = get_string('slidelinktarget', 'theme_campus');
+        $description = get_string('slidelinktargetdesc', 'theme_campus');
+        $default = 1;
+        $choices = array(
+            '_self' => new lang_string('slidelinktargetself', 'theme_campus'),
+            '_blank' => new lang_string('slidelinktargetblank', 'theme_campus')
+        );
+        $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+        // No CSS change, so no need to reset caches.
+        $settingpage->add($setting);
     }
 
     $ADMIN->add('theme_campus', $settingpage);
@@ -954,9 +976,9 @@ if (is_siteadmin()) {
             format_text(get_string('coursecategorycarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     if (!empty($CFG->themedir)) {
-    	include_once($CFG->themedir . '/campus/campus-lib.php');
+        include_once($CFG->themedir . '/campus/campus-lib.php');
     } else {
-    	include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+        include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
     }
     $campuscategorytree = theme_campus_get_top_level_categories();
     foreach($campuscategorytree as $key => $value){
@@ -1024,6 +1046,28 @@ if (is_siteadmin()) {
             $description = get_string('slidecaptiondesc', 'theme_campus');
             $default = '';
             $setting = new admin_setting_configtextarea($name, $title, $description, $default, PARAM_TEXT);
+            // No CSS change, so no need to reset caches.
+            $settingpage->add($setting);
+
+            // Link.
+            $name = 'theme_campus/coursecategory'.$key.'_' . $i .'link';
+            $title = get_string('slidelink', 'theme_campus');
+            $description = get_string('slidelinkdesc', 'theme_campus');
+            $default = '';
+            $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+            // No CSS change, so no need to reset caches.
+            $settingpage->add($setting);
+
+            // Link target.
+            $name = 'theme_campus/coursecategory'.$key.'_' . $i .'linktarget';
+            $title = get_string('slidelinktarget', 'theme_campus');
+            $description = get_string('slidelinktargetdesc', 'theme_campus');
+            $default = 1;
+            $choices = array(
+                '_self' => new lang_string('slidelinktargetself', 'theme_campus'),
+                '_blank' => new lang_string('slidelinktargetblank', 'theme_campus')
+            );
+            $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
             // No CSS change, so no need to reset caches.
             $settingpage->add($setting);
         }

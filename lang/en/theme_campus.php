@@ -274,6 +274,12 @@ $string['slideimage'] = 'Slide image';
 $string['slideimagedesc'] = 'Image works best if it is transparent.';
 $string['slidecaption'] = 'Slide caption';
 $string['slidecaptiondesc'] = 'Enter the caption text to use for the slide';
+$string['slidelink'] = 'Slide link';
+$string['slidelinkdesc'] = 'Enter the link for the slide';
+$string['slidelinktarget'] = 'Slide link target';
+$string['slidelinktargetdesc'] = 'State the target for the slide';
+$string['slidelinktargetself'] = 'Same window';
+$string['slidelinktargetblank'] = 'New window';
 
 // Header.
 $string['headersettings'] = 'Header';
