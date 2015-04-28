@@ -51,6 +51,10 @@ Uninstallation
 
 Version Information
 ===================
+28th April 2015 - Version 2.9.0.2.
+  1. Added link colour setting - task #645.
+  2. Fix carousel control icon so does not have a flattened circle.
+
 15th April 2015 - Version 2.9.0.1.
   1. Moodle 2.9 development version - task #556.
   2. Fixed full screen mode: id="region-bs-main-and-pre" class9 remains at 74% instead of 100% - task #578.

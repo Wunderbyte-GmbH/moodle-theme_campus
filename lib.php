@@ -79,6 +79,9 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->textcolour)) {
         $variables['textColor'] = $theme->settings->textcolour;
     }
+    if (!empty($theme->settings->linkcolour)) {
+        $variables['linkColor'] = $theme->settings->linkcolour;
+    }
     if (!empty($theme->settings->headingcolour)) {
         $variables['headingsColor'] = $theme->settings->headingcolour;
     }

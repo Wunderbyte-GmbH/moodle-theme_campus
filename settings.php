@@ -32,9 +32,9 @@ defined('MOODLE_INTERNAL') || die;
 if (is_siteadmin()) {
     global $CFG;
     if (!empty($CFG->themedir)) {
-    	require_once($CFG->themedir . '/campus/admin_setting_configinteger.php');
+        require_once($CFG->themedir . '/campus/admin_setting_configinteger.php');
     } else {
-   	    require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
+        require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
     }
 
     $ADMIN->add('themes', new admin_category('theme_campus', 'Campus'));
@@ -211,6 +211,16 @@ if (is_siteadmin()) {
     $name = 'theme_campus/textcolour';
     $title = get_string('textcolour', 'theme_campus');
     $description = get_string('textcolourdesc', 'theme_campus');
+    $default = '#333333';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Link colour setting.
+    $name = 'theme_campus/linkcolour';
+    $title = get_string('linkcolour', 'theme_campus');
+    $description = get_string('linkcolourdesc', 'theme_campus');
     $default = '#333333';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
