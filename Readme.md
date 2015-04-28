@@ -54,6 +54,7 @@ Version Information
 28th April 2015 - Version 2.8.1.3.
   1. Added link colour setting - task #645.
   2. Fix carousel control icon so does not have a flattened circle.
+  3. Add link to slides in slideshow - task #646.
 
 15th April 2015 - Version 2.8.1.2.
   1. Fixed full screen mode: id="region-bs-main-and-pre" class9 remains at 74% instead of 100% - task #578.
