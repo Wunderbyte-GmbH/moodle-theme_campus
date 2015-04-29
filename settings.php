@@ -903,7 +903,7 @@ if (is_siteadmin()) {
     $title = get_string('numberofslides', 'theme_campus');
     $default = 0;
     $lower = 0;
-    $upper = 4;
+    $upper = 6;
     $description = get_string('numberofslidesdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
     $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
     // No CSS change, so no need to reset caches.
@@ -1007,7 +1007,7 @@ if (is_siteadmin()) {
         $title = get_string('numberofslides', 'theme_campus');
         $default = 0;
         $lower = 0;
-        $upper = 4;
+        $upper = 6;
         $description = get_string('numberofslidesdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
         $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
         // No CSS change, so no need to reset caches.
