@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+29th April 2015 - Version 2.8.1.4.
+  1. Increase max. number of slides to 6 - task #652.
+
 28th April 2015 - Version 2.8.1.3.
   1. Added link colour setting - task #645.
   2. Fix carousel control icon so does not have a flattened circle.
