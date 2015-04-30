@@ -138,8 +138,8 @@ $string['themelayoutrighttwocolumns'] = 'Two columns with blocks on the right';
 $string['textcolour'] = 'Text colour';
 $string['textcolourdesc'] = 'Set the text colour.';
 
-$string['linkcolour'] = 'Text colour';
-$string['linkcolourdesc'] = 'Set the text colour.';
+$string['linkcolour'] = 'Link text colour';
+$string['linkcolourdesc'] = 'Set the link text colour.';
 
 $string['headingcolour'] = 'Heading colour';
 $string['headingcolourdesc'] = 'Set the heading colour.';
