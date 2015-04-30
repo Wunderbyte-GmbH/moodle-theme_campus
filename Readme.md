@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+30th April 2015 - Version 2.8.1.5.
+  1. Fix link colour setting lang text - task #645.
+
 29th April 2015 - Version 2.8.1.4.
   1. Increase max. number of slides to 6 - task #652.
 
