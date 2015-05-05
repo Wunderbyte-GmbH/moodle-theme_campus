@@ -51,6 +51,10 @@ Uninstallation
 
 Version Information
 ===================
+ 5th May 2015 - Version 2.7.1.6.
+  1. Change icon colour to standard moodle grey - task #653.
+  2. Implement better fix for coursename icon from Shoelace, keep an eye on MDL-50004.
+
 30th April 2015 - Version 2.7.1.5.
   1. Fix link colour setting lang text - task #645.
 
