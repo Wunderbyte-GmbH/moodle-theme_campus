@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+10th June 2015 - Version 2.8.1.7.
+  1. Fix 'Drag a link in site admin block and then move mouse over the links make icons move' - task #678.
+
  5th May 2015 - Version 2.8.1.6.
   1. Change icon colour to standard moodle grey - task #653.
   2. Implement better fix for coursename icon from Shoelace, keep an eye on MDL-50004.
