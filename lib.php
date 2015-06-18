@@ -300,7 +300,12 @@ function theme_campus_extra_less($theme) {
 
     $campuscategorytree = theme_campus_get_top_level_categories();
 
-    $content = '';
+    $content = '@import "'.$CFG->dirroot.'/theme/bootstrapbase/less/moodle";';
+    $content .= '@import "variables-campus";';
+    $content .= '@import "bootstrapchanges";';
+    $content .= '@import "moodlechanges";';
+    $content .= '@import "campuschanges";';
+    $content .= '@import "campuscustom";';
 
     // Front page.
     if ((!empty($theme->settings->frontpagelogo)) && (!empty($theme->settings->frontpagebackgroundimage))) {
