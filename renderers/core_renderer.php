@@ -764,10 +764,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
     private function is_top_level_category($key = null) {
         global $CFG;
-        if (!empty($CFG->themedir)) {
-        	include_once($CFG->themedir . '/campus/campus-lib.php');
-        } else {
-        	include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+        if (file_exists("{$CFG->dirroot}/theme/campus/campus-lib.php")) {
+            include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+        } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/campus-lib.php")) {
+            include_once($CFG->themedir . '/campus/campus-lib.php');
         }
         if (empty($key)) {
             $key = $this->get_current_category();

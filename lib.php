@@ -291,12 +291,13 @@ function theme_campus_less_variables($theme) {
  */
 function theme_campus_extra_less($theme) {
     global $CFG, $OUTPUT;
-    if (!empty($CFG->themedir)) {
-        include_once($CFG->themedir . '/campus/campus-lib.php');
-    } else {
+
+    if (file_exists("{$CFG->dirroot}/theme/campus/campus-lib.php")) {
         include_once($CFG->dirroot . '/theme/campus/campus-lib.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/campus-lib.php")) {
+        include_once($CFG->themedir . '/campus/campus-lib.php');
     }
-    
+
     $campuscategorytree = theme_campus_get_top_level_categories();
 
     $content = '';
@@ -586,10 +587,10 @@ function theme_campus_get_theme_logo() {
 
     $logodetails = array();
     $logodetails['name'] = 'logo';
-    if (!empty($CFG->themedir)) {
-        $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
-    } else {
+    if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
         $thelogofile = $CFG->dirroot . '/theme/campus/pix/'.$logodetails['name'];
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
+        $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
     if (file_exists("$thelogofile.png")) {
@@ -619,10 +620,10 @@ function theme_campus_get_theme_responsive_logo() {
 
     $logodetails = array();
     $logodetails['name'] = 'logo_responsive';
-    if (!empty($CFG->themedir)) {
-        $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
-    } else {
+    if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
         $thelogofile = $CFG->dirroot . '/theme/campus/pix/'.$logodetails['name'];
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
+        $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
     if (file_exists("$thelogofile.png")) {
@@ -652,10 +653,10 @@ function theme_campus_get_theme_background() {
 
     $backgrounddetails = array();
     $backgrounddetails['name'] = 'background';
-    if (!empty($CFG->themedir)) {
-        $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
-    } else {
+    if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
         $thebackgroundfile = $CFG->dirroot . '/theme/campus/pix/'.$backgrounddetails['name'];
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
+        $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
     if (file_exists("$thebackgroundfile.png")) {
@@ -685,10 +686,10 @@ function theme_campus_get_theme_responsive_background() {
 
     $backgrounddetails = array();
     $backgrounddetails['name'] = 'background_responsive';
-    if (!empty($CFG->themedir)) {
-        $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
-    } else {
+    if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
         $thebackgroundfile = $CFG->dirroot . '/theme/campus/pix/'.$backgrounddetails['name'];
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
+        $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
     if (file_exists("$thebackgroundfile.png")) {
