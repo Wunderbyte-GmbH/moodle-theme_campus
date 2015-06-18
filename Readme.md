@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+18th June 2015 - Version 2.7.1.8.
+  1. Improve $CFG->themedir mechanism - task #684.
+
 10th June 2015 - Version 2.7.1.7.
   1. Fix 'Drag a link in site admin block and then move mouse over the links make icons move' - task #678.
 
