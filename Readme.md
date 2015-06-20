@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+20th June 2015 - Version 2.7.1.9.
+  1. Fix colour of breadcrumb arrows - task #683.
+
 18th June 2015 - Version 2.7.1.8.
   1. Improve $CFG->themedir mechanism - task #684.
   2. Fix LESS -> CSS PHP compilation when installed in themedir - task #684.
