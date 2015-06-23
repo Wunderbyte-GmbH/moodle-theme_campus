@@ -1,30 +1,34 @@
-/* ==========================================================
- * bootstrap-affix.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#affix
- * ==========================================================
- * Copyright 2013 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================== */
+/* jshint ignore:start */
+define(['jquery', 'core/log'], function($, log) {
 
+  "use strict"; // jshint ;_;
 
-!function ($) {
+  log.debug('Campus affix AMD');
+
+  /* ==========================================================
+   * bootstrap-affix.js v2.3.2
+   * http://getbootstrap.com/2.3.2/javascript.html#affix
+   * ==========================================================
+   * Copyright 2013 Twitter, Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   * http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   * ========================================================== */
 
   "use strict"; // jshint ;_;
 
 
- /* AFFIX CLASS DEFINITION
-  * ====================== */
+  /* AFFIX CLASS DEFINITION
+   * ====================== */
 
   var Affix = function (element, options) {
     this.options = $.extend({}, $.fn.affix.defaults, options)
@@ -65,8 +69,8 @@
   }
 
 
- /* AFFIX PLUGIN DEFINITION
-  * ======================= */
+  /* AFFIX PLUGIN DEFINITION
+   * ======================= */
 
   var old = $.fn.affix
 
@@ -87,8 +91,8 @@
   }
 
 
- /* AFFIX NO CONFLICT
-  * ================= */
+  /* AFFIX NO CONFLICT
+   * ================= */
 
   $.fn.affix.noConflict = function () {
     $.fn.affix = old
@@ -96,15 +100,14 @@
   }
 
 
- /* AFFIX DATA-API
-  * ============== */
+  /* AFFIX DATA-API
+   * ============== */
 
   $(window).on('load', function () {
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
         , data = $spy.data()
-
-      data.offset = data.offset || {}
+       data.offset = data.offset || {}
 
       data.offsetBottom && (data.offset.bottom = data.offsetBottom)
       data.offsetTop && (data.offset.top = data.offsetTop)
@@ -113,5 +116,20 @@
     })
   })
 
-
-}(window.jQuery);
+  return {
+    init: function() {
+      $(document).ready(function($) {
+        $('.campusnavbar').affix({
+          offset: {
+            top: function() {
+              return $('#page-header').height()
+            }
+          }
+        });
+        $("body").addClass("hasaffix");
+      });
+      log.debug('Campus affix AMD init');
+    }
+  }
+});
+/* jshint ignore:end */

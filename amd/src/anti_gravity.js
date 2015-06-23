@@ -3,7 +3,7 @@ define(['jquery'], function($) {
 
   "use strict"; // jshint ;_;
 
-  console.log('Campus anti gravity AMD initialised');
+  console.log('Campus anti gravity AMD');
 
   $(document).ready(function() {
     var showposition = 480;

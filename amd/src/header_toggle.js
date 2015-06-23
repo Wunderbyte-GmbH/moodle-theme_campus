@@ -20,19 +20,35 @@
  * @package    theme
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
- * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
+ * @copyright  &copy; 2015-onwards Work undertaken for David Bogner of Edulabs.org.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
-$(document).ready(function() {
-  jQuery('.campusnavbar').affix({
-    offset: {
-      top: function() {
-           return $('#page-header').height()
-      }
+
+/* jshint ignore:start */
+define(['jquery', 'core/log'], function($, log) {
+
+  "use strict"; // jshint ;_;
+
+  log.debug('Campus header toggle AMD');
+
+  return {
+    init: function() {
+      $(document).ready(function($) {
+        $("body").on( "click", ".headertoggle", function() {
+          if ($(this).hasClass("fa-expand")) {
+             $(this).removeClass("fa-expand");
+             $(this).addClass("fa-compress");
+          } else {
+             $(this).removeClass("fa-compress");
+             $(this).addClass("fa-expand");
+          }
+          $(".headertoggled").toggle(500);
+          $("body").toggleClass("hideheader", 500);
+        });
+      });
+      log.debug('Campus header toggle AMD init');
     }
-  });
-  $("body").addClass("hasaffix");
+  }
 });
+/* jshint ignore:end */

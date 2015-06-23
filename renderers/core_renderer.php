@@ -680,7 +680,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         switch($pagelayout) {
             case 'frontpage':
-                $this->page->requires->jquery_plugin('carousel', 'theme_campus'); // Carousel can only exist on front page or top level category pages.
+                $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+                if ($autoplay == 2) {
+                    $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
+                } else {
+                    $slideinterval = 0;
+                }
+                $data = array('data' => array('slideinterval' => $slideinterval));
+                $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
                 // We are the front page setting enforce the intent.
                 if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
                     $stickynavbar = true;
@@ -705,7 +712,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             case 'coursecategory':
                 $currentcategory = $this->get_current_category();
                 if ($this->is_top_level_category($currentcategory)) {
-                    $this->page->requires->jquery_plugin('carousel', 'theme_campus'); // Carousel can only exist on front page or top level category pages.
+                    $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+                    if ($autoplay == 2) {
+                        $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
+                    } else {
+                        $slideinterval = 0;
+                    }
+                    $data = array('data' => array('slideinterval' => $slideinterval));
+                    $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
                     $this->hasspecificheader = true;
                     $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
                     if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
@@ -737,12 +751,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             break;
         }
         if ($stickynavbar) {
-            $this->page->requires->jquery_plugin('affix', 'theme_campus');
+            $this->page->requires->js_call_amd('theme_campus/affix', 'init');
         }
 
         if (!empty($this->page->theme->settings->showheadertoggle)) {
             if ($this->hasspecificheader) {
-                $this->page->requires->jquery_plugin('headertoggle', 'theme_campus');
+                $this->page->requires->js_call_amd('theme_campus/header_toggle', 'init');
             }
         }
     }

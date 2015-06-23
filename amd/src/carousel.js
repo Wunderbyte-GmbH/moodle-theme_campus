@@ -1,24 +1,29 @@
-/* ==========================================================
- * bootstrap-carousel.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#carousel
- * ==========================================================
- * Copyright 2013 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================== */
+/* jshint ignore:start */
+define(['jquery', 'theme_campus/bootstrap', 'core/log'], function($, bootstrap, log) {
 
+  "use strict"; // jshint ;_;
 
-!function ($) {
+  log.debug('Campus carousel AMD');
+
+  /* ==========================================================
+   * bootstrap-carousel.js v2.3.2
+   * http://getbootstrap.com/2.3.2/javascript.html#carousel
+   * ==========================================================
+   * Copyright 2013 Twitter, Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   * http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   * ========================================================== */
+
 
   "use strict"; // jshint ;_;
 
@@ -72,15 +77,15 @@
     }
 
   , pause: function (e) {
-      if (!e) this.paused = true
-      if (this.$element.find('.next, .prev').length && $.support.transition.end) {
-        this.$element.trigger($.support.transition.end)
-        this.cycle(true)
-      }
-      clearInterval(this.interval)
-      this.interval = null
-      return this
+    if (!e) this.paused = true
+    if (this.$element.find('.next, .prev').length && $.support.transition.end) {
+      this.$element.trigger($.support.transition.end)
+      this.cycle(true)
     }
+    clearInterval(this.interval)
+    this.interval = null
+    return this
+  }
 
   , next: function () {
       if (this.sliding) return
@@ -92,7 +97,7 @@
       return this.slide('prev')
     }
 
-  , slide: function (type, next) {
+    , slide: function (type, next) {
       var $active = this.$element.find('.item.active')
         , $next = next || $active[type]()
         , isCycling = this.interval
@@ -204,4 +209,15 @@
     e.preventDefault()
   })
 
-}(window.jQuery);
+  return {
+    init: function(data) {
+      log.debug('Campus carousel AMD init, slide interval: ' + data.slideinterval);
+      $( document ).ready(function($) {
+        $('#campusCarousel').carousel({
+            interval: data.slideinterval
+        });
+      });
+    }
+  }
+});
+/* jshint ignore:end */
