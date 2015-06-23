@@ -53,6 +53,7 @@ Version Information
 ===================
 23rd June 2015 - Version 2.9.0.9.
   1. Convert all jQuery to use AMD - task #556.
+  2. Update icons - task #556.
 
 20th June 2015 - Version 2.9.0.8.
   1. Fix colour of breadcrumb arrows - task #683.
