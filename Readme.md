@@ -14,8 +14,8 @@ About
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2015040900.00 release 2.9dev (Build: 20150409) and above within the 2.9 branch until the
-next release.e.
+This version works with Moodle version 2015051100.00 release 2.9 (Build: 20150511) and above within the 2.9 branch until the
+next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
 'docs.moodle.org/29/en/Installing_Moodle'.
