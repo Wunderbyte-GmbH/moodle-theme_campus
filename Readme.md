@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+13th July 2015 - Version 2.9.0.11.
+  1. Fix collapsed navbar as reported here: https://moodle.org/mod/forum/discuss.php?d=316686.
+
 24th June 2015 - Version 2.9.0.10.
   1. Class autoloading for core_renderer.php - task #556.
 

@@ -36,7 +36,7 @@ if (!empty($hdfancynavbar)) {
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
-            <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target="#campusnav">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target="#campusnav">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
