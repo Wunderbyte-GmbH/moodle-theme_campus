@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+20th July 2015 - Version 2.9.0.12.
+  1. Fix 'Bewertungsansicht für Teilnehmer sehr zerfleddert' - task #686.
+
 13th July 2015 - Version 2.9.0.11.
   1. Fix collapsed navbar as reported here: https://moodle.org/mod/forum/discuss.php?d=316686.
 

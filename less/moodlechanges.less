@@ -227,9 +227,22 @@ table {
     background-color: @bodyBackgroundAlt;
 }
 
-.path-grade-report-grader #region-main {
-    width: auto;
-    float: left;
+@media (min-width: 768px) {
+    .path-grade-report, #page-admin-plugins {
+        #region-main {
+            width: auto;
+            float: left;
+        }
+        .block-region {
+            width: 100%;
+            margin: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            .block {
+                .makeColumn(4);
+            }
+        }
+    }
 }
 
 .path-grade-report-grader .gradeparent tr:nth-of-type(even) .cell {

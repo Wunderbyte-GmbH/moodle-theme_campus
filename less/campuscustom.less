@@ -1445,6 +1445,15 @@ table.flexible, .generaltable {
     //max-width: 100%; // Add in when move to BS3.
 }
 
+body.path-grade-report, body#page-admin-plugins {  // Task 682.
+    table {
+        th, td {
+            word-break: normal;  // Note: Compromise solution until Moodle core uses div's instead of tables.
+            word-wrap: normal;
+        }
+    }
+}
+
 fieldset {
     min-width: 0;
 }
