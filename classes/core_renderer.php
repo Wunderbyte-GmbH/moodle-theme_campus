@@ -643,7 +643,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
 
         $pagelayout = $this->page->pagelayout;
-        if (($this->page->course->format == 'site') && ($pagelayout == 'incourse')) {
+        if (($this->page->course->format == 'site') && (($pagelayout == 'incourse') || ($pagelayout == 'report'))) {
             $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
         }
 
@@ -658,6 +658,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             break;
             case 'course':
             case 'incourse':
+            case 'report':
                 $thefile = 'coursecategory-header';
             break;
         }
@@ -674,7 +675,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $stickynavbar = false;
 
         $pagelayout = $this->page->pagelayout;
-        if (($this->page->course->format == 'site') && ($pagelayout == 'incourse')) {
+        if (($this->page->course->format == 'site') && (($pagelayout == 'incourse') || ($pagelayout == 'report'))) {
             $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
         }
 
@@ -735,6 +736,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             break;
             case 'course':
             case 'incourse':
+            case 'report':
                 // From our point of view, the same as is_course_page().
                 $this->hasspecificheader = true;
                 $currentcategory = $this->get_current_top_level_catetgory();
@@ -765,9 +767,15 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * States if we are in a course or module of a course.
      */
     public function is_course_page() {
-        switch($this->page->pagelayout) {
+        $pagelayout = $this->page->pagelayout;
+        if (($this->page->course->format == 'site') && (($pagelayout == 'incourse') || ($pagelayout == 'report'))) {
+            $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
+        }
+
+        switch($pagelayout) {
             case 'course':
             case 'incourse':
+            case 'report':
                 $iscourse = true;
             break;
             default:

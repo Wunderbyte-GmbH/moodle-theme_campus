@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+28th July 2015 - Version 2.9.1.1.
+  1. Fix 'Customized category header not showing for grading view' - https://github.com/dasistwas/moodle-theme_campus/issues/2 / task #701.
+
 20th July 2015 - Version 2.9.1.
   1. First stable version for Moodle 2.9.
 
