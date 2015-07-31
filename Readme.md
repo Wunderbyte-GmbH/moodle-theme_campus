@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+31st July 2015 - Version 2.9.1.2.
+  1. Refix 'Drag a link in site admin block and then move mouse over the links make icons move' - task #678.
+
 28th July 2015 - Version 2.9.1.1.
   1. Fix 'Customized category header not showing for grading view' - https://github.com/dasistwas/moodle-theme_campus/issues/2 / task #701.
 
