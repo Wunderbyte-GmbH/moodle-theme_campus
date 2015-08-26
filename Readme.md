@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+26th August 2015 - Version 2.9.1.3.
+  1. Forum header not responsive (height problem) - task #723.
+
 31st July 2015 - Version 2.9.1.2.
   1. Refix 'Drag a link in site admin block and then move mouse over the links make icons move' - task #678.
 
