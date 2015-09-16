@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+16th September 2015 - Version 2.9.1.4.
+  1. Fix assignment grading issue - task #724.
+
 26th August 2015 - Version 2.9.1.3.
   1. Forum header not responsive (height problem) - task #723.
 
