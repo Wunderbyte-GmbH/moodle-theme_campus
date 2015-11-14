@@ -111,6 +111,57 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * Get the HTML for blocks in side-pre and side-post if available.
+     * Use only with two column layout files.
+     *
+     * @param array $classes array of classes for the tag.
+     * @param string $tag Tag to use.
+     * @return string HTML.
+     */
+    public function campussingleblocks($classes = array(), $tag = 'aside') {
+        $classes = (array) $classes;
+        $classes[] = 'block-region';
+
+        $hassidepre = $this->page->blocks->is_known_region('side-pre');
+        $hassidepost = $this->page->blocks->is_known_region('side-post');
+
+        if ($hassidepre) {
+            $regionprehascontent = $this->page->blocks->region_has_content('side-pre', $this);
+            $displayregion = 'side-pre';
+        } else {
+            $regionprehascontent = false;
+            $displayregion = 'side-post';
+        }
+
+        if ($hassidepost) {
+            $regionposthascontent = $this->page->blocks->region_has_content('side-post', $this);
+        } else {
+            $regionposthascontent = false;
+        }
+
+        $attributes = array(
+            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
+            'class' => join(' ', $classes),
+            'data-blockregion' => $displayregion,
+            'data-droptarget' => '1'
+        );
+
+        if (($regionprehascontent) || ($regionposthascontent)) {
+            $content = '';
+            if ($regionprehascontent) {
+                $content .= $this->blocks_for_region('side-pre');
+            }
+            if ($regionposthascontent) {
+                $content .= $this->blocks_for_region('side-post');
+            }
+            $output = html_writer::tag($tag, $content, $attributes);
+        } else {
+            $output = html_writer::tag($tag, '', $attributes);
+        }
+        return $output;
+    }
+
+    /**
      * Get the HTML for blocks in the given region.
      *
      * @since 2.5.1 2.6

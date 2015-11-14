@@ -106,31 +106,31 @@ $THEME->layouts = array(
     'base' => array(
         'file' => 'columns1.php',
         'regions' => $empty,
-        'defaultregion' => 'footer',
+        'defaultregion' => 'footer'
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // Main course page.
     'course' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu'=>true),
+        'options' => array('langmenu'=>true)
     ),
     'coursecategory' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // part of course, typical for modules - default page layout if $cm specified in require_login()
     'incourse' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // The site home page.
     'frontpage' => array(
@@ -142,32 +142,32 @@ $THEME->layouts = array(
     'admin' => array(
         'file' => $sitefile,
         'regions' => $col3regions,  // On purpose for when changing columns from 2r to 3 on General settings page of theme.
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // My dashboard page.
     'mydashboard' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu'=>true),
+        'options' => array('langmenu'=>true)
     ),
     // My public page.
     'mypublic' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     'login' => array(
         'file' => 'columns1.php',
         'regions' => $empty,
-        'options' => array('langmenu'=>true),
+        'options' => array('langmenu'=>true)
     ),
 
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
         'file' => 'popup.php',
         'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>true),
+        'options' => array('nofooter'=>true, 'nonavbar'=>true)
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
@@ -186,13 +186,13 @@ $THEME->layouts = array(
     'maintenance' => array(
         'file' => 'maintenance.php',
         'regions' => $empty,
-        'options' => array('nofooter'=>true, 'nonavbar'=>true, 'nocoursefooter'=>true, 'nocourseheader'=>true),
+        'options' => array('nofooter'=>true, 'nonavbar'=>true, 'nocoursefooter'=>true, 'nocourseheader'=>true)
     ),
     // Should display the content and basic headers only.
     'print' => array(
         'file' => 'columns1.php',
         'regions' => $empty,
-        'options' => array('nofooter'=>true, 'nonavbar'=>false),
+        'options' => array('nofooter'=>true, 'nonavbar'=>false)
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
@@ -203,7 +203,7 @@ $THEME->layouts = array(
     'report' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(

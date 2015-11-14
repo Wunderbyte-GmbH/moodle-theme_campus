@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+14th November 2015 - Version 2.9.1.5.
+  1. Fix 'Settings block does not appear in the side bar when specific block settings are used' - task #725.
+
 16th September 2015 - Version 2.9.1.4.
   1. Fix assignment grading issue - task #724.
 

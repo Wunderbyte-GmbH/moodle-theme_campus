@@ -103,7 +103,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
             if ($left) {
                 $classextra = ' desktop-first-column';
             }
-            echo $OUTPUT->campusblocks($useblock, 'span3'.$classextra);
+            echo $OUTPUT->campussingleblocks('span3'.$classextra);
         }
         ?>
     </div>
