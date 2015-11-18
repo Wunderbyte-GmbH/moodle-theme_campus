@@ -53,7 +53,7 @@ if ($hdlogoextrapos == 1) {
         }
         echo '</a>';
     } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$headertitle.'</h1></a>';
     }
     echo '</div>';
 }
@@ -69,7 +69,7 @@ if ($hdbackgroundimage) {
 }
 $showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
 if (($showpageheading) && ($hdlogo)) {
-    echo '<div class="sitename headertoggled"><a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a></div>';
+    echo '<div class="sitename headertoggled"><a href="'.$CFG->wwwroot.'"><h1>'.$headertitle.'</h1></a></div>';
 }
 echo '</div>';
 if ($hdlogoextrapos == 2) {
@@ -82,7 +82,7 @@ if ($hdlogoextrapos == 2) {
         }
         echo '</a>';
     } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$SITE->shortname.'</h1></a>';
+        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$headertitle.'</h1></a>';
     }
     echo '</div>';
 }

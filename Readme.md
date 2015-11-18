@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+18th November 2015 - Version 2.9.1.6
+  1. Implement 'Page heading on category pages display site name instead of category name' - task #747.
+
 14th November 2015 - Version 2.9.1.5.
   1. Fix 'Settings block does not appear in the side bar when specific block settings are used' - task #725.
   2. Fix 'Anchor links have a positioning problem' - task #743.

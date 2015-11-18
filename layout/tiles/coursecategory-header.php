@@ -26,12 +26,17 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-global $CFG, $OUTPUT;
+global $CFG, $OUTPUT, $SITE;
 
 if ($OUTPUT->is_course_page()) {
     $currentcategory = $OUTPUT->get_current_top_level_catetgory();
+    $headertitle = $SITE->shortname;
 } else {
     $currentcategory = $OUTPUT->get_current_category();
+
+    include_once($CFG->libdir . '/coursecatlib.php');
+    $category = coursecat::get($currentcategory);
+    $headertitle = $category->name;
 }
 
 // Image files.
