@@ -898,6 +898,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         } else if ($this->page->pagelayout == 'coursecategory') {
             global $CFG;
             include_once($CFG->libdir . '/coursecatlib.php');
+            $currentcategory = $this->get_current_category();
             $category = coursecat::get($currentcategory);
             $heading = $category->name;
         } else {
