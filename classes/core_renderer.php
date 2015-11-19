@@ -895,8 +895,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     public function page_heading($tag = 'h1') {
         if ($this->page->pagelayout == 'frontpage') {
             return '';
+        } else if ($this->page->pagelayout == 'coursecategory') {
+            global $CFG;
+            include_once($CFG->libdir . '/coursecatlib.php');
+            $category = coursecat::get($currentcategory);
+            $heading = $category->name;
+        } else {
+            $heading = $this->page->heading;
         }
-        global $CFG;
-        return '<a class="brand" href="'.$CFG->wwwroot.'">'.$this->page->heading.'</a>';
+        return '<h1 class="brand">'.$heading.'</h1>';
     }
 }

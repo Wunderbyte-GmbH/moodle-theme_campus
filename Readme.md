@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+19th November 2015 - Version 2.9.1.7
+  1. Redo 'Page heading on category pages display site name instead of category name' - task #747.
+
 18th November 2015 - Version 2.9.1.6
   1. Implement 'Page heading on category pages display site name instead of category name' - task #747.
 

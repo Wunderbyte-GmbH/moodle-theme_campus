@@ -367,8 +367,25 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         vertical-align: top;
         width: auto;
         height: auto;
-        max-width: 20px;
-        max-height: 20px;
+        max-width: @baseLineHeight;
+        max-height: @baseLineHeight;
+    }
+
+    // Navbar brand.
+    .brand {
+        // Vertically center the text given @navbarHeight.
+        padding: 0 5px 0 5px;
+        margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
+        max-height: @baseLineHeight;
+        line-height: @baseLineHeight;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: @navbarPageHeadingMax;
+    }
+
+    // Navbar divider.
+    .nav .divider {
+        height: @navbarHeight;
     }
 
     .navbar-inner {
@@ -380,8 +397,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     vertical-align: top;
                     width: auto;
                     height: auto;
-                    max-width: 20px;
-                    max-height: 20px;
+                    max-width: @baseLineHeight - 2;
+                    max-height: @baseLineHeight - 2;
                     border-radius: 4px;
                     margin-right: 2px;
                 }
@@ -1118,17 +1135,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             display: none;
         }
     }
-}
-
-// Navbar brand.
-.navbar .brand {
-    // Vertically center the text given @navbarHeight.
-    padding: 0 5px 0 5px;
-    margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
-    max-height: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: @navbarPageHeadingMax;
 }
 
 // Responsive.

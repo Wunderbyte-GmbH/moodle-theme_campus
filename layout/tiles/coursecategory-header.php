@@ -28,15 +28,11 @@
 
 global $CFG, $OUTPUT, $SITE;
 
+$headertitle = $SITE->shortname;
 if ($OUTPUT->is_course_page()) {
     $currentcategory = $OUTPUT->get_current_top_level_catetgory();
-    $headertitle = $SITE->shortname;
 } else {
     $currentcategory = $OUTPUT->get_current_category();
-
-    include_once($CFG->libdir . '/coursecatlib.php');
-    $category = coursecat::get($currentcategory);
-    $headertitle = $category->name;
 }
 
 // Image files.
