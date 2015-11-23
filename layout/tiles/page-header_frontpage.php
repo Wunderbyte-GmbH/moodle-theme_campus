@@ -25,6 +25,10 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 2)) {
+    echo $OUTPUT->get_page_heading();
+}
 ?>
 
 <header id="page-header" class="clearfix">
@@ -35,4 +39,8 @@
 // Note: $numberofslides established in the header file as pulled in by $OUTPUT->get_header_file() if there are any.
 if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 1)) {
     require_once(dirname(__FILE__).'/slideshow.php');
+}
+
+if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
+    echo $OUTPUT->get_page_heading();
 }

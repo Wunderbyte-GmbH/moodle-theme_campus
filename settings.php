@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -25,7 +26,6 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 $settings = null;
 
 defined('MOODLE_INTERNAL') || die;
@@ -42,7 +42,7 @@ if (is_siteadmin()) {
     // Generic settings.
     $settingpage = new admin_settingpage('theme_campus_generic', get_string('genericsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_generalheading', null,
-        format_text(get_string('generalheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+            format_text(get_string('generalheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Theme layout setting.
     $name = 'theme_campus/themelayout';
@@ -82,9 +82,9 @@ if (is_siteadmin()) {
     if ($hosts = $DB->get_records_sql($sql, $params)) {
         $choices = array();
         $choices[0] = 'notset';
-        foreach ($hosts as $id => $host){
+        foreach ($hosts as $id => $host) {
             $choices[$id] = $host->name;
-        }    
+        }
     } else {
         $choices = array();
         $choices[0] = 'notset';
@@ -151,7 +151,7 @@ if (is_siteadmin()) {
     // Look and feel settings.
     $settingpage = new admin_settingpage('theme_campus_landf', get_string('landfsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_landfheading', null,
-        format_text(get_string('landfheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+            format_text(get_string('landfheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Page width maximum.
     $name = 'theme_campus/pagewidthmax';
@@ -511,7 +511,7 @@ if (is_siteadmin()) {
     // Header settings.
     $settingpage = new admin_settingpage('theme_campus_header', get_string('headersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_headerheading', null,
-        format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+            format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Show page heading.
     $name = 'theme_campus/showpageheading';
@@ -563,7 +563,8 @@ if (is_siteadmin()) {
     $settingpage->add($setting);
 
     // Frontpage header settings.
-    $settingpage->add(new admin_setting_heading('theme_campus_frontpage', get_string('frontpageheadersettings', 'theme_campus'),
+    $settingpage->add(new admin_setting_heading('theme_campus_frontpage',
+            get_string('frontpageheadersettings', 'theme_campus'),
             format_text(get_string('frontpageheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Have a custom front page header.
@@ -628,7 +629,8 @@ if (is_siteadmin()) {
     // Background image file setting.
     $name = 'theme_campus/frontpagebackgroundimage';
     $title = get_string('frontpagebackgroundimage', 'theme_campus');
-    $description = get_string('frontpagebackgroundimagedesc', 'theme_campus', array('pagewidthmax' => $currentpagewidthmaxheaders));
+    $description = get_string('frontpagebackgroundimagedesc', 'theme_campus',
+            array('pagewidthmax' => $currentpagewidthmaxheaders));
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpagebackgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
@@ -641,7 +643,21 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    $settingpage->add(new admin_setting_heading('theme_campus_coursecategory', get_string('coursecategoryhavecustomheaderheader', 'theme_campus'),
+    // Page heading position setting.
+    $name = 'theme_campus/frontpagepageheadinglocation';
+    $title = get_string('frontpagepageheadinglocation', 'theme_campus');
+    $description = get_string('frontpagepageheadinglocationdesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('pageheadinglocationnavbar', 'theme_campus'),
+        2 => new lang_string('pageheadinglocationunderneathnavbar', 'theme_campus'),
+        3 => new lang_string('pageheadinglocationpagecontenttop', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $settingpage->add($setting);
+    
+    $settingpage->add(new admin_setting_heading('theme_campus_coursecategory',
+            get_string('coursecategoryhavecustomheaderheader', 'theme_campus'),
             format_text(get_string('coursecategoryhavecustomheaderheader_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     if (file_exists("{$CFG->dirroot}/theme/campus/campus-lib.php")) {
@@ -650,9 +666,9 @@ if (is_siteadmin()) {
         include_once($CFG->themedir . '/campus/campus-lib.php');
     }
     $campuscategorytree = theme_campus_get_top_level_categories();
-    foreach($campuscategorytree as $key => $value){
+    foreach ($campuscategorytree as $key => $value) {
         // Have a custom header for the course category.
-        $name = 'theme_campus/coursecategoryhavecustomheader'.$key;
+        $name = 'theme_campus/coursecategoryhavecustomheader' . $key;
         $title = get_string('coursecategoryhavecustomheader', 'theme_campus', array('categoryname' => $value));
         $description = get_string('coursecategoryhavecustomheaderdesc', 'theme_campus', array('categoryname' => $value));
         $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
@@ -663,19 +679,20 @@ if (is_siteadmin()) {
     $ADMIN->add('theme_campus', $settingpage);
 
     // Course category header settings.
-    $settingpage = new admin_settingpage('theme_campus_category_header', get_string('coursecategoryheadersettings', 'theme_campus'));
+    $settingpage = new admin_settingpage('theme_campus_category_header',
+            get_string('coursecategoryheadersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_category_header_heading', null,
-        format_text(get_string('coursecategoryheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
+            format_text(get_string('coursecategoryheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     $havecategories = false;
-    foreach($campuscategorytree as $key => $value){
-        $havecustomheader = get_config('theme_campus', 'coursecategoryhavecustomheader'.$key);
+    foreach ($campuscategorytree as $key => $value) {
+        $havecustomheader = get_config('theme_campus', 'coursecategoryhavecustomheader' . $key);
         if (empty($havecustomheader)) {
             continue;
         }
         $havecategories = true;
 
-        $name = 'theme_campus/coursecategoryheading'.$key;
+        $name = 'theme_campus/coursecategoryheading' . $key;
         $heading = get_string('coursecategoryheading', 'theme_campus', array('categoryname' => $value));
         $information = '';
         $setting = new admin_setting_heading($name, $heading, $information);
@@ -683,7 +700,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Sticky navbar.
-        $name = 'theme_campus/coursecategorystickynavbar'.$key;
+        $name = 'theme_campus/coursecategorystickynavbar' . $key;
         $title = get_string('coursecategorystickynavbar', 'theme_campus');
         $description = get_string('coursecategorystickynavbardesc', 'theme_campus', array('categoryname' => $value));
         $default = true;
@@ -692,7 +709,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Background colour.
-        $name = 'theme_campus/coursecategorybgcolour'.$key;
+        $name = 'theme_campus/coursecategorybgcolour' . $key;
         $title = get_string('coursecategorybgcolour', 'theme_campus');
         $description = get_string('coursecategorybgcolourdesc', 'theme_campus', array('categoryname' => $value));
         $default = '#11847D';
@@ -702,7 +719,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Course category layout setting.
-        $name = 'theme_campus/coursecategorylayout'.$key;
+        $name = 'theme_campus/coursecategorylayout' . $key;
         $title = get_string('coursecategorylayout', 'theme_campus');
         $description = get_string('coursecategorylayoutdesc', 'theme_campus');
         $default = 'flexlayout';
@@ -715,23 +732,24 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Logo file setting.
-        $name = 'theme_campus/coursecategorylogo'.$key;
+        $name = 'theme_campus/coursecategorylogo' . $key;
         $title = get_string('coursecategorylogo', 'theme_campus');
-        $description = get_string('coursecategorylogodesc', 'theme_campus', array('pagewidthmax' => $currentpagewidthmaxheaders));
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorylogo'.$key);
+        $description = get_string('coursecategorylogodesc', 'theme_campus',
+                array('pagewidthmax' => $currentpagewidthmaxheaders));
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorylogo' . $key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
         // Logo file setting on small devices.
-        $name = 'theme_campus/coursecategoryresponsivelogo'.$key;
+        $name = 'theme_campus/coursecategoryresponsivelogo' . $key;
         $title = get_string('coursecategoryresponsivelogo', 'theme_campus');
         $description = get_string('coursecategoryresponsivelogodesc', 'theme_campus');
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategoryresponsivelogo'.$key);
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategoryresponsivelogo' . $key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
         // Logo position setting.
-        $name = 'theme_campus/coursecategorylogoposition'.$key;
+        $name = 'theme_campus/coursecategorylogoposition' . $key;
         $title = get_string('coursecategorylogoposition', 'theme_campus');
         $description = get_string('coursecategorylogopositiondesc', 'theme_campus');
         $default = 2;
@@ -744,24 +762,26 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Background image file setting.
-        $name = 'theme_campus/coursecategorybackgroundimage'.$key;
+        $name = 'theme_campus/coursecategorybackgroundimage' . $key;
         $title = get_string('coursecategorybackgroundimage', 'theme_campus');
-        $description = get_string('coursecategorybackgroundimagedesc', 'theme_campus', array('pagewidthmax' => $currentpagewidthmaxheaders));
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorybackgroundimage'.$key);
+        $description = get_string('coursecategorybackgroundimagedesc', 'theme_campus',
+                array('pagewidthmax' => $currentpagewidthmaxheaders));
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorybackgroundimage' . $key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
         // Background image file setting on small devices.
-        $name = 'theme_campus/coursecategoryresponsivebackgroundimage'.$key;
+        $name = 'theme_campus/coursecategoryresponsivebackgroundimage' . $key;
         $title = get_string('coursecategoryresponsivebackgroundimage', 'theme_campus');
         $description = get_string('coursecategoryresponsivebackgroundimagedesc', 'theme_campus');
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategoryresponsivebackgroundimage'.$key);
+        $setting = new admin_setting_configstoredfile($name, $title, $description,
+                'coursecategoryresponsivebackgroundimage' . $key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
     }
     if ($havecategories == false) {
         $settingpage->add(new admin_setting_heading('theme_campus_category_header_none_heading', null,
-            format_text(get_string('coursecategoryhavecustomheadernone', 'theme_campus'), FORMAT_MARKDOWN)));
+                format_text(get_string('coursecategoryhavecustomheadernone', 'theme_campus'), FORMAT_MARKDOWN)));
     }
 
     $ADMIN->add('theme_campus', $settingpage);
@@ -769,11 +789,11 @@ if (is_siteadmin()) {
     // Footer settings.
     $settingpage = new admin_settingpage('theme_campus_footer', get_string('footersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_footerheading', null,
-        format_text(get_string('footerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+            format_text(get_string('footerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Number of footer blocks.
     $name = 'theme_campus/numfooterblocks';
-    $title = get_string('numfooterblocks','theme_campus');
+    $title = get_string('numfooterblocks', 'theme_campus');
     $description = get_string('numfooterblocksdesc', 'theme_campus');
     $choices = array(
         1 => new lang_string('one', 'theme_campus'),
@@ -800,7 +820,7 @@ if (is_siteadmin()) {
     // Carousel settings.
     $settingpage = new admin_settingpage('theme_campus_carousel', get_string('carouselsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_carouselheading', null,
-        format_text(get_string('carouselsettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+            format_text(get_string('carouselsettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Slider position setting.
     $name = 'theme_campus/sliderposition';
@@ -821,7 +841,7 @@ if (is_siteadmin()) {
     $description = get_string('carouselautoplaydesc', 'theme_campus');
     $default = 2;
     $choices = array(
-        1 => new lang_string('no'),   // No.
+        1 => new lang_string('no'), // No.
         2 => new lang_string('yes')   // Yes.
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
@@ -881,7 +901,8 @@ if (is_siteadmin()) {
     $ADMIN->add('theme_campus', $settingpage);
 
     // Frontpage carousel settings.
-    $settingpage = new admin_settingpage('theme_campus_frontpage_carousel', get_string('frontpagecarouselsettings', 'theme_campus'));
+    $settingpage = new admin_settingpage('theme_campus_frontpage_carousel',
+            get_string('frontpagecarouselsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_carousel_frontpage', null,
             format_text(get_string('frontpagecarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -912,7 +933,7 @@ if (is_siteadmin()) {
     $numberofslides = get_config('theme_campus', 'numberofslidesforfrontpage');
     for ($i = 1; $i <= $numberofslides; $i++) {
         // This is the information.
-        $name = 'theme_campus/frontpageslide'.$i.'info';
+        $name = 'theme_campus/frontpageslide' . $i . 'info';
         $heading = get_string('slideno', 'theme_campus', array('slide' => $i));
         $information = get_string('slidenodesc', 'theme_campus', array('slide' => $i));
         $setting = new admin_setting_heading($name, $heading, $information);
@@ -920,7 +941,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Title.
-        $name = 'theme_campus/frontpage' . $i .'title';
+        $name = 'theme_campus/frontpage' . $i . 'title';
         $title = get_string('slidetitle', 'theme_campus');
         $description = get_string('slidetitledesc', 'theme_campus');
         $default = '';
@@ -929,15 +950,15 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Image.
-        $name = 'theme_campus/frontpage'.$i.'image';
+        $name = 'theme_campus/frontpage' . $i . 'image';
         $title = get_string('slideimage', 'theme_campus');
         $description = get_string('slideimagedesc', 'theme_campus');
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpage'.$i.'image');
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'frontpage' . $i . 'image');
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 
         // Caption text.
-        $name = 'theme_campus/frontpage'. $i . 'caption';
+        $name = 'theme_campus/frontpage' . $i . 'caption';
         $title = get_string('slidecaption', 'theme_campus');
         $description = get_string('slidecaptiondesc', 'theme_campus');
         $default = '';
@@ -946,7 +967,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Link.
-        $name = 'theme_campus/frontpage' . $i .'link';
+        $name = 'theme_campus/frontpage' . $i . 'link';
         $title = get_string('slidelink', 'theme_campus');
         $description = get_string('slidelinkdesc', 'theme_campus');
         $default = '';
@@ -955,7 +976,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Link target.
-        $name = 'theme_campus/frontpage' . $i .'linktarget';
+        $name = 'theme_campus/frontpage' . $i . 'linktarget';
         $title = get_string('slidelinktarget', 'theme_campus');
         $description = get_string('slidelinktargetdesc', 'theme_campus');
         $default = 1;
@@ -970,14 +991,15 @@ if (is_siteadmin()) {
 
     $ADMIN->add('theme_campus', $settingpage);
 
-     // Course category carousel settings.
-    $settingpage = new admin_settingpage('theme_campus_category_carousel', get_string('coursecategorycarouselsettings', 'theme_campus'));
+    // Course category carousel settings.
+    $settingpage = new admin_settingpage('theme_campus_category_carousel',
+            get_string('coursecategorycarouselsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_carousel_coursecategory', null,
             format_text(get_string('coursecategorycarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     $campuscategorytree = theme_campus_get_top_level_categories();
-    foreach($campuscategorytree as $key => $value){
-        $name = 'theme_campus/coursecategoryheading'.$key;
+    foreach ($campuscategorytree as $key => $value) {
+        $name = 'theme_campus/coursecategoryheading' . $key;
         $heading = get_string('coursecategoryheading', 'theme_campus', array('categoryname' => $value));
         $information = '';
         $setting = new admin_setting_heading($name, $heading, $information);
@@ -985,7 +1007,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Status.
-        $name = 'theme_campus/coursecategorycarouselstatus'.$key;
+        $name = 'theme_campus/coursecategorycarouselstatus' . $key;
         $title = get_string('carouselstatus', 'theme_campus');
         $description = get_string('carouselstatus_desc', 'theme_campus');
         $default = 1;
@@ -998,7 +1020,7 @@ if (is_siteadmin()) {
         $settingpage->add($setting);
 
         // Number of slides.
-        $name = 'theme_campus/numberofslidesforcategory'.$key;
+        $name = 'theme_campus/numberofslidesforcategory' . $key;
         $title = get_string('numberofslides', 'theme_campus');
         $default = 0;
         $lower = 0;
@@ -1008,10 +1030,10 @@ if (is_siteadmin()) {
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 
-        $numberofslides = get_config('theme_campus', 'numberofslidesforcategory'.$key);
+        $numberofslides = get_config('theme_campus', 'numberofslidesforcategory' . $key);
         for ($i = 1; $i <= $numberofslides; $i++) {
             // This is the information.
-            $name = 'theme_campus/coursecategory'.$key.'_slide'.$i.'info';
+            $name = 'theme_campus/coursecategory' . $key . '_slide' . $i . 'info';
             $heading = get_string('slideno', 'theme_campus', array('slide' => $i));
             $information = get_string('slidenodesc', 'theme_campus', array('slide' => $i));
             $setting = new admin_setting_heading($name, $heading, $information);
@@ -1019,7 +1041,7 @@ if (is_siteadmin()) {
             $settingpage->add($setting);
 
             // Title.
-            $name = 'theme_campus/coursecategory'.$key.'_' . $i .'title';
+            $name = 'theme_campus/coursecategory' . $key . '_' . $i . 'title';
             $title = get_string('slidetitle', 'theme_campus');
             $description = get_string('slidetitledesc', 'theme_campus');
             $default = '';
@@ -1028,15 +1050,16 @@ if (is_siteadmin()) {
             $settingpage->add($setting);
 
             // Image.
-            $name = 'theme_campus/coursecategory'.$key.'_'.$i.'image';
+            $name = 'theme_campus/coursecategory' . $key . '_' . $i . 'image';
             $title = get_string('slideimage', 'theme_campus');
             $description = get_string('slideimagedesc', 'theme_campus');
-            $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategory'.$key.'_'.$i.'image');
+            $setting = new admin_setting_configstoredfile($name, $title, $description,
+                    'coursecategory' . $key . '_' . $i . 'image');
             // No CSS change, so no need to reset caches.
             $settingpage->add($setting);
 
             // Caption text.
-            $name = 'theme_campus/coursecategory'.$key.'_'. $i . 'caption';
+            $name = 'theme_campus/coursecategory' . $key . '_' . $i . 'caption';
             $title = get_string('slidecaption', 'theme_campus');
             $description = get_string('slidecaptiondesc', 'theme_campus');
             $default = '';
@@ -1045,7 +1068,7 @@ if (is_siteadmin()) {
             $settingpage->add($setting);
 
             // Link.
-            $name = 'theme_campus/coursecategory'.$key.'_' . $i .'link';
+            $name = 'theme_campus/coursecategory' . $key . '_' . $i . 'link';
             $title = get_string('slidelink', 'theme_campus');
             $description = get_string('slidelinkdesc', 'theme_campus');
             $default = '';
@@ -1054,7 +1077,7 @@ if (is_siteadmin()) {
             $settingpage->add($setting);
 
             // Link target.
-            $name = 'theme_campus/coursecategory'.$key.'_' . $i .'linktarget';
+            $name = 'theme_campus/coursecategory' . $key . '_' . $i . 'linktarget';
             $title = get_string('slidelinktarget', 'theme_campus');
             $description = get_string('slidelinktargetdesc', 'theme_campus');
             $default = 1;
@@ -1097,25 +1120,26 @@ if (is_siteadmin()) {
     );
 
     $socialsettings = new admin_settingpage('theme_campus_social', get_string('socialheading', 'theme_campus'));
-    $socialsettings->add(new admin_setting_heading('theme_campus_social', get_string('socialheadingsub', 'theme_campus'),
+    $socialsettings->add(new admin_setting_heading('theme_campus_social',
+            get_string('socialheadingsub', 'theme_campus'),
             format_text(get_string('socialheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
     $socialsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     $numberofsociallinks = get_config('theme_campus', 'numberofsociallinks');
     for ($i = 1; $i <= $numberofsociallinks; $i++) {
         // Social url setting.
-        $name = 'theme_campus/social'.$i;
-        $title = get_string('socialnetworklink', 'theme_campus').$i;
-        $description = get_string('socialnetworklink_desc', 'theme_campus').$i;
+        $name = 'theme_campus/social' . $i;
+        $title = get_string('socialnetworklink', 'theme_campus') . $i;
+        $description = get_string('socialnetworklink_desc', 'theme_campus') . $i;
         $default = '';
         $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $socialsettings->add($setting);
 
         // Social icon setting.
-        $name = 'theme_campus/socialicon'.$i;
-        $title = get_string('socialnetworkicon', 'theme_campus').$i;
-        $description = get_string('socialnetworkicon_desc', 'theme_campus').$i;
+        $name = 'theme_campus/socialicon' . $i;
+        $title = get_string('socialnetworkicon', 'theme_campus') . $i;
+        $description = get_string('socialnetworkicon_desc', 'theme_campus') . $i;
         $default = 'globe';
         $choices = array(
             'dropbox' => 'Dropbox',

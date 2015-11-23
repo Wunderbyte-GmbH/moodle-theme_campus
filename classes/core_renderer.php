@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -41,7 +42,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         } else {
             $dividericon = 'fa-angle-right';
         }
-        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => 'fa '. $dividericon .' fa-lg')) .
+        $divider = html_writer::tag('span',
+                        html_writer::start_tag('i', array('class' => 'fa ' . $dividericon . ' fa-lg')) .
                         html_writer::end_tag('i'), array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
@@ -73,7 +75,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $title = get_string('turneditingon');
             $icon = 'icon-edit';
         }
-        return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon . ' icon-white')) .
+        return html_writer::tag('a',
+                        html_writer::start_tag('i', array('class' => $icon . ' icon-white')) .
                         html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
 
@@ -188,9 +191,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             if ($blocksperrow > 0) {
                 $editing = $this->page->user_is_editing();
                 if ($editing) {
-                    $attributes['class'] .= ' '.$region.'-edit';
+                    $attributes['class'] .= ' ' . $region . '-edit';
                 }
-                $output = html_writer::tag($tag, $this->campus_blocks_for_region($displayregion, $blocksperrow, $editing), $attributes);
+                $output = html_writer::tag($tag,
+                                $this->campus_blocks_for_region($displayregion, $blocksperrow, $editing), $attributes);
             } else {
                 $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
             }
@@ -317,7 +321,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     protected function render_gotobottom_menu(custom_menu $menu) {
-        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout == 'admin')) { // Go to bottom.
+        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout
+                == 'admin')) { // Go to bottom.
             $gotobottom = html_writer::tag('i', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
             $menu->add($gotobottom, new moodle_url('#page-footer'), get_string('gotobottom', 'theme_campus'), 10001);
         }
@@ -325,7 +330,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
     public function anti_gravity() {
         $icon = html_writer::start_tag('i', array('class' => 'fa fa-arrow-circle-o-up')) . html_writer::end_tag('i');
-        $anti_gravity = html_writer::tag('a', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_campus')));
+        $anti_gravity = html_writer::tag('a', $icon,
+                        array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_campus')));
 
         return $anti_gravity;
     }
@@ -357,8 +363,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * Outputs the user menu.
      * @return custom_menu object
      */
-    public function custom_menu_user()
-    {
+    public function custom_menu_user() {
         // Die if executed during install.
         if (during_initial_install()) {
             return false;
@@ -435,18 +440,21 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $reportcontext = context_course::instance($hascourse->id);
                 if (has_capability('gradereport/user:view', $reportcontext) && $hascourse->visible) {
                     $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
-                    $branchurl = new moodle_url('/grade/report/overview/index.php' , array('id' => $hascourse->id, 'userid' => $USER->id));
+                    $branchurl = new moodle_url('/grade/report/overview/index.php',
+                            array('id' => $hascourse->id, 'userid' => $USER->id));
                     $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
                 }
             }
         } else if (has_capability('gradereport/user:view', $context)) {
             $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
-            $branchurl = new moodle_url('/grade/report/overview/index.php' , array('id' => $course->id, 'userid' => $USER->id));
+            $branchurl = new moodle_url('/grade/report/overview/index.php',
+                    array('id' => $course->id, 'userid' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
             // In Course also output Course grade links
             $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('coursegrades', 'theme_campus') . '</em>';
-            $branchurl = new moodle_url('/grade/report/user/index.php' , array('id' => $course->id, 'userid' => $USER->id));
+            $branchurl = new moodle_url('/grade/report/user/index.php',
+                    array('id' => $course->id, 'userid' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
 
@@ -485,15 +493,15 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
 
         $loginurl = $this->campus_get_login_url();
-        $loginpage = ((string)$this->page->url === $loginurl);
+        $loginpage = ((string) $this->page->url === $loginurl);
         $course = $this->page->course;
         if (\core\session\manager::is_loggedinas()) {
             $realuser = \core\session\manager::get_realuser();
             $fullname = fullname($realuser, true);
             if ($withlinks) {
                 $loginastitle = get_string('loginas');
-                $realuserinfo = " [<a href=\"$CFG->wwwroot/course/loginas.php?id=$course->id&amp;sesskey=".sesskey()."\"";
-                $realuserinfo .= "title =\"".$loginastitle."\">$fullname</a>] ";
+                $realuserinfo = " [<a href=\"$CFG->wwwroot/course/loginas.php?id=$course->id&amp;sesskey=" . sesskey() . "\"";
+                $realuserinfo .= "title =\"" . $loginastitle . "\">$fullname</a>] ";
             } else {
                 $realuserinfo = " [$fullname] ";
             }
@@ -517,7 +525,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             } else {
                 $username = $fullname;
             }
-            if (is_mnet_remote_user($USER) and $idprovider = $DB->get_record('mnet_host', array('id'=>$USER->mnethostid))) {
+            if (is_mnet_remote_user($USER) and $idprovider = $DB->get_record('mnet_host',
+                    array('id' => $USER->mnethostid))) {
                 if ($withlinks) {
                     $username .= " from <a href=\"{$idprovider->wwwroot}\">{$idprovider->name}</a>";
                 } else {
@@ -526,32 +535,37 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             }
             if (isguestuser()) {
                 if (!$loginpage && $withlinks) {
-                    $loggedinas = " <a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>';
+                    $loggedinas = " <a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">" . get_string('login') . '</a>';
                 }
             } else if (is_role_switched($course->id)) { // Has switched roles
                 $rolename = '';
-                if ($role = $DB->get_record('role', array('id'=>$USER->access['rsw'][$context->path]))) {
-                    $rolename = ': '.role_get_name($role, $context);
+                if ($role = $DB->get_record('role', array('id' => $USER->access['rsw'][$context->path]))) {
+                    $rolename = ': ' . role_get_name($role, $context);
                 }
-                $loggedinas = '<span class="loggedintext">'. get_string('loggedinas', 'moodle', $username).$rolename.'</span>';
+                $loggedinas = '<span class="loggedintext">' . get_string('loggedinas', 'moodle', $username) . $rolename . '</span>';
                 if ($withlinks) {
-                    $url = new moodle_url('/course/switchrole.php', array('id'=>$course->id,'sesskey'=>sesskey(), 'switchrole'=>0, 'returnurl'=>$this->page->url->out_as_local_url(false)));
-                    $loggedinas .= '('.html_writer::tag('a', get_string('switchrolereturn'), array('href'=>$url, 'class' => 'btn')).')';
+                    $url = new moodle_url('/course/switchrole.php',
+                            array('id' => $course->id, 'sesskey' => sesskey(), 'switchrole' => 0, 'returnurl' => $this->page->url->out_as_local_url(false)));
+                    $loggedinas .= '(' . html_writer::tag('a', get_string('switchrolereturn'),
+                                    array('href' => $url, 'class' => 'btn')) . ')';
                 }
             } else {
-                $loggedinas = '<span class="loggedintext">'. $realuserinfo.get_string('loggedinas', 'moodle', $username).'</span>';
+                $loggedinas = '<span class="loggedintext">' . $realuserinfo . get_string('loggedinas', 'moodle',
+                                $username) . '</span>';
                 if ($withlinks) {
-                    $loggedinas .= html_writer::tag('div', html_writer::link(new moodle_url('/login/logout.php?sesskey=' . sesskey()), '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>'));
+                    $loggedinas .= html_writer::tag('div',
+                                    html_writer::link(new moodle_url('/login/logout.php?sesskey=' . sesskey()),
+                                            '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>'));
                 }
             }
         } else {
             if (!$loginpage && $withlinks) {
-                $loggedinas = "<a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">".get_string('login').'</a>';
+                $loggedinas = "<a class=\"standardbutton plainlogin btn\" href=\"$loginurl\">" . get_string('login') . '</a>';
             }
         }
 
         if (!empty($loggedinas)) {
-            $loggedinas = '<div class="logininfo">'.$loggedinas.'</div>';
+            $loggedinas = '<div class="logininfo">' . $loggedinas . '</div>';
         } else {
             $loggedinas = '';
         }
@@ -567,9 +581,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                         } else {
                             $loggedinas .= get_string('failedloginattemptsall', '', $count);
                         }
-                        if (file_exists("$CFG->dirroot/report/log/index.php") and has_capability('report/log:view', context_system::instance())) {
-                            $loggedinas .= ' (<a href="'.$CFG->wwwroot.'/report/log/index.php'.
-                                                 '?chooselog=1&amp;id=1&amp;modid=site_errors">'.get_string('logs').'</a>)';
+                        if (file_exists("$CFG->dirroot/report/log/index.php") and has_capability('report/log:view',
+                                        context_system::instance())) {
+                            $loggedinas .= ' (<a href="' . $CFG->wwwroot . '/report/log/index.php' .
+                                    '?chooselog=1&amp;id=1&amp;modid=site_errors">' . get_string('logs') . '</a>)';
                         }
                         $loggedinas .= '</div>';
                     }
@@ -590,8 +605,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         global $DB, $SESSION, $CFG;
         if (empty($this->page->theme->settings->alternateloginurl)) {
             return get_login_url();
-        }        
-        if ($this->page->url->out() === $CFG->wwwroot."/login/index.php"){
+        }
+        if ($this->page->url->out() === $CFG->wwwroot . "/login/index.php") {
             $urltogo = $SESSION->wantsurl;
         } else {
             $urltogo = $this->page->url->out();
@@ -601,9 +616,9 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         // Check the id of the MNET host for the idp
         $host = $DB->get_field('mnet_host', 'name', array('id' => $this->page->theme->settings->alternateloginurl));
-        if(!empty($authurl)){
-            foreach($authurl as $key => $urlarray){
-                if($urlarray['name'] == $host){
+        if (!empty($authurl)) {
+            foreach ($authurl as $key => $urlarray) {
+                if ($urlarray['name'] == $host) {
                     $loginurl = $authurl[$key]['url'];
                     return $loginurl;
                 } else {
@@ -628,12 +643,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * @param integer $context
      * @return string $preferences
      */
-    private function theme_campus_render_preferences($context)
-    {
+    private function theme_campus_render_preferences($context) {
         global $USER, $CFG;
         $label = '<em><i class="fa fa-cog"></i>' . get_string('preferences') . '</em>';
         $preferences = html_writer::start_tag('li', array('class' => 'dropdown-submenu preferences'));
-        $preferences .= html_writer::link(new moodle_url('#'), $label, array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
+        $preferences .= html_writer::link(new moodle_url('#'), $label,
+                        array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
         $preferences .= html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
         // Check if user is allowed to edit profile
         if (has_capability('moodle/user:editownprofile', $context)) {
@@ -698,23 +713,23 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
         }
 
-        switch($pagelayout) {
+        switch ($pagelayout) {
             case 'frontpage':
                 $thefile = 'frontpage-header';
-            break;
+                break;
             case 'coursecategory':
                 if ($this->is_top_level_category()) {  // Set specific header.
                     $thefile = 'coursecategory-header';
                 }
-            break;
+                break;
             case 'course':
             case 'incourse':
             case 'report':
                 $thefile = 'coursecategory-header';
-            break;
+                break;
         }
 
-        return $thefile.'.php';
+        return $thefile . '.php';
     }
 
     /**
@@ -730,11 +745,13 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
         }
 
-        switch($pagelayout) {
+        switch ($pagelayout) {
             case 'frontpage':
-                $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+                $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay
+                            : 2;  // Default of 'Yes'.
                 if ($autoplay == 2) {
-                    $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
+                    $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval
+                                : 5000;
                 } else {
                     $slideinterval = 0;
                 }
@@ -745,7 +762,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                     $stickynavbar = true;
                 }
                 $this->hasspecificheader = true;
-            break;
+                break;
             default:
                 if (!empty($this->page->theme->settings->usefrontpageheader)) { // If set then the front page header settings apply on all unless specific header set.
                     if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
@@ -757,26 +774,28 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                         $stickynavbar = true;
                     }
                 }
-            break;
+                break;
         }
 
-        switch($pagelayout) {
+        switch ($pagelayout) {
             case 'coursecategory':
                 $currentcategory = $this->get_current_category();
                 if ($this->is_top_level_category($currentcategory)) {
-                    $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+                    $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay
+                                : 2;  // Default of 'Yes'.
                     if ($autoplay == 2) {
-                        $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
+                        $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval
+                                    : 5000;
                     } else {
                         $slideinterval = 0;
                     }
                     $data = array('data' => array('slideinterval' => $slideinterval));
                     $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
                     $this->hasspecificheader = true;
-                    $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
+                    $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
                     if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
                         // We have a custom setting so enforce the intent.
-                        $cchavestickysetting = 'coursecategorystickynavbar'.$currentcategory;
+                        $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
                         if (!empty($this->page->theme->settings->$cchavestickysetting)) {
                             $stickynavbar = true;
                         } else {
@@ -784,24 +803,24 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                         }
                     }
                 }
-            break;
+                break;
             case 'course':
             case 'incourse':
             case 'report':
                 // From our point of view, the same as is_course_page().
                 $this->hasspecificheader = true;
                 $currentcategory = $this->get_current_top_level_catetgory();
-                $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
+                $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
                 if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
                     // We have a custom setting so enforce the intent.
-                    $cchavestickysetting = 'coursecategorystickynavbar'.$currentcategory;
+                    $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
                     if (!empty($this->page->theme->settings->$cchavestickysetting)) {
                         $stickynavbar = true;
                     } else {
                         $stickynavbar = false;
                     }
                 }
-            break;
+                break;
         }
         if ($stickynavbar) {
             $this->page->requires->js_call_amd('theme_campus/affix', 'init');
@@ -823,12 +842,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
         }
 
-        switch($pagelayout) {
+        switch ($pagelayout) {
             case 'course':
             case 'incourse':
             case 'report':
                 $iscourse = true;
-            break;
+                break;
             default:
                 $iscourse = false;
         }
@@ -894,7 +913,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     public function page_heading($tag = 'h1') {
         if ($this->page->pagelayout == 'frontpage') {
-            return '';
+            if ((!empty($this->page->theme->settings->frontpagepageheadinglocation)) && ($this->page->theme->settings->frontpagepageheadinglocation
+                    == 1)) {
+                return $this->get_page_heading();
+            } else {
+                return '';
+            }
         } else if ($this->page->pagelayout == 'coursecategory') {
             global $CFG;
             include_once($CFG->libdir . '/coursecatlib.php');
@@ -904,6 +928,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         } else {
             $heading = $this->page->heading;
         }
-        return '<h1 class="brand">'.$heading.'</h1>';
+        return $this->get_page_heading($heading);
     }
+
+    public function get_page_heading($heading = null) {
+        if (empty($heading)) {
+            $heading = $this->page->heading;
+        }
+        return '<h1 class="brand">' . $heading . '</h1>';
+    }
+
 }

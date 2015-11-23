@@ -25,7 +25,6 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 $logininfoheader = (!isset($PAGE->theme->settings->showlogininfoheader)) ? true : $PAGE->theme->settings->showlogininfoheader;
 $navbarclasses = $html->navbarclass;
 if (!empty($hdfancynavbar)) {
@@ -48,9 +47,9 @@ if (!empty($hdfancynavbar)) {
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                     <?php if ($logininfoheader) { ?>
-                    <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
-                    <?php } ?>
-                    <?php echo $OUTPUT->header_toggle_menu(); ?>
+                        <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
+                        <?php } ?>
+                        <?php echo $OUTPUT->header_toggle_menu(); ?>
                 </ul>
             </div>
         </div>

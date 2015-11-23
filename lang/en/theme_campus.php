@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -25,7 +26,6 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 $string['choosereadme'] = '
 <div class="clearfix">
 <div class="well">
@@ -235,19 +235,19 @@ $string['alertinfobackgroundcolour'] = 'Alert info background colour';
 $string['alertinfobackgroundcolourdesc'] = 'Set the background colour for the alert information box.';
 
 // Carousel.
-$string['carouselsettings']= 'Carousel general';
-$string['carouselsettingsdesc']= 'Configure the general carousel settings for the theme here.';
+$string['carouselsettings'] = 'Carousel general';
+$string['carouselsettingsdesc'] = 'Configure the general carousel settings for the theme here.';
 
 $string['sliderposition'] = 'Slider position';
 $string['sliderpositiondesc'] = 'Position of the slider on the page.';
 $string['sliderpositionheader'] = 'Underneath the navbar';
 $string['sliderpositionpage'] = 'With the page content';
 
-$string['frontpagecarouselsettings']= 'Front page carousel';
-$string['frontpagecarouselsettings_desc']= 'Front page carousel settings.';
+$string['frontpagecarouselsettings'] = 'Front page carousel';
+$string['frontpagecarouselsettings_desc'] = 'Front page carousel settings.';
 
-$string['coursecategorycarouselsettings']= 'Course category carousel';
-$string['coursecategorycarouselsettings_desc']= 'Course category carousel settings.';
+$string['coursecategorycarouselsettings'] = 'Course category carousel';
+$string['coursecategorycarouselsettings_desc'] = 'Course category carousel settings.';
 
 $string['carouselautoplay'] = 'Autoplay';
 $string['carouselautoplaydesc'] = 'If set then the slides will transition at the slide interval rate.';
@@ -262,8 +262,8 @@ $string['slidebuttoncolourdesc'] = 'What colour the slide navigation button shou
 $string['slidebuttonhovercolour'] = 'Slide button hover colour';
 $string['slidebuttonhovercolourdesc'] = 'What colour the slide navigation button hover should be.';
 
-$string['carouselstatus']= 'Carousel status';
-$string['carouselstatus_desc']= 'States if the carousel is visible, draft = no and published = yes.  This allows you to prepare the carousel beforehand without it being live to the users.';
+$string['carouselstatus'] = 'Carousel status';
+$string['carouselstatus_desc'] = 'States if the carousel is visible, draft = no and published = yes.  This allows you to prepare the carousel beforehand without it being live to the users.';
 $string['numberofslides'] = 'Number of slides';
 $string['numberofslidesdesc'] = 'Number of slides on the slider between {$a->lower} and {$a->upper}.';
 $string['slideno'] = 'Slide {$a->slide}';
@@ -294,17 +294,21 @@ $string['invertdesc'] = 'Swaps text and background for the navbar at the top of 
 $string['stickynavbar'] = 'Sticky navbar';
 $string['stickynavbardesc'] = 'Have a sticky navbar.  Note: The front page and course catetgory have separate settings.';
 
+$string['pageheadinglocationnavbar'] = 'Navbar';
+$string['pageheadinglocationunderneathnavbar'] = 'Underneath the navbar';
+$string['pageheadinglocationpagecontenttop'] = 'Top of page content';
+
 // Frontpage header.
-$string['frontpageheadersettings']= 'Front page';
-$string['frontpageheadersettings_desc']= 'Front page header settings.';
+$string['frontpageheadersettings'] = 'Front page';
+$string['frontpageheadersettings_desc'] = 'Front page header settings.';
 
 $string['usefrontpageheader'] = 'Use frontpage header for all pages';
 $string['usefrontpageheaderdesc'] = 'Use the front page header on all pages.';
 
 $string['frontpagelayout'] = 'Layout';
 $string['frontpagelayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
-$string['layoutontop']= 'On top';
-$string['layoutonside']= 'Side';
+$string['layoutontop'] = 'On top';
+$string['layoutonside'] = 'Side';
 
 $string['frontpagestickynavbar'] = 'Sticky navbar';
 $string['frontpagestickynavbardesc'] = 'Have a sticky navbar.  Note: This overrides the header sticky navbar setting above for other pages if \'use front page header on all pages\' is set.';
@@ -324,9 +328,12 @@ $string['frontpagebackgroundimagedesc'] = 'Please upload your custom background 
 $string['frontpageresponsivebackgroundimage'] = 'Background image for small devices';
 $string['frontpageresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
+$string['frontpagepageheadinglocation'] = 'Frontpage page heading location';
+$string['frontpagepageheadinglocationdesc'] = 'Where to put the page heading on the frontpage.';
+
 // Course category settings on the header settings page.
-$string['coursecategoryhavecustomheaderheader']= 'Select the categories that you want to create a custom header for';
-$string['coursecategoryhavecustomheaderheader_desc']= 'After selecting the categories, edit the header in the settings page \'category headers\'.';
+$string['coursecategoryhavecustomheaderheader'] = 'Select the categories that you want to create a custom header for';
+$string['coursecategoryhavecustomheaderheader_desc'] = 'After selecting the categories, edit the header in the settings page \'category headers\'.';
 
 $string['coursecategoryhavecustomheader'] = 'Use custom header for the category \'{$a->categoryname}\'';
 $string['coursecategoryhavecustomheaderdesc'] = 'Have a custom header for the category \'{$a->categoryname}\'.';
@@ -364,8 +371,8 @@ $string['coursecategoryresponsivebackgroundimage'] = 'Background image on small 
 $string['coursecategoryresponsivebackgroundimagedesc'] = 'Please upload your custom background image here for the header on small devices.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of 960px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of 960px.';
 
 // Image positions.
-$string['imageleft']= 'Left';
-$string['imageright']= 'Right';
+$string['imageleft'] = 'Left';
+$string['imageright'] = 'Right';
 
 // Footer.
 $string['footersettings'] = 'Footer';
