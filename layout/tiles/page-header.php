@@ -28,12 +28,12 @@
 ?>
 <header id="page-header" class="clearfix">
     <div id="page-navbar" class="clearfix">
-    <?php if ($rtl) { ?>
-        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
+        <?php if ($rtl) { ?>
+            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
         <?php } ?>
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
         <?php if (!$rtl) { ?>
-        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
+            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
         <?php } ?>
     </div>
     <?php echo $html->heading; ?>
@@ -44,6 +44,14 @@
 
 <?php
 // Note: $numberofslides established in the header file as pulled in by $OUTPUT->get_header_file() if there are any.
-if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 1)) {
-    require_once(dirname(__FILE__).'/slideshow.php');
+if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition
+        == 1)) {
+    require_once(dirname(__FILE__) . '/slideshow.php');
+}
+
+if ($PAGE->pagelayout == 'course') {
+    if ((!empty($PAGE->theme->settings->coursepagepageheadinglocation)) && ($PAGE->theme->settings->coursepagepageheadinglocation
+            == 3)) {
+        echo $OUTPUT->get_page_heading();
+    }
 }

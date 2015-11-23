@@ -53,6 +53,7 @@ Version Information
 ===================
 23rd November 2015 - Version 2.9.1.8
   1. Implement 'Page heading on frontpage display like on other pages' - task #749.
+  2. Implement 'H1 heading settings' - task #759.
 
 19th November 2015 - Version 2.9.1.7
   1. Redo 'Page heading on category pages display site name instead of category name' - task #747.

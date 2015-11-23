@@ -562,6 +562,18 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
+    // Course page heading position setting.
+    $name = 'theme_campus/coursepagepageheadinglocation';
+    $title = get_string('coursepagepageheadinglocation', 'theme_campus');
+    $description = get_string('coursepagepageheadinglocationdesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('pageheadinglocationnavbar', 'theme_campus'),
+        3 => new lang_string('pageheadinglocationpagecontenttop', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $settingpage->add($setting);
+
     // Frontpage header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage',
             get_string('frontpageheadersettings', 'theme_campus'),
@@ -643,7 +655,7 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Page heading position setting.
+    // Frontpage heading position setting.
     $name = 'theme_campus/frontpagepageheadinglocation';
     $title = get_string('frontpagepageheadinglocation', 'theme_campus');
     $description = get_string('frontpagepageheadinglocationdesc', 'theme_campus');
