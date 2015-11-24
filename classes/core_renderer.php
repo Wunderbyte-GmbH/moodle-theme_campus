@@ -47,6 +47,9 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                         html_writer::end_tag('i'), array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
+            if ((empty($this->page->theme->settings->showsectioninbreadcrumb)) && ($item->type == 30)) {
+                continue;
+            }
             $item->hideicon = true;
             $breadcrumbs[] = $this->render($item);
         }

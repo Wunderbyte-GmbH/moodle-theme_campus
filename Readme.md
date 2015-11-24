@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+24th November 2015 - Version 2.9.1.9
+  1. Partially implement 'Breadcrumb modification: add setting for different breadcrumb display' - task #748.
+
 23rd November 2015 - Version 2.9.1.8
   1. Implement 'Page heading on frontpage display like on other pages' - task #749.
   2. Implement 'H1 heading settings' - task #759.

@@ -574,6 +574,15 @@ if (is_siteadmin()) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $settingpage->add($setting);
 
+    // Show section name in the breadcrumb.
+    $name = 'theme_campus/showsectioninbreadcrumb';
+    $title = get_string('showsectioninbreadcrumb', 'theme_campus');
+    $description = get_string('showsectioninbreadcrumbdesc', 'theme_campus');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
     // Frontpage header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage',
             get_string('frontpageheadersettings', 'theme_campus'),
@@ -667,7 +676,7 @@ if (is_siteadmin()) {
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $settingpage->add($setting);
-    
+
     $settingpage->add(new admin_setting_heading('theme_campus_coursecategory',
             get_string('coursecategoryhavecustomheaderheader', 'theme_campus'),
             format_text(get_string('coursecategoryhavecustomheaderheader_desc', 'theme_campus'), FORMAT_MARKDOWN)));
@@ -778,7 +787,8 @@ if (is_siteadmin()) {
         $title = get_string('coursecategorybackgroundimage', 'theme_campus');
         $description = get_string('coursecategorybackgroundimagedesc', 'theme_campus',
                 array('pagewidthmax' => $currentpagewidthmaxheaders));
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorybackgroundimage' . $key);
+        $setting = new admin_setting_configstoredfile($name, $title, $description,
+                'coursecategorybackgroundimage' . $key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
 
