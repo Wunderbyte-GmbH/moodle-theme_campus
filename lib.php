@@ -811,6 +811,9 @@ function theme_campus_render_slide($i, $settingprefix) {
     $slidelink = theme_campus_get_setting($settingprefix . $i . 'link', true);
     $slideextraclass = ($i === 1) ? ' active' : '';
     $slideimagealt = strip_tags($slidetitle);
+    if (empty($slideimagealt)) {
+        $slideimagealt = get_string('slideno', 'theme_campus', array('slide' => $i));
+    }
 
     // Get slide image or fallback to default
     if (theme_campus_get_setting($settingprefix . $i . 'image')) {
