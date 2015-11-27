@@ -307,6 +307,9 @@ $string['showsysteminbreadcrumbdesc'] = 'Show the system area name in the breadc
 $string['showsectioninbreadcrumb'] = 'Show section name in the breadcrumb';
 $string['showsectioninbreadcrumbdesc'] = 'Show the section name in the breadcrumb when viewing an actitity or resource.';
 
+$string['headerimage'] = 'Header image representing the corporate design';
+$string['headerlogo'] = 'Header logo representing the corporate design';
+
 // Frontpage header.
 $string['frontpageheadersettings'] = 'Front page';
 $string['frontpageheadersettings_desc'] = 'Front page header settings.';

@@ -53,6 +53,7 @@ Version Information
 ===================
 27th November 2015 - Version 2.9.1.10
   1. Finish implementing 'Breadcrumb modification: add setting for different breadcrumb display' - task #748.
+  2. Implement 'Alt tags for header images missing' - task #752.
 
 24th November 2015 - Version 2.9.1.9
   1. Partially implement 'Breadcrumb modification: add setting for different breadcrumb display' - task #748.

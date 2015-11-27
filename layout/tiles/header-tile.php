@@ -47,9 +47,9 @@ if ($hdlogoextrapos == 1) {
     echo '<div class="logotitle headertoggled'.$hdextra.'">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
-        echo '<img class="campuslogodesktop" src="'.$hdlogo.'">';
+        echo '<img class="campuslogodesktop" src="'.$hdlogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
         if ($hdresponsive) {
-            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'">';
+            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
         }
         echo '</a>';
     } else {
@@ -59,9 +59,9 @@ if ($hdlogoextrapos == 1) {
 }
 echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
 if ($hdbackgroundimage) {
-    echo '<img class="campusdesktop headertoggled" src="'.$hdbackgroundimage.'">';
+    echo '<img class="campusdesktop headertoggled" src="'.$hdbackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
     if ($hdresponsive) {
-        echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'">';
+        echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
     }
     if ($hdfancynavbar) {
         include(dirname(__FILE__).'/navbar.php');
@@ -76,9 +76,9 @@ if ($hdlogoextrapos == 2) {
     echo '<div class="logotitle headertoggled">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
-        echo '<img class="campuslogodesktop" src="'.$hdlogo.'">';
+        echo '<img class="campuslogodesktop" src="'.$hdlogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
         if ($hdresponsive) {
-            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'">';
+            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
         }
         echo '</a>';
     } else {
