@@ -574,6 +574,15 @@ if (is_siteadmin()) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $settingpage->add($setting);
 
+    // Show system area name in the breadcrumb.
+    $name = 'theme_campus/showsysteminbreadcrumb';
+    $title = get_string('showsysteminbreadcrumb', 'theme_campus');
+    $description = get_string('showsysteminbreadcrumbdesc', 'theme_campus');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
     // Show section name in the breadcrumb.
     $name = 'theme_campus/showsectioninbreadcrumb';
     $title = get_string('showsectioninbreadcrumb', 'theme_campus');

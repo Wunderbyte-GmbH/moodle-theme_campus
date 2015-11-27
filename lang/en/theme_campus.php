@@ -301,6 +301,9 @@ $string['pageheadinglocationpagecontenttop'] = 'Top of page content';
 $string['coursepagepageheadinglocation'] = 'Course page \'page heading\' location';
 $string['coursepagepageheadinglocationdesc'] = 'Where to put the page heading on course pages.';
 
+$string['showsysteminbreadcrumb'] = 'Show system area name in the breadcrumb';
+$string['showsysteminbreadcrumbdesc'] = 'Show the system area name in the breadcrumb.';
+
 $string['showsectioninbreadcrumb'] = 'Show section name in the breadcrumb';
 $string['showsectioninbreadcrumbdesc'] = 'Show the section name in the breadcrumb when viewing an actitity or resource.';
 

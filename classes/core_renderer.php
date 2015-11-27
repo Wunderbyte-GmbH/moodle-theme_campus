@@ -50,6 +50,9 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             if ((empty($this->page->theme->settings->showsectioninbreadcrumb)) && ($item->type == 30)) {
                 continue;
             }
+            if ((empty($this->page->theme->settings->showsysteminbreadcrumb)) && ($item->type == 0)) {
+                continue;
+            }
             $item->hideicon = true;
             $breadcrumbs[] = $this->render($item);
         }
