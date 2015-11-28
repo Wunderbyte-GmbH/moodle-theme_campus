@@ -375,11 +375,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .brand {
         // Vertically center the text given @navbarHeight.
         padding: 0 5px 0 5px;
-        margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
-        max-height: @baseLineHeight;
-        line-height: @baseLineHeight;
+        margin: (((@navbarHeight - @baseLineHeight) / 2) - 2) 0px (((@navbarHeight - @baseLineHeight) / 2) - 2);
+        max-height: @baseLineHeight + 4;
+        line-height: @baseLineHeight + 4;
         overflow: hidden;
         text-overflow: ellipsis;
+        white-space: nowrap;
         max-width: @navbarPageHeadingMax;
     }
 
