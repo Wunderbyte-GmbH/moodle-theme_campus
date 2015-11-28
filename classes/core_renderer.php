@@ -356,11 +356,11 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $headertoggle = html_writer::tag('span', '', array('class' => 'headertoggle fa fa-expand'));
         $menu->add($headertoggle, new moodle_url('#'), get_string('headertoggle', 'theme_campus'), 10001);
 
-        $content = html_writer::start_tag('div', array('class' => 'nav headertogglemenu'));
+        $content = html_writer::start_tag('li', array('class' => 'nav headertogglemenu'));
         foreach ($menu->get_children() as $item) {
             $content .= $this->render_single_custom_menu_item($item, 1);
         }
-        $content .= html_writer::end_tag('div');
+        $content .= html_writer::end_tag('li');
 
         return $content;
     }

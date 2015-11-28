@@ -60,6 +60,12 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
             <?php require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php'); ?>
             <section id="region-main-campus" class="row-fluid">
                 <?php
+                if ($PAGE->pagelayout == 'course') {
+                    if ((!empty($PAGE->theme->settings->coursepagepageheadinglocation)) && ($PAGE->theme->settings->coursepagepageheadinglocation
+                        == 3)) {
+                        echo $OUTPUT->get_page_heading();
+                    }
+                }
                 echo $OUTPUT->course_content_header();
                 echo $OUTPUT->main_content();
                 echo $OUTPUT->course_content_footer();

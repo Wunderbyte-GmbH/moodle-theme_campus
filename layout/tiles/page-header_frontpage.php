@@ -40,7 +40,3 @@ if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->th
 if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 1)) {
     require_once(dirname(__FILE__).'/slideshow.php');
 }
-
-if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
-    echo $OUTPUT->get_page_heading();
-}

@@ -385,8 +385,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 
     // Navbar divider.
-    .nav .divider {
-        height: @navbarHeight;
+    .nav {
+        .divider {
+            height: @navbarHeight;
+        }
+        .dropdown-menu .divider {
+            height: 1px;
+        }
     }
 
     .navbar-inner {
@@ -419,7 +424,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
                 ul.dropdown-menu {
                     margin: 0px;
-                    i {
+                    span {
                         margin-right: 5px;
                         width: 15px;
                     }
@@ -1150,10 +1155,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     margin: 0;
     a {
         color: @navbarText;
-        padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
+        padding: (((@navbarHeight - @baseLineHeight) / 2) - 1) 15px (((@navbarHeight - @baseLineHeight) / 2) - 2);
         text-shadow: none;
-        i {
-            margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
+        span {
             font-size: 20px;
         }
     }

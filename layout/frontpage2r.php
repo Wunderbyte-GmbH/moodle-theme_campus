@@ -92,6 +92,9 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                 ?>
                 <section id="region-main-campus" class="row-fluid">
                 <?php
+                if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
+                    echo $OUTPUT->get_page_heading();
+                }
                 echo $OUTPUT->main_content();
                 ?>
             </section>

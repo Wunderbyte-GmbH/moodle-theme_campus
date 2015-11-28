@@ -48,10 +48,3 @@ if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)
         == 1)) {
     require_once(dirname(__FILE__) . '/slideshow.php');
 }
-
-if ($PAGE->pagelayout == 'course') {
-    if ((!empty($PAGE->theme->settings->coursepagepageheadinglocation)) && ($PAGE->theme->settings->coursepagepageheadinglocation
-            == 3)) {
-        echo $OUTPUT->get_page_heading();
-    }
-}
