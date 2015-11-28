@@ -1148,8 +1148,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Header toggle.
 .navbar .nav.headertogglemenu {
     margin: 0;
-    > li > a {
-        padding: 0;
+    a {
+        color: @navbarText;
+        padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
+        text-shadow: none;
         i {
             margin: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2);
             font-size: 20px;

@@ -39,7 +39,7 @@ if ((!$hdflexlayout) && (!$hdlogo)) {
     $hdextra = '';
 }
 
-echo '<div id="page-header" class="'.$hdtype.'">';
+echo '<div class="'.$hdtype.'">';
 echo '<div class="container">';
 
 global $CFG;

@@ -356,12 +356,35 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $headertoggle = html_writer::tag('i', '', array('class' => 'headertoggle fa fa-expand'));
         $menu->add($headertoggle, new moodle_url('#'), get_string('headertoggle', 'theme_campus'), 10001);
 
-        $content = html_writer::start_tag('ul', array('class' => 'nav headertogglemenu'));
+        $content = html_writer::start_tag('div', array('class' => 'nav headertogglemenu'));
         foreach ($menu->get_children() as $item) {
-            $content .= $this->render_custom_menu_item($item, 1);
+            $content .= $this->render_single_custom_menu_item($item, 1);
         }
-        $content .= html_writer::end_tag('ul');
+        $content .= html_writer::end_tag('div');
 
+        return $content;
+    }
+
+    protected function render_single_custom_menu_item(custom_menu_item $menunode) {
+        // Required to ensure we get unique trackable id's
+        // If the node's text matches '####', add a class so we can treat it as a divider.
+        $content = '';
+        if (preg_match("/^#+$/", $menunode->get_text())) {
+            // This is a divider.
+            $content = html_writer::start_tag('div', array('class' => 'yui3-menuitem divider'));
+        } else {
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#';
+            }
+            $content .= html_writer::link(
+                $url,
+                $menunode->get_text(),
+                array('class' => 'yui3-menuitem-content', 'title' => $menunode->get_title())
+            );
+        }
+        // Return item.
         return $content;
     }
 

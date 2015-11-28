@@ -38,7 +38,7 @@ if (!empty($numberofslides)) {
                     for ($indicatorslideindex = 0; $indicatorslideindex < $numberofslides; $indicatorslideindex++) {
                         echo '<li data-target="#campusCarousel" data-slide-to="'.$indicatorslideindex.'"';
                         if ($indicatorslideindex == 0) {
-                            echo 'class="active"';
+                            echo ' class="active"';
                         }
                         echo '></li>';
                     }

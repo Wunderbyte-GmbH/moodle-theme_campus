@@ -31,8 +31,8 @@ if (!empty($hdfancynavbar)) {
     $navbarclasses .= ' iamfancy';
 }
 ?>
-<header role="banner" class="campusnavbar navbar navbar-static-top<?php echo $navbarclasses ?>">
-    <nav role="navigation" class="navbar-inner">
+<header class="campusnavbar navbar navbar-static-top<?php echo $navbarclasses ?>">
+    <nav class="navbar-inner">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
             <a class="btn btn-navbar" data-toggle="collapse" data-target="#campusnav">
