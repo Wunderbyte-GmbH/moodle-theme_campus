@@ -860,8 +860,8 @@ function theme_campus_render_slide_controls($left) {
         $faleft = $faright;
         $faright = $temp;
     }
-    $prev = '<a class="left carousel-control" href="#campusCarousel" data-slide="prev"><i class="fa fa-chevron-circle-' . $faleft . '"></i></a>';
-    $next = '<a class="right carousel-control" href="#campusCarousel" data-slide="next"><i class="fa fa-chevron-circle-' . $faright . '"></i></a>';
+    $prev = '<a class="left carousel-control" href="#campusCarousel" data-slide="prev"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
+    $next = '<a class="right carousel-control" href="#campusCarousel" data-slide="next"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
 
     return $prev . $next;
 }

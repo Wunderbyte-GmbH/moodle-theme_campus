@@ -43,8 +43,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $dividericon = 'fa-angle-right';
         }
         $divider = html_writer::tag('span',
-                        html_writer::start_tag('i', array('class' => 'fa ' . $dividericon . ' fa-lg')) .
-                        html_writer::end_tag('i'), array('class' => 'divider'));
+                        html_writer::start_tag('span', array('class' => 'fa ' . $dividericon . ' fa-lg')) .
+                        html_writer::end_tag('span'), array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
             if ((empty($this->page->theme->settings->showsectioninbreadcrumb)) && ($item->type == 30)) {
@@ -82,8 +82,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $icon = 'icon-edit';
         }
         return html_writer::tag('a',
-                        html_writer::start_tag('i', array('class' => $icon . ' icon-white')) .
-                        html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
+                        html_writer::start_tag('span', array('class' => $icon . ' icon-white')) .
+                        html_writer::end_tag('span'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
 
     /**
@@ -329,13 +329,13 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     protected function render_gotobottom_menu(custom_menu $menu) {
         if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout
                 == 'admin')) { // Go to bottom.
-            $gotobottom = html_writer::tag('i', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
+            $gotobottom = html_writer::tag('span', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
             $menu->add($gotobottom, new moodle_url('#page-footer'), get_string('gotobottom', 'theme_campus'), 10001);
         }
     }
 
     public function anti_gravity() {
-        $icon = html_writer::start_tag('i', array('class' => 'fa fa-arrow-circle-o-up')) . html_writer::end_tag('i');
+        $icon = html_writer::start_tag('span', array('class' => 'fa fa-arrow-circle-o-up')) . html_writer::end_tag('span');
         $anti_gravity = html_writer::tag('a', $icon,
                         array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_campus')));
 
@@ -353,7 +353,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     protected function render_header_toggle_menu(custom_menu $menu) {
-        $headertoggle = html_writer::tag('i', '', array('class' => 'headertoggle fa fa-expand'));
+        $headertoggle = html_writer::tag('span', '', array('class' => 'headertoggle fa fa-expand'));
         $menu->add($headertoggle, new moodle_url('#'), get_string('headertoggle', 'theme_campus'), 10001);
 
         $content = html_writer::start_tag('div', array('class' => 'nav headertogglemenu'));
@@ -365,24 +365,78 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return $content;
     }
 
+    /*
+     * This code renders the custom menu items for the
+     * bootstrap dropdown menu.
+     */
+    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0 ) {
+        static $submenucount = 0;
+
+        $content = '';
+        if ($menunode->has_children()) {
+
+            if ($level == 1) {
+                $class = 'dropdown';
+            } else {
+                $class = 'dropdown-submenu';
+            }
+
+            if ($menunode === $this->language) {
+                $class .= ' langmenu';
+            }
+            $content = html_writer::start_tag('li', array('class' => $class));
+            // If the child has menus render it as a sub menu.
+            $submenucount++;
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#cm_submenu_'.$submenucount;
+            }
+            $content .= html_writer::start_tag('a', array('href'=>$url, 'class'=>'dropdown-toggle', 'data-toggle'=>'dropdown', 'title'=>$menunode->get_title()));
+            $content .= $menunode->get_text();
+            if ($level == 1) {
+                $content .= '<strong class="caret"></strong>';
+            }
+            $content .= '</a>';
+            $content .= '<ul class="dropdown-menu">';
+            foreach ($menunode->get_children() as $menunode) {
+                $content .= $this->render_custom_menu_item($menunode, 0);
+            }
+            $content .= '</ul>';
+        } else {
+            // The node doesn't have children so produce a final menuitem.
+            // Also, if the node's text matches '####', add a class so we can treat it as a divider.
+            if (preg_match("/^#+$/", $menunode->get_text())) {
+                // This is a divider.
+                $content = '<li class="divider">&nbsp;</li>';
+            } else {
+                $content = '<li>';
+                if ($menunode->get_url() !== null) {
+                    $url = $menunode->get_url();
+                } else {
+                    $url = '#';
+                }
+                $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()));
+                $content .= '</li>';
+            }
+        }
+        return $content;
+    }
+
     protected function render_single_custom_menu_item(custom_menu_item $menunode) {
         // Required to ensure we get unique trackable id's
         // If the node's text matches '####', add a class so we can treat it as a divider.
         $content = '';
         if (preg_match("/^#+$/", $menunode->get_text())) {
             // This is a divider.
-            $content = html_writer::start_tag('div', array('class' => 'yui3-menuitem divider'));
+            $content = html_writer::start_tag('div', array('class' => 'divider'));
         } else {
             if ($menunode->get_url() !== null) {
                 $url = $menunode->get_url();
             } else {
                 $url = '#';
             }
-            $content .= html_writer::link(
-                $url,
-                $menunode->get_text(),
-                array('class' => 'yui3-menuitem-content', 'title' => $menunode->get_title())
-            );
+            $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()));
         }
         // Return item.
         return $content;
@@ -414,7 +468,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         // Output Profile link
         $userurl = new moodle_url('#');
         $userpic = parent::user_picture($USER, array('link' => false));
-        $caret = '<i class="fa fa-caret-right"></i>';
+        $caret = '<span class="fa fa-caret-right"></span>';
         $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');
 
         $usermenu .= html_writer::link($userurl, $userpic . $USER->firstname . $caret, $userclass);
@@ -430,32 +484,32 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         // Output Calendar link if user is allowed to edit own calendar entries
         if (has_capability('moodle/calendar:manageownentries', $context)) {
-            $branchlabel = '<em><i class="fa fa-calendar"></i>' . get_string('pluginname', 'block_calendar_month') . '</em>';
+            $branchlabel = '<em><span class="fa fa-calendar"></span>' . get_string('pluginname', 'block_calendar_month') . '</em>';
             $branchurl = new moodle_url('/calendar/view.php');
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
 
         // Check if messaging is enabled.
         if (!empty($CFG->messaging)) {
-            $branchlabel = '<em><i class="fa fa-envelope"></i>' . get_string('pluginname', 'block_messages') . '</em>';
+            $branchlabel = '<em><span class="fa fa-envelope"></span>' . get_string('pluginname', 'block_messages') . '</em>';
             $branchurl = new moodle_url('/message/index.php');
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
 
         // Check if user is allowed to manage files
         if (has_capability('moodle/user:manageownfiles', $context)) {
-            $branchlabel = '<em><i class="fa fa-file"></i>' . get_string('privatefiles', 'block_private_files') . '</em>';
+            $branchlabel = '<em><span class="fa fa-file"></span>' . get_string('privatefiles', 'block_private_files') . '</em>';
             $branchurl = new moodle_url('/user/files.php');
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
 
         // Check if user is allowed to view discussions
         if (has_capability('mod/forum:viewdiscussion', $context)) {
-            $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('forumposts', 'mod_forum') . '</em>';
+            $branchlabel = '<em><span class="fa fa-list-alt"></span>' . get_string('forumposts', 'mod_forum') . '</em>';
             $branchurl = new moodle_url('/mod/forum/user.php', array('id' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
-            $branchlabel = '<em><i class="fa fa-list"></i>' . get_string('discussions', 'mod_forum') . '</em>';
+            $branchlabel = '<em><span class="fa fa-list"></span>' . get_string('discussions', 'mod_forum') . '</em>';
             $branchurl = new moodle_url('/mod/forum/user.php', array('id' => $USER->id, 'mode' => 'discussions'));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
@@ -468,20 +522,20 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             foreach ($hascourses as $hascourse) {
                 $reportcontext = context_course::instance($hascourse->id);
                 if (has_capability('gradereport/user:view', $reportcontext) && $hascourse->visible) {
-                    $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
+                    $branchlabel = '<em><span class="fa fa-list-alt"></span>' . get_string('mygrades', 'theme_campus') . '</em>';
                     $branchurl = new moodle_url('/grade/report/overview/index.php',
                             array('id' => $hascourse->id, 'userid' => $USER->id));
                     $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
                 }
             }
         } else if (has_capability('gradereport/user:view', $context)) {
-            $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('mygrades', 'theme_campus') . '</em>';
+            $branchlabel = '<em><span class="fa fa-list-alt"></span>' . get_string('mygrades', 'theme_campus') . '</em>';
             $branchurl = new moodle_url('/grade/report/overview/index.php',
                     array('id' => $course->id, 'userid' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
             // In Course also output Course grade links
-            $branchlabel = '<em><i class="fa fa-list-alt"></i>' . get_string('coursegrades', 'theme_campus') . '</em>';
+            $branchlabel = '<em><span class="fa fa-list-alt"></span>' . get_string('coursegrades', 'theme_campus') . '</em>';
             $branchurl = new moodle_url('/grade/report/user/index.php',
                     array('id' => $course->id, 'userid' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
@@ -489,7 +543,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         // Check if badges are enabled.
         if (!empty($CFG->enablebadges) && has_capability('moodle/badges:manageownbadges', $context)) {
-            $branchlabel = '<em><i class="fa fa-certificate"></i>' . get_string('badges') . '</em>';
+            $branchlabel = '<em><span class="fa fa-certificate"></span>' . get_string('badges') . '</em>';
             $branchurl = new moodle_url('/badges/mybadges.php');
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
@@ -584,7 +638,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 if ($withlinks) {
                     $loggedinas .= html_writer::tag('div',
                                     html_writer::link(new moodle_url('/login/logout.php?sesskey=' . sesskey()),
-                                            '<em><i class="fa fa-sign-out"></i>' . get_string('logout') . '</em>'));
+                                            '<em><span class="fa fa-sign-out"></span>' . get_string('logout') . '</em>'));
                 }
             }
         } else {
@@ -674,34 +728,34 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     private function theme_campus_render_preferences($context) {
         global $USER, $CFG;
-        $label = '<em><i class="fa fa-cog"></i>' . get_string('preferences') . '</em>';
+        $label = '<em><span class="fa fa-cog"></span>' . get_string('preferences') . '</em>';
         $preferences = html_writer::start_tag('li', array('class' => 'dropdown-submenu preferences'));
         $preferences .= html_writer::link(new moodle_url('#'), $label,
                         array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
         $preferences .= html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
         // Check if user is allowed to edit profile
         if (has_capability('moodle/user:editownprofile', $context)) {
-            $branchlabel = '<em><i class="fa fa-user"></i>' . get_string('editmyprofile') . '</em>';
+            $branchlabel = '<em><span class="fa fa-user"></span>' . get_string('editmyprofile') . '</em>';
             $branchurl = new moodle_url('/user/edit.php', array('id' => $USER->id));
             $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
         if (has_capability('moodle/user:changeownpassword', $context)) {
-            $branchlabel = '<em><i class="fa fa-key"></i>' . get_string('changepassword') . '</em>';
+            $branchlabel = '<em><span class="fa fa-key"></span>' . get_string('changepassword') . '</em>';
             $branchurl = new moodle_url('/login/change_password.php');
             $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
         if (has_capability('moodle/user:editownmessageprofile', $context)) {
-            $branchlabel = '<em><i class="fa fa-comments"></i>' . get_string('messagepreferences', 'theme_campus') . '</em>';
+            $branchlabel = '<em><span class="fa fa-comments"></span>' . get_string('messagepreferences', 'theme_campus') . '</em>';
             $branchurl = new moodle_url('/message/edit.php', array('id' => $USER->id));
             $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
         if ($CFG->enableblogs) {
-            $branchlabel = '<em><i class="fa fa-rss-square"></i>' . get_string('blogpreferences', 'theme_campus') . '</em>';
+            $branchlabel = '<em><span class="fa fa-rss-square"></span>' . get_string('blogpreferences', 'theme_campus') . '</em>';
             $branchurl = new moodle_url('/blog/preferences.php');
             $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
         if ($CFG->enablebadges && has_capability('moodle/badges:manageownbadges', $context)) {
-            $branchlabel = '<em><i class="fa fa-certificate"></i>' . get_string('badgepreferences', 'theme_campus') . '</em>';
+            $branchlabel = '<em><span class="fa fa-certificate"></span>' . get_string('badgepreferences', 'theme_campus') . '</em>';
             $branchurl = new moodle_url('/badges/preferences.php');
             $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }

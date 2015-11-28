@@ -54,6 +54,7 @@ Version Information
 28th November 2015 - Version 2.9.1.11
   1. Reimplement 'H1 heading settings' - task #759.
   2. Start to 'Fix HTML issues not covered by previous tickets but detected by the W3C validator' - task #757.
+  3. Implement 'Accessibility issues, that concern campus but not clean' - tassk #761.
 
 27th November 2015 - Version 2.9.1.10
   1. Finish implementing 'Breadcrumb modification: add setting for different breadcrumb display' - task #748.
