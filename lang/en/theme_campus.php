@@ -244,6 +244,9 @@ $string['sliderpositiondesc'] = 'Position of the slider on the page.';
 $string['sliderpositionheader'] = 'Underneath the navbar';
 $string['sliderpositionpage'] = 'With the page content';
 
+$string['slidernextslide'] = 'Next slide';
+$string['sliderpreviousslide'] = 'Previous slide';
+
 $string['frontpagecarouselsettings'] = 'Front page carousel';
 $string['frontpagecarouselsettings_desc'] = 'Front page carousel settings.';
 

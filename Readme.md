@@ -53,6 +53,7 @@ Version Information
 ===================
 30th November 2015 - Version 2.9.1.11
   1. Implement 'Use title attribute in order to explain what is happening, when clicking on the toggleheader link' - task #766.
+  2. Implement 'Navigation issue from accessibility checker' - task #765.
 
 28th November 2015 - Version 2.9.1.11
   1. Reimplement 'H1 heading settings' - task #759.
