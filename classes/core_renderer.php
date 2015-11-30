@@ -353,8 +353,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     protected function render_header_toggle_menu(custom_menu $menu) {
-        $headertoggle = html_writer::tag('span', '', array('class' => 'headertoggle fa fa-expand'));
-        $menu->add($headertoggle, new moodle_url('#'), get_string('headertoggle', 'theme_campus'), 10001);
+        $headertoggle = html_writer::tag('span', '', array('class' => 'headertoggle fa fa-expand', 'title' => get_string('fullscreentoggleicon', 'theme_campus')));
+        $menu->add($headertoggle, new moodle_url('#'), get_string('fullscreentoggle', 'theme_campus'), 10001);
 
         $content = html_writer::start_tag('li', array('class' => 'nav headertogglemenu'));
         foreach ($menu->get_children() as $item) {

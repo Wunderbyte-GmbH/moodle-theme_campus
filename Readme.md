@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+30th November 2015 - Version 2.9.1.11
+  1. Implement 'Use title attribute in order to explain what is happening, when clicking on the toggleheader link' - task #766.
+
 28th November 2015 - Version 2.9.1.11
   1. Reimplement 'H1 heading settings' - task #759.
   2. Start to 'Fix HTML issues not covered by previous tickets but detected by the W3C validator' - task #757.

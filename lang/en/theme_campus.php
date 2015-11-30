@@ -80,8 +80,9 @@ $string['messagepreferences'] = 'Message preferences';
 // Anti-gravity.
 $string['antigravity'] = 'Back to top';
 
-// Header toggle.
-$string['headertoggle'] = 'Toggle header';
+// Fullscreen toggle.
+$string['fullscreentoggle'] = 'Fullscreen toggle';
+$string['fullscreentoggleicon'] = 'Fullscreen toggle icon';
 
 // Settings.
 // General settings.
