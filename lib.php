@@ -857,8 +857,8 @@ function theme_campus_render_slide_controls($left) {
     $next = get_string('slidernextslide', 'theme_campus');
     $faleft = 'left';
     $faright = 'right';
-    $prev = '<a class="left carousel-control" href="#campusCarousel" data-slide="prev" title="'.$previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
-    $next = '<a class="right carousel-control" href="#campusCarousel" data-slide="next" title="'.$next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
+    $prev = '<a class="left carousel-control" data-target="#campusCarousel" data-slide="prev" title="'.$previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
+    $next = '<a class="right carousel-control" data-target="#campusCarousel" data-slide="next" title="'.$next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
 
     return $prev . $next;
 }
