@@ -51,7 +51,10 @@ Uninstallation
 
 Version Information
 ===================
-30th November 2015 - Version 2.9.1.11
+ 1st December 2015 - Version 2.9.1.13
+  1. Pointer cursor - task #765.
+
+30th November 2015 - Version 2.9.1.12
   1. Implement 'Use title attribute in order to explain what is happening, when clicking on the toggleheader link' - task #766.
   2. Implement 'Navigation issue from accessibility checker' - task #765.
 
