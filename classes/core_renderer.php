@@ -345,24 +345,16 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     public function header_toggle_menu() {
         if (!empty($this->page->theme->settings->showheadertoggle)) {
             if ($this->hasspecificheader) {
-                $usermenu = new custom_menu('', current_language());
-                return $this->render_header_toggle_menu($usermenu);
+                $headertoggle = html_writer::start_tag('li', array('class' => 'nav headertogglemenu'));
+                $headertoggle .= html_writer::start_tag('a', array('title' => get_string('fullscreentoggle', 'theme_campus')));
+                $headertoggle .= html_writer::tag('span', '', array('class' => 'headertoggle fa fa-expand', 'title' => get_string('fullscreentoggleicon', 'theme_campus')));
+                $headertoggle .= html_writer::end_tag('a');
+                $headertoggle .= html_writer::end_tag('li');
+
+                return $headertoggle;
             }
         }
         return '';
-    }
-
-    protected function render_header_toggle_menu(custom_menu $menu) {
-        $headertoggle = html_writer::tag('span', '', array('class' => 'headertoggle fa fa-expand', 'title' => get_string('fullscreentoggleicon', 'theme_campus')));
-        $menu->add($headertoggle, new moodle_url('#'), get_string('fullscreentoggle', 'theme_campus'), 10001);
-
-        $content = html_writer::start_tag('li', array('class' => 'nav headertogglemenu'));
-        foreach ($menu->get_children() as $item) {
-            $content .= $this->render_single_custom_menu_item($item, 1);
-        }
-        $content .= html_writer::end_tag('li');
-
-        return $content;
     }
 
     /*
@@ -420,25 +412,6 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $content .= '</li>';
             }
         }
-        return $content;
-    }
-
-    protected function render_single_custom_menu_item(custom_menu_item $menunode) {
-        // Required to ensure we get unique trackable id's
-        // If the node's text matches '####', add a class so we can treat it as a divider.
-        $content = '';
-        if (preg_match("/^#+$/", $menunode->get_text())) {
-            // This is a divider.
-            $content = html_writer::start_tag('div', array('class' => 'divider'));
-        } else {
-            if ($menunode->get_url() !== null) {
-                $url = $menunode->get_url();
-            } else {
-                $url = '#';
-            }
-            $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()));
-        }
-        // Return item.
         return $content;
     }
 

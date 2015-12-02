@@ -53,6 +53,7 @@ Version Information
 ===================
  2nd December 2015 - Version 2.9.1.14
   1. Revert button slideshow navigation - task #766.
+  2. No href on fullscreen 'a' tag - task #766.
 
  1st December 2015 - Version 2.9.1.13
   1. Pointer cursor - task #765.
