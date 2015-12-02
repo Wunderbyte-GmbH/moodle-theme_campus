@@ -564,12 +564,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
     // Left/right controls for nav.
-    button.carousel-control {
-        padding: 0;
-        box-shadow: none;
-        text-shadow: none;
-        .carousel-control;
-        margin: 0;
+    .carousel-control {
         display: none; // Shown when carousel hovered on, see below.
         background: none;
         border: 0px;
@@ -581,7 +576,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             border: 0px;
         }
     }
-    &:hover button.carousel-control{
+    &:hover .carousel-control{
         display: block;
     }
     .carousel-indicators {
@@ -597,7 +592,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // Responsive.
     // @screen-xs-min.
     @media(min-width: 480px) {
-        button.carousel-control {
+        .carousel-control {
             font-size: 36px;
             height: 36px;
             width: 36px;
@@ -636,7 +631,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
         }
-        button.carousel-control {
+        .carousel-control {
             font-size: 40px;
             height: 40px;
             width: 40px;
@@ -667,7 +662,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
         }
-        button.carousel-control {
+        .carousel-control {
             font-size: 50px;
             height: 50px;
             width: 50px;
@@ -687,7 +682,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
         }
-        button.carousel-control {
+        .carousel-control {
             font-size: 60px;
             height: 60px;
             width: 60px;
@@ -710,7 +705,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
   }
   // Left/right controls for nav.
-  button.carousel-control {
+  .carousel-control {
     color: @slideButtonColour;
     &:hover,
     &:focus {
