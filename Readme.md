@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+ 7th December 2015 - Version 2.9.1.15
+  1. Redundant title tags - task #769.
+
  2nd December 2015 - Version 2.9.1.14
   1. Revert button slideshow navigation - task #766.
   2. No href on fullscreen 'a' tag - task #766.

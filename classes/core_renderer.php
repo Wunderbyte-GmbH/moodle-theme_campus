@@ -365,6 +365,11 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         static $submenucount = 0;
 
         $content = '';
+        $title = array();
+        // If the title is different to the text, then use it.  E.g. the language menu.
+        if (strcmp($menunode->get_title(), $menunode->get_text()) != 0) {
+            $title['title'] = $menunode->get_title();
+        }
         if ($menunode->has_children()) {
 
             if ($level == 1) {
@@ -384,7 +389,11 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             } else {
                 $url = '#cm_submenu_'.$submenucount;
             }
-            $content .= html_writer::start_tag('a', array('href'=>$url, 'class'=>'dropdown-toggle', 'data-toggle'=>'dropdown', 'title'=>$menunode->get_title()));
+            $attr = array('href'=>$url, 'class'=>'dropdown-toggle', 'data-toggle'=>'dropdown');
+            if (!empty($title)) {
+                $attr = array_merge($attr, $title);
+            }
+            $content .= html_writer::start_tag('a', $attr);
             $content .= $menunode->get_text();
             if ($level == 1) {
                 $content .= '<strong class="caret"></strong>';
@@ -408,7 +417,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 } else {
                     $url = '#';
                 }
-                $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()));
+                $content .= html_writer::link($url, $menunode->get_text(), $title);
                 $content .= '</li>';
             }
         }
