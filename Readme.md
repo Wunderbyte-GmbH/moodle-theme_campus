@@ -51,6 +51,9 @@ Uninstallation
 
 Version Information
 ===================
+23rd December 2015 - Version 2.9.1.16
+  1. Doubled hamburger icon with fancy navbar and small screen sizes - task #774.
+
  7th December 2015 - Version 2.9.1.15
   1. Redundant title tags - task #769.
 
