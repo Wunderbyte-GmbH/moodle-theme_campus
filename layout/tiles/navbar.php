@@ -35,13 +35,13 @@ if (!empty($hdfancynavbar)) {
     <nav class="navbar-inner">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target="#campusnav">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".campusnav">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <div id="campusnav" class="nav-collapse collapse">
+            <div class="campusnav nav-collapse collapse">
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <?php echo $OUTPUT->user_menu(); ?>
                 <ul class="nav pull-right">
