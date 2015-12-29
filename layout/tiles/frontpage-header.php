@@ -76,8 +76,7 @@ if ($hdflexlayout) {
 
 $hdtype = 'frontpageheader '.$hdlayout;
 
-global $SITE;
-$headertitle = $SITE->shortname;
+$pageheadinglocationheaderarea = (empty($PAGE->theme->settings->frontpagepageheadinglocation)) ? false : $PAGE->theme->settings->frontpagepageheadinglocation;
 require_once(dirname(__FILE__).'/header-tile.php');
 
 // Carousel pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.

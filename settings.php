@@ -513,15 +513,6 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_headerheading', null,
             format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
-    // Show page heading.
-    $name = 'theme_campus/showpageheading';
-    $title = get_string('showpageheading', 'theme_campus');
-    $description = get_string('showpageheadingdesc', 'theme_campus');
-    $default = false;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    // No CSS change, so no need to reset caches.
-    $settingpage->add($setting);
-
     // Invert Navbar to dark background.
     $name = 'theme_campus/invert';
     $title = get_string('invert', 'theme_campus');
@@ -569,7 +560,8 @@ if (is_siteadmin()) {
     $default = 1;
     $choices = array(
         1 => new lang_string('pageheadinglocationnavbar', 'theme_campus'),
-        3 => new lang_string('pageheadinglocationpagecontenttop', 'theme_campus')
+        3 => new lang_string('pageheadinglocationpagecontenttop', 'theme_campus'),
+        4 => new lang_string('pageheadinglocationheaderarea', 'theme_campus')
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $settingpage->add($setting);
@@ -681,7 +673,8 @@ if (is_siteadmin()) {
     $choices = array(
         1 => new lang_string('pageheadinglocationnavbar', 'theme_campus'),
         2 => new lang_string('pageheadinglocationunderneathnavbar', 'theme_campus'),
-        3 => new lang_string('pageheadinglocationpagecontenttop', 'theme_campus')
+        3 => new lang_string('pageheadinglocationpagecontenttop', 'theme_campus'),
+        4 => new lang_string('pageheadinglocationheaderarea', 'theme_campus')
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $settingpage->add($setting);

@@ -26,9 +26,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-global $CFG, $OUTPUT, $SITE;
+global $OUTPUT;
 
-$headertitle = $SITE->shortname;
 if ($OUTPUT->is_course_page()) {
     $currentcategory = $OUTPUT->get_current_top_level_catetgory();
 } else {
@@ -137,6 +136,7 @@ if ($frontpagesettings) {
     $hdtype = 'coursecategoryheader '.$hdlayout.' category'.$currentcategory;
 }
 
+$pageheadinglocationheaderarea = (empty($PAGE->theme->settings->coursepagepageheadinglocation)) ? false : $PAGE->theme->settings->coursepagepageheadinglocation;
 require_once(dirname(__FILE__).'/header-tile.php');
 
 if (!$OUTPUT->is_course_page()) {

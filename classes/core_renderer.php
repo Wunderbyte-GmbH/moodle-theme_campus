@@ -991,8 +991,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $category = coursecat::get($currentcategory);
             $heading = $category->name;
         } else if ($this->page->pagelayout == 'course') {
-            if ((!empty($this->page->theme->settings->coursepagepageheadinglocation)) && ($this->page->theme->settings->coursepagepageheadinglocation
-                    == 1)) {
+            if ((!empty($this->page->theme->settings->coursepagepageheadinglocation)) &&
+                ($this->page->theme->settings->coursepagepageheadinglocation == 1)) {
                 return $this->get_page_heading();
             } else {
                 return '';

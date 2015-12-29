@@ -1,5 +1,8 @@
 Version Information
 ===================
+29th December 2015 - Version 2.9.1.18
+  1. Implement "Display page heading" in a different way - task #776.
+
 28th December 2015 - Version 2.9.1.17
   1. Fix broken navbar toggle.
   2. Create 'Changes.md' in line with: https://docs.moodle.org/dev/Plugin_files#CHANGES.

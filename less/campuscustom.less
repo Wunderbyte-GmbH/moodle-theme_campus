@@ -171,11 +171,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             max-height: inherit;
         }
     }
-    .sitename {
+    .pageheadingheader {
         position: absolute;
         top: 10px;
-        left: @frontpageSitenamePositionLeft;
-        right: @frontpageSitenamePositionRight;
+        left: @frontpagePageHeadingHeaderPositionLeft;
+        right: @frontpagePageHeadingHeaderPositionRight;
         z-index: 1;
     }
 }
@@ -187,7 +187,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 @media (max-width: 540px) {
     .frontpageheader.absolutelayout {
-        .sitename {
+        .pageheadingheader {
             h1 {
                 font-size: 24px;
                 line-height: 24px;
@@ -254,11 +254,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             max-height: inherit;
         }
     }
-    .sitename {
+    .pageheadingheader {
         position: absolute;
         top: 10px;
-        left: @frontpageSitenamePositionLeft;
-        right: @frontpageSitenamePositionRight;
+        left: @frontpagePageHeadingHeaderPositionLeft;
+        right: @frontpagePageHeadingHeaderPositionRight;
         z-index: 1;
     }
 }
@@ -272,7 +272,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: 540px) {
     .frontpageheader.flexlayout {
-        .sitename {
+        .pageheadingheader {
             h1 {
                 font-size: 24px;
                 line-height: 24px;
@@ -781,11 +781,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             max-height: inherit;
         }
     }
-    .sitename {
+    .pageheadingheader {
         position: absolute;
         top: 10px;
-        left: @courseCategorySitenamePositionLeftDefault;
-        right: @courseCategorySitenamePositionRightDefault;
+        left: @courseCategoryPageHeadingHeaderPositionLeftDefault;
+        right: @courseCategoryPageHeadingHeaderPositionRightDefault;
         z-index: 1;
     }
 }
@@ -799,7 +799,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: 540px) {
     .coursecategoryheader.absolutelayout {
-        .sitename {
+        .pageheadingheader {
             h1 {
                 font-size: 24px;
                 line-height: 24px;
@@ -866,11 +866,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             max-height: inherit;
         }
     }
-    .sitename {
+    .pageheadingheader {
         position: absolute;
         top: 10px;
-        left: @courseCategorySitenamePositionLeftDefault;
-        right: @courseCategorySitenamePositionRightDefault;
+        left: @courseCategoryPageHeadingHeaderPositionLeftDefault;
+        right: @courseCategoryPageHeadingHeaderPositionRightDefault;
         z-index: 1;
     }
 }
@@ -884,7 +884,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: 540px) {
     .coursecategoryheader.flexlayout {
-        .sitename {
+        .pageheadingheader {
             h1 {
                 font-size: 24px;
                 line-height: 24px;
@@ -928,12 +928,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 .ccheaderlogoposition(@courseCategoryKey;
           @courseCategoryMixinLogoPosition;
-          @courseCategoryMixinSitenamePositionLeft;
-          @courseCategoryMixinSitenamePositionRight) {
+          @courseCategoryMixinPageHeadingHeaderPositionLeft;
+          @courseCategoryMixinPageHeadingHeaderPositionRight) {
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey}, .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
-        .sitename {
-            left: @courseCategoryMixinSitenamePositionLeft;
-            right: @courseCategoryMixinSitenamePositionRight;
+        .pageheadingheader {
+            left: @courseCategoryMixinPageHeadingHeaderPositionLeft;
+            right: @courseCategoryMixinPageHeadingHeaderPositionRight;
         }
     }
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
@@ -1030,18 +1030,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
-// Sitename styling.
-.sitename {
+// Page heading in the header styling.
+.pageheadingheader {
     h1 {
         text-transform: uppercase;
         color: transparent;
         -webkit-text-stroke: 6px rgba(255,255,255,0.05);
         text-shadow: rgba(245,245,255,0.6) 0 0px 0px, rgba(0,0,30,0.3) 0px 0.04em 0.02em;
-    }
-    a {
-        &:hover, &:focus {
-            text-decoration: none;
-        }
     }
 }
 
@@ -1071,8 +1066,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .backgroundcontainer .navbar {
             bottom: auto;
         }
-        .sitename {
-            //top: auto;
+        .pageheadingheader {
             bottom: 0px;
         }
     }
@@ -1233,7 +1227,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             display: none;
         }
         body.hideheader {
-            .logotitle, .campusdesktop, .sitename {
+            .logotitle, .campusdesktop, .pageheadingheader {
                 display: block !important; // Override jQuery!
             }
         }

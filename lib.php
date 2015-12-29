@@ -192,10 +192,10 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->frontpagelogoposition)) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:
-                $variables['frontpageSitenamePositionRight'] = '50px';
+                $variables['frontpagePageHeadingHeaderPositionRight'] = '50px';
             break;
             case 2:
-                $variables['frontpageSitenamePositionLeft'] = '50px';
+                $variables['frontpagePageHeadingHeaderPositionLeft'] = '50px';
             break;
         }
         if ((!empty($theme->settings->frontpagelayout)) && ($theme->settings->frontpagelayout == 'absolutelayout')) {
@@ -473,8 +473,8 @@ function theme_campus_extra_less($theme) {
                     switch ($theme->settings->frontpagelogoposition) {
                     /* .ccheaderlogoposition(@courseCategoryKey;
                           @courseCategoryMixinLogoPosition;
-                          @courseCategoryMixinSitenamePositionLeft;
-                          @courseCategoryMixinSitenamePositionRight) */
+                          @courseCategoryMixinPageHeadingHeaderPositionLeft;
+                          @courseCategoryMixinPageHeadingHeaderPositionRight) */
                         case 1:
                             $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
                         break;
@@ -555,8 +555,8 @@ function theme_campus_extra_less($theme) {
                 switch ($theme->settings->$ccsetting) {
                 /* .ccheaderlogoposition(@courseCategoryKey;
                       @courseCategoryMixinLogoPosition;
-                      @courseCategoryMixinSitenamePositionLeft;
-                      @courseCategoryMixinSitenamePositionRight) */
+                      @courseCategoryMixinPageHeadingHeaderPositionLeft;
+                      @courseCategoryMixinPageHeadingHeaderPositionRight) */
                     case 1:
                         $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
                     break;

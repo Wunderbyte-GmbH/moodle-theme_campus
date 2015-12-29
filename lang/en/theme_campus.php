@@ -289,9 +289,6 @@ $string['slidelinktargetblank'] = 'New window';
 $string['headersettings'] = 'Header';
 $string['headerheadingdesc'] = 'Configure the header settings for the theme here.';
 
-$string['showpageheading'] = 'Display page heading';
-$string['showpageheadingdesc'] = 'Display the page heading.';
-
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 
@@ -300,6 +297,7 @@ $string['stickynavbardesc'] = 'Have a sticky navbar.  Note: The front page and c
 
 $string['pageheadinglocationnavbar'] = 'Navbar';
 $string['pageheadinglocationunderneathnavbar'] = 'Underneath the navbar';
+$string['pageheadinglocationheaderarea'] = 'Header area';
 $string['pageheadinglocationpagecontenttop'] = 'Top of page content';
 
 $string['coursepagepageheadinglocation'] = 'Course page \'page heading\' location';

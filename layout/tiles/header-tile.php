@@ -26,6 +26,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+if ($pageheadinglocationheaderarea != 4) {
+    $pageheadinglocationheaderarea = false;
+} else {
+    global $OUTPUT;
+    $headertitle = $OUTPUT->get_page_heading();
+}
+
 if (($hdresponsivelogo) && ($hdresponsivebackgroundimage)) {
     // Responsive images available.
     $hdresponsive = true;
@@ -34,7 +41,7 @@ if (($hdresponsivelogo) && ($hdresponsivebackgroundimage)) {
 }
 
 if ((!$hdflexlayout) && (!$hdlogo)) {
-    $hdextra = ' sitename';
+    $hdextra = ' pageheadingheader';
 } else {
     $hdextra = '';
 }
@@ -52,12 +59,12 @@ if ($hdlogoextrapos == 1) {
             echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
         }
         echo '</a>';
-    } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$headertitle.'</h1></a>';
+    } else if ($pageheadinglocationheaderarea) {
+        echo $headertitle;
     }
     echo '</div>';
 }
-echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'sitename'.
+echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'pageheadingheader'.
 if ($hdbackgroundimage) {
     echo '<img class="campusdesktop headertoggled" src="'.$hdbackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
     if ($hdresponsive) {
@@ -67,9 +74,8 @@ if ($hdbackgroundimage) {
         include(dirname(__FILE__).'/navbar.php');
     }
 }
-$showpageheading = (!isset($PAGE->theme->settings->showpageheading)) ? true : $PAGE->theme->settings->showpageheading;
-if (($showpageheading) && ($hdlogo)) {
-    echo '<div class="sitename headertoggled"><a href="'.$CFG->wwwroot.'"><h1>'.$headertitle.'</h1></a></div>';
+if (($pageheadinglocationheaderarea) && ($hdlogo)) {
+    echo '<div class="pageheadingheader headertoggled">'.$headertitle.'</div>';
 }
 echo '</div>';
 if ($hdlogoextrapos == 2) {
@@ -81,8 +87,8 @@ if ($hdlogoextrapos == 2) {
             echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
         }
         echo '</a>';
-    } else {
-        echo '<a href="'.$CFG->wwwroot.'"><h1>'.$headertitle.'</h1></a>';
+    } else if ($pageheadinglocationheaderarea) {
+        echo $headertitle;
     }
     echo '</div>';
 }
