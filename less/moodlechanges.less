@@ -202,19 +202,25 @@ body.notediting {
         padding-bottom: 8px;
     }
     .course-content ul.topics li.section .summary {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 0;
+        margin-right: 0;
     }
     .course-content ul.section {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 0;
+        margin-right: 0;
         margin-top: 1em;
         margin-bottom: 1em;
     }
+    .course-content ul.topics li.section {
+        .left, .right {
+            width: 20px;
+        }
+    }
     &.format-topcoll {
-        .course-content ul.topics li.section .summary, .course-content ul.section {
-            margin-left: 0;
-            margin-right: 0;
+        .course-content ul.topics li.section {
+            .left, .right {
+                width: 40px; // Hardcoded 'de' language default.
+            }
         }
     }
 }
