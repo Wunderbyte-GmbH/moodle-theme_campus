@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 1st January 2016 - Version 2.9.1.19
+  1. Width of ressource "label" is different from width of "site summary" on frontpage - task #775.
+
 29th December 2015 - Version 2.9.1.18
   1. Implement "Display page heading" in a different way - task #776.
 

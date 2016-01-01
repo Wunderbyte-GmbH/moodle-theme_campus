@@ -757,7 +757,18 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         if ($this->page->pagelayout == 'login') {
             $hidelocallogin = (!isset($this->page->theme->settings->hidelocallogin)) ? false : $this->page->theme->settings->hidelocallogin;
             if ($hidelocallogin) {
-                $additionalclasses[] = 'hidelocallogin';
+                if (is_array($additionalclasses)) {
+                    $additionalclasses[] = 'hidelocallogin';
+                } else {
+                    $additionalclasses .= ' hidelocallogin';
+                }
+            }
+        }
+        if (!$this->page->user_is_editing()) {
+            if (is_array($additionalclasses)) {
+                $additionalclasses[] = 'notediting';
+            } else {
+                $additionalclasses .= ' notediting';
             }
         }
         return parent::body_attributes($additionalclasses);
@@ -978,8 +989,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     public function page_heading($tag = 'h1') {
         if ($this->page->pagelayout == 'frontpage') {
-            if ((!empty($this->page->theme->settings->frontpagepageheadinglocation)) && ($this->page->theme->settings->frontpagepageheadinglocation
-                    == 1)) {
+            if ((!empty($this->page->theme->settings->frontpagepageheadinglocation)) &&
+                ($this->page->theme->settings->frontpagepageheadinglocation == 1)) {
                 return $this->get_page_heading();
             } else {
                 return '';

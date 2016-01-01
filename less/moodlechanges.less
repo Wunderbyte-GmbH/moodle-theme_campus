@@ -172,10 +172,50 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     font-size: 0.8em;
 }
 
-// course.less.
 #frontpage-category-combo {
     .coursebox > .info > .coursename a {
         background-position: left 0.2em;  // Keep an eye on MDL-50004.
+    }
+}
+
+// Width of ressource "label" is different from width of "site summary" on frontpage - task #775.
+body.notediting {
+    .section .label .contentwithoutlink, .section .label .activityinstance {
+        padding-right: 0;
+    }
+    .section .label .mod-indent-outer, .section .activity .mod-indent-outer {
+        padding-left: 0;
+    }
+    &.path-site li.activity > div, &.path-course-view li.activity > div {
+        padding: 0;
+    }
+    .section .activity.modtype_label.label, .section li.activity {
+        padding-right: 0;
+        padding-left: 0;
+        padding-top: .2em;
+        padding-bottom: .2em;
+    }
+    li.activity.label {
+        padding-right: 0;
+        padding-left: 0;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .course-content ul.topics li.section .summary {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .course-content ul.section {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    &.format-topcoll {
+        .course-content ul.topics li.section .summary, .course-content ul.section {
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 }
 
