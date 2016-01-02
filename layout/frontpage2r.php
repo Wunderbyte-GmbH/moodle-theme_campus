@@ -120,7 +120,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
  </div>
 				<?php
 				// Option rmapoption in General settings.
-				$rmapoption = (!empty($PAGE->theme->settings->rmapoption)) ? $PAGE->theme->settings->rmapoption : 3;
+				$rmapoption = (!empty($PAGE->theme->settings->rmapoption)) ? $PAGE->theme->settings->rmapoption : 2;
 				if ($rmapoption == 2) {
 					$PAGE->requires->js_call_amd('theme_campus/rwdImageMaps', 'init', array());
 				} else if ($rmapoption == 3) {

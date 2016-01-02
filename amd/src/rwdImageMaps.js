@@ -10,7 +10,8 @@
 * Licensed under the MIT license
 */
 
-define(['jquery', 'core/log'], function($, log) {
+//define(['jquery', 'core/log'], function($, log) {
+define(['jquery', 'theme_campus/maphilight', 'core/log'], function($, maphilight, log) {
 //;(function($) {
 	$.fn.rwdImageMaps = function() {
 		var $img = this;
@@ -78,6 +79,7 @@ define(['jquery', 'core/log'], function($, log) {
 
             $(document).ready(function() {
                 $('img[usemap]').rwdImageMaps();
+                $('img[usemap]').maphilight();
             });
         }
     };
