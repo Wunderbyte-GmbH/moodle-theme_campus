@@ -119,7 +119,13 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
  </map>
  </div>
 				<?php
-				$PAGE->requires->js_call_amd('theme_campus/rwdImageMaps', 'init', array());
+				// Option rmapoption in General settings.
+				$rmapoption = (!empty($PAGE->theme->settings->rmapoption)) ? $PAGE->theme->settings->rmapoption : 3;
+				if ($rmapoption == 2) {
+					$PAGE->requires->js_call_amd('theme_campus/rwdImageMaps', 'init', array());
+				} else if ($rmapoption == 3) {
+					$PAGE->requires->js_call_amd('theme_campus/campus_imagemapster', 'init', array());
+				}
                 echo $OUTPUT->main_content();
                 ?>
             </section>

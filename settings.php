@@ -44,6 +44,20 @@ if (is_siteadmin()) {
     $settingpage->add(new admin_setting_heading('theme_campus_generalheading', null,
             format_text(get_string('generalheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
+    // Responsive image map, see: 'Report into responsive image maps in the Campus theme for Moodle 2.9 – January 2016' for details.
+    $name = 'theme_campus/rmapoption';
+    $title = get_string('rmapoption', 'theme_campus');
+    $description = get_string('rmapoptiondesc', 'theme_campus');
+    $default = 2;
+    $choices = array(
+        2 => get_string('rmapoptiontwo', 'theme_campus'),
+        3 => get_string('rmapoptionthree', 'theme_campus')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    // No CSS change, but need to re-read config.php file, so needed.
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Theme layout setting.
     $name = 'theme_campus/themelayout';
     $title = get_string('themelayout', 'theme_campus');

@@ -89,6 +89,11 @@ $string['fullscreentoggleicon'] = 'Fullscreen toggle icon';
 $string['genericsettings'] = 'General';
 $string['generalheadingdesc'] = 'Configure the general settings for the theme here.';
 
+$string['rmapoption'] = 'Responsive image map option.';
+$string['rmapoptiondesc'] = 'See \'Report into responsive image maps in the Campus theme for Moodle 2.9 – January 2016\' for details.';
+$string['rmapoptiontwo'] = 'Option two.';
+$string['rmapoptionthree'] = 'Option three.';
+
 $string['alternateloginurl'] = 'Alternative login URL.';
 $string['alternateloginurldesc'] = 'Alternative login URL.';
 
