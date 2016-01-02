@@ -1,6 +1,9 @@
 Version Information
 ===================
- 1st January 2016 - Version 2.9.1.19
+ 2nd January 2016 - Version 2.9.1.20
+  1. In FireFox the mouse is shown as "input" sign while hovering over fullscreen toggle - task #777.
+
+  1st January 2016 - Version 2.9.1.19
   1. Width of ressource "label" is different from width of "site summary" on frontpage - task #775.
 
 29th December 2015 - Version 2.9.1.18
