@@ -95,6 +95,31 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                 if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
                     echo $OUTPUT->get_page_heading();
                 }
+				?>
+				<div id="schnecke" class="">
+				<img id="frontpageimage" src="<?php echo $OUTPUT->pix_url('10-2-one', 'theme'); ?>" usemap="#schneckenmap" class="img-responsive" alt="SQA Navigationsschnecke" height="528" width="517">
+				<map id="frontpagemap" name="schneckenmap"> 
+<area shape="poly" id="area1" class="mapstyle" coords="121,40,209,5,337,12,407,49,332,144,264,123,195,138," href="http://www.sqa.at/course/category.php?id=15" alt="BZG Bilanz- und Zielvereinbarungsgespräch" title="BZG Bilanz- und Zielvereinbarungsgespräch">
+ 
+<area shape="poly" id="area2" class="mapstyle" coords="405,46,449,84,495,149,516,222,389,222,370,180,330,144," href="http://www.sqa.at/course/category.php?id=16" alt="Feedback &amp; Evaluation" title="Feedback &amp; Evaluation">
+ 
+<area shape="poly" id="area3" class="mapstyle" coords="513,224,516,378,393,378,390,222," href="http://www.sqa.at/course/category.php?id=17" alt="Beratung &amp; Begleitung" title="Beratung &amp; Begleitung">
+ 
+<area shape="poly" id="area4" class="mapstyle" coords="393,378,516,377,516,527,393,527," href="http://www.sqa.at/course/category.php?id=14" alt="SQA Leitfaden" title="SQA Leitfaden">
+ 
+<area shape="poly" id="area5" class="mapstyle" coords="393,307,392,516,226,514,228,389,287,392,328,373,378,322," href="http://www.sqa.at/course/category.php?id=6" alt="Bibliothek &amp; Medien" title="Bibliothek &amp; Medien">
+ 
+<area shape="poly" id="area6" class="mapstyle" coords="228,390,228,514,126,484,48,413,19,357,165,356,200,382," href="http://www.sqa.at/course/category.php?id=18" alt="Grundlagen" title="Grundlagen">
+ 
+<area shape="poly" id="area7" class="mapstyle" coords="127,220,126,290,165,357,21,360,1,277,3,219," href="http://www.sqa.at/course/category.php?id=10" alt="Qualität von Schule und Unterricht" title="Qualität von Schule und Unterricht">
+ 
+<area shape="poly" id="area8" class="mapstyle" coords="4,220,126,221,152,175,197,137,125,39,123,37,91,62,29,140,9,192," href="http://www.sqa.at/course/category.php?id=5" alt="Entwicklungsplan" title="Entwicklungsplan">
+ 
+<area shape="poly" id="area9" class="mapstyle" coords="195,141,265,120,330,145,367,179,387,219,393,270,384,315,353,354,307,384,318,377,257,393,207,384,170,360,141,330,123,280,126,221,144,179,173,153," href="http://www.sqa.at/course/category.php?id=7" alt="Lernen &amp; Lehren" title="Lernen &amp; Lehren">
+ </map>
+ </div>
+				<?php
+				$PAGE->requires->js_call_amd('theme_campus/rwdImageMaps', 'init', array());
                 echo $OUTPUT->main_content();
                 ?>
             </section>
