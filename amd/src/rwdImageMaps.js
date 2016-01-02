@@ -78,8 +78,11 @@ define(['jquery', 'theme_campus/maphilight', 'core/log'], function($, maphilight
             log.debug('Campus rwdImageMaps AMD init initialised');
 
             $(document).ready(function() {
+                $('img[usemap]').maphilight({
+                        fillColor: '333333',
+                        strokeColor: '000000'
+                    });
                 $('img[usemap]').rwdImageMaps();
-                $('img[usemap]').maphilight();
             });
         }
     };

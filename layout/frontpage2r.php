@@ -97,7 +97,12 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                 }
 				?>
 				<div id="schnecke" class="">
-				<img id="frontpageimage" src="<?php echo $OUTPUT->pix_url('10-2-one', 'theme'); ?>" usemap="#schneckenmap" class="img-responsive" alt="SQA Navigationsschnecke" height="528" width="517">
+				<style type="text/css" media="screen">
+				/* <![CDATA[ */
+				.no-repeat { background-repeat: no-repeat;}
+				/* ]]> */
+				</style>
+				<img id="frontpageimage" src="<?php echo $OUTPUT->pix_url('10-2-one', 'theme'); ?>" usemap="#schneckenmap" class="img-responsive no-repeat" alt="SQA Navigationsschnecke" height="528" width="517">
 				<map id="frontpagemap" name="schneckenmap"> 
 <area shape="poly" id="area1" class="mapstyle" coords="121,40,209,5,337,12,407,49,332,144,264,123,195,138," href="http://www.sqa.at/course/category.php?id=15" alt="BZG Bilanz- und Zielvereinbarungsgespräch" title="BZG Bilanz- und Zielvereinbarungsgespräch">
  
