@@ -173,7 +173,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .pageheadingheader {
         position: absolute;
-        top: 10px;
         left: @frontpagePageHeadingHeaderPositionLeft;
         right: @frontpagePageHeadingHeaderPositionRight;
         z-index: 1;
@@ -183,18 +182,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .frontpageheader.absolutelayout {
         padding-left: 0px;
         padding-right: 0px;
-    }
-}
-@media (max-width: 540px) {
-    .frontpageheader.absolutelayout {
-        .pageheadingheader {
-            h1 {
-                font-size: 24px;
-                line-height: 24px;
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-        }
     }
 }
 
@@ -256,7 +243,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .pageheadingheader {
         position: absolute;
-        top: 10px;
         left: @frontpagePageHeadingHeaderPositionLeft;
         right: @frontpagePageHeadingHeaderPositionRight;
         z-index: 1;
@@ -267,19 +253,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .frontpageheader.flexlayout {
         padding-left: 0px;
         padding-right: 0px;
-    }
-}
-
-@media (max-width: 540px) {
-    .frontpageheader.flexlayout {
-        .pageheadingheader {
-            h1 {
-                font-size: 24px;
-                line-height: 24px;
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-        }
     }
 }
 
@@ -783,7 +756,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .pageheadingheader {
         position: absolute;
-        top: 10px;
         left: @courseCategoryPageHeadingHeaderPositionLeftDefault;
         right: @courseCategoryPageHeadingHeaderPositionRightDefault;
         z-index: 1;
@@ -794,19 +766,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .coursecategoryheader.absolutelayout {
         padding-left: 0px;
         padding-right: 0px;
-    }
-}
-
-@media (max-width: 540px) {
-    .coursecategoryheader.absolutelayout {
-        .pageheadingheader {
-            h1 {
-                font-size: 24px;
-                line-height: 24px;
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-        }
     }
 }
 
@@ -868,7 +827,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .pageheadingheader {
         position: absolute;
-        top: 10px;
         left: @courseCategoryPageHeadingHeaderPositionLeftDefault;
         right: @courseCategoryPageHeadingHeaderPositionRightDefault;
         z-index: 1;
@@ -879,19 +837,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .coursecategoryheader.flexlayout {
         padding-left: 0px;
         padding-right: 0px;
-    }
-}
-
-@media (max-width: 540px) {
-    .coursecategoryheader.flexlayout {
-        .pageheadingheader {
-            h1 {
-                font-size: 24px;
-                line-height: 24px;
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-        }
     }
 }
 
@@ -1100,6 +1045,49 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         &.fancynavbar .backgroundcontainer.right .navbar {
             left: auto;
             right: 0;
+        }
+    }
+}
+
+// Page heading in header.
+.frontpageheader.absolutelayout,
+.frontpageheader.flexlayout,
+.coursecategoryheader.absolutelayout,
+.coursecategoryheader.flexlayout {
+    .pageheadingheader {
+        top: 0.5vw;
+    }
+}
+
+@media (max-width: @navbarCollapseWidth) {
+    .frontpageheader.absolutelayout,
+    .frontpageheader.flexlayout,
+    .coursecategoryheader.absolutelayout,
+    .coursecategoryheader.flexlayout {
+        .pageheadingheader {
+            top: 0;
+            h1 {
+                font-size: 28px;
+                line-height: 28px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    .frontpageheader.absolutelayout,
+    .frontpageheader.flexlayout,
+    .coursecategoryheader.absolutelayout,
+    .coursecategoryheader.flexlayout {
+        .pageheadingheader {
+            h1 {
+                font-size: 24px;
+                line-height: 24px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
         }
     }
 }
