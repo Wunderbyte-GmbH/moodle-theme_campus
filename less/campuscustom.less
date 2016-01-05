@@ -12,6 +12,14 @@ body {
     }
 }
 
+// Body.
+@media (max-width: 767px) {
+    body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 // Page.
 .container-fluid {
     max-width: @pageWidthMaximum;
@@ -180,8 +188,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 @media (max-width: 767px) {
     .frontpageheader.absolutelayout {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -251,8 +259,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: 767px) {
     .frontpageheader.flexlayout {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -348,7 +356,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .brand {
         // Vertically center the text given @navbarHeight.
         padding: 0 5px 0 5px;
-        margin: (((@navbarHeight - @baseLineHeight) / 2) - 2) 0px (((@navbarHeight - @baseLineHeight) / 2) - 2);
+        margin: (((@navbarHeight - @baseLineHeight) / 2) - 2) 0 (((@navbarHeight - @baseLineHeight) / 2) - 2);
         max-height: @baseLineHeight + 4;
         line-height: @baseLineHeight + 4;
         overflow: hidden;
@@ -382,7 +390,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     margin-right: 2px;
                 }
                 > a.dropdown-toggle {
-                    padding: ((@navbarHeight - @baseLineHeight) / 2) 0px ((@navbarHeight - @baseLineHeight) / 2) 30px;
+                    padding: ((@navbarHeight - @baseLineHeight) / 2) 0 ((@navbarHeight - @baseLineHeight) / 2) 30px;
                     .fa {
                         padding-left: 5px;
                     }
@@ -396,14 +404,14 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     }
                 }
                 ul.dropdown-menu {
-                    margin: 0px;
+                    margin: 0;
                     span {
                         margin-right: 5px;
                         width: 15px;
                     }
                     hr.sep {
-                        margin: 0px;
-                        height: 0px;
+                        margin: 0;
+                        height: 0;
                         border: none;
                     }
                 }
@@ -474,8 +482,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: 767px) {
     .navbar {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -505,7 +513,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
             &.side-caption .carousel-image {
-                box-shadow: 0px 0px 8px #222;
+                box-shadow: 0 0 8px #222;
                 padding: 8px;
                 background-color: #fff;
                 margin-left: -8px;
@@ -524,7 +532,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 margin: 0 auto;
             }
             h4, p {
-                padding: 0px 20px;
+                padding: 0 20px;
             }
             p {
                 line-height: 1;
@@ -540,13 +548,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .carousel-control {
         display: none; // Shown when carousel hovered on, see below.
         background: none;
-        border: 0px;
+        border: 0;
         font-size: 30px;
         cursor: pointer;
         &:hover,
             &:focus {
             background: none;
-            border: 0px;
+            border: 0;
         }
     }
     &:hover .carousel-control{
@@ -688,7 +696,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
   // Carousel indicator pips.
   .carousel-indicators {
-    box-shadow: 0px 0px 8px @carouselColour;
+    box-shadow: 0 0 8px @carouselColour;
     li {
       background-color: @carouselColour;
     }
@@ -764,8 +772,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: 767px) {
     .coursecategoryheader.absolutelayout {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -835,8 +843,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: 767px) {
     .coursecategoryheader.flexlayout {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -981,7 +989,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         text-transform: uppercase;
         color: transparent;
         -webkit-text-stroke: 6px rgba(255,255,255,0.05);
-        text-shadow: rgba(245,245,255,0.6) 0 0px 0px, rgba(0,0,30,0.3) 0px 0.04em 0.02em;
+        text-shadow: rgba(245,245,255,0.6) 0 0 0, rgba(0,0,30,0.3) 0 0.04em 0.02em;
     }
 }
 
@@ -1012,7 +1020,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             bottom: auto;
         }
         .pageheadingheader {
-            bottom: 0px;
+            bottom: 0;
         }
     }
 }
@@ -1069,8 +1077,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             h1 {
                 font-size: 28px;
                 line-height: 28px;
-                margin-top: 0px;
-                margin-bottom: 0px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
         }
     }
@@ -1085,8 +1093,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             h1 {
                 font-size: 24px;
                 line-height: 24px;
-                margin-top: 0px;
-                margin-bottom: 0px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
         }
     }
@@ -1204,7 +1212,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             }
             aside.block-region {
                 margin-top: 20px;
-                margin-left: 0px;
+                margin-left: 0;
             }
         }
     }
@@ -1257,7 +1265,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 .path-mod-forum table.forumheaderlist {
-    border: 0px solid transparent;
+    border: 0 solid transparent;
     border-collapse: collapse;
     margin-bottom: 10px;
 
@@ -1284,7 +1292,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     tbody {
         tr {
-            border: 0px solid transparent;
+            border: 0 solid transparent;
         }
     }
     td {
@@ -1294,7 +1302,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 .forumpost {
     background-color: transparent;
-    border: 0px solid transparent;
+    border: 0 solid transparent;
     box-shadow: none;
     .row {
         &.header {
@@ -1327,7 +1335,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 #page-footer {
     ul.socialnetworks {
         display: inline-block;
-        margin-left: 0px;
+        margin-left: 0;
         border-radius: @baseBorderRadius;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
         padding: 4px;
@@ -1436,7 +1444,7 @@ table {
         word-wrap: break-word;
     }
     td:first-of-type {
-        padding-left: 0px;
+        padding-left: 0;
     }
 }
 
