@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 5th January 2016 - Version 2.9.1.21
+  1. Responsive font size for h1 in header - update - task #778.
+
  2nd January 2016 - Version 2.9.1.20
   1. In FireFox the mouse is shown as "input" sign while hovering over fullscreen toggle - task #777.
   2. Responsive font size for h1 in header - task #778.
