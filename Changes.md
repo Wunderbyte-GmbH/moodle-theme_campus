@@ -1,5 +1,8 @@
 Version Information
 ===================
+13th January 2016 - Version 2.9.1.22
+  1. Main content area overlaps on some pages with block area on right side - task #784.
+
  5th January 2016 - Version 2.9.1.21
   1. Responsive font size for h1 in header - update - task #778.
   2. Remove body padding left and right - task #783.
