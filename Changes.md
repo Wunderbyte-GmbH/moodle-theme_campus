@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 5th February 2016 - Version 3.0.0.1
+  1. Bump version for Moodle 3.0 version.
+
 13th January 2016 - Version 2.9.1.22
   1. Main content area overlaps on some pages with block area on right side - task #784.
 
