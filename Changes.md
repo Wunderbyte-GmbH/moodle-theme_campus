@@ -1,5 +1,8 @@
 Version Information
 ===================
+27th February 2016 - Version 3.0.0.2
+  1. The page heading on category pages always appears in the navbar - task #802.
+
  5th February 2016 - Version 3.0.0.1
   1. Bump version for Moodle 3.0 version.
 
