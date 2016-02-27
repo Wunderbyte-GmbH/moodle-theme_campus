@@ -2,6 +2,7 @@ Version Information
 ===================
 27th February 2016 - Version 2.9.1.23
   1. The page heading on category pages always appears in the navbar - task #802.
+  2. Forum thread headings should take the value of "medium border radius" for the corner radius - task #803.
 
 13th January 2016 - Version 2.9.1.22
   1. Main content area overlaps on some pages with block area on right side - task #784.
