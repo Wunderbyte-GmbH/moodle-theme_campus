@@ -1,5 +1,8 @@
 Version Information
 ===================
+27th February 2016 - Version 2.9.1.23
+  1. The page heading on category pages always appears in the navbar - task #802.
+
 13th January 2016 - Version 2.9.1.22
   1. Main content area overlaps on some pages with block area on right side - task #784.
 

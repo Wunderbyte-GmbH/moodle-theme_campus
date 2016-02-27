@@ -553,7 +553,7 @@ if (is_siteadmin()) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
-    // Course page heading position setting.
+    // Course and category page heading position setting.
     $name = 'theme_campus/coursepagepageheadinglocation';
     $title = get_string('coursepagepageheadinglocation', 'theme_campus');
     $description = get_string('coursepagepageheadinglocationdesc', 'theme_campus');

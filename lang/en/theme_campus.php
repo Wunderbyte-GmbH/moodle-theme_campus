@@ -300,8 +300,8 @@ $string['pageheadinglocationunderneathnavbar'] = 'Underneath the navbar';
 $string['pageheadinglocationheaderarea'] = 'Header area';
 $string['pageheadinglocationpagecontenttop'] = 'Top of page content';
 
-$string['coursepagepageheadinglocation'] = 'Course page \'page heading\' location';
-$string['coursepagepageheadinglocationdesc'] = 'Where to put the page heading on course pages.';
+$string['coursepagepageheadinglocation'] = 'Course and category page \'page heading\' location';
+$string['coursepagepageheadinglocationdesc'] = 'Where to put the page heading on course and category pages.';
 
 $string['showsysteminbreadcrumb'] = 'Show system area name in the breadcrumb';
 $string['showsysteminbreadcrumbdesc'] = 'Show the system area name in the breadcrumb.';

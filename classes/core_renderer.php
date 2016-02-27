@@ -995,13 +995,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             } else {
                 return '';
             }
-        } else if ($this->page->pagelayout == 'coursecategory') {
-            global $CFG;
-            include_once($CFG->libdir . '/coursecatlib.php');
-            $currentcategory = $this->get_current_category();
-            $category = coursecat::get($currentcategory);
-            $heading = $category->name;
-        } else if ($this->page->pagelayout == 'course') {
+        } else if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'coursecategory')) {
             if ((!empty($this->page->theme->settings->coursepagepageheadinglocation)) &&
                 ($this->page->theme->settings->coursepagepageheadinglocation == 1)) {
                 return $this->get_page_heading();
@@ -1016,7 +1010,15 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
     public function get_page_heading($heading = null) {
         if (empty($heading)) {
-            $heading = $this->page->heading;
+            if ($this->page->pagelayout == 'coursecategory') {
+                global $CFG;
+                include_once($CFG->libdir . '/coursecatlib.php');
+                $currentcategory = $this->get_current_category();
+                $category = coursecat::get($currentcategory);
+                $heading = $category->name;
+            } else {
+                $heading = $this->page->heading;
+            }
         }
         return '<h1 class="brand">' . $heading . '</h1>';
     }
