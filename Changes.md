@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 1st March 2016 - Version 3.0.0.3
+  1. Dropdown for Profile settings in collapsed menu does not work - apply MDL-51819 - task #785.
+
 27th February 2016 - Version 3.0.0.2
   1. The page heading on category pages always appears in the navbar - task #802.
   2. Forum thread headings should take the value of "medium border radius" for the corner radius - task #803.
