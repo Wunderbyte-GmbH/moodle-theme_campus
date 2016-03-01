@@ -22,7 +22,7 @@ define(['jquery'], function($) {
       return false;
     });
 
-    $("a[href='#page-footer']").click(function(e) {
+    $("a[href$='#page-footer']").click(function(e) {
       e.preventDefault();
       var target = $('#page-footer');
       $('html, body').animate({scrollTop : target.offset().top}, animateduration);
