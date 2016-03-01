@@ -330,14 +330,16 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout
                 == 'admin')) { // Go to bottom.
             $gotobottom = html_writer::tag('span', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
-            $menu->add($gotobottom, new moodle_url('#page-footer'), get_string('gotobottom', 'theme_campus'), 10001);
+            $url = new moodle_url($this->page->url);
+            $url->set_anchor('page-footer');
+            $menu->add($gotobottom, $url, get_string('gotobottom', 'theme_campus'), 10001);
         }
     }
 
     public function anti_gravity() {
         $icon = html_writer::start_tag('span', array('class' => 'fa fa-arrow-circle-o-up')) . html_writer::end_tag('span');
-        $anti_gravity = html_writer::tag('a', $icon,
-                        array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_campus')));
+        $anti_gravity = html_writer::tag('span', $icon,
+            array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_campus')));
 
         return $anti_gravity;
     }
@@ -347,7 +349,12 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             if ($this->hasspecificheader) {
                 $headertoggle = html_writer::start_tag('li', array('class' => 'nav headertogglemenu'));
                 $headertoggle .= html_writer::start_tag('a', array('title' => get_string('fullscreentoggle', 'theme_campus')));
-                $headertoggle .= html_writer::tag('span', '', array('class' => 'headertoggle fa fa-expand', 'title' => get_string('fullscreentoggleicon', 'theme_campus')));
+                $headertoggle .= html_writer::tag('span', '',
+                    array(
+                        'class' => 'headertoggle fa fa-expand',
+                        'title' => get_string('fullscreentoggleicon', 'theme_campus')
+                    )
+                );
                 $headertoggle .= html_writer::end_tag('a');
                 $headertoggle .= html_writer::end_tag('li');
 

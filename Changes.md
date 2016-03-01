@@ -2,6 +2,7 @@ Version Information
 ===================
  1st March 2016 - Version 2.9.1.24
   1. Dropdown for Profile settings in collapsed menu does not work - apply MDL-51819 - task #785.
+  2. Accessibility error: Scrolldown-Button in Navbar gives error "empty link" - task #804.
 
 27th February 2016 - Version 2.9.1.23
   1. The page heading on category pages always appears in the navbar - task #802.
