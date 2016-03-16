@@ -801,10 +801,6 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                 $thefile = 'frontpage-header';
                 break;
             case 'coursecategory':
-                if ($this->is_top_level_category()) {  // Set specific header.
-                    $thefile = 'coursecategory-header';
-                }
-                break;
             case 'course':
             case 'incourse':
             case 'report':
@@ -862,28 +858,26 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         switch ($pagelayout) {
             case 'coursecategory':
-                $currentcategory = $this->get_current_category();
-                if ($this->is_top_level_category($currentcategory)) {
-                    $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay
-                                : 2;  // Default of 'Yes'.
-                    if ($autoplay == 2) {
-                        $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval
-                                    : 5000;
+                $currentcategory = $this->get_current_top_level_catetgory();
+                $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay
+                    : 2;  // Default of 'Yes'.
+                if ($autoplay == 2) {
+                    $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval
+                        : 5000;
+                } else {
+                    $slideinterval = 0;
+                }
+                $data = array('data' => array('slideinterval' => $slideinterval));
+                $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
+                $this->hasspecificheader = true;
+                $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
+                if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
+                    // We have a custom setting so enforce the intent.
+                    $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
+                    if (!empty($this->page->theme->settings->$cchavestickysetting)) {
+                        $stickynavbar = true;
                     } else {
-                        $slideinterval = 0;
-                    }
-                    $data = array('data' => array('slideinterval' => $slideinterval));
-                    $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
-                    $this->hasspecificheader = true;
-                    $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
-                    if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
-                        // We have a custom setting so enforce the intent.
-                        $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
-                        if (!empty($this->page->theme->settings->$cchavestickysetting)) {
-                            $stickynavbar = true;
-                        } else {
-                            $stickynavbar = false;
-                        }
+                        $stickynavbar = false;
                     }
                 }
                 break;
