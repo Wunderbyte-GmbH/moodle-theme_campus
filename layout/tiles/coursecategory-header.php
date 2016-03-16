@@ -28,11 +28,7 @@
 
 global $OUTPUT;
 
-if ($OUTPUT->is_course_page()) {
-    $currentcategory = $OUTPUT->get_current_top_level_catetgory();
-} else {
-    $currentcategory = $OUTPUT->get_current_category();
-}
+$currentcategory = $OUTPUT->get_current_top_level_catetgory();
 
 // Image files.
 $cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;

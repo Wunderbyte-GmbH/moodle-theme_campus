@@ -1,5 +1,8 @@
 Version Information
 ===================
+16th March 2016 - Version 3.0.0.4
+  1. Responsive behaviour of the header on small devices - task #807.
+
  1st March 2016 - Version 3.0.0.3
   1. Dropdown for Profile settings in collapsed menu does not work - apply MDL-51819 - task #785.
   2. Accessibility error: Scrolldown-Button in Navbar gives error "empty link" - task #804.
