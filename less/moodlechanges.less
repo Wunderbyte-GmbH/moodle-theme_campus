@@ -93,6 +93,12 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     background: @infoBackground;
 }
 
+.activity.label .dimmed_text {
+    .opacity(100);
+    color: @grayLight;
+    font-style: italic;
+}
+
 // core.less and modules.less
 // --------------------------------------------------
 .jsenabled {
@@ -227,6 +233,20 @@ body.notediting {
 
 .coursebox .content .summary {
     float: none;
+}
+
+.course-content ul li.section.hidden {
+    .sectionname > span,
+    .content > div,  /* All the divs but the activities which are in a UL. */
+    .activity .activityinstance {
+        opacity: 1;
+        color: @grayLight;
+        font-style: italic;
+    }
+    .sectionname > span a {
+        color: inherit;
+        font-style: italic;
+    }
 }
 
 // debug.less

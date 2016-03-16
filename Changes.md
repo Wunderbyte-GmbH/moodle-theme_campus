@@ -2,6 +2,7 @@ Version Information
 ===================
 16th March 2016 - Version 2.9.1.25
   1. Responsive behaviour of the header on small devices - task #807.
+  2. If not fixed in core fix greyed out accessibility issue - task #808.
 
  1st March 2016 - Version 2.9.1.24
   1. Dropdown for Profile settings in collapsed menu does not work - apply MDL-51819 - task #785.
