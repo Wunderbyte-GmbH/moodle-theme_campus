@@ -300,6 +300,12 @@ $string['pageheadinglocationunderneathnavbar'] = 'Underneath the navbar';
 $string['pageheadinglocationheaderarea'] = 'Header area';
 $string['pageheadinglocationpagecontenttop'] = 'Top of page content';
 
+$string['smalldevice'] = 'Small device header';
+$string['smalldevicedesc'] = 'How the header will behave responsively on small devices.';
+$string['smalldevicenone'] = 'As other devices';
+$string['smalldevicelogoonly'] = 'Logo only';
+$string['smalldevicenologofound'] = 'No logo image file found.  Check that the theme \'pix\' folder contains an image called \'logo_responsive\'.';
+
 $string['coursepagepageheadinglocation'] = 'Course and category page \'page heading\' location';
 $string['coursepagepageheadinglocationdesc'] = 'Where to put the page heading on course and category pages.';
 

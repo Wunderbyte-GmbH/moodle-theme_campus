@@ -547,6 +547,18 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Small devices.
+    $name = 'theme_campus/smalldevice';
+    $title = get_string('smalldevice', 'theme_campus');
+    $description = get_string('smalldevicedesc', 'theme_campus');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('smalldevicenone', 'theme_campus'),
+        2 => new lang_string('smalldevicelogoonly', 'theme_campus')
+    );
+    // No CSS change, so no need to reset caches.
+    $settingpage->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Sticky navbar.
     $name = 'theme_campus/stickynavbar';
     $title = get_string('stickynavbar', 'theme_campus');
