@@ -438,6 +438,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             padding-right: 0;
         }
     }
+}
+
+#campusnavbar {
     &.affix {
         top: 0;
         left: 0;
@@ -450,7 +453,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 .frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
-    .backgroundcontainer .navbar.affix {
+    .backgroundcontainer .affix .navbar {
         top: 0;
         left: 0;
         padding-left: 0;
@@ -1171,12 +1174,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             }
             .frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
                 .backgroundcontainer {
-                    .navbar.campusnavbar {
+                    #campusnavbar .navbar {
                         position: static;
                     }
                 }
             }
-            .fancynavbar .campusnavbar {
+            .fancynavbar #campusnavbar {
                 &.affix-top {
                     position: absolute;
                     width: 100%;
@@ -1192,7 +1195,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             #body-header.fancynavbar {
                 padding-bottom: 30px;
             }
-            #body-header.fancynavbar, .campusnavbar {
+            #body-header.fancynavbar, #campusnavbar {
                 padding-left: 0;
                 padding-right: 0;
             }

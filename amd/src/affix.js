@@ -119,7 +119,7 @@ define(['jquery', 'core/log'], function($, log) {
   return {
     init: function() {
       $(document).ready(function($) {
-        $('.campusnavbar').affix({
+        $('#campusnavbar').affix({
           offset: {
             top: function() {
               return $('#page-header').height()
@@ -132,7 +132,7 @@ define(['jquery', 'core/log'], function($, log) {
         // See also: https://github.com/twbs/bootstrap/issues/1768
         // If the navbar is fixed and you have anchor links, then clicking on a link takes you to the target but the target
         // is obscured underneath the navbar.
-        var navbarheight = $('.campusnavbar').height();
+        var navbarheight = $('#campusnavbar').height();
         navbarheight = navbarheight + 10;
         $("#region-main a[href^=#]").each(function() { // Anchors.
             $($(this).attr("href")).css("padding-top", navbarheight + "px").css("margin-top", "-" + navbarheight + "px");

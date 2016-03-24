@@ -45,7 +45,7 @@ if ((!$hdflexlayout) && (!$hdlogo)) {
 } else {
     $hdextra = '';
 }
-
+echo '<header role="banner">';
 echo '<div id="body-header" class="'.$hdtype.'">';
 echo '<div class="container">';
 
@@ -95,3 +95,4 @@ if ($hdlogoextrapos == 2) {
 echo '</div></div>';
 
 include(dirname(__FILE__).'/navbar.php');
+echo '</header>';

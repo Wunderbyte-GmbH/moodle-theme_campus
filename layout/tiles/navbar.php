@@ -31,27 +31,29 @@ if (!empty($hdfancynavbar)) {
     $navbarclasses .= ' iamfancy';
 }
 ?>
-<header class="campusnavbar navbar navbar-static-top<?php echo $navbarclasses ?>">
-    <nav class="navbar-inner">
-        <div class="container-fluid">
-            <?php echo $OUTPUT->page_heading(); ?>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".campusnav">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="campusnav nav-collapse collapse">
-                <?php echo $OUTPUT->custom_menu(); ?>
-                <?php echo $OUTPUT->user_menu(); ?>
-                <ul class="nav pull-right">
-                    <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    <?php if ($logininfoheader) { ?>
-                        <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
+<nav id="campusnavbar" role="navigation" class="moodle-has-zindex navbar-static-top">
+    <div class="navbar <?php echo $navbarclasses ?>">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <?php echo $OUTPUT->page_heading(); ?>
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".campusnav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="campusnav nav-collapse collapse">
+                    <?php echo $OUTPUT->custom_menu(); ?>
+                    <?php echo $OUTPUT->user_menu(); ?>
+                    <ul class="nav pull-right">
+                        <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
+                        <?php if ($logininfoheader) { ?>
+                            <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
                         <?php } ?>
                         <?php echo $OUTPUT->header_toggle_menu(); ?>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
-    </nav>
-</header>
+    </div>
+</nav>
