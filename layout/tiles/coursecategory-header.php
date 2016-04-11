@@ -57,19 +57,7 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
         $hdresponsivelogo = $PAGE->theme->setting_file_url('frontpageresponsivelogo', 'frontpageresponsivelogo');
         $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage');
         $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
-        $hdflexlayout = ($hdlayout == 'flexlayout');
         $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
-        if ($hdflexlayout) {
-            $hdlogoextrapos = $hdbackgroundextrapos;
-            $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
-            if ($navbartype == 2) { // 2 is 'Fancy'.
-                $hdfancynavbar = true;
-                $hdlayout .= ' fancynavbar';
-            }
-        } else {
-            $hdlogoextrapos = 2; // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top of the background.
-            // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
-        }
         $frontpagesettings = true;
     }
 }
@@ -90,11 +78,11 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
         $hdresponsivebackgroundimage = $OUTPUT->pix_url($backgroundresponsivedetails['name'], 'theme');  // $hdresponsivebackgroundimage can still be false if 'pix_url' fails for some unknown reason.
     }
-    // Use flex layout with the logo on the left.
-    $hdlayout = 'flexlayout';
-    $hdbackgroundextrapos = 1;
+    // Fallback to frontpage settings as they are in 'front-pageheader.php' for the theme images.
+    $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
+    $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
     $hdlogoextrapos = $hdbackgroundextrapos;
-    $hdflexlayout = true;
+
     $themesettings = true;
     $frontpagesettings = true;
 }
@@ -103,22 +91,23 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
 if ((!$frontpagesettings) && (!$themesettings)) {
     $hdlayout = 'coursecategorylayout'.$currentcategory;
     $hdlayout = (!empty($PAGE->theme->settings->$hdlayout)) ? $PAGE->theme->settings->$hdlayout : 'absolutelayout';
-    $hdflexlayout = ($hdlayout == 'flexlayout');
     $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
     $hdbackgroundextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
-    if ($hdflexlayout) {
-        $hdlogoextrapos = $hdbackgroundextrapos;
-        $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
-        if ($navbartype == 2) { // 2 is 'Fancy'.
-            $hdfancynavbar = true;
-            $hdlayout .= ' fancynavbar';
-        }
-    } else {
-        $hdlogoextrapos = 2; // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top of the background.
-        // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
-    }
 }
 // End of fall back section.
+
+$hdflexlayout = ($hdlayout == 'flexlayout');
+if ($hdflexlayout) {
+    $hdlogoextrapos = $hdbackgroundextrapos;
+    $navbartype = (!empty($PAGE->theme->settings->navbartype)) ? $PAGE->theme->settings->navbartype : 1; // 1 is 'Standard'.
+    if ($navbartype == 2) { // 2 is 'Fancy'.
+        $hdfancynavbar = true;
+        $hdlayout .= ' fancynavbar';
+    }
+} else {
+    $hdlogoextrapos = 2; // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top of the background.
+    // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
+}
 
 if ($hdbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
     $hdbackgroundextra = 'right';
