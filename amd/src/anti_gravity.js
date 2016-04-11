@@ -17,12 +17,13 @@ define(['jquery'], function($) {
       }
     });
 
-    $('.antiGravity').click(function() {
+    $('.antiGravity').click(function(e) {
+      e.preventDefault();
       $('html, body').animate({scrollTop : 0}, animateduration);
       return false;
     });
 
-    $("a[href$='#page-footer']").click(function(e) {
+    $(".gotoBottom").click(function(e) {
       e.preventDefault();
       var target = $('#page-footer');
       $('html, body').animate({scrollTop : target.offset().top}, animateduration);

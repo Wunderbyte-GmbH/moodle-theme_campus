@@ -315,9 +315,9 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     protected function render_user_menu(custom_menu $menu) {
-        $this->render_gotobottom_menu($menu);
+        $content = $this->gotobottom();
 
-        $content = html_writer::start_tag('ul', array('class' => 'nav cpusermenu'));
+        $content .= html_writer::start_tag('ul', array('class' => 'nav cpusermenu'));
         foreach ($menu->get_children() as $item) {
             $content .= $this->render_custom_menu_item($item, 1);
         }
@@ -326,14 +326,16 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return $content;
     }
 
-    protected function render_gotobottom_menu(custom_menu $menu) {
-        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout
-                == 'admin')) { // Go to bottom.
-            $gotobottom = html_writer::tag('span', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
-            $url = new moodle_url($this->page->url);
-            $url->set_anchor('page-footer');
-            $menu->add($gotobottom, $url, get_string('gotobottom', 'theme_campus'), 10001);
+    protected function gotobottom() {
+        $gotobottom = '';
+        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') ||
+            ($this->page->pagelayout == 'admin')) { // Go to bottom.
+            $icon = html_writer::start_tag('span', array('class' => 'fa fa-arrow-circle-o-down slgotobottom')) . html_writer::end_tag('span');
+            $gotobottom = html_writer::tag('span', $icon,
+                array('class' => 'nav gotoBottom', 'title' => get_string('gotobottom', 'theme_campus')));
+
         }
+        return $gotobottom;
     }
 
     public function anti_gravity() {
