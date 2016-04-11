@@ -2,6 +2,7 @@ Version Information
 ===================
 11th April 2016 - Version 3.0.0.5
   1. Accessibility error: Scrolldown-Button in Navbar gives error "empty link" - task #804.
+  2. When logo display is set to "right" side and for a single category it is set to "left" side, then all categories have the logo on the left side - task #810.
 
 16th March 2016 - Version 3.0.0.4
   1. Responsive behaviour of the header on small devices - task #807.
