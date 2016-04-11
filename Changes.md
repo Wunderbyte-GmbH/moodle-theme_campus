@@ -1,5 +1,8 @@
 Version Information
 ===================
+11th April 2016 - Version 3.0.0.5
+  1. Accessibility error: Scrolldown-Button in Navbar gives error "empty link" - task #804.
+
 16th March 2016 - Version 3.0.0.4
   1. Responsive behaviour of the header on small devices - task #807.
   2. If not fixed in core fix greyed out accessibility issue - task #808.
