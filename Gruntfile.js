@@ -211,7 +211,7 @@ module.exports = function(grunt) {
                 src: 'pix_core/**/*.svg',
                     overwrite: true,
                     replacements: [{
-                        from: '#999999',
+                        from: '#999',
                         to: svgcolor
                     }]
             },
@@ -219,7 +219,7 @@ module.exports = function(grunt) {
                 src: 'pix_plugins/**/*.svg',
                     overwrite: true,
                     replacements: [{
-                        from: '#999999',
+                        from: '#999',
                         to: svgcolor
                     }]
             }

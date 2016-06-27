@@ -1,5 +1,10 @@
 Version Information
 ===================
+27th June 2016 - Version 3.1.0.1
+  1. Initial M3.1 version.
+  2. Implement new search UI on navbar.
+  3. Update icons.
+
 19th April 2016 - Version 3.0.0.6
   1. Fix outputrenderer issue - task #811.
 

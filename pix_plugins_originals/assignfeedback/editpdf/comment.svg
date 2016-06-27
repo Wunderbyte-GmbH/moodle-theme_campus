@@ -9,6 +9,6 @@
 	 xml:space="preserve" preserveAspectRatio="xMinYMid meet">
 <defs>
 </defs>
-<path style="fill:#999999;" d="M15,0H1C0.5,0,0,0.5,0,1v14c0,0.5,0.5,1,1,1h14c0.5,0,1-0.5,1-1V1C16,0.5,15.5,0,15,0z M10,12H3v-1h7
+<path style="fill:#999;" d="M15,0H1C0.5,0,0,0.5,0,1v14c0,0.5,0.5,1,1,1h14c0.5,0,1-0.5,1-1V1C16,0.5,15.5,0,15,0z M10,12H3v-1h7
 	V12z M13,10H3V9h10V10z M13,8H3V7h10V8z M13,6H3V5h10V6z M13,4H3V3h10V4z"/>
 </svg>

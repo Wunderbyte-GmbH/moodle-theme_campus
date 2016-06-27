@@ -45,6 +45,7 @@ if (!empty($hdfancynavbar)) {
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <?php echo $OUTPUT->user_menu(); ?>
                 <ul class="nav pull-right">
+                    <li><?php echo $OUTPUT->search_box(); ?></li>
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                     <?php if ($logininfoheader) { ?>
                         <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
