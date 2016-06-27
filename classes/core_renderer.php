@@ -900,6 +900,9 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
         if ($stickynavbar) {
             $this->page->requires->js_call_amd('theme_campus/affix', 'init');
+            if ($pagelayout == 'course') {
+                $this->page->requires->js_call_amd('theme_campus/course_navigation', 'init');
+            }
         }
 
         if (!empty($this->page->theme->settings->showheadertoggle)) {

@@ -134,7 +134,7 @@ define(['jquery', 'core/log'], function($, log) {
         // is obscured underneath the navbar.
         var navbarheight = $('.campusnavbar').height();
         navbarheight = navbarheight + 10;
-        $('#region-main a[href~="#"]').each(function() { // Anchors.
+        $('#region-main a[href^="#"]').each(function() { // Anchors.
             $($(this).attr("href")).css("padding-top", navbarheight + "px").css("margin-top", "-" + navbarheight + "px");
         });
       });

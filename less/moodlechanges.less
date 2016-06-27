@@ -327,7 +327,7 @@ textarea[cols] {
     .cell:nth-of-type(odd), &.lastrow .cell.header {
         background-color: @bodyBackgroundAlt;
     }
-    .cell:nth-of-type(even), .cell.header {
+    .cell:nth-of-type(even), &.heading .cell.header, &.heading .cell:nth-of-type(odd) {
         background-color: @bodyBackground;
     }
 }
