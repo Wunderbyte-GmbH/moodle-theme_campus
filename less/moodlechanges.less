@@ -217,15 +217,16 @@ body.notediting {
         margin-top: 1em;
         margin-bottom: 1em;
     }
-    .course-content ul.topics li.section {
+    &.format-topics .course-content ul.topics li.section {
         .left, .right {
             width: 20px;
         }
     }
-    &.format-topcoll {
+    // Hardcoded 'de' language default.
+    &.format-topcoll.lang-de {
         .course-content ul.topics li.section {
             .left, .right {
-                width: 40px; // Hardcoded 'de' language default.
+                width: 40px;
             }
         }
     }

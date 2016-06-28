@@ -5,7 +5,8 @@ Version Information
   2. Implement new search UI on navbar.
   3. Update icons.
   4. Cope with course navigation block.  Code from Essential.
-  5. Gradebook floating headers styling - again!
+  5. Gradebook floating headers styling.
+  6. Check Collapsed Topics styles.
 
 19th April 2016 - Version 3.0.0.6
   1. Fix outputrenderer issue - task #811.
