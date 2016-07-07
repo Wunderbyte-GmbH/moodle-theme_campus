@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 7th July 2016 - Version 3.1.0.2
+  1. Change to Bootstrapbase Bootstrap JavaScript.
+
 27th June 2016 - Version 3.1.0.1
   1. Initial M3.1 version.
   2. Implement new search UI on navbar.

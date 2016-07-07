@@ -53,12 +53,6 @@ $THEME->plugins_exclude_sheets = array(
     )
 );
 
-$THEME->parents_exclude_javascripts = array(
-    'bootstrapbase' => array(
-        'moodlebootstrap'
-    )
-); // Exclude the parent JS.
-
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 $empty = array();
