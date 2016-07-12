@@ -1,5 +1,8 @@
 Version Information
 ===================
+12th July 2016 - Version 3.1.1.0
+  1. First stable version for M3.1.
+
  7th July 2016 - Version 3.1.0.2
   1. Change to Bootstrapbase Bootstrap JavaScript.
 
