@@ -1,5 +1,8 @@
 Version Information
 ===================
+23rd July 2016 - Version 3.1.1.1
+  1. Hamburger button looks ugly in many cases - task #860.
+
 12th July 2016 - Version 3.1.1.0
   1. First stable version for M3.1.
 

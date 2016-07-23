@@ -52,7 +52,7 @@
 }
 
 .navbar .btn, .navbar .btn-group {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 // carousel.less.
@@ -139,6 +139,14 @@ textarea, .uneditable-input {
 
 // navbar.less
 // --------------------------------------------------
+.navbar .btn-navbar {
+  .border-radius(0);
+  .box-shadow(none);
+  .buttonBackground(transparent, transparent);
+  background-color: transparent;
+  border-color: transparent;
+}
+
 .navbar .btn-navbar .icon-bar {
   background-color: @navbarText;
 }
