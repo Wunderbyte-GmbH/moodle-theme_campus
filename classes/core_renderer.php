@@ -781,123 +781,136 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
-     * Returns the header file name in the 'tiles' folder to use for the current page.
+     * States if the frontpage header is being used on another page than the frontpage itself.
      * If logic in optional_jquery() changes, then change this too.
      */
-    public function get_header_file() {
-        $thefile = 'header'; // Default if not a specific header.
-        if (get_config('theme_campus', 'usefrontpageheader')) {  // If set then use the front page header on all unless specific header set.
-            $thefile = 'frontpage-header';
-        }
+    public function using_frontpage_header_on_another_page() {
+        $usingfph = false;
 
         $pagelayout = $this->page->pagelayout;
         if (($this->page->course->format == 'site') && (($pagelayout == 'incourse') || ($pagelayout == 'report'))) {
-            $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
+            $usingfph = true; // All site modules need to use the front page header as they have no top level category.
+        } else if (get_config('theme_campus', 'usefrontpageheader')) {  // If set then use the front page header on all unless specific header set.
+            switch ($pagelayout) {
+                case 'coursecategory':
+                case 'course':
+                case 'incourse':
+                case 'report':
+                    $usingfph = false;
+                break;
+                default:
+                    $usingfph = true;
+                break;
+            }
         }
 
-        switch ($pagelayout) {
-            case 'frontpage':
-                $thefile = 'frontpage-header';
-                break;
-            case 'coursecategory':
-            case 'course':
-            case 'incourse':
-            case 'report':
-                $thefile = 'coursecategory-header';
-                break;
+        return $usingfph;
+    }
+
+    /**
+     * Returns the header file name in the 'tiles' folder to use for the current page.
+     * If logic in optional_jquery() changes, then change this and using_frontpage_header_on_another_page() too.
+     */
+    public function get_header_file() {
+        $thefile = 'header'; // Default if not a specific header.
+
+        if ($this->using_frontpage_header_on_another_page()) {
+            $thefile = 'frontpage-header';
+        } else {
+            $pagelayout = $this->page->pagelayout;
+            switch ($pagelayout) {
+                case 'frontpage':
+                    $thefile = 'frontpage-header';
+                    break;
+                case 'coursecategory':
+                case 'course':
+                case 'incourse':
+                case 'report':
+                    $thefile = 'coursecategory-header';
+                    break;
+            }
         }
 
-        return $thefile . '.php';
+        return $thefile.'.php';
     }
 
     /**
      * Works out and adds optional jQuery on the page if needed by criteria.
-     * If logic in get_header_file() changes, then change this too.
+     * If logic in get_header_file() changes, then change this and using_frontpage_header_on_another_page() too.
      * MUST be called before any page output happens.
      */
     public function optional_jquery() {
         $stickynavbar = false;
 
         $pagelayout = $this->page->pagelayout;
-        if (($this->page->course->format == 'site') && (($pagelayout == 'incourse') || ($pagelayout == 'report'))) {
-            $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
-        }
-
-        switch ($pagelayout) {
-            case 'frontpage':
-                $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay
-                            : 2;  // Default of 'Yes'.
-                if ($autoplay == 2) {
-                    $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval
-                                : 5000;
-                } else {
-                    $slideinterval = 0;
-                }
-                $data = array('data' => array('slideinterval' => $slideinterval));
-                $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
-                // We are the front page setting enforce the intent.
+        if ($pagelayout == 'frontpage') {
+            $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+            if ($autoplay == 2) {
+                $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
+            } else {
+                $slideinterval = 0;
+            }
+            $data = array('data' => array('slideinterval' => $slideinterval));
+            $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
+            // We are the front page setting enforce the intent.
+            if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
+                $stickynavbar = true;
+            }
+            $this->hasspecificheader = true;
+        } else {
+            if ($this->using_frontpage_header_on_another_page()) {
                 if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
                     $stickynavbar = true;
                 }
                 $this->hasspecificheader = true;
-                break;
-            default:
-                if (!empty($this->page->theme->settings->usefrontpageheader)) { // If set then the front page header settings apply on all unless specific header set.
-                    if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
-                        $stickynavbar = true;
-                    }
-                    $this->hasspecificheader = true;
-                } else {
-                    if (!empty($this->page->theme->settings->stickynavbar)) {
-                        $stickynavbar = true;
-                    }
+            } else {
+                if (!empty($this->page->theme->settings->stickynavbar)) {
+                    $stickynavbar = true;
                 }
-                break;
+                switch ($pagelayout) {
+                    case 'coursecategory':
+                        $currentcategory = $this->get_current_top_level_catetgory();
+                        $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+                        if ($autoplay == 2) {
+                            $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
+                        } else {
+                            $slideinterval = 0;
+                        }
+                        $data = array('data' => array('slideinterval' => $slideinterval));
+                        $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
+                        $this->hasspecificheader = true;
+                        $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
+                        if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
+                            // We have a custom setting so enforce the intent.
+                            $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
+                            if (!empty($this->page->theme->settings->$cchavestickysetting)) {
+                                $stickynavbar = true;
+                            } else {
+                                $stickynavbar = false;
+                            }
+                        }
+                        break;
+                    case 'course':
+                    case 'incourse':
+                    case 'report':
+                        // From our point of view, the same as is_course_page().
+                        $this->hasspecificheader = true;
+                        $currentcategory = $this->get_current_top_level_catetgory();
+                        $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
+                        if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
+                            // We have a custom setting so enforce the intent.
+                            $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
+                            if (!empty($this->page->theme->settings->$cchavestickysetting)) {
+                                $stickynavbar = true;
+                            } else {
+                                $stickynavbar = false;
+                            }
+                        }
+                        break;
+                }
+            }
         }
 
-        switch ($pagelayout) {
-            case 'coursecategory':
-                $currentcategory = $this->get_current_top_level_catetgory();
-                $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay
-                    : 2;  // Default of 'Yes'.
-                if ($autoplay == 2) {
-                    $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval
-                        : 5000;
-                } else {
-                    $slideinterval = 0;
-                }
-                $data = array('data' => array('slideinterval' => $slideinterval));
-                $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
-                $this->hasspecificheader = true;
-                $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
-                if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
-                    // We have a custom setting so enforce the intent.
-                    $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
-                    if (!empty($this->page->theme->settings->$cchavestickysetting)) {
-                        $stickynavbar = true;
-                    } else {
-                        $stickynavbar = false;
-                    }
-                }
-                break;
-            case 'course':
-            case 'incourse':
-            case 'report':
-                // From our point of view, the same as is_course_page().
-                $this->hasspecificheader = true;
-                $currentcategory = $this->get_current_top_level_catetgory();
-                $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
-                if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
-                    // We have a custom setting so enforce the intent.
-                    $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
-                    if (!empty($this->page->theme->settings->$cchavestickysetting)) {
-                        $stickynavbar = true;
-                    } else {
-                        $stickynavbar = false;
-                    }
-                }
-                break;
-        }
         if ($stickynavbar) {
             $this->page->requires->js_call_amd('theme_campus/affix', 'init');
             if ($pagelayout == 'course') {
@@ -917,10 +930,6 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     public function is_course_page() {
         $pagelayout = $this->page->pagelayout;
-        if (($this->page->course->format == 'site') && (($pagelayout == 'incourse') || ($pagelayout == 'report'))) {
-            $pagelayout = 'frontpage'; // All site modules need to use the front page header as they have no top level category.
-        }
-
         switch ($pagelayout) {
             case 'course':
             case 'incourse':
@@ -984,14 +993,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
-     * Gets HTML for the page heading.
+     * Gets HTML for the page heading.  Called from navbar.
      *
-     * @since Moodle 2.5.1 2.6
+     * @since Moodle 2.5.1 2.6.
      * @param string $tag The tag to encase the heading in. h1 by default.
      * @return string HTML.
      */
     public function page_heading($tag = 'h1') {
-        if ($this->page->pagelayout == 'frontpage') {
+        if (($this->page->pagelayout == 'frontpage') || ($this->using_frontpage_header_on_another_page())) {
             if ((!empty($this->page->theme->settings->frontpagepageheadinglocation)) &&
                 ($this->page->theme->settings->frontpagepageheadinglocation == 1)) {
                 return $this->get_page_heading();

@@ -36,7 +36,13 @@
             <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
         <?php } ?>
     </div>
-    <?php echo $html->heading; ?>
+    <?php
+    if ($OUTPUT->using_frontpage_header_on_another_page()) {
+        if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 2)) {
+            echo $OUTPUT->get_page_heading();
+        } 
+    }
+    echo $html->heading; ?>
     <div id="course-header">
         <?php echo $OUTPUT->course_header(); ?>
     </div>

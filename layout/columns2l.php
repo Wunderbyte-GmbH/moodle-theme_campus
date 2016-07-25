@@ -96,6 +96,10 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                        ($PAGE->theme->settings->coursepagepageheadinglocation == 3)) {
                         echo $OUTPUT->get_page_heading();
                     }
+                } else if ($OUTPUT->using_frontpage_header_on_another_page()) {
+                    if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
+                        echo $OUTPUT->get_page_heading();
+                    }
                 }
                 echo $OUTPUT->course_content_header();
                 echo $OUTPUT->main_content();

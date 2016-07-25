@@ -32,7 +32,10 @@ if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->th
 ?>
 
 <header id="page-header" class="clearfix">
-    <?php echo $html->heading; ?>
+    <?php
+        // Need the 'page-header' id even if $html->heading is empty for the Affix to work.
+        echo $html->heading;
+    ?>
 </header>
 
 <?php

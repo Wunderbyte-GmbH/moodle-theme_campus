@@ -1,5 +1,8 @@
 Version Information
 ===================
+25th July 2016 - Version 3.1.1.2
+  1. Setting coursepagepageheadinglocation/frontpagepageheadinglocation is not always applied correctly - task #863.
+
 23rd July 2016 - Version 3.1.1.1
   1. Hamburger button looks ugly in many cases - task #860.
 
