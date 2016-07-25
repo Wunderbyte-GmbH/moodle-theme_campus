@@ -387,9 +387,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     vertical-align: top;
                     width: auto;
                     height: auto;
-                    max-width: @baseLineHeight - 2;
-                    max-height: @baseLineHeight - 2;
-                    border-radius: 4px;
+                    max-width: @baseLineHeight;
+                    max-height: @baseLineHeight;
+                    border-radius: @baseBorderRadius;
                     margin-right: 2px;
                 }
                 > a.dropdown-toggle {
@@ -422,9 +422,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
         .usermenu {
             .dropdown {
-                img.userpicture {
-                    border: 1px solid @navbarBackground;
-                }
                 ul.dropdown-menu {
                     border: 1px solid @bodyBackgroundAlt;
                     hr.sep {
