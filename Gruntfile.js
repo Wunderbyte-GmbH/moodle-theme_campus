@@ -144,7 +144,7 @@ module.exports = function(grunt) {
     decachephp += 'require(\'' + configfile  + '\');';
     decachephp += 'theme_reset_all_caches();';
 
-    var svgcolor = grunt.option('svgcolor') || '#7575E0';
+    var svgcolor = grunt.option('svgcolor') || '#999999';
 
     grunt.initConfig({
         less: {
@@ -204,6 +204,12 @@ module.exports = function(grunt) {
                  cwd:  'pix_plugins_originals/',
                  src:  '**',
                  dest: 'pix_plugins/',
+            },
+            svg_fp: {
+                 expand: true,
+                 cwd:  'pix_fp_originals/',
+                 src:  '**',
+                 dest: 'pix/fp/',
             }
         },
         replace: {
@@ -217,6 +223,14 @@ module.exports = function(grunt) {
             },
             svg_colours_plugins: {
                 src: 'pix_plugins/**/*.svg',
+                    overwrite: true,
+                    replacements: [{
+                        from: '#999',
+                        to: svgcolor
+                    }]
+            },
+            svg_colours_fp: {
+                src: 'pix/fp/**/*.svg',
                     overwrite: true,
                     replacements: [{
                         from: '#999',
@@ -248,6 +262,12 @@ module.exports = function(grunt) {
                     cwd: 'pix_plugins',   // Source matches are relative to this path.
                     src: ['**/*.svg'],    // Actual pattern(s) to match.
                     dest: 'pix_plugins/', // Destination path prefix.
+                    ext: '.svg'           // Destination file paths will have this extension.
+                }, {                      // Dictionary of files
+                    expand: true,         // Enable dynamic expansion.
+                    cwd: 'pix/fp',        // Source matches are relative to this path.
+                    src: ['**/*.svg'],    // Actual pattern(s) to match.
+                    dest: 'pix/fp/',      // Destination path prefix.
                     ext: '.svg'           // Destination file paths will have this extension.
                 }]
             }
@@ -292,8 +312,8 @@ module.exports = function(grunt) {
     grunt.registerTask("decache", ["exec:decache"]);
 
     grunt.registerTask("compile", ["less:editor_"+build, "decache"]);
-    grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
-    grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
-    grunt.registerTask("svg", ["copy:svg", "svgmin", "replace:svg_colours"]);
+    grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins", "copy:svg_fp"]);
+    grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins", "replace:svg_colours_fp"]);
+    grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);
     grunt.registerTask("amd", ["jshint", "uglify"]);
 };

@@ -33,6 +33,11 @@ function theme_campus_process_css($css, $theme) {
     } else {
         $customcss = null;
     }
+
+    if (\theme_campus\toolbox::get_setting('iconcoloursetting')) {
+        \theme_campus\toolbox::change_icons();
+    }
+
     $css = theme_campus_set_customcss($css, $customcss);
 
     return $css;
