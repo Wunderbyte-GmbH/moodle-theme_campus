@@ -313,7 +313,7 @@ $string['showsysteminbreadcrumb'] = 'Show system area name in the breadcrumb';
 $string['showsysteminbreadcrumbdesc'] = 'Show the system area name in the breadcrumb.';
 
 $string['showsectioninbreadcrumb'] = 'Show section name in the breadcrumb';
-$string['showsectioninbreadcrumbdesc'] = 'Show the section name in the breadcrumb when viewing an actitity or resource.';
+$string['showsectioninbreadcrumbdesc'] = 'Show the section name in the breadcrumb when viewing an activity or resource.';
 
 $string['headerimage'] = 'Header image representing the corporate design';
 $string['headerlogo'] = 'Header logo representing the corporate design';
