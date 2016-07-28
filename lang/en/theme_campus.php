@@ -154,6 +154,12 @@ $string['headingcolourdesc'] = 'Set the heading colour.';
 $string['navbartextcolour'] = 'Navbar text colour';
 $string['navbartextcolourdesc'] = 'Set the navigation bar text colour.';
 
+$string['navbarlinkcolour'] = 'Navbar link colour';
+$string['navbarlinkcolourdesc'] = 'Set the navigation bar link colour.';
+
+$string['navbarbackgroundcolour'] = 'Navbar background colour';
+$string['navbarbackgroundcolourdesc'] = 'Set the navigation bar background colour.';
+
 $string['blockheadingcolour'] = 'Block heading colour';
 $string['blockheadingcolourdesc'] = 'Set the block heading colour.';
 
@@ -393,6 +399,10 @@ $string['coursecategoryresponsivebackgroundimagedesc'] = 'Please upload your cus
 // Image positions.
 $string['imageleft'] = 'Left';
 $string['imageright'] = 'Right';
+
+// Forum header.
+$string['forumheadertextcolour'] = 'Forum header text colour';
+$string['forumheadertextcolourdesc'] = 'Set the forum header text colour.';
 
 // Footer.
 $string['footersettings'] = 'Footer';

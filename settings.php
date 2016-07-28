@@ -229,14 +229,15 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Icon colour setting - to enable / disable the functionality.
+    // Icon colour setting 'setting' - to enable / disable the functionality.
     $name = 'theme_campus/iconcoloursetting';
     $title = get_string('iconcoloursetting', 'theme_campus');
     $description = get_string('iconcoloursetting_desc', 'theme_campus');
     $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
-    
+
+    // Icon colour setting.
     $name = 'theme_campus/iconcolour';
     $title = get_string('iconcolour', 'theme_campus');
     $description = get_string('iconcolour_desc', 'theme_campus');
@@ -261,6 +262,26 @@ if ($ADMIN->fulltree) {
     $title = get_string('navbartextcolour', 'theme_campus');
     $description = get_string('navbartextcolourdesc', 'theme_campus');
     $default = '#190500';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Navbar link colour setting.
+    $name = 'theme_campus/navbarlinkcolour';
+    $title = get_string('navbarlinkcolour', 'theme_campus');
+    $description = get_string('navbarlinkcolourdesc', 'theme_campus');
+    $default = '#190500';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Navbar background colour setting.
+    $name = 'theme_campus/navbarbackgroundcolour';
+    $title = get_string('navbarbackgroundcolour', 'theme_campus');
+    $description = get_string('navbarbackgroundcolourdesc', 'theme_campus');
+    $default = '#feee36';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -379,6 +400,16 @@ if ($ADMIN->fulltree) {
     $title = get_string('themebackgroundcolour', 'theme_campus');
     $description = get_string('themebackgroundcolourdesc', 'theme_campus');
     $default = '#ffffff';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Forum header text colour setting.
+    $name = 'theme_campus/forumheadertextcolour';
+    $title = get_string('forumheadertextcolour', 'theme_campus');
+    $description = get_string('forumheadertextcolourdesc', 'theme_campus');
+    $default = '#333333';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');

@@ -181,7 +181,7 @@
 
 @navbarHeight:                    34px;
 @navbarBackgroundHighlight:       @bodyBackgroundAlt;
-@navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
+@navbarBackground:                @bodyBackgroundAlt;
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
 @navbarText:                      @textColor;
@@ -357,3 +357,9 @@
 @courseCategoryLogoWidthDefault: 20%;
 @courseCategoryBackgroundWidthDefault: 80%;
 @courseCategoryPaddingBottomDefault: 0%;
+
+// Forum header.
+@forumHeaderBackgroundColour: rgba(255, 255, 255, 0.5);
+@forumHeaderBorderColour: darken(@forumHeaderBackgroundColour, 10%);
+@forumHeaderTextColour: @textColor;
+@forumHeaderLinkColour: inherit;

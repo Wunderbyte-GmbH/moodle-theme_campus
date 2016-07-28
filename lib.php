@@ -95,6 +95,13 @@ function theme_campus_less_variables($theme) {
         $variables['navbarBrandColor'] = $theme->settings->navbartextcolour;
         $variables['navbarLinkColor'] = $theme->settings->navbartextcolour;
     }
+    if (!empty($theme->settings->navbarlinkcolour)) {
+        $variables['navbarLinkColor'] = $theme->settings->navbarlinkcolour;
+    }
+    if (!empty($theme->settings->navbarbackgroundcolour)) {
+        $variables['navbarBackground'] = $theme->settings->navbarbackgroundcolour;
+        $variables['navbarBackgroundHighlight'] = $theme->settings->navbarbackgroundcolour;
+    }
     if (!empty($theme->settings->blockheadingcolour)) {
         $variables['blockHeadingColor'] = $theme->settings->blockheadingcolour;
     }

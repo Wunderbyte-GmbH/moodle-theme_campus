@@ -1231,6 +1231,16 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+// Header goto bottom and search.
+.navbar .nav {
+    &.gotoBottom, .search-input-wrapper {
+        cursor: pointer;
+        span.fa {
+            color: @navbarText;
+        }
+    }
+}
+
 // Footer.
 #page-footer {
     padding: 1em 0 0 0;
@@ -1308,12 +1318,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         &.header {
             margin-bottom: 8px;
             min-height: 43px;
-            background-color: @tableBackgroundAccentOdd;
-            border: 1px solid @grayLightish;
+            background-color: @forumHeaderBackgroundColour;
+            border: 1px solid @forumHeaderBorderColour;
 
-            color: darken(@navbarText, 15%);
+            color: @forumHeaderTextColour;
             a {
-                color: inherit;
+                color: @forumHeaderLinkColour;
             }
 
         }
