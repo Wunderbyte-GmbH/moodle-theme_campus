@@ -28,11 +28,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2016062705; // Note: Must never be less than M3.0 possible last version.
+$plugin->version   = 2016062706; // Note: Must never be less than M3.0 possible last version.
 $plugin->requires  = 2016052300.00; // 3.1 (Build: 20160523).
 $plugin->component = 'theme_campus';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '3.1.1.3';
+$plugin->release = '3.1.1.4';
 $plugin->dependencies = array(
     'theme_bootstrapbase'  => 2016052300
 );

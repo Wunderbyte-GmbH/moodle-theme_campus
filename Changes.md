@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 4th August 2016 - Version 3.1.1.4
+  1. MDL-39661.
+
 28th July 2016 - Version 3.1.1.3
   1. Forumpost font colour - task #862.
 

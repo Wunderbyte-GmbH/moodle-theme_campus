@@ -295,7 +295,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                     $output .= $this->block($bc, $region);
                     $lastblock = $bc->title;
                 } else if ($bc instanceof block_move_target) {
-                    $output .= $this->block_move_target($bc, $zones, $lastblock);
+                    $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
                 } else {
                     throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
                 }
