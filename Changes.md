@@ -1,6 +1,9 @@
 Version Information
 ===================
-10th August 2016 - Version 3.1.1.5
+10th August 2016 - Version 3.1.1.7
+  1. Fix icon colour setting default.
+
+10th August 2016 - Version 3.1.1.6
   1. Fix anti gravity colour.
   2. Fix icon colour setting default.
 
