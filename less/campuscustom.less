@@ -27,13 +27,13 @@ body {
 
 // Anti gravity.
 .antiGravity {
-    background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.6);
+    background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.8);
     border-color: @bodyBackgroundAlt;
     border-radius: 1em;
     border-style: solid;
     border-width: 1px;
     bottom: 60px;
-    color: @navbarText;
+    color: @textColor;
     display: none;
     font-size: 32px;
     line-height: 1;
@@ -45,7 +45,7 @@ body {
     &:hover {
         text-decoration: none;
         border-radius: 1em;
-        color: darken(@navbarText, 10%);
+        color: lighten(@textColor, 10%);
     }
     i.fa {
         padding-bottom: 2px;

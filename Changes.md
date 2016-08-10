@@ -1,5 +1,9 @@
 Version Information
 ===================
+10th August 2016 - Version 3.1.1.5
+  1. Fix anti gravity colour.
+  2. Fix icon colour setting default.
+
  8th August 2016 - Version 3.1.1.5
   1. MDL-53152.
 

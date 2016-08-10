@@ -241,7 +241,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_campus/iconcolour';
     $title = get_string('iconcolour', 'theme_campus');
     $description = get_string('iconcolour_desc', 'theme_campus');
-    $default = '#7575E0';
+    $default = '#99999';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
