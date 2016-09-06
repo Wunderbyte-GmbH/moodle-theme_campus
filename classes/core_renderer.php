@@ -507,8 +507,10 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $usermenu .= html_writer::start_tag('ul', array('class' => 'dropdown-menu pull-right'));
         $usermenu .= html_writer::tag('li', $this->login_info());
 
-        // Add preferences submenu
-        $usermenu .= $this->theme_campus_render_preferences($context);
+        // Add preferences
+        $branchlabel = '<em><span class="fa fa-cog"></span>' . get_string('preferences') . '</em>';
+        $branchurl = new moodle_url('/user/preferences.php');
+        $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
         $usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
 
@@ -745,50 +747,6 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             }
         }
         return $loginurl;
-    }
-
-    /**
-     * Renders preferences submenu
-     *
-     * @param integer $context
-     * @return string $preferences
-     */
-    private function theme_campus_render_preferences($context) {
-        global $USER, $CFG;
-        $label = '<em><span class="fa fa-cog"></span>' . get_string('preferences') . '</em>';
-        $preferences = html_writer::start_tag('li', array('class' => 'dropdown-submenu preferences'));
-        $preferences .= html_writer::link(new moodle_url('#'), $label,
-                        array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
-        $preferences .= html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
-        // Check if user is allowed to edit profile
-        if (has_capability('moodle/user:editownprofile', $context)) {
-            $branchlabel = '<em><span class="fa fa-user"></span>' . get_string('editmyprofile') . '</em>';
-            $branchurl = new moodle_url('/user/edit.php', array('id' => $USER->id));
-            $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-        }
-        if (has_capability('moodle/user:changeownpassword', $context)) {
-            $branchlabel = '<em><span class="fa fa-key"></span>' . get_string('changepassword') . '</em>';
-            $branchurl = new moodle_url('/login/change_password.php');
-            $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-        }
-        if (has_capability('moodle/user:editownmessageprofile', $context)) {
-            $branchlabel = '<em><span class="fa fa-comments"></span>' . get_string('messagepreferences', 'theme_campus') . '</em>';
-            $branchurl = new moodle_url('/message/edit.php', array('id' => $USER->id));
-            $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-        }
-        if ($CFG->enableblogs) {
-            $branchlabel = '<em><span class="fa fa-rss-square"></span>' . get_string('blogpreferences', 'theme_campus') . '</em>';
-            $branchurl = new moodle_url('/blog/preferences.php');
-            $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-        }
-        if ($CFG->enablebadges && has_capability('moodle/badges:manageownbadges', $context)) {
-            $branchlabel = '<em><span class="fa fa-certificate"></span>' . get_string('badgepreferences', 'theme_campus') . '</em>';
-            $branchurl = new moodle_url('/badges/preferences.php');
-            $preferences .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
-        }
-        $preferences .= html_writer::end_tag('ul');
-        $preferences .= html_writer::end_tag('li');
-        return $preferences;
     }
 
     /**

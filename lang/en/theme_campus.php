@@ -73,6 +73,8 @@ $string['navbarpageheadingmaxdesc'] = 'Set the navbar page heading maximum betwe
 // Login custom menu.
 $string['mygrades'] = 'My grades';
 $string['coursegrades'] = 'Course grades';
+
+// Login custom menu depreciated.
 $string['blogpreferences'] = 'Blog preferences';
 $string['badgepreferences'] = 'Badge preferences';
 $string['messagepreferences'] = 'Message preferences';

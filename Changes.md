@@ -1,5 +1,11 @@
 Version Information
 ===================
+ 6th September 2016 - Version 3.1.1.9
+  1. Dropdown User menu - task #891.
+
+10th August 2016 - Version 3.1.1.8
+  1. Fix icons.
+
 10th August 2016 - Version 3.1.1.7
   1. Fix icon colour setting default.
 
