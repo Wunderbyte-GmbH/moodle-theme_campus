@@ -27,6 +27,8 @@
  */
 
 $OUTPUT->optional_jquery();
+// Get the HTML for the settings bits.
+$html = theme_campus_get_html_for_settings($OUTPUT, $PAGE);
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
