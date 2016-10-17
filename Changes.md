@@ -3,6 +3,7 @@ Version Information
 17th October 2016 - Version 3.1.1.10
   1. Quiz: Make the "Submit quiz" button sticky to always be visible - task #916.
   2. Fix missing 'html' object in the secure layout.
+  3. In the quiz, the navigation block is on the right side despite theme setting: 2 column, blocks on the left - task #917.
 
  6th September 2016 - Version 3.1.1.9
   1. Dropdown User menu - task #891.

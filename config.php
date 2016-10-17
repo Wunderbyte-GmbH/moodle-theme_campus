@@ -68,30 +68,35 @@ switch ($themelayout) {
         $fpregions = $col3regions;
         $sitefile = 'columns3.php';
         $siteregions = $col3regions;
+        $securefile = 'secure3.php';
     break;
     case 2: // Three column front page and two columns with blocks left elsewhere.
         $fpfile = 'frontpage3.php';
         $fpregions = $col3regions;
         $sitefile = 'columns2l.php';
         $siteregions = $col2regions;
+        $securefile = 'secure2l.php';
     break;
     case 3: // Three column front page and two columns with blocks right elsewhere.
         $fpfile = 'frontpage3.php';
         $fpregions = $col3regions;
         $sitefile = 'columns2r.php';
         $siteregions = $col2regions;
+        $securefile = 'secure2r.php';
     break;
     case 4: // Two columns with blocks on the left.
         $fpfile = 'frontpage2l.php';
         $fpregions = $col2regions;
         $sitefile = 'columns2l.php';
         $siteregions = $col2regions;
+        $securefile = 'secure2l.php';
     break;
     case 5: // Two columns with blocks on the right.
         $fpfile = 'frontpage2r.php';
         $fpregions = $col2regions;
         $sitefile = 'columns2r.php';
         $siteregions = $col2regions;
+        $securefile = 'secure2r.php';
     break;
 }
 
@@ -201,8 +206,8 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
-        'file' => 'secure.php',
-        'regions' => $col3regions,
+        'file' => $securefile,
+        'regions' => $siteregions,
         'defaultregion' => 'side-pre'
     ),
 );
