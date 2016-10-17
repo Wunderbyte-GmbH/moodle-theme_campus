@@ -1445,6 +1445,23 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
+// Quit: Make the "Submit quiz" button sticky to always be visible - task 916.
+#page-mod-quiz-summary .singlebutton form[action$="processattempt.php"] div {
+    background-color: @inputBackground;
+    border-color: @inputBorder;
+    border-radius: @inputBorderRadius;
+    border-style: solid;
+    border-width: 2px;
+    bottom: 30px;
+    left: 50%;
+    padding: 5px;
+    position: fixed;
+    margin: 0;
+    input[type="submit"] {
+        margin: 5px;
+    }
+}
+
 // Attempt to solve overflowing table issue: https://moodle.org/mod/forum/discuss.php?d=279883 - related to:
 // https://moodle.org/mod/forum/discuss.php?d=274915 - which might be too - code comes from:
 // https://github.com/gjb2048/moodle-theme_shoehorn/issues/5
