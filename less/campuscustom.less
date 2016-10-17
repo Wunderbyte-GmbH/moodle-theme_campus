@@ -1466,13 +1466,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // https://moodle.org/mod/forum/discuss.php?d=274915 - which might be too - code comes from:
 // https://github.com/gjb2048/moodle-theme_shoehorn/issues/5
 table {
-    td {
-        padding-left: 20px;
-        word-break: break-word;  // TODO: Need to see if this is right for Campus.
+    th:first-child, td:first-child {
+        word-break: break-word;
         word-wrap: break-word;
-    }
-    td:first-of-type {
-        padding-left: 0;
     }
 }
 
