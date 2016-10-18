@@ -1,5 +1,8 @@
 Version Information
 ===================
+18th October 2016 - Version 3.1.1.11
+  1. Quiz: Make the "Submit quiz" button sticky to always be visible - z-index of 4 - task #916.
+
 17th October 2016 - Version 3.1.1.10
   1. Quiz: Make the "Submit quiz" button sticky to always be visible - task #916.
   2. Fix missing 'html' object in the secure layout.
