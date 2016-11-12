@@ -144,6 +144,9 @@ $string['textcolourdesc'] = 'Set the text colour.';
 $string['linkcolour'] = 'Link text colour';
 $string['linkcolourdesc'] = 'Set the link text colour.';
 
+$string['contentcolour'] = 'Content colour';
+$string['contentcolourdesc'] = 'Set the content colour.';
+
 $string['iconcoloursetting'] = 'Use icon colour setting';
 $string['iconcoloursetting_desc'] = 'Use the icon colour setting for the icons.  The icon colour functionality is new.  If you experience problems with it, then turn it off and run \'grunt svg\' on the Node.js command prompt.  Please see \'Gruntfile.js\' for full details.';
 

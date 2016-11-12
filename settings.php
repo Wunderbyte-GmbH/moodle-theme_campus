@@ -229,6 +229,16 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Content colour setting.
+    $name = 'theme_campus/contentcolour';
+    $title = get_string('contentcolour', 'theme_campus');
+    $description = get_string('contentcolourdesc', 'theme_campus');
+    $default = '#ffffff';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
     // Icon colour setting 'setting' - to enable / disable the functionality.
     $name = 'theme_campus/iconcoloursetting';
     $title = get_string('iconcoloursetting', 'theme_campus');

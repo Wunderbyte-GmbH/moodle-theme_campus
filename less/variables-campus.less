@@ -125,8 +125,8 @@
 
 // Forms
 // -------------------------
-@inputBackground:               lighten(@themeBackground, 5%);
-@inputBorder:                   darken(@themeBackground, 20%);
+@inputBackground:               lighten(@contentColor, 5%);
+@inputBorder:                   darken(@contentColor, 20%);
 @inputBorderRadius:             @baseBorderRadius;
 @inputDisabledBackground:       @grayLighter;
 @formActionsBackground:         @bodyBackground;
@@ -135,7 +135,7 @@
 
 // Dropdowns
 // -------------------------
-@dropdownBackground:            @themeBackground;
+@dropdownBackground:            @contentColor;
 @dropdownBorder:                rgba(0,0,0,.2);
 @dropdownDividerTop:            #e5e5e5;
 @dropdownDividerBottom:         @white;
@@ -144,7 +144,7 @@
 @dropdownLinkColorHover:        darken(@dropdownLinkColor, 10%);
 @dropdownLinkColorActive:       darken(@dropdownLinkColorHover, 10%);
 
-@dropdownLinkBackgroundActive:  @themeBackground;
+@dropdownLinkBackgroundActive:  @contentColor;
 @dropdownLinkBackgroundHover:   lighten(@dropdownLinkBackgroundActive, 8%);
 
 
@@ -304,7 +304,7 @@
 
 // Look and feel.
 @pageWidthMaximum: 1680px;
-@themeContent: #fff;
+@contentColor: #fff;
 
 // Blocks.
 @blockHeadingBackgroundColour: #a1d6de;

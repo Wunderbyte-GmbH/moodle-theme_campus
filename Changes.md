@@ -1,5 +1,8 @@
 Version Information
 ===================
+12th November 2016 - Version 3.1.1.12
+  1. Fix content colour - ref: https://moodle.org/mod/forum/discuss.php?d=341543#p1381206.
+
 18th October 2016 - Version 3.1.1.11
   1. Quiz: Make the "Submit quiz" button sticky to always be visible - z-index of 4 - task #916.
 

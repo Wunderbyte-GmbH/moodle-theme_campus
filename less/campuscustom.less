@@ -6,10 +6,16 @@ body {
 }
 
 #region-main {
-    background-color: @themeContent;
+    background-color: @contentColor;
     #campusCarousel.carousel {
-        background-color: darken(@themeContent, 20%);
+        background-color: darken(@contentColor, 20%);
     }
+}
+
+#region-main-campus div[role="main"] {
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 // Body.
@@ -1243,7 +1249,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 // Footer.
 #page-footer {
-    padding: 1em 0 0 0;
+    background-color: @contentColor;
+    padding: 1em 8px 0 8px;
     .helplink, .logininfo, {
         display: inline;
     }
