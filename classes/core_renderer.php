@@ -486,8 +486,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             return $this->login_info();
         }
 
-        global $USER, $CFG, $DB, $SESSION;
-        $loginurl = get_login_url();
+        global $USER, $CFG;
 
         $usermenu = html_writer::start_tag('ul', array('class' => 'nav'));
         $usermenu .= html_writer::start_tag('li', array('class' => 'dropdown'));
@@ -496,7 +495,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $context = context_course::instance($course->id);
 
         // Output Profile link
-        $userurl = new moodle_url('#');
+        $userurl = $this->page->url;
         $userpic = parent::user_picture($USER, array('link' => false));
         $caret = '<span class="fa fa-caret-right"></span>';
         $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');

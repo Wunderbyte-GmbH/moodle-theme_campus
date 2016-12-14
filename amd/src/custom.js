@@ -34,7 +34,7 @@ define(['jquery'], function($) {
   console.log('Campus custom AMD');
 
   $(document).ready(function() {
-      $('#page-mod-forum-view .forumheaderlist thead').after('<div class="forumblank"></div>');  // Taken from David Bogner's Squared theme.
+      $('\\#page-mod-forum-view .forumheaderlist thead').after('<div class="forumblank"></div>');  // Taken from David Bogner's Squared theme.
   });
 });
 /* jshint ignore:end */

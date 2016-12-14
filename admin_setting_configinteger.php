@@ -26,6 +26,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 class admin_setting_configinteger extends admin_setting_configtext {
 
     /** @var int lower range limit */

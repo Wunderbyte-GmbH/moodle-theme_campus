@@ -1,5 +1,25 @@
 Version Information
 ===================
+14th December 2016 - Version 3.2.0.1
+  1. Moodle 3.2 beta version.
+  2. For jQuery 3 needed to escape all '#'s and '"'s in the JS - ref: https://api.jquery.com/category/selectors/.
+  3. Note: Having a single hash '#' for the URL for ARIA on the 'dropdown-toggle' link breaks jQuery like so:
+
+Uncaught Error: Syntax error, unrecognized expression: #
+    at Function.ga.error (jquery-3.1.0.min.js:1)
+    at ga.tokenize (jquery-3.1.0.min.js:1)
+    at ga.select (jquery-3.1.0.min.js:1)
+    at Function.ga [as find] (jquery-3.1.0.min.js:1)
+    at r.fn.init.find (jquery-3.1.0.min.js:1)
+    at r.fn.init (jquery-3.1.0.min.js:1)
+    at r (jquery-3.1.0.min.js:1)
+    at c (first.js:232)
+    at HTMLAnchorElement.toggle (first.js:232)
+    at HTMLDocument.dispatch (jquery-3.1.0.min.js:1)
+
+Set to the page URL.  This needs ARIA checking.  But... the call stack indicates issues with Bootstrap 2.3.2 code, so I suspect that
+the decision to update to JQuery 3 was not so good in relation to supporting BS2.3.2 - need to investigate if bigger issue here.
+
 12th November 2016 - Version 3.1.1.12
   1. Fix content colour - ref: https://moodle.org/mod/forum/discuss.php?d=341543#p1381206.
 

@@ -9,7 +9,7 @@ define(['jquery', 'theme_bootstrapbase/bootstrap', 'core/log'], function($, boot
     init: function(data) {
       log.debug('Campus carousel AMD init, slide interval: ' + data.slideinterval);
       $( document ).ready(function($) {
-        $('#campusCarousel').carousel({
+        $('\\#campusCarousel').carousel({
             interval: data.slideinterval
         });
       });

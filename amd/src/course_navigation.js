@@ -52,7 +52,7 @@ define(['jquery', 'core/log'], function($, log) {
                     log.debug('Campus Course Navigation AMD navigation page scrollTop: ' + scrollTo);
                     log.debug('Campus Course Navigation AMD navigation page target offset: ' + targetOffset);
                 }
-                $('a[href*="#section-"]').each( function() {
+                $('a[href*=\\"\\#section-\\"]').each( function() {
                     var link_href_base = this.href.substring(0,this.href.indexOf('#'));
                     log.debug('Campus Course Navigation AMD navigation element: ' + $(this).attr('href'));
                     log.debug('Campus Course Navigation AMD navigation link_href_base: ' + link_href_base);
@@ -64,19 +64,21 @@ define(['jquery', 'core/log'], function($, log) {
                             var hash = url.substring(url.indexOf('#') + 1);
                             log.debug('Campus Course Navigation AMD navigation element hash: ' + hash);
                             var target = $('[id="' + hash + '"]');
-                            var targetOffset = target.offset().top;
-                            var scrollTo = targetOffset;
-                            if (navbar) {
-                                if (navbar.css('position') == 'fixed') {
-                                    scrollTo = scrollTo - navbarHeight;
-                                } else {
-                                    // Strange but true.
-                                    scrollTo = scrollTo - (navbarHeight * 2);
+                            if (target) {
+                                var targetOffset = target.offset().top;
+                                var scrollTo = targetOffset;
+                                if (navbar) {
+                                    if (navbar.css('position') == 'fixed') {
+                                        scrollTo = scrollTo - navbarHeight;
+                                    } else {
+                                        // Strange but true.
+                                        scrollTo = scrollTo - (navbarHeight * 2);
+                                    }
                                 }
+                                $('html, body').animate({scrollTop : scrollTo}, duration);
+                                log.debug('Campus Course Navigation AMD navigation element scrollTop: ' + scrollTo);
+                                log.debug('Campus Course Navigation AMD navigation element target offset: ' + targetOffset);
                             }
-                            $('html, body').animate({scrollTop : scrollTo}, duration);
-                            log.debug('Campus Course Navigation AMD navigation element scrollTop: ' + scrollTo);
-                            log.debug('Campus Course Navigation AMD navigation element target offset: ' + targetOffset);
                         });
                     }
                 });
