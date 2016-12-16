@@ -25,7 +25,7 @@ define(['jquery'], function($) {
 
     $(".gotoBottom").click(function(e) {
       e.preventDefault();
-      var target = $('\\#page-footer');
+      var target = $("#page-footer");
       $('html, body').animate({scrollTop : target.offset().top}, animateduration);
       return false;
     });

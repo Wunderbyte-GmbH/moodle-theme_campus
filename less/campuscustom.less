@@ -60,16 +60,13 @@ body {
 
 // Goto bottom.
 .navbar .nav.gotoBottom {
-    padding: 7px 15px 7px;
+    padding: 7px 7px;
 }
-@media (max-width: 979px) {
-    .navbar .nav {
-        &.gotoBottom {
-            position: absolute;
-            right: 0;
-            z-index: 1;
-        }
-    }
+
+// popover_region.less
+// --------------------------------------------------
+.navbar .popover-region-toggle .fa img {
+    display: none;
 }
 
 // Local login.
@@ -399,7 +396,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                     margin-right: 2px;
                 }
                 > a.dropdown-toggle {
-                    padding: ((@navbarHeight - @baseLineHeight) / 2) 0 ((@navbarHeight - @baseLineHeight) / 2) 30px;
+                    padding: ((@navbarHeight - @baseLineHeight) / 2) ((@navbarHeight - @baseLineHeight) / 2);
                     .fa {
                         padding-left: 5px;
                     }
@@ -1237,11 +1234,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
-// Header goto bottom and search.
+// Header goto bottom, navbar plugins and search.
 .navbar .nav {
-    &.gotoBottom, .search-input-wrapper {
+    &.gotoBottom, .popover-region-toggle, .search-input-wrapper {
         cursor: pointer;
-        span.fa {
+        .fa {
             color: @navbarText;
         }
     }

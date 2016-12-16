@@ -35,22 +35,21 @@ if (!empty($hdfancynavbar)) {
     <nav class="navbar-inner">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".campusnav">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
+            <?php echo $OUTPUT->navbar_button(); ?>
+            <ul class="nav pull-right">
+            <?php echo $OUTPUT->gotobottom_menu(); ?>
+            <?php echo $OUTPUT->navbar_plugin_output(); ?>
+            <?php if ($logininfoheader) { ?>
+                <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
+            <?php } ?>
+            <?php echo $OUTPUT->header_toggle_menu(); ?>
+            </ul>
             <div class="campusnav nav-collapse collapse">
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <?php echo $OUTPUT->user_menu(); ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->search_box(); ?></li>
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    <?php if ($logininfoheader) { ?>
-                        <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
-                        <?php } ?>
-                        <?php echo $OUTPUT->header_toggle_menu(); ?>
                 </ul>
             </div>
         </div>

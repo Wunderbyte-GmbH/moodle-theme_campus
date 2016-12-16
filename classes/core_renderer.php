@@ -62,6 +62,41 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * This code renders the navbar button to control the display of the custom menu
+     * on smaller screens.
+     *
+     * Do not display the button if the menu is empty.
+     *
+     * @return string HTML fragment
+     */
+    protected function navbar_button() {
+        $iconbar = html_writer::tag('span', '', array('class' => 'icon-bar'));
+        $button = html_writer::tag('a', $iconbar . "\n" . $iconbar. "\n" . $iconbar. "\n" . $iconbar, array(
+            'class'       => 'btn btn-navbar',
+            'data-toggle' => 'collapse',
+            'data-target' => '.campusnav'
+        ));
+        return $button;
+    }
+
+    /**
+     * Allow plugins to provide some content to be rendered in the navbar.
+     * The plugin must define a PLUGIN_render_navbar_output function that returns
+     * the HTML they wish to add to the navbar.
+     *
+     * @return string HTML for the navbar
+     */
+    public function navbar_plugin_output() {
+        $output = parent::navbar_plugin_output();
+
+        if (!empty($output)) {
+            $output = '<li>'.$output.'</li>';
+        }
+
+        return $output;
+    }
+
+    /**
      * Returns HTML to display a "Turn editing on/off" button in a form.
      *
      * @param moodle_url $url The URL + params to send through when clicking the button
@@ -314,9 +349,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     protected function render_user_menu(custom_menu $menu) {
-        $content = $this->gotobottom();
-
-        $content .= html_writer::start_tag('ul', array('class' => 'nav cpusermenu'));
+        $content = html_writer::start_tag('ul', array('class' => 'nav cpusermenu'));
         foreach ($menu->get_children() as $item) {
             $content .= $this->render_custom_menu_item($item, 1);
         }
@@ -325,7 +358,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return $content;
     }
 
-    protected function gotobottom() {
+    public function gotobottom_menu() {
         $gotobottom = '';
         if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') ||
             ($this->page->pagelayout == 'admin')) { // Go to bottom.
@@ -704,6 +737,29 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
 
         return $loggedinas;
+    }
+
+    /*
+    * This code replaces icons in with
+    * FontAwesome variants when needed.
+    */
+    public function render_pix_icon(pix_icon $icon) {
+        static $icons = array(
+            'i/notifications' => 'bell-o',
+            't/message' => 'comment-o'
+        );
+        if (array_key_exists($icon->pix, $icons)) {
+            $pix = $icons[$icon->pix];
+            /* Note: MUST have the 'i' tag instead of 'span' if use an icon in the editing action menu otherwise will break! */
+            if (empty($icon->attributes['alt'])) {
+                return '<span class="fa fa-'.$pix.' icon" aria-hidden="true">'.parent::render_pix_icon($icon).'</span>';
+            } else {
+                $alt = $icon->attributes['alt'];
+                return '<span class="fa fa-'.$pix.' icon" title="'.$alt.'" aria-hidden="true">'.parent::render_pix_icon($icon).'</span>';
+            }
+        } else {
+            return parent::render_pix_icon($icon);
+        }
     }
 
     /**
