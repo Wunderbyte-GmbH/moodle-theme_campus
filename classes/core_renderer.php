@@ -527,7 +527,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         $course = $this->page->course;
         $context = context_course::instance($course->id);
 
-        // Output Profile link
+        // Output Profile link.
         $userurl = $this->page->url;
         $userpic = parent::user_picture($USER, array('link' => false));
         $caret = '<span class="fa fa-caret-right"></span>';
@@ -535,18 +535,33 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
         $usermenu .= html_writer::link($userurl, $userpic . $USER->firstname . $caret, $userclass);
 
-        // Start dropdown menu items
+        // Start dropdown menu items.
         $usermenu .= html_writer::start_tag('ul', array('class' => 'dropdown-menu pull-right'));
         $usermenu .= html_writer::tag('li', $this->login_info());
 
-        // Add preferences
+        // Add preferences.
         $branchlabel = '<em><span class="fa fa-cog"></span>' . get_string('preferences') . '</em>';
         $branchurl = new moodle_url('/user/preferences.php');
         $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
+        // Switch role to.
+        if (!is_role_switched($course->id)) {
+            // Build switch role link.
+            $roles = get_switchable_roles($context);
+            if (is_array($roles) && (count($roles) > 0)) {
+                $branchlabel = '<em><span class="fa fa-users"></span>' . get_string('switchroleto') . '</em>';
+                $branchurl = new moodle_url('/course/switchrole.php', array(
+                    'id' => $course->id,
+                    'switchrole' => -1,
+                    'returnurl' => $this->page->url->out_as_local_url(false)
+                ));
+                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
+            }
+        }
+
         $usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
 
-        // Output Calendar link if user is allowed to edit own calendar entries
+        // Output Calendar link if user is allowed to edit own calendar entries.
         if (has_capability('moodle/calendar:manageownentries', $context)) {
             $branchlabel = '<em><span class="fa fa-calendar"></span>' . get_string('pluginname', 'block_calendar_month') . '</em>';
             $branchurl = new moodle_url('/calendar/view.php');
@@ -560,14 +575,14 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
 
-        // Check if user is allowed to manage files
+        // Check if user is allowed to manage files.
         if (has_capability('moodle/user:manageownfiles', $context)) {
             $branchlabel = '<em><span class="fa fa-file"></span>' . get_string('privatefiles', 'block_private_files') . '</em>';
             $branchurl = new moodle_url('/user/files.php');
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }
 
-        // Check if user is allowed to view discussions
+        // Check if user is allowed to view discussions.
         if (has_capability('mod/forum:viewdiscussion', $context)) {
             $branchlabel = '<em><span class="fa fa-list-alt"></span>' . get_string('forumposts', 'mod_forum') . '</em>';
             $branchurl = new moodle_url('/mod/forum/user.php', array('id' => $USER->id));
@@ -580,7 +595,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             $usermenu .= html_writer::empty_tag('hr', array('class' => 'sep'));
         }
 
-        // Output user grade links course sensitive, workaround for frontpage, selecting first enrolled course
+        // Output user grade links course sensitive, workaround for frontpage, selecting first enrolled course.
         if ($course->id == 1) {
             $hascourses = enrol_get_my_courses(NULL, 'visible DESC,id ASC', 1);
             foreach ($hascourses as $hascourse) {
@@ -598,7 +613,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
                     array('id' => $course->id, 'userid' => $USER->id));
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
 
-            // In Course also output Course grade links
+            // In Course also output Course grade links.
             $branchlabel = '<em><span class="fa fa-list-alt"></span>' . get_string('coursegrades', 'theme_campus') . '</em>';
             $branchurl = new moodle_url('/grade/report/user/index.php',
                     array('id' => $course->id, 'userid' => $USER->id));

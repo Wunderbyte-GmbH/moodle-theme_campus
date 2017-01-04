@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 4th January 2016 - Version 3.2.0.2
+  1. Add 'Switch role to' functionality.
+
 14th December 2016 - Version 3.2.0.1
   1. Moodle 3.2 beta version.
   2. For jQuery 3 needed to escape all '#'s and '"'s in the JS - ref: https://api.jquery.com/category/selectors/.
