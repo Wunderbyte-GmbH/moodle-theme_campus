@@ -2,6 +2,7 @@ Version Information
 ===================
  4th January 2016 - Version 3.2.0.2
   1. Add 'Switch role to' functionality.
+  2. Update to FontAwesome 4.7.0.
 
 14th December 2016 - Version 3.2.0.1
   1. Moodle 3.2 beta version.
