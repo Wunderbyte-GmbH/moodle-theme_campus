@@ -22,7 +22,7 @@ Uncaught Error: Syntax error, unrecognized expression: #
     at HTMLDocument.dispatch (jquery-3.1.0.min.js:1)
 
 Set to the page URL.  This needs ARIA checking.  But... the call stack indicates issues with Bootstrap 2.3.2 code, so I suspect that
-the decision to update to JQuery 3 was not so good in relation to supporting BS2.3.2 - need to investigate if bigger issue here.
+the decision to update to jQuery 3 was not so good in relation to supporting BS2.3.2 - need to investigate if bigger issue here.
 
 12th November 2016 - Version 3.1.1.12
   1. Fix content colour - ref: https://moodle.org/mod/forum/discuss.php?d=341543#p1381206.
