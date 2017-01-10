@@ -2,6 +2,8 @@ Version Information
 ===================
  5th May 2017 - Version 3.1.1.14
   1. Update to FontAwesome 4.7.0.
+  2. Removed redundant CSS file in font folder.
+  3. Fix 'block_adminblock' margin.
 
 13th April 2017 - Version 3.1.1.13
   1. Add Roberto as a body font.
