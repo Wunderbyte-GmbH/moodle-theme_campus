@@ -1,5 +1,9 @@
 Version Information
 ===================
+11th January 2016 - Version 3.2.0.2
+  1. Removed redundant CSS file in font folder.
+  2. Fix 'block_adminblock' margin.
+
  4th January 2016 - Version 3.2.0.2
   1. Add 'Switch role to' functionality.
   2. Update to FontAwesome 4.7.0.
