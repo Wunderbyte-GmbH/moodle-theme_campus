@@ -1,5 +1,8 @@
 Version Information
 ===================
+13th April 2017 - Version 3.2.0.4
+  1. Add Roberto as a body font.
+
 17th January 2017 - Version 3.2.0.3
   1. Fix change in font file length.
 

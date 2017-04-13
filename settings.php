@@ -203,6 +203,7 @@ if ($ADMIN->fulltree) {
     $choices = array(
         'Open Sans' => 'Open Sans',
         'Questrial' => 'Questrial',
+        'Roboto Condensed' => 'Roboto Condensed',
         'Source Sans Pro' => 'Source Sans Pro'
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
