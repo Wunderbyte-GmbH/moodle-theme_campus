@@ -1,5 +1,8 @@
 Version Information
 ===================
+13th April 2017 - Version 3.1.1.13
+  1. Add Roberto as a body font.
+
 12th November 2016 - Version 3.1.1.12
   1. Fix content colour - ref: https://moodle.org/mod/forum/discuss.php?d=341543#p1381206.
 
