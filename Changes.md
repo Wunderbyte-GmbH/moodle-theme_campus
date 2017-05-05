@@ -3,6 +3,7 @@ Version Information
 13th April 2017 - Version 3.2.1.0
   1. Add Roberto as a body font.
   2. Fix assignment view layout.
+  3. Fix 'Course name appears in navbar when set to appear only in page content' - #8.
 
 17th January 2017 - Version 3.2.0.3
   1. Fix change in font file length.
