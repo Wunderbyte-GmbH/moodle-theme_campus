@@ -100,9 +100,9 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                     <?php require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php'); ?>
                     <section id="region-main-campus" class="row-fluid">
                         <?php
-                        if (($PAGE->pagelayout == 'course') || ($PAGE->pagelayout == 'coursecategory')) {
-                            if ((!empty($PAGE->theme->settings->coursepagepageheadinglocation)) && ($PAGE->theme->settings->coursepagepageheadinglocation
-                                == 3)) {
+                        if ($OUTPUT->course_category_header()) {
+                            if ((!empty($PAGE->theme->settings->coursepagepageheadinglocation)) &&
+                                ($PAGE->theme->settings->coursepagepageheadinglocation == 3)) {
                                 echo $OUTPUT->get_page_heading();
                             }
                         } else if ($OUTPUT->using_frontpage_header_on_another_page()) {

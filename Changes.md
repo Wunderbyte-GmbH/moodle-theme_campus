@@ -6,6 +6,7 @@ Version Information
   3. Fix 'block_adminblock' margin.
   4. Fix change in font file length.
   5. Fix assignment view layout.
+  6. Fix 'Course name appears in navbar when set to appear only in page content' - #8.
 
 13th April 2017 - Version 3.1.1.13
   1. Add Roberto as a body font.

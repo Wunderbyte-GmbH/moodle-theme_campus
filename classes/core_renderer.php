@@ -779,7 +779,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
     /**
      * States if the frontpage header is being used on another page than the frontpage itself.
-     * If logic in optional_jquery() changes, then change this too.
+     * If logic in optional_jquery() / course_category_header() changes, then change this too.
      */
     public function using_frontpage_header_on_another_page() {
         $usingfph = false;
@@ -806,7 +806,8 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
     /**
      * Returns the header file name in the 'tiles' folder to use for the current page.
-     * If logic in optional_jquery() changes, then change this and using_frontpage_header_on_another_page() too.
+     * If logic in optional_jquery() / course_category_header() changes, then change this
+     * and using_frontpage_header_on_another_page() too.
      */
     public function get_header_file() {
         $thefile = 'header'; // Default if not a specific header.
@@ -833,7 +834,9 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
 
     /**
      * Works out and adds optional jQuery on the page if needed by criteria.
-     * If logic in get_header_file() changes, then change this and using_frontpage_header_on_another_page() too.
+     * If logic in get_header_file() / course_category_header() changes, then change this
+     * and using_frontpage_header_on_another_page() too.
+     *
      * MUST be called before any page output happens.
      */
     public function optional_jquery() {
@@ -1004,7 +1007,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             } else {
                 return '';
             }
-        } else if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'coursecategory')) {
+        } else if ($this->course_category_header()) {
             if ((!empty($this->page->theme->settings->coursepagepageheadinglocation)) &&
                 ($this->page->theme->settings->coursepagepageheadinglocation == 1)) {
                 return $this->get_page_heading();
@@ -1032,4 +1035,24 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         return '<h1 class="brand">' . $heading . '</h1>';
     }
 
+    /**
+     * States if the layout will have a course category header.
+     *
+     * If logic in get_header_file() / optional_jquery() changes, then change this
+     * and using_frontpage_header_on_another_page() too.
+     * @return boolean true or false.
+     */
+    public function course_category_header() {
+        $cch = false;
+        $pagelayout = $this->page->pagelayout;
+        switch ($pagelayout) {
+            case 'coursecategory':
+            case 'course':
+            case 'incourse':
+            case 'report':
+                $cch = true;
+                break;
+        }
+        return $cch;
+    }
 }
