@@ -5,6 +5,7 @@ Version Information
   2. Removed redundant CSS file in font folder.
   3. Fix 'block_adminblock' margin.
   4. Fix change in font file length.
+  5. Fix assignment view layout.
 
 13th April 2017 - Version 3.1.1.13
   1. Add Roberto as a body font.
