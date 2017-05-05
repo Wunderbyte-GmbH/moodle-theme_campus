@@ -21,7 +21,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,8 +31,8 @@ defined('MOODLE_INTERNAL') || die;
 $plugin->version   = 2016121404; // Note: Must never be less than M3.1 possible last version.
 $plugin->requires  = 2016120500.00; // 3.2 (Build: 20161205).
 $plugin->component = 'theme_campus';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '3.2.0.4';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = '3.2.1.0';
 $plugin->dependencies = array(
     'theme_bootstrapbase'  => 2016120500
 );
