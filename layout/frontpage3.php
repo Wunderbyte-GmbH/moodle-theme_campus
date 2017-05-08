@@ -52,7 +52,23 @@ if (!($hassidepre AND $hassidepost)) {
     // Two columns.
     $contentclass = 'span9';
     $blockclass = 'span3';
-    $rowclass = 'span12';
+    if (!$PAGE->user_is_editing()) {
+        if (((!$hassidepre) && (!$rtl)) ||
+            ((!$hassidepost) && ($rtl))) {
+            // Fill complete area when editing off and LTR and no side-pre content or RTL and no side-post content.
+            $contentclass = 'span12';
+        } else if ((!$hassidepre) && ($rtl)) {
+            // Fill complete area when editing off, RTL and no side pre.
+            $regionclass = 'span12';
+        }
+    } else {
+        if (((!$hassidepre) && ($rtl)) || (($hassidepre) && (!$rtl))) {
+            // Fill complete area when editing on, RTL and no side pre.
+            // Fill complete area when editing on, LTR and no side post.
+            $contentclass = 'span8';
+            $blockclass = 'span4';
+        }
+    }
 }
 
 echo $OUTPUT->doctype() ?>

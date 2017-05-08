@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 8th May 2017 - Version 3.2.1.1
+  1. Fix side-post blocks underneath content area on three column Frontpage when no side-pre blocks.
+
 13th April 2017 - Version 3.2.1.0
   1. Add Roberto as a body font.
   2. Fix assignment view layout.
