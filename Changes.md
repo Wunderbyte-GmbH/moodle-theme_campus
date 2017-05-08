@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 8th May 2017 - Version 3.1.1.15
+  1. Fix side-post blocks underneath content area on three column Frontpage when no side-pre blocks.
+
  5th May 2017 - Version 3.1.1.14
   1. Update to FontAwesome 4.7.0.
   2. Removed redundant CSS file in font folder.
