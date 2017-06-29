@@ -20,12 +20,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_campus\output\email;
+namespace theme_campus\output\mod_forum\email;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . "/mod/forum/classes/output/email/renderer.php");
-
+//require_once($CFG->dirroot . "/mod/forum/classes/output/email/renderer.php");
 
 /**
  * Forum post renderable.
@@ -36,6 +35,17 @@ require_once($CFG->dirroot . "/mod/forum/classes/output/email/renderer.php");
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class renderer extends \mod_forum\output\email\renderer {
+
+    /**
+     * Constructor method, calls the parent constructor
+     *
+     * @param moodle_page $page
+     * @param string $target one of rendering target constants
+     */
+    public function __construct(moodle_page $page, $target) {
+        parent::__construct($page, $target);
+        error_log('theme_campus email renderer constructor');
+    }
 
     /**
      * The HTML version of the e-mail message.
