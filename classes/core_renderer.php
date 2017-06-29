@@ -1033,3 +1033,30 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
 }
+
+require_once($CFG->dirroot . "/mod/forum/renderer.php");
+
+
+/**
+ * A custom renderer class that extends the plugin_renderer_base and
+ * is used by the forum module.
+ *
+ * @package   mod_forum
+ * @copyright 2009 Sam Hemelryk
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ **/
+class theme_campus_mod_forum_renderer extends mod_forum_renderer{
+
+    /**
+     * Display a forum post in the relevant context.
+     *
+     * @param \mod_forum\output\forum_post $post The post to display.
+     * @return string
+     */
+    public function render_forum_post_email(\mod_forum\output\forum_post_email $post) {
+        $data = $post->export_for_template($this, true);
+        return $this->render_from_template('mod_forum/' . $this->forum_post_template(), $data);
+    }
+
+}
+
