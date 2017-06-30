@@ -42,9 +42,26 @@ class renderer extends \mod_forum\output\email\renderer {
      * @param moodle_page $page
      * @param string $target one of rendering target constants
      */
-    public function __construct(moodle_page $page, $target) {
+    public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
         error_log('theme_campus email renderer constructor');
+    }
+
+    /**
+     * Display a forum post in the relevant context.
+     *
+     * @param \mod_forum\output\forum_post $post The post to display.
+     * @return string
+     */
+    public function render_forum_post_email(\mod_forum\output\forum_post_email $post) {
+        $data = $post->export_for_template($this, $this->target === RENDERER_TARGET_TEXTEMAIL);
+		$data['campus_row'] = '<tr><td>Campus theme</td></tr>';
+		error_log('theme_campus render_forum_post_email data: '.print_r($data, true));
+        //$templated = $this->render_from_template('mod_forum/' . $this->forum_post_template(), $data);
+        $templated = $this->render_from_template('theme_campus/forum_post_email_htmlemail_body_campus', $data);
+		error_log('theme_campus render_forum_post_email tenplated: '.print_r($templated, true));
+		mtrace(print_r($templated, true));
+        return $templated;
     }
 
     /**
