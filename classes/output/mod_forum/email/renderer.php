@@ -56,10 +56,12 @@ class renderer extends \mod_forum\output\email\renderer {
     public function render_forum_post_email(\mod_forum\output\forum_post_email $post) {
         $data = $post->export_for_template($this, $this->target === RENDERER_TARGET_TEXTEMAIL);
 		$data['campus_row'] = '<tr><td>Campus theme</td></tr>';
+		error_log('theme_campus render_forum_post_email target: '.print_r($this->target, true).' '.get_class($this));
+		mtrace('theme_campus render_forum_post_email target: '.print_r($this->target, true).' '.get_class($this));
 		error_log('theme_campus render_forum_post_email data: '.print_r($data, true));
-        //$templated = $this->render_from_template('mod_forum/' . $this->forum_post_template(), $data);
-        $templated = $this->render_from_template('theme_campus/forum_post_email_htmlemail_body_campus', $data);
-		error_log('theme_campus render_forum_post_email tenplated: '.print_r($templated, true));
+        $templated = $this->render_from_template('mod_forum/' . $this->forum_post_template(), $data);
+        //$templated = $this->render_from_template('theme_campus/forum_post_email_htmlemail_body_campus', $data);
+		error_log('theme_campus render_forum_post_email templated: '.print_r($templated, true));
 		mtrace(print_r($templated, true));
         return $templated;
     }
@@ -71,6 +73,7 @@ class renderer extends \mod_forum\output\email\renderer {
      * @param \stdClass $post
      * @return string
      */
+	 /*
     public function format_message_text($cm, $post) {
         $message = file_rewrite_pluginfile_urls($post->message, 'pluginfile.php',
                 \context_module::instance($cm->id)->id,
@@ -80,5 +83,5 @@ class renderer extends \mod_forum\output\email\renderer {
                 $message = "blablabla";
                 mtrace('halllllloooooooooooooooooooooooooooo');
                 return format_text($message, $post->messageformat, $options);
-    }
+    }*/
 }
