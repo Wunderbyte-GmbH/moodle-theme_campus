@@ -1267,3 +1267,38 @@ if ($ADMIN->fulltree) {
     }
 }
 $ADMIN->add('theme_campus', $settingpage);
+
+// Forum page....
+$settingpage = new admin_settingpage('theme_campus_forum', get_string('forumsettings', 'theme_campus'));
+if ($ADMIN->fulltree) {
+    $settingpage->add(new admin_setting_heading('theme_campus_forumheading', null,
+            format_text(get_string('forumsettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    // Enable custom template
+    $name = 'theme_campus/forumcustomtemplate';
+    $title = get_string('forumcustomtemplate', 'theme_campus');
+    $description = get_string('forumcustomtemplatedesc', 'theme_campus');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
+    // Header setting.
+    $name = 'theme_campus/forumhtmlemailheader';
+    $title = get_string('forumhtmlemailheader', 'theme_campus');
+    $description = get_string('forumhtmlemailheaderdesc', 'theme_campus');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
+    // Footer setting.
+    $name = 'theme_campus/forumhtmlemailfooter';
+    $title = get_string('forumhtmlemailfooter', 'theme_campus');
+    $description = get_string('forumhtmlemailfooterdesc', 'theme_campus');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+}
+$ADMIN->add('theme_campus', $settingpage);
