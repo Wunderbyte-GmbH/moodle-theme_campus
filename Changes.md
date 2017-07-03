@@ -1,6 +1,7 @@
 Version Information
 ===================
 26th July 2017 - Version 3.1.1.16
+  1. Add custom header and footer settings for HTML forum eMails.
 
  8th May 2017 - Version 3.1.1.15
   1. Fix side-post blocks underneath content area on three column Frontpage when no side-pre blocks.
