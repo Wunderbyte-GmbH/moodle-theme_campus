@@ -1,5 +1,10 @@
 Version Information
 ===================
+ 3rd July 2017 - Version 3.1.1.16
+  1. Add forum html eMail header and footer settings.
+     Note: When clearning the settings with the editor, please ensure that no markup is left that you
+           cannot see, like '<h4><br></h4>'.
+
  8th May 2017 - Version 3.1.1.15
   1. Fix side-post blocks underneath content area on three column Frontpage when no side-pre blocks.
 
