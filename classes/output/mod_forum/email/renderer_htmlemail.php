@@ -44,6 +44,8 @@ class renderer_htmlemail extends \mod_forum\output\email\renderer {
         // Was ($this, $this->target === RENDERER_TARGET_TEXTEMAIL) and as we are already 'htmlemail' it will always be false.
         $data = $post->export_for_template($this, false);
         // Add our new data.
+        $data['enabletemplate'] = \theme_campus\toolbox::get_setting('forumcustomtemplate');
+        \mtrace($data['enabletemplate']);
         $forumhtmlemailheader = \theme_campus\toolbox::get_setting('forumhtmlemailheader', 'format_html');
         if ($forumhtmlemailheader) {
            $data['messageheader'] = $forumhtmlemailheader;
@@ -52,6 +54,7 @@ class renderer_htmlemail extends \mod_forum\output\email\renderer {
         if ($forumhtmlemailfooter) {
            $data['messagefooter'] = $forumhtmlemailfooter;
         }
+
 
         return $this->render_from_template('mod_forum/' . $this->forum_post_template(), $data);
     }
