@@ -447,4 +447,4 @@ $string['forumhtmlemailheaderdesc'] = 'Configure the forum html email header for
 $string['forumhtmlemailfooter'] = 'Forum html email footer';
 $string['forumhtmlemailfooterdesc'] = 'Configure the forum html email footer for the theme here.';
 $string['forumcustomtemplate'] = 'Use a pretty template for forum mails';
-$string['forumcustomtemplatedesc'] = 'Enable that in order to use a pretty template for sending forum mails. Put an image in the header section of max-width 300px. If not enabled standard formatting of forum mails will be used';
+$string['forumcustomtemplatedesc'] = 'Enable that in order to use a pretty template for sending forum mails. Put an image in the header section of max-width 300px. If not enabled standard formatting of forum mails will be used.';

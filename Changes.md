@@ -1,5 +1,8 @@
 Version Information
 ===================
+11th July 2017 - Version 3.1.1.17
+  1. Template adjustments.
+
  3rd July 2017 - Version 3.1.1.16
   1. Add forum html eMail header and footer settings.
      Note: When clearning the settings with the editor, please ensure that no markup is left that you
