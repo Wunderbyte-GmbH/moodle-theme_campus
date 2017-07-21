@@ -21,11 +21,26 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
+
+namespace theme_campus\output;
+
+defined('MOODLE_INTERNAL') || die;
+
+use block_contents;
+use block_move_target;
+use coding_exception;
+use context_course;
+use custom_menu;
+use html_writer;
+use moodle_url;
+
+require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');
+
+class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     private $hasspecificheader = false;  // States if we have a specific header and therefore header toggle functionality is needed.
 
@@ -442,7 +457,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
      * This code renders the custom menu items for the
      * bootstrap dropdown menu.
      */
-    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0 ) {
+    protected function render_custom_menu_item(\custom_menu_item $menunode, $level = 0 ) {
         static $submenucount = 0;
 
         $content = '';
@@ -736,7 +751,7 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
             unset($SESSION->justloggedin);
             if (!empty($CFG->displayloginfailures)) {
                 if (!isguestuser()) {
-                    if ($count = user_count_login_failures($USER)) {
+                    if ($count = \user_count_login_failures($USER)) {
                         $loggedinas .= '<div class="loginfailures">';
                         $a = new stdClass();
                         $a->attempts = $count;
@@ -752,29 +767,6 @@ class theme_campus_core_renderer extends theme_bootstrapbase_core_renderer {
         }
 
         return $loggedinas;
-    }
-
-    /*
-    * This code replaces icons in with
-    * FontAwesome variants when needed.
-    */
-    public function render_pix_icon(pix_icon $icon) {
-        static $icons = array(
-            'i/notifications' => 'bell-o',
-            't/message' => 'comment-o'
-        );
-        if (array_key_exists($icon->pix, $icons)) {
-            $pix = $icons[$icon->pix];
-            /* Note: MUST have the 'i' tag instead of 'span' if use an icon in the editing action menu otherwise will break! */
-            if (empty($icon->attributes['alt'])) {
-                return '<span class="fa fa-'.$pix.' icon" aria-hidden="true">'.parent::render_pix_icon($icon).'</span>';
-            } else {
-                $alt = $icon->attributes['alt'];
-                return '<span class="fa fa-'.$pix.' icon" title="'.$alt.'" aria-hidden="true">'.parent::render_pix_icon($icon).'</span>';
-            }
-        } else {
-            return parent::render_pix_icon($icon);
-        }
     }
 
     /**

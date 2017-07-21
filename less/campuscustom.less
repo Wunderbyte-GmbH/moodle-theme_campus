@@ -13,9 +13,9 @@ body {
 }
 
 #region-main-campus div[role="main"] {
-    padding-top: 8px;
     padding-left: 8px;
     padding-right: 8px;
+    padding-top: 8px;
 }
 
 // Body.
@@ -49,9 +49,9 @@ body {
     text-align: center; 
     text-decoration: none;
     &:hover {
-        text-decoration: none;
         border-radius: 1em;
         color: lighten(@textColor, 10%);
+        text-decoration: none;
     }
     i.fa {
         padding-bottom: 2px;
@@ -61,12 +61,6 @@ body {
 // Goto bottom.
 .navbar .nav.gotoBottom {
     padding: 7px 7px;
-}
-
-// popover_region.less
-// --------------------------------------------------
-.navbar .popover-region-toggle .fa img {
-    display: none;
 }
 
 // Local login.
@@ -81,16 +75,21 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 // Blocks.
 .block {
-    padding-top: 0;
-    padding-bottom: 0;
     background-color: @blockBackgroundColour;
-    //background-color: rgba(red(@blockBackgroundColour), green(@blockBackgroundColour), blue(@blockBackgroundColour), 0.7);
+    border-color: @blockBorderColour;
+    border-style: @blockBorderStyle;
+    border-width: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    .fa {
+        color: @blockIconColour;
+    }
     .header {
         background-color: @blockHeadingBackgroundColour;
-        padding-top: 4px; // Hardcoded in bootstrapbase/less/moodle/blocks.less.  Half here because of padding-bottom so looks good.
-        padding-bottom: 4px;
         border-top-left-radius: @borderRadiusLarge; // Our changes to .block in 'bootstrapchanges.less'.
         border-top-right-radius: @borderRadiusLarge;
+        padding-bottom: 4px;
+        padding-top: 4px; // Hardcoded in bootstrapbase/less/moodle/blocks.less.  Half here because of padding-bottom so looks good.
         .block_action {
             padding: 2px 15px;
         }
@@ -99,23 +98,20 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         border-bottom-left-radius: @borderRadiusLarge;
         border-bottom-right-radius: @borderRadiusLarge;
     }
-    border-style: @blockBorderStyle;
-    border-color: @blockBorderColour;
-    border-width: 0;
     .header {
-        border-width: @blockHeadingBorderTopWidth @blockHeadingBorderRightWidth @blockHeadingBorderBottomWidth @blockHeadingBorderLeftWidth; // top right bottom left.
-        border-style: inherit;
         border-color: inherit;
+        border-style: inherit;
+        border-width: @blockHeadingBorderTopWidth @blockHeadingBorderRightWidth @blockHeadingBorderBottomWidth @blockHeadingBorderLeftWidth; // top right bottom left.
     }
     &.hidden .header {
         border-width: @blockHeadingBorderTopWidth @blockHeadingBorderRightWidth @blockHeadingBorderTopWidth @blockHeadingBorderLeftWidth; // top right bottom left.
     }
     .content {
-        border-width: @blockContentBorderTopWidth @blockContentBorderRightWidth @blockContentBorderBottomWidth @blockContentBorderLeftWidth; // top right bottom left.
-        border-style: inherit;
-        border-color: inherit;
         border-bottom-left-radius: inherit;
         border-bottom-right-radius: inherit;
+        border-color: inherit;
+        border-style: inherit;
+        border-width: @blockContentBorderTopWidth @blockContentBorderRightWidth @blockContentBorderBottomWidth @blockContentBorderLeftWidth; // top right bottom left.
     }
     &.block_login .content {
         max-width: none;
@@ -136,37 +132,37 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 // Frontpage.
 .frontpageheader.absolutelayout {
-    position: relative;
+    margin: 0 auto;
     max-width: @pageWidthMaximum;
     padding-left: 20px;
     padding-right: 20px;
-    margin: 0 auto;
+    position: relative;
     .container {
-        width: 100%;
+        bottom: 0;
         height: 100%;
+        left: 0;
+        margin: auto;
         max-height: inherit;
         max-width: @pageWidthMaximum;
-        margin: auto;
         position: relative;
-        top: 0;
-        bottom: 0;
-        left: 0;
         right: 0;
+        top: 0;
+        width: 100%;
     }
     .logotitle {
-        width: @frontpageAbsolutePaddingBottom;
-        padding-bottom: @frontpageAbsolutePaddingBottom;
-        max-height: inherit;
-        position: relative;
         float: @frontpageLogoPosition;  // Change from flexlayout.
         height: 0;
         margin-top: -@frontpageAbsolutePaddingBottom;  // Change from flexlayout.
+        max-height: inherit;
+        padding-bottom: @frontpageAbsolutePaddingBottom;
+        position: relative;
+        width: @frontpageAbsolutePaddingBottom;
         a {
-            max-height: inherit;
-            width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
+            max-height: inherit;
+            position: absolute;
+            width: 100%;
             img {
                 height: 100%;
                 max-height: inherit;
@@ -174,24 +170,24 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
     .backgroundcontainer {
-        max-height: inherit;
-        position: relative;
-        width: 100%;  // Change from flexlayout.
-        padding-bottom: @frontpageAbsolutePaddingBottom;
         float: left;
         height: 0;
         margin: 0;
+        max-height: inherit;
+        padding-bottom: @frontpageAbsolutePaddingBottom;
+        position: relative;
+        width: 100%;  // Change from flexlayout.
         img {
-            width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
             max-height: inherit;
+            position: absolute;
+            width: 100%;
         }
     }
     .pageheadingheader {
-        position: absolute;
         left: @frontpagePageHeadingHeaderPositionLeft;
+        position: absolute;
         right: @frontpagePageHeadingHeaderPositionRight;
         z-index: 1;
     }
@@ -204,64 +200,64 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 .frontpageheader.flexlayout {
-    position: relative;
     height: @frontpageHeaderHeightDefault;
+    margin: 0 auto;
     max-width: @pageWidthMaximum;
     padding-left: 20px;
     padding-right: 20px;
-    margin: 0 auto;
+    position: relative;
     .container {
-        width: 100%;
+        bottom: 0;
         height: 100%;
+        left: 0;
+        margin: auto;
         max-height: inherit;
         max-width: @pageWidthMaximum;
-        margin: auto;
         position: relative;
-        top: 0;
-        bottom: 0;
-        left: 0;
         right: 0;
+        top: 0;
+        width: 100%;
     }
     .logotitle {
-        width: @frontpageLogoWidth;
-        padding-bottom: @frontpageFlexPaddingBottom;
-        max-height: inherit;
-        position: relative;
         float: left;
         height: 0;
         margin: 0;
+        max-height: inherit;
+        padding-bottom: @frontpageFlexPaddingBottom;
+        position: relative;
+        width: @frontpageLogoWidth;
         a {
-            max-height: inherit;
-            width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
+            max-height: inherit;
+            position: absolute;
+            width: 100%;
             img {
-                width: 100%;
                 height: 100%;
                 max-height: inherit;
+                width: 100%;
             }
         }
     }
     .backgroundcontainer {
-        max-height: inherit;
-        position: relative;
-        width: @frontpageBackgroundWidth;
-        padding-bottom: @frontpageFlexPaddingBottom;
         float: left;
         height: 0;
         margin: 0;
+        max-height: inherit;
+        padding-bottom: @frontpageFlexPaddingBottom;
+        position: relative;
+        width: @frontpageBackgroundWidth;
         img {
-            width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
             max-height: inherit;
+            position: absolute;
+            width: 100%;
         }
     }
     .pageheadingheader {
-        position: absolute;
         left: @frontpagePageHeadingHeaderPositionLeft;
+        position: absolute;
         right: @frontpagePageHeadingHeaderPositionRight;
         z-index: 1;
     }
@@ -301,9 +297,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .frontpageheader.absolutelayout {
             height: auto;
             .logotitle {
-                width: @frontpageAbsoluteMixinPaddingBottom;
-                padding-bottom: @frontpageAbsoluteMixinPaddingBottom;
                 margin-top: -@frontpageAbsoluteMixinPaddingBottom;
+                padding-bottom: @frontpageAbsoluteMixinPaddingBottom;
+                width: @frontpageAbsoluteMixinPaddingBottom;
                 .campuslogodesktop {
                     display: none;
                 }
@@ -324,8 +320,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .frontpageheader.flexlayout {
             height: auto;
             .logotitle {
-                width: @frontpageMixinLogoWidth;
                 padding-bottom: @frontpageFlexMixinPaddingBottom;
+                width: @frontpageMixinLogoWidth;
                 .campuslogodesktop {
                     display: none;
                 }
@@ -334,8 +330,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
             .backgroundcontainer {
-                width: @frontpageMixinBackgroundWidth;
                 padding-bottom: @frontpageFlexMixinPaddingBottom;
+                width: @frontpageMixinBackgroundWidth;
                 .campusdesktop {
                     display: none;
                 }
@@ -350,29 +346,32 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Navbar.
 .navbar {
     clear: both;
+    margin: 0 auto;
     max-width: @pageWidthMaximum;
     padding-left: 20px;
     padding-right: 20px;
-    margin: 0 auto;
+    .fa {
+        color: @navbarIconColour;
+    }
     img.userpicture {
-        vertical-align: top;
-        width: auto;
         height: auto;
         max-width: @baseLineHeight;
         max-height: @baseLineHeight;
+        vertical-align: top;
+        width: auto;
     }
 
     // Navbar brand.
     .brand {
         // Vertically center the text given @navbarHeight.
-        padding: 0 5px 0 5px;
+        line-height: @baseLineHeight + 4;
         margin: (((@navbarHeight - @baseLineHeight) / 2) - 2) 0 (((@navbarHeight - @baseLineHeight) / 2) - 2);
         max-height: @baseLineHeight + 4;
-        line-height: @baseLineHeight + 4;
+        max-width: @navbarPageHeadingMax;
+        padding: 0 5px 0 5px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        max-width: @navbarPageHeadingMax;
     }
 
     // Navbar divider.
@@ -391,13 +390,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .usermenu {
             .dropdown {
                 img.userpicture {
+                    border-radius: @baseBorderRadius;
+                    height: auto;
+                    margin-right: 2px;
+                    max-height: @baseLineHeight;
+                    max-width: @baseLineHeight;
                     vertical-align: top;
                     width: auto;
-                    height: auto;
-                    max-width: @baseLineHeight;
-                    max-height: @baseLineHeight;
-                    border-radius: @baseBorderRadius;
-                    margin-right: 2px;
                 }
                 > a.dropdown-toggle {
                     padding: ((@navbarHeight - @baseLineHeight) / 2) ((@navbarHeight - @baseLineHeight) / 2);
@@ -420,9 +419,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                         width: 15px;
                     }
                     hr.sep {
-                        margin: 0;
-                        height: 0;
                         border: none;
+                        height: 0;
+                        margin: 0;
                     }
                 }
             }
@@ -446,27 +445,27 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
     &.affix {
-        top: 0;
         left: 0;
+        max-width: none;
         padding-left: 0;
         padding-right: 0;
+        top: 0;
         width: 100%;
-        max-width: none;
         z-index: 200;
     }
 }
 
 .frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
     .backgroundcontainer .navbar.affix {
-        top: 0;
+        bottom: auto;
         left: 0;
+        max-width: none;
         padding-left: 0;
         padding-right: 0;
-        width: 100%;
-        max-width: none;
-        z-index: 200;
         position: fixed;
-        bottom: auto;
+        top: 0;
+        width: 100%;
+        z-index: 200;
     }
 }
 
@@ -500,19 +499,19 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .carousel-inner {
         > .item {
             .carousel-image-container {
-                text-align: center;
-                width: 90%;
                 padding-left: 5%;
                 padding-right: 5%;
+                text-align: center;
+                width: 90%;
             }
             .carousel-image {
-                width: auto;
+                height: auto;
                 margin: 0 auto;
                 margin-top: 8px;
-                height: auto;
                 max-height: 300px;
-                vertical-align: middle; // See: http://www.vanseodesign.com/css/vertical-centering/.
                 max-width: 100%;
+                vertical-align: middle; // See: http://www.vanseodesign.com/css/vertical-centering/.
+                width: auto;
             }
             &.side-caption {
                 div.the-side-caption {
@@ -520,17 +519,17 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 }
             }
             &.side-caption .carousel-image {
-                box-shadow: 0 0 8px #222;
-                padding: 8px;
                 background-color: #fff;
+                box-shadow: 0 0 8px #222;
                 margin-left: -8px;
+                padding: 8px;
             }
         }
         a,
         a:hover,
-            a:active {
-            text-decoration: none;
+        a:active {
             height: 100%;
+            text-decoration: none;
         }
         // Caption for text below images.
         .carousel-caption {
@@ -538,7 +537,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             .carousel-caption-inner {
                 margin: 0 auto;
             }
-            h4, p {
+            h4,
+            p {
                 padding: 0 20px;
             }
             p {
@@ -553,11 +553,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     // Left/right controls for nav.
     .carousel-control {
-        display: none; // Shown when carousel hovered on, see below.
         background: none;
         border: 0;
-        font-size: 30px;
         cursor: pointer;
+        display: none; // Shown when carousel hovered on, see below.
+        font-size: 30px;
         &:hover,
             &:focus {
             background: none;
@@ -568,12 +568,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         display: block;
     }
     .carousel-indicators {
-        border-radius: @baseBorderRadius;
-        padding-right: 5px;
-        padding-top: 2px;
-        padding-bottom: 2px;
         background-color: #fff;
         background-color: rgba(255, 255, 255, .50);
+        border-radius: @baseBorderRadius;
+        padding-bottom: 2px;
+        padding-right: 5px;
+        padding-top: 2px;
         right: 5px;
     }
 
@@ -680,73 +680,74 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 // Slider settings.
 #campusCarousel.carousel {
-  .carousel-inner {
-    // Caption for text below images.
-    .carousel-caption {
-      background-color: rgba(red(@carouselColour), green(@carouselColour), blue(@carouselColour), 0.75); // Same as theme colour.
-      .carousel-caption-inner {
-        max-width: @pageWidthMaximum;
-      }
-      h4, p {
-        color: @carouselTextColour;
-      }
+    .carousel-inner {
+        // Caption for text below images.
+        .carousel-caption {
+            background-color: rgba(red(@carouselColour), green(@carouselColour), blue(@carouselColour), 0.75); // Same as theme colour.
+            .carousel-caption-inner {
+                max-width: @pageWidthMaximum;
+            }
+            h4,
+            p {
+                color: @carouselTextColour;
+            }
+        }
     }
-  }
-  // Left/right controls for nav.
-  .carousel-control {
-    color: @slideButtonColour;
-    &:hover,
-    &:focus {
-      color: @slideButtonHoverColour;
+    // Left/right controls for nav.
+    .carousel-control {
+        color: @slideButtonColour;
+        &:hover,
+        &:focus {
+            color: @slideButtonHoverColour;
+        }
     }
-  }
 
-  // Carousel indicator pips.
-  .carousel-indicators {
-    box-shadow: 0 0 8px @carouselColour;
-    li {
-      background-color: @carouselColour;
+    // Carousel indicator pips.
+    .carousel-indicators {
+        box-shadow: 0 0 8px @carouselColour;
+        li {
+            background-color: @carouselColour;
+        }
+        .active {
+            background-color: lighten(@carouselActiveColour, 5%);  // Same as theme colour.
+        }
     }
-    .active {
-      background-color: lighten(@carouselActiveColour, 5%);  // Same as theme colour.
-    }
-  }
 }
 
 // Course category header.
 .coursecategoryheader.absolutelayout {
-    position: relative;
     height: @courseCategoryHeaderHeightDefault;
-    max-width: @pageWidthMaximum;
     padding-left: 20px;
     padding-right: 20px;
+    position: relative;
     margin: 0 auto;
+    max-width: @pageWidthMaximum;
     .container {
-        width: 100%;
-        height: 100%;
-        max-height: inherit;
-        max-width: @pageWidthMaximum;
-        margin: auto;
-        position: relative;
-        top: 0;
         bottom: 0;
         left: 0;
+        height: 100%;
+        margin: auto;
+        max-height: inherit;
+        max-width: @pageWidthMaximum;
+        position: relative;
         right: 0;
+        top: 0;
+        width: 100%;
     }
     .logotitle {
-        width: @courseCategoryLogoWidthDefault;
-        padding-bottom: @courseCategoryPaddingBottomDefault;
-        max-height: inherit;
-        position: relative;
         float: @courseCategoryLogoPosition;  // Change from flexlayout.
         height: 0;
+        max-height: inherit;
+        padding-bottom: @courseCategoryPaddingBottomDefault;
+        position: relative;
         margin-top: -@courseCategoryPaddingBottomDefault;  // Change from flexlayout.
+        width: @courseCategoryLogoWidthDefault;
         a {
-            max-height: inherit;
-            width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
+            max-height: inherit;
+            position: absolute;
+            width: 100%;
             img {
                 height: 100%;
                 max-height: inherit;
@@ -754,24 +755,24 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
     .backgroundcontainer {
-        max-height: inherit;
-        position: relative;
-        width: 100%;  // Change from flexlayout.
-        padding-bottom: @courseCategoryPaddingBottomDefault;
         float: left;
         height: 0;
         margin: 0;
+        max-height: inherit;
+        padding-bottom: @courseCategoryPaddingBottomDefault;
+        position: relative;
+        width: 100%;  // Change from flexlayout.
         img {
-            width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
             max-height: inherit;
+            position: absolute;
+            width: 100%;
         }
     }
     .pageheadingheader {
-        position: absolute;
         left: @courseCategoryPageHeadingHeaderPositionLeftDefault;
+        position: absolute;
         right: @courseCategoryPageHeadingHeaderPositionRightDefault;
         z-index: 1;
     }
@@ -785,64 +786,64 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 .coursecategoryheader.flexlayout {
-    position: relative;
     height: @courseCategoryHeaderHeightDefault;
+    margin: 0 auto;
     max-width: @pageWidthMaximum;
     padding-left: 20px;
     padding-right: 20px;
-    margin: 0 auto;
+    position: relative;
     .container {
-        width: 100%;
+        bottom: 0;
         height: 100%;
+        left: 0;
+        margin: auto;
         max-height: inherit;
         max-width: @pageWidthMaximum;
-        margin: auto;
         position: relative;
-        top: 0;
-        bottom: 0;
-        left: 0;
         right: 0;
+        top: 0;
+        width: 100%;
     }
     .logotitle {
-        width: @courseCategoryLogoWidthDefault;
-        padding-bottom: @courseCategoryPaddingBottomDefault;
-        max-height: inherit;
-        position: relative;
         float: left;
         height: 0;
         margin: 0;
+        max-height: inherit;
+        padding-bottom: @courseCategoryPaddingBottomDefault;
+        position: relative;
+        width: @courseCategoryLogoWidthDefault;
         a {
+            height: 100%;
+            left: 0;
+            position: absolute;
             max-height: inherit;
             width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
             img {
-                width: 100%;
                 height: 100%;
                 max-height: inherit;
+                width: 100%;
             }
         }
     }
     .backgroundcontainer {
-        max-height: inherit;
-        position: relative;
-        width: @courseCategoryBackgroundWidthDefault;
-        padding-bottom: @courseCategoryPaddingBottomDefault;
         float: left;
         height: 0;
         margin: 0;
+        max-height: inherit;
+        padding-bottom: @courseCategoryPaddingBottomDefault;
+        position: relative;
+        width: @courseCategoryBackgroundWidthDefault;
         img {
-            width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
             max-height: inherit;
+            position: absolute;
+            width: 100%;
         }
     }
     .pageheadingheader {
-        position: absolute;
         left: @courseCategoryPageHeadingHeaderPositionLeftDefault;
+        position: absolute;
         right: @courseCategoryPageHeadingHeaderPositionRightDefault;
         z-index: 1;
     }
@@ -864,9 +865,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
         height: auto;
         .logotitle {
-            width: @courseCategoryMixinAbsolutePaddingBottom;
-            padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
             margin-top: -@courseCategoryMixinAbsolutePaddingBottom;  // Change from flexlayout.
+            padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
+            width: @courseCategoryMixinAbsolutePaddingBottom;
         }
         .backgroundcontainer {
             // No width change - a change from flexlayout.
@@ -876,12 +877,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .coursecategoryheader.flexlayout.category@{courseCategoryKey} {
         height: auto;
         .logotitle {
-            width: @courseCategoryMixinLogoWidth;
             padding-bottom: @courseCategoryMixinFlexPaddingBottom;
+            width: @courseCategoryMixinLogoWidth;
         }
         .backgroundcontainer {
-            width: @courseCategoryMixinBackgroundWidth;
             padding-bottom: @courseCategoryMixinFlexPaddingBottom;
+            width: @courseCategoryMixinBackgroundWidth;
         }
     }
 }
@@ -906,8 +907,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .ccheaderbackgroundcolour(@courseCategoryKey;
           @courseCategoryMixinBackgroundColour) {
     .coursecategoryheader.category@{courseCategoryKey} {
-        background-color: @courseCategoryMixinBackgroundColour;
         background-clip: content-box;
+        background-color: @courseCategoryMixinBackgroundColour;
     }
     body.hideheader {
         .coursecategoryheader.category@{courseCategoryKey} {
@@ -944,9 +945,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .coursecategoryheader.absolutelayout.category@{courseCategoryKey} {
             height: auto;
             .logotitle {
-                width: @courseCategoryMixinAbsolutePaddingBottom;
-                padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
                 margin-top: -@courseCategoryMixinAbsolutePaddingBottom;  // Change from flexlayout.
+                padding-bottom: @courseCategoryMixinAbsolutePaddingBottom;
+                width: @courseCategoryMixinAbsolutePaddingBottom;
                 .campuslogodesktop {
                     display: none;
                 }
@@ -993,10 +994,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Page heading in the header styling.
 .pageheadingheader {
     h1 {
-        text-transform: uppercase;
         color: transparent;
-        -webkit-text-stroke: 6px rgba(255,255,255,0.05);
         text-shadow: rgba(245,245,255,0.6) 0 0 0, rgba(0,0,30,0.3) 0 0.04em 0.02em;
+        text-transform: uppercase;
+        -webkit-text-stroke: 6px rgba(255,255,255,0.05);
     }
 }
 
@@ -1004,12 +1005,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .frontpageheader.flexlayout.fancynavbar, .coursecategoryheader.flexlayout.fancynavbar {
     .backgroundcontainer {
         .navbar {
-            z-index: 2;
-            position: absolute;
             bottom: 0;
-            width: 100%;
             padding-left: 0;
             padding-right: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 2;
             .navbar-inner {
                 border-width: 0;
                 #gradient > .vertical(rgba(red(@navbarBackgroundHighlight), green(@navbarBackgroundHighlight), blue(@navbarBackgroundHighlight), 0.75), rgba(red(@navbarBackground), green(@navbarBackground), blue(@navbarBackground), 0.75));
@@ -1048,8 +1049,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 background-color: transparent;
                 .box-shadow(none);
                 .nav-collapse.active {
-                    #gradient > .vertical(rgba(red(@navbarBackgroundHighlight), green(@navbarBackgroundHighlight), blue(@navbarBackgroundHighlight), 0.75), rgba(red(@navbarBackground), green(@navbarBackground), blue(@navbarBackground), 0.75));
                     .box-shadow(~"0 1px 10px rgba(0,0,0,.1)");
+                    #gradient > .vertical(rgba(red(@navbarBackgroundHighlight), green(@navbarBackgroundHighlight), blue(@navbarBackgroundHighlight), 0.75), rgba(red(@navbarBackground), green(@navbarBackground), blue(@navbarBackground), 0.75));
                 }
             }
         }
@@ -1084,8 +1085,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             h1 {
                 font-size: 28px;
                 line-height: 28px;
-                margin-top: 0;
                 margin-bottom: 0;
+                margin-top: 0;
             }
         }
     }
@@ -1100,8 +1101,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             h1 {
                 font-size: 24px;
                 line-height: 24px;
-                margin-top: 0;
                 margin-bottom: 0;
+                margin-top: 0;
             }
         }
     }
@@ -1167,8 +1168,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         body.hideheader {
             .frontpageheader.flexlayout, .coursecategoryheader.flexlayout {
                 .backgroundcontainer {
-                    width: 100%;
                     padding-bottom: 0;
+                    width: 100%;
                 }
             }
             .frontpageheader.absolutelayout, .coursecategoryheader.absolutelayout {
@@ -1185,12 +1186,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             }
             .fancynavbar .campusnavbar {
                 &.affix-top {
-                    position: absolute;
-                    width: 100%;
-                    top: 0;
                     left: 0;
                     padding-left: 0;
                     padding-right: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
                 }
                 &.affix {
                     position: fixed;
@@ -1218,8 +1219,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 width: 100%;
             }
             aside.block-region {
-                margin-top: 20px;
                 margin-left: 0;
+                margin-top: 20px;
             }
         }
     }
@@ -1285,9 +1286,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .path-mod-forum table.forumheaderlist {
     border: 0 solid transparent;
     border-collapse: collapse;
+    color: darken(@navbarText, 15%);
     margin-bottom: 10px;
 
-    color: darken(@navbarText, 15%);
     a {
         color: @navbarText;
     }
@@ -1324,22 +1325,25 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     box-shadow: none;
     .row {
         &.header {
-            margin-bottom: 8px;
-            min-height: 43px;
             background-color: @forumHeaderBackgroundColour;
             border: 1px solid @forumHeaderBorderColour;
 
             color: @forumHeaderTextColour;
+
+            margin-bottom: 8px;
+            min-height: 43px;
             a {
                 color: @forumHeaderLinkColour;
             }
 
         }
-        .topic, &.maincontent, &.header {
+        .topic,
+        &.maincontent,
+        &.header {
             padding: 5px 4px;
         }
-        &.header, &.maincontent {
-            //box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.23);
+        &.header,
+        &.maincontent {
             box-shadow: 1px 2px 3px @grayLightish;
             width: auto;
             border-radius: @baseBorderRadius;
@@ -1353,13 +1357,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Social icons.
 #page-footer {
     ul.socialnetworks {
-        display: inline-block;
-        margin-left: 0;
-        border-radius: @baseBorderRadius;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-        padding: 4px;
         background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.2);
         border-color: @bodyBackgroundAlt;
+        border-radius: @baseBorderRadius;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+        display: inline-block;
+        margin-left: 0;
+        padding: 4px;
         li {
             display: inline;
             margin-left: 2px;
@@ -1503,12 +1507,12 @@ fieldset {
 //
 // See: http://a11yproject.com/posts/how-to-hide-content/
 .sr-only {
-  position: absolute;
-  width: 1px;
+  border: 0;
+  clip: rect(0,0,0,0);
   height: 1px;
   margin: -1px;
-  padding: 0;
   overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }

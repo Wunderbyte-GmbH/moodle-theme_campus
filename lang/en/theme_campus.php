@@ -22,7 +22,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -131,7 +131,7 @@ $string['bodyfont'] = 'Body font';
 $string['bodyfontdesc'] = 'Set the font for the body.';
 
 $string['themelayout'] = 'Theme layout';
-$string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns.';
+$string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns.  Note: This is reversed for RTL languages.';
 $string['themelayoutthreecolumns'] = 'Three columns';
 $string['themelayoutthreecolumnsfplefttwo'] = 'Three column front page and two columns with blocks left elsewhere';
 $string['themelayoutthreecolumnsfprighttwo'] = 'Three column front page and two columns with blocks right elsewhere';
@@ -148,10 +148,10 @@ $string['contentcolour'] = 'Content colour';
 $string['contentcolourdesc'] = 'Set the content colour.';
 
 $string['iconcoloursetting'] = 'Use icon colour setting';
-$string['iconcoloursetting_desc'] = 'Use the icon colour setting for the icons.  The icon colour functionality is new.  If you experience problems with it, then turn it off and run \'grunt svg\' on the Node.js command prompt.  Please see \'Gruntfile.js\' for full details.';
+$string['iconcoloursetting_desc'] = 'Use the icon colour setting for the non-FontAwesome icons.  The icon colour functionality is new.  If you experience problems with it, then turn it off and run \'grunt svg\' on the Node.js command prompt.  Please see \'Gruntfile.js\' for full details.';
 
 $string['iconcolour'] = 'Icon colour';
-$string['iconcolour_desc'] = 'The colour for the icons.';
+$string['iconcolourdesc'] = 'The colour for the icons.';
 
 $string['headingcolour'] = 'Heading colour';
 $string['headingcolourdesc'] = 'Set the heading colour.';
@@ -161,6 +161,9 @@ $string['navbartextcolourdesc'] = 'Set the navigation bar text colour.';
 
 $string['navbarlinkcolour'] = 'Navbar link colour';
 $string['navbarlinkcolourdesc'] = 'Set the navigation bar link colour.';
+
+$string['navbariconcolour'] = 'Navbar icon colour';
+$string['navbariconcolourdesc'] = 'The colour for the navbar FontAwesome icons.';
 
 $string['navbarbackgroundcolour'] = 'Navbar background colour';
 $string['navbarbackgroundcolourdesc'] = 'Set the navigation bar background colour.';
@@ -244,7 +247,7 @@ $string['px24'] = '24px';
 $string['px25'] = '25px';
 
 $string['wellbackgroundcolour'] = '\'Well\' background colour';
-$string['wellbackgroundcolourdesc'] = 'Set the background colour for the \'wells\' which are boxes used in things like the question text and current topic boxes.  Please ensure that the colour chosen works well with the text colour.';
+$string['wellbackgroundcolourdesc'] = 'Set the background colour for the \'wells\' which are boxes used in things like the breadcrumb, question text and current topic boxes.  Please ensure that the colour chosen works well with the text colour.';
 
 $string['alertinfotextcolour'] = 'Alert info text colour';
 $string['alertinfotextcolourdesc'] = 'Set the text colour for the alert information box.';

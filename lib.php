@@ -21,7 +21,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -90,6 +90,9 @@ function theme_campus_less_variables($theme) {
     if (!empty($theme->settings->contentcolour)) {
         $variables['contentColor'] = $theme->settings->contentcolour;
     }
+    if (!empty($theme->settings->iconcolour)) {
+        $variables['blockIconColour'] = $theme->settings->iconcolour;
+    }
     if (!empty($theme->settings->headingcolour)) {
         $variables['headingsColor'] = $theme->settings->headingcolour;
     }
@@ -99,9 +102,14 @@ function theme_campus_less_variables($theme) {
         $variables['navbarLinkColor'] = $theme->settings->navbartextcolour;
     }
     if (!empty($theme->settings->navbarlinkcolour)) {
+        $variables['dropdownLinkColorHover'] = $theme->settings->navbarlinkcolour;
         $variables['navbarLinkColor'] = $theme->settings->navbarlinkcolour;
     }
+    if (!empty($theme->settings->navbariconcolour)) {
+        $variables['navbarIconColour'] = $theme->settings->navbariconcolour;
+    }
     if (!empty($theme->settings->navbarbackgroundcolour)) {
+        $variables['dropdownLinkBackgroundHover'] = $theme->settings->navbarbackgroundcolour;
         $variables['navbarBackground'] = $theme->settings->navbarbackgroundcolour;
         $variables['navbarBackgroundHighlight'] = $theme->settings->navbarbackgroundcolour;
     }
@@ -612,7 +620,7 @@ function theme_campus_get_theme_logo() {
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
         $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
     }
-    // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
+    // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thelogofile.png")) {
         $logodetails['fullname'] = "$thelogofile.png";
     } else if (file_exists("$thelogofile.gif")) {
@@ -645,7 +653,7 @@ function theme_campus_get_theme_responsive_logo() {
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
         $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
     }
-    // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
+    // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thelogofile.png")) {
         $logodetails['fullname'] = "$thelogofile.png";
     } else if (file_exists("$thelogofile.gif")) {
@@ -678,7 +686,7 @@ function theme_campus_get_theme_background() {
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
         $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
     }
-    // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
+    // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thebackgroundfile.png")) {
         $backgrounddetails['fullname'] = "$thebackgroundfile.png";
     } else if (file_exists("$thebackgroundfile.gif")) {
@@ -711,7 +719,7 @@ function theme_campus_get_theme_responsive_background() {
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
         $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
     }
-    // Unfortunately the file extension is not in the URL from 'pix_url', so no chance of extracting from there.
+    // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thebackgroundfile.png")) {
         $backgrounddetails['fullname'] = "$thebackgroundfile.png";
     } else if (file_exists("$thebackgroundfile.gif")) {
@@ -834,7 +842,7 @@ function theme_campus_render_slide($i, $settingprefix) {
     if (theme_campus_get_setting($settingprefix . $i . 'image')) {
         $slideimage = $PAGE->theme->setting_file_url($settingprefix . $i . 'image', $settingprefix . $i . 'image');
     } else {
-        $slideimage = $OUTPUT->pix_url('default_slide', 'theme');
+        $slideimage = $OUTPUT->image_url('default_slide', 'theme');
     }
 
     if ($slidelink) {

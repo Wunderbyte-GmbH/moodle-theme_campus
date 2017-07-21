@@ -21,7 +21,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -66,17 +66,17 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
 if ((!$hdlogo) || (!$hdbackgroundimage)) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
-        $hdlogo = $OUTPUT->pix_url($logodetails['name'], 'theme');  // $hdlogo can still be false if 'pix_url' fails for some unknown reason.
+        $hdlogo = $OUTPUT->image_url($logodetails['name'], 'theme');  // $hdlogo can still be false if 'image_url' fails for some unknown reason.
     }
     if ($backgrounddetails = theme_campus_get_theme_background()) {
-        $hdbackgroundimage = $OUTPUT->pix_url($backgrounddetails['name'], 'theme');  // $hdbackgroundimage can still be false if 'pix_url' fails for some unknown reason.
+        $hdbackgroundimage = $OUTPUT->image_url($backgrounddetails['name'], 'theme');  // $hdbackgroundimage can still be false if 'image_url' fails for some unknown reason.
     }
     // Use theme responsive versions.
     if ($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) {
-        $hdresponsivelogo = $OUTPUT->pix_url($logoresponsivedetails['name'], 'theme');  // $hdresponsivelogo can still be false if 'pix_url' fails for some unknown reason.
+        $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');  // $hdresponsivelogo can still be false if 'image_url' fails for some unknown reason.
     }
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
-        $hdresponsivebackgroundimage = $OUTPUT->pix_url($backgroundresponsivedetails['name'], 'theme');  // $hdresponsivebackgroundimage can still be false if 'pix_url' fails for some unknown reason.
+        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');  // $hdresponsivebackgroundimage can still be false if 'image_url' fails for some unknown reason.
     }
     // Fallback to frontpage settings as they are in 'front-pageheader.php' for the theme images.
     $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';

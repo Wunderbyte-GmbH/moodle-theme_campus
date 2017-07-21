@@ -21,7 +21,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,31 +30,12 @@ $OUTPUT->optional_jquery();
 // Get the HTML for the settings bits.
 $html = theme_campus_get_html_for_settings($OUTPUT, $PAGE);
 
-$rtl = right_to_left();  // To know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
-$hassidepre = $PAGE->blocks->is_known_region('side-pre');
-$hassidepost = $PAGE->blocks->is_known_region('side-post');
+$hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
+$hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
 if ($hassidepre) {
     $useblock = 'side-pre';
-    /*
-     This deals with the side to show the blocks on.
-     If we have a 'side-pre' then the blocks are on the left for LTR and right for RTL.
-    */
-    if ($rtl) {
-        $left = false;
-    } else {
-        $left = true;
-    }
 } else if ($hassidepost) {
     $useblock = 'side-post';
-    /*
-     This deals with the side to show the blocks on.
-     If we have a 'side-post' then the blocks are on the right for LTR and left for RTL.
-    */
-    if ($rtl) {
-        $left = true;
-    } else {
-        $left = false;
-    }
 } else {
     $useblock = false;
 }
@@ -84,7 +65,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
     <div id="page-content" class="row-fluid">
         <?php if ($useblock) { ?>
-        <div id="region-main" class="span9<?php if ($left) { echo ' pull-right'; } ?>">
+        <div id="region-main" class="span9 pull-right">
         <?php } else { ?>
         <div id="region-main" class="span12">
         <?php }
@@ -92,7 +73,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                 ?>
                 <section id="region-main-campus" class="row-fluid">
                 <?php
-                if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
+                if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 3) {
                     echo $OUTPUT->get_page_heading();
                 }
                 echo $OUTPUT->main_content();
@@ -101,11 +82,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
         </div>
         <?php
         if ($useblock) {
-            $classextra = '';
-            if ($left) {
-                $classextra = ' desktop-first-column';
-            }
-            echo $OUTPUT->campusblocks($useblock, 'span3'.$classextra);
+            echo $OUTPUT->campusblocks($useblock, 'span3 desktop-first-column');
         }
         ?>
     </div>

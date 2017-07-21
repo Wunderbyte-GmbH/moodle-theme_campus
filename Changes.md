@@ -1,5 +1,8 @@
 Version Information
 ===================
+19th July 2017 - Version 3.3.0.1
+  1. Initial Moodle 3.3 version.
+
  8th May 2017 - Version 3.2.1.1
   1. Fix side-post blocks underneath content area on three column Frontpage when no side-pre blocks.
 

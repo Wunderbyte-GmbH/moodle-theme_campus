@@ -21,24 +21,19 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 ?>
 <header id="page-header" class="clearfix">
     <div id="page-navbar" class="clearfix">
-        <?php if ($rtl) { ?>
-            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-        <?php if (!$rtl) { ?>
-            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
+        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
     </div>
     <?php
     if ($OUTPUT->using_frontpage_header_on_another_page()) {
-        if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 2)) {
+        if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 2) {
             echo $OUTPUT->get_page_heading();
         } 
     }
@@ -50,7 +45,6 @@
 
 <?php
 // Note: $numberofslides established in the header file as pulled in by $OUTPUT->get_header_file() if there are any.
-if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition
-        == 1)) {
-    require_once(dirname(__FILE__) . '/slideshow.php');
+if ((!empty($numberofslides)) && (\theme_campus\toolbox::get_setting('sliderposition') == 1)) {
+    require_once(dirname(__FILE__).'/slideshow.php');
 }

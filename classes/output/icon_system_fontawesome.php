@@ -19,27 +19,32 @@
  *
  * @package    theme
  * @subpackage campus
- * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
- * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
+ * @copyright  &copy; 2017-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2017-onwards Work undertaken for David Bogner of Edulabs.org.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+namespace theme_campus\output;
 
-if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 2) {
-    echo $OUTPUT->get_page_heading();
+defined('MOODLE_INTERNAL') || die();
+
+class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
+
+    /**
+     * @var array $map Cached map of moodle icon names to font awesome icon names.
+     */
+    private $map = [];
+
+    public function get_core_icon_map() {
+        $iconmap = parent::get_core_icon_map();
+
+        $iconmap['core:i/notifications'] = 'fa-bell-o';
+        $iconmap['core:t/message'] = 'fa-comment-o';
+        $iconmap['core:i/navigationitem'] = 'fa-angle-right';
+
+        return $iconmap;
+    }
+
 }
-?>
 
-<header id="page-header" class="clearfix">
-    <?php
-        // Need the 'page-header' id even if $html->heading is empty for the Affix to work.
-        echo $html->heading;
-    ?>
-</header>
-
-<?php
-// Note: $numberofslides established in the header file as pulled in by $OUTPUT->get_header_file() if there are any.
-if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 1)) {
-    require_once(dirname(__FILE__).'/slideshow.php');
-}

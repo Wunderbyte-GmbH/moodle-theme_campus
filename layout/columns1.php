@@ -21,7 +21,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -51,7 +51,6 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 <div id="page" class="container-fluid">
 
     <?php
-        $rtl = right_to_left();
         require_once(dirname(__FILE__).'/tiles/page-header.php');
     ?>
 
@@ -61,12 +60,11 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
             <section id="region-main-campus" class="row-fluid">
                 <?php
                 if ($OUTPUT->course_category_header()) {
-                    if ((!empty($PAGE->theme->settings->coursepagepageheadinglocation)) &&
-                        ($PAGE->theme->settings->coursepagepageheadinglocation == 3)) {
+                    if (\theme_campus\toolbox::get_setting('coursepagepageheadinglocation') == 3) {
                         echo $OUTPUT->get_page_heading();
                     }
                 } else if ($OUTPUT->using_frontpage_header_on_another_page()) {
-                    if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
+                    if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 3) {
                         echo $OUTPUT->get_page_heading();
                     }
                 }

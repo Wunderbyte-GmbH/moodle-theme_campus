@@ -3,7 +3,7 @@
 // moodle.less
 // --------------------------------------------------
 body {
-    padding-top: 0px; // Negate padding for fixed navbar.
+    padding-top: 0; // Negate padding for fixed navbar.
 }
 
 // As a result, need:
@@ -16,23 +16,23 @@ body {
 #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release,
 #plugins-check .status-upgrade .status,
 #plugins-check .status-delete .status {
-    color: @infoText;
     background-color: @infoBackground;
+    color: @infoText;
 }
 
 #plugins-check .status .pluginupdateinfo {
-    color: @infoText;
     background-color: @infoBackground;
+    color: @infoText;
 }
 
 #plugins-overview-panel .info.updatable {
-    color: @infoText;
     background-color: @infoBackground;
+    color: @infoText;
 }
 
 #plugins-control-panel .notes .pluginupdateinfo {
-    color: @infoText;
     background-color: @infoBackground;
+    color: @infoText;
 }
 
 // backup-restore.less
@@ -46,20 +46,31 @@ body {
 // --------------------------------------------------
 .block .header .title h2,
 .block h3.main {
-  //.nav-header;
-  display: block;
-  padding: 3px 15px;
-  font-size: 1.1em;
-  font-weight: normal;
-  line-height: @baseLineHeight;
-  color: @blockHeadingColor;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    //.nav-header;
+    color: @blockHeadingColor;
+    display: block;
+    font-size: 1.1em;
+    font-weight: normal;
+    line-height: @baseLineHeight;
+    padding: 3px 15px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.block_navigation,
+.block_settings {
+    .block_tree p.hasicon {
+        padding-left: 10px;
+        text-indent: -8px;
+    }
 }
 
 // breadcrumbs.less - mine
 // --------------------------------------------------
 .breadcrumb > li {
-    margin-top: 0px;
+    margin-top: 0;
+    > .divider {
+        color: inherit;
+    }
 }
 
 .breadcrumb {
@@ -68,29 +79,24 @@ body {
 }
 
 .breadcrumb-button {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 li.breadcrumb-button {
     float: right;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div input {
     float: right;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 // core.less
 // --------------------------------------------------
-.empty-region-side-post #region-bs-main-and-post.span9 .span9, .empty-region-side-post #region-bs-main-and-post.span9 .span8 {
-    /** RTL with no post area. **/
-    width:100%;
-}
-
 .highlight {
-    color: @infoText;
     background: @infoBackground;
+    color: @infoText;
 }
 
 .activity.label .dimmed_text {
@@ -117,6 +123,14 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
             border-top-color: @navbarLinkColorActive;
         }
     }
+}
+
+.moodle-actionmenu[data-enhanced].show .menu a .fa {
+    color: inherit;
+}
+
+.moodle-actionmenu > ul.menubar > li a.menu-action {
+    margin-right: 4px;
 }
 
 // course.less
@@ -148,11 +162,11 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     width: 100%;
 }
 .coursebox .teachers {
-    margin:0;
+    margin: 0;
 }
 
 .courses .coursebox.collapsed {
-    border:1px solid lighten(@bodyBackground, 5%);
+    border: 1px solid lighten(@bodyBackground, 5%);
 }
 
 .courses .coursebox.even {
@@ -169,7 +183,14 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 }
 
 .course_category_tree .paging.paging-morelink a {
-    font-size:90%;
+    font-size: 90%;
+}
+
+.path-course-view li.activity span.autocompletion img,
+.path-course-view li.activity form.togglecompletion .btn {
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
 }
 
 /* My Overrides */
@@ -196,36 +217,38 @@ body.notediting {
         padding: 0;
     }
     .section .activity.modtype_label.label, .section li.activity {
-        padding-right: 0;
-        padding-left: 0;
-        padding-top: .2em;
         padding-bottom: .2em;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: .2em;
     }
     li.activity.label {
-        padding-right: 0;
-        padding-left: 0;
-        padding-top: 8px;
         padding-bottom: 8px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 8px;
     }
     .course-content ul.topics li.section .summary {
         margin-left: 0;
         margin-right: 0;
     }
     .course-content ul.section {
+        margin-bottom: 1em;
         margin-left: 0;
         margin-right: 0;
         margin-top: 1em;
-        margin-bottom: 1em;
     }
     &.format-topics .course-content ul.topics li.section {
-        .left, .right {
+        .left,
+        .right {
             width: 20px;
         }
     }
     // Hardcoded 'de' language default.
     &.format-topcoll.lang-de {
         .course-content ul.topics li.section {
-            .left, .right {
+            .left,
+            .right {
                 width: 40px;
             }
         }
@@ -240,9 +263,9 @@ body.notediting {
     .sectionname > span,
     .content > div,  /* All the divs but the activities which are in a UL. */
     .activity .activityinstance {
-        opacity: 1;
         color: @grayLight;
         font-style: italic;
+        opacity: 1;
     }
     .sectionname > span a {
         color: inherit;
@@ -254,6 +277,18 @@ body.notediting {
 // --------------------------------------------------
 #page-footer .block-region p {
     text-align: left;
+}
+
+// Filemanager etc.
+// --------------------------------------------------
+.file-picker,
+.filemanager,
+.filepicker {
+    .fa {
+        color: @textColor;
+        font-size: 24px;
+        vertical-align: text-top;
+    }
 }
 
 // forms.less
@@ -268,7 +303,6 @@ body.notediting {
 }
 
 .mform fieldset.collapsible legend a.fheader {
-    //margin-left: -20px;
     margin-left: inherit;
 }
 
@@ -301,16 +335,17 @@ textarea[cols] {
 }
 
 @media (min-width: 768px) {
-    .path-grade-report, #page-admin-plugins {
+    .path-grade-report,
+    #page-admin-plugins {
         #region-main {
-            width: 100%;
             float: left;
+            width: 100%;
         }
         .block-region {
-            width: 100%;
             margin: 0;
             padding-left: 8px;
             padding-right: 8px;
+            width: 100%;
             .block {
                 .makeColumn(4);
             }
@@ -323,10 +358,13 @@ textarea[cols] {
 }
 
 .path-grade-report-grader .gradeparent .floater {
-    .cell:nth-of-type(odd), &.lastrow .cell.header {
+    .cell:nth-of-type(odd),
+    &.lastrow .cell.header {
         background-color: @bodyBackgroundAlt;
     }
-    .cell:nth-of-type(even), &.heading .cell.header, &.heading .cell:nth-of-type(odd) {
+    .cell:nth-of-type(even),
+    &.heading .cell.header,
+    &.heading .cell:nth-of-type(odd) {
         background-color: @bodyBackground;
     }
 }
@@ -338,7 +376,8 @@ textarea[cols] {
     }
 
     tr.category th.cell.rowspan {
-        border-width:0; border-left:1px solid lighten(@grayLight, 20%);
+        border-left: 1px solid lighten(@grayLight, 20%);
+        border-width: 0;
     }
 
     tr.category th.cell.rowspan:hover {
@@ -350,10 +389,10 @@ textarea[cols] {
     }
 
     td.colspan {
-        border-left: 1px solid lighten(@grayLight, 20%);
-        border-bottom: 1px solid lighten(@grayLight, 20%);
-        border-top: 0;
         background-color: darken(@grayLighter, 20%);
+        border-bottom: 1px solid lighten(@grayLight, 20%);
+        border-left: 1px solid lighten(@grayLight, 20%);
+        border-top: 0;
     }
 }
 
@@ -394,9 +433,9 @@ table.generaltable {
 // message.less
 // --------------------------------------------------
 #newmessageoverlay {
-  left: 0;
-  right: auto;
-  bottom: 30px;
+    bottom: 30px;
+    left: 0;
+    right: auto;
 }
 
 // modules.less
@@ -424,10 +463,14 @@ table.generaltable {
 
 // Grade report wrapping.
 // gradereport_grader.css.
-.path-grade-report-grader .gradestable th.user, .path-grade-report-grader .gradestable th.range,
-.path-grade-report-grader .flexible th, .path-grade-report-grader .flexible td,
-.path-grade-report-grader .flexible th a, .path-grade-report-grader .flexible td a,
-.path-grade-report-grader .gradestable th.range, .path-grade-report-grader td {
+.path-grade-report-grader .gradestable th.user,
+.path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader .flexible th,
+.path-grade-report-grader .flexible td,
+.path-grade-report-grader .flexible th a,
+.path-grade-report-grader .flexible td a,
+.path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader td {
     white-space: pre-line; // http://www.w3schools.com/cssref/pr_text_white-space.asp.
 }
 
@@ -444,7 +487,7 @@ table.generaltable {
     // My alteration.
     .path-admin .buttons,
     .form-buttons {
-        padding-left: 0px;
+        padding-left: 0;
     }
 }
 
@@ -462,8 +505,7 @@ table.generaltable {
         .dropdown-submenu a:hover,
         .dropdown-submenu a:active,
         .dropdown-menu > li > a:hover,
-        .dropdown-menu > li > a:focus,
-        {
+        .dropdown-menu > li > a:focus {
             background-image: none;
             color: @navbarText;
         }
@@ -478,44 +520,12 @@ table.generaltable {
     background: rgba(255, 255, 255, 0.4);
 }
 
-// Two page columns no blocks.
-body.editing {
-    &.content-only #region-main.span9, // Two column layout with no block or all blocks docked.
-    &.empty-region-side-post #region-bs-main-and-pre.span9, // LTR with no post area.
-    &.empty-region-side-pre #region-bs-main-and-post.span9, // RTL with no pre area.
-    &.empty-region-side-post #region-bs-main-and-post.span9 #region-main.span8, // RTL with no post area.
-    &.jsenabled.docked-region-side-post #region-bs-main-and-pre.span9, // LTR with all post blocks docked.
-    &.jsenabled.docked-region-side-post #region-bs-main-and-post.span9 #region-main.span8,
-    &.jsenabled.docked-region-side-pre #region-bs-main-and-post.span9 { // RTL with all pre blocks docked.
-        .fluid-span(9);
-    }
-    &.empty-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8, // LTR with no pre area.
-    &.jsenabled.docked-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8 { // LTR with all pre blocks docked.
-        .fluid-span(8);
-        float: left;
-        &.pull-right {
-            float: right;
-        }
-    }
-}
-
-// Two page coloumns no blocks.
-.two-column:not(.editing) {
-    &.has-region-side-pre.empty-region-side-pre #region-main.span9 {
-        width: 100%;
-    }
-}
-
 /* Negate core style so that browser renders drop target correctly. */
 .editing {
-    &.empty-region-side-pre #block-region-side-pre, &.empty-region-side-post #block-region-side-post {
+    &.empty-region-side-pre #block-region-side-pre,
+    &.empty-region-side-post #block-region-side-post {
         display: block;
     }
-}
-
-
-.empty-region-side-pre.used-region-side-post #region-main.span9 {
-    .fluid-span(9);
 }
 
 // search.less
@@ -528,4 +538,9 @@ body.editing {
     > form {
         margin: 3px 0 1px 25px;
     }
+}
+
+// User tours - see 'addResetLink' in usertours.js.
+#page-footer .logininfo div.usertour {
+    display: block;
 }

@@ -22,7 +22,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -251,7 +251,7 @@ if ($ADMIN->fulltree) {
     // Icon colour setting.
     $name = 'theme_campus/iconcolour';
     $title = get_string('iconcolour', 'theme_campus');
-    $description = get_string('iconcolour_desc', 'theme_campus');
+    $description = get_string('iconcolourdesc', 'theme_campus');
     $default = '#999999';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
@@ -283,6 +283,16 @@ if ($ADMIN->fulltree) {
     $title = get_string('navbarlinkcolour', 'theme_campus');
     $description = get_string('navbarlinkcolourdesc', 'theme_campus');
     $default = '#190500';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settingpage->add($setting);
+
+    // Navbar link colour setting.
+    $name = 'theme_campus/navbariconcolour';
+    $title = get_string('navbariconcolour', 'theme_campus');
+    $description = get_string('navbariconcolourdesc', 'theme_campus');
+    $default = '#000000';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');

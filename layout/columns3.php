@@ -21,7 +21,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,18 +30,6 @@ $OUTPUT->optional_jquery();
 // Get the HTML for the settings bits.
 $html = theme_campus_get_html_for_settings($OUTPUT, $PAGE);
 
-$pre = 'side-pre';
-$post = 'side-post';
-$rtl = right_to_left();
-if ($rtl) {
-    $regionbsid = 'region-bs-main-and-post';
-    // In RTL the sides are reversed, so swap the 'campuseblocks' method parameter....
-    $temp = $pre;
-    $pre = $post;
-    $post = $temp;
-} else {
-    $regionbsid = 'region-bs-main-and-pre';
-}
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
 $regionclass = 'span9';
@@ -53,21 +41,17 @@ if (!($hassidepre AND $hassidepost)) {
     $contentclass = 'span9';
     $blockclass = 'span3';
     if (!$PAGE->user_is_editing()) {
-        if (((!$hassidepre) && (!$rtl)) ||
-            ((!$hassidepost) && ($rtl))) {
-            // Fill complete area when editing off and LTR and no side-pre content or RTL and no side-post content.
+        if (!$hassidepre) {
+            // Fill complete area when editing off and no side-pre content.
             $contentclass = 'span12';
-        } else if ((!$hassidepre) && ($rtl)) {
-            // Fill complete area when editing off, RTL and no side pre.
+        } else if (!$hassidepost) {
+            // Fill complete area when editing off and no side post content.
             $regionclass = 'span12';
         }
     } else {
-        if (((!$hassidepre) && ($rtl)) || (($hassidepre) && (!$rtl))) {
-            // Fill complete area when editing on, RTL and no side pre.
-            // Fill complete area when editing on, LTR and no side post.
-            $contentclass = 'span8';
-            $blockclass = 'span4';
-        }
+        // Fill complete area when editing on.
+        $contentclass = 'span8';
+        $blockclass = 'span4';
     }
 }
 
@@ -94,19 +78,18 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
     <?php require_once(dirname(__FILE__).'/tiles/page-header.php'); ?>
 
     <div id="page-content" class="row-fluid">
-        <div id="<?php echo $regionbsid ?>" class="<?php echo $regionclass; ?>">
+        <div id="region-bs-main-and-pre" class="<?php echo $regionclass; ?>">
             <div class="row-fluid">
                 <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
                     <?php require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php'); ?>
                     <section id="region-main-campus" class="row-fluid">
                         <?php
                         if ($OUTPUT->course_category_header()) {
-                            if ((!empty($PAGE->theme->settings->coursepagepageheadinglocation)) &&
-                                ($PAGE->theme->settings->coursepagepageheadinglocation == 3)) {
+                            if (\theme_campus\toolbox::get_setting('coursepagepageheadinglocation') == 3) {
                                 echo $OUTPUT->get_page_heading();
                             }
                         } else if ($OUTPUT->using_frontpage_header_on_another_page()) {
-                            if ((!empty($PAGE->theme->settings->frontpagepageheadinglocation)) && ($PAGE->theme->settings->frontpagepageheadinglocation == 3)) {
+                            if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 3) {
                                 echo $OUTPUT->get_page_heading();
                             }
                         }
@@ -116,10 +99,10 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                         ?>
                     </section>
                 </div>
-                <?php echo $OUTPUT->campusblocks($pre, $blockclass.' desktop-first-column'); ?>
+                <?php echo $OUTPUT->campusblocks('side-pre', $blockclass.' desktop-first-column'); ?>
             </div>
         </div>
-        <?php echo $OUTPUT->campusblocks($post, 'span3'); ?>
+        <?php echo $OUTPUT->campusblocks('side-post', 'span3'); ?>
     </div>
 
     <?php require_once(dirname(__FILE__).'/tiles/footer.php'); ?>

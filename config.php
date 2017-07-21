@@ -21,7 +21,7 @@
  * @subpackage campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -60,7 +60,7 @@ $col1regions = array('footer');
 $col2regions = array('side-pre', 'footer');
 $col3regions = array('side-pre', 'side-post', 'footer');
 
-$themelayout = (!empty($THEME->settings->themelayout)) ? $THEME->settings->themelayout : 1;
+$themelayout = \theme_campus\toolbox::get_config_setting('themelayout');
 
 switch ($themelayout) {
     case 1: // Three columns.
@@ -221,3 +221,5 @@ if (core_useragent::is_ie() && !core_useragent::check_ie_version('9.0')) {
 }
 
 $THEME->csspostprocess = 'theme_campus_process_css';
+
+$THEME->iconsystem = '\\theme_campus\\output\\icon_system_fontawesome';
