@@ -1,5 +1,7 @@
 Version Information
 ===================
+25th July 2017 - Version 3.3.0.2
+
 19th July 2017 - Version 3.3.0.1
   1. Initial Moodle 3.3 version.
 
