@@ -141,7 +141,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      * @param tabtree $tabtree
      * @return string
      */
-    protected function render_tabtree(tabtree $tabtree) {
+    protected function render_tabtree(\tabtree $tabtree) {
         if (empty($tabtree->subtree)) {
             return '';
         }
@@ -1088,7 +1088,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
                 global $CFG;
                 include_once($CFG->libdir . '/coursecatlib.php');
                 $currentcategory = $this->get_current_category();
-                $category = coursecat::get($currentcategory);
+                $category = \coursecat::get($currentcategory);
                 $heading = $category->name;
             } else {
                 $heading = $this->page->heading;
