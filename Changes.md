@@ -1,5 +1,7 @@
 Version Information
 ===================
+29th July 2017 - Version 3.3.0.3
+
 26th July 2017 - Version 3.3.0.2
   1. Add custom header and footer settings for HTML forum eMails.
 
