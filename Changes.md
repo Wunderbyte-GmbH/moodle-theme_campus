@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 9th August 2017 - Version 3.3.0.4
+  1. Convert default user svg images to png and remove abilty to change their colour.  This is for forum post eMails as svg's cannot be shown.
+
 29th July 2017 - Version 3.3.0.3
   1. Fix namespace issues in Campus core_renderer.
 
