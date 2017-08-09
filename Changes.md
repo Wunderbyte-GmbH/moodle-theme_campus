@@ -1,5 +1,8 @@
 Version Information
 ===================
+ 9th August 2017 - Version 3.1.1.17
+  1. Convert default user svg images to png and remove abilty to change their colour.  This is for forum post eMails as svg's cannot be shown.
+
 26th July 2017 - Version 3.1.1.16
   1. Add custom header and footer settings for HTML forum eMails.
 
