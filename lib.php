@@ -875,11 +875,16 @@ function theme_campus_render_slide($i, $settingprefix) {
     return $slide;
 }
 
-function theme_campus_render_slide_controls($left) {
+function theme_campus_render_slide_controls() {
     $previous = get_string('sliderpreviousslide', 'theme_campus');
     $next = get_string('slidernextslide', 'theme_campus');
     $faleft = 'left';
     $faright = 'right';
+    if (right_to_left()) {
+        $temp = $faleft;
+        $faleft = $faright;
+        $faright = $temp;
+    }
     $prev = '<a class="left carousel-control" data-target="#campusCarousel" data-slide="prev" title="'.$previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
     $next = '<a class="right carousel-control" data-target="#campusCarousel" data-slide="next" title="'.$next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
 

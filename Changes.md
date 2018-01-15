@@ -1,7 +1,10 @@
 Version Information
 ===================
+15th January 2018 - Version 3.3.0.5
+  1. Fix missing '$left' parameter in 'theme_campus_render_slide_controls()' call.
+
  9th August 2017 - Version 3.3.0.4
-  1. Convert default user svg images to png and remove abilty to change their colour.  This is for forum post eMails as svg's cannot be shown.
+  1. Convert default user svg images to png and remove ability to change their colour.  This is for forum post eMails as svg's cannot be shown.
 
 29th July 2017 - Version 3.3.0.3
   1. Fix namespace issues in Campus core_renderer.

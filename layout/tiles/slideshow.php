@@ -49,7 +49,7 @@ if (!empty($numberofslides)) {
                         echo theme_campus_render_slide($slideindex, $settingprefix);
                     } ?>
                 </div>
-                <?php echo theme_campus_render_slide_controls(!$rtl); ?>
+                <?php echo theme_campus_render_slide_controls(); ?>
             </div>
         </div>
     </div>
