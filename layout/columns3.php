@@ -95,6 +95,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                         }
                         echo $OUTPUT->course_content_header();
                         echo $OUTPUT->main_content();
+                        echo $OUTPUT->activity_navigation();
                         echo $OUTPUT->course_content_footer();
                         ?>
                     </section>

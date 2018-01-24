@@ -585,7 +585,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         // Check if messaging is enabled.
         if (!empty($CFG->messaging)) {
-            $branchlabel = '<em><span class="fa fa-envelope"></span>' . get_string('pluginname', 'block_messages') . '</em>';
+            $branchlabel = '<em><span class="fa fa-envelope"></span>'.get_string('messages', 'message').'</em>';
             $branchurl = new moodle_url('/message/index.php');
             $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel));
         }

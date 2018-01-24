@@ -40,6 +40,11 @@ require_once(dirname(__FILE__).'/social.php');
     <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
     <?php
     echo $html->footnote;
+    ?>
+    <div class="row-fluid">
+        <div class="tool_usertours-resettourcontainer span12"></div>
+    </div>
+    <?php
     $logininfofooter = (!isset($PAGE->theme->settings->showlogininfofooter)) ? true : $PAGE->theme->settings->showlogininfofooter;
     if ($logininfofooter) {
         echo $OUTPUT->login_info();

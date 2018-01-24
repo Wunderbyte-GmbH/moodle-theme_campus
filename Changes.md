@@ -1,5 +1,11 @@
 Version Information
 ===================
+24th January 2018 - Version 3.4.0.1
+  1. Initial Moodle 3.4 version.
+  2. Add reset user tours link to the footer.
+  3. Add activity navigation.
+  4. Fix messages string in user menu.
+
 15th January 2018 - Version 3.3.0.5
   1. Fix missing '$left' parameter in 'theme_campus_render_slide_controls()' call.
 
