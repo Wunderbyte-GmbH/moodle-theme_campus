@@ -19,20 +19,29 @@
  *
  * @package    theme
  * @subpackage campus
- * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
- * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
+ * @copyright  &copy; 2018-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2018-onwards Work undertaken for David Bogner of Edulabs.org.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+namespace theme_campus\privacy;
 
-$plugin->version   = 2018061500; // Note: Must never be less than M3.4 possible last version.
-$plugin->requires  = 2018051700.00; // 3.5 (Build: 20180517).
-$plugin->component = 'theme_campus';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '3.5.0.1';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2017051500
-);
+defined('MOODLE_INTERNAL') || die();
+
+/**
+ * The Campus theme does not store any user data.
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:nop';
+    }
+}

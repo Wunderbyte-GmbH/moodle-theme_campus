@@ -1,5 +1,9 @@
 Version Information
 ===================
+15th June 2018 - Version 3.5.0.1
+  1. Initial Moodle 3.5 version.
+  2. Add privacy API.
+
 24th January 2018 - Version 3.4.0.1
   1. Initial Moodle 3.4 version.
   2. Add reset user tours link to the footer.

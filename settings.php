@@ -138,7 +138,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Custom CSS file.
+    // Custom CSS.
     $name = 'theme_campus/customcss';
     $title = get_string('customcss', 'theme_campus');
     $description = get_string('customcssdesc', 'theme_campus');
@@ -831,7 +831,7 @@ if ($ADMIN->fulltree) {
         $name = 'theme_campus/coursecategorylogo' . $key;
         $title = get_string('coursecategorylogo', 'theme_campus');
         $description = get_string('coursecategorylogodesc', 'theme_campus',
-                array('pagewidthmax' => $currentpagewidthmaxheaders));
+            array('pagewidthmax' => $currentpagewidthmaxheaders));
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'coursecategorylogo' . $key);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
