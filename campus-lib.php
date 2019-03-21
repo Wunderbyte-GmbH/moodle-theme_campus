@@ -27,11 +27,8 @@
  */
 
 function theme_campus_get_top_level_categories() {
-    global $CFG;
-    include_once($CFG->libdir . '/coursecatlib.php');
-
     $categoryids = array();
-    $categories = coursecat::get(0)->get_children();  // Parent = 0 i.e. top-level categories only.
+    $categories = core_course_category::get(0)->get_children(); // Parent = 0 i.e. top-level categories only.
 
     foreach($categories as $category){
         $categoryids[$category->id] = $category->name;

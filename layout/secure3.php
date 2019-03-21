@@ -107,7 +107,10 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
         <?php echo $OUTPUT->campusblocks($post, 'span3'); ?>
     </div>
 
-    <?php require_once(dirname(__FILE__).'/tiles/footer.php'); ?>
+    <?php
+        echo $OUTPUT->standard_after_main_region_html();
+        require_once(dirname(__FILE__).'/tiles/footer.php');
+    ?>
 
 </div>
 </body>

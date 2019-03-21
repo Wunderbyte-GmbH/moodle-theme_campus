@@ -1,5 +1,8 @@
 Version Information
 ===================
+21st March 2019 - Version 3.6.0.1
+  1. Initial Moodle 3.6 version.
+
 15th June 2018 - Version 3.5.0.1
   1. Initial Moodle 3.5 version.
   2. Add privacy API.

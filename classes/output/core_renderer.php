@@ -1085,10 +1085,9 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     public function get_page_heading($heading = null) {
         if (empty($heading)) {
             if ($this->page->pagelayout == 'coursecategory') {
-                global $CFG;
-                include_once($CFG->libdir . '/coursecatlib.php');
+
                 $currentcategory = $this->get_current_category();
-                $category = \coursecat::get($currentcategory);
+                $category = \core_course_category::get($currentcategory);
                 $heading = $category->name;
             } else {
                 $heading = $this->page->heading;
