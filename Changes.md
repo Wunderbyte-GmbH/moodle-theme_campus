@@ -1,5 +1,7 @@
 Version Information
 ===================
+24th August 2019 - Version 3.6.1.0
+
 21st March 2019 - Version 3.6.0.1
   1. Initial Moodle 3.6 version.
 
