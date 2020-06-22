@@ -1522,17 +1522,23 @@ fieldset {
     min-width: 0;
 }
 
-// TODO: Remove if update to Bootstrap Version 3.
-// Only display content to screen readers
-//
-// See: http://a11yproject.com/posts/how-to-hide-content/
-.sr-only {
-  border: 0;
-  clip: rect(0,0,0,0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+// Horizontal blocks
+.hblocks.editing .card {
+    margin: 0 15px;
+}
+
+.hblocks.editing.bpr-1 .card {
+    width: calc(100% - 30px);
+}
+.hblocks.editing.bpr-2 .card {
+    width: calc(50% - 30px);
+}
+.hblocks.editing.bpr-3 .card {
+    width: calc(33.3333333333% - 30px);
+}
+.hblocks.editing.bpr-4 .card {
+    width: calc(25% - 30px);
+}
+.hblocks.editing.bpr-6 .card {
+    width: calc(16.6666666667% - 30px);
 }

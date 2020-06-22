@@ -228,33 +228,36 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return string HTML.
      */
     public function campusblocks($region, $classes = array(), $tag = 'aside', $blocksperrow = 0) {
-        $displayregion = $this->page->apply_theme_region_manipulations($region);
-
-        $classes = (array) $classes;
+        $classes = (array)$classes;
         $classes[] = 'block-region';
+        $editing = $this->page->user_is_editing();
+
+        if ($blocksperrow) {
+            $classes[] = 'row hblocks';
+            if ($editing) {
+                $classes[] = 'editing bpr-'.$blocksperrow;
+            }
+            if (($blocksperrow > 6) || ($blocksperrow < 1)) {
+                $blocksperrow = 4;
+            }
+        }
 
         $attributes = array(
-            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
+            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
-            'data-blockregion' => $displayregion,
+            'data-blockregion' => $region,
             'data-droptarget' => '1'
         );
-
-        if ($this->page->blocks->region_has_content($displayregion, $this)) {
-            if ($blocksperrow > 0) {
-                $editing = $this->page->user_is_editing();
-                if ($editing) {
-                    $attributes['class'] .= ' ' . $region . '-edit';
-                }
-                $output = html_writer::tag($tag,
-                                $this->campus_blocks_for_region($displayregion, $blocksperrow, $editing), $attributes);
+        if ($this->page->blocks->region_has_content($region, $this)) {
+            if ($blocksperrow) {
+                $content = $this->campus_blocks_for_region($region, $blocksperrow, $editing);
             } else {
-                $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
+                $content = $this->blocks_for_region($region);
             }
         } else {
-            $output = html_writer::tag($tag, '', $attributes);
+            $content = '';
         }
-        return $output;
+        return html_writer::tag($tag, $content, $attributes);
     }
 
     /**
@@ -267,65 +270,49 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     protected function campus_blocks_for_region($region, $blocksperrow, $editing) {
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $blocks = $this->page->blocks->get_blocks_for_region($region);
+        $lastblock = null;
+        $zones = array();
+        foreach ($blocks as $block) {
+            $zones[] = $block->title;
+        }
         $output = '';
 
         $blockcount = count($blockcontents);
 
         if ($blockcount >= 1) {
-            if (!$editing) {
-                $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
-            }
-            $blocks = $this->page->blocks->get_blocks_for_region($region);
-            $lastblock = null;
-            $zones = array();
-            foreach ($blocks as $block) {
-                $zones[] = $block->title;
-            }
-
-            /*
-             * When editing we want all the blocks to be the same as side-pre / side-post so set by CSS:
-             *
-             * aside.footer-edit .block {
-             *     .footer-fluid-span(3);
-             * }
-             */
-            if (($blocksperrow > 4) || ($editing)) {
-                $blocksperrow = 4; // Will result in a 'span3' when more than one row.
-            }
             $rows = $blockcount / $blocksperrow; // Maximum blocks per row.
 
             if (!$editing) {
                 if ($rows <= 1) {
-                    $span = 12 / $blockcount;
-                    if ($span < 1) {
+                    $col = 12 / $blockcount;
+                    if ($col < 1) {
                         // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
-                        $span = 1;
+                        $col = 1;
                     }
                 } else {
-                    $span = 12 / $blocksperrow;
+                    $col = 12 / $blocksperrow;
                 }
             }
 
             $currentblockcount = 0;
             $currentrow = 0;
             $currentrequiredrow = 1;
-            foreach ($blockcontents as $bc) {
 
-                if (!$editing) { // Using CSS and special 'span3' only when editing.
+            foreach ($blockcontents as $bc) {
+                if (!$editing) { // Using CSS when editing.
                     $currentblockcount++;
                     if ($currentblockcount > ($currentrequiredrow * $blocksperrow)) {
                         // Tripping point.
                         $currentrequiredrow++;
-                        // Break...
-                        $output .= html_writer::end_tag('div');
-                        $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
-                        // Recalculate span if needed...
+                        // Recalculate col if needed...
                         $remainingblocks = $blockcount - ($currentblockcount - 1);
                         if ($remainingblocks < $blocksperrow) {
-                            $span = 12 / $remainingblocks;
-                            if ($span < 1) {
-                                // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
-                                $span = 1;
+                            $col = 12 / $remainingblocks;
+                            if ($col < 1) {
+                                /* Should not happen but a fail safe.
+                                   Block will be small so good for screen shots when this happens. */
+                                $col = 1;
                             }
                         }
                     }
@@ -334,9 +321,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                         $currentrow = $currentrequiredrow;
                     }
 
-                    // 'desktop-first-column' done in CSS with ':first-of-type' and ':nth-of-type'.
-                    // 'spanX' done in CSS with calculated special width class as fixed at 'span3' for all.
-                    $bc->attributes['class'] .= ' col-' . $span;
+                    $bc->attributes['width'] = 'col-sm-'.$col;
                 }
 
                 if ($bc instanceof block_contents) {
@@ -345,11 +330,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 } else if ($bc instanceof block_move_target) {
                     $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
                 } else {
-                    throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+                    throw new coding_exception('Unexpected type of thing ('.get_class($bc).') found in list of block contents.');
                 }
-            }
-            if (!$editing) {
-                $output .= html_writer::end_tag('div');
             }
         }
 

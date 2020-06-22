@@ -82,7 +82,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
         </div>
         <?php
         if ($useblock) {
-            echo $OUTPUT->campusblocks($useblock, 'col-9');
+            echo $OUTPUT->campusblocks($useblock, 'col-3');
         }
         ?>
     </div>
