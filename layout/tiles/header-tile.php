@@ -47,7 +47,7 @@ if ((!$hdflexlayout) && (!$hdlogo)) {
 }
 
 echo '<div id="body-header" class="'.$hdtype.'">';
-echo '<div class="container">';
+echo '<div class="container-fluid">';
 
 global $CFG;
 if ($hdlogoextrapos == 1) {
@@ -64,7 +64,7 @@ if ($hdlogoextrapos == 1) {
     }
     echo '</div>';
 }
-echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'pageheadingheader'.
+echo '<div class="backgroundcontainer col-12 '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'pageheadingheader'.
 if ($hdbackgroundimage) {
     echo '<img class="campusdesktop headertoggled" src="'.$hdbackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
     if ($hdresponsive) {

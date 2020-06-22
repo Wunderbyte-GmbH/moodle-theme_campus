@@ -1,21 +1,22 @@
 /* jshint ignore:start */
-define(['jquery', 'theme_bootstrapbase/bootstrap', 'core/log'], function($, bootstrap, log) {
+define(['jquery', 'core/log'], function($, log) {
 
   "use strict"; // jshint ;_;
 
-  log.debug('Campus affix AMD');
+  log.debug('Campus affix AMD - TODO!');
 
   return {
     init: function() {
       $(document).ready(function($) {
-        $('.campusnavbar').affix({
+        /*$('.campusnavbar').affix({
           offset: {
             top: function() {
               return $('#page-header').height()
             }
           }
-        });
+        });*/
         $("body").addClass("hasaffix");
+        //$(".navbar").addClass("fixed-top");
 
         // Task #743 - Anchor links have a positioning problem - will only kick in if 'stickynavbar' setting is set.
         // See also: https://github.com/twbs/bootstrap/issues/1768

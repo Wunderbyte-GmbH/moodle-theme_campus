@@ -32,7 +32,7 @@ if (!empty($hdfancynavbar)) {
 }
 ?>
 <header>
-    <nav class="campusnavbar navbar navbar-static-top<?php echo $navbarclasses ?>>
+    <nav class="campusnavbar navbar navbar-static-top<?php echo $navbarclasses ?>">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
             <?php echo $OUTPUT->navbar_button(); ?>
