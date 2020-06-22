@@ -70,6 +70,11 @@ function theme_campus_get_pre_scss($theme) {
 
     $scss .= \theme_campus\toolbox::get_scss_file('variables-campus');
 
+    $vars = theme_campus_less_variables($theme);
+    foreach ($vars as $varkey => $varval) {
+        $scss .= '$'.$varkey.':'.$varval.';'.PHP_EOL;
+    }
+
     return $scss;
 }
 
