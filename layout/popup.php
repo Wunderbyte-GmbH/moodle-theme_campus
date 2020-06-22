@@ -52,8 +52,8 @@ echo $OUTPUT->doctype() ?>
     }
 ?>
 
-<header role="banner" class="navbar navbar-fixed-top moodle-has-zindex <?php echo $hideclass; ?>">
-    <nav role="navigation" class="navbar-inner">
+<header role="banner" class="moodle-has-zindex <?php echo $hideclass; ?>">
+    <nav role="navigation" class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

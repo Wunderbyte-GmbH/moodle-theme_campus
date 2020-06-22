@@ -385,7 +385,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
 
-    .navbar-inner {
+    .navbar {
         padding-left: 10px;
         padding-right: 10px;
         .usermenu {
@@ -473,16 +473,14 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (max-width: $navbarCollapseWidth) {
     .navbar {
-        .navbar-inner {
-            padding-left: 0;
-            padding-right: 0;
-            .btn-navbar {
-                margin-left: 0;
-                margin-right: 0;
-            }
+        padding-left: 0;
+        padding-right: 0;
+        .btn-navbar {
+            margin-left: 0;
+            margin-right: 0;
         }
     }
-    .backgroundcontainer.left .navbar .navbar-inner .brand {
+    .backgroundcontainer.left .navbar .brand {
         float: right;
         padding-left: 10px;
     }
@@ -1055,7 +1053,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             .nav-collapse.collapse.active {
                 display: block;
             }
-            .navbar-inner {
+            .navbar {
                 background-image: none;
                 background-color: transparent;
                 @include box-shadow(none);
@@ -1220,7 +1218,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
                 padding-right: 0;
             }
             .navbar,
-            .navbar .navbar-inner .container-fluid,
+            .navbar .container-fluid,
             #page, 
             .frontpageheader.absolutelayout,
             .frontpageheader.flexlayout,
