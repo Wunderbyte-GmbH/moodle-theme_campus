@@ -160,4 +160,10 @@ class toolbox {
             }
         }
     }
+
+    static public function get_scss_file($filename) {
+        // TODO - themedir.
+        global $CFG;
+        return file_get_contents($CFG->dirroot.'/theme/campus/scss/'.$filename.'.scss');
+    }
 }
