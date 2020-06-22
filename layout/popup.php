@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
  * @package    theme
  * @subpackage campus
@@ -87,7 +87,7 @@ echo $OUTPUT->doctype() ?>
     </header>
 
     <div id="page-content" class="row-fluid">
-        <section id="region-main" class="span12">
+        <section id="region-main" class="col-12">
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();

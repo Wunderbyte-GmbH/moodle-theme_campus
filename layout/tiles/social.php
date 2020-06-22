@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
  * @package    theme
  * @subpackage campus
@@ -42,7 +42,7 @@ if ($numberofsociallinks) {
             if (!$haveicons) {
                 $haveicons = true;
                 $icons = '<div class="row-fluid">';
-                $icons .= '<div class="span12 socialnetworkscontainer">';
+                $icons .= '<div class="col-12 socialnetworkscontainer">';
                 $icons .= '<ul class="socialnetworks">';
             }
             $iconname = 'socialicon'.$i;

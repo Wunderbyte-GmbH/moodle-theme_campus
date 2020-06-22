@@ -65,9 +65,9 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
     <div id="page-content" class="row-fluid">
         <?php if ($useblock) { ?>
-        <div id="region-main" class="span9 pull-right">
+        <div id="region-main" class="col-9 pull-right">
         <?php } else { ?>
-        <div id="region-main" class="span12">
+        <div id="region-main" class="col-12">
         <?php }
                 require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
                 ?>
@@ -82,7 +82,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
         </div>
         <?php
         if ($useblock) {
-            echo $OUTPUT->campusblocks($useblock, 'span3 desktop-first-column');
+            echo $OUTPUT->campusblocks($useblock, 'col-3 desktop-first-column');
         }
         ?>
     </div>

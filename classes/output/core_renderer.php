@@ -38,9 +38,7 @@ use custom_menu;
 use html_writer;
 use moodle_url;
 
-require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');
-
-class core_renderer extends \theme_bootstrapbase_core_renderer {
+class core_renderer extends \theme_boost\output\core_renderer {
 
     private $hasspecificheader = false;  // States if we have a specific header and therefore header toggle functionality is needed.
 
@@ -338,7 +336,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
                     // 'desktop-first-column' done in CSS with ':first-of-type' and ':nth-of-type'.
                     // 'spanX' done in CSS with calculated special width class as fixed at 'span3' for all.
-                    $bc->attributes['class'] .= ' span' . $span;
+                    $bc->attributes['class'] .= ' col-' . $span;
                 }
 
                 if ($bc instanceof block_contents) {

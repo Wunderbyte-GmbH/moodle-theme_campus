@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
  * @package    theme
  * @subpackage campus
@@ -85,9 +85,9 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
     <div id="page-content" class="row-fluid">
         <?php if ($useblock) { ?>
-        <section id="region-main" class="span9<?php if (!$right) { echo ' pull-right'; } ?>">
+        <section id="region-main" class="col-9<?php if (!$right) { echo ' pull-right'; } ?>">
         <?php } else { ?>
-        <section id="region-main" class="span12">
+        <section id="region-main" class="col-12">
         <?php }
             echo $OUTPUT->main_content(); ?>
         </section>
@@ -97,7 +97,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
             if (!$right) {
                 $classextra = ' desktop-first-column';
             }
-            echo $OUTPUT->campussingleblocks('span3'.$classextra);
+            echo $OUTPUT->campussingleblocks('col-3'.$classextra);
         }
         ?>
     </div>

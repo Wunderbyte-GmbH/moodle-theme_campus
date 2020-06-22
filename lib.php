@@ -56,6 +56,78 @@ function theme_campus_set_customcss($css, $customcss) {
 }
 
 /**
+ * Get SCSS to prepend.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string SCSS.
+ */
+function theme_campus_get_pre_scss($theme) {
+    static $boosttheme = null;
+    if (empty($boosttheme)) {
+        $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
+    }
+    $scss = theme_boost_get_pre_scss($boosttheme);
+
+    return $scss;
+}
+
+/**
+ * Returns the main SCSS content.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string SCSS.
+ */
+function theme_campus_get_main_scss_content($theme) {
+    global $CFG;
+    static $boosttheme = null;
+    if (empty($boosttheme)) {
+        $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
+    }
+
+    // This mechanism is not set in stone.
+    //$scss = file_get_contents($CFG->dirroot . '/theme/campus/scss/theme/_variables.scss');
+    $scss = '';
+
+    $boosttheme->settings->preset = 'default.scss';
+    $scss .= theme_boost_get_main_scss_content($boosttheme);
+
+    //$scss .= file_get_contents($CFG->dirroot . '/theme/campus/scss/theme/theme.scss');
+
+    return $scss;
+}
+
+/**
+ * Inject additional SCSS.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string SCSS.
+ */
+function theme_campus_get_extra_scss($theme) {
+    static $boosttheme = null;
+    if (empty($boosttheme)) {
+        $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
+    }
+    $scss = theme_boost_get_extra_scss($boosttheme);
+
+    // Custom SCSS.  TODO.
+    if (!empty($theme->settings->customscss)) {
+        $scss .= $theme->settings->customscss;
+    }
+
+    return $scss;
+}
+
+/**
+ * Get compiled css.
+ *
+ * @return string compiled css
+ */
+function theme_campus_get_precompiled_css() {
+    global $CFG;
+    return file_get_contents($CFG->dirroot . '/theme/boost/style/moodle.css');
+}
+
+/**
  * Returns variables for LESS.
  *
  * We will inject some LESS variables from the settings that the user has defined
@@ -756,6 +828,10 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
     }
 
     if ($context->contextlevel == CONTEXT_SYSTEM) {
+        // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+        if (!array_key_exists('cacheability', $options)) {
+            $options['cacheability'] = 'public';
+        }
         if ($filearea === 'frontpagelogo') {
             // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
             if (!array_key_exists('cacheability', $options)) {

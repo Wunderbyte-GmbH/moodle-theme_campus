@@ -56,7 +56,7 @@ echo $OUTPUT->doctype() ?>
     </header>
 
     <div id="page-content" class="row-fluid">
-        <section class="span12">
+        <section class="col-12">
             <?php echo $OUTPUT->main_content(); ?>
         </section>
     </div>

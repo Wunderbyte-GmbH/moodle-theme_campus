@@ -28,24 +28,32 @@
 
 $THEME->doctype = 'html5';
 $THEME->name = 'campus';
-$THEME->parents = array('bootstrapbase');
+$THEME->parents = array('boost');
 $THEME->sheets = array('font');
-$THEME->lessfile = 'moodleallcampus';
-$THEME->lessvariablescallback = 'theme_campus_less_variables';
-$THEME->extralesscallback = 'theme_campus_extra_less';
 $THEME->sheets[] = 'font-awesome';
 $THEME->sheets[] = 'custom';
+//$THEME->lessfile = 'moodleallcampus';
+//$THEME->lessvariablescallback = 'theme_campus_less_variables';
+//$THEME->extralesscallback = 'theme_campus_extra_less';
+$THEME->prescsscallback = 'theme_campus_get_pre_scss';
+$THEME->scss = function(theme_config $theme) {
+    return theme_campus_get_main_scss_content($theme);
+};
+$THEME->extrascsscallback = 'theme_campus_get_extra_scss';
+$THEME->usefallback = true;
+$THEME->precompiledcsscallback = 'theme_campus_get_precompiled_css';
+$THEME->enable_dock = false;
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
 $THEME->editor_sheets = array('editor');
 
-$THEME->parents_exclude_sheets = array(
+/*$THEME->parents_exclude_sheets = array(
     'bootstrapbase' => array(
         'moodle',
         'editor'
     )
-);
+);*/
 
 $THEME->plugins_exclude_sheets = array(
     'block' => array(

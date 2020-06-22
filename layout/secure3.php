@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
  * @package    theme
  * @subpackage campus
@@ -44,29 +44,29 @@ if ($rtl) {
 }
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
-$regionclass = 'span9';
-$contentclass = 'span8';
-$blockclass = 'span4';
+$regionclass = 'col-9';
+$contentclass = 'col-8';
+$blockclass = 'col-4';
 
 if (!($hassidepre AND $hassidepost)) {
     // Two columns.
-    $contentclass = 'span9';
-    $blockclass = 'span3';
+    $contentclass = 'col-9';
+    $blockclass = 'col-3';
     if (!$PAGE->user_is_editing()) {
         if (((!$hassidepre) && (!$rtl)) ||
             ((!$hassidepost) && ($rtl))) {
             // Fill complete area when editing off and LTR and no side-pre content or RTL and no side-post content.
-            $contentclass = 'span12';
+            $contentclass = 'col-12';
         } else if ((!$hassidepre) && ($rtl)) {
             // Fill complete area when editing off, RTL and no side pre.
-            $regionclass = 'span12';
+            $regionclass = 'col-12';
         }
     } else {
         if (((!$hassidepre) && ($rtl)) || (($hassidepre) && (!$rtl))) {
             // Fill complete area when editing on, RTL and no side pre.
             // Fill complete area when editing on, LTR and no side post.
-            $contentclass = 'span8';
-            $blockclass = 'span4';
+            $contentclass = 'col-8';
+            $blockclass = 'col-4';
         }
     }
 }
@@ -104,7 +104,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                 <?php echo $OUTPUT->campusblocks($pre, $blockclass.' desktop-first-column'); ?>
             </div>
         </div>
-        <?php echo $OUTPUT->campusblocks($post, 'span3'); ?>
+        <?php echo $OUTPUT->campusblocks($post, 'col-3'); ?>
     </div>
 
     <?php

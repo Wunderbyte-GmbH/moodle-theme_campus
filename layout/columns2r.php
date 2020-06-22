@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
  * @package    theme
  * @subpackage campus
@@ -64,9 +64,9 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
     <div id="page-content" class="row-fluid">
         <?php if ($useblock) { ?>
-        <div id="region-main" class="span9">
+        <div id="region-main" class="col-9">
         <?php } else { ?>
-        <div id="region-main" class="span12">
+        <div id="region-main" class="col-12">
         <?php }
                 require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
                 ?>
@@ -90,7 +90,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
         </div>
         <?php
         if ($useblock) {
-            echo $OUTPUT->campussingleblocks('span3');
+            echo $OUTPUT->campussingleblocks('col-3');
         }
         ?>
     </div>
