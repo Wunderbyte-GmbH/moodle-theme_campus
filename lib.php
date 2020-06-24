@@ -68,12 +68,12 @@ function theme_campus_get_pre_scss($theme) {
     }
     $scss = theme_boost_get_pre_scss($boosttheme);
 
-    $scss .= \theme_campus\toolbox::get_scss_file('variables-campus');
-
-    $vars = theme_campus_less_variables($theme);
+    $vars = theme_campus_sass_variables($theme);
     foreach ($vars as $varkey => $varval) {
         $scss .= '$'.$varkey.':'.$varval.';'.PHP_EOL;
     }
+
+    $scss .= \theme_campus\toolbox::get_scss_file('variables-campus');
 
     return $scss;
 }
@@ -437,6 +437,250 @@ function theme_campus_extra_sccs($theme) {
     return $content;
 }
 
+/**
+ * Returns variables for SASS.
+ *
+ * We will inject some SASS variables from the settings that the user has defined
+ * for the theme.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return array of SASS variables without the $.
+ */
+function theme_campus_sass_variables($theme) {
+    $variables = array();
+    if (!empty($theme->settings->pagewidthmax)) {
+        if ($theme->settings->pagewidthmax == 100) { // Percentage value.
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'%';
+        } else {
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'px';
+        }
+    }
+    if (!empty($theme->settings->headingfont)) {
+        $variables['headingsFontName'] = '"'.$theme->settings->headingfont.'"';
+    }
+    if (!empty($theme->settings->bodyfont)) {
+        $variables['baseFontName'] = '"'.$theme->settings->bodyfont.'"';
+    }
+    if (!empty($theme->settings->textcolour)) {
+        $variables['textColor'] = $theme->settings->textcolour;
+    }
+    if (!empty($theme->settings->linkcolour)) {
+        $variables['linkColor'] = $theme->settings->linkcolour;
+    }
+    if (!empty($theme->settings->contentcolour)) {
+        $variables['contentColor'] = $theme->settings->contentcolour;
+    }
+    if (!empty($theme->settings->iconcolour)) {
+        $variables['blockIconColour'] = $theme->settings->iconcolour;
+    }
+    if (!empty($theme->settings->headingcolour)) {
+        $variables['headingsColor'] = $theme->settings->headingcolour;
+    }
+    if (!empty($theme->settings->navbartextcolour)) {
+        $variables['navbarText'] = $theme->settings->navbartextcolour;
+        $variables['navbarBrandColor'] = $theme->settings->navbartextcolour;
+        $variables['navbarLinkColor'] = $theme->settings->navbartextcolour;
+    }
+    if (!empty($theme->settings->navbarlinkcolour)) {
+        $variables['dropdownLinkColorHover'] = $theme->settings->navbarlinkcolour;
+        $variables['navbarLinkColor'] = $theme->settings->navbarlinkcolour;
+    }
+    if (!empty($theme->settings->navbariconcolour)) {
+        $variables['navbarIconColour'] = $theme->settings->navbariconcolour;
+    }
+    if (!empty($theme->settings->navbarbackgroundcolour)) {
+        $variables['dropdownLinkBackgroundHover'] = $theme->settings->navbarbackgroundcolour;
+        $variables['navbarBackground'] = $theme->settings->navbarbackgroundcolour;
+        $variables['navbarBackgroundHighlight'] = $theme->settings->navbarbackgroundcolour;
+    }
+    if (!empty($theme->settings->blockheadingcolour)) {
+        $variables['blockHeadingColor'] = $theme->settings->blockheadingcolour;
+    }
+    if (!empty($theme->settings->blockheadingbackgroundcolour)) {
+        $variables['blockHeadingBackgroundColour'] = $theme->settings->blockheadingbackgroundcolour;
+    }
+    if (!empty($theme->settings->blockbackgroundcolour)) {
+        $variables['blockBackgroundColour'] = $theme->settings->blockbackgroundcolour;
+    }
+    if (!empty($theme->settings->blockborderoptions)) {
+        $blockborderthickness = (!empty($theme->settings->blockborderthickness)) ? $theme->settings->blockborderthickness : '1px';
+        switch ($theme->settings->blockborderoptions) {
+            case 1: // No border.
+                $variables['blockHeadingBorderTopWidth'] = '0';
+                $variables['blockHeadingBorderRightWidth'] = '0';
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = '0';
+                $variables['blockContentBorderTopWidth'] = '0';
+                $variables['blockContentBorderRightWidth'] = '0';
+                $variables['blockContentBorderBottomWidth'] = '0';
+                $variables['blockContentBorderLeftWidth'] = '0';
+            break;
+            case 2: // Border around the whole block.
+                $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = $blockborderthickness;
+                $variables['blockContentBorderTopWidth'] = '0';
+                $variables['blockContentBorderRightWidth'] = $blockborderthickness;
+                $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
+            break;
+            case 3: // Border on header only.
+                $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderLeftWidth'] = $blockborderthickness;
+                $variables['blockContentBorderTopWidth'] = '0';
+                $variables['blockContentBorderRightWidth'] = '0';
+                $variables['blockContentBorderBottomWidth'] = '0';
+                $variables['blockContentBorderLeftWidth'] = '0';
+            break;
+            case 4: // Border on content only.
+                $variables['blockHeadingBorderTopWidth'] = '0';
+                $variables['blockHeadingBorderRightWidth'] = '0';
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = '0';
+                $variables['blockContentBorderTopWidth'] = $blockborderthickness;
+                $variables['blockContentBorderRightWidth'] = $blockborderthickness;
+                $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
+            break;
+            case 5: // Three horizontal lines: above header, between header/content and bottom.
+                $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
+                $variables['blockHeadingBorderRightWidth'] = '0';
+                $variables['blockHeadingBorderBottomWidth'] = '0';
+                $variables['blockHeadingBorderLeftWidth'] = '0';
+                $variables['blockContentBorderTopWidth'] = $blockborderthickness;
+                $variables['blockContentBorderRightWidth'] = '0';
+                $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
+                $variables['blockContentBorderLeftWidth'] = '0';
+            break;
+        }
+    }
+    if (!empty($theme->settings->blockbordercolour)) {
+        $variables['blockBorderColour'] = $theme->settings->blockbordercolour;
+    }
+    if (!empty($theme->settings->blockborderstyle)) {
+        $variables['blockBorderStyle'] = $theme->settings->blockborderstyle;
+    }
+    if (!empty($theme->settings->themecolour)) {
+        $variables['bodyBackgroundAlt'] = $theme->settings->themecolour;
+        $variables['carouselColour'] = $theme->settings->themecolour;
+        $variables['carouselActiveColour'] = $theme->settings->themecolour;
+    }
+    if (!empty($theme->settings->themebackgroundcolour)) {
+        $variables['themeBackground'] = $theme->settings->themebackgroundcolour;
+    }
+    if (!empty($theme->settings->borderradiussmall)) {
+        $variables['borderRadiusSmall'] = $theme->settings->borderradiussmall;
+    }
+    if (!empty($theme->settings->borderradiusmedium)) {
+        $variables['baseBorderRadius'] = $theme->settings->borderradiusmedium;
+    }
+    if (!empty($theme->settings->borderradiuslarge)) {
+        $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
+    }
+    if (!empty($theme->settings->wellbackgroundcolour)) {
+        $variables['wellBackground'] = $theme->settings->wellbackgroundcolour;
+    }
+    if (!empty($theme->settings->alertinfotextcolour)) {
+        $variables['infoText'] = $theme->settings->alertinfotextcolour;
+    }
+    if (!empty($theme->settings->alertinfobackgroundcolour)) {
+        $variables['infoBackground'] = $theme->settings->alertinfobackgroundcolour;
+    }
+    if (!empty($theme->settings->navbarpageheadingmax)) {
+        $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax.'px';
+    }
+    if (!empty($theme->settings->frontpagelogoposition)) {
+        switch ($theme->settings->frontpagelogoposition) {
+            case 1:
+                $variables['frontpagePageHeadingHeaderPositionRight'] = '50px';
+            break;
+            case 2:
+                $variables['frontpagePageHeadingHeaderPositionLeft'] = '50px';
+            break;
+        }
+        if ((!empty($theme->settings->frontpagelayout)) && ($theme->settings->frontpagelayout == 'absolutelayout')) {
+            switch ($theme->settings->frontpagelogoposition) {
+                case 1:
+                    $variables['frontpageLogoPosition'] = 'left';
+                break;
+                case 2:
+                    $variables['frontpageLogoPosition'] = 'right';
+                break;
+            }
+        }
+    }
+    if ((!empty($theme->settings->frontpagelogo)) && (!empty($theme->settings->frontpagebackgroundimage))) {
+        if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpagelogo', 'frontpagelogo')) {
+            if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpagebackgroundimage', 'frontpagebackgroundimage')) {
+                $backgroundwidth = $backgrounddimensions['width'];
+                $backgroundheight = $backgrounddimensions['height'];
+            } else {
+                if (!empty($theme->settings->pagewidthmax)) {
+                    $backgroundwidth = $theme->settings->pagewidthmax; // Fallback, default max px of #page unless a percentage.
+                    if ($backgroundwidth == 100) { // Percentage value, cannot use in calculation!
+                        $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                    }
+                } else {
+                    $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                }
+                $backgroundheight = $dimensions['height'];
+            }
+            $totalwidth = $dimensions['width'] + $backgroundwidth;
+            $fplogowidth = ($dimensions['width'] / $totalwidth) * 100;
+            $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+            $fpflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
+            $fpbackgroundwidth = 100 - $fplogowidth;
+            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
+       }
+    } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
+        // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+        if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
+            $backgrounddetails = theme_campus_get_theme_background();
+            if (($backgrounddetails['fullname']) && ($backgrounddimensions = getimagesize($backgrounddetails['fullname']))) {
+                $backgroundwidth = $backgrounddimensions[0];
+                $backgroundheight = $backgrounddimensions[1];
+            } else {
+                if (!empty($theme->settings->pagewidthmax)) {
+                    $backgroundwidth = $theme->settings->pagewidthmax; // Fallback, default max px of #page unless a percentage.
+                    if ($backgroundwidth == 100) { // Percentage value, cannot use in calculation!
+                        $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                    }
+                } else {
+                    $backgroundwidth = 1680; // Fallback, where 1680 is the default max px of #page.
+                }
+                $backgroundheight = $dimensions[1];
+            }
+            $totalwidth = $dimensions[0] + $backgroundwidth;
+            $fplogowidth = ($dimensions[0] / $totalwidth) * 100;
+            $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
+            $fpflexpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
+            $fpbackgroundwidth = 100 - $fplogowidth;
+            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
+        }
+    }
+    if (!empty($theme->settings->carouseltextcolour)) {
+        $variables['carouselTextColour'] = $theme->settings->carouseltextcolour;
+    }
+    if (!empty($theme->settings->slidebuttoncolour)) {
+        $variables['slideButtonColour'] = $theme->settings->slidebuttoncolour;
+    }
+    if (!empty($theme->settings->slidebuttonhovercolour)) {
+        $variables['slideButtonHoverColour'] = $theme->settings->slidebuttonhovercolour;
+    }
+
+    return $variables;
+}
 
 /**
  * Returns variables for LESS.
