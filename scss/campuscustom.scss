@@ -1271,6 +1271,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 #page-footer {
     background-color: $contentColor;
     padding: 1em 8px 0 8px;
+    a {
+        color: $linkColor;
+    }
     .helplink, .logininfo, {
         display: inline;
     }

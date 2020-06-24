@@ -1,0 +1,561 @@
+// Changes to Moodle Bootstrap.
+
+// moodle.less
+// --------------------------------------------------
+body {
+    padding-top: 0; // Negate padding for fixed navbar.
+}
+
+// As a result, need:
+#page {
+    padding-top: 10px;
+}
+
+// admin.less
+// --------------------------------------------------
+#page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release,
+#plugins-check .status-upgrade .status,
+#plugins-check .status-delete .status {
+    background-color: $infoBackground;
+    color: $infoText;
+}
+
+#plugins-check .status .pluginupdateinfo {
+    background-color: $infoBackground;
+    color: $infoText;
+}
+
+#plugins-overview-panel .info.updatable {
+    background-color: $infoBackground;
+    color: $infoText;
+}
+
+#plugins-control-panel .notes .pluginupdateinfo {
+    background-color: $infoBackground;
+    color: $infoText;
+}
+
+// backup-restore.less
+// --------------------------------------------------
+.backup-restore .backup-section > h2.header,
+.backup-restore .backup-section .backup-sub-section h3 {
+    color: $headingsColor;
+}
+
+// blocks.less
+// --------------------------------------------------
+.block .header .title h2,
+.block h3.main {
+    //.nav-header;
+    color: $blockHeadingColor;
+    display: block;
+    font-size: 1.1em;
+    font-weight: normal;
+    line-height: $baseLineHeight;
+    padding: 3px 15px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.block_navigation,
+.block_settings {
+    .block_tree p.hasicon {
+        padding-left: 10px;
+        text-indent: -8px;
+    }
+}
+
+// breadcrumbs.less - mine
+// --------------------------------------------------
+.breadcrumb > li {
+    margin-top: 0;
+    > .divider {
+        color: inherit;
+    }
+}
+
+.breadcrumb {
+    padding: 5px 10px;
+    overflow: hidden;
+}
+
+.breadcrumb-button {
+    margin-top: 0;
+}
+
+li.breadcrumb-button {
+    float: right;
+    margin-top: 0;
+}
+
+li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div input {
+    float: right;
+    margin-bottom: 0;
+}
+
+// core.less
+// --------------------------------------------------
+.highlight {
+    background: $infoBackground;
+    color: $infoText;
+}
+
+.activity.label .dimmed_text {
+    color: $grayLight;
+    font-style: italic;
+    opacity: 1;
+}
+
+// core.less and modules.less
+// --------------------------------------------------
+.jsenabled {
+    .moodle-actionmenu[data-enhance] .toggle-display.textmenu .caret {
+        border-top-color: $linkColor;
+        &:hover,
+        &:active {
+            border-top-color: $linkColorHover;
+        }
+    }
+
+    .usermenu .moodle-actionmenu[data-enhance] .toggle-display .caret {
+        border-top-color: $navbarLinkColor;
+        &:hover,
+        &:active {
+            border-top-color: $navbarLinkColorActive;
+        }
+    }
+}
+
+.moodle-actionmenu[data-enhanced].show .menu a .fa {
+    color: inherit;
+}
+
+.moodle-actionmenu > ul.menubar > li a.menu-action {
+    margin-right: 4px;
+}
+
+// course.less
+// --------------------------------------------------
+.course-content .section-summary {
+    border: 1px solid lighten($grayLight, 20%);
+}
+
+.course-content ul li.section.main {
+    border-bottom: 2px solid $inputBorder;
+}
+
+.course-content .current {
+    background-color: $wellBackground;
+}
+
+/* Mary Evans changes - see https://moodle.org/mod/forum/discuss.php?d=230919#p1004239. */
+.coursebox > .info > .name {
+    width: auto;
+}
+
+/* Mary Evans changes - see https://moodle.org/mod/forum/discuss.php?d=230919#p1004239. */
+.coursebox .content .coursecat,
+.coursebox .content .summary,
+.coursebox .content .courseimage,
+.coursebox .content .coursefile,
+.coursebox .content .teachers,
+.coursebox.remotecoursebox .remotecourseinfo {
+    width: 100%;
+}
+.coursebox .teachers {
+    margin: 0;
+}
+
+.courses .coursebox.collapsed {
+    border: 1px solid lighten($bodyBackground, 5%);
+}
+
+.courses .coursebox.even {
+    background-color: lighten($bodyBackground, 3%);
+}
+
+.courses .coursebox:hover,
+.course_category_tree .courses > .paging.paging-morelink:hover {
+    background-color: lighten($bodyBackground, 5%);
+}
+
+.course_category_tree .category .numberofcourse {
+    font-size: 0.85em;
+}
+
+.course_category_tree .paging.paging-morelink a {
+    font-size: 90%;
+}
+
+.path-course-view li.activity span.autocompletion img,
+.path-course-view li.activity form.togglecompletion .btn {
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+}
+
+/* My Overrides */
+.resourcelinkdetails {
+    color: $textColor !important;
+    font-size: 0.8em;
+}
+
+#frontpage-category-combo {
+    .coursebox > .info > .coursename a {
+        background-position: left 0.2em;  // Keep an eye on MDL-50004.
+    }
+}
+
+// Width of ressource "label" is different from width of "site summary" on frontpage - task #775.
+body.notediting {
+    .section .label .contentwithoutlink, .section .label .activityinstance {
+        padding-right: 0;
+    }
+    .section .label .mod-indent-outer, .section .activity .mod-indent-outer {
+        padding-left: 0;
+    }
+    &.path-site li.activity > div, &.path-course-view li.activity > div {
+        padding: 0;
+    }
+    .section .activity.modtype_label.label, .section li.activity {
+        padding-bottom: .2em;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: .2em;
+    }
+    li.activity.label {
+        padding-bottom: 8px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 8px;
+    }
+    .course-content ul.topics li.section .summary {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .course-content ul.section {
+        margin-bottom: 1em;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 1em;
+    }
+    &.format-topics .course-content ul.topics li.section {
+        .left,
+        .right {
+            width: 20px;
+        }
+    }
+    // Hardcoded 'de' language default.
+    &.format-topcoll.lang-de {
+        .course-content ul.topics li.section {
+            .left,
+            .right {
+                width: 40px;
+            }
+        }
+    }
+}
+
+.coursebox .content .summary {
+    float: none;
+}
+
+.course-content ul li.section.hidden {
+    .sectionname > span,
+    .content > div,  /* All the divs but the activities which are in a UL. */
+    .activity .activityinstance {
+        color: $grayLight;
+        font-style: italic;
+        opacity: 1;
+    }
+    .sectionname > span a {
+        color: inherit;
+        font-style: italic;
+    }
+}
+
+// debug.less
+// --------------------------------------------------
+#page-footer .block-region p {
+    text-align: left;
+}
+
+// Filemanager etc.
+// --------------------------------------------------
+.file-picker,
+.filemanager,
+.filepicker {
+    .fa {
+        color: $textColor;
+        font-size: 24px;
+        vertical-align: text-top;
+    }
+}
+
+// forms.less
+// --------------------------------------------------
+.form-defaultinfo, .form-label .form-shortname {
+    color: $textColor;
+    word-break: break-word;
+}
+
+.form-item .form-description, .felement.fstatic {
+    color: $textColor;
+}
+
+.mform fieldset.collapsible legend a.fheader {
+    margin-left: inherit;
+}
+
+#adminsettings h3.main {
+    color: $headingsColor;
+}
+.mform legend a,
+.mform legend a:hover {
+    color: $textColor;
+}
+
+// My additions for https://moodle.org/mod/forum/discuss.php?d=234329.
+table {
+    input,
+    textarea,
+    .uneditable-input {
+       width: auto;
+    }
+}
+
+textarea[cols] {
+    width: 100%;
+}
+
+// grade.less
+// --------------------------------------------------
+.gradetreebox td.colspan,
+.gradetreebox tr.category .cell {
+    background-color: $bodyBackgroundAlt;
+}
+
+@media (min-width: 768px) {
+    .path-grade-report,
+    #page-admin-plugins {
+        #region-main {
+            float: left;
+            width: 100%;
+        }
+        .block-region {
+            margin: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            width: 100%;
+            //.block {
+            //    .makeColumn(4);
+            //}
+        }
+    }
+}
+
+.path-grade-report-grader .gradeparent tr:nth-of-type(even) .cell {
+    background-color: $bodyBackground;
+}
+
+.path-grade-report-grader .gradeparent .floater {
+    .cell:nth-of-type(odd),
+    &.lastrow .cell.header {
+        background-color: $bodyBackgroundAlt;
+    }
+    .cell:nth-of-type(even),
+    &.heading .cell.header,
+    &.heading .cell:nth-of-type(odd) {
+        background-color: $bodyBackground;
+    }
+}
+
+// My additions from https://moodle.org/mod/forum/discuss.php?d=234329:...
+.gradestable {
+    table {
+        border: 1px solid lighten($grayLight, 20%);
+    }
+
+    tr.category th.cell.rowspan {
+        border-left: 1px solid lighten($grayLight, 20%);
+        border-width: 0;
+    }
+
+    tr.category th.cell.rowspan:hover {
+        background-color: $grayLighter;
+    }
+
+    td.name {
+        border-left: 0px;
+    }
+
+    td.colspan {
+        background-color: darken($grayLighter, 20%);
+        border-bottom: 1px solid lighten($grayLight, 20%);
+        border-left: 1px solid lighten($grayLight, 20%);
+        border-top: 0;
+    }
+}
+
+// My additional additions:
+table.generaltable {
+    th.level1 {
+        width: 1%;
+    }
+    th.level2 {
+        width: 2%;
+    }
+    th.level3 {
+        width: 3%;
+    }
+    th.level4 {
+        width: 4%;
+    }
+    th.level5 {
+        width: 5%;
+    }
+    th.level6 {
+        width: 6%;
+    }
+    th.level7 {
+        width: 7%;
+    }
+    th.level8 {
+        width: 8%;
+    }
+    th.level9 {
+        width: 9%;
+    }
+    th.level10 {
+        width: 10%;
+    }
+}
+
+// message.less
+// --------------------------------------------------
+#newmessageoverlay {
+    bottom: 30px;
+    left: 0;
+    right: auto;
+}
+
+.message-drawer {
+    height: 100%;
+    top: 0;
+    .drawer-top {
+        border: 1px solid $navbarBorder;
+        @include box-shadow("0 1px 4px rgba(0,0,0,.065)");
+        display: block;
+        //#gradient > .vertical($navbarBackgroundHighlight, $navbarBackground);
+        @include gradient-y($navbarBackgroundHighlight, $navbarBackground);
+        height: auto;
+        opacity: 1;
+    }
+}
+
+// modules.less
+// --------------------------------------------------
+.jsenabled {
+    .usermenu {
+        .moodle-actionmenu {
+            > .menu {
+                .filler {
+                    //.nav-divider($dropdownDividerTop, $dropdownDividerBottom);
+                    @include nav-divider($dropdownDividerTop, $dropdownDividerBottom);
+                }
+            }
+        }
+    }
+}
+
+// popover_region.less
+// --------------------------------------------------
+.navbar .popover-region-toggle {
+    height: $navbarHeight;
+    line-height: $navbarHeight;
+    padding-left: (($navbarHeight - $baseLineHeight) / 2);
+    padding-right: (($navbarHeight - $baseLineHeight) / 2);
+}
+
+// Grade report wrapping.
+// gradereport_grader.css.
+.path-grade-report-grader .gradestable th.user,
+.path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader .flexible th,
+.path-grade-report-grader .flexible td,
+.path-grade-report-grader .flexible th a,
+.path-grade-report-grader .flexible td a,
+.path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader td {
+    white-space: pre-line; // http://www.w3schools.com/cssref/pr_text_white-space.asp.
+}
+
+// question.less
+// --------------------------------------------------
+.que .formulation {
+    background-color: $wellBackground;
+}
+
+
+// responsive.less
+// --------------------------------------------------
+@media (max-width: 480px) {
+    // My alteration.
+    .path-admin .buttons,
+    .form-buttons {
+        padding-left: 0;
+    }
+}
+
+// responsive.less
+@media (max-width: 979px) {
+    .nav-collapse {
+        .nav > li > a {
+            color: $navbarText;
+        }
+        .nav > li > a:hover,
+        .nav > li > a:focus,
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus,
+        .dropdown-submenu a:focus,
+        .dropdown-submenu a:hover,
+        .dropdown-submenu a:active,
+        .dropdown-menu > li > a:hover,
+        .dropdown-menu > li > a:focus {
+            background-image: none;
+            color: $navbarText;
+        }
+    }
+}
+
+// Fixes.
+
+// Fix opacity for hidden block menu - MDL-42634.
+.editing .block.invisible {
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+}
+
+/* Negate core style so that browser renders drop target correctly. */
+.editing {
+    &.empty-region-side-pre #block-region-side-pre,
+    &.empty-region-side-post #block-region-side-post {
+        display: block;
+    }
+}
+
+// search.less
+// --------------------------------------------------
+.navbar .search-input-wrapper {
+    margin: 0;
+    > div {
+        margin: 7px 0 7px 0;
+    }
+    > form {
+        margin: 3px 0 1px 25px;
+    }
+}
+
+// User tours - see 'addResetLink' in usertours.js.
+#page-footer .logininfo div.usertour {
+    display: block;
+}

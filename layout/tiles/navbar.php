@@ -40,7 +40,7 @@ if (!empty($hdfancynavbar)) {
             <?php echo $OUTPUT->gotobottom_menu(); ?>
             <?php echo $OUTPUT->navbar_plugin_output(); ?>
             <?php if ($logininfoheader) { ?>
-                <li class="usermenu"><?php echo $OUTPUT->custom_menu_user() ?></li>
+                <li class="usermenu nav-item d-flex align-items-center"><?php echo $OUTPUT->custom_menu_user() ?></li>
             <?php } ?>
             <?php echo $OUTPUT->header_toggle_menu(); ?>
             </ul>

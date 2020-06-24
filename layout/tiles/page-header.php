@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
  * @package    theme
  * @subpackage campus
@@ -27,9 +27,9 @@
  */
 ?>
 <header id="page-header" class="clearfix">
-    <div id="page-navbar" class="clearfix">
+    <div id="page-navbar" class="d-flex flex-wrap">
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
+        <div class="breadcrumb-button ml-auto d-flex"><?php echo $OUTPUT->page_heading_button(); ?></div>
     </div>
     <?php
     if ($OUTPUT->using_frontpage_header_on_another_page()) {
