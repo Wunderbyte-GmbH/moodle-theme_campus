@@ -98,7 +98,9 @@ function theme_campus_get_main_scss_content($theme) {
     $boosttheme->settings->preset = 'default.scss';
     $scss .= theme_boost_get_main_scss_content($boosttheme);
 
+    $scss .= \theme_campus\toolbox::get_scss_file('bootstrapchanges');
     $scss .= \theme_campus\toolbox::get_scss_file('moodlechanges');
+    $scss .= \theme_campus\toolbox::get_scss_file('moodleupgradechanges');
     $scss .= \theme_campus\toolbox::get_scss_file('campuscustom');
 
     //$scss .= file_get_contents($CFG->dirroot . '/theme/campus/scss/theme/theme.scss');

@@ -1,0 +1,12 @@
+// Campus changes to Moodle for the upgrade.
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 0;
+    &::before {
+        content: '';
+    }
+}
+
+.breadcrumb > li > .divider {
+    padding-left: 4px;
+}

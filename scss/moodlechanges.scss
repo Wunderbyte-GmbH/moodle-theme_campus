@@ -1,4 +1,4 @@
-// Changes to Moodle Bootstrap.
+// Changes to Moodle.
 
 // moodle.less
 // --------------------------------------------------
@@ -469,12 +469,12 @@ table.generaltable {
 
 // popover_region.less
 // --------------------------------------------------
-.navbar .popover-region-toggle {
+/*.navbar .popover-region-toggle {
     height: $navbarHeight;
     line-height: $navbarHeight;
     padding-left: (($navbarHeight - $baseLineHeight) / 2);
     padding-right: (($navbarHeight - $baseLineHeight) / 2);
-}
+}*/
 
 // Grade report wrapping.
 // gradereport_grader.css.

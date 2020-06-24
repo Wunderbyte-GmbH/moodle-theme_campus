@@ -124,16 +124,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $url->param('edit', 'off');
             $btn = 'btn-danger';
             $title = get_string('turneditingoff');
-            $icon = 'icon-off';
+            $icon = 'fa-power-off';
         } else {
             $url->param('edit', 'on');
             $btn = 'btn-success';
             $title = get_string('turneditingon');
-            $icon = 'icon-edit';
+            $icon = 'fa-edit';
         }
-        return html_writer::tag('a',
-                        html_writer::start_tag('span', array('class' => $icon . ' icon-white')) .
-                        html_writer::end_tag('span'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
+        return html_writer::tag('a', html_writer::tag('i', '', array('class' => $icon.' fa fa-fw')),
+            array('href' => $url, 'class' => 'btn '.$btn, 'title' => $title));
     }
 
     /**
