@@ -13,27 +13,27 @@ body {
 
 // admin.less
 // --------------------------------------------------
-#page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release,
-#plugins-check .status-upgrade .status,
-#plugins-check .status-delete .status {
-    background-color: $infoBackground;
-    color: $infoText;
-}
+//#page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release,
+//#plugins-check .status-upgrade .status,
+//#plugins-check .status-delete .status {
+//    background-color: $infoBackground;
+//    color: $infoText;
+//}
 
-#plugins-check .status .pluginupdateinfo {
-    background-color: $infoBackground;
-    color: $infoText;
-}
+//#plugins-check .status .pluginupdateinfo {
+//    background-color: $infoBackground;
+//    color: $infoText;
+//}
 
-#plugins-overview-panel .info.updatable {
-    background-color: $infoBackground;
-    color: $infoText;
-}
+//#plugins-overview-panel .info.updatable {
+//    background-color: $infoBackground;
+//    color: $infoText;
+//}
 
-#plugins-control-panel .notes .pluginupdateinfo {
-    background-color: $infoBackground;
-    color: $infoText;
-}
+//#plugins-control-panel .notes .pluginupdateinfo {
+//    background-color: $infoBackground;
+//    color: $infoText;
+//}
 
 // backup-restore.less
 // --------------------------------------------------
@@ -94,10 +94,10 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 // core.less
 // --------------------------------------------------
-.highlight {
-    background: $infoBackground;
-    color: $infoText;
-}
+//.highlight {
+//    background: $infoBackground;
+//    color: $infoText;
+//}
 
 .activity.label .dimmed_text {
     color: $grayLight;

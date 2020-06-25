@@ -583,12 +583,12 @@ function theme_campus_sass_variables($theme) {
     /*if (!empty($theme->settings->wellbackgroundcolour)) {
         $variables['wellBackground'] = $theme->settings->wellbackgroundcolour;
     }*/
-    if (!empty($theme->settings->alertinfotextcolour)) {
+    /*if (!empty($theme->settings->alertinfotextcolour)) {
         $variables['infoText'] = $theme->settings->alertinfotextcolour;
     }
     if (!empty($theme->settings->alertinfobackgroundcolour)) {
         $variables['infoBackground'] = $theme->settings->alertinfobackgroundcolour;
-    }
+    }*/
     if (!empty($theme->settings->navbarpageheadingmax)) {
         $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax.'px';
     }

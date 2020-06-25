@@ -9,20 +9,15 @@
 
 // Grays
 // -------------------------
-$black:                 #000;
-$grayDark:              #333;
 $gray:                  #555;
 $grayLight:             #767676;
-$grayLightOrig:         #999;
 $grayLightish:          #ccc;
 $grayLighter:           #eee;
-$white:                 #fff;
 
 
 // Accent colors
 // -------------------------
 $blue:                  #049cdb !default;
-$blueDark:              #0064cd !default;
 $green:                 #46a546 !default;
 $red:                   #9d261d !default;
 $yellow:                #ffc40d !default;
@@ -80,7 +75,6 @@ $input-border-color:     darken($contentColor, 20%) !default;
 $input-disabled-bg:      $grayLighter !default;
 
 
-
 // Dropdowns
 // -------------------------
 $dropdownBackground:            $contentColor !default;
@@ -98,30 +92,9 @@ $dropdownLinkBackgroundHover:   lighten($dropdownLinkBackgroundActive, 8%) !defa
 $dropdown-link-hover-color:     darken($gray-900, 5%) !default;
 
 
-// COMPONENT VARIABLES
-// --------------------------------------------------
-
-
-// Z-index master list
-// -------------------------
-// Used for a bird's eye view of components dependent on the z-axis
-// Try to avoid customizing these :)
-$zindexDropdown:          1000 !default;
-$zindexPopover:           1010 !default;
-$zindexTooltip:           1030 !default;
-$zindexFixedNavbar:       1030 !default;
-$zindexModalBackdrop:     1040 !default;
-$zindexModal:             1050 !default;
-
 // Input placeholder text color
 // -------------------------
-$placeholderText:         $grayLight !default;
-
-
-// Hr border color
-// -------------------------
-$hrBorder:                lighten($grayLighter, 20%) !default;
-
+$input-placeholder-color:         $grayLight !default;
 
 // Navbar
 // -------------------------
@@ -131,8 +104,6 @@ $navbarCollapseDesktopWidth:      ($navbarCollapseWidth + 1) !default;
 $navbarHeight:                    34px !default;
 
 $navbarLinkColor:                 $navbarText !default;
-$navbarLinkBackgroundActive:      darken($navbarBackground, 5%) !default;
-
 
 $navbarText:                        $body-color !default;
 $navbarLinkColorHover:              darken($navbarLinkColor, 5%) !default;
@@ -152,59 +123,18 @@ $navbar-light-brand-hover-color:          $navbarBrandColor !default;
 $navbar-dark-brand-color:                 $navbarBrandColor !default;
 $navbar-dark-brand-hover-color:           $navbarBrandColor !default;
 
-// Inverted navbar
-$navbarInverseBackground:                $grayDark !default;
-$navbarInverseBorder:                    lighten($navbarBackground, 12%) !default;
-
-$navbarInverseText:                      darken($bodyBackgroundAlt, 5%) !default;
-$navbarInverseLinkColor:                 lighten($bodyBackgroundAlt, 2%) !default;
-$navbarInverseLinkColorHover:            lighten($bodyBackgroundAlt, 5%) !default;
-$navbarInverseLinkColorActive:           $navbarInverseLinkColorHover !default;
-$navbarInverseLinkBackgroundHover:       $navbarInverseBackground !default;
-$navbarInverseLinkBackgroundActive:      $navbarInverseBackground !default;
-
-$navbarInverseSearchBackground:          lighten($navbarInverseBackground, 25%) !default;
-$navbarInverseSearchBackgroundFocus:     $white !default;
-$navbarInverseSearchBorder:              $navbarInverseBackground !default;
-$navbarInverseSearchPlaceholderColor:    darken($grayLighter, 20%) !default;
-
-$navbarInverseBrandColor:                $navbarInverseLinkColor !default;
-
-
 // Pagination
 // -------------------------
 $pagination-bg:                         lighten($bodyBackgroundAlt, 1%) !default;
 $pagination-border-color:               darken($bodyBackgroundAlt, 5%) !default;
 $pagination-active-bg:                  lighten($bodyBackgroundAlt, 10%) !default;
 
-// Hero unit
-// -------------------------
-$heroUnitBackground:              $grayLighter !default;
-$heroUnitHeadingColor:            inherit !default;
-$heroUnitLeadColor:               inherit !default;
-
-
 // Form states and alerts
 // -------------------------
-$warningText:             #c09853 !default;
-$warningBackground:       #fcf8e3 !default;
-//$warningBorder:           darken(spin($warningBackground, -10), 3%);
-$warningBorder:           darken($warningBackground, 3%) !default;
-
-$errorText:               #b94a48;
-$errorBackground:         #f2dede;
-//$errorBorder:             darken(spin($errorBackground, -10), 3%);
-$errorBorder:             darken($errorBackground, 3%) !default;
-
-$successText:             #468847;
-$successBackground:       #dff0d8;
-//$successBorder:           darken(spin($successBackground, -10), 5%);
-$successBorder:           darken($successBackground, 5%) !default;
-
-$infoText:                #3a87ad;
-$infoBackground:          #d9edf7;
+//$infoText:                #3a87ad;
+//$infoBackground:          #d9edf7;
 //$infoBorder:              darken(spin($infoBackground, -10), 7%);
-$infoBorder:              darken($infoBackground, 7%) !default;
+//$infoBorder:              darken($infoBackground, 7%) !default;
 
 // Custom Campus variables
 // -------------------------

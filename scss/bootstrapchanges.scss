@@ -77,15 +77,15 @@ code, pre {
 
 // Hover/Focus state
 // -----------
-@media (max-width: $navbarCollapseWidth) {
-  .navbar-inverse .dropdown-menu > li > a:hover,
-  .navbar-inverse .dropdown-menu > li > a:focus,
-  .navbar-inverse .dropdown-submenu:hover > a,
-  .navbar-inverse .dropdown-submenu:focus > a {
-    //#gradient > .vertical(@navbarInverseBackgroundHighlight, darken(@navbarInverseBackgroundHighlight, 5%));
-    @include gradient-y($navbarInverseBackgroundHighlight, darken($navbarInverseBackgroundHighlight, 5%))
-  }
-}
+//@media (max-width: $navbarCollapseWidth) {
+//  .navbar-inverse .dropdown-menu > li > a:hover,
+//  .navbar-inverse .dropdown-menu > li > a:focus,
+//  .navbar-inverse .dropdown-submenu:hover > a,
+//  .navbar-inverse .dropdown-submenu:focus > a {
+//    //#gradient > .vertical(@navbarInverseBackgroundHighlight, darken(@navbarInverseBackgroundHighlight, 5%));
+//    @include gradient-y($navbarInverseBackgroundHighlight, darken($navbarInverseBackgroundHighlight, 5%))
+//  }
+//}
 
 // forms.less
 // --------------------------------------------------
@@ -152,9 +152,9 @@ textarea, .uneditable-input {
   background-color: $navbarText;
 }
 
-.navbar-inverse .btn-navbar .icon-bar {
-  background-color: $navbarInverseText;
-}
+//.navbar-inverse .btn-navbar .icon-bar {
+//  background-color: $navbarInverseText;
+//}
 
 .navbar-text a {
   color: $navbarText;
