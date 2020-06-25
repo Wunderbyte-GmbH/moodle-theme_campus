@@ -10,10 +10,9 @@
 // Grays
 // -------------------------
 $black:                 #000;
-$grayDarker:            #222;
 $grayDark:              #333;
 $gray:                  #555;
-$grayLight:             #767676; // #08c; // #999;
+$grayLight:             #767676;
 $grayLightOrig:         #999;
 $grayLightish:          #ccc;
 $grayLighter:           #eee;
@@ -22,22 +21,22 @@ $white:                 #fff;
 
 // Accent colors
 // -------------------------
-$blue:                  #049cdb;
-$blueDark:              #0064cd;
-$green:                 #46a546;
-$red:                   #9d261d;
-$yellow:                #ffc40d;
-$orange:                #f89406;
-$pink:                  #c3325f;
-$purple:                #7a43b6;
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
 
 
 // Scaffolding
 // -------------------------
 // http://colorschemedesigner.com/#1631Tndw0w0w0
-$bodyBackground:        $white !default;
+$body-bg:        $white !default;
 $bodyBackgroundAlt:     #feee36 !default;
-$textColor:             #333333 !default;
+$body-color:             #333333 !default;
 $themeBackground:       $grayLighter !default;
 $blockHeadingColor:     #555555 !default;
 $textShadow:            $grayLighter !default;
@@ -45,8 +44,8 @@ $iconColor:             #7575E0 !default;
 
 // Links
 // -------------------------
-$linkColor:             $textColor !default;
-$linkColorHover:        lighten($linkColor, 20%) !default;
+$link-color:             $body-color !default;
+$link-hover-color:       lighten($link-color, 20%) !default;
 
 
 // Typography
@@ -68,7 +67,7 @@ $headingsFontName:      "Source Sans Pro" !default;
 //$headingsFontFamily:  inherit; // empty to use BS default, $baseFontFamily
 $headingsFontFamily:    $headingsFontName, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $headingsFontWeight:    bold !default;    // instead of browser default, bold
-$headingsColor:         #555555 !default; // empty to use BS default, $textColor
+$headings-color:         #555555 !default;
 
 // Mapped
 $headings-font-family:  $headingsFontName, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
@@ -103,12 +102,12 @@ $tableBorder:                       #ddd !default; // table and cell border
 
 // Wells
 // -------------------------
-$wellBackground:                  #FFE7AA !default;
+//$wellBackground:                  #FFE7AA !default;
 
 // Buttons
 // -------------------------
-$btnBackground:                     darken($wellBackground, 5%) !default;
-$btnBackgroundHighlight:            darken($wellBackground, 10%) !default;
+//$btnBackground:                     darken($wellBackground, 5%) !default;
+//$btnBackgroundHighlight:            darken($wellBackground, 10%) !default;
 $btnBorder:                         darken($grayLighter, 20%) !default;
 
 $btnPrimaryBackground:              $linkColor !default;
@@ -128,11 +127,8 @@ $btnDangerBackground:               #ee5f5b !default;
 $btnDangerBackgroundHighlight:      #bd362f !default;
 
 $btnInverseBackground:              #444 !default;
-$btnInverseBackgroundHighlight:     $grayDarker !default;
 
-// Look and feel.
-$pageWidthMaximum: 1680px !default;
-$contentColor: #fff !default;
+
 
 // Forms
 // -------------------------
@@ -140,7 +136,7 @@ $inputBackground:               lighten($contentColor, 5%) !default;
 $inputBorder:                   darken($contentColor, 20%) !default;
 $inputBorderRadius:             $baseBorderRadius !default;
 $inputDisabledBackground:       $grayLighter !default;
-$formActionsBackground:         $bodyBackground !default;
+$formActionsBackground:         $body-bg !default;
 $inputHeight:                   ($baseLineHeight + 10px); // base line-height + 8px vertical padding + 2px top/bottom border
 
 
@@ -151,7 +147,7 @@ $dropdownBorder:                rgba(0,0,0,.2) !default;
 $dropdownDividerTop:            #e5e5e5 !default;
 $dropdownDividerBottom:         $white !default;
 
-$dropdownLinkColor:             $textColor !default;
+$dropdownLinkColor:             $body-color !default;
 $dropdownLinkColorHover:        darken($dropdownLinkColor, 10%) !default;
 $dropdownLinkColorActive:       darken($dropdownLinkColorHover, 10%) !default;
 
@@ -195,7 +191,7 @@ $navbarBackgroundHighlight:       $bodyBackgroundAlt !default;
 $navbarBackground:                $bodyBackgroundAlt !default;
 $navbarBorder:                    darken($navbarBackground, 12%) !default;
 
-$navbarText:                      $textColor !default;
+$navbarText:                      $body-color !default;
 $navbarLinkColor:                 $navbarText !default;
 $navbarLinkColorHover:            darken($navbarText, 5%) !default;
 $navbarLinkColorActive:           $navbarLinkColorHover !default;
@@ -260,62 +256,13 @@ $infoBackground:          #d9edf7;
 //$infoBorder:              darken(spin($infoBackground, -10), 7%);
 $infoBorder:              darken($infoBackground, 7%) !default;
 
-
-// Tooltips and popovers
-// -------------------------
-$tooltipColor:            #fff !default;
-$tooltipBackground:       #000 !default;
-$tooltipArrowWidth:       5px !default;
-$tooltipArrowColor:       $tooltipBackground !default;
-
-$popoverBackground:       #fff !default;
-$popoverArrowWidth:       10px !default;
-$popoverArrowColor:       #fff !default;
-$popoverTitleBackground:  darken($popoverBackground, 3%) !default;
-
-// Special enhancement for popovers
-$popoverArrowOuterWidth:  ($popoverArrowWidth + 1) !default;
-$popoverArrowOuterColor:  rgba(0,0,0,.25) !default;
-
-
-
-// GRID
-// --------------------------------------------------
-
-
-// Default 940px grid
-// -------------------------
-$gridColumns:             12;
-$gridColumnWidth:         60px;
-$gridGutterWidth:         20px;
-$gridRowWidth:            (($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1)));
-
-// 1200px min
-$gridColumnWidth1200:     70px;
-$gridGutterWidth1200:     30px;
-$gridRowWidth1200:        (($gridColumns * $gridColumnWidth1200) + ($gridGutterWidth1200 * ($gridColumns - 1)));
-
-// 768px-979px
-$gridColumnWidth768:      42px;
-$gridGutterWidth768:      20px;
-$gridRowWidth768:         (($gridColumns * $gridColumnWidth768) + ($gridGutterWidth768 * ($gridColumns - 1)));
-
-
-// Fluid grid
-// -------------------------
-$fluidGridColumnWidth:    percentage($gridColumnWidth/$gridRowWidth);
-$fluidGridGutterWidth:    percentage($gridGutterWidth/$gridRowWidth);
-
-// 1200px min
-$fluidGridColumnWidth1200:     percentage($gridColumnWidth1200/$gridRowWidth1200);
-$fluidGridGutterWidth1200:     percentage($gridGutterWidth1200/$gridRowWidth1200);
-
-// 768px-979px
-$fluidGridColumnWidth768:      percentage($gridColumnWidth768/$gridRowWidth768);
-$fluidGridGutterWidth768:      percentage($gridGutterWidth768/$gridRowWidth768);
-
 // Custom Campus variables
 // -------------------------
+// Note: Using old LESS format for clarity of theme custom vars.
+
+// Look and feel.
+$pageWidthMaximum: 1680px !default;
+$contentColor: #fff !default;
 
 // Blocks.
 $blockHeadingBackgroundColour: #a1d6de !default;
@@ -374,5 +321,5 @@ $courseCategoryPaddingBottomDefault: 0% !default;
 // Forum header.
 $forumHeaderBackgroundColour: rgba(255, 255, 255, 0.5) !default;
 $forumHeaderBorderColour: darken($forumHeaderBackgroundColour, 10%) !default;
-$forumHeaderTextColour: $textColor !default;
+$forumHeaderTextColour: $body-color !default;
 $forumHeaderLinkColour: inherit !default;

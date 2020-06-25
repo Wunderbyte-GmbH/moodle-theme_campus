@@ -246,8 +246,8 @@ $string['px23'] = '23px';
 $string['px24'] = '24px';
 $string['px25'] = '25px';
 
-$string['wellbackgroundcolour'] = '\'Well\' background colour';
-$string['wellbackgroundcolourdesc'] = 'Set the background colour for the \'wells\' which are boxes used in things like the breadcrumb, question text and current topic boxes.  Please ensure that the colour chosen works well with the text colour.';
+//$string['wellbackgroundcolour'] = '\'Well\' background colour';
+//$string['wellbackgroundcolourdesc'] = 'Set the background colour for the \'wells\' which are boxes used in things like the breadcrumb, question text and current topic boxes.  Please ensure that the colour chosen works well with the text colour.';
 
 $string['alertinfotextcolour'] = 'Alert info text colour';
 $string['alertinfotextcolourdesc'] = 'Set the text colour for the alert information box.';

@@ -39,7 +39,7 @@ body {
     border-style: solid;
     border-width: 1px;
     bottom: 60px;
-    color: $textColor;
+    color: $body-color;
     display: none;
     font-size: 32px;
     line-height: 1;
@@ -50,7 +50,7 @@ body {
     text-decoration: none;
     &:hover {
         border-radius: 1em;
-        color: lighten($textColor, 10%);
+        color: lighten($body-color, 10%);
         text-decoration: none;
     }
     i.fa {
@@ -1272,7 +1272,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     background-color: $contentColor;
     padding: 1em 8px 0 8px;
     a {
-        color: $linkColor;
+        color: $link-color;
     }
     .helplink, .logininfo, {
         display: inline;

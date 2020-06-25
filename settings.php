@@ -548,14 +548,14 @@ if ($ADMIN->fulltree) {
     $settingpage->add($setting);
 
     // Well background setting.
-    $name = 'theme_campus/wellbackgroundcolour';
+    /*$name = 'theme_campus/wellbackgroundcolour';
     $title = get_string('wellbackgroundcolour', 'theme_campus');
     $description = get_string('wellbackgroundcolourdesc', 'theme_campus');
     $default = '#FFE7AA';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
+    $settingpage->add($setting);*/
 
     // Alert info text setting.
     $name = 'theme_campus/alertinfotextcolour';

@@ -8,7 +8,7 @@
 // --------------------------------------------------
 
 .breadcrumb {
-  background-color: rgba(red($wellBackground), green($wellBackground), blue($wellBackground), 0.7);
+  //background-color: rgba(red($wellBackground), green($wellBackground), blue($wellBackground), 0.7);
   > li {
     text-shadow: 0 1px 0 $textShadow;
   }
@@ -17,12 +17,12 @@
 // buttons.less
 // --------------------------------------------------
 .btn {
-  //.buttonBackground($btnBackground, $btnBackgroundHighlight, $textColor, 0 1px 1px rgba(255,255,255,.75));
+  //.buttonBackground($btnBackground, $btnBackgroundHighlight, $body-color, 0 1px 1px rgba(255,255,255,.75));
 
   // Hover/focus state
   &:hover,
   &:focus {
-    color: $textColor;
+    color: $body-color;
   }
 }
 
@@ -46,10 +46,6 @@
 .btn.btn-info {
 //  .buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight);
 }
-// Inverse appears as dark gray
-.btn.btn-inverse {
-//  .buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
-}
 
 .navbar .btn, .navbar .btn-group {
   margin-top: 0;
@@ -70,7 +66,7 @@
 
 // code.less.
 code, pre {
-  color: $textColor;
+  color: $body-color;
 }
 
 // dropdowns.less.
@@ -94,7 +90,7 @@ code, pre {
 // forms.less
 // --------------------------------------------------
 legend {
-  color: $textColor;
+  color: $body-color;
 }
 
 // Shared size and type resets
@@ -115,7 +111,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  color: $textColor;
+    color: $body-color;
 }
 
 textarea, .uneditable-input {
@@ -126,16 +122,16 @@ textarea, .uneditable-input {
 // --------------------------------------------------
 /*.tab-focus() {
   // Default
-  outline: thin dotted $textColor;
+  outline: thin dotted $body-color;
   // Webkit
-  outline: 2px auto $textColor;
+  outline: 2px auto $body-color;
   outline-offset: -2px;
 }*/
 
 // navs.less
 // --------------------------------------------------
 .nav-header {
-  color: $textColor;
+  color: $body-color;
 }
 
 // navbar.less

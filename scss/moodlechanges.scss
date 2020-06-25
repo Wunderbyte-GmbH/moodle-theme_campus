@@ -39,7 +39,7 @@ body {
 // --------------------------------------------------
 .backup-restore .backup-section > h2.header,
 .backup-restore .backup-section .backup-sub-section h3 {
-    color: $headingsColor;
+    color: $headings-color;
 }
 
 // blocks.less
@@ -109,10 +109,10 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 // --------------------------------------------------
 .jsenabled {
     .moodle-actionmenu[data-enhance] .toggle-display.textmenu .caret {
-        border-top-color: $linkColor;
+        border-top-color: $link-color;
         &:hover,
         &:active {
-            border-top-color: $linkColorHover;
+            border-top-color: $link-hover-color;
         }
     }
 
@@ -143,9 +143,9 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     border-bottom: 2px solid $inputBorder;
 }
 
-.course-content .current {
-    background-color: $wellBackground;
-}
+//.course-content .current {
+//    background-color: $wellBackground;
+//}
 
 /* Mary Evans changes - see https://moodle.org/mod/forum/discuss.php?d=230919#p1004239. */
 .coursebox > .info > .name {
@@ -166,16 +166,16 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 }
 
 .courses .coursebox.collapsed {
-    border: 1px solid lighten($bodyBackground, 5%);
+    border: 1px solid lighten($body-bg, 5%);
 }
 
 .courses .coursebox.even {
-    background-color: lighten($bodyBackground, 3%);
+    background-color: lighten($body-bg, 3%);
 }
 
 .courses .coursebox:hover,
 .course_category_tree .courses > .paging.paging-morelink:hover {
-    background-color: lighten($bodyBackground, 5%);
+    background-color: lighten($body-bg, 5%);
 }
 
 .course_category_tree .category .numberofcourse {
@@ -195,7 +195,7 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 /* My Overrides */
 .resourcelinkdetails {
-    color: $textColor !important;
+    color: $body-color !important;
     font-size: 0.8em;
 }
 
@@ -285,7 +285,7 @@ body.notediting {
 .filemanager,
 .filepicker {
     .fa {
-        color: $textColor;
+        color: $body-color;
         font-size: 24px;
         vertical-align: text-top;
     }
@@ -294,12 +294,12 @@ body.notediting {
 // forms.less
 // --------------------------------------------------
 .form-defaultinfo, .form-label .form-shortname {
-    color: $textColor;
+    color: $body-color;
     word-break: break-word;
 }
 
 .form-item .form-description, .felement.fstatic {
-    color: $textColor;
+    color: $body-color;
 }
 
 .mform fieldset.collapsible legend a.fheader {
@@ -307,11 +307,11 @@ body.notediting {
 }
 
 #adminsettings h3.main {
-    color: $headingsColor;
+    color: $headings-color;
 }
 .mform legend a,
 .mform legend a:hover {
-    color: $textColor;
+    color: $body-color;
 }
 
 // My additions for https://moodle.org/mod/forum/discuss.php?d=234329.
@@ -354,7 +354,7 @@ textarea[cols] {
 }
 
 .path-grade-report-grader .gradeparent tr:nth-of-type(even) .cell {
-    background-color: $bodyBackground;
+    background-color: $body-bg;
 }
 
 .path-grade-report-grader .gradeparent .floater {
@@ -365,7 +365,7 @@ textarea[cols] {
     .cell:nth-of-type(even),
     &.heading .cell.header,
     &.heading .cell:nth-of-type(odd) {
-        background-color: $bodyBackground;
+        background-color: $body-bg;
     }
 }
 
@@ -491,9 +491,9 @@ table.generaltable {
 
 // question.less
 // --------------------------------------------------
-.que .formulation {
-    background-color: $wellBackground;
-}
+//.que .formulation {
+//    background-color: $wellBackground;
+//}
 
 
 // responsive.less

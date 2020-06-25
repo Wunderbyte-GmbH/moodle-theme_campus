@@ -462,10 +462,10 @@ function theme_campus_sass_variables($theme) {
         $variables['baseFontName'] = '"'.$theme->settings->bodyfont.'"';
     }
     if (!empty($theme->settings->textcolour)) {
-        $variables['textColor'] = $theme->settings->textcolour;
+        $variables['body-color'] = $theme->settings->textcolour;
     }
     if (!empty($theme->settings->linkcolour)) {
-        $variables['linkColor'] = $theme->settings->linkcolour;
+        $variables['link-color'] = $theme->settings->linkcolour;
     }
     if (!empty($theme->settings->contentcolour)) {
         $variables['contentColor'] = $theme->settings->contentcolour;
@@ -474,7 +474,7 @@ function theme_campus_sass_variables($theme) {
         $variables['blockIconColour'] = $theme->settings->iconcolour;
     }
     if (!empty($theme->settings->headingcolour)) {
-        $variables['headingsColor'] = $theme->settings->headingcolour;
+        $variables['headings-color'] = $theme->settings->headingcolour;
     }
     if (!empty($theme->settings->navbartextcolour)) {
         $variables['navbarText'] = $theme->settings->navbartextcolour;
@@ -580,9 +580,9 @@ function theme_campus_sass_variables($theme) {
     if (!empty($theme->settings->borderradiuslarge)) {
         $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
     }
-    if (!empty($theme->settings->wellbackgroundcolour)) {
+    /*if (!empty($theme->settings->wellbackgroundcolour)) {
         $variables['wellBackground'] = $theme->settings->wellbackgroundcolour;
-    }
+    }*/
     if (!empty($theme->settings->alertinfotextcolour)) {
         $variables['infoText'] = $theme->settings->alertinfotextcolour;
     }
