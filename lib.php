@@ -575,10 +575,10 @@ function theme_campus_sass_variables($theme) {
         $variables['borderRadiusSmall'] = $theme->settings->borderradiussmall;
     }
     if (!empty($theme->settings->borderradiusmedium)) {
-        $variables['baseBorderRadius'] = $theme->settings->borderradiusmedium;
+        $variables['border-radius'] = $theme->settings->borderradiusmedium;
     }
     if (!empty($theme->settings->borderradiuslarge)) {
-        $variables['borderRadiusLarge'] = $theme->settings->borderradiuslarge;
+        $variables['border-radius-lg'] = $theme->settings->borderradiuslarge;
     }
     /*if (!empty($theme->settings->wellbackgroundcolour)) {
         $variables['wellBackground'] = $theme->settings->wellbackgroundcolour;

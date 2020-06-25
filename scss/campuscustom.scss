@@ -86,8 +86,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .header {
         background-color: $blockHeadingBackgroundColour;
-        border-top-left-radius: $borderRadiusLarge; // Our changes to .block in 'bootstrapchanges.less'.
-        border-top-right-radius: $borderRadiusLarge;
+        border-top-left-radius: $border-radius-lg; // Our changes to .block in 'bootstrapchanges.less'.
+        border-top-right-radius: $border-radius-lg;
         padding-bottom: 4px;
         padding-top: 4px; // Hardcoded in bootstrapbase/less/moodle/blocks.less.  Half here because of padding-bottom so looks good.
         .block_action {
@@ -95,8 +95,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
     }
     &.hidden .header {
-        border-bottom-left-radius: $borderRadiusLarge;
-        border-bottom-right-radius: $borderRadiusLarge;
+        border-bottom-left-radius: $border-radius-lg;
+        border-bottom-right-radius: $border-radius-lg;
     }
     .header {
         border-color: inherit;
@@ -356,8 +356,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     img.userpicture {
         height: auto;
-        max-width: $baseLineHeight;
-        max-height: $baseLineHeight;
+        max-width: $line-height-base;
+        max-height: $line-height-base;
         vertical-align: top;
         width: auto;
     }
@@ -365,9 +365,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // Navbar brand.
     .brand {
         // Vertically center the text given $navbarHeight.
-        line-height: $baseLineHeight + 4;
-        margin: ((($navbarHeight - $baseLineHeight) / 2) - 2) 0 ((($navbarHeight - $baseLineHeight) / 2) - 2);
-        max-height: $baseLineHeight + 4;
+        //line-height: $line-height-base + 4;
+        //margin: ((($navbarHeight - $line-height-base) / 2) - 2) 0 ((($navbarHeight - $line-height-base) / 2) - 2);
+        //max-height: $line-height-base + 4;
         max-width: $navbarPageHeadingMax;
         padding: 0 5px 0 5px;
         overflow: hidden;
@@ -391,16 +391,16 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         .usermenu {
             .dropdown {
                 img.userpicture {
-                    border-radius: $baseBorderRadius;
+                    border-radius: $border-radius;
                     height: auto;
                     margin-right: 2px;
-                    max-height: $baseLineHeight;
-                    max-width: $baseLineHeight;
+                    max-height: $line-height-base;
+                    max-width: $line-height-base;
                     vertical-align: top;
                     width: auto;
                 }
                 > a.dropdown-toggle {
-                    padding: (($navbarHeight - $baseLineHeight) / 2) (($navbarHeight - $baseLineHeight) / 2);
+                    padding: (($navbarHeight - $line-height-base) / 2) (($navbarHeight - $line-height-base) / 2);
                     .fa {
                         padding-left: 5px;
                     }
@@ -533,7 +533,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         }
         // Caption for text below images.
         .carousel-caption {
-            border-radius: $baseBorderRadius + 2;
+            border-radius: $border-radius + 2;
             .carousel-caption-inner {
                 margin: 0 auto;
             }
@@ -570,7 +570,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .carousel-indicators {
         background-color: #fff;
         background-color: rgba(255, 255, 255, .50);
-        border-radius: $baseBorderRadius;
+        border-radius: $border-radius;
         padding-bottom: 2px;
         padding-right: 5px;
         padding-top: 2px;
@@ -1164,7 +1164,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     cursor: pointer;
     a {
         color: $navbarText;
-        padding: ((($navbarHeight - $baseLineHeight) / 2) - 1) 15px ((($navbarHeight - $baseLineHeight) / 2) - 2);
+        padding: ((($navbarHeight - $line-height-base) / 2) - 1) 15px ((($navbarHeight - $line-height-base) / 2) - 2);
         text-shadow: none;
         span {
             font-size: 20px;
@@ -1321,7 +1321,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         box-shadow: 1px 2px 3px $grayLightish;
     }
     thead {
-        background-color: $tableBackgroundAccentOdd;
+        background-color: $table-accent-bg;
         text-transform: uppercase;
     }
     th {
@@ -1367,7 +1367,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         &.maincontent {
             box-shadow: 1px 2px 3px $grayLightish;
             width: auto;
-            border-radius: $baseBorderRadius;
+            border-radius: $border-radius;
         }
         &.side {
             padding-top: 10px;
@@ -1380,7 +1380,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     ul.socialnetworks {
         background-color: rgba(red($bodyBackgroundAlt), green($bodyBackgroundAlt), blue($bodyBackgroundAlt), 0.2);
         border-color: $bodyBackgroundAlt;
-        border-radius: $baseBorderRadius;
+        border-radius: $border-radius;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
         display: inline-block;
         margin-left: 0;
@@ -1480,9 +1480,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 // Quit: Make the "Submit quiz" button sticky to always be visible - task 916.
 #page-mod-quiz-summary .singlebutton form[action$="processattempt.php"] div {
-    background-color: $inputBackground;
-    border-color: $inputBorder;
-    border-radius: $inputBorderRadius;
+    background-color: $input-bg;
+    border-color: $input-border-color;
+    border-radius: $input-border-radius;
     border-style: solid;
     border-width: 2px;
     bottom: 30px;

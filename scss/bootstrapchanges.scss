@@ -1,7 +1,7 @@
 // Campus changes to Bootstrap.
 
 .block {
-  border-radius: $borderRadiusLarge;
+  border-radius: $border-radius-lg;
 }
 
 // breadcrumbs.less
@@ -199,11 +199,11 @@ a:focus {
   tbody {
     > tr:nth-child(odd) > td,
     > tr:nth-child(odd) > th {
-      background-color: $tableBackgroundAccentOdd;
+      background-color: $table-accent-bg;
     }
     > tr:nth-child(even) > td,
     > tr:nth-child(even) > th {
-      background-color: $tableBackgroundAccentEven;
+      background-color: $table-dark-accent-bg;
     }
   }
 }
@@ -215,11 +215,11 @@ a:focus {
   tbody {
     tr:nth-child(odd):hover > td,
     tr:nth-child(odd):hover > th {
-      background-color: $tableBackgroundHoverOdd;
+      background-color: $table-hover-bg;
     }
     tr:nth-child(even):hover > td,
     tr:nth-child(even):hover > th {
-      background-color: $tableBackgroundHoverEven;
+      background-color: $table-dark-hover-bg;
     }
   }
 }
