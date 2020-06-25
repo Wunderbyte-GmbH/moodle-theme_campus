@@ -104,31 +104,6 @@ $tableBorder:                       #ddd !default; // table and cell border
 // -------------------------
 //$wellBackground:                  #FFE7AA !default;
 
-// Buttons
-// -------------------------
-//$btnBackground:                     darken($wellBackground, 5%) !default;
-//$btnBackgroundHighlight:            darken($wellBackground, 10%) !default;
-$btnBorder:                         darken($grayLighter, 20%) !default;
-
-$btnPrimaryBackground:              $linkColor !default;
-//$btnPrimaryBackgroundHighlight:     spin($btnPrimaryBackground, 20%);
-$btnPrimaryBackgroundHighlight:     $btnPrimaryBackground !default;
-
-$btnInfoBackground:                 #5bc0de !default;
-$btnInfoBackgroundHighlight:        #2f96b4 !default;
-
-$btnSuccessBackground:              #62c462 !default;
-$btnSuccessBackgroundHighlight:     #51a351 !default;
-
-$btnWarningBackground:              lighten($orange, 15%) !default;
-$btnWarningBackgroundHighlight:     $orange !default;
-
-$btnDangerBackground:               #ee5f5b !default;
-$btnDangerBackgroundHighlight:      #bd362f !default;
-
-$btnInverseBackground:              #444 !default;
-
-
 
 // Forms
 // -------------------------
@@ -154,6 +129,7 @@ $dropdownLinkColorActive:       darken($dropdownLinkColorHover, 10%) !default;
 $dropdownLinkBackgroundActive:  $contentColor !default;
 $dropdownLinkBackgroundHover:   lighten($dropdownLinkBackgroundActive, 8%) !default;
 
+$dropdown-link-hover-color:     darken($gray-900, 5%) !default;
 
 
 // COMPONENT VARIABLES
@@ -187,22 +163,31 @@ $navbarCollapseWidth:             960px !default;
 $navbarCollapseDesktopWidth:      ($navbarCollapseWidth + 1) !default;
 
 $navbarHeight:                    34px !default;
-$navbarBackgroundHighlight:       $bodyBackgroundAlt !default;
-$navbarBackground:                $bodyBackgroundAlt !default;
-$navbarBorder:                    darken($navbarBackground, 12%) !default;
 
-$navbarText:                      $body-color !default;
 $navbarLinkColor:                 $navbarText !default;
-$navbarLinkColorHover:            darken($navbarText, 5%) !default;
-$navbarLinkColorActive:           $navbarLinkColorHover !default;
-$navbarLinkBackgroundHover:       transparent !default;
 $navbarLinkBackgroundActive:      darken($navbarBackground, 5%) !default;
 
-$navbarBrandColor:                $navbarLinkColor !default;
+
+$navbarText:                        $body-color !default;
+$navbarLinkColorHover:              darken($navbarLinkColor, 5%) !default;
+$navbarLinkColorActive:             $navbarLinkColorHover !default;
+
+$navbar-dark-color:                 $navbarLinkColor !default;
+$navbar-dark-hover-color:           $navbarLinkColorHover !default;
+$navbar-dark-active-color:          $navbarLinkColorActive !default;
+
+$navbar-light-color:                $navbarLinkColor !default;
+$navbar-light-hover-color:          $navbarLinkColorHover !default;
+$navbar-light-active-color:         $navbarLinkColorActive !default;
+
+$navbarBrandColor:                        $navbarText !default;
+$navbar-light-brand-color:                $navbarBrandColor !default;
+$navbar-light-brand-hover-color:          $navbarBrandColor !default;
+$navbar-dark-brand-color:                 $navbarBrandColor !default;
+$navbar-dark-brand-hover-color:           $navbarBrandColor !default;
 
 // Inverted navbar
 $navbarInverseBackground:                $grayDark !default;
-$navbarInverseBackgroundHighlight:       $gray !default;
 $navbarInverseBorder:                    lighten($navbarBackground, 12%) !default;
 
 $navbarInverseText:                      darken($bodyBackgroundAlt, 5%) !default;
@@ -222,10 +207,9 @@ $navbarInverseBrandColor:                $navbarInverseLinkColor !default;
 
 // Pagination
 // -------------------------
-$paginationBackground:                lighten($bodyBackgroundAlt, 1%) !default;
-$paginationBorder:                    darken($bodyBackgroundAlt, 5%) !default;
-$paginationActiveBackground:          lighten($bodyBackgroundAlt, 10%) !default;
-
+$pagination-bg:                         lighten($bodyBackgroundAlt, 1%) !default;
+$pagination-border-color:               darken($bodyBackgroundAlt, 5%) !default;
+$pagination-active-bg:                  lighten($bodyBackgroundAlt, 10%) !default;
 
 // Hero unit
 // -------------------------
@@ -280,7 +264,10 @@ $blockBorderStyle: solid !default;
 $blockIconColour: #000 !default;
 
 // Navbar.
+$navbarBackground: $bodyBackgroundAlt !default;
+$navbarBackgroundHighlight: $bodyBackgroundAlt !default;
 $navbarIconColour: #000 !default;
+$navbarInverseBackgroundHighlight: $gray !default;
 $navbarPageHeadingMax: 200px !default;
 
 // Frontpage.

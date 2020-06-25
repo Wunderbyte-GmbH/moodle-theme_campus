@@ -489,7 +489,7 @@ function theme_campus_sass_variables($theme) {
         $variables['navbarIconColour'] = $theme->settings->navbariconcolour;
     }
     if (!empty($theme->settings->navbarbackgroundcolour)) {
-        $variables['dropdownLinkBackgroundHover'] = $theme->settings->navbarbackgroundcolour;
+        $variables['dropdown-link-hover-color'] = $theme->settings->navbarbackgroundcolour;
         $variables['navbarBackground'] = $theme->settings->navbarbackgroundcolour;
         $variables['navbarBackgroundHighlight'] = $theme->settings->navbarbackgroundcolour;
     }

@@ -136,6 +136,10 @@ textarea, .uneditable-input {
 
 // navbar.less
 // --------------------------------------------------
+.navbar {
+    background-color: $navbarBackground;
+}
+
 .navbar .btn-navbar {
   border-radius: 0;
   box-shadow: none;

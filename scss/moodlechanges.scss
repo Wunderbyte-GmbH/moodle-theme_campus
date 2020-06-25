@@ -442,7 +442,7 @@ table.generaltable {
     height: 100%;
     top: 0;
     .drawer-top {
-        border: 1px solid $navbarBorder;
+        //border: 1px solid $navbarBorder;
         @include box-shadow("0 1px 4px rgba(0,0,0,.065)");
         display: block;
         //#gradient > .vertical($navbarBackgroundHighlight, $navbarBackground);
