@@ -476,6 +476,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         padding-left: 0;
         padding-right: 0;
         .btn-navbar {
+            display: block;
             margin-left: 0;
             margin-right: 0;
         }
@@ -483,6 +484,12 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .backgroundcontainer.left .navbar .brand {
         float: right;
         padding-left: 10px;
+    }
+}
+
+@media (min-width: $navbarCollapseDesktopWidth) {
+    .campusnav.collapse:not(.show) {
+        display: block;
     }
 }
 

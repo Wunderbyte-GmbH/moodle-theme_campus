@@ -146,11 +146,12 @@ textarea, .uneditable-input {
   //.buttonBackground(transparent, transparent);
   background-color: transparent;
   border-color: transparent;
+  display: none;
 }
 
-.navbar .btn-navbar .icon-bar {
-  background-color: $navbarText;
-}
+//.navbar .btn-navbar .icon-bar {
+//  background-color: $navbarText;
+//}
 
 //.navbar-inverse .btn-navbar .icon-bar {
 //  background-color: $navbarInverseText;

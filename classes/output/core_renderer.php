@@ -84,13 +84,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     protected function navbar_button() {
         //$iconbar = html_writer::tag('span', '', array('class' => 'icon-bar'));
-        $iconbar = '<i class="icon fa fa-bars fa-fw " aria-hidden="true"></i><span class="sr-only">Side panel</span>';
-        $button = html_writer::tag('a', $iconbar, array(
-            'class'       => 'btn btn-navbar nav-link',
-            'data-toggle' => 'collapse',
-            'data-target' => '.campusnav',
-            'type' => 'button'
-        ));
+        $iconbar = '<i class="icon fa fa-bars fa-fw " aria-hidden="true"></i><span class="sr-only">'.get_string('campusnav', 'theme_campus').'</span>';
+        $button = html_writer::tag('li', 
+            html_writer::tag('a', $iconbar, array(
+                'class'       => 'btn btn-navbar nav-link',
+                'data-toggle' => 'collapse',
+                'data-target' => '.campusnav',
+                'type' => 'button'
+            ))
+        );
 
         return $button;
     }

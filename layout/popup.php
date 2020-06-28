@@ -53,14 +53,11 @@ echo $OUTPUT->doctype() ?>
 ?>
 
 <header role="banner" class="moodle-has-zindex <?php echo $hideclass; ?>">
-    <nav role="navigation" class="navbar navbar-fixed-top">
+    <nav role="navigation" class="navbar navbar-static-top">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <i class="icon fa fa-bars fa-fw " aria-hidden="true"></i><span class="sr-only"><?php echo get_string('campusnav', 'theme_campus'); ?></span>
             </a>
             <div class="nav-collapse collapse">
                 <?php echo $OUTPUT->custom_menu(); ?>

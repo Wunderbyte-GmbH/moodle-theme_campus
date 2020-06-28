@@ -69,6 +69,7 @@ $string['standardnavbar'] = 'Standard';
 $string['fancynavbar'] = 'Fancy';
 $string['navbarpageheadingmax'] = 'Navbar page heading maximum.';
 $string['navbarpageheadingmaxdesc'] = 'Set the navbar page heading maximum between {$a->lower} and {$a->upper} pixels.';
+$string['campusnav'] = 'Additional campus navigation';
 
 // Login custom menu.
 $string['mygrades'] = 'My grades';

@@ -35,15 +35,6 @@ if (!empty($hdfancynavbar)) {
     <nav class="campusnavbar navbar navbar-light navbar-static-top<?php echo $navbarclasses ?>">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
-            <?php echo $OUTPUT->navbar_button(); ?>
-            <ul class="nav pull-right">
-            <?php echo $OUTPUT->gotobottom_menu(); ?>
-            <?php echo $OUTPUT->navbar_plugin_output(); ?>
-            <?php if ($logininfoheader) { ?>
-                <li class="usermenu nav-item d-flex align-items-center"><?php echo $OUTPUT->custom_menu_user() ?></li>
-            <?php } ?>
-            <?php echo $OUTPUT->header_toggle_menu(); ?>
-            </ul>
             <div class="campusnav nav-collapse collapse">
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <?php echo $OUTPUT->user_menu(); ?>
@@ -52,6 +43,15 @@ if (!empty($hdfancynavbar)) {
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                 </ul>
             </div>
+            <ul class="nav pull-right">
+            <?php echo $OUTPUT->gotobottom_menu(); ?>
+            <?php echo $OUTPUT->navbar_plugin_output(); ?>
+            <?php if ($logininfoheader) { ?>
+                <li class="usermenu nav-item d-flex align-items-center"><?php echo $OUTPUT->custom_menu_user() ?></li>
+            <?php } ?>
+            <?php echo $OUTPUT->header_toggle_menu(); ?>
+            <?php echo $OUTPUT->navbar_button(); ?>
+            </ul>
         </div>
     </nav>
 </header>
