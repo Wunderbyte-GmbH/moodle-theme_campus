@@ -29,10 +29,16 @@
 // Note: Need $numberofslides and $settingprefix as preloaded variables to determine what the slideshow shows.
 if (!empty($numberofslides)) {
     $captionscenter = (theme_campus_get_setting('slidecaptioncentred'))? ' centred' : '';
+    $carouselautoplay = theme_campus_get_setting('carouselautoplay');
+    $options = '';
+    if ($carouselautoplay == 2) {
+        $slideinterval = theme_campus_get_setting('slideinterval');
+        $options = ' data-ride="carousel" data-interval="'.$slideinterval.'"';
+    }
     ?>
     <div class="row-fluid">
-        <div class="span12">
-            <div id="campusCarousel" class="carousel slide">
+        <div class="col-12">
+            <div id="campusCarousel" class="carousel slide"<?php echo $options; ?>>
                 <ol class="carousel-indicators">
                     <?php
                     for ($indicatorslideindex = 0; $indicatorslideindex < $numberofslides; $indicatorslideindex++) {

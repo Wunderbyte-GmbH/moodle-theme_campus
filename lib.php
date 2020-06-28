@@ -1478,9 +1478,9 @@ function theme_campus_render_slide($i, $settingprefix) {
 
     if ($slidelink) {
         $slidelinktarget = theme_campus_get_setting($settingprefix . $i . 'linktarget', true);
-        $slide = '<a href="'.$slidelink.'" target="'.$slidelinktarget.'" class="item' . $slideextraclass . '">';
+        $slide = '<a href="'.$slidelink.'" target="'.$slidelinktarget.'" class="carousel-item' . $slideextraclass . '">';
     } else {
-        $slide = '<div class="item' . $slideextraclass . '">';
+        $slide = '<div class="carousel-item' . $slideextraclass . '">';
     }
 
     $nocaption = (!($slidetitle || $slidecaption)) ? ' nocaption' : '';
@@ -1516,8 +1516,8 @@ function theme_campus_render_slide_controls() {
         $faleft = $faright;
         $faright = $temp;
     }
-    $prev = '<a class="left carousel-control" data-target="#campusCarousel" data-slide="prev" title="'.$previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
-    $next = '<a class="right carousel-control" data-target="#campusCarousel" data-slide="next" title="'.$next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
+    $prev = '<a class="carousel-control carousel-control-prev" data-target="#campusCarousel" data-slide="prev" title="'.$previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
+    $next = '<a class="carousel-control carousel-control-next" data-target="#campusCarousel" data-slide="next" title="'.$next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
 
     return $prev . $next;
 }

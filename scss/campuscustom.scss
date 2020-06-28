@@ -497,12 +497,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 #campusCarousel.carousel {
     padding-bottom: 10px;
     .carousel-inner {
-        > .item {
+        > .carousel-item {
             .carousel-image-container {
                 padding-left: 5%;
                 padding-right: 5%;
                 text-align: center;
-                width: 90%;
             }
             .carousel-image {
                 height: auto;
@@ -534,6 +533,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         // Caption for text below images.
         .carousel-caption {
             border-radius: $border-radius + 2;
+            text-align: left;
             .carousel-caption-inner {
                 margin: 0 auto;
             }
@@ -558,6 +558,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         cursor: pointer;
         display: none; // Shown when carousel hovered on, see below.
         font-size: 30px;
+        top: 40%;
         &:hover,
             &:focus {
             background: none;
@@ -571,10 +572,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         background-color: #fff;
         background-color: rgba(255, 255, 255, .50);
         border-radius: $border-radius;
+        bottom: auto;
+        left: auto;
         padding-bottom: 2px;
-        padding-right: 5px;
+        padding-right: 1px;
         padding-top: 2px;
         right: 5px;
+        top: 15px;
     }
 
     // Responsive.
@@ -588,7 +592,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     @media (max-width: 767px) {
         .carousel-inner {
-            > .item {
+            > .carousel-item {
                 height: 200px;
                 .carousel-image-container {
                     line-height: 200px; // See: http://www.vanseodesign.com/css/vertical-centering/.
@@ -609,7 +613,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // $screen-sm-min.
     @media(min-width: 768px) {
         .carousel-inner {
-            > .item {
+            > .carousel-item {
                 height: 260px;
                 .carousel-image-container {
                     line-height: 260px;
@@ -627,7 +631,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     @media (min-width: 768px) and (max-width: 979px) {
         .carousel-inner {
-            > .item {
+            > .carousel-item {
                 .carousel-caption {
                     h4 {
                         font-size: 1.2em;
@@ -640,7 +644,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // $screen-md-min.
     @media(min-width: 992px) {
         .carousel-inner {
-            > .item {
+            > .carousel-item {
                 height: 328px;
                 .carousel-image-container {
                     line-height: 328px;
@@ -660,7 +664,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // $screen-lg-min.
     @media(min-width: 1200px) {
         .carousel-inner {
-            > .item {
+            > .carousel-item {
                 height: 368px;
                 .carousel-image-container {
                     line-height: 368px;

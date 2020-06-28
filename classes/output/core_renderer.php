@@ -933,14 +933,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         $pagelayout = $this->page->pagelayout;
         if ($pagelayout == 'frontpage') {
-            $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+            /*$autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
             if ($autoplay == 2) {
                 $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
             } else {
                 $slideinterval = 0;
             }
             $data = array('data' => array('slideinterval' => $slideinterval));
-            $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
+            $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.*/
             // We are the front page setting enforce the intent.
             if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
                 $stickynavbar = true;
@@ -959,14 +959,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 switch ($pagelayout) {
                     case 'coursecategory':
                         $currentcategory = $this->get_current_top_level_catetgory();
-                        $autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
+                        /*$autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
                         if ($autoplay == 2) {
                             $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
                         } else {
                             $slideinterval = 0;
                         }
                         $data = array('data' => array('slideinterval' => $slideinterval));
-                        $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.
+                        $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.*/
                         $this->hasspecificheader = true;
                         $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
                         if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
