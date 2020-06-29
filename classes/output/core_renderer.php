@@ -487,7 +487,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * This code renders the custom menu items for the
      * bootstrap dropdown menu.
      */
-    protected function render_custom_menu_item(\custom_menu_item $menunode, $level = 0 ) {
+    /*protected function render_custom_menu_item(\custom_menu_item $menunode, $level = 0 ) {
         static $submenucount = 0;
 
         $content = '';
@@ -548,7 +548,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
         }
         return $content;
-    }
+    }*/
 
     /**
      * Outputs the user menu.

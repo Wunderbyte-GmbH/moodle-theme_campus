@@ -489,7 +489,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
 @media (min-width: $navbarCollapseDesktopWidth) {
     .campusnav.collapse:not(.show) {
-        display: block;
+        display: flex;
     }
 }
 

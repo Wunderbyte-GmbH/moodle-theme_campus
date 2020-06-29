@@ -35,14 +35,14 @@ if (!empty($hdfancynavbar)) {
     <nav class="campusnavbar navbar navbar-light navbar-static-top<?php echo $navbarclasses ?>">
         <div class="container-fluid">
             <?php echo $OUTPUT->page_heading(); ?>
-            <div class="campusnav nav-collapse collapse">
+            <ul class="campusnav nav nav-collapse collapse ml-auto">
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <?php echo $OUTPUT->user_menu(); ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->search_box(); ?></li>
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                 </ul>
-            </div>
+            </ul>
             <ul class="nav pull-right">
             <?php echo $OUTPUT->gotobottom_menu(); ?>
             <?php echo $OUTPUT->navbar_plugin_output(); ?>
