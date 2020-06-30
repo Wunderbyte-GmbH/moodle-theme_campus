@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
  * @package    theme
  * @subpackage campus
@@ -57,7 +57,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
     <div id="page-content" class="row-fluid">
         <div id="region-main" class="span12">
             <?php require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php'); ?>
-            <section id="region-main-campus" class="row-fluid">
+            <section id="region-main-campus">
                 <?php
                 if ($OUTPUT->course_category_header()) {
                     if (\theme_campus\toolbox::get_setting('coursepagepageheadinglocation') == 3) {

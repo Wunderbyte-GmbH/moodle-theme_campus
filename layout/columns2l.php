@@ -70,7 +70,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
         <?php }
                 require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
                 ?>
-                <section id="region-main-campus" class="row-fluid">
+                <section id="region-main-campus">
                 <?php
                 if ($OUTPUT->course_category_header()) {
                     if (\theme_campus\toolbox::get_setting('coursepagepageheadinglocation') == 3) {

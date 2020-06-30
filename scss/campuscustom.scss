@@ -15,6 +15,11 @@ body {
 #region-main-campus div[role="main"] {
     padding-left: 8px;
     padding-right: 8px;
+}
+
+#region-main-campus div[role="main"],
+#block-region-side-post,
+#block-region-side-pre {
     padding-top: 8px;
 }
 
@@ -134,10 +139,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .frontpageheader.absolutelayout {
     margin: 0 auto;
     max-width: $pageWidthMaximum;
-    padding-left: 20px;
-    padding-right: 20px;
     position: relative;
-    .container {
+    .campusheadercontainer {
         bottom: 0;
         height: 100%;
         left: 0;
@@ -164,13 +167,13 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             position: absolute;
             width: 100%;
             img {
+                float: $frontpageLogoPosition;
                 height: 100%;
                 max-height: inherit;
             }
         }
     }
     .backgroundcontainer {
-        float: left;
         height: 0;
         margin: 0;
         max-height: inherit;
@@ -203,11 +206,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     height: $frontpageHeaderHeightDefault;
     margin: 0 auto;
     max-width: $pageWidthMaximum;
-    padding-left: 20px;
-    padding-right: 20px;
     position: relative;
-    .container {
+    .campusheadercontainer {
         bottom: 0;
+        display: flex;
         height: 100%;
         left: 0;
         margin: auto;
@@ -276,7 +278,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     $frontpageFlexMixinPaddingBottom,
     $frontpageMixinBackgroundWidth) {
     // Only called if responsive images exist, so hide them here when showing desktop versions.
-    .frontpageheader.absolutelayout, .frontpageheader.flexlayout {
+    .frontpageheader.absolutelayout,
+    .frontpageheader.flexlayout {
         .logotitle {
             .campuslogodesktop {
                 display: block;
@@ -733,7 +736,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     position: relative;
     margin: 0 auto;
     max-width: $pageWidthMaximum;
-    .container {
+    .campusheadercontainer {
         bottom: 0;
         left: 0;
         height: 100%;
@@ -803,7 +806,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     padding-left: 20px;
     padding-right: 20px;
     position: relative;
-    .container {
+    .campusheadercontainer {
         bottom: 0;
         height: 100%;
         left: 0;
@@ -1233,10 +1236,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             #page, 
             .frontpageheader.absolutelayout,
             .frontpageheader.flexlayout,
-            .frontpageheader.flexlayout .container,
+            .frontpageheader.flexlayout .campusheadercontainer,
             .coursecategoryheader.absolutelayout,
             .coursecategoryheader.flexlayout,
-            .coursecategoryheader.flexlayout .container {
+            .coursecategoryheader.flexlayout .campusheadercontainer {
                 max-width: 100%;
             }
             #region-main,
