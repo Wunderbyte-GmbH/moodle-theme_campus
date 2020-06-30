@@ -30,4 +30,18 @@
             display: none;
         }
     }
+    .card-body {
+        padding: 0;
+    }
+}
+
+.block_navigation .block_tree .tree_item {
+    margin-top: 0;
+}
+
+
+.campusnavbar .campusnavbarcontainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }

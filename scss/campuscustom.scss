@@ -81,8 +81,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Blocks.
 .block {
     background-color: $blockBackgroundColour;
-    border-color: $blockBorderColour;
-    border-style: $blockBorderStyle;
     border-width: 0;
     padding-bottom: 0;
     padding-top: 0;
@@ -91,6 +89,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .header {
         background-color: $blockHeadingBackgroundColour;
+        border-color: $blockBorderColour;
+        border-style: $blockBorderStyle;
         border-top-left-radius: $border-radius-lg; // Our changes to .block in 'bootstrapchanges.less'.
         border-top-right-radius: $border-radius-lg;
         padding-bottom: 4px;
@@ -114,8 +114,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .content {
         border-bottom-left-radius: inherit;
         border-bottom-right-radius: inherit;
-        border-color: inherit;
-        border-style: inherit;
+        border-color: $blockBorderColour;
+        border-style: $blockBorderStyle;
         border-width: $blockContentBorderTopWidth $blockContentBorderRightWidth $blockContentBorderBottomWidth $blockContentBorderLeftWidth; // top right bottom left.
     }
     &.block_login .content {
@@ -1309,7 +1309,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Remove text shadow from navbar, block headings and buttons - task 390.
-.navbar .nav > li > a, .block .header .title h2, .block h3.main, .btn, .breadcrumb > li {
+.navbar .nav > li > a,
+.block .header .title h2,
+.block h3.main, .btn, .breadcrumb > li {
     text-shadow: none;
 }
 

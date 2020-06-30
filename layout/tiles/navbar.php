@@ -33,7 +33,7 @@ if (!empty($hdfancynavbar)) {
 ?>
 <header>
     <nav class="campusnavbar navbar navbar-light navbar-static-top<?php echo $navbarclasses ?>">
-        <div class="container-fluid">
+        <div class="campusnavbarcontainer">
             <?php echo $OUTPUT->page_heading(); ?>
             <ul class="campusnav nav nav-collapse collapse ml-auto">
                 <?php echo $OUTPUT->custom_menu(); ?>

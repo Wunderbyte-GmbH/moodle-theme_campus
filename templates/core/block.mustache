@@ -38,13 +38,15 @@
 
     {{! Block contents }}
     <div class="card-body">
-        {{#collapsible}}
-            <div id="instance-{{blockinstanceid}}-action" class="block-action block-collapsible" data-instanceid="{{blockinstanceid}}"></div>
-        {{/collapsible}}
-        {{! Block header }}
-        {{#title}}
-            <h5 id="instance-{{blockinstanceid}}-header" class="card-title d-inline-block">{{{title}}}</h5>
-        {{/title}}
+        <div class="header">
+            {{#collapsible}}
+                <div id="instance-{{blockinstanceid}}-action" class="block-action block-collapsible" data-instanceid="{{blockinstanceid}}"></div>
+            {{/collapsible}}
+            {{! Block header }}
+            {{#title}}
+                <h5 id="instance-{{blockinstanceid}}-header" class="card-title d-inline-block title">{{{title}}}</h5>
+            {{/title}}
+        </div>
 
         {{#hascontrols}}
             <div class="block-controls header">
