@@ -46,13 +46,12 @@
             {{#title}}
                 <h5 id="instance-{{blockinstanceid}}-header" class="card-title d-inline-block title">{{{title}}}</h5>
             {{/title}}
+            {{#hascontrols}}
+                <div class="block-controls">
+                    {{{controls}}}
+                </div>
+            {{/hascontrols}}
         </div>
-
-        {{#hascontrols}}
-            <div class="block-controls header">
-                {{{controls}}}
-            </div>
-        {{/hascontrols}}
 
         <div class="card-text content">
             {{{content}}}
