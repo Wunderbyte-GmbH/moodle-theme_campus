@@ -26,14 +26,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 ?>
-<header id="page-header" class="clearfix">
-    <div id="page-navbar" class="d-flex flex-wrap">
+<header id="page-header" class="row-fluid">
+    <div id="page-navbar" class="d-flex flex-wrap col-12">
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
         <div class="breadcrumb-button ml-auto d-flex"><?php echo $OUTPUT->page_heading_button(); ?></div>
         <?php
         $settingsmenu = $OUTPUT->context_header_settings_menu();
         if (!empty($settingsmenu)) {
-            echo '<div id="campus-course-settings" class="context-header-settings-menu ml-2">'.$settingsmenu.'</div>';
+            echo '<div id="campus-course-settings-toggle" class="context-header-settings-menu ml-2">'.$settingsmenu.'</div>';
         }
         ?>
     </div>
@@ -46,7 +46,7 @@
     echo $html->heading;
     echo $OUTPUT->incourse_settings();
     ?>
-    <div id="course-header">
+    <div id="course-header" class="col-12">
         <?php echo $OUTPUT->course_header(); ?>
     </div>
 </header>

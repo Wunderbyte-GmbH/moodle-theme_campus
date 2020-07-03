@@ -42,7 +42,7 @@
     * Removed check for !is_short_branch to display all children of the course settings within an own tab.
 }}
 
-<div id="campus-course-settings" class="card" >
+<div id="campus-course-settings" class="card col-12" >
     <div class="mx-2 pt-2">
         <ul class="nav nav-tabs" role="tablist">
         <!-- First the top most node and immediate children -->
@@ -135,3 +135,47 @@
         </div>
     </div>
 </div>
+{{#js}}
+require(['jquery', 'core/log'], function($, log) {
+    $(document).ready(function() {
+        log.debug('Campus Course Settings Incourse');
+
+        var courseSettings = $('#campus-course-settings');
+        var activitySettings = $('#campus-activity-settings');
+        var courseSettingsDropdownToggle = $('#campus-course-settings-toggle');
+        //var activitySettingsDropdownToggle = $('#campus-activity-settings-toggle');
+
+        /* Remove attribute aria-haspopup because we are replacing this with the in-course course settings and
+          set the new in-course course settings for the aria-controls attribute. */
+        courseSettingsDropdownToggle.removeAttr('aria-haspopup').attr('aria-controls', 'boost-campus-course-settings');
+
+        /* Remove attribute aria-haspopup because we are replacing this with the in-course activity settings
+           set the new in-course activity settings for the aria-controls attribute. */
+        //activitySettingsDropdownToggle.removeAttr('aria-haspopup').attr('aria-controls', 'boost-campus-activity-settings');
+
+        courseSettingsDropdownToggle.on('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (courseSettings.is(":visible")) {
+                courseSettings.hide(400);
+                courseSettingsDropdownToggle.attr('aria-expanded', 'false');
+                setTimeout(function() {
+                    //$('#page-header .card').css('border-bottom', headerCardBorderBottom);
+                    $('#page-header > div').addClass('pb-3');
+                }, 300);
+            } else {
+                courseSettings.show(400);
+                $('#page-header > div').removeClass('pb-3');
+                //$('#page-header .card').css('border-bottom', 'none');
+                //courseSettings.css('border-top', 'none');
+                courseSettingsDropdownToggle.attr('aria-expanded', 'true');
+                // Additionally close activity settings if they are currently open.
+                /*if (activitySettings.is(":visible")) {
+                    activitySettings.hide(400);
+                    activitySettingsDropdownToggle.attr('aria-expanded', 'false');
+                }*/
+            }
+        });
+    });
+});
+{{/js}}
