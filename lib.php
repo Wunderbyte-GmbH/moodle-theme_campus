@@ -679,6 +679,11 @@ function theme_campus_sass_variables($theme) {
         $variables['slideButtonHoverColour'] = $theme->settings->slidebuttonhovercolour;
     }
 
+    // Setting 'showsettingsincourse' from Boost Campus.
+    if (!empty($theme->settings->slidebuttonhovercolour)) {
+        $variables['showSettingsIncourse'] = $theme->settings->showsettingsincourse;
+    }
+
     return $variables;
 }
 

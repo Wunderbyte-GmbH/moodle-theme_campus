@@ -656,6 +656,37 @@ if ($ADMIN->fulltree) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
+    // Settings title for grouping course settings related aspects together.
+    $name = 'theme_campus/coursesettingsheading';
+    $title = get_string('coursesettingsheadingsetting', 'theme_campus');
+    $setting = new admin_setting_heading($name, $title, null);
+    $settingpage->add($setting);
+
+    // Setting to display the course settings page as a panel within the course.
+    $name = 'theme_campus/showsettingsincourse';
+    $title = get_string('showsettingsincoursesetting', 'theme_campus');
+    $description = get_string('showsettingsincoursesetting_desc', 'theme_campus');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 'no', 'yes', 'no'); // Overriding default values.
+    /* yes = 1 and no = 0 because of the use of empty() in theme_boost_campus_get_pre_scss() (lib.php).
+       Default 0 value would not write the variable to scss that could cause the scss to crash if used in that file.
+       See MDL-58376.*/
+    $settingpage->add($setting);
+
+    // Setting to display the switch role to link as a separate tab within the in-course settings panel.
+    /*$name = 'theme_campus/incoursesettingsswitchtoroleposition';
+    $title = get_string('incoursesettingsswitchtorolepositionsetting', 'theme_campus');
+    $description = get_string('incoursesettingsswitchtorolepositionsetting_desc', 'theme_campus');
+    $incoursesettingsswitchtorolesetting = [
+        'no' => get_string('incoursesettingsswitchtorolesettingjustmenu', 'theme_boost_campus'),
+        'yes' => get_string('incoursesettingsswitchtorolesettingjustcourse', 'theme_boost_campus'),
+        'both' => get_string('incoursesettingsswitchtorolesettingboth', 'theme_boost_campus')
+    ];
+    $setting = new admin_setting_configselect($name, $title, $description, $incoursesettingsswitchtorolesetting['no'],
+        $incoursesettingsswitchtorolesetting);
+    $settingpage->add($setting);
+    $settingpage->hide_if('theme_campus/incoursesettingsswitchtoroleposition',
+        'theme_campus/showsettingsincourse', 'notchecked'); */
+
     // Frontpage header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage',
             get_string('frontpageheadersettings', 'theme_campus'),

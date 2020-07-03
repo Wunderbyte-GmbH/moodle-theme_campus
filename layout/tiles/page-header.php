@@ -44,7 +44,7 @@
         } 
     }
     echo $html->heading;
-    
+    echo $OUTPUT->incourse_settings();
     ?>
     <div id="course-header">
         <?php echo $OUTPUT->course_header(); ?>

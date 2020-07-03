@@ -138,6 +138,32 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
+     * Returns HTML to show the course settings in the course.
+     *
+     * @param moodle_url $url The URL + params to send through when clicking the button
+     * @return string HTML the button
+     */
+    public function incourse_settings() {
+        $output = '';
+        
+        if (\theme_campus\toolbox::get_setting('showsettingsincourse') == 'yes') {
+            // Context value for requiring incoursesettings.js.
+            //$templatecontext['incoursesettings'] = true;
+            // Add the returned value from theme_boost_campus_get_incourse_settings to the template context.
+            $node = \theme_campus\toolbox::get_incourse_settings();
+            if (!empty($node)) {
+                $templatecontext = new \stdClass;
+                $templatecontext->node = $node;
+                $output = $this->render_from_template('theme_campus/course_settings_incourse', $templatecontext);
+            }
+            // Add the returned value from theme_boost_campus_get_incourse_activity_settings to the template context.
+            //$templatecontext['activitynode'] = theme_boost_campus_get_incourse_activity_settings();
+        }
+
+        return $output;
+    }
+
+    /**
      * Renders tabtree
      *
      * @param tabtree $tabtree

@@ -166,4 +166,64 @@ class toolbox {
         global $CFG;
         return file_get_contents($CFG->dirroot.'/theme/campus/scss/'.$filename.'.scss');
     }
+
+    /**
+     * Provides the node for the in-course course or activity settings.
+     *
+     * Adapted from the Boost_Campus theme.
+     *
+     * @copyright 2017 Kathrin Osswald, Ulm University kathrin.osswald@uni-ulm.de
+     * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+     *
+     * @return navigation_node.
+     */
+    static public function get_incourse_settings() {
+        global $COURSE, $PAGE;
+        // Initialize the node with false to prevent problems on pages that do not have a courseadmin node.
+        $node = false;
+        // If setting showsettingsincourse is enabled.
+        if (self::get_setting('showsettingsincourse') == 'yes') {
+            // Only search for the courseadmin node if we are within a course or a module context.
+            if ($PAGE->context->contextlevel == CONTEXT_COURSE || $PAGE->context->contextlevel == CONTEXT_MODULE) {
+                // Get the courseadmin node for the current page.
+                $node = $PAGE->settingsnav->find('courseadmin', \navigation_node::TYPE_COURSE);
+                // Check if $node is not empty for other pages like for example the langauge customization page.
+                if (!empty($node)) {
+                    /* If the setting 'incoursesettingsswitchtoroleposition' is set either set to the option 'yes'
+                       or to the option 'both', then add these to the $node. */
+                    /*if (((self::get_setting('incoursesettingsswitchtoroleposition') == 'yes') ||
+                        (self::get_setting('incoursesettingsswitchtoroleposition') == 'both')) &&
+                        !is_role_switched($COURSE->id)) { */
+                    if (!is_role_switched($COURSE->id)) {
+                        /* Build switch role link
+                           We could only access the existing menu item by creating the user menu and traversing it.
+                           So we decided to create this node from scratch with the values copied from Moodle core. */
+                        $roles = get_switchable_roles($PAGE->context);
+                        if (is_array($roles) && (count($roles) > 0)) {
+                            // Define the properties for a new tab.
+                            $properties = array('text' => get_string('switchroleto', 'theme_campus'),
+                                'type' => \navigation_node::TYPE_CONTAINER,
+                                'key'  => 'switchroletotab');
+                            // Create the node.
+                            $switchroletabnode = new \navigation_node($properties);
+                            // Add the tab to the course administration node.
+                            $node->add_node($switchroletabnode);
+                            // Add the available roles as children nodes to the tab content.
+                            foreach ($roles as $key => $role) {
+                                $properties = array('action' => new \moodle_url('/course/switchrole.php',
+                                    array('id'         => $COURSE->id,
+                                        'switchrole' => $key,
+                                        'returnurl'  => $PAGE->url->out_as_local_url(false),
+                                        'sesskey'    => sesskey())),
+                                    'type'   => \navigation_node::TYPE_CUSTOM,
+                                    'text'   => $role);
+                                $switchroletabnode->add_node(new \navigation_node($properties));
+                            }
+                        }
+                    }
+                }
+            }
+            return $node;
+        }
+    }
 }
