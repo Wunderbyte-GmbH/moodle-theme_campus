@@ -145,22 +145,167 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     public function incourse_settings() {
         $output = '';
-        
-        if (\theme_campus\toolbox::get_setting('showsettingsincourse') == 'yes') {
-            // Context value for requiring incoursesettings.js.
-            //$templatecontext['incoursesettings'] = true;
-            // Add the returned value from theme_boost_campus_get_incourse_settings to the template context.
-            $node = \theme_campus\toolbox::get_incourse_settings();
-            if (!empty($node)) {
-                $templatecontext = new \stdClass;
-                $templatecontext->node = $node;
-                $output = $this->render_from_template('theme_campus/course_settings_incourse', $templatecontext);
-            }
-            // Add the returned value from theme_boost_campus_get_incourse_activity_settings to the template context.
-            //$templatecontext['activitynode'] = theme_boost_campus_get_incourse_activity_settings();
+
+        $node = \theme_campus\toolbox::get_incourse_settings();
+        if (!empty($node)) {
+            $templatecontext = new \stdClass;
+            $templatecontext->node = $node;
+            $output = $this->render_from_template('theme_campus/course_settings_incourse', $templatecontext);
         }
 
         return $output;
+    }
+
+    /**
+     * Returns course-specific information to be output immediately above content on any course page
+     * (for the current course).
+     *
+     * @param bool $onlyifnotcalledbefore output content only if it has not been output before.
+     * @return string.
+     */
+    public function course_content_header($onlyifnotcalledbefore = false) {
+        $output = '';
+
+        $settingsmenu = $this->region_main_settings_menu();
+        if (!empty($settingsmenu)) {
+            $output .= \html_writer::div(
+                $settingsmenu,
+                'd-print-none',
+                ['id' => 'region-main-settings-menu']
+            );
+        }
+
+        $output .= parent::course_content_header($onlyifnotcalledbefore);
+
+        $activitynode = \theme_campus\toolbox::get_incourse_activity_settings();
+        if (!empty($activitynode)) {
+            $templatecontext = new \stdClass;
+            $templatecontext->activitynode = $activitynode;
+            $output .= $this->render_from_template('theme_campus/activity_settings_incourse', $templatecontext);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Override to display course settings on every course site for permanent access
+     *
+     * Adapted from the Boost_Campus theme.
+     *
+     * @copyright 2017 Kathrin Osswald, Ulm University kathrin.osswald@uni-ulm.de
+     * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+     *
+     * This is an optional menu that can be added to a layout by a theme. It contains the
+     * menu for the course administration, only on the course main page.
+     *
+     * MODIFICATION: This renderer function is copied and modified from /lib/outputrenderers.php.
+     *
+     * @return string
+     */
+    public function context_header_settings_menu() {
+        $context = $this->page->context;
+        $menu = new \action_menu();
+
+        $items = $this->page->navbar->get_items();
+        $currentnode = end($items);
+
+        $showcoursemenu = false;
+        $showfrontpagemenu = false;
+        $showusermenu = false;
+
+        // We are on the course home page.
+        // MODIFICATION START.
+        // REASON: With the original code, the course settings icon will only appear on the course main page.
+        // Therefore the access to the course settings and related functions is not possible on other
+        // course pages as there is no omnipresent block anymore. We want these to be accessible
+        // on each course page.
+        if (($context->contextlevel == CONTEXT_COURSE || $context->contextlevel == CONTEXT_MODULE) && !empty($currentnode)) {
+            $showcoursemenu = true;
+        }
+        // MODIFICATION END.
+        // @codingStandardsIgnoreStart
+        /* ORIGINAL START.
+        if (($context->contextlevel == CONTEXT_COURSE) &&
+                !empty($currentnode) &&
+                ($currentnode->type == navigation_node::TYPE_COURSE || $currentnode->type == navigation_node::TYPE_SECTION)) {
+            $showcoursemenu = true;
+        }
+        ORIGINAL END. */
+        // @codingStandardsIgnoreEnd
+
+        $courseformat = course_get_format($this->page->course);
+        // This is a single activity course format, always show the course menu on the activity main page.
+        if ($context->contextlevel == CONTEXT_MODULE &&
+                !$courseformat->has_view_page()) {
+
+            $this->page->navigation->initialise();
+            $activenode = $this->page->navigation->find_active_node();
+            // If the settings menu has been forced then show the menu.
+            if ($this->page->is_settings_menu_forced()) {
+                $showcoursemenu = true;
+            } else if (!empty($activenode) && ($activenode->type == \navigation_node::TYPE_ACTIVITY ||
+                        $activenode->type == \navigation_node::TYPE_RESOURCE)) {
+
+                // We only want to show the menu on the first page of the activity. This means
+                // the breadcrumb has no additional nodes.
+                if ($currentnode && ($currentnode->key == $activenode->key && $currentnode->type == $activenode->type)) {
+                    $showcoursemenu = true;
+                }
+            }
+        }
+
+        // This is the site front page.
+        if ($context->contextlevel == CONTEXT_COURSE &&
+                !empty($currentnode) &&
+                $currentnode->key === 'home') {
+            $showfrontpagemenu = true;
+        }
+
+        // This is the user profile page.
+        if ($context->contextlevel == CONTEXT_USER &&
+                !empty($currentnode) &&
+                ($currentnode->key === 'myprofile')) {
+            $showusermenu = true;
+        }
+
+        if ($showfrontpagemenu) {
+            $settingsnode = $this->page->settingsnav->find('frontpage', \navigation_node::TYPE_SETTING);
+            if ($settingsnode) {
+                // Build an action menu based on the visible nodes from this navigation tree.
+                $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
+
+                // We only add a list to the full settings menu if we didn't include every node in the short menu.
+                if ($skipped) {
+                    $text = get_string('morenavigationlinks');
+                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
+                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
+                    $menu->add_secondary_action($link);
+                }
+            }
+        } else if ($showcoursemenu) {
+            $settingsnode = $this->page->settingsnav->find('courseadmin', \navigation_node::TYPE_COURSE);
+            if ($settingsnode) {
+                // Build an action menu based on the visible nodes from this navigation tree.
+                $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
+
+                // We only add a list to the full settings menu if we didn't include every node in the short menu.
+                if ($skipped) {
+                    $text = get_string('morenavigationlinks');
+                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
+                    $link = new \action_link($url, $text, null, null, new \pix_icon('t/edit', $text));
+                    $menu->add_secondary_action($link);
+                }
+            }
+        } else if ($showusermenu) {
+            // Get the course admin node from the settings navigation.
+            $settingsnode = $this->page->settingsnav->find('useraccount', \navigation_node::TYPE_CONTAINER);
+            if ($settingsnode) {
+                // Build an action menu based on the visible nodes from this navigation tree.
+                $this->build_action_menu_from_navigation($menu, $settingsnode);
+            }
+        }
+
+        return $this->render($menu);
     }
 
     /**

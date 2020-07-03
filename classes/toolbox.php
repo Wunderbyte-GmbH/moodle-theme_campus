@@ -226,4 +226,35 @@ class toolbox {
             return $node;
         }
     }
+    
+    /**
+     * Provides the node for the in-course settings for other contexts.
+     *
+     * Adapted from the Boost_Campus theme.
+     *
+     * @copyright 2017 Kathrin Osswald, Ulm University kathrin.osswald@uni-ulm.de
+     * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+     *
+     * @return navigation_node.
+     */
+    static public function get_incourse_activity_settings() {
+        global $PAGE;
+        $context = $PAGE->context;
+        $node = false;
+        // If setting showsettingsincourse is enabled.
+        if (self::get_setting('showsettingsincourse') == 'yes') {
+            // Settings belonging to activity or resources.
+            if ($context->contextlevel == CONTEXT_MODULE) {
+                $node = $PAGE->settingsnav->find('modulesettings', \navigation_node::TYPE_SETTING);
+            } else if ($context->contextlevel == CONTEXT_COURSECAT) {
+                // For course category context, show category settings menu, if we're on the course category page.
+                if ($PAGE->pagetype === 'course-index-category') {
+                    $node = $PAGE->settingsnav->find('categorysettings', \navigation_node::TYPE_CONTAINER);
+                }
+            } else {
+                $node = false;
+            }
+        }
+        return $node;
+    }
 }

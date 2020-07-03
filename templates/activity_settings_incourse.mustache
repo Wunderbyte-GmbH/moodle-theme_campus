@@ -43,8 +43,7 @@
     * Removed check for !is_short_branch to display all children of the course settings within an own tab.
 }}
 
-<div id="campus-activity-settings" class="card" >
-    <h2>{{incourse_activitynode_heading}}</h2>
+<div id="campus-activity-settings" class="card col-12" >
     <div class="mx-2 pt-2">
         <ul class="nav nav-tabs" role="tablist">
         <!-- First the top most activitynode and immediate children -->
@@ -137,3 +136,40 @@
         </div>
     </div>
 </div>
+{{#js}}
+require(['jquery', 'core/log'], function($, log) {
+    $(document).ready(function() {
+        log.debug('Campus Activity Settings Incourse');
+
+        var courseSettings = $('#campus-course-settings');
+        var activitySettings = $('#campus-activity-settings');
+        var courseSettingsDropdownToggle = $('#campus-course-settings-toggle');
+        var activitySettingsDropdownToggle = $('#region-main-settings-menu .action-menu .dropdown-toggle');
+
+        /* Remove attribute aria-haspopup because we are replacing this with the in-course activity settings
+           set the new in-course activity settings for the aria-controls attribute. */
+        activitySettingsDropdownToggle.removeAttr('aria-haspopup').attr('aria-controls', 'boost-campus-activity-settings');
+
+        activitySettingsDropdownToggle.on('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (activitySettings.is(":visible")) {
+                activitySettings.hide(400);
+                activitySettingsDropdownToggle.attr('aria-expanded', 'false');
+            } else {
+                activitySettings.show(400);
+                activitySettingsDropdownToggle.attr('aria-expanded', 'true');
+                setTimeout(function() {
+                    //$('#page-header .card').css('border-bottom', headerCardBorderBottom);
+                    $('#page-header > div').addClass('pb-3');
+                }, 300);
+                // Additionally close course settings if they are currently open.
+                if (courseSettings.is(":visible")) {
+                    courseSettings.hide(400);
+                    courseSettingsDropdownToggle.attr('aria-expanded', 'false');
+                }
+            }
+        });
+    });
+});
+{{/js}}
