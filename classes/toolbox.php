@@ -191,10 +191,9 @@ class toolbox {
                 if (!empty($node)) {
                     /* If the setting 'incoursesettingsswitchtoroleposition' is set either set to the option 'yes'
                        or to the option 'both', then add these to the $node. */
-                    /*if (((self::get_setting('incoursesettingsswitchtoroleposition') == 'yes') ||
+                    if (((self::get_setting('incoursesettingsswitchtoroleposition') == 'yes') ||
                         (self::get_setting('incoursesettingsswitchtoroleposition') == 'both')) &&
-                        !is_role_switched($COURSE->id)) { */
-                    if (!is_role_switched($COURSE->id)) {
+                        !is_role_switched($COURSE->id)) {
                         /* Build switch role link
                            We could only access the existing menu item by creating the user menu and traversing it.
                            So we decided to create this node from scratch with the values copied from Moodle core. */

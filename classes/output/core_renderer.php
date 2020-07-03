@@ -770,7 +770,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     'switchrole' => -1,
                     'returnurl' => $this->page->url->out_as_local_url(false)
                 ));
-                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel), array('class' => 'dropdown-item menu-action'));
+                $usermenu .= html_writer::tag('li', html_writer::link($branchurl, $branchlabel), array('class' => 'dropdown-item menu-action switchroleto'));
             }
         }
 
@@ -924,7 +924,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     $url = new moodle_url('/course/switchrole.php',
                             array('id' => $course->id, 'sesskey' => sesskey(), 'switchrole' => 0, 'returnurl' => $this->page->url->out_as_local_url(false)));
                     $loggedinas .= '(' . html_writer::tag('a', get_string('switchrolereturn'),
-                                    array('href' => $url, 'class' => 'btn')) . ')';
+                                    array('href' => $url, 'class' => 'btn switchrolereturn')) . ')';
                 }
             } else {
                 $loggedinas = '<span class="loggedintext">' . $realuserinfo . get_string('loggedinas', 'moodle',

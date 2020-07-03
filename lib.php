@@ -683,6 +683,11 @@ function theme_campus_sass_variables($theme) {
     if (!empty($theme->settings->slidebuttonhovercolour)) {
         $variables['showSettingsIncourse'] = $theme->settings->showsettingsincourse;
     }
+    
+    // Setting 'incoursesettingsswitchtoroleposition' from Boost Campus.
+    if (!empty($theme->settings->incoursesettingsswitchtoroleposition)) {
+        $variables['incourseSettingsSwitchToRolePosition'] = $theme->settings->incoursesettingsswitchtoroleposition;
+    }
 
     return $variables;
 }

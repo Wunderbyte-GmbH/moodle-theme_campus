@@ -670,10 +670,11 @@ if ($ADMIN->fulltree) {
     /* yes = 1 and no = 0 because of the use of empty() in theme_boost_campus_get_pre_scss() (lib.php).
        Default 0 value would not write the variable to scss that could cause the scss to crash if used in that file.
        See MDL-58376.*/
+    $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
     // Setting to display the switch role to link as a separate tab within the in-course settings panel.
-    /*$name = 'theme_campus/incoursesettingsswitchtoroleposition';
+    $name = 'theme_campus/incoursesettingsswitchtoroleposition';
     $title = get_string('incoursesettingsswitchtorolepositionsetting', 'theme_campus');
     $description = get_string('incoursesettingsswitchtorolepositionsetting_desc', 'theme_campus');
     $incoursesettingsswitchtorolesetting = [
@@ -683,9 +684,10 @@ if ($ADMIN->fulltree) {
     ];
     $setting = new admin_setting_configselect($name, $title, $description, $incoursesettingsswitchtorolesetting['no'],
         $incoursesettingsswitchtorolesetting);
+    $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
     $settingpage->hide_if('theme_campus/incoursesettingsswitchtoroleposition',
-        'theme_campus/showsettingsincourse', 'notchecked'); */
+        'theme_campus/showsettingsincourse', 'notchecked');
 
     // Frontpage header settings.
     $settingpage->add(new admin_setting_heading('theme_campus_frontpage',

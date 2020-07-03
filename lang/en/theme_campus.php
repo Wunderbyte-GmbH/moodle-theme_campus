@@ -338,11 +338,11 @@ $string['coursesettingsheadingsetting'] = 'Course settings';
 $string['showsettingsincoursesetting'] = 'In course settings menu';
 $string['showsettingsincoursesetting_desc'] = 'With this setting you can change the displaying of the context menus.  In Boost, there is a popup context menu right next to the cog icon.  By enabling this setting the settings will occur directly beneath the course header.  The settings are arranged in tabs, so it is easier for the user to get to the desired setting instead of scanning a long list of menu items. With this setting we also hide the settings icon on the participants page as the entries on this page are duplicated with the in-course course menu and therefore not necessary.<br/>
 Please note that this change does not affect users who have switched off javascript in their browsers - they will still get the behaviour from Moodle core with a popup course context menu.';
-/*$string['incoursesettingsswitchtorolepositionsetting'] = '"Switch role to..." location(s)';
+$string['incoursesettingsswitchtorolepositionsetting'] = '"Switch role to..." location(s)';
 $string['incoursesettingsswitchtorolesettingjustmenu'] = 'Just in the user menu';
 $string['incoursesettingsswitchtorolesettingjustcourse'] = 'Just in the course settings';
 $string['incoursesettingsswitchtorolesettingboth'] = 'In both places: in the user menu and in the course settings';
-$string['incoursesettingsswitchtorolepositionsetting_desc'] = 'With this setting you can choose the place where the information to which role a user has switched is being displayed.  If set to \'Just in the user menu\' (default value), the role information will be displayed right beneath the user\'s name in the user menu (like in theme Boost).  If set to \'Just in the course settings\', this information - together with a link to switch back - will be displayed beneath the course, as this functionality is course related.  If set to \'Both in the user menu and in the course settings\' it will be shown in both places.';*/
+$string['incoursesettingsswitchtorolepositionsetting_desc'] = 'With this setting you can choose the place where the information to which role a user has switched is being displayed.  If set to \'Just in the user menu\' (default value), the role information will be displayed right beneath the user\'s name in the user menu (like in theme Boost).  If set to \'Just in the course settings\', this information - together with a link to switch back - will be displayed beneath the course, as this functionality is course related.  If set to \'Both in the user menu and in the course settings\' it will be shown in both places.';
 $string['switchroleto'] = 'Switch role to';
 
 // Frontpage header.
