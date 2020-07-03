@@ -76,6 +76,12 @@ echo $OUTPUT->doctype() ?>
         <div id="page-navbar" class="clearfix">
             <div class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></div>
             <nav class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></nav>
+            <?php
+            $settingsmenu = $OUTPUT->context_header_settings_menu();
+            if (!empty($settingsmenu)) {
+                echo '<div class="context-header-settings-menu ml-2">'.$settingsmenu.'</div>';
+            }
+            ?>
         </div>
         <?php echo $OUTPUT->page_heading(); ?>
         <div id="course-header">
