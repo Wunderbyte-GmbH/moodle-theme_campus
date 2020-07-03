@@ -33,7 +33,7 @@
         <?php
         $settingsmenu = $OUTPUT->context_header_settings_menu();
         if (!empty($settingsmenu)) {
-            echo '<div class="context-header-settings-menu ml-2">'.$settingsmenu.'</div>';
+            echo '<div id="campus-course-settings" class="context-header-settings-menu ml-2">'.$settingsmenu.'</div>';
         }
         ?>
     </div>
@@ -43,7 +43,9 @@
             echo $OUTPUT->get_page_heading();
         } 
     }
-    echo $html->heading; ?>
+    echo $html->heading;
+    
+    ?>
     <div id="course-header">
         <?php echo $OUTPUT->course_header(); ?>
     </div>

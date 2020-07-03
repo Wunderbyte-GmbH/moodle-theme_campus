@@ -79,7 +79,7 @@ echo $OUTPUT->doctype() ?>
             <?php
             $settingsmenu = $OUTPUT->context_header_settings_menu();
             if (!empty($settingsmenu)) {
-                echo '<div class="context-header-settings-menu ml-2">'.$settingsmenu.'</div>';
+                echo '<div id="campus-course-settings" class="context-header-settings-menu ml-2">'.$settingsmenu.'</div>';
             }
             ?>
         </div>
