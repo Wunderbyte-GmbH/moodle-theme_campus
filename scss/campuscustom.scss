@@ -17,9 +17,7 @@ body {
     padding-right: 8px;
 }
 
-#region-main-campus div[role="main"],
-#block-region-side-post,
-#block-region-side-pre {
+#page-content {
     padding-top: 8px;
 }
 
@@ -65,7 +63,7 @@ body {
 
 // Goto bottom.
 .navbar .nav.gotoBottom {
-    padding: 7px 7px;
+    padding: 10px 7px 0;
 }
 
 // Local login.
@@ -86,6 +84,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     padding-top: 0;
     .fa {
         color: $blockIconColour;
+    }
+    .block-controls .fa {
+        color: $blockHeadingColor;
     }
     .header {
         background-color: $blockHeadingBackgroundColour;
@@ -1135,7 +1136,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 .navbar .nav.pull-right {
     margin: 0;
     .usermenu {
-        margin: 0 10px 0 0;
+        margin: -15px 10px 0;
     }
 }
 
@@ -1178,7 +1179,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     cursor: pointer;
     a {
         color: $navbarText;
-        padding: ((($navbarHeight - $line-height-base) / 2) - 1) 15px ((($navbarHeight - $line-height-base) / 2) - 2);
+        padding: 8px 15px 0;
         text-shadow: none;
         span {
             font-size: 20px;
@@ -1284,7 +1285,9 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Footer.
 #page-footer {
     background-color: $contentColor;
-    padding: 1em 8px 0 8px;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-top: 1em;
     a {
         color: $link-color;
     }

@@ -59,10 +59,31 @@ body {
 
 .block_navigation,
 .block_settings {
-    .block_tree p.hasicon {
-        padding-left: 10px;
-        text-indent: -8px;
+    .block_tree {
+        margin-left: -6px;
+        p.hasicon {
+            text-indent: -14px;
+        }
+        .tree_item.branch {
+            padding-left: 0;
+        }
     }
+}
+
+.block-region {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.block .content,
+.block-controls {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.block .content {
+    padding-bottom: 4px;
+    padding-top: 4px;
 }
 
 // breadcrumbs.less - mine
@@ -106,6 +127,17 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     opacity: 1;
 }
 
+#region-main {
+    border: none;
+    padding-top: 0;
+}
+
+#page-footer a {
+    .icon {
+        color: inherit;
+    }
+}
+
 // core.less and modules.less
 // --------------------------------------------------
 .jsenabled {
@@ -136,6 +168,11 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 // course.less
 // --------------------------------------------------
+
+.course-content {
+    margin-top: -15px;
+}
+
 .course-content .section-summary {
     border: 1px solid lighten($grayLight, 20%);
 }
