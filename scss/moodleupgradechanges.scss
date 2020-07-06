@@ -63,3 +63,10 @@
         top: 2.4rem;
     }
 }
+
+[data-region=right-hand-drawer].drawer {
+    height: 100%;
+    top: 0;
+    z-index: $zindex-popover;
+}
+
