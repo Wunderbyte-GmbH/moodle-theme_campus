@@ -1568,6 +1568,7 @@ fieldset {
 /* In-course settings. */
 #campus-course-settings,
 #campus-activity-settings {
+    border: none;
     /* Initially do not display the settings. Visibility will be changed on click with course_settings_incourse.mustache. */
     display: none;
     margin-bottom: 1rem;
