@@ -39,27 +39,6 @@
  *                                 path to your Moodle root directory
  *                                 when your theme is not in the
  *                                 standard location.
- * grunt compile Run the .less files through the compiler, create the
- *               RTL version of the output, then run decache so that
- *               the results can be seen on the next page load.
- *
- *               Options:
- *
- *               --dirroot=<path>  Optional. Explicitly define the
- *                                 path to your Moodle root directory
- *                                 when your theme is not in the
- *                                 standard location.
- *
- *               --build=<type>    Optional. 'p'(default) or 'd'. If 'p'
- *                                 then 'production' CSS files.  If 'd'
- *                                 then 'development' CSS files unminified
- *                                 and with source map to less files.
- *
- *               --urlprefix=<path> Optional. Explicitly define
- *                                  the path between the domain
- *                                  and the installation in the
- *                                  URL, i.e. /moodle27 being:
- *                                  --urlprefix=/moodle27
  *
  * grunt amd     Create the Asynchronous Module Definition JavaScript files.  See: MDL-49046.
  *               Done here as core Gruntfile.js currently *nix only.
@@ -79,12 +58,6 @@
  * -------------------------
  * Lower level tasks encapsulating a specific piece of functionality
  * but usually only useful when called in combination with another.
- *
- * grunt less         Compile all less files.
- *
- * grunt less:moodle  Compile Moodle less files only.
- *
- * grunt less:editor  Compile editor less files only.
  *
  * grunt decache      Clears the Moodle theme cache.
  *
@@ -147,31 +120,6 @@ module.exports = function(grunt) {
     var svgcolor = grunt.option('svgcolor') || '#999999';
 
     grunt.initConfig({
-        less: {
-            // Compile editor styles.
-            editor_d: {
-                options: {
-                    compress: false,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: true,
-                    sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'style/editor.treasure.map'
-                },
-                src: 'less/editorallcampus.less',
-                dest: 'style/editor.css'
-            },
-            editor_p: {
-                options: {
-                    compress: true,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: false
-                },
-                src: 'less/editorallcampus.less',
-                dest: 'style/editor.css'
-            }
-        },
         exec: {
             decache: {
                 cmd: 'php -r "' + decachephp + '"',
@@ -182,14 +130,6 @@ module.exports = function(grunt) {
                         grunt.log.writeln("Moodle theme cache reset.");
                     }
                 }
-            }
-        },
-        watch: {
-            // Watch for any changes to less files and compile.
-            files: ["less/**/*.less", "../bootstrapbase/less/**/*.less"],
-            tasks: ["compile"],
-            options: {
-                spawn: false
             }
         },
         copy: {
@@ -296,8 +236,6 @@ module.exports = function(grunt) {
     });
 
     // Load contrib tasks.
-    grunt.loadNpmTasks("grunt-contrib-less");
-    grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks("grunt-text-replace");
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -308,10 +246,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
     // Register tasks.
-    grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
 
-    grunt.registerTask("compile", ["less:editor_"+build, "decache"]);
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins", "copy:svg_fp"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins", "replace:svg_colours_fp"]);
     grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);
