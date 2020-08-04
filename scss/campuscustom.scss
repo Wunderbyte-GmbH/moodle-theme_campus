@@ -1167,11 +1167,11 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Responsive.
-@media (max-width: 767px) {
-    aside.block-region {
-        margin-top: 20px;
-    }
-}
+//@media (max-width: 767px) {
+//    aside.block-region {
+//        margin-top: 20px;
+//    }
+//}
 
 // Header toggle.
 .navbar .nav.headertogglemenu {
