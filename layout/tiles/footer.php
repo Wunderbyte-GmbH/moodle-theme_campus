@@ -27,7 +27,8 @@
  */
 require_once(dirname(__FILE__).'/social.php');
 ?>
-<footer id="page-footer">
+<footer id="page-footer" class="row">
+    <div class="col-12">
     <?php
     if ($PAGE->blocks->is_known_region('footer')) {
         require_once(dirname(__FILE__).'/footer_blocks.php');
@@ -51,6 +52,7 @@ require_once(dirname(__FILE__).'/social.php');
     }
     echo $OUTPUT->standard_footer_html();
     ?>
+    </div>
 </footer>
 <?php echo $OUTPUT->anti_gravity(); ?>
 <?php echo $OUTPUT->standard_end_of_body_html() ?>

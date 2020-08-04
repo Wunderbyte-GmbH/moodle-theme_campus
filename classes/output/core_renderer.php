@@ -41,12 +41,31 @@ use moodle_url;
 class core_renderer extends \theme_boost\output\core_renderer {
 
     private $hasspecificheader = false;  // States if we have a specific header and therefore header toggle functionality is needed.
+    private $navdraweropen = false;
+
+    /**
+     * Constructor
+     *
+     * @param moodle_page $page the page we are doing output for.
+     * @param string $target one of rendering target constants
+     */
+    public function __construct(\moodle_page $page, $target) {
+        parent::__construct($page, $target);
+        
+        // Nav drawer init.
+        user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
+
+        if (isloggedin()) {
+            $this->navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
+        } else {
+            $this->navdraweropen = false;
+        }
+    }
 
     /*
      * This renders the navbar.
      * Uses bootstrap compatible html.
      */
-
     public function navbar() {
         $items = $this->page->navbar->get_items();
         if (right_to_left()) {
@@ -1036,6 +1055,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $additionalclasses .= ' notediting';
             }
         }
+
+        if ($this->navdraweropen) {
+            if (is_array($additionalclasses)) {
+                $additionalclasses[] = 'drawer-open-left';
+            } else {
+                $additionalclasses .= ' drawer-open-left';
+            }
+        }
+
         return parent::body_attributes($additionalclasses);
     }
 
@@ -1185,6 +1213,25 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $this->page->requires->js_call_amd('theme_campus/header_toggle', 'init');
             }
         }
+    }
+
+    public function render_flatnav() {
+        $nav = $this->page->flatnav;
+        $templatecontext = [
+            'navdraweropen' => $this->navdraweropen,
+            'flatnavigation' => $nav,
+            'firstcollectionlabel' => $nav->get_collectionlabel()
+        ];
+
+        return $this->render_from_template('theme_boost/nav-drawer', $templatecontext);
+    }
+
+    public function render_flatnav_button() {
+        $templatecontext = [
+            'navdraweropen' => $this->navdraweropen
+        ];
+
+        return $this->render_from_template('theme_campus/nav_drawer_button', $templatecontext);
     }
 
     /**
