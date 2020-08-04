@@ -458,6 +458,44 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * Output all the blocks in a particular region.
      *
      * @param string $region the name of a region on this page.
+     * @return string the HTML to be output.
+     */
+    public function blocks_for_region($region) {
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $blocks = $this->page->blocks->get_blocks_for_region($region);
+
+        $lastblock = null;
+        $zones = array();
+        foreach ($blocks as $block) {
+            if ($block->instance->blockname == 'navigation') {
+                continue;
+            }
+            $zones[] = $block->title;
+        }
+        $output = '';
+
+        foreach ($blockcontents as $bc) {
+            if ($bc->attributes['data-block'] == 'navigation') {
+                continue;
+            }
+            if ($bc instanceof block_contents) {
+                $output .= $this->block($bc, $region);
+                $lastblock = $bc->title;
+            } else if ($bc instanceof block_move_target) {
+                $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+            } else {
+                throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+            }
+        }
+        return $output;
+    }
+
+    /**
+     * Output all the blocks in a particular region.
+     *
+     * Note: Assumes will never be used for region with the navigation block.
+     *
+     * @param string $region the name of a region on this page.
      * @param int $blocksperrow Number of blocks per row, if > 4 will be set at 4.
      * @param boolean $editing If we are editing.
      * @return string the HTML to be output.
