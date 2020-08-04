@@ -34,7 +34,10 @@ if (!empty($hdfancynavbar)) {
 <header>
     <nav class="campusnavbar navbar navbar-light navbar-static-top<?php echo $navbarclasses ?>">
         <div class="campusnavbarcontainer">
-            <?php echo $OUTPUT->page_heading(); ?>
+            <?php
+                echo $OUTPUT->render_flatnav_button();
+                echo $OUTPUT->page_heading();
+            ?>
             <ul class="campusnav nav nav-collapse collapse ml-auto">
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <?php echo $OUTPUT->user_menu(); ?>
@@ -46,6 +49,7 @@ if (!empty($hdfancynavbar)) {
             <ul class="nav pull-right">
             <?php echo $OUTPUT->gotobottom_menu(); ?>
             <?php echo $OUTPUT->navbar_plugin_output(); ?>
+            <?php echo html_writer::tag('li', $OUTPUT->context_header_settings_menu(), array('class' => 'nav-item context-menu')); ?>
             <?php if ($logininfoheader) { ?>
                 <li class="usermenu nav-item d-flex align-items-center"><?php echo $OUTPUT->custom_menu_user() ?></li>
             <?php } ?>
@@ -55,3 +59,4 @@ if (!empty($hdfancynavbar)) {
         </div>
     </nav>
 </header>
+<?php echo $OUTPUT->render_flatnav(); ?>

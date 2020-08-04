@@ -25,5 +25,5 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-echo $OUTPUT->campusblocks('footer', 'row-fluid', 'aside', $PAGE->theme->settings->numfooterblocks);
+echo $OUTPUT->campusblocks('footer', '', 'aside', $PAGE->theme->settings->numfooterblocks);
 ?>

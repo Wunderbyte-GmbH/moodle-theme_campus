@@ -169,9 +169,9 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 // course.less
 // --------------------------------------------------
 
-.course-content {
-    margin-top: -15px;
-}
+//.course-content {
+//    margin-top: -15px;
+//}
 
 .course-content .section-summary {
     border: 1px solid lighten($grayLight, 20%);
@@ -326,6 +326,26 @@ body.notediting {
         color: $body-color;
         font-size: 24px;
         vertical-align: text-top;
+    }
+}
+
+// drawer.scss
+// --------------------------------------------------
+[data-region="drawer"] {
+    height: 100%;
+    top: 0;
+}
+
+.drawer-open-left .campusnavbar {
+    margin-left: 285px;
+}
+
+@media (min-width: 768px) {
+    .drawer-open-left .campusnavbar {
+        margin-left: 0;
+        &.fixed-top {
+            margin-left: 285px;
+        }
     }
 }
 

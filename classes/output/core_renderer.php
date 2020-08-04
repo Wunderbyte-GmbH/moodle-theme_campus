@@ -41,12 +41,31 @@ use moodle_url;
 class core_renderer extends \theme_boost\output\core_renderer {
 
     private $hasspecificheader = false;  // States if we have a specific header and therefore header toggle functionality is needed.
+    private $navdraweropen = false;
+
+    /**
+     * Constructor
+     *
+     * @param moodle_page $page the page we are doing output for.
+     * @param string $target one of rendering target constants
+     */
+    public function __construct(\moodle_page $page, $target) {
+        parent::__construct($page, $target);
+        
+        // Nav drawer init.
+        user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
+
+        if (isloggedin()) {
+            $this->navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
+        } else {
+            $this->navdraweropen = false;
+        }
+    }
 
     /*
      * This renders the navbar.
      * Uses bootstrap compatible html.
      */
-
     public function navbar() {
         $items = $this->page->navbar->get_items();
         if (right_to_left()) {
@@ -278,7 +297,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 if ($skipped) {
                     $text = get_string('morenavigationlinks');
                     $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
+                    $link = new \action_link($url, $text, null, null, new \pix_icon('t/edit', $text));
                     $menu->add_secondary_action($link);
                 }
             }
@@ -408,9 +427,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $editing = $this->page->user_is_editing();
 
         if ($blocksperrow) {
-            $classes[] = 'row hblocks';
+            $classes[] = 'hblocks';
             if ($editing) {
-                $classes[] = 'editing bpr-'.$blocksperrow;
+                $classes[] = 'hblocks-container editing bpr-'.$blocksperrow;
             }
             if (($blocksperrow > 6) || ($blocksperrow < 1)) {
                 $blocksperrow = 4;
@@ -439,6 +458,46 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * Output all the blocks in a particular region.
      *
      * @param string $region the name of a region on this page.
+     * @return string the HTML to be output.
+     */
+    public function blocks_for_region($region) {
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $blocks = $this->page->blocks->get_blocks_for_region($region);
+
+        $lastblock = null;
+        $zones = array();
+        foreach ($blocks as $block) {
+            if (($block->instance->blockname == 'navigation') ||
+                ($block->instance->blockname == 'settings')) {
+                continue;
+            }
+            $zones[] = $block->title;
+        }
+        $output = '';
+
+        foreach ($blockcontents as $bc) {
+            if (($bc->attributes['data-block'] == 'navigation') ||
+                ($bc->attributes['data-block'] == 'settings')) {
+                continue;
+            }
+            if ($bc instanceof block_contents) {
+                $output .= $this->block($bc, $region);
+                $lastblock = $bc->title;
+            } else if ($bc instanceof block_move_target) {
+                $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+            } else {
+                throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+            }
+        }
+        return $output;
+    }
+
+    /**
+     * Output all the blocks in a particular region.
+     *
+     * Note: Assumes will never be used for region with the navigation block.
+     *
+     * @param string $region the name of a region on this page.
      * @param int $blocksperrow Number of blocks per row, if > 4 will be set at 4.
      * @param boolean $editing If we are editing.
      * @return string the HTML to be output.
@@ -460,14 +519,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
             if (!$editing) {
                 if ($rows <= 1) {
-                    $col = 12 / $blockcount;
+                    $col = $blockcount;
                     if ($col < 1) {
-                        // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
-                        $col = 1;
+                        // Should not happen but a fail safe.  Will look intentionally odd.
+                        $col = 4;
                     }
                 } else {
-                    $col = 12 / $blocksperrow;
+                    $col = $blocksperrow;
                 }
+                $output .= html_writer::start_tag('div', array('class' => 'hblocks-container'));
             }
 
             $currentblockcount = 0;
@@ -480,14 +540,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     if ($currentblockcount > ($currentrequiredrow * $blocksperrow)) {
                         // Tripping point.
                         $currentrequiredrow++;
+                        // Break...
+                        $output .= html_writer::end_tag('div');
+                        $output .= html_writer::start_tag('div', array('class' => 'hblocks-container'));
                         // Recalculate col if needed...
                         $remainingblocks = $blockcount - ($currentblockcount - 1);
                         if ($remainingblocks < $blocksperrow) {
-                            $col = 12 / $remainingblocks;
+                            $col = $remainingblocks;
                             if ($col < 1) {
-                                /* Should not happen but a fail safe.
-                                   Block will be small so good for screen shots when this happens. */
-                                $col = 1;
+                                // Should not happen but a fail safe.  Will look intentionally odd.
+                                $col = 4;
                             }
                         }
                     }
@@ -496,7 +558,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                         $currentrow = $currentrequiredrow;
                     }
 
-                    $bc->attributes['width'] = 'col-sm-'.$col;
+                    $bc->attributes['width'] = 'hblocks-col hblocks-col-'.$col;
                 }
 
                 if ($bc instanceof block_contents) {
@@ -507,6 +569,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 } else {
                     throw new coding_exception('Unexpected type of thing ('.get_class($bc).') found in list of block contents.');
                 }
+            }
+            if (!$editing) {
+                $output .= html_writer::end_tag('div');
             }
         }
 
@@ -579,8 +644,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') ||
             ($this->page->pagelayout == 'admin')) { // Go to bottom.
             $icon = html_writer::start_tag('span', array('class' => 'fa fa-arrow-circle-o-down slgotobottom')) . html_writer::end_tag('span');
-            $gotobottom = html_writer::tag('span', $icon,
-                array('class' => 'nav gotoBottom', 'title' => get_string('gotobottom', 'theme_campus')));
+            $gotobottom = html_writer::tag('li', $icon,
+                array('class' => 'nav-item gotoBottom', 'title' => get_string('gotobottom', 'theme_campus')));
 
         }
         return $gotobottom;
@@ -1036,6 +1101,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $additionalclasses .= ' notediting';
             }
         }
+
+        if ($this->navdraweropen) {
+            if (is_array($additionalclasses)) {
+                $additionalclasses[] = 'drawer-open-left';
+            } else {
+                $additionalclasses .= ' drawer-open-left';
+            }
+        }
+
         return parent::body_attributes($additionalclasses);
     }
 
@@ -1185,6 +1259,25 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $this->page->requires->js_call_amd('theme_campus/header_toggle', 'init');
             }
         }
+    }
+
+    public function render_flatnav() {
+        $nav = $this->page->flatnav;
+        $templatecontext = [
+            'navdraweropen' => $this->navdraweropen,
+            'flatnavigation' => $nav,
+            'firstcollectionlabel' => $nav->get_collectionlabel()
+        ];
+
+        return $this->render_from_template('theme_boost/nav-drawer', $templatecontext);
+    }
+
+    public function render_flatnav_button() {
+        $templatecontext = [
+            'navdraweropen' => $this->navdraweropen
+        ];
+
+        return $this->render_from_template('theme_campus/nav_drawer_button', $templatecontext);
     }
 
     /**

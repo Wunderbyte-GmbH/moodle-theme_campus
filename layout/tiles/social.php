@@ -41,8 +41,7 @@ if ($numberofsociallinks) {
         if (!empty($PAGE->theme->settings->$name)) {
             if (!$haveicons) {
                 $haveicons = true;
-                $icons = '<div class="row-fluid">';
-                $icons .= '<div class="col-12 socialnetworkscontainer">';
+                $icons = '<div class="socialnetworkscontainer">';
                 $icons .= '<ul class="socialnetworks">';
             }
             $iconname = 'socialicon'.$i;
@@ -54,6 +53,6 @@ if ($numberofsociallinks) {
     }
     if ($haveicons) {
         $icons .= '</ul>';
-        $icons .= '</div></div>';
+        $icons .= '</div>';
     }
 }
