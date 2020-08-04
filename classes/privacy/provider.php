@@ -31,7 +31,7 @@ namespace theme_campus\privacy;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The Campus theme does not store any user data.
+ * The Campus theme does not store any user data bar 'draweropennav' from the Boost theme.
  */
 class provider implements \core_privacy\local\metadata\null_provider {
 
