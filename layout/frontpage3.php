@@ -99,9 +99,10 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
     <?php
         echo $OUTPUT->standard_after_main_region_html();
-        require_once(dirname(__FILE__).'/tiles/footer.php');
     ?>
-
 </div>
+<?php
+    require_once(dirname(__FILE__).'/tiles/footer.php');
+?>
 </body>
 </html>

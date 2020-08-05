@@ -1290,8 +1290,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Footer.
 #page-footer {
     background-color: $contentColor;
-    margin-left: -15px;
-    margin-right: -15px;
     padding-top: 1em;
     a {
         color: $link-color;
@@ -1568,6 +1566,38 @@ fieldset {
 }
 .hblocks.editing.bpr-6 .card {
     width: calc(16.6666666667% - 30px);
+}
+
+.hblocks-container {
+    display: flex;
+    justify-content: space-between;
+}
+.hblocks-container.editing {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.hblocks-col {
+    margin-right: 15px;
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+.hblocks-col-1 {
+    flex-basis: 100%;
+}
+.hblocks-col-2 {
+    flex-basis: 50%;
+}
+.hblocks-col-3 {
+    flex-basis: 33%;
+}
+.hblocks-col-4 {
+    flex-basis: 25%;
+}
+.hblocks-col-6 {
+    flex-basis: 16.6666666667%;
 }
 
 /* In-course settings. */

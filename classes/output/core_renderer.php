@@ -427,9 +427,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $editing = $this->page->user_is_editing();
 
         if ($blocksperrow) {
-            $classes[] = 'row hblocks';
+            $classes[] = 'hblocks';
             if ($editing) {
-                $classes[] = 'editing bpr-'.$blocksperrow;
+                $classes[] = 'hblocks-container editing bpr-'.$blocksperrow;
             }
             if (($blocksperrow > 6) || ($blocksperrow < 1)) {
                 $blocksperrow = 4;
@@ -519,14 +519,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
             if (!$editing) {
                 if ($rows <= 1) {
-                    $col = 12 / $blockcount;
+                    $col = $blockcount;
                     if ($col < 1) {
-                        // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
-                        $col = 1;
+                        // Should not happen but a fail safe.  Will look intentionally odd.
+                        $col = 4;
                     }
                 } else {
-                    $col = 12 / $blocksperrow;
+                    $col = $blocksperrow;
                 }
+                $output .= html_writer::start_tag('div', array('class' => 'hblocks-container'));
             }
 
             $currentblockcount = 0;
@@ -539,14 +540,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     if ($currentblockcount > ($currentrequiredrow * $blocksperrow)) {
                         // Tripping point.
                         $currentrequiredrow++;
+                        // Break...
+                        $output .= html_writer::end_tag('div');
+                        $output .= html_writer::start_tag('div', array('class' => 'hblocks-container'));
                         // Recalculate col if needed...
                         $remainingblocks = $blockcount - ($currentblockcount - 1);
                         if ($remainingblocks < $blocksperrow) {
-                            $col = 12 / $remainingblocks;
+                            $col = $remainingblocks;
                             if ($col < 1) {
-                                /* Should not happen but a fail safe.
-                                   Block will be small so good for screen shots when this happens. */
-                                $col = 1;
+                                // Should not happen but a fail safe.  Will look intentionally odd.
+                                $col = 4;
                             }
                         }
                     }
@@ -555,7 +558,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                         $currentrow = $currentrequiredrow;
                     }
 
-                    $bc->attributes['width'] = 'col-sm-'.$col;
+                    $bc->attributes['width'] = 'hblocks-col hblocks-col-'.$col;
                 }
 
                 if ($bc instanceof block_contents) {
@@ -566,6 +569,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 } else {
                     throw new coding_exception('Unexpected type of thing ('.get_class($bc).') found in list of block contents.');
                 }
+            }
+            if (!$editing) {
+                $output .= html_writer::end_tag('div');
             }
         }
 

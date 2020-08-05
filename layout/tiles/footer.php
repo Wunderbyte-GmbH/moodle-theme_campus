@@ -27,8 +27,7 @@
  */
 require_once(dirname(__FILE__).'/social.php');
 ?>
-<footer id="page-footer" class="row">
-    <div class="col-12">
+<footer id="page-footer">
     <?php
     if ($PAGE->blocks->is_known_region('footer')) {
         require_once(dirname(__FILE__).'/footer_blocks.php');
@@ -42,8 +41,8 @@ require_once(dirname(__FILE__).'/social.php');
     <?php
     echo $html->footnote;
     ?>
-    <div class="row-fluid">
-        <div class="tool_usertours-resettourcontainer col-12"></div>
+    <div class="">
+        <div class="tool_usertours-resettourcontainer"></div>
     </div>
     <?php
     $logininfofooter = (!isset($PAGE->theme->settings->showlogininfofooter)) ? true : $PAGE->theme->settings->showlogininfofooter;
@@ -52,7 +51,6 @@ require_once(dirname(__FILE__).'/social.php');
     }
     echo $OUTPUT->standard_footer_html();
     ?>
-    </div>
 </footer>
 <?php echo $OUTPUT->anti_gravity(); ?>
 <?php echo $OUTPUT->standard_end_of_body_html() ?>
