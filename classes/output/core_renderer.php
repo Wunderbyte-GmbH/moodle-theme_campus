@@ -297,7 +297,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 if ($skipped) {
                     $text = get_string('morenavigationlinks');
                     $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
+                    $link = new \action_link($url, $text, null, null, new \pix_icon('t/edit', $text));
                     $menu->add_secondary_action($link);
                 }
             }
@@ -467,7 +467,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $lastblock = null;
         $zones = array();
         foreach ($blocks as $block) {
-            if ($block->instance->blockname == 'navigation') {
+            if (($block->instance->blockname == 'navigation') ||
+                ($block->instance->blockname == 'settings')) {
                 continue;
             }
             $zones[] = $block->title;
@@ -475,7 +476,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $output = '';
 
         foreach ($blockcontents as $bc) {
-            if ($bc->attributes['data-block'] == 'navigation') {
+            if (($bc->attributes['data-block'] == 'navigation') ||
+                ($bc->attributes['data-block'] == 'settings')) {
                 continue;
             }
             if ($bc instanceof block_contents) {
@@ -636,8 +638,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') ||
             ($this->page->pagelayout == 'admin')) { // Go to bottom.
             $icon = html_writer::start_tag('span', array('class' => 'fa fa-arrow-circle-o-down slgotobottom')) . html_writer::end_tag('span');
-            $gotobottom = html_writer::tag('span', $icon,
-                array('class' => 'nav gotoBottom', 'title' => get_string('gotobottom', 'theme_campus')));
+            $gotobottom = html_writer::tag('li', $icon,
+                array('class' => 'nav-item gotoBottom', 'title' => get_string('gotobottom', 'theme_campus')));
 
         }
         return $gotobottom;

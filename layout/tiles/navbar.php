@@ -49,6 +49,7 @@ if (!empty($hdfancynavbar)) {
             <ul class="nav pull-right">
             <?php echo $OUTPUT->gotobottom_menu(); ?>
             <?php echo $OUTPUT->navbar_plugin_output(); ?>
+            <?php echo html_writer::tag('li', $OUTPUT->context_header_settings_menu(), array('class' => 'nav-item context-menu')); ?>
             <?php if ($logininfoheader) { ?>
                 <li class="usermenu nav-item d-flex align-items-center"><?php echo $OUTPUT->custom_menu_user() ?></li>
             <?php } ?>

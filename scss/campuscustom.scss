@@ -61,9 +61,14 @@ body {
     }
 }
 
-// Goto bottom.
-.navbar .nav.gotoBottom {
+// Goto bottom and context menu.
+.nav-item.context-menu,
+.nav-item.gotoBottom {
     padding: 10px 7px 0;
+}
+
+.nav-item.context-menu .dropdown-menu {
+    margin-top: 14px;
 }
 
 // Local login.
