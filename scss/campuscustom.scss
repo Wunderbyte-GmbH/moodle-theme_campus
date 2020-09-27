@@ -938,11 +938,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         background-clip: content-box;
         background-color: $courseCategoryMixinBackgroundColour;
     }
-    body.hideheader {
-        .coursecategoryheader.category#{$courseCategoryKey} {
-            background-color: transparent;
-        }
-    }
 }
 
 @mixin ccresponsiveheaderlogo(
@@ -1149,16 +1144,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
 }
 
-// No fancy navbar on < $navbarCollapseWidth.
-@mixin headertogglemenuhidenofancy($screenWidth) {
-    @media (min-width: $navbarCollapseDesktopWidth) and (max-width: $screenWidth) {
-        body.hideheader {
-            > header.iamfancy {
-                display: none;
-            }
-        }
-    }
-}
 @media (max-width: $navbarCollapseWidth) {
     #body-header header.iamfancy {
         display: none;
@@ -1181,105 +1166,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 //        margin-top: 20px;
 //    }
 //}
-
-// Header toggle.
-.navbar .nav.headertogglemenu {
-    margin: 0;
-    cursor: pointer;
-    a {
-        color: $navbarText;
-        padding: 8px 15px 0;
-        text-shadow: none;
-        span {
-            font-size: 20px;
-        }
-    }
-}
-
-@mixin headertogglesetup($screenWidth) {
-    @media (min-width: $screenWidth) {
-        body.hideheader {
-            .frontpageheader.flexlayout,
-            .coursecategoryheader.flexlayout {
-                .backgroundcontainer {
-                    padding-bottom: 0;
-                    width: 100%;
-                }
-            }
-            .frontpageheader.absolutelayout,
-            .coursecategoryheader.absolutelayout {
-                .backgroundcontainer {
-                    padding-bottom: 0;
-                }
-            }
-            .frontpageheader.flexlayout.fancynavbar,
-            .coursecategoryheader.flexlayout.fancynavbar {
-                .backgroundcontainer {
-                    .navbar.campusnavbar {
-                        position: static;
-                    }
-                }
-            }
-            .fancynavbar .campusnavbar {
-                &.affix-top {
-                    left: 0;
-                    padding-left: 0;
-                    padding-right: 0;
-                    position: absolute;
-                    top: 0;
-                    width: 100%;
-                }
-                &.affix {
-                    position: fixed;
-                }
-            }
-            #body-header.fancynavbar {
-                padding-bottom: 30px;
-            }
-            #body-header.fancynavbar,
-            .campusnavbar {
-                padding-left: 0;
-                padding-right: 0;
-            }
-            .navbar,
-            .navbar .container-fluid,
-            #page, 
-            .frontpageheader.absolutelayout,
-            .frontpageheader.flexlayout,
-            .frontpageheader.flexlayout .campusheadercontainer,
-            .coursecategoryheader.absolutelayout,
-            .coursecategoryheader.flexlayout,
-            .coursecategoryheader.flexlayout .campusheadercontainer {
-                max-width: 100%;
-            }
-            #region-main,
-            #region-bs-main-and-pre,
-            #region-bs-main-and-post,
-            aside.block-region {
-                width: 100%;
-            }
-            aside.block-region {
-                margin-left: 0;
-                margin-top: 20px;
-            }
-        }
-    }
-}
-
-@mixin headertogglemenuhide($screenWidth) {
-    @media (max-width: $screenWidth) {
-        .navbar .nav.headertogglemenu {
-            display: none;
-        }
-        body.hideheader {
-            .logotitle,
-            .campusdesktop,
-            .pageheadingheader {
-                display: block !important; // Override jQuery!
-            }
-        }
-    }
-}
 
 // Header goto bottom, navbar plugins and search.
 .navbar .nav {

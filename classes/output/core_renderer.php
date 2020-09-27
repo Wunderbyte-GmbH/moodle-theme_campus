@@ -684,26 +684,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return html_writer::tag('div', $searchicon . $searchinput, array('class' => 'search-input-wrapper', 'id' => $id));
     }
 
-    public function header_toggle_menu() {
-        if (!empty($this->page->theme->settings->showheadertoggle)) {
-            if ($this->hasspecificheader) {
-                $headertoggle = html_writer::start_tag('li', array('class' => 'nav headertogglemenu'));
-                $headertoggle .= html_writer::start_tag('a', array('title' => get_string('fullscreentoggle', 'theme_campus')));
-                $headertoggle .= html_writer::tag('span', '',
-                    array(
-                        'class' => 'headertoggle fa fa-expand',
-                        'title' => get_string('fullscreentoggleicon', 'theme_campus')
-                    )
-                );
-                $headertoggle .= html_writer::end_tag('a');
-                $headertoggle .= html_writer::end_tag('li');
-
-                return $headertoggle;
-            }
-        }
-        return '';
-    }
-
     /*
      * This code renders the custom menu items for the
      * bootstrap dropdown menu.
@@ -1107,12 +1087,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $this->page->requires->js_call_amd('theme_campus/affix', 'init');
             if ($pagelayout == 'course') {
                 $this->page->requires->js_call_amd('theme_campus/course_navigation', 'init');
-            }
-        }
-
-        if (!empty($this->page->theme->settings->showheadertoggle)) {
-            if ($this->hasspecificheader) {
-                $this->page->requires->js_call_amd('theme_campus/header_toggle', 'init');
             }
         }
     }

@@ -52,7 +52,6 @@ if (!empty($hdfancynavbar)) {
             <?php if ($logininfoheader) { ?>
                 <li class="nav-item d-flex align-items-center"><?php echo $OUTPUT->user_menu(); ?></li>
             <?php } ?>
-            <?php echo $OUTPUT->header_toggle_menu(); ?>
             <?php echo $OUTPUT->navbar_button(); ?>
             </ul>
         </div>

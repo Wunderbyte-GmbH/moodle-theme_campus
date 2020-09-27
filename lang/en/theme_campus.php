@@ -83,10 +83,6 @@ $string['messagepreferences'] = 'Message preferences';
 // Anti-gravity.
 $string['antigravity'] = 'Back to top';
 
-// Fullscreen toggle.
-$string['fullscreentoggle'] = 'Fullscreen toggle';
-$string['fullscreentoggleicon'] = 'Fullscreen toggle icon';
-
 // Settings.
 // General settings.
 $string['genericsettings'] = 'General';
@@ -103,9 +99,6 @@ $string['showlogininfoheaderdesc'] = 'Display the login link in the header.';
 
 $string['showlogininfofooter'] = 'Display footer login link';
 $string['showlogininfofooterdesc'] = 'Display the login link in the footer.';
-
-$string['showheadertoggle'] = 'Display button for fullscreen mode';
-$string['showheadertoggledesc'] = 'Display the button to hide / show the full screen.';
 
 $string['favicon'] = 'Favicon';
 $string['favicondesc'] = 'Upload your \'favicon\' here.';

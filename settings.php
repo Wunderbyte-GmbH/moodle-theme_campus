@@ -121,15 +121,6 @@ if ($ADMIN->fulltree) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
-    // Show headertoggle.
-    $name = 'theme_campus/showheadertoggle';
-    $title = get_string('showheadertoggle', 'theme_campus');
-    $description = get_string('showheadertoggledesc', 'theme_campus');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
-
     // Favicon file setting.
     $name = 'theme_campus/favicon';
     $title = get_string('favicon', 'theme_campus');

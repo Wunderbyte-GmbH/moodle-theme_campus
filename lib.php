@@ -423,17 +423,6 @@ function theme_campus_extra_sccs($theme) {
         }
     }
 
-    // Header toggle.
-    if (!empty($theme->settings->showheadertoggle)) {
-        // NOTE: If @navbarCollapseWidth changes in the variables-campus.less file, then change this.
-        // .headertogglesetup(@screenWidth)
-        $content .= '@include headertogglesetup(961px);'.PHP_EOL;
-        // .headertogglemenuhide(@screenWidth)
-        $content .= '@include headertogglemenuhide(960px);'.PHP_EOL;
-        // .headertogglemenuhidenofancy(@screenWidth)
-        $content .= '@include headertogglemenuhidenofancy(960px);'.PHP_EOL;
-    }
-
     return $content;
 }
 
@@ -1225,17 +1214,6 @@ function theme_campus_extra_less($theme) {
                 }
             }
         }
-    }
-
-    // Header toggle.
-    if (!empty($theme->settings->showheadertoggle)) {
-        // NOTE: If @navbarCollapseWidth changes in the variables-campus.less file, then change this.
-        // .headertogglesetup(@screenWidth)
-        $content .= '.headertogglesetup(961px);';
-        // .headertogglemenuhide(@screenWidth)
-        $content .= '.headertogglemenuhide(960px);';
-        // .headertogglemenuhidenofancy(@screenWidth)
-        $content .= '.headertogglemenuhidenofancy(960px);';
     }
 
     return $content;

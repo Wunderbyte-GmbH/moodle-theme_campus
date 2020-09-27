@@ -51,7 +51,7 @@ echo '<div class="campusheadercontainer">';
 
 global $CFG;
 if ($hdlogoextrapos == 1) {
-    echo '<div class="logotitle headertoggled'.$hdextra.'">';
+    echo '<div class="logotitle'.$hdextra.'">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
         echo '<img class="campuslogodesktop" src="'.$hdlogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
@@ -66,7 +66,7 @@ if ($hdlogoextrapos == 1) {
 }
 echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'pageheadingheader'.
 if ($hdbackgroundimage) {
-    echo '<img class="campusdesktop headertoggled" src="'.$hdbackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
+    echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
     if ($hdresponsive) {
         echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
     }
@@ -75,11 +75,11 @@ if ($hdbackgroundimage) {
     }
 }
 if (($pageheadinglocationheaderarea) && ($hdlogo)) {
-    echo '<div class="pageheadingheader headertoggled">'.$headertitle.'</div>';
+    echo '<div class="pageheadingheader">'.$headertitle.'</div>';
 }
 echo '</div>';
 if ($hdlogoextrapos == 2) {
-    echo '<div class="logotitle headertoggled">';
+    echo '<div class="logotitle">';
     if ($hdlogo) {
         echo '<a href="'.$CFG->wwwroot.'">';
         echo '<img class="campuslogodesktop" src="'.$hdlogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
