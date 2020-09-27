@@ -342,10 +342,13 @@ body.notediting {
 
 @media (min-width: 768px) {
     .drawer-open-left .campusnavbar {
-        margin-left: 0;
+        margin-left: auto;
         &.fixed-top {
             margin-left: 285px;
         }
+    }
+    .campusnavbar.fixed-top {
+        max-width: none;
     }
 }
 
