@@ -78,17 +78,8 @@ $input-disabled-bg:      $grayLighter !default;
 
 // Dropdowns
 // -------------------------
-$dropdownBackground:            $contentColor !default;
-$dropdownBorder:                rgba(0,0,0,.2) !default;
 $dropdownDividerTop:            #e5e5e5 !default;
 $dropdownDividerBottom:         $white !default;
-
-$dropdownLinkColor:             $body-color !default;
-$dropdownLinkColorHover:        darken($dropdownLinkColor, 10%) !default;
-$dropdownLinkColorActive:       darken($dropdownLinkColorHover, 10%) !default;
-
-$dropdownLinkBackgroundActive:  $contentColor !default;
-$dropdownLinkBackgroundHover:   lighten($dropdownLinkBackgroundActive, 8%) !default;
 
 $dropdown-link-hover-color:     darken($gray-900, 5%) !default;
 

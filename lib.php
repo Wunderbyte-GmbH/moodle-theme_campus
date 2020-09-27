@@ -482,14 +482,13 @@ function theme_campus_sass_variables($theme) {
         $variables['navbarLinkColor'] = $theme->settings->navbartextcolour;
     }
     if (!empty($theme->settings->navbarlinkcolour)) {
-        $variables['dropdownLinkColorHover'] = $theme->settings->navbarlinkcolour;
+        $variables['dropdown-link-hover-color'] = $theme->settings->navbarlinkcolour;
         $variables['navbarLinkColor'] = $theme->settings->navbarlinkcolour;
     }
     if (!empty($theme->settings->navbariconcolour)) {
         $variables['navbarIconColour'] = $theme->settings->navbariconcolour;
     }
     if (!empty($theme->settings->navbarbackgroundcolour)) {
-        $variables['dropdown-link-hover-color'] = $theme->settings->navbarbackgroundcolour;
         $variables['navbarBackground'] = $theme->settings->navbarbackgroundcolour;
         $variables['navbarBackgroundHighlight'] = $theme->settings->navbarbackgroundcolour;
     }
