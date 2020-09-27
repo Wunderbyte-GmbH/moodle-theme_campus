@@ -16,25 +16,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
- * @package    theme
- * @subpackage campus
- * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @package    theme_campus
+ * @copyright  &copy; 2014-onwards G J Barnard.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
+ * @copyright  &copy; 2020-onwards Work undertaken for David Bogner of Wunderbyte.at.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$settings = null;
 
 defined('MOODLE_INTERNAL') || die;
 
-$ADMIN->add('themes', new admin_category('theme_campus', 'Campus'));
-
-// Generic settings.
-$settingpage = new admin_settingpage('theme_campus_generic', get_string('genericsettings', 'theme_campus'));
 if ($ADMIN->fulltree) {
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingcampus', get_string('configtitle', 'theme_campus'));
+
+    // Generic settings.
+    $settingpage = new admin_settingpage('theme_campus_generic', get_string('genericsettings', 'theme_campus'));
     global $CFG;
     if (file_exists("{$CFG->dirroot}/theme/campus/admin_setting_configinteger.php")) {
         require_once($CFG->dirroot . '/theme/campus/admin_setting_configinteger.php');
@@ -137,12 +136,12 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configtextarea($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Look and feel settings.
-$settingpage = new admin_settingpage('theme_campus_landf', get_string('landfsettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Look and feel settings.
+    $settingpage = new admin_settingpage('theme_campus_landf', get_string('landfsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_landfheading', null,
             format_text(get_string('landfheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -567,12 +566,12 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);*/
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Header settings.
-$settingpage = new admin_settingpage('theme_campus_header', get_string('headersettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Header settings.
+    $settingpage = new admin_settingpage('theme_campus_header', get_string('headersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_headerheading', null,
             format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -794,13 +793,13 @@ if ($ADMIN->fulltree) {
         $setting->set_updatedcallback('theme_reset_all_caches');  // CSS change to generate extra selectors if turning on for a new category for the first time.
         $settingpage->add($setting);
     }
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Course category header settings.
-$settingpage = new admin_settingpage('theme_campus_category_header',
-    get_string('coursecategoryheadersettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Course category header settings.
+    $settingpage = new admin_settingpage('theme_campus_category_header',
+        get_string('coursecategoryheadersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_category_header_heading', null,
             format_text(get_string('coursecategoryheadersettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -904,12 +903,12 @@ if ($ADMIN->fulltree) {
         $settingpage->add(new admin_setting_heading('theme_campus_category_header_none_heading', null,
                 format_text(get_string('coursecategoryhavecustomheadernone', 'theme_campus'), FORMAT_MARKDOWN)));
     }
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Footer settings.
-$settingpage = new admin_settingpage('theme_campus_footer', get_string('footersettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Footer settings.
+    $settingpage = new admin_settingpage('theme_campus_footer', get_string('footersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_footerheading', null,
             format_text(get_string('footerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -936,12 +935,12 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Carousel settings.
-$settingpage = new admin_settingpage('theme_campus_carousel', get_string('carouselsettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Carousel settings.
+    $settingpage = new admin_settingpage('theme_campus_carousel', get_string('carouselsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_carouselheading', null,
             format_text(get_string('carouselsettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -1020,13 +1019,13 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Frontpage carousel settings.
-$settingpage = new admin_settingpage('theme_campus_frontpage_carousel',
-    get_string('frontpagecarouselsettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Frontpage carousel settings.
+    $settingpage = new admin_settingpage('theme_campus_frontpage_carousel',
+        get_string('frontpagecarouselsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_carousel_frontpage', null,
             format_text(get_string('frontpagecarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -1112,13 +1111,13 @@ if ($ADMIN->fulltree) {
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
     }
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Course category carousel settings.
-$settingpage = new admin_settingpage('theme_campus_category_carousel',
-    get_string('coursecategorycarouselsettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Course category carousel settings.
+    $settingpage = new admin_settingpage('theme_campus_category_carousel',
+        get_string('coursecategorycarouselsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_carousel_coursecategory', null,
             format_text(get_string('coursecategorycarouselsettings_desc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -1215,12 +1214,12 @@ if ($ADMIN->fulltree) {
             $settingpage->add($setting);
         }
     }
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Social links page....
-$settingpage = new admin_settingpage('theme_campus_social', get_string('socialheading', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Social links page....
+    $settingpage = new admin_settingpage('theme_campus_social', get_string('socialheading', 'theme_campus'));
     // Number of social links.
     $name = 'theme_campus/numberofsociallinks';
     $title = get_string('numberofsociallinks', 'theme_campus');
@@ -1289,12 +1288,12 @@ if ($ADMIN->fulltree) {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
     }
-}
-$ADMIN->add('theme_campus', $settingpage);
 
-// Forum page....
-$settingpage = new admin_settingpage('theme_campus_forum', get_string('forumsettings', 'theme_campus'));
-if ($ADMIN->fulltree) {
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
+
+    // Forum page....
+    $settingpage = new admin_settingpage('theme_campus_forum', get_string('forumsettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_forumheading', null,
             format_text(get_string('forumsettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
@@ -1324,5 +1323,7 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
+
+    // Must add the page after definiting all the settings!
+    $settings->add($settingpage);
 }
-$ADMIN->add('theme_campus', $settingpage);
