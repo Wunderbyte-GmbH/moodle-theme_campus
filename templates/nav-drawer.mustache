@@ -1,0 +1,34 @@
+{{!
+    @template theme_campus/nav-drawer
+
+
+    Example context (json): {}
+}}
+<div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex {{^navdraweropen}}closed{{/navdraweropen}}" aria-hidden="{{#navdraweropen}}false{{/navdraweropen}}{{^navdraweropen}}true{{/navdraweropen}}" tabindex="-1">
+    {{> theme_boost/flat_navigation }}
+</div>
+{{#js}}
+require(['jquery', 'core/log'], function($, log) {
+
+    "use strict"; // jshint ;_;
+
+    log.debug('Campus Collapse Flatnav AMD');
+
+    $(document).ready(function($) {
+        $('[data-key="mycourses"]').click(function() {
+            $('[data-parent-key="mycourses"]').slideToggle('slow', function() {
+                if ($(this).hasClass('hidden')) {
+                    $(this).removeClass('hidden');
+                    $(this).removeAttr('style');
+                } else {
+                    $(this).addClass('hidden');
+                }
+            });
+        });
+        $('[data-parent-key="mycourses"]').addClass('hidden');
+        log.debug('Campus Collapse Flatnav AMD init');
+    });
+
+    return {}
+});
+{{/js}}

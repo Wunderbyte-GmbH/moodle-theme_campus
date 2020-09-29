@@ -1099,7 +1099,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             'firstcollectionlabel' => $nav->get_collectionlabel()
         ];
 
-        return $this->render_from_template('theme_boost/nav-drawer', $templatecontext);
+        return $this->render_from_template('theme_campus/nav-drawer', $templatecontext);
     }
 
     public function render_flatnav_button() {
