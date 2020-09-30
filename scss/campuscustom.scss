@@ -16,6 +16,10 @@ body {
     padding: 0;
 }
 
+[data-parent-key="mycourses"] {
+    display: none;
+}
+
 #region-main-campus div[role="main"] {
     padding-left: 8px;
     padding-right: 8px;

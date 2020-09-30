@@ -15,17 +15,24 @@ require(['jquery', 'core/log'], function($, log) {
     log.debug('Campus Collapse Flatnav AMD');
 
     $(document).ready(function($) {
+        //$('[data-parent-key="mycourses"]').prop('style.display', 'none');
         $('[data-key="mycourses"]').click(function() {
             $('[data-parent-key="mycourses"]').slideToggle('slow', function() {
-                if ($(this).hasClass('hidden')) {
-                    $(this).removeClass('hidden');
-                    $(this).removeAttr('style');
+                log.debug('1: ' + $(this).attr('style'));
+                log.debug('1: ' + $(this).prop('style.display'));
+                var style = $(this).attr('style');
+                if (($(this).attr('style') == 'display: inline') || ($(this).prop('style.display') == 'block')) {
+                    $(this).attr('style', 'display: none;');
+                    $(this).prop('style.display', 'none');
                 } else {
-                    $(this).addClass('hidden');
+                    $(this).attr('style', 'display: block;');
+                    $(this).prop('style.display', 'block');
                 }
+                log.debug('2: ' + $(this).attr('style'));
+                log.debug('2: ' + $(this).prop('style.display'));
             });
         });
-        $('[data-parent-key="mycourses"]').addClass('hidden');
+        //$('[data-parent-key="mycourses"]').addClass('hidden');
         log.debug('Campus Collapse Flatnav AMD init');
     });
 
