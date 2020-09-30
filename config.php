@@ -64,9 +64,9 @@ $THEME->plugins_exclude_sheets = array(
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 $empty = array();
-$col1regions = array('footer');
-$col2regions = array('side-pre', 'footer');
-$col3regions = array('side-pre', 'side-post', 'footer');
+$col1regions = array('side-nav', 'footer');
+$col2regions = array('side-nav', 'side-pre', 'footer');
+$col3regions = array('side-nav', 'side-pre', 'side-post', 'footer');
 
 $themelayout = \theme_campus\toolbox::get_config_setting('themelayout');
 
@@ -113,56 +113,56 @@ $THEME->layouts = array(
     'base' => array(
         'file' => 'columns1.php',
         'regions' => $empty,
-        'defaultregion' => 'footer'
+        'defaultregion' => 'side-nav'
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
     // Main course page.
     'course' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-nav',
         'options' => array('langmenu'=>true)
     ),
     'coursecategory' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
     // part of course, typical for modules - default page layout if $cm specified in require_login()
     'incourse' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
     // The site home page.
     'frontpage' => array(
         'file' => $fpfile,
         'regions' => $fpregions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
     // Server administration scripts.
     'admin' => array(
         'file' => $sitefile,
         'regions' => $col3regions,  // On purpose for when changing columns from 2r to 3 on General settings page of theme.
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
     // My dashboard page.
     'mydashboard' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-nav',
         'options' => array('langmenu'=>true)
     ),
     // My public page.
     'mypublic' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
     'login' => array(
         'file' => 'columns1.php',
@@ -210,13 +210,13 @@ $THEME->layouts = array(
     'report' => array(
         'file' => $sitefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
         'file' => $securefile,
         'regions' => $siteregions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-nav'
     ),
 );
 

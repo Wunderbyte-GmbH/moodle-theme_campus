@@ -5,7 +5,17 @@
     Example context (json): {}
 }}
 <div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex {{^navdraweropen}}closed{{/navdraweropen}}" aria-hidden="{{#navdraweropen}}false{{/navdraweropen}}{{^navdraweropen}}true{{/navdraweropen}}" tabindex="-1">
+    {{#hasnavfakeblocks}}
+    <section class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+        {{{ sidenavfakeblocks }}}
+    </section>
+    {{/hasnavfakeblocks}}
     {{> theme_boost/flat_navigation }}
+    {{#hasnavblocks}}
+    <section class="d-print-none mt-3" aria-label="{{#str}}blocks{{/str}}">
+        {{{ sidenavblocks }}}
+    </section>
+    {{/hasnavblocks}}
 </div>
 {{#js}}
 require(['jquery', 'core/log'], function($, log) {

@@ -454,6 +454,87 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return html_writer::tag($tag, $content, $attributes);
     }
 
+    ///Nav drawer split blocks.
+    /**
+     * Get the HTML for blocks in the given region.
+     *
+     * @param string $region The region to get HTML for.
+     * @param boolean $fakeblock Fake blocks or without fake blocks.
+     * @return string HTML.
+     */
+    public function splitblocks($region, $fakeblock, $classes = array(), $tag = 'aside') {
+        $displayregion = $this->page->apply_theme_region_manipulations($region);
+        $classes = (array)$classes;
+        $attributes = array();
+
+        if ($fakeblock) {
+            $classes[] = 'fake-block-region';
+            $attributes['id'] = 'fakeblock-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion).'-fake';
+        } else {
+            $classes[] = 'block-region';
+            $attributes['id'] = 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion);
+            $attributes['data-blockregion'] = $displayregion;
+            $attributes['data-droptarget'] = '1';
+        }
+        $attributes['class'] = join(' ', $classes);
+
+        if ($this->page->blocks->region_has_content($displayregion, $this)) {
+            $content = $this->splitblocks_for_region($displayregion, $fakeblock);
+        } else {
+            $content = '';
+        }
+        $output = html_writer::tag($tag, $content, $attributes);
+
+        return $output;
+    }
+
+    /**
+     * Output all the blocks in a particular region.
+     *
+     * @param string $region the name of a region on this page.
+     * @param boolean $fakeblock Fake blocks or without fake blocks.
+     * @return string the HTML to be output.
+     */
+    public function splitblocks_for_region($region, $fakeblock) {
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $lastblock = null;
+        $zones = array();
+        foreach ($blockcontents as $bc) {
+            if (($bc->attributes['data-block'] == 'navigation') ||
+                ($bc->attributes['data-block'] == 'settings')) {
+                continue;
+            }
+            if ($bc instanceof block_contents) {
+                $zones[] = $bc->title; // MDL-64818.
+            }
+        }
+        $output = '';
+
+        foreach ($blockcontents as $bc) {
+            if (($bc->attributes['data-block'] == 'navigation') ||
+                ($bc->attributes['data-block'] == 'settings')) {
+                continue;
+            }
+            if ($bc instanceof block_contents) {
+                if ($fakeblock) {
+                    if ($bc->attributes['data-block'] == '_fake') {
+                        $output .= $this->block($bc, $region);
+                    }
+                } else {
+                    if ($bc->attributes['data-block'] != '_fake') {
+                        $output .= $this->block($bc, $region);
+                    }
+                }
+                $lastblock = $bc->title;
+            } else if ($bc instanceof block_move_target) {
+                $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+            } else {
+                throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+            }
+        }
+        return $output;
+    }
+
     /**
      * Output all the blocks in a particular region.
      *
@@ -1093,10 +1174,20 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
     public function render_flatnav() {
         $nav = $this->page->flatnav;
+
+        $blocksnavfakehtml = $this->splitblocks('side-nav', true);
+        $hasnavfakeblocks = strpos($blocksnavfakehtml, 'data-block=') !== false;
+        $blocksnavhtml = $this->splitblocks('side-nav', false);
+        $hasnavblocks = strpos($blocksnavhtml, 'data-block=') !== false;
+
         $templatecontext = [
             'navdraweropen' => $this->navdraweropen,
             'flatnavigation' => $nav,
-            'firstcollectionlabel' => $nav->get_collectionlabel()
+            'firstcollectionlabel' => $nav->get_collectionlabel(),
+            'sidenavfakeblocks' => $blocksnavfakehtml,
+            'hasnavfakeblocks' => $hasnavfakeblocks,
+            'sidenavblocks' => $blocksnavhtml,
+            'hasnavblocks' => $hasnavblocks
         ];
 
         return $this->render_from_template('theme_campus/nav-drawer', $templatecontext);

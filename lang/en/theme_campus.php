@@ -53,6 +53,7 @@ $string['configtitle'] = 'Campus';
 
 $string['pluginname'] = 'Campus';
 
+$string['region-side-nav'] = 'Nav';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['region-footer'] = 'Footer';
