@@ -30,15 +30,6 @@
     <div id="page-navbar" class="d-flex flex-wrap col-12">
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
         <div class="breadcrumb-button ml-auto d-flex"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php
-        //$settingsmenu = $OUTPUT->context_header_settings_menu();
-        if (\theme_campus\toolbox::has_incourse_settings()) {
-            $actionsmenustr = get_string('actionsmenu');
-            echo '<div id="campus-course-settings-toggle" class="context-header-settings-menu ml-2">';
-            echo '<i class="icon fa fa-cog fa-fw fa-lg" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
-            echo '<span class="sr-only">'.$actionsmenustr.'</span></i></div>';
-        }
-        ?>
     </div>
     <?php
     if ($OUTPUT->using_frontpage_header_on_another_page()) {

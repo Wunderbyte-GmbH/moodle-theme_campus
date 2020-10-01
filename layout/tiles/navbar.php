@@ -46,13 +46,21 @@ if (!empty($hdfancynavbar)) {
                 </ul>
             </ul>
             <ul class="nav pull-right">
-            <?php echo $OUTPUT->gotobottom_menu(); ?>
-            <?php echo $OUTPUT->navbar_plugin_output(); ?>
-            <?php echo html_writer::tag('li', $OUTPUT->context_header_settings_menu(), array('class' => 'nav-item context-menu')); ?>
-            <?php if ($logininfoheader) { ?>
+            <?php echo $OUTPUT->gotobottom_menu();
+            echo $OUTPUT->navbar_plugin_output();
+            if (\theme_campus\toolbox::has_incourse_settings()) {
+                $actionsmenustr = get_string('actionsmenu');
+                $settingsmenu = '<div id="campus-course-settings-toggle">';
+                $settingsmenu .= '<i class="icon fa fa-cog fa-fw fa-lg" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
+                $settingsmenu .= '<span class="sr-only">'.$actionsmenustr.'</span></i></div>';
+            } else {
+                $settingsmenu = $OUTPUT->context_header_settings_menu();
+            }
+            echo html_writer::tag('li', $settingsmenu, array('class' => 'nav-item context-menu'));
+            if ($logininfoheader) { ?>
                 <li class="nav-item d-flex align-items-center"><?php echo $OUTPUT->user_menu(); ?></li>
-            <?php } ?>
-            <?php echo $OUTPUT->navbar_button(); ?>
+            <?php }
+            echo $OUTPUT->navbar_button(); ?>
             </ul>
         </div>
     </nav>

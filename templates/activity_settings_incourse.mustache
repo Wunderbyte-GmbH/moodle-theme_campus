@@ -146,10 +146,6 @@ require(['jquery', 'core/log'], function($, log) {
         var courseSettingsDropdownToggle = $('#campus-course-settings-toggle');
         var activitySettingsDropdownToggle = $('#campus-activity-settings-toggle');
 
-        /* Remove attribute aria-haspopup because we are replacing this with the in-course activity settings
-           set the new in-course activity settings for the aria-controls attribute. */
-        activitySettingsDropdownToggle.removeAttr('aria-haspopup').attr('aria-controls', 'campus-activity-settings');
-
         activitySettingsDropdownToggle.on('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
@@ -160,7 +156,6 @@ require(['jquery', 'core/log'], function($, log) {
                 activitySettings.show(400);
                 activitySettingsDropdownToggle.attr('aria-expanded', 'true');
                 setTimeout(function() {
-                    //$('#page-header .card').css('border-bottom', headerCardBorderBottom);
                     $('#page-header > div').addClass('pb-3');
                 }, 300);
                 // Additionally close course settings if they are currently open.
