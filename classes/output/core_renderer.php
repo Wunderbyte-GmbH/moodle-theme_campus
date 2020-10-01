@@ -102,8 +102,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return string HTML fragment
      */
     protected function navbar_button() {
-        //$iconbar = html_writer::tag('span', '', array('class' => 'icon-bar'));
-        $iconbar = '<i class="icon fa fa-bars fa-fw " aria-hidden="true"></i><span class="sr-only">'.get_string('campusnav', 'theme_campus').'</span>';
+        $iconbar = '<i class="icon fa fa-bars fa-fw " aria-hidden="true"><span class="sr-only">'.get_string('campusnav', 'theme_campus').'</span></i>';
         $button = html_writer::tag('li', 
             html_writer::tag('a', $iconbar, array(
                 'class'       => 'btn btn-navbar nav-link',
@@ -185,29 +184,41 @@ class core_renderer extends \theme_boost\output\core_renderer {
     public function course_content_header($onlyifnotcalledbefore = false) {
         $output = '';
 
-        $settingsmenu = $this->region_main_settings_menu();
-        if (!empty($settingsmenu)) {
-            $output .= \html_writer::div(
-                $settingsmenu,
-                'd-print-none',
-                ['id' => 'region-main-settings-menu']
-            );
+        $activitynode = \theme_campus\toolbox::get_incourse_activity_settings();
+        if (!empty($activitynode)) {
+            $output .= '<div id="campus-activity-settings-wrapper">';
+
+            $actionsmenustr = get_string('actionsmenu');
+            $output .= '<div id="campus-activity-settings-toggle" class="ml-2">';
+            $output .= '<i class="icon fa fa-cog fa-fw fa-lg" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
+            $output .= '<span class="sr-only">'.$actionsmenustr.'</span></i></div>';
+
+            $templatecontext = new \stdClass;
+            $templatecontext->activitynode = $activitynode;
+            $output .= $this->render_from_template('theme_campus/activity_settings_incourse', $templatecontext);
+
+            $output .= '</div>';
+        } else {
+            $settingsmenu = $this->region_main_settings_menu();
+            if (!empty($settingsmenu)) {
+                $output .= \html_writer::div(
+                    $settingsmenu,
+                    'd-print-none',
+                    ['id' => 'region-main-settings-menu']
+                );
+            }
         }
 
         $output .= parent::course_content_header($onlyifnotcalledbefore);
 
-        $activitynode = \theme_campus\toolbox::get_incourse_activity_settings();
         if (!empty($activitynode)) {
-            $templatecontext = new \stdClass;
-            $templatecontext->activitynode = $activitynode;
-            $output .= $this->render_from_template('theme_campus/activity_settings_incourse', $templatecontext);
         }
 
         return $output;
     }
 
     /**
-     * Override to display course settings on every course site for permanent access
+     * Override to display course settings on every course site for permanent access.
      *
      * Adapted from the Boost_Campus theme.
      *
