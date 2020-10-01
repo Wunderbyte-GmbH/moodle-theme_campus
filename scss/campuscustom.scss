@@ -1517,6 +1517,12 @@ fieldset {
     }
 }
 
+@media (min-width: 576px) {
+    #campus-course-settings .modal-dialog {
+        max-width: none;
+    }
+}
+
 #campus-activity-settings-wrapper {
     position: relative;
 }

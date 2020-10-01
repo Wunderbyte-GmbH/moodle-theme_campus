@@ -42,75 +42,64 @@
     * Removed check for !is_short_branch to display all children of the course settings within an own tab.
 }}
 
-<div id="campus-course-settings" class="card col-12" >
-    <div class="mx-2 pt-2">
-        <ul class="nav nav-tabs" role="tablist">
-        <!-- First the top most node and immediate children -->
-            <li class="nav-item">
-                <a class="nav-link active" href="#course-settings-{{node.key}}" data-toggle="tab" role="tab">{{node.text}}</a>
-            </li>
-        <!-- Now the first level children with sub nodes -->
-        {{#node.children}}
-            {{#children.count}}
-                {{#display}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#course-settings-{{key}}" data-toggle="tab" role="tab">{{text}}</a>
-                    </li>
-                {{/display}}
-            {{/children.count}}
-        {{/node.children}}
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="course-settings-{{node.key}}" role="tabpanel">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
-                                {{^action}}<h4>{{text}}</h4>{{/action}}
-                            </div>
-                            <div class="col-sm-8">
-                                <ul class="list-unstyled">
-                                    {{#node.children}}
-                                        {{^children.count}}
-                                            {{#display}}
-                                                <li><a href="{{{action}}}">{{text}}</a></li>
-                                            {{/display}}
-                                        {{/children.count}}
-                                    {{/node.children}}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div id="campus-course-settings" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="campus-course-settings-modal-title" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="campus-course-settings-modal-title">{{#str}} coursesettingsheadingsetting, theme_campus {{/str}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{#str}} closebuttontitle {{/str}}">
+                    <span aria-hidden="true" class="fa fa-times"></span>
+                </button>
             </div>
-            {{#node.children}}
-                {{#children.count}}
-                    <div class="tab-pane" id="course-settings-{{key}}" role="tabpanel">
-                        <div class="card">
-                            <div class="card-body pb-0">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
-                                        {{^action}}<h4>{{text}}</h4>{{/action}}
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <ul class="list-unstyled">
-                                            {{#children}}
-                                                {{#display}}
+            <div class="modal-body">
+
+                <div class="mx-2 pt-2">
+                    <ul class="nav nav-tabs" role="tablist">
+                    <!-- First the top most node and immediate children -->
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#course-settings-{{node.key}}" data-toggle="tab" role="tab">{{node.text}}</a>
+                        </li>
+                        <!-- Now the first level children with sub nodes -->
+                        {{#node.children}}
+                            {{#children.count}}
+                                {{#display}}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#course-settings-{{key}}" data-toggle="tab" role="tab">{{text}}</a>
+                                    </li>
+                                {{/display}}
+                            {{/children.count}}
+                        {{/node.children}}
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="course-settings-{{node.key}}" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body pb-0">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
+                                            {{^action}}<h4>{{text}}</h4>{{/action}}
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <ul class="list-unstyled">
+                                                {{#node.children}}
                                                     {{^children.count}}
-                                                        <li><a href="{{{action}}}">{{text}}</a></li>
+                                                        {{#display}}
+                                                            <li><a href="{{{action}}}">{{text}}</a></li>
+                                                        {{/display}}
                                                     {{/children.count}}
-                                                {{/display}}
-                                            {{/children}}
-                                        </ul>
+                                                {{/node.children}}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                {{#children}}
-                                    {{#display}}
-                                        {{#children.count}}
-                                            <hr>
+                            </div>
+                        </div>
+                        {{#node.children}}
+                            {{#children.count}}
+                                <div class="tab-pane" id="course-settings-{{key}}" role="tabpanel">
+                                    <div class="card">
+                                        <div class="card-body pb-0">
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
@@ -119,52 +108,47 @@
                                                 <div class="col-sm-8">
                                                     <ul class="list-unstyled">
                                                         {{#children}}
-                                                            {{> core/settings_link_page_single }}
+                                                            {{#display}}
+                                                                {{^children.count}}
+                                                                    <li><a href="{{{action}}}">{{text}}</a></li>
+                                                                {{/children.count}}
+                                                            {{/display}}
                                                         {{/children}}
                                                     </ul>
                                                 </div>
                                             </div>
-                                        {{/children.count}}
-                                    {{/display}}
-                                {{/children}}
-                            </div>
-                        </div>
+                                            {{#children}}
+                                                {{#display}}
+                                                    {{#children.count}}
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                {{#action}}<h4><a href="{{action}}">{{text}}</a></h4>{{/action}}
+                                                                {{^action}}<h4>{{text}}</h4>{{/action}}
+                                                            </div>
+                                                            <div class="col-sm-8">
+                                                                <ul class="list-unstyled">
+                                                                    {{#children}}
+                                                                        {{> core/settings_link_page_single }}
+                                                                    {{/children}}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    {{/children.count}}
+                                                {{/display}}
+                                            {{/children}}
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/children.count}}
+                        {{/node.children}}
                     </div>
-                {{/children.count}}
-            {{/node.children}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{#str}} closebuttontitle {{/str}}</button>
+            </div>
         </div>
     </div>
+
 </div>
-{{#js}}
-require(['jquery', 'core/log'], function($, log) {
-    $(document).ready(function() {
-        log.debug('Campus Course Settings Incourse');
-
-        var courseSettings = $('#campus-course-settings');
-        var activitySettings = $('#campus-activity-settings');
-        var courseSettingsDropdownToggle = $('#campus-course-settings-toggle');
-        var activitySettingsDropdownToggle = $('#campus-activity-settings-toggle');
-
-        courseSettingsDropdownToggle.on('click', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            if (courseSettings.is(":visible")) {
-                courseSettings.hide(400);
-                courseSettingsDropdownToggle.attr('aria-expanded', 'false');
-                setTimeout(function() {
-                    $('#page-header > div').addClass('pb-3');
-                }, 300);
-            } else {
-                courseSettings.show(400);
-                $('#page-header > div').removeClass('pb-3');
-                courseSettingsDropdownToggle.attr('aria-expanded', 'true');
-                // Additionally close activity settings if they are currently open.
-                if (activitySettings.is(":visible")) {
-                    activitySettings.hide(400);
-                    activitySettingsDropdownToggle.attr('aria-expanded', 'false');
-                }
-            }
-        });
-    });
-});
-{{/js}}

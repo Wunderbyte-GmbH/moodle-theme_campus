@@ -50,8 +50,8 @@ if (!empty($hdfancynavbar)) {
             echo $OUTPUT->navbar_plugin_output();
             if (\theme_campus\toolbox::has_incourse_settings()) {
                 $actionsmenustr = get_string('actionsmenu');
-                $settingsmenu = '<div id="campus-course-settings-toggle">';
-                $settingsmenu .= '<i class="icon fa fa-cog fa-fw fa-lg" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
+                $settingsmenu = '<div id="campus-course-settings-toggle" type="button" data-toggle="modal" data-target="#campus-course-settings">';
+                $settingsmenu .= '<i class="icon fa fa-cog fa-fw" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
                 $settingsmenu .= '<span class="sr-only">'.$actionsmenustr.'</span></i></div>';
             } else {
                 $settingsmenu = $OUTPUT->context_header_settings_menu();

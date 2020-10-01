@@ -141,9 +141,7 @@ require(['jquery', 'core/log'], function($, log) {
     $(document).ready(function() {
         log.debug('Campus Activity Settings Incourse');
 
-        var courseSettings = $('#campus-course-settings');
         var activitySettings = $('#campus-activity-settings');
-        var courseSettingsDropdownToggle = $('#campus-course-settings-toggle');
         var activitySettingsDropdownToggle = $('#campus-activity-settings-toggle');
 
         activitySettingsDropdownToggle.on('click', function(event) {
@@ -155,14 +153,6 @@ require(['jquery', 'core/log'], function($, log) {
             } else {
                 activitySettings.show(400);
                 activitySettingsDropdownToggle.attr('aria-expanded', 'true');
-                setTimeout(function() {
-                    $('#page-header > div').addClass('pb-3');
-                }, 300);
-                // Additionally close course settings if they are currently open.
-                if (courseSettings.is(":visible")) {
-                    courseSettings.hide(400);
-                    courseSettingsDropdownToggle.attr('aria-expanded', 'false');
-                }
             }
         });
     });
