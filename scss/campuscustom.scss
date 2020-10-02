@@ -149,6 +149,24 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     margin: 0;
 }
 
+// Nav drawer blocks.
+#block-region-side-nav {
+    .block {
+        background-color: transparent;
+        .content,
+        .header {
+            background-color: transparent;
+            border-color: transparent;
+            border-width: 0;
+            padding-bottom: 0;
+            padding-top: 0;
+        }
+        .header .title {
+            margin-bottom: 0;
+        }
+    }
+}
+
 // Frontpage.
 .frontpageheader.absolutelayout {
     margin: 0 auto;
