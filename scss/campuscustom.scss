@@ -212,7 +212,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         padding-bottom: $frontpageAbsolutePaddingBottom;
         position: relative;
         width: 100%;  // Change from flexlayout.
-        img {
+        > img {
             height: 100%;
             left: 0;
             max-height: inherit;
@@ -281,7 +281,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
         padding-bottom: $frontpageFlexPaddingBottom;
         position: relative;
         width: $frontpageBackgroundWidth;
-        img {
+        > img {
             height: 100%;
             left: 0;
             max-height: inherit;

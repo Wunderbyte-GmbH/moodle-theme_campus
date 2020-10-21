@@ -54,8 +54,6 @@ $string['configtitle'] = 'Campus';
 $string['pluginname'] = 'Campus';
 
 $string['region-side-nav'] = 'Nav';
-$string['region-side-post'] = 'Right';
-$string['region-side-pre'] = 'Left';
 $string['region-footer'] = 'Footer';
 
 // Draft or published.
@@ -124,14 +122,6 @@ $string['headingfontdesc'] = 'Set the font for the headings.';
 
 $string['bodyfont'] = 'Body font';
 $string['bodyfontdesc'] = 'Set the font for the body.';
-
-$string['themelayout'] = 'Theme layout';
-$string['themelayoutdesc'] = 'Set the theme layout.  Choose from one of: three columns, three column front page and blocks left two columns elsewhere, three column front page and blocks right two columns elsewhere, blocks left two columns and blocks right two columns.  Note: This is reversed for RTL languages.';
-$string['themelayoutthreecolumns'] = 'Three columns';
-$string['themelayoutthreecolumnsfplefttwo'] = 'Three column front page and two columns with blocks left elsewhere';
-$string['themelayoutthreecolumnsfprighttwo'] = 'Three column front page and two columns with blocks right elsewhere';
-$string['themelayoutlefttwocolumns'] = 'Two columns with blocks on the left';
-$string['themelayoutrighttwocolumns'] = 'Two columns with blocks on the right';
 
 $string['textcolour'] = 'Text colour';
 $string['textcolourdesc'] = 'Set the text colour.';

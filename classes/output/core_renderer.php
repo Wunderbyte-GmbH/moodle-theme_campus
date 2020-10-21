@@ -372,57 +372,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Get the HTML for blocks in side-pre and side-post if available.
-     * Use only with two column layout files.
-     *
-     * @param array $classes array of classes for the tag.
-     * @param string $tag Tag to use.
-     * @return string HTML.
-     */
-    public function campussingleblocks($classes = array(), $tag = 'aside') {
-        $classes = (array) $classes;
-        $classes[] = 'block-region';
-
-        $hassidepre = $this->page->blocks->is_known_region('side-pre');
-        $hassidepost = $this->page->blocks->is_known_region('side-post');
-
-        if ($hassidepre) {
-            $regionprehascontent = $this->page->blocks->region_has_content('side-pre', $this);
-            $displayregion = 'side-pre';
-        } else {
-            $regionprehascontent = false;
-            $displayregion = 'side-post';
-        }
-
-        if ($hassidepost) {
-            $regionposthascontent = $this->page->blocks->region_has_content('side-post', $this);
-        } else {
-            $regionposthascontent = false;
-        }
-
-        $attributes = array(
-            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
-            'class' => join(' ', $classes),
-            'data-blockregion' => $displayregion,
-            'data-droptarget' => '1'
-        );
-
-        if (($regionprehascontent) || ($regionposthascontent)) {
-            $content = '';
-            if ($regionprehascontent) {
-                $content .= $this->blocks_for_region('side-pre');
-            }
-            if ($regionposthascontent) {
-                $content .= $this->blocks_for_region('side-post');
-            }
-            $output = html_writer::tag($tag, $content, $attributes);
-        } else {
-            $output = html_writer::tag($tag, '', $attributes);
-        }
-        return $output;
-    }
-
-    /**
      * Get the HTML for blocks in the given region.
      *
      * @since 2.5.1 2.6
@@ -1184,24 +1133,30 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     public function render_flatnav() {
-        $nav = $this->page->flatnav;
+        $output = '';
+        
+        if ($this->page->blocks->is_known_region('side-nav')) {
+            $nav = $this->page->flatnav;
 
-        $blocksnavfakehtml = $this->splitblocks('side-nav', true);
-        $hasnavfakeblocks = strpos($blocksnavfakehtml, 'data-block=') !== false;
-        $blocksnavhtml = $this->splitblocks('side-nav', false);
-        $hasnavblocks = strpos($blocksnavhtml, 'data-block=') !== false;
+            $blocksnavfakehtml = $this->splitblocks('side-nav', true);
+            $hasnavfakeblocks = strpos($blocksnavfakehtml, 'data-block=') !== false;
+            $blocksnavhtml = $this->splitblocks('side-nav', false);
+            $hasnavblocks = strpos($blocksnavhtml, 'data-block=') !== false;
 
-        $templatecontext = [
-            'navdraweropen' => $this->navdraweropen,
-            'flatnavigation' => $nav,
-            'firstcollectionlabel' => $nav->get_collectionlabel(),
-            'sidenavfakeblocks' => $blocksnavfakehtml,
-            'hasnavfakeblocks' => $hasnavfakeblocks,
-            'sidenavblocks' => $blocksnavhtml,
-            'hasnavblocks' => $hasnavblocks
-        ];
+            $templatecontext = [
+                'navdraweropen' => $this->navdraweropen,
+                'flatnavigation' => $nav,
+                'firstcollectionlabel' => $nav->get_collectionlabel(),
+                'sidenavfakeblocks' => $blocksnavfakehtml,
+                'hasnavfakeblocks' => $hasnavfakeblocks,
+                'sidenavblocks' => $blocksnavhtml,
+                'hasnavblocks' => $hasnavblocks
+            ];
 
-        return $this->render_from_template('theme_campus/nav-drawer', $templatecontext);
+            $output .= $this->render_from_template('theme_campus/nav-drawer', $templatecontext);
+        }
+
+        return $output;
     }
 
     public function render_flatnav_button() {

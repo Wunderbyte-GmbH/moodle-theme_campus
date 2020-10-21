@@ -94,4 +94,7 @@ if ($hdlogoextrapos == 2) {
 }
 echo '</div></div>';
 
-include(dirname(__FILE__).'/navbar.php');
+if ((!$hdbackgroundimage) && (!$hdfancynavbar)) {
+    include(dirname(__FILE__).'/navbar.php');
+}
+echo $OUTPUT->render_flatnav();

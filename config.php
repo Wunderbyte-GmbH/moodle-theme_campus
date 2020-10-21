@@ -32,9 +32,6 @@ $THEME->parents = array('boost');
 $THEME->sheets = array('font');
 $THEME->sheets[] = 'font-awesome';
 $THEME->sheets[] = 'custom';
-//$THEME->lessfile = 'moodleallcampus';
-//$THEME->lessvariablescallback = 'theme_campus_less_variables';
-//$THEME->extralesscallback = 'theme_campus_extra_less';
 $THEME->prescsscallback = 'theme_campus_get_pre_scss';
 $THEME->scss = function(theme_config $theme) {
     return theme_campus_get_main_scss_content($theme);
@@ -48,13 +45,6 @@ $THEME->yuicssmodules = array();
 
 $THEME->editor_sheets = array('editor');
 
-/*$THEME->parents_exclude_sheets = array(
-    'bootstrapbase' => array(
-        'moodle',
-        'editor'
-    )
-);*/
-
 $THEME->plugins_exclude_sheets = array(
     'block' => array(
         'html'
@@ -64,103 +54,61 @@ $THEME->plugins_exclude_sheets = array(
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 $empty = array();
-$col1regions = array('side-nav', 'footer');
-$col2regions = array('side-nav', 'side-pre', 'footer');
-$col3regions = array('side-nav', 'side-pre', 'side-post', 'footer');
-
-$themelayout = \theme_campus\toolbox::get_config_setting('themelayout');
-
-switch ($themelayout) {
-    case 1: // Three columns.
-        $fpfile = 'frontpage3.php';
-        $fpregions = $col3regions;
-        $sitefile = 'columns3.php';
-        $siteregions = $col3regions;
-        $securefile = 'secure3.php';
-    break;
-    case 2: // Three column front page and two columns with blocks left elsewhere.
-        $fpfile = 'frontpage3.php';
-        $fpregions = $col3regions;
-        $sitefile = 'columns2l.php';
-        $siteregions = $col2regions;
-        $securefile = 'secure2l.php';
-    break;
-    case 3: // Three column front page and two columns with blocks right elsewhere.
-        $fpfile = 'frontpage3.php';
-        $fpregions = $col3regions;
-        $sitefile = 'columns2r.php';
-        $siteregions = $col2regions;
-        $securefile = 'secure2r.php';
-    break;
-    case 4: // Two columns with blocks on the left.
-        $fpfile = 'frontpage2l.php';
-        $fpregions = $col2regions;
-        $sitefile = 'columns2l.php';
-        $siteregions = $col2regions;
-        $securefile = 'secure2l.php';
-    break;
-    case 5: // Two columns with blocks on the right.
-        $fpfile = 'frontpage2r.php';
-        $fpregions = $col2regions;
-        $sitefile = 'columns2r.php';
-        $siteregions = $col2regions;
-        $securefile = 'secure2r.php';
-    break;
-}
+$siteregions = array('side-nav', 'footer');
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
         'file' => 'columns1.php',
-        'regions' => $empty,
+        'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-        'file' => $sitefile,
+        'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
     // Main course page.
     'course' => array(
-        'file' => $sitefile,
+        'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav',
         'options' => array('langmenu'=>true)
     ),
     'coursecategory' => array(
-        'file' => $sitefile,
+        'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
     // part of course, typical for modules - default page layout if $cm specified in require_login()
     'incourse' => array(
-        'file' => $sitefile,
+        'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
     // The site home page.
     'frontpage' => array(
-        'file' => $fpfile,
-        'regions' => $fpregions,
+        'file' => 'frontpage1.php',
+        'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
     // Server administration scripts.
     'admin' => array(
-        'file' => $sitefile,
-        'regions' => $col3regions,  // On purpose for when changing columns from 2r to 3 on General settings page of theme.
+        'file' => 'columns1.php',
+        'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'file' => $sitefile,
+        'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav',
         'options' => array('langmenu'=>true)
     ),
     // My public page.
     'mypublic' => array(
-        'file' => $sitefile,
+        'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
@@ -208,13 +156,13 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'file' => $sitefile,
+        'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
-        'file' => $securefile,
+        'file' => 'secure1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),

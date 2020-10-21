@@ -17,8 +17,7 @@
 /**
  * Campus theme.
  *
- * @package    theme
- * @subpackage campus
+ * @package    theme_campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
@@ -30,21 +29,12 @@ $OUTPUT->optional_jquery();
 // Get the HTML for the settings bits.
 $html = theme_campus_get_html_for_settings($OUTPUT, $PAGE);
 
-$hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
-$hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
-if ($hassidepre) {
-    $useblock = 'side-pre';
-} else if ($hassidepost) {
-    $useblock = 'side-post';
-} else {
-    $useblock = false;
-}
-
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
+    <meta name="description" content="<?php p(strip_tags(format_text($SITE->summary, FORMAT_HTML))) ?>" />
     <?php
         echo $OUTPUT->standard_head_html();
     ?>
@@ -60,39 +50,22 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
 <div id="page" class="container-fluid">
 
-    <?php require_once(dirname(__FILE__).'/tiles/page-header.php'); ?>
+    <?php require_once(dirname(__FILE__).'/tiles/page-header_frontpage.php'); ?>
 
     <div id="page-content" class="row-fluid">
-        <?php if ($useblock) { ?>
-        <div id="region-main" class="col-9">
-        <?php } else { ?>
         <div id="region-main" class="col-12">
-        <?php }
-                require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
-                ?>
-                <section id="region-main-campus">
-                <?php
-                if ($OUTPUT->course_category_header()) {
-                    if (\theme_campus\toolbox::get_setting('coursepagepageheadinglocation') == 3) {
-                        echo $OUTPUT->get_page_heading();
-                    }
-                } else if ($OUTPUT->using_frontpage_header_on_another_page()) {
-                    if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 3) {
-                        echo $OUTPUT->get_page_heading();
-                    }
-                }
-                echo $OUTPUT->course_content_header();
-                echo $OUTPUT->main_content();
-                echo $OUTPUT->activity_navigation();
-                echo $OUTPUT->course_content_footer();
-                ?>
+            <?php
+            require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
+            ?>
+            <section id="region-main-campus">
+            <?php
+            if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 3) {
+                echo $OUTPUT->get_page_heading();
+            }
+            echo $OUTPUT->main_content();
+            ?>
             </section>
         </div>
-        <?php
-        if ($useblock) {
-            echo $OUTPUT->campussingleblocks('col-3');
-        }
-        ?>
     </div>
 
     <?php

@@ -65,4 +65,3 @@ if (!empty($hdfancynavbar)) {
         </div>
     </nav>
 </header>
-<?php echo $OUTPUT->render_flatnav(); ?>

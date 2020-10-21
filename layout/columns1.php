@@ -17,8 +17,7 @@
 /**
  * Campus theme.
  *
- * @package    theme
- * @subpackage campus
+ * @package    theme_campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}

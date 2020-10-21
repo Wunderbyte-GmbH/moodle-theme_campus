@@ -17,11 +17,10 @@
 /**
  * Campus theme.
  *
- * @package    theme
- * @subpackage campus
+ * @package    theme_campus
  * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2014-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,29 +29,18 @@ $OUTPUT->optional_jquery();
 // Get the HTML for the settings bits.
 $html = theme_campus_get_html_for_settings($OUTPUT, $PAGE);
 
-$hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
-$hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
-if ($hassidepre) {
-    $useblock = 'side-pre';
-} else if ($hassidepost) {
-    $useblock = 'side-post';
-} else {
-    $useblock = false;
-}
-
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
-    <meta name="description" content="<?php p(strip_tags(format_text($SITE->summary, FORMAT_HTML))) ?>" />
     <?php
         echo $OUTPUT->standard_head_html();
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body <?php echo $OUTPUT->body_attributes('two-column'); ?>>
+<body <?php echo $OUTPUT->body_attributes(); ?>>
 
 <?php
 echo $OUTPUT->standard_top_of_body_html();
@@ -61,30 +49,14 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
 <div id="page" class="container-fluid">
 
-    <?php require_once(dirname(__FILE__).'/tiles/page-header_frontpage.php'); ?>
+    <header id="page-header" class="clearfix">
+        <?php echo $OUTPUT->page_heading(); ?>
+    </header>
 
     <div id="page-content" class="row-fluid">
-        <?php if ($useblock) { ?>
-        <div id="region-main" class="col-9 pull-right">
-        <?php } else { ?>
-        <div id="region-main" class="col-12">
-        <?php }
-                require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
-                ?>
-                <section id="region-main-campus">
-                <?php
-                if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 3) {
-                    echo $OUTPUT->get_page_heading();
-                }
-                echo $OUTPUT->main_content();
-                ?>
-            </section>
-        </div>
-        <?php
-        if ($useblock) {
-            echo $OUTPUT->campusblocks($useblock, 'col-3 desktop-first-column');
-        }
-        ?>
+        <section id="region-main" class="col-12">
+        <?php echo $OUTPUT->main_content(); ?>
+        </section>
     </div>
 
     <?php
