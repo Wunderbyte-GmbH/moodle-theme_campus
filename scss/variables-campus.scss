@@ -42,8 +42,6 @@ $link-hover-color:       lighten($link-color, 20%) !default;
 // Typography
 // -------------------------
 $baseFontName:          "Source Sans Pro" !default;
-$sansFontFamily:        $baseFontName, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace !default;
 
 // Mapped
 $font-family-sans-serif: $baseFontName, "Helvetica Neue", Helvetica, Arial, sans-serif !default;

@@ -150,20 +150,34 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 }
 
 // Nav drawer blocks.
-#block-region-side-nav {
+#block-region-side-nav,
+#fakeblock-region-side-nav-fake {
     .block {
-        background-color: transparent;
+        border: $card-border-width solid $card-border-color;
+        border-radius: 0;
+        margin-top: -1px;
         .content,
         .header {
             background-color: transparent;
             border-color: transparent;
             border-width: 0;
-            padding-bottom: 0;
-            padding-top: 0;
+            padding-bottom: 0.75rem;
+            padding-top: 0.75rem;
+            .title {
+                font-family: $font-family-base;
+                font-size: $font-size-base;
+            }
         }
         .header .title {
             margin-bottom: 0;
         }
+    }
+}
+
+#fakeblock-region-side-nav-fake {
+    margin-bottom: 0.25rem;
+    .card-text {
+        padding-bottom: 0 !important;
     }
 }
 

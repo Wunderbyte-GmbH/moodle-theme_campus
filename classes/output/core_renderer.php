@@ -661,6 +661,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         if ($context->hascontrols) {
             $context->controls = $this->block_controls($bc->controls, $id);
         }
+        if ($region == 'side-nav') {
+            $context->sidenav = true;
+        }
 
         return $this->render_from_template('core/block', $context);
     }

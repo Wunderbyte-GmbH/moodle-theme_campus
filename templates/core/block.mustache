@@ -24,7 +24,7 @@
 <div class="{{width}}">
 {{/haswidth}}
 <section id="{{id}}"
-     class="{{#hidden}}hidden{{/hidden}} block block_{{type}} {{#hascontrols}}block_with_controls{{/hascontrols}} card mb-3"
+     class="{{#hidden}}hidden{{/hidden}} block block_{{type}} {{#hascontrols}}block_with_controls{{/hascontrols}} card{{^sidenav}} mb-3{{/sidenav}}"
      role="{{ariarole}}"
      data-block="{{type}}"
      {{#arialabel}}
@@ -53,7 +53,7 @@
             {{/hascontrols}}
         </div>
 
-        <div class="card-text content">
+        <div class="card-text content{{#sidenav}} pb-3 pt-0{{/sidenav}}">
             {{{content}}}
             <div class="footer">{{{footer}}}</div>
             {{{annotation}}}
