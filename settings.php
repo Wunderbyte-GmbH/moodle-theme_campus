@@ -120,7 +120,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Look and feel settings.
@@ -550,7 +550,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);*/
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Header settings.
@@ -777,7 +777,7 @@ if ($ADMIN->fulltree) {
         $settingpage->add($setting);
     }
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Course category header settings.
@@ -887,7 +887,7 @@ if ($ADMIN->fulltree) {
                 format_text(get_string('coursecategoryhavecustomheadernone', 'theme_campus'), FORMAT_MARKDOWN)));
     }
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Footer settings.
@@ -919,7 +919,7 @@ if ($ADMIN->fulltree) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Carousel settings.
@@ -1003,7 +1003,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Frontpage carousel settings.
@@ -1095,7 +1095,7 @@ if ($ADMIN->fulltree) {
         $settingpage->add($setting);
     }
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Course category carousel settings.
@@ -1198,7 +1198,7 @@ if ($ADMIN->fulltree) {
         }
     }
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Social links page....
@@ -1272,7 +1272,7 @@ if ($ADMIN->fulltree) {
         $settingpage->add($setting);
     }
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Forum page....
@@ -1307,6 +1307,6 @@ if ($ADMIN->fulltree) {
     // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
-    // Must add the page after definiting all the settings!
+    // Must add the page after defining all the settings!
     $settings->add($settingpage);
 }
