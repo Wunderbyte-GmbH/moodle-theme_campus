@@ -651,9 +651,9 @@ if ($ADMIN->fulltree) {
     $title = get_string('incoursesettingsswitchtorolepositionsetting', 'theme_campus');
     $description = get_string('incoursesettingsswitchtorolepositionsetting_desc', 'theme_campus');
     $incoursesettingsswitchtorolesetting = [
-        'no' => get_string('incoursesettingsswitchtorolesettingjustmenu', 'theme_boost_campus'),
-        'yes' => get_string('incoursesettingsswitchtorolesettingjustcourse', 'theme_boost_campus'),
-        'both' => get_string('incoursesettingsswitchtorolesettingboth', 'theme_boost_campus')
+        'no' => get_string('incoursesettingsswitchtorolesettingjustmenu', 'theme_campus'),
+        'yes' => get_string('incoursesettingsswitchtorolesettingjustcourse', 'theme_campus'),
+        'both' => get_string('incoursesettingsswitchtorolesettingboth', 'theme_campus')
     ];
     $setting = new admin_setting_configselect($name, $title, $description, $incoursesettingsswitchtorolesetting['no'],
         $incoursesettingsswitchtorolesetting);
