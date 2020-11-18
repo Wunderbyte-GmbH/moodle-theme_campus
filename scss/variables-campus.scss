@@ -116,6 +116,7 @@ $navbar-dark-brand-hover-color:           $navbarBrandColor !default;
 // Pagination
 // -------------------------
 $pagination-bg:                         lighten($bodyBackgroundAlt, 1%) !default;
+$pagination-color:                      #fff;
 $pagination-border-color:               darken($bodyBackgroundAlt, 5%) !default;
 $pagination-active-bg:                  lighten($bodyBackgroundAlt, 10%) !default;
 
