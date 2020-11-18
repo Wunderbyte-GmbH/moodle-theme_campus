@@ -339,26 +339,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Renders tabtree
-     *
-     * @param tabtree $tabtree
-     * @return string
-     */
-    protected function render_tabtree(\tabtree $tabtree) {
-        if (empty($tabtree->subtree)) {
-            return '';
-        }
-        $firstrow = $secondrow = '';
-        foreach ($tabtree->subtree as $tab) {
-            $firstrow .= $this->render($tab);
-            if (($tab->selected || $tab->activated) && !empty($tab->subtree) && $tab->subtree !== array()) {
-                $secondrow = $this->tabtree($tab->subtree);
-            }
-        }
-        return html_writer::tag('ul', $firstrow, array('class' => 'nav nav-pills')) . $secondrow;
-    }
-
-    /**
      * Returns the URL for the favicon.
      *
      * @since Moodle 2.5.1 2.6
