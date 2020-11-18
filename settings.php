@@ -245,7 +245,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_campus/navbartextcolour';
     $title = get_string('navbartextcolour', 'theme_campus');
     $description = get_string('navbartextcolourdesc', 'theme_campus');
-    $default = '#190500';
+    $default = '#eeeeee';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -255,17 +255,17 @@ if ($ADMIN->fulltree) {
     $name = 'theme_campus/navbarlinkcolour';
     $title = get_string('navbarlinkcolour', 'theme_campus');
     $description = get_string('navbarlinkcolourdesc', 'theme_campus');
-    $default = '#190500';
+    $default = '#eeeeee';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Navbar link colour setting.
+    // Navbar icon colour setting.
     $name = 'theme_campus/navbariconcolour';
     $title = get_string('navbariconcolour', 'theme_campus');
     $description = get_string('navbariconcolourdesc', 'theme_campus');
-    $default = '#000000';
+    $default = '#eeeeee';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -275,7 +275,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_campus/navbarbackgroundcolour';
     $title = get_string('navbarbackgroundcolour', 'theme_campus');
     $description = get_string('navbarbackgroundcolourdesc', 'theme_campus');
-    $default = '#feee36';
+    $default = '#ec8600';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -383,7 +383,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_campus/themecolour';
     $title = get_string('themecolour', 'theme_campus');
     $description = get_string('themecolourdesc', 'theme_campus');
-    $default = '#feee36';
+    $default = '#263683';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -987,7 +987,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_campus/slidebuttoncolour';
     $title = get_string('slidebuttoncolour', 'theme_campus');
     $description = get_string('slidebuttoncolourdesc', 'theme_campus');
-    $default = '#30add1';
+    $default = '#3a53c1';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -997,7 +997,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_campus/slidebuttonhovercolour';
     $title = get_string('slidebuttonhovercolour', 'theme_campus');
     $description = get_string('slidebuttonhovercolourdesc', 'theme_campus');
-    $default = '#217a94';
+    $default = '#4f72ff';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');

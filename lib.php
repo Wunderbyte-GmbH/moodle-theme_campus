@@ -468,10 +468,8 @@ function theme_campus_sass_variables($theme) {
     if (!empty($theme->settings->navbartextcolour)) {
         $variables['navbarText'] = $theme->settings->navbartextcolour;
         $variables['navbarBrandColor'] = $theme->settings->navbartextcolour;
-        $variables['navbarLinkColor'] = $theme->settings->navbartextcolour;
     }
     if (!empty($theme->settings->navbarlinkcolour)) {
-        $variables['dropdown-link-hover-color'] = $theme->settings->navbarlinkcolour;
         $variables['navbarLinkColor'] = $theme->settings->navbarlinkcolour;
     }
     if (!empty($theme->settings->navbariconcolour)) {

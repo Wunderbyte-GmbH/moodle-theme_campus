@@ -157,19 +157,14 @@ textarea, .uneditable-input {
 //  background-color: $navbarInverseText;
 //}
 
-.navbar-text a {
-  color: $navbarText;
+.navbar-text a,
+.navbar .nav > li > a,
+a.dropdown-toggle {
+  color: $navbarLinkColor;
   // Hover/focus state
   &:hover,
   &:focus {
-    color: $navbarText;
-  }
-}
-
-.navbar .nav > li > a {
-  &:hover,
-  &:focus {
-    color: $navbarText;
+    color: $navbarLinkColor;
   }
 }
 

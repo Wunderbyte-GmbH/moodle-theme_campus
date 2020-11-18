@@ -79,7 +79,7 @@ $input-disabled-bg:      $grayLighter !default;
 $dropdownDividerTop:            #e5e5e5 !default;
 $dropdownDividerBottom:         $white !default;
 
-$dropdown-link-hover-color:     darken($gray-900, 5%) !default;
+$dropdown-link-hover-color:     darken(#212529, 5%) !default;  // #212529 is gray-900.
 
 
 // Input placeholder text color
@@ -137,7 +137,7 @@ $contentColor: #fff !default;
 // Scaffolding
 // -------------------------
 // http://colorschemedesigner.com/#1631Tndw0w0w0
-$bodyBackgroundAlt:     #feee36 !default;
+$bodyBackgroundAlt:     #263683 !default;
 $themeBackground:       $grayLighter !default;
 $textShadow:            $grayLighter !default;  // Not set in lib.php.
 
@@ -178,11 +178,11 @@ $frontpageAbsolutePaddingBottom: 0% !default;
 $frontpageFlexPaddingBottom: 0% !default;
 
 // Carousel.
-$carouselColour: #ffd974 !default;
+$carouselColour: $bodyBackgroundAlt !default;
 $carouselTextColour: #ffffff !default;
-$slideButtonColour: #30add1 !default;
-$slideButtonHoverColour: #217a94 !default;
-$carouselActiveColour: #ffd974 !default;
+$slideButtonColour: #3a53c1 !default;
+$slideButtonHoverColour: #4f72ff !default;
+$carouselActiveColour: $bodyBackgroundAlt !default;
 
 // Course category.
 $courseCategoryHeaderHeightDefault: 70px !default;
