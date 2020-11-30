@@ -28,6 +28,42 @@
 
 defined('MOODLE_INTERNAL') || die();
 ?>
+    <div class="row-fluid">
+<a href="/" class="col-md-4 frontblock fb-1">
+
+<span class="fb-title"><span>Info</span></span>
+<span class="fb-content"><span>&Uuml;berblick - kurz zusammengefasst - und rechtliche Grundlagen</span></span>
+</a>
+
+<a href="/course/view.php?id=3" class="col-md-4  frontblock fb-2">
+    <span class="fb-title"><span>Veran-<br> staltungen</span></span>
+<span class="fb-content"><span>Lehrveranstaltungen der P&auml;dagogischen Hochschulen, passend zur Nachqualifizierung</span></span>
+</a>
+
+<a href="/course/view.php?id=7" class="col-md-4  frontblock fb-3">
+<span class="fb-title"><span>Hilfe <br> FAQ</span></span>
+<span class="fb-content"><span>Anleitungen und Hilfestellungen zum Nachqualifizierungsprozess</span></span>
+</a>
+</div>
+
+<div class="row-fluid">
+<a href="/course/view.php?id=5" class="col-md-4 frontblock fb-4">
+<span class="fb-title"><span>Einreichung</span></span>
+<span class="fb-content"><span>Links zu den einzelnen PHs um den Antrag einzureichen</span></span>
+</a>
+
+
+
+<a href="/course/view.php?id=6" class="col-md-4 frontblock fb-5">
+    <span class="fb-title"><span>Kompetenz-<br> portfolio</span></span>
+<span class="fb-content"><span>Erstellung des pers&ouml;nlichen Kompetenzportfolios mittels Onlineformular</span></span>
+</a>
+
+<a href="/course/view.php?id=4" class="col-md-4 frontblock fb-6">
+<span class="fb-title"><span>Kontakt</span></span>
+<span class="fb-content"><span>Hier erreichen Sie das zentrale Support-Team und ExpertInnen</span></span>
+</a>
+</div>
 <header id="page-header" class="row-fluid">
     <div id="page-navbar" class="d-flex flex-wrap col-12">
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
@@ -52,3 +88,4 @@ defined('MOODLE_INTERNAL') || die();
 if ((!empty($numberofslides)) && (\theme_campus\toolbox::get_setting('sliderposition') == 1)) {
     require_once(dirname(__FILE__).'/slideshow.php');
 }
+?>
