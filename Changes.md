@@ -1,5 +1,8 @@
 Version Information
 ===================
+TBD - Version 3.9.0.1
+  1. Moodle 3.9 version.
+
 TBD - Version 3.8.0.1
   1. Moodle 3.8 version.
 
