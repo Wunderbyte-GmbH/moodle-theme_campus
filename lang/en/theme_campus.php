@@ -451,7 +451,7 @@ $string['forumcustomtemplatedesc'] = 'Enable that in order to use a pretty templ
 
 // File store.
 $string['filestoresettings'] = 'File store';
-$string['filestoresettingsdesc'] = 'Configure the file store settings for the theme here.  Save changes to see am update to the number / file URL in the setting\'s description.';
+$string['filestoresettingsdesc'] = 'Configure the file store settings for the theme here.  Save changes to see am update to the number / file URL in the setting\'s description.  Note: It is essential when changing the file of a setting that the filename changes to one not used before in that setting in order to ensure that the browser gets the changed version.';
 $string['numberoffiles'] = 'Number of files';
 $string['numberoffilesdesc'] = 'Set the number of files here between {$a->lower} and {$a->upper}.';
 $string['campusfile'] = 'File {$a}';

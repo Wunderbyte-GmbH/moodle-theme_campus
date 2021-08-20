@@ -96,6 +96,26 @@ class toolbox {
         return $settingurl;
     }
 
+    /**
+     * Gets the setting moodle_url for the given setting if it exists and set.
+     *
+     * See: https://moodle.org/mod/forum/discuss.php?d=371252#p1516474 and change if theme_config::setting_file_url
+     * changes.
+     */
+    public static function get_setting_moodle_url_noitemid($setting) {
+        $settingurl = null;
+
+        $thesetting = self::get_config_setting($setting);
+        if (!empty($thesetting)) {
+            global $CFG;
+            $syscontext = \context_system::instance();
+
+            $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_campus/$setting".$thesetting);
+            $settingurl = preg_replace('|^https?://|i', '//', $settingurl->out(false));
+        }
+        return $settingurl;
+    }
+
     static public function change_icons() {
         static $lastrun = 0;
         if (empty($lastrun)) {

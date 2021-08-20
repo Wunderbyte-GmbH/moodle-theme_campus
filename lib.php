@@ -1385,6 +1385,8 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
         } else if (preg_match("/^coursecategory[1-9][0-9]*_[1-9][0-9]*image$/", $filearea)) { // http://regexpal.com/ useful.
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/^campusfile[1-9][0-9]*$/", $filearea)) { // http://regexpal.com/ useful.
+            $itemid = \theme_get_revision();
+            array_unshift($args, $itemid);
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if ($filearea === 'favicon') {
             return $theme->setting_file_serve('favicon', $args, $forcedownload, $options);

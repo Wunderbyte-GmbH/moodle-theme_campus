@@ -1331,7 +1331,7 @@ if ($ADMIN->fulltree) {
         // File.
         $name = 'theme_campus/campusfile'.$i;
         $title = get_string('campusfile', 'theme_campus', $i);
-        $thefile = \theme_campus\toolbox::get_setting_moodle_url('campusfile'.$i);
+        $thefile = \theme_campus\toolbox::get_setting_moodle_url_noitemid('campusfile'.$i);
         if (is_null($thefile)) {
             $description = get_string('campusnofile', 'theme_campus');
         } else {
