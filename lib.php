@@ -1373,46 +1373,20 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
             $options['cacheability'] = 'public';
         }
         if ($filearea === 'frontpagelogo') {
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
             return $theme->setting_file_serve('frontpagelogo', $args, $forcedownload, $options);
         } else if ($filearea === 'frontpagebackgroundimage') {
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
             return $theme->setting_file_serve('frontpagebackgroundimage', $args, $forcedownload, $options);
         } else if (preg_match("/^coursecategorylogo[1-9][0-9]*$/", $filearea)) { // http://regexpal.com/ useful.
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/^coursecategorybackgroundimage[1-9][0-9]*$/", $filearea)) { // http://regexpal.com/ useful.
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/^frontpage[1-9][0-9]*image$/", $filearea)) { // http://regexpal.com/ useful.
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if (preg_match("/^coursecategory[1-9][0-9]*_[1-9][0-9]*image$/", $filearea)) { // http://regexpal.com/ useful.
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+        } else if (preg_match("/^campusfile[1-9][0-9]*$/", $filearea)) { // http://regexpal.com/ useful.
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if ($filearea === 'favicon') {
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
             return $theme->setting_file_serve('favicon', $args, $forcedownload, $options);
         } else {
             send_file_not_found();

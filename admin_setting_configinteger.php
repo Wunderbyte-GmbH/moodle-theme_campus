@@ -62,7 +62,7 @@ class admin_setting_configinteger extends admin_setting_configtext {
     public function validate($data) {
         $validated = parent::validate($data); // Pass parent validation first.
 
-        if ($validated == true) {
+        if ($validated === true) {
             if ($data < $this->lower) {
                 $validated = get_string('asconfigintlower', 'theme_campus', array('value' => $data, 'lower' => $this->lower));
             } else if ($data > $this->upper) {

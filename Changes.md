@@ -1,5 +1,10 @@
 Version Information
 ===================
+TBD - Version 3.9.0.2
+  1. Added 'File store' settings, see the 'Add additional files #22' issue.
+  2. Fixed issue whereby 'admin_setting_configinteger' will allow non-integers.
+  3. Removed duplicate and redundant file cacheability code from 'theme_campus_pluginfile' in lib.php.
+
 TBD - Version 3.9.0.1
   1. Moodle 3.9 version.
 

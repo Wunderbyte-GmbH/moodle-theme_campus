@@ -1309,4 +1309,38 @@ if ($ADMIN->fulltree) {
 
     // Must add the page after defining all the settings!
     $settings->add($settingpage);
+
+    // File store.
+    $settingpage = new admin_settingpage('theme_campus_filestore', get_string('filestoresettings', 'theme_campus'));
+    $settingpage->add(new admin_setting_heading('theme_campus_filestoreheading', null,
+        format_text(get_string('filestoresettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+
+    // Number of stores.
+    $name = 'theme_campus/numberoffiles';
+    $title = get_string('numberoffiles', 'theme_campus');
+    $default = 10;
+    $lower = 0;
+    $upper = 20;
+    $description = get_string('numberoffilesdesc', 'theme_campus', array('lower' => $lower, 'upper' => $upper));
+    $setting = new admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
+    $numberoffiles = \theme_campus\toolbox::get_config_setting('numberoffiles');
+    for ($i = 1; $i <= $numberoffiles; $i++) {
+        // File.
+        $name = 'theme_campus/campusfile'.$i;
+        $title = get_string('campusfile', 'theme_campus', $i);
+        $thefile = \theme_campus\toolbox::get_setting_moodle_url('campusfile'.$i);
+        if (is_null($thefile)) {
+            $description = get_string('campusnofile', 'theme_campus');
+        } else {
+            $description = get_string('campusfilestored', 'theme_campus', $thefile);
+        }
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'campusfile'.$i);
+        // No CSS change, so no need to reset caches.
+        $settingpage->add($setting);
+    }
+
+    $settings->add($settingpage);
 }
