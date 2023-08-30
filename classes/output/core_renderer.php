@@ -62,11 +62,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
     }
 
-    /*
-     * This renders the navbar.
+    /**
+     * Renders the "breadcrumb".
      * Uses bootstrap compatible html.
+     *
+     * @return string the HTML for the navbar.
      */
-    public function navbar() {
+    public function navbar(): string {
         $items = $this->page->navbar->get_items();
         if (right_to_left()) {
             $dividericon = 'fa-angle-left';
@@ -136,9 +138,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * Returns HTML to display a "Turn editing on/off" button in a form.
      *
      * @param moodle_url $url The URL + params to send through when clicking the button
+     * @param string $method
      * @return string HTML the button
      */
-    public function edit_button(moodle_url $url) {
+    public function edit_button(moodle_url $url, string $method = 'post') {
         $url->param('sesskey', sesskey());
         if ($this->page->user_is_editing()) {
             $url->param('edit', 'off');
@@ -479,9 +482,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * Output all the blocks in a particular region.
      *
      * @param string $region the name of a region on this page.
+     * @param boolean $fakeblocksonly Output fake block only.
      * @return string the HTML to be output.
      */
-    public function blocks_for_region($region) {
+     public function blocks_for_region($region, $fakeblocksonly = false) {
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
         $blocks = $this->page->blocks->get_blocks_for_region($region);
 
@@ -502,10 +506,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 continue;
             }
             if ($bc instanceof block_contents) {
+                if ($fakeblocksonly && !$bc->is_fake()) {
+                    // Skip rendering real blocks if we only want to show fake blocks.
+                    continue;
+                }
                 $output .= $this->block($bc, $region);
                 $lastblock = $bc->title;
             } else if ($bc instanceof block_move_target) {
-                $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+                if (!$fakeblocksonly) {
+                    $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+                }
             } else {
                 throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
             }
