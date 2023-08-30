@@ -26,6 +26,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 $THEME->doctype = 'html5';
 $THEME->name = 'campus';
 $THEME->parents = array('boost');
@@ -73,7 +75,7 @@ $THEME->layouts = array(
         'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav',
-        'options' => array('langmenu'=>true)
+        'options' => array('langmenu' => true)
     ),
     'coursecategory' => array(
         'file' => 'columns1.php',
@@ -103,7 +105,7 @@ $THEME->layouts = array(
         'file' => 'columns1.php',
         'regions' => $siteregions,
         'defaultregion' => 'side-nav',
-        'options' => array('langmenu'=>true)
+        'options' => array('langmenu' => true)
     ),
     // My public page.
     'mypublic' => array(
@@ -114,20 +116,20 @@ $THEME->layouts = array(
     'login' => array(
         'file' => 'columns1.php',
         'regions' => $empty,
-        'options' => array('langmenu'=>true)
+        'options' => array('langmenu' => true)
     ),
 
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
         'file' => 'popup.php',
         'regions' => array(),
-        'options' => array('nofooter'=>true, 'nonavbar'=>true)
+        'options' => array('nofooter' => true, 'nonavbar' => true)
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
         'file' => 'columns1.php',
         'regions' => $empty,
-        'options' => array('nofooter'=>true, 'nocoursefooter'=>true),
+        'options' => array('nofooter' => true, 'nocoursefooter' => true),
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible
     'embedded' => array(
@@ -140,13 +142,13 @@ $THEME->layouts = array(
     'maintenance' => array(
         'file' => 'maintenance.php',
         'regions' => $empty,
-        'options' => array('nofooter'=>true, 'nonavbar'=>true, 'nocoursefooter'=>true, 'nocourseheader'=>true)
+        'options' => array('nofooter' => true, 'nonavbar' => true, 'nocoursefooter' => true, 'nocourseheader' => true)
     ),
     // Should display the content and basic headers only.
     'print' => array(
         'file' => 'columns1.php',
         'regions' => $empty,
-        'options' => array('nofooter'=>true, 'nonavbar'=>false)
+        'options' => array('nofooter' => true, 'nonavbar' => false)
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(

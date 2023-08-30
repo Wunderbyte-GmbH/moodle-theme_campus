@@ -26,6 +26,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 global $OUTPUT;
 
 $currentcategory = $OUTPUT->get_current_top_level_catetgory();
@@ -36,7 +38,8 @@ if (!empty($PAGE->theme->settings->$cchavecustomsetting)) {
     $hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
     $hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
     $hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo'.$currentcategory, 'coursecategoryresponsivelogo'.$currentcategory);
-    $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('coursecategoryresponsivebackgroundimage'.$currentcategory, 'coursecategoryresponsivebackgroundimage'.$currentcategory);
+    $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('coursecategoryresponsivebackgroundimage'.$currentcategory,
+        'coursecategoryresponsivebackgroundimage'.$currentcategory);
 } else {
     $hdlogo = false;
     $hdbackgroundimage = false;
@@ -76,7 +79,7 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
         $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');  // $hdresponsivelogo can still be false if 'image_url' fails for some unknown reason.
     }
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
-        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');  // $hdresponsivebackgroundimage can still be false if 'image_url' fails for some unknown reason.
+        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
     }
     // Fallback to frontpage settings as they are in 'front-pageheader.php' for the theme images.
     $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
@@ -109,7 +112,8 @@ if ($hdflexlayout) {
     // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
 }
 
-if ($hdbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
+// Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
+if ($hdbackgroundextrapos == 1) {
     $hdbackgroundextra = 'right';
 } else {
     $hdbackgroundextra = 'left';

@@ -38,7 +38,7 @@ class toolbox {
      * @param theme_config $theme null|theme_config object.
      * @return any false|value of setting.
      */
-    static public function get_setting($setting, $format = false, $theme = null) {
+    public static function get_setting($setting, $format = false, $theme = null) {
 
         if (empty($theme)) {
             if (empty(self::$theme)) {
@@ -116,7 +116,7 @@ class toolbox {
         return $settingurl;
     }
 
-    static public function change_icons() {
+    public static function change_icons() {
         static $lastrun = 0;
         if (empty($lastrun)) {
             $lastrun = time();
@@ -139,7 +139,7 @@ class toolbox {
 
             if (file_exists("$CFG->dirroot/theme/campus/$folder")) {
                 $folder = "$CFG->dirroot/theme/campus";
-            } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/campus")) {
+            } else if (!empty($CFG->themedir) && file_exists("$CFG->themedir/campus")) {
                 $folder = "$CFG->themedir/campus";
             } else {
                 $folder = dirname(__FILE__);
@@ -182,7 +182,7 @@ class toolbox {
         }
     }
 
-    static private function svg_files(&$files, $root) {
+    private static function svg_files(&$files, $root) {
         if (file_exists($root)) {
             $thefiles = scandir($root);
 
@@ -195,14 +195,14 @@ class toolbox {
                 }
                 if (is_dir("$root/$filename")) {
                     self::svg_files($files, "$root/$filename");
-                } else if (strpos($filename, '.svg') !== FALSE) { // TODO: See if 'finfo_file' is better.
+                } else if (strpos($filename, '.svg') !== false) { // TODO: See if 'finfo_file' is better.
                     $files[] = $root . '/' . $filename;
                 }
             }
         }
     }
 
-    static public function get_scss_file($filename) {
+    public static function get_scss_file($filename) {
         // TODO - themedir.
         global $CFG;
         return file_get_contents($CFG->dirroot.'/theme/campus/scss/'.$filename.'.scss');
@@ -219,7 +219,7 @@ class toolbox {
      *
      * @return boolean yes - true or no - false.
      */
-    static public function has_incourse_settings() {
+    public static function has_incourse_settings() {
         global $PAGE;
 
         $incourse = false;
@@ -247,7 +247,7 @@ class toolbox {
      *
      * @return navigation_node.
      */
-    static public function get_incourse_settings() {
+    public static function get_incourse_settings() {
         global $COURSE, $PAGE;
         // Initialize the node with false to prevent problems on pages that do not have a courseadmin node.
         $node = false;
@@ -302,7 +302,7 @@ class toolbox {
      *
      * @return navigation_node.
      */
-    static public function get_incourse_activity_settings() {
+    public static function get_incourse_activity_settings() {
         global $PAGE;
         $context = $PAGE->context;
         $node = false;

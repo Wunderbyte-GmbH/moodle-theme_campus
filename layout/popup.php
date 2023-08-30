@@ -25,7 +25,9 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
+
+defined('MOODLE_INTERNAL') || die();
+
 $OUTPUT->optional_jquery();
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
@@ -40,16 +42,16 @@ echo $OUTPUT->doctype() ?>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
 
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
-
 <?php
-    // If on desktop, then hide the header/footer.
-    $hideclass = '';
-    $devicetype = core_useragent::get_device_type();
-    if($devicetype !== 'mobile' and $devicetype !== 'tablet') {
-        // We can not use the Bootstrap responsive css classes because popups are phone sized on desktop.
-        $hideclass = 'hide';
-    }
+echo $OUTPUT->standard_top_of_body_html();
+
+// If on desktop, then hide the header/footer.
+$hideclass = '';
+$devicetype = core_useragent::get_device_type();
+if ($devicetype !== 'mobile' && $devicetype !== 'tablet') {
+    // We can not use the Bootstrap responsive css classes because popups are phone sized on desktop.
+    $hideclass = 'hide';
+}
 ?>
 
 <header role="banner" class="moodle-has-zindex <?php echo $hideclass; ?>">

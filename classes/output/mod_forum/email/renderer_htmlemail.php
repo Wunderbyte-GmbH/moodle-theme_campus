@@ -22,8 +22,6 @@
 
 namespace theme_campus\output\mod_forum\email;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Forum post renderable.
  *
@@ -47,14 +45,13 @@ class renderer_htmlemail extends \mod_forum\output\email\renderer {
         $data['enabletemplate'] = \theme_campus\toolbox::get_setting('forumcustomtemplate');
         $forumhtmlemailheader = \theme_campus\toolbox::get_setting('forumhtmlemailheader', 'format_html');
         if ($forumhtmlemailheader) {
-           $data['messageheader'] = $forumhtmlemailheader;
+            $data['messageheader'] = $forumhtmlemailheader;
         }
         $forumhtmlemailfooter = \theme_campus\toolbox::get_setting('forumhtmlemailfooter', 'format_html');
         if ($forumhtmlemailfooter) {
-           $data['messagefooter'] = $forumhtmlemailfooter;
+            $data['messagefooter'] = $forumhtmlemailfooter;
         }
 
         return $this->render_from_template('mod_forum/' . $this->forum_post_template(), $data);
     }
-
 }

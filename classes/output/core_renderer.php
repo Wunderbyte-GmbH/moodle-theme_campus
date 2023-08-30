@@ -28,8 +28,6 @@
 
 namespace theme_campus\output;
 
-defined('MOODLE_INTERNAL') || die;
-
 use block_contents;
 use block_move_target;
 use coding_exception;
@@ -51,7 +49,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
-        
+
         // Nav drawer init.
         user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 
@@ -89,10 +87,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $item->hideicon = true;
             $breadcrumbs[] = $this->render($item);
         }
-        $list_items = html_writer::start_tag('li', array('class' => 'breadcrumb-item')) . implode("$divider".html_writer::end_tag('li').
-            html_writer::start_tag('li', array('class' => 'breadcrumb-item')), $breadcrumbs).html_writer::end_tag('li');
+        $glue = "$divider".html_writer::end_tag('li').html_writer::start_tag('li', array('class' => 'breadcrumb-item'));
+        $listitems = html_writer::start_tag('li', array('class' => 'breadcrumb-item')) . implode($glue, $breadcrumbs).html_writer::end_tag('li');
         $title = html_writer::tag('span', get_string('pagepath'), array('class' => 'accesshide'));
-        return $title . html_writer::tag('ul', "$list_items", array('class' => 'breadcrumb'));
+        return $title . html_writer::tag('ul', "$listitems", array('class' => 'breadcrumb'));
     }
 
     /**
@@ -105,7 +103,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     protected function navbar_button() {
         $iconbar = '<i class="icon fa fa-bars fa-fw " aria-hidden="true"><span class="sr-only">'.get_string('campusnav', 'theme_campus').'</span></i>';
-        $button = html_writer::tag('li', 
+        $button = html_writer::tag('li',
             html_writer::tag('a', $iconbar, array(
                 'class'       => 'btn btn-navbar nav-link',
                 'data-toggle' => 'collapse',
@@ -234,9 +232,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
 
         $output .= parent::course_content_header($onlyifnotcalledbefore);
-
-        if (!empty($activitynode)) {
-        }
 
         return $output;
     }
@@ -418,7 +413,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return html_writer::tag($tag, $content, $attributes);
     }
 
-    ///Nav drawer split blocks.
+    // Nav drawer split blocks.
     /**
      * Get the HTML for blocks in the given region.
      *
@@ -498,7 +493,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @param boolean $fakeblocksonly Output fake block only.
      * @return string the HTML to be output.
      */
-     public function blocks_for_region($region, $fakeblocksonly = false) {
+    public function blocks_for_region($region, $fakeblocksonly = false) {
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
         $blocks = $this->page->blocks->get_blocks_for_region($region);
 
@@ -677,10 +672,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
     public function anti_gravity() {
         $icon = html_writer::start_tag('span', array('class' => 'fa fa-arrow-circle-o-up')) . html_writer::end_tag('span');
-        $anti_gravity = html_writer::tag('span', $icon,
+        $antigravity = html_writer::tag('span', $icon,
             array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_campus')));
 
-        return $anti_gravity;
+        return $antigravity;
     }
 
     /**
@@ -722,73 +717,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         return html_writer::tag('div', $searchicon . $searchinput, array('class' => 'search-input-wrapper', 'id' => $id));
     }
-
-    /*
-     * This code renders the custom menu items for the
-     * bootstrap dropdown menu.
-     */
-    /*protected function render_custom_menu_item(\custom_menu_item $menunode, $level = 0 ) {
-        static $submenucount = 0;
-
-        $content = '';
-        $title = array();
-        // If the title is different to the text, then use it.  E.g. the language menu.
-        if (strcmp($menunode->get_title(), $menunode->get_text()) != 0) {
-            $title['title'] = $menunode->get_title();
-        }
-        if ($menunode->has_children()) {
-
-            if ($level == 1) {
-                $class = 'dropdown';
-            } else {
-                $class = 'dropdown-submenu';
-            }
-
-            if ($menunode === $this->language) {
-                $class .= ' langmenu';
-            }
-            $content = html_writer::start_tag('li', array('class' => $class));
-            // If the child has menus render it as a sub menu.
-            $submenucount++;
-            if ($menunode->get_url() !== null) {
-                $url = $menunode->get_url();
-            } else {
-                $url = '#cm_submenu_'.$submenucount;
-            }
-            $attr = array('href'=>$url, 'class'=>'dropdown-toggle', 'data-toggle'=>'dropdown');
-            if (!empty($title)) {
-                $attr = array_merge($attr, $title);
-            }
-            $content .= html_writer::start_tag('a', $attr);
-            $content .= $menunode->get_text();
-            if ($level == 1) {
-                $content .= '<strong class="caret"></strong>';
-            }
-            $content .= '</a>';
-            $content .= '<ul class="dropdown-menu">';
-            foreach ($menunode->get_children() as $menunode) {
-                $content .= $this->render_custom_menu_item($menunode, 0);
-            }
-            $content .= '</ul>';
-        } else {
-            // The node doesn't have children so produce a final menuitem.
-            // Also, if the node's text matches '####', add a class so we can treat it as a divider.
-            if (preg_match("/^#+$/", $menunode->get_text())) {
-                // This is a divider.
-                $content = '<li class="divider">&nbsp;</li>';
-            } else {
-                $content = '<li>';
-                if ($menunode->get_url() !== null) {
-                    $url = $menunode->get_url();
-                } else {
-                    $url = '#';
-                }
-                $content .= html_writer::link($url, $menunode->get_text(), $title);
-                $content .= '</li>';
-            }
-        }
-        return $content;
-    }*/
 
     /**
      * Return the standard string that says whether you are logged in (and switched
@@ -1130,7 +1058,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
     public function render_flatnav() {
         $output = '';
-        
+
         if ($this->page->blocks->is_known_region('side-nav')) {
             $nav = $this->page->flatnav;
 

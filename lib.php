@@ -92,7 +92,6 @@ function theme_campus_get_main_scss_content($theme) {
     }
 
     // This mechanism is not set in stone.
-    //$scss = file_get_contents($CFG->dirroot . '/theme/campus/scss/theme/_variables.scss');
     $scss = '';
 
     $boosttheme->settings->preset = 'default.scss';
@@ -102,8 +101,6 @@ function theme_campus_get_main_scss_content($theme) {
     $scss .= \theme_campus\toolbox::get_scss_file('moodlechanges');
     $scss .= \theme_campus\toolbox::get_scss_file('moodleupgradechanges');
     $scss .= \theme_campus\toolbox::get_scss_file('campuscustom');
-
-    //$scss .= file_get_contents($CFG->dirroot . '/theme/campus/scss/theme/theme.scss');
 
     return $scss;
 }
@@ -212,7 +209,7 @@ function theme_campus_extra_sccs($theme) {
     }
 
     // Course catetgory.
-    foreach($campuscategorytree as $key => $value){
+    foreach ($campuscategorytree as $key => $value) {
         $categorylogoused = false;
         $cchavecustomsetting = 'coursecategoryhavecustomheader'.$key;
         $ccsetting = 'coursecategorylogo'.$key;
@@ -266,7 +263,8 @@ function theme_campus_extra_sccs($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.'%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.
+                            '%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
                     }
                 }
                 $categorylogoused = true;
@@ -319,17 +317,18 @@ function theme_campus_extra_sccs($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.'%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.
+                            '%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
                     }
                 }
 
                 // Using front page, so use those settings.
                 if (!empty($theme->settings->frontpagelogoposition)) {
-                    switch ($theme->settings->frontpagelogoposition) {
                     /* .ccheaderlogoposition(@courseCategoryKey;
                           @courseCategoryMixinLogoPosition;
                           @courseCategoryMixinPageHeadingHeaderPositionLeft;
                           @courseCategoryMixinPageHeadingHeaderPositionRight) */
+                    switch ($theme->settings->frontpagelogoposition) {
                         case 1:
                             $content .= '@include ccheaderlogoposition('.$key.', left, auto, 50px);';
                         break;
@@ -390,7 +389,8 @@ function theme_campus_extra_sccs($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.'%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.
+                            '%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
                     }
                 }
                 $content .= '@include ccheaderlogoposition('.$key.', left, auto, 50px);'.PHP_EOL; // Theme layout uses logo on left.
@@ -407,11 +407,11 @@ function theme_campus_extra_sccs($theme) {
 
             $ccsetting = 'coursecategorylogoposition'.$key;
             if (!empty($theme->settings->$ccsetting)) {
-                switch ($theme->settings->$ccsetting) {
                 /* .ccheaderlogoposition(@courseCategoryKey;
                       @courseCategoryMixinLogoPosition;
                       @courseCategoryMixinPageHeadingHeaderPositionLeft;
                       @courseCategoryMixinPageHeadingHeaderPositionRight) */
+                switch ($theme->settings->$ccsetting) {
                     case 1:
                         $content .= '@include ccheaderlogoposition('.$key.', left, auto, 50px);'.PHP_EOL;
                     break;
@@ -621,10 +621,11 @@ function theme_campus_sass_variables($theme) {
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
-            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            $variables['frontpageHeaderHeightDefault'] = 'auto';
             $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
             $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
-       }
+        }
     } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
         // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
         if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
@@ -650,7 +651,8 @@ function theme_campus_sass_variables($theme) {
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
-            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            $variables['frontpageHeaderHeightDefault'] = 'auto';
             $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
             $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
         }
@@ -878,10 +880,11 @@ function theme_campus_less_variables($theme) {
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
-            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            $variables['frontpageHeaderHeightDefault'] = 'auto';
             $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
             $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
-       }
+        }
     } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
         // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
         if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
@@ -907,7 +910,8 @@ function theme_campus_less_variables($theme) {
             $fpbackgroundwidth = 100 - $fplogowidth;
             $variables['frontpageLogoWidth'] = $fplogowidth.'%';
             $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
-            $variables['frontpageHeaderHeightDefault'] = 'auto';  // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
+            $variables['frontpageHeaderHeightDefault'] = 'auto';
             $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
             $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
         }
@@ -1003,7 +1007,7 @@ function theme_campus_extra_less($theme) {
     }
 
     // Course catetgory.
-    foreach($campuscategorytree as $key => $value){
+    foreach ($campuscategorytree as $key => $value) {
         $categorylogoused = false;
         $cchavecustomsetting = 'coursecategoryhavecustomheader'.$key;
         $ccsetting = 'coursecategorylogo'.$key;
@@ -1116,11 +1120,11 @@ function theme_campus_extra_less($theme) {
 
                 // Using front page, so use those settings.
                 if (!empty($theme->settings->frontpagelogoposition)) {
-                    switch ($theme->settings->frontpagelogoposition) {
                     /* .ccheaderlogoposition(@courseCategoryKey;
                           @courseCategoryMixinLogoPosition;
                           @courseCategoryMixinPageHeadingHeaderPositionLeft;
                           @courseCategoryMixinPageHeadingHeaderPositionRight) */
+                    switch ($theme->settings->frontpagelogoposition) {
                         case 1:
                             $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
                         break;
@@ -1132,7 +1136,7 @@ function theme_campus_extra_less($theme) {
             }
         } else if ($logodetails = theme_campus_get_theme_logo()) { // Theme images fall back.
             if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
-                // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                // See: http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                 $backgrounddetails = theme_campus_get_theme_background();
                 if (($backgrounddetails['fullname']) && ($backgrounddimensions = getimagesize($backgrounddetails['fullname']))) {
                     $backgroundwidth = $backgrounddimensions[0];
@@ -1198,11 +1202,11 @@ function theme_campus_extra_less($theme) {
 
             $ccsetting = 'coursecategorylogoposition'.$key;
             if (!empty($theme->settings->$ccsetting)) {
-                switch ($theme->settings->$ccsetting) {
                 /* .ccheaderlogoposition(@courseCategoryKey;
                       @courseCategoryMixinLogoPosition;
                       @courseCategoryMixinPageHeadingHeaderPositionLeft;
                       @courseCategoryMixinPageHeadingHeaderPositionRight) */
+                switch ($theme->settings->$ccsetting) {
                     case 1:
                         $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
                     break;
@@ -1244,7 +1248,7 @@ function theme_campus_get_theme_logo() {
     } else if (file_exists("$thelogofile.ico")) {
         $logodetails['fullname'] = "$thelogofile.ico";
     } else {
-        $logodetails = false; // 'getimagesize()' does not support svg files.
+        $logodetails = false; // Note: 'getimagesize()' does not support svg files.
     }
 
     return $logodetails;
@@ -1277,7 +1281,7 @@ function theme_campus_get_theme_responsive_logo() {
     } else if (file_exists("$thelogofile.ico")) {
         $logodetails['fullname'] = "$thelogofile.ico";
     } else {
-        $logodetails = false; // 'getimagesize()' does not support svg files.
+        $logodetails = false; // Note: 'getimagesize()' does not support svg files.
     }
 
     return $logodetails;
@@ -1310,7 +1314,7 @@ function theme_campus_get_theme_background() {
     } else if (file_exists("$thebackgroundfile.ico")) {
         $backgrounddetails['fullname'] = "$thebackgroundfile.ico";
     } else {
-        $backgrounddetails = false; // 'getimagesize()' does not support svg files.
+        $backgrounddetails = false; // Note: 'getimagesize()' does not support svg files.
     }
 
     return $backgrounddetails;
@@ -1343,7 +1347,7 @@ function theme_campus_get_theme_responsive_background() {
     } else if (file_exists("$thebackgroundfile.ico")) {
         $backgrounddetails['fullname'] = "$thebackgroundfile.ico";
     } else {
-        $backgrounddetails = false; // 'getimagesize()' does not support svg files.
+        $backgrounddetails = false; // Note: 'getimagesize()' does not support svg files.
     }
 
     return $backgrounddetails;
@@ -1372,19 +1376,20 @@ function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forc
         if (!array_key_exists('cacheability', $options)) {
             $options['cacheability'] = 'public';
         }
+        // Note: http://regexpal.com/ useful.
         if ($filearea === 'frontpagelogo') {
             return $theme->setting_file_serve('frontpagelogo', $args, $forcedownload, $options);
         } else if ($filearea === 'frontpagebackgroundimage') {
             return $theme->setting_file_serve('frontpagebackgroundimage', $args, $forcedownload, $options);
-        } else if (preg_match("/^coursecategorylogo[1-9][0-9]*$/", $filearea)) { // http://regexpal.com/ useful.
+        } else if (preg_match("/^coursecategorylogo[1-9][0-9]*$/", $filearea)) {
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
-        } else if (preg_match("/^coursecategorybackgroundimage[1-9][0-9]*$/", $filearea)) { // http://regexpal.com/ useful.
+        } else if (preg_match("/^coursecategorybackgroundimage[1-9][0-9]*$/", $filearea)) {
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
-        } else if (preg_match("/^frontpage[1-9][0-9]*image$/", $filearea)) { // http://regexpal.com/ useful.
+        } else if (preg_match("/^frontpage[1-9][0-9]*image$/", $filearea)) {
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
-        } else if (preg_match("/^coursecategory[1-9][0-9]*_[1-9][0-9]*image$/", $filearea)) { // http://regexpal.com/ useful.
+        } else if (preg_match("/^coursecategory[1-9][0-9]*_[1-9][0-9]*image$/", $filearea)) {
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
-        } else if (preg_match("/^campusfile[1-9][0-9]*$/", $filearea)) { // http://regexpal.com/ useful.
+        } else if (preg_match("/^campusfile[1-9][0-9]*$/", $filearea)) {
             $itemid = \theme_get_revision();
             array_unshift($args, $itemid);
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
@@ -1430,7 +1435,7 @@ function theme_campus_render_slide($i, $settingprefix) {
         $slideimagealt = get_string('slideno', 'theme_campus', array('slide' => $i));
     }
 
-    // Get slide image or fallback to default
+    // Get slide image or fallback to default.
     if (theme_campus_get_setting($settingprefix . $i . 'image')) {
         $slideimage = $PAGE->theme->setting_file_url($settingprefix . $i . 'image', $settingprefix . $i . 'image');
     } else {
@@ -1449,7 +1454,7 @@ function theme_campus_render_slide($i, $settingprefix) {
     $slide .= '<img src="' . $slideimage . '" alt="' . $slideimagealt . '" class="carousel-image"/>';
     $slide .= '</div>';
 
-    // Output title and caption if either is present
+    // Output title and caption if either is present.
     if ($slidetitle || $slidecaption) {
         $slide .= '<div class="carousel-caption">';
         $slide .= '<div class="carousel-caption-inner">';
@@ -1477,8 +1482,10 @@ function theme_campus_render_slide_controls() {
         $faleft = $faright;
         $faright = $temp;
     }
-    $prev = '<a class="carousel-control carousel-control-prev" data-target="#campusCarousel" data-slide="prev" title="'.$previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
-    $next = '<a class="carousel-control carousel-control-next" data-target="#campusCarousel" data-slide="next" title="'.$next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
+    $prev = '<a class="carousel-control carousel-control-prev" data-target="#campusCarousel" data-slide="prev" title="'.
+        $previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
+    $next = '<a class="carousel-control carousel-control-next" data-target="#campusCarousel" data-slide="next" title="'.
+        $next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
 
     return $prev . $next;
 }

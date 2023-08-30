@@ -25,6 +25,9 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 require_once(dirname(__FILE__).'/social.php');
 ?>
 <footer id="page-footer">
@@ -53,4 +56,4 @@ require_once(dirname(__FILE__).'/social.php');
     ?>
 </footer>
 <?php echo $OUTPUT->anti_gravity(); ?>
-<?php echo $OUTPUT->standard_end_of_body_html() ?>
+<?php echo $OUTPUT->standard_end_of_body_html();

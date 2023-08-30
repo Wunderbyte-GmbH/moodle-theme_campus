@@ -25,6 +25,8 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
 ?>
 <header id="page-header" class="row-fluid">
     <div id="page-navbar" class="d-flex flex-wrap col-12">
@@ -35,7 +37,7 @@
     if ($OUTPUT->using_frontpage_header_on_another_page()) {
         if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 2) {
             echo $OUTPUT->get_page_heading();
-        } 
+        }
     }
     echo $html->heading;
     echo $OUTPUT->incourse_settings();

@@ -26,6 +26,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 // Image files.
 $hdlogo = $PAGE->theme->setting_file_url('frontpagelogo', 'frontpagelogo');
 $hdbackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
@@ -39,14 +41,14 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
         $hdlogo = $OUTPUT->image_url($logodetails['name'], 'theme');  // $hdlogo can still be false if 'image_url' fails for some unknown reason.
     }
     if ($backgrounddetails = theme_campus_get_theme_background()) {
-        $hdbackgroundimage = $OUTPUT->image_url($backgrounddetails['name'], 'theme');  // $hdbackgroundimage can still be false if 'image_url' fails for some unknown reason.
+        $hdbackgroundimage = $OUTPUT->image_url($backgrounddetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
     }
     // Use theme responsive versions.
     if ($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) {
-        $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');  // $hdresponsivelogo can still be false if 'image_url' fails for some unknown reason.
+        $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
     }
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
-        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');  // $hdresponsivebackgroundimage can still be false if 'image_url' fails for some unknown reason.
+        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
     }
 }
 // End of fall back section.
@@ -57,7 +59,8 @@ $hdflexlayout = ($hdlayout == 'flexlayout');
 $hdfancynavbar = false;
 
 $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
-if ($hdbackgroundextrapos == 1) { // Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
+// Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
+if ($hdbackgroundextrapos == 1) {
     $hdbackgroundextra = 'right';
 } else {
     $hdbackgroundextra = 'left';

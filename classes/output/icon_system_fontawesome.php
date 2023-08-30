@@ -27,8 +27,6 @@
  */
 namespace theme_campus\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
 
     /**

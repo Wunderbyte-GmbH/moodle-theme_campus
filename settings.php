@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -520,43 +519,13 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Well background setting.
-    /*$name = 'theme_campus/wellbackgroundcolour';
-    $title = get_string('wellbackgroundcolour', 'theme_campus');
-    $description = get_string('wellbackgroundcolourdesc', 'theme_campus');
-    $default = '#FFE7AA';
-    $previewconfig = null;
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);*/
-
-    // Alert info text setting.
-    /*$name = 'theme_campus/alertinfotextcolour';
-    $title = get_string('alertinfotextcolour', 'theme_campus');
-    $description = get_string('alertinfotextcolourdesc', 'theme_campus');
-    $default = '#3A87AD';
-    $previewconfig = null;
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);*/
-
-    // Alert info background setting.
-    /*$name = 'theme_campus/alertinfobackgroundcolour';
-    $title = get_string('alertinfobackgroundcolour', 'theme_campus');
-    $description = get_string('alertinfobackgroundcolourdesc', 'theme_campus');
-    $default = '#D9EDF7';
-    $previewconfig = null;
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);*/
-
     // Must add the page after defining all the settings!
     $settings->add($settingpage);
 
     // Header settings.
     $settingpage = new admin_settingpage('theme_campus_header', get_string('headersettings', 'theme_campus'));
     $settingpage->add(new admin_setting_heading('theme_campus_headerheading', null,
-            format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
+        format_text(get_string('headerheadingdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
     // Invert Navbar to dark background.
     $name = 'theme_campus/invert';
@@ -815,7 +784,7 @@ if ($ADMIN->fulltree) {
         $title = get_string('coursecategorybgcolour', 'theme_campus');
         $description = get_string('coursecategorybgcolourdesc', 'theme_campus', array('categoryname' => $value));
         $default = '#11847D';
-        $previewconfig = NULL;
+        $previewconfig = null;
         $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $settingpage->add($setting);
@@ -1280,7 +1249,7 @@ if ($ADMIN->fulltree) {
     $settingpage->add(new admin_setting_heading('theme_campus_forumheading', null,
             format_text(get_string('forumsettingsdesc', 'theme_campus'), FORMAT_MARKDOWN)));
 
-    // Enable custom template
+    // Enable custom template.
     $name = 'theme_campus/forumcustomtemplate';
     $title = get_string('forumcustomtemplate', 'theme_campus');
     $description = get_string('forumcustomtemplatedesc', 'theme_campus');

@@ -26,9 +26,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 // Note: Need $numberofslides and $settingprefix as preloaded variables to determine what the slideshow shows.
 if (!empty($numberofslides)) {
-    $captionscenter = (theme_campus_get_setting('slidecaptioncentred'))? ' centred' : '';
+    $captionscenter = (theme_campus_get_setting('slidecaptioncentred')) ? ' centred' : '';
     $carouselautoplay = theme_campus_get_setting('carouselautoplay');
     $options = '';
     if ($carouselautoplay == 2) {
@@ -59,4 +61,4 @@ if (!empty($numberofslides)) {
             </div>
         </div>
     </div>
-<?php } ?>
+<?php }
