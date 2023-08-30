@@ -30,7 +30,6 @@ $THEME->doctype = 'html5';
 $THEME->name = 'campus';
 $THEME->parents = array('boost');
 $THEME->sheets = array('font');
-$THEME->sheets[] = 'font-awesome';
 $THEME->sheets[] = 'custom';
 $THEME->prescsscallback = 'theme_campus_get_pre_scss';
 $THEME->scss = function(theme_config $theme) {
