@@ -505,19 +505,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $lastblock = null;
         $zones = array();
         foreach ($blocks as $block) {
-            if (($block->instance->blockname == 'navigation') ||
-                ($block->instance->blockname == 'settings')) {
-                continue;
-            }
             $zones[] = $block->title;
         }
         $output = '';
 
         foreach ($blockcontents as $bc) {
-            if (($bc->attributes['data-block'] == 'navigation') ||
-                ($bc->attributes['data-block'] == 'settings')) {
-                continue;
-            }
             if ($bc instanceof block_contents) {
                 if ($fakeblocksonly && !$bc->is_fake()) {
                     // Skip rendering real blocks if we only want to show fake blocks.

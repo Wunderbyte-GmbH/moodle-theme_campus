@@ -177,3 +177,4 @@ if (core_useragent::is_ie() && !core_useragent::check_ie_version('9.0')) {
 
 $THEME->csspostprocess = 'theme_campus_process_css';
 $THEME->iconsystem = '\\theme_campus\\output\\icon_system_fontawesome';
+$THEME->requiredblocks = '';
