@@ -29,9 +29,7 @@
 function xmldb_theme_campus_upgrade($oldversion = 0) {
 
     // Automatic 'Purge all caches'....
-    if ($oldversion < 2114121700) {
-        purge_all_caches();
-    }
+    purge_all_caches();
 
     return true;
 }
