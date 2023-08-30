@@ -67,7 +67,24 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                         echo $OUTPUT->get_page_heading();
                     }
                 }
+
+                $secondarynavigation = $OUTPUT->secondarynavigation();
+                if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['secondarynavigation']))) {
+                    echo html_writer::start_tag('div', array('class' => 'secondary-navigation d-print-none'));
+                    echo $OUTPUT->render_from_template('core/moremenu', $secondarynavigation['secondarynavigation']);
+                    echo html_writer::end_tag('div');
+                }
+
                 echo $OUTPUT->course_content_header();
+
+                if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['overflow']))) {
+                    echo html_writer::start_tag('div', array('class' => 'container-fluid tertiary-navigation'));
+                    echo html_writer::start_tag('div', array('class' => 'navitem'));
+                    echo $OUTPUT->render_from_template('core/url_select', $secondarynavigation['overflow']);
+                    echo html_writer::end_tag('div');
+                    echo html_writer::end_tag('div');
+                }
+
                 echo $OUTPUT->main_content();
                 echo $OUTPUT->course_content_footer();
                 ?>

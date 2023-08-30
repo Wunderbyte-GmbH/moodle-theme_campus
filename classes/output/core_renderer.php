@@ -159,6 +159,27 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
+     * Gets the secondary navigation if any.
+     *
+     * @return null or an array containing the secondary navigation and if there, overflow entries.
+     */
+    public function secondarynavigation() {
+        $retr = null;
+
+        if ($this->page->has_secondary_navigation()) {
+            $tablistnav = $this->page->has_tablist_secondary_navigation();
+            $moremenu = new \core\navigation\output\more_menu($this->page->secondarynav, 'nav-tabs', true, $tablistnav);
+            $retr['secondarynavigation'] = $moremenu->export_for_template($this);
+            $overflowdata = $this->page->secondarynav->get_overflow_menu_data();
+            if (!is_null($overflowdata)) {
+                $retr['overflow'] = $overflowdata->export_for_template($this);
+            }
+        }
+
+        return $retr;
+    }
+
+    /**
      * Returns HTML to show the course settings in the course.
      *
      * @param moodle_url $url The URL + params to send through when clicking the button
