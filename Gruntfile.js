@@ -40,8 +40,9 @@
  *                                 when your theme is not in the
  *                                 standard location.
  *
- * grunt amd     Create the Asynchronous Module Definition JavaScript files.  See: MDL-49046.
- *               Done here as core Gruntfile.js currently *nix only.
+ * grunt amd     Use core, e.g. grunt amd --root=theme/campus
+ *               If on Windows, then set 'linebreak-style' to 'off' in root '.eslintrc'
+ *               as Git will handle this for us.
  *
  * grunt svg                 Change the colour of the SVGs in pix_core by
  *                           text replacing #999999 with a new hex color.
@@ -211,27 +212,6 @@ module.exports = function(grunt) {
                     ext: '.svg'           // Destination file paths will have this extension.
                 }]
             }
-        },
-        jshint: {
-            options: {jshintrc: moodleroot + '/.jshintrc'},
-            files: ['**/amd/src/*.js']
-        },
-        uglify: {
-            dynamic_mappings: {
-                files: grunt.file.expandMapping(
-                    ['**/src/*.js', '!**/node_modules/**'],
-                    '',
-                    {
-                        cwd: PWD,
-                        rename: function(destBase, destPath) {
-                            destPath = destPath.replace('src', 'build');
-                            destPath = destPath.replace('.js', '.min.js');
-                            destPath = path.resolve(PWD, destPath);
-                            return destPath;
-                        }
-                    }
-                )
-            }
         }
     });
 
@@ -241,15 +221,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-svgmin');
 
-    // Load core tasks.
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-
     // Register tasks.
     grunt.registerTask("decache", ["exec:decache"]);
 
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins", "copy:svg_fp"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins", "replace:svg_colours_fp"]);
     grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);
-    grunt.registerTask("amd", ["jshint", "uglify"]);
 };
