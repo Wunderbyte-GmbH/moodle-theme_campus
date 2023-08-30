@@ -3,6 +3,7 @@ Version Information
 
 Version 401.0.1 - TBR
 --------------------------
+  1. First version for Moodle 4.1.
 
 TBD - Version 3.9.0.2
 ---------------------
