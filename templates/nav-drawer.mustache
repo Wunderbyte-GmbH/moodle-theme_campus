@@ -10,37 +10,9 @@
         {{{ sidenavfakeblocks }}}
     </section>
     {{/hasnavfakeblocks}}
-    {{> theme_boost/flat_navigation }}
     {{#hasnavblocks}}
     <section class="d-print-none mt-1" aria-label="{{#str}}blocks{{/str}}">
         {{{ sidenavblocks }}}
     </section>
     {{/hasnavblocks}}
 </div>
-{{#js}}
-require(['jquery', 'core/log'], function($, log) {
-    "use strict"; // jshint ;_;
-
-    log.debug('Campus Collapse Flatnav AMD');
-
-    $(document).ready(function($) {
-        $('[data-parent-key="mycourses"]').each(function() {
-                $(this).prop('style.display', 'none');
-            }
-        );
-        $('[data-key="mycourses"]').click(function() {
-            $('[data-parent-key="mycourses"]').slideToggle('slow', function() {
-                if (($(this).prop('style.display') == 'block')) {
-                    $(this).prop('style.display', 'none');
-                } else {
-                    $(this).attr('style', 'display: block;');
-                    $(this).prop('style.display', 'block');
-                }
-            });
-        });
-        log.debug('Campus Collapse Flatnav AMD init');
-    });
-
-    return {}
-});
-{{/js}}

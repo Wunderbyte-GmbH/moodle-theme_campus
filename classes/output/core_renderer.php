@@ -443,10 +443,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $lastblock = null;
         $zones = array();
         foreach ($blockcontents as $bc) {
-            if (($bc->attributes['data-block'] == 'navigation') ||
-                ($bc->attributes['data-block'] == 'settings')) {
-                continue;
-            }
             if ($bc instanceof block_contents) {
                 $zones[] = $bc->title; // MDL-64818.
             }
@@ -454,10 +450,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $output = '';
 
         foreach ($blockcontents as $bc) {
-            if (($bc->attributes['data-block'] == 'navigation') ||
-                ($bc->attributes['data-block'] == 'settings')) {
-                continue;
-            }
             if ($bc instanceof block_contents) {
                 if ($fakeblock) {
                     if ($bc->attributes['data-block'] == '_fake') {
