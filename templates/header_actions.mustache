@@ -1,0 +1,17 @@
+{{!
+    This file is part of the Campus theme for Moodle
+}}
+{{!
+    @template theme_campus/header_actions
+
+    Render the header actions as a part of the header.
+
+    Example context (json): {
+        "headeractions": []
+    }
+}}
+<div class="header-actions-container d-inline-block ml-auto" data-region="header-actions-container">
+    {{#headeractions}}
+    <div class="header-action ml-2">{{{.}}}</div>
+    {{/headeractions}}
+</div>

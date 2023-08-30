@@ -67,6 +67,12 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                         echo $OUTPUT->get_page_heading();
                     }
                 }
+                $headeractions = $PAGE->get_header_actions();
+                if (!empty($headeractions)) {
+                    $context = new stdClass;
+                    $context->headeractions = $headeractions;
+                    echo $OUTPUT->render_from_template('theme_campus/header_actions', $context);
+                }
 
                 $secondarynavigation = $OUTPUT->secondarynavigation();
                 if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['secondarynavigation']))) {
