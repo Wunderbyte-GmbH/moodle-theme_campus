@@ -126,7 +126,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $output = parent::navbar_plugin_output();
 
         if (!empty($output)) {
-            $output = '<li class="nav-item">'.$output.'</li>';
+            $output = '<li class="nav-item d-flex">'.$output.'</li>';
         }
 
         return $output;

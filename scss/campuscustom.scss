@@ -1178,9 +1178,6 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 // Navbar.
 .navbar .nav.pull-right {
     margin: 0;
-    .usermenu {
-        margin: -15px 10px 0;
-    }
 }
 
 @media (max-width: $navbarCollapseWidth) {
