@@ -126,7 +126,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $output = parent::navbar_plugin_output();
 
         if (!empty($output)) {
-            $output = '<li class="nav-item d-flex">'.$output.'</li>';
+            $output = '<li class="nav-item d-flex align-items-center">'.$output.'</li>';
         }
 
         return $output;
@@ -664,7 +664,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             ($this->page->pagelayout == 'admin')) { // Go to bottom.
             $icon = html_writer::start_tag('span', array('class' => 'fa fa-arrow-circle-o-down slgotobottom')) . html_writer::end_tag('span');
             $gotobottom = html_writer::tag('li', $icon,
-                array('class' => 'nav-item gotoBottom', 'title' => get_string('gotobottom', 'theme_campus')));
+                array('class' => 'nav-item d-flex align-items-center gotoBottom', 'title' => get_string('gotobottom', 'theme_campus')));
 
         }
         return $gotobottom;

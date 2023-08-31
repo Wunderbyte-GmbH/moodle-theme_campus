@@ -70,8 +70,7 @@ body {
 }
 
 // Goto bottom and context menu.
-.nav-item.context-menu,
-.nav-item.gotoBottom {
+.nav-item.context-menu {
     padding: 10px 7px 0;
 }
 
@@ -415,11 +414,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
 
     // Navbar brand.
     .brand {
-        // Vertically center the text given $navbarHeight.
-        //line-height: $line-height-base + 4;
-        //margin: ((($navbarHeight - $line-height-base) / 2) - 2) 0 ((($navbarHeight - $line-height-base) / 2) - 2);
-        //max-height: $line-height-base + 4;
         color: $navbarText;
+        margin-bottom: 0;
         max-width: $navbarPageHeadingMax;
         padding: 0 5px 0 5px;
         overflow: hidden;

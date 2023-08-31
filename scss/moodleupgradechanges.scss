@@ -50,17 +50,16 @@
 .navbar {
     .popover-region-toggle {
         &::after {
-            bottom: -6px;
-            right: -3px;
+            bottom: -8px;
+            right: 15px;
         }
         &::before {
             bottom: -7px;
-            right: -4px;
+            right: 14px;
         }
     }
 
     .popover-region-container {
-        right: -15px;
         top: 2.4rem;
     }
 }

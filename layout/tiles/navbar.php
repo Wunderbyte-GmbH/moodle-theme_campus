@@ -60,8 +60,7 @@ if (!empty($hdfancynavbar)) {
             echo html_writer::tag('li', $settingsmenu, array('class' => 'nav-item context-menu'));
             if ($logininfoheader) { ?>
                 <li class="nav-item d-flex"><?php echo $OUTPUT->user_menu(); ?></li>
-            <?php }
-            //echo $OUTPUT->navbar_button(); ?>
+            <?php } ?>
             </ul>
         </div>
     </nav>
