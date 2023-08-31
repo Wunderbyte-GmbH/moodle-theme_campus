@@ -17,8 +17,6 @@
 /**
  * Campus theme with the underlying Bootstrap theme.
  *
- * @package    theme
- * @subpackage campus
  * @copyright  &copy; 2015-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2015-onwards Work undertaken for David Bogner of Edulabs.org.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
@@ -27,14 +25,15 @@
  */
 
 /* jshint ignore:start */
-define(['jquery'], function($) {
+define(['jquery', 'core/log'], function($, log) {
 
-  "use strict"; // jshint ;_;
+    "use strict"; // jshint ;_;
 
-  console.log('Campus custom AMD');
+    log.debug('Campus custom AMD');
 
-  $(document).ready(function() {
-      $('\\#page-mod-forum-view .forumheaderlist thead').after('<div class="forumblank"></div>');  // Taken from David Bogner's Squared theme.
-  });
+    $(document).ready(function() {
+        // Taken from David Bogner's Squared theme.
+        $('\\#page-mod-forum-view .forumheaderlist thead').after('<div class="forumblank"></div>');
+    });
 });
 /* jshint ignore:end */

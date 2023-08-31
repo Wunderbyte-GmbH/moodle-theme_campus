@@ -23,6 +23,6 @@ define(['jquery', 'core/log'], function($, log) {
         log.debug('Campus Collapse Block AMD init');
     });
 
-    return {}
+    return {};
 });
 /* jshint ignore:end */
