@@ -161,7 +161,7 @@ textarea, .uneditable-input {
 
 .navbar-text a,
 .navbar .nav > li > a,
-a.dropdown-toggle {
+.navbar .nav-item a.dropdown-toggle {
   color: $navbarLinkColor;
   // Hover/focus state
   &:hover,

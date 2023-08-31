@@ -57,7 +57,7 @@ if (!empty($hdfancynavbar)) {
             } else {
                 $settingsmenu = $OUTPUT->context_header_settings_menu();
             }
-            echo html_writer::tag('li', $settingsmenu, array('class' => 'nav-item context-menu'));
+            echo html_writer::tag('li', $settingsmenu, array('class' => 'nav-item d-flex align-items-center context-menu'));
             if ($logininfoheader) { ?>
                 <li class="nav-item d-flex"><?php echo $OUTPUT->user_menu(); ?></li>
             <?php } ?>
