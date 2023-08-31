@@ -173,10 +173,6 @@ $THEME->javascripts_footer = array(
     'campus'
 );
 
-if (core_useragent::is_ie() && !core_useragent::check_ie_version('9.0')) {
-    $THEME->javascripts[] = 'html5shiv';
-}
-
 $THEME->csspostprocess = 'theme_campus_process_css';
 $THEME->iconsystem = '\\theme_campus\\output\\icon_system_fontawesome';
 $THEME->requiredblocks = '';
