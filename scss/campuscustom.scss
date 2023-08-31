@@ -1212,7 +1212,8 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     a {
         color: $link-color;
     }
-    .helplink, .logininfo, {
+    .helplink,
+    .logininfo, {
         display: inline;
     }
     .helplink {
@@ -1229,6 +1230,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     }
     .helplink, .performanceinfo {
         margin: 0;
+    }
+    .footerhtml {
+        display: grid;
+        text-align: center;
     }
 }
 

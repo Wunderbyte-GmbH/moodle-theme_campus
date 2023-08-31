@@ -40,7 +40,7 @@ require_once(dirname(__FILE__).'/social.php');
     }
     ?>
     <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
-    <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
+    <div class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></div>
     <?php
     echo $html->footnote;
     ?>
@@ -52,7 +52,9 @@ require_once(dirname(__FILE__).'/social.php');
     if ($logininfofooter) {
         echo $OUTPUT->login_info();
     }
+    echo '<div class="footerhtml">';
     echo $OUTPUT->standard_footer_html();
+    echo '</div>';
     ?>
 </footer>
 <?php echo $OUTPUT->anti_gravity(); ?>
