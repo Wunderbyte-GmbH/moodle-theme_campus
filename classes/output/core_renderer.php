@@ -770,7 +770,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             } else {
                 $username = $fullname;
             }
-            if (is_mnet_remote_user($USER) and $idprovider = $DB->get_record('mnet_host',
+            if (is_mnet_remote_user($USER) && $idprovider = $DB->get_record('mnet_host',
                     array('id' => $USER->mnethostid))) {
                 if ($withlinks) {
                     $username .= " from <a href=\"{$idprovider->wwwroot}\">{$idprovider->name}</a>";
@@ -822,7 +822,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                     if ($count = \user_count_login_failures($USER)) {
                         $loggedinas .= '<div class="loginfailures">';
                         $loggedinas .= get_string('failedloginattempts', '', array('attempts' => $count));
-                        if (file_exists("$CFG->dirroot/report/log/index.php") and has_capability('report/log:view', context_system::instance())) {
+                        if (file_exists("$CFG->dirroot/report/log/index.php") && has_capability('report/log:view', context_system::instance())) {
                             $loggedinas .= ' ('.html_writer::link(new moodle_url('/report/log/index.php', array('chooselog' => 1,
                                 'id' => 0 , 'modid' => 'site_errors')), get_string('logs')).')';
                         }
