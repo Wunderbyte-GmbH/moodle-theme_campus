@@ -31,7 +31,6 @@ defined('MOODLE_INTERNAL') || die();
 <header id="page-header" class="row-fluid">
     <div id="page-navbar" class="d-flex flex-wrap col-12">
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-        <div class="breadcrumb-button ml-auto d-flex"><?php echo $OUTPUT->page_heading_button(); ?></div>
     </div>
     <?php
     if ($OUTPUT->using_frontpage_header_on_another_page()) {

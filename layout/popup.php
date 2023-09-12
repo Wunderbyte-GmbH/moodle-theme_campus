@@ -65,6 +65,7 @@ if ($devicetype !== 'mobile' && $devicetype !== 'tablet') {
                 <?php echo $OUTPUT->custom_menu(); ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
+                    <li><?php echo $OUTPUT->edit_switch(); ?></li>
                     <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
                 </ul>
             </div>
@@ -77,7 +78,6 @@ if ($devicetype !== 'mobile' && $devicetype !== 'tablet') {
     <header id="page-header" class="clearfix">
         <div id="page-navbar" class="clearfix">
             <div class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></div>
-            <nav class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></nav>
         </div>
         <?php echo $OUTPUT->page_heading(); ?>
         <div id="course-header">
