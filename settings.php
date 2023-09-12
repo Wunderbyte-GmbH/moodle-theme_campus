@@ -110,6 +110,21 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
+    // Number of course blocks.
+    $name = 'theme_campus/numcourseblocks';
+    $title = get_string('numcourseblocks', 'theme_campus');
+    $description = get_string('numcourseblocksdesc', 'theme_campus');
+    $choices = array(
+        1 => new lang_string('one', 'theme_campus'),
+        2 => new lang_string('two', 'theme_campus'),
+        3 => new lang_string('three', 'theme_campus'),
+        4 => new lang_string('four', 'theme_campus')
+    );
+    $default = 2;
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    // No CSS change, so no need to reset caches.
+    $settingpage->add($setting);
+
     // Custom CSS.
     $name = 'theme_campus/customcss';
     $title = get_string('customcss', 'theme_campus');

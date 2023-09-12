@@ -56,6 +56,8 @@ $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 $empty = array();
 $siteregions = array('side-nav', 'footer');
+$courseregions = $siteregions;
+$courseregions[] = 'course';
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
@@ -72,8 +74,8 @@ $THEME->layouts = array(
     ),
     // Main course page.
     'course' => array(
-        'file' => 'columns1.php',
-        'regions' => $siteregions,
+        'file' => 'course1.php',
+        'regions' => $courseregions,
         'defaultregion' => 'side-nav',
         'options' => array('langmenu' => true)
     ),

@@ -53,7 +53,11 @@ $string['configtitle'] = 'Campus';
 $string['pluginname'] = 'Campus';
 
 $string['region-side-nav'] = 'Nav';
+$string['region-course'] = 'Course';
 $string['region-footer'] = 'Footer';
+$string['region-side-nav-region'] = 'Nav region';
+$string['region-course-region'] = 'Course region';
+$string['region-footer-region'] = 'Footer region';
 
 // Draft or published.
 $string['draft'] = 'Draft';
@@ -317,6 +321,8 @@ $string['incoursesettingsswitchtorolesettingjustmenu'] = 'Just in the user menu'
 $string['incoursesettingsswitchtorolesettingjustcourse'] = 'Just in the course settings';
 $string['incoursesettingsswitchtorolesettingboth'] = 'In both places: in the user menu and in the course settings';
 $string['incoursesettingsswitchtorolepositionsetting_desc'] = 'With this setting you can choose the place where the information to which role a user has switched is being displayed.  If set to \'Just in the user menu\' (default value), the role information will be displayed right beneath the user\'s name in the user menu (like in theme Boost).  If set to \'Just in the course settings\', this information - together with a link to switch back - will be displayed beneath the course, as this functionality is course related.  If set to \'Both in the user menu and in the course settings\' it will be shown in both places.';
+$string['numcourseblocks'] = 'Maximum number of blocks per row in the course';
+$string['numcourseblocksdesc'] = 'The maximum blocks per row in the course';
 $string['switchroleto'] = 'Switch role to';
 
 // Frontpage header.

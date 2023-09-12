@@ -410,7 +410,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
         } else {
             $content = '';
         }
-        return html_writer::tag($tag, $content, $attributes);
+
+        $title = '';
+        if ($editing) {
+            $title = html_writer::start_tag('div', array('class' => 'row'));
+            $title .= html_writer::start_tag('span', array('class' => 'regionname col-12 text-center'));
+            $title .= html_writer::start_tag('span');
+            $title .= get_string('region-'.$region.'-region', 'theme_campus');
+            $title .= html_writer::end_tag('span');
+            $title .= html_writer::end_tag('div');
+        }
+
+        return $title.html_writer::tag($tag, $content, $attributes);
     }
 
     // Nav drawer split blocks.
@@ -444,7 +455,17 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $output = html_writer::tag($tag, $content, $attributes);
 
-        return $output;
+        $title = '';
+        if ((!$fakeblock) && ($this->page->user_is_editing())) {
+            $title = html_writer::start_tag('div', array('class' => 'row'));
+            $title .= html_writer::start_tag('span', array('class' => 'regionname col-12 text-center'));
+            $title .= html_writer::start_tag('span');
+            $title .= get_string('region-'.$region.'-region', 'theme_campus');
+            $title .= html_writer::end_tag('span');
+            $title .= html_writer::end_tag('div');
+        }
+
+        return $title.$output;
     }
 
     /**
