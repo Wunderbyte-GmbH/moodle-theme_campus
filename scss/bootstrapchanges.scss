@@ -161,11 +161,14 @@ textarea, .uneditable-input {
 
 .navbar-text a,
 .navbar .nav > li > a,
-.navbar .nav-item a.dropdown-toggle {
+.navbar .nav-item a.nav-link,
+.navbar .nav-item.campussettingsmenu a.dropdown-toggle,
+.navbar .editmode-switch-form label {
   color: $navbarLinkColor;
   // Hover/focus state
   &:hover,
   &:focus {
+    background-color: transparent;
     color: $navbarLinkColor;
   }
 }

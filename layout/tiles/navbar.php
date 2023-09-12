@@ -34,10 +34,19 @@ if (!empty($hdfancynavbar)) {
     $navbarclasses .= ' iamfancy';
 }
 
+$primary = new core\navigation\output\primary($PAGE);
+$renderer = $PAGE->get_renderer('core');
+$primarymenu = $primary->export_for_template($renderer);
+
 $navbarcontext = new stdClass;
 $navbarcontext->output = $OUTPUT;
 $navbarcontext->logininfoheader = $logininfoheader;
 $navbarcontext->navbarclasses = $navbarclasses;
+$navbarcontext->primarymoremenu = $primarymenu['moremenu'];
+$navbarcontext->usermenu = $primarymenu['user'];
+$navbarcontext->mobileprimarynav = $primarymenu['mobileprimarynav'];
+$navbarcontext->langmenu = $primarymenu['lang'];
+
 if (\theme_campus\toolbox::has_incourse_settings()) {
     $actionsmenustr = get_string('actionsmenu');
     $settingsmenu = '<div id="campus-course-settings-toggle" type="button" data-toggle="modal" data-target="#campus-course-settings">';
