@@ -57,7 +57,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
     <div id="page-content" class="row-fluid">
         <section id="region-main" class="col-12">
-            <?php 
+            <?php
             $secondarynavigation = $OUTPUT->secondarynavigation();
             if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['secondarynavigation']))) {
                 echo html_writer::start_tag('div', array('class' => 'secondary-navigation d-print-none'));

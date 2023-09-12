@@ -59,7 +59,7 @@ echo $OUTPUT->doctype() ?>
 
     <div id="page-content" class="row-fluid">
         <section class="col-12">
-            <?php 
+            <?php
             $secondarynavigation = $OUTPUT->secondarynavigation();
             if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['secondarynavigation']))) {
                 echo html_writer::start_tag('div', array('class' => 'secondary-navigation d-print-none'));
