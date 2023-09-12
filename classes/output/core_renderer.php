@@ -1056,12 +1056,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
     }
 
-    public function render_flatnav() {
+    public function render_nav() {
         $output = '';
 
         if ($this->page->blocks->is_known_region('side-nav')) {
-            $nav = $this->page->flatnav;
-
             $blocksnavfakehtml = $this->splitblocks('side-nav', true);
             $hasnavfakeblocks = strpos($blocksnavfakehtml, 'data-block=') !== false;
             $blocksnavhtml = $this->splitblocks('side-nav', false);
@@ -1069,8 +1067,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
             $templatecontext = [
                 'navdraweropen' => $this->navdraweropen,
-                'flatnavigation' => $nav,
-                'firstcollectionlabel' => $nav->get_collectionlabel(),
                 'sidenavfakeblocks' => $blocksnavfakehtml,
                 'hasnavfakeblocks' => $hasnavfakeblocks,
                 'sidenavblocks' => $blocksnavhtml,
@@ -1083,7 +1079,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $output;
     }
 
-    public function render_flatnav_button() {
+    public function render_nav_button() {
         $templatecontext = [
             'navdraweropen' => $this->navdraweropen
         ];

@@ -99,4 +99,4 @@ echo '</div></div>';
 if ((!$hdbackgroundimage) || (!$hdfancynavbar)) {
     include(dirname(__FILE__).'/navbar.php');
 }
-echo $OUTPUT->render_flatnav();
+echo $OUTPUT->render_nav();
