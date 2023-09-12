@@ -59,7 +59,16 @@ echo $OUTPUT->doctype() ?>
 
     <div id="page-content" class="row-fluid">
         <section class="col-12">
-            <?php echo $OUTPUT->main_content(); ?>
+            <?php 
+            $secondarynavigation = $OUTPUT->secondarynavigation();
+            if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['secondarynavigation']))) {
+                echo html_writer::start_tag('div', array('class' => 'secondary-navigation d-print-none'));
+                echo $OUTPUT->render_from_template('core/moremenu', $secondarynavigation['secondarynavigation']);
+                echo html_writer::end_tag('div');
+            }
+
+            echo $OUTPUT->main_content();
+            ?>
         </section>
     </div>
 

@@ -100,6 +100,12 @@ $THEME->layouts = array(
         'regions' => $siteregions,
         'defaultregion' => 'side-nav'
     ),
+    'mycourses' => array(
+        'file' => 'columns1.php',
+        'regions' => $siteregions,
+        'defaultregion' => 'side-nav',
+        'options' => array('langmenu' => true)
+    ),
     // My dashboard page.
     'mydashboard' => array(
         'file' => 'columns1.php',
