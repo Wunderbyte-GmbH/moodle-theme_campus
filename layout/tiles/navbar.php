@@ -33,35 +33,19 @@ $navbarclasses = $html->navbarclass;
 if (!empty($hdfancynavbar)) {
     $navbarclasses .= ' iamfancy';
 }
-?>
-<header>
-    <nav class="campusnavbar navbar navbar-light navbar-static-top<?php echo $navbarclasses ?>">
-        <div class="campusnavbarcontainer">
-            <?php
-                echo $OUTPUT->render_flatnav_button();
-                echo $OUTPUT->page_heading();
-            ?>
-            <ul class="campusnav nav nav-collapse collapse ml-auto">
-                <?php echo $OUTPUT->custom_menu(); ?>
-                <li><?php echo $OUTPUT->search_box(); ?></li>
-                <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-            </ul>
-            <ul class="nav pull-right">
-            <?php echo $OUTPUT->gotobottom_menu();
-            echo $OUTPUT->navbar_plugin_output();
-            if (\theme_campus\toolbox::has_incourse_settings()) {
-                $actionsmenustr = get_string('actionsmenu');
-                $settingsmenu = '<div id="campus-course-settings-toggle" type="button" data-toggle="modal" data-target="#campus-course-settings">';
-                $settingsmenu .= '<i class="icon fa fa-cog fa-fw" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
-                $settingsmenu .= '<span class="sr-only">'.$actionsmenustr.'</span></i></div>';
-            } else {
-                $settingsmenu = $OUTPUT->context_header_settings_menu();
-            }
-            echo html_writer::tag('li', $settingsmenu, array('class' => 'nav-item d-flex align-items-center context-menu'));
-            if ($logininfoheader) { ?>
-                <li class="nav-item d-flex"><?php echo $OUTPUT->user_menu(); ?></li>
-            <?php } ?>
-            </ul>
-        </div>
-    </nav>
-</header>
+
+$navbarcontext = new stdClass;
+$navbarcontext->output = $OUTPUT;
+$navbarcontext->logininfoheader = $logininfoheader;
+$navbarcontext->navbarclasses = $navbarclasses;
+if (\theme_campus\toolbox::has_incourse_settings()) {
+    $actionsmenustr = get_string('actionsmenu');
+    $settingsmenu = '<div id="campus-course-settings-toggle" type="button" data-toggle="modal" data-target="#campus-course-settings">';
+    $settingsmenu .= '<i class="icon fa fa-cog fa-fw" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
+    $settingsmenu .= '<span class="sr-only">'.$actionsmenustr.'</span></i></div>';
+} else {
+    $settingsmenu = $OUTPUT->context_header_settings_menu();
+}
+$navbarcontext->settingsmenu = $settingsmenu;
+
+echo $OUTPUT->render_from_template('theme_campus/navbar', $navbarcontext);

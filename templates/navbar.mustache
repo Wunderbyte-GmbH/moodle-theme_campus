@@ -1,0 +1,26 @@
+{{!
+    @template theme_campus/navbar
+
+
+    Example context (json): {}
+}}
+<header>
+    <nav class="campusnavbar navbar navbar-light navbar-static-top{{#navbarclasses}} {{navbarclasses}}{{/navbarclasses}}">
+        <div class="campusnavbarcontainer">
+            {{{output.render_flatnav_button}}}
+            <ul class="campusnav nav nav-collapse collapse ml-auto">
+                {{{output.custom_menu}}}
+                <li>{{{output.search_box}}}</li>
+                <li>{{{output.page_heading_menu}}}</li>
+            </ul>
+            <ul class="nav pull-right">
+            {{{output.gotobottom_menu}}}
+            {{{output.navbar_plugin_output}}}
+            <li class="nav-item d-flex align-items-center context-menu">{{{settingsmenu}}}</li>
+            {{#logininfoheader}}
+                <li class="nav-item d-flex">{{{output.user_menu}}}</li>
+            {{/logininfoheader}}
+            </ul>
+        </div>
+    </nav>
+</header>
