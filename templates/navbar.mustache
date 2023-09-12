@@ -5,31 +5,6 @@
     Example context (json): {}
 }}
 <header>
-    <nav class="campusnavbar navbar navbar-light navbar-static-top{{#navbarclasses}} {{navbarclasses}}{{/navbarclasses}}">
-        <div class="campusnavbarcontainer">
-            <ul class="campusnav nav nav-collapse collapse ml-auto">
-                {{{output.custom_menu}}}
-                <li>{{{output.search_box}}}</li>
-                <li>{{{output.page_heading_menu}}}</li>
-            </ul>
-            <ul class="nav pull-right">
-            {{{output.gotobottom_menu}}}
-            {{{output.navbar_plugin_output}}}
-            <li class="nav-item d-flex align-items-center context-menu">{{{settingsmenu}}}</li>
-            {{{ output.edit_switch }}}
-            {{#logininfoheader}}
-            <li class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
-            {{#usermenu}}
-                {{> core/user_menu }}
-            {{/usermenu}}
-            </li>
-            {{/logininfoheader}}
-            </ul>
-        </div>
-    </nav>
-    {{> theme_boost/primary-drawer-mobile }}
-</header>
-<header>
     <nav class="campusnavbar navbar navbar-light navbar-static-top{{#navbarclasses}} {{navbarclasses}}{{/navbarclasses}} navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
         {{{output.render_flatnav_button}}}
         {{{output.page_heading}}}
