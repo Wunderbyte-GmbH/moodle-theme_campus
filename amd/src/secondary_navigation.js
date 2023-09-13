@@ -7,7 +7,7 @@ define(['jquery', 'core/log'], function($, log) {
 
     return {
         init: function() {
-            $(document).ready(function($) {
+            $(document).ready(function() {
                 log.debug('Campus Secondary Navigation AMD init');
                 var secondarynavigation = document.getElementById("secondary-navigation");
 
@@ -16,10 +16,13 @@ define(['jquery', 'core/log'], function($, log) {
                     var currentSY = window.scrollY;
                     var newSY = currentSY;
                     var navbar = document.getElementById("campusnavbar");
-                    var ntop = navbar.getBoundingClientRect().top;
-                    var nheight = navbar.getBoundingClientRect().height;
+                    var ntop = 0;
+                    var nheight = 0;
+                    if (navbar !== null) {
+                        ntop = navbar.getBoundingClientRect().top;
+                        nheight = navbar.getBoundingClientRect().height;
+                    }
 
-                    //var snheight = secondarynavigation.getBoundingClientRect().height;
                     var sntop = secondarynavigation.getBoundingClientRect().top;
                     var snft = false;
                     log.debug('Wini ' + currentSY);
