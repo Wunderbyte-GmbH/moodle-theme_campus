@@ -56,7 +56,6 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
     ?>
 
     <div id="page-content" class="row-fluid">
-        <?php echo $OUTPUT->campusblocks('course', '', 'aside', $PAGE->theme->settings->numcourseblocks); ?>
         <div id="region-main" class="col-12">
             <?php require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php'); ?>
             <section id="region-main-campus">
@@ -100,6 +99,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
                     echo $OUTPUT->render_from_template('core/activity_header', $headercontent);
                 }
 
+                echo $OUTPUT->campusblocks('course', '', 'aside', $PAGE->theme->settings->numcourseblocks);
                 echo $OUTPUT->main_content();
                 echo $OUTPUT->course_content_footer();
                 ?>
