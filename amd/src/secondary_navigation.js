@@ -12,20 +12,54 @@ define(['jquery', 'core/log'], function($, log) {
                 var secondarynavigation = document.getElementById("secondary-navigation");
 
                 if (secondarynavigation !== null) {
-                    var page = document.getElementById("page");
-                    var pageScrollTop = page.scrollTop;
+                    var down = true;
+                    var currentSY = window.scrollY;
+                    var newSY = currentSY;
                     var navbar = document.getElementById("campusnavbar");
                     var ntop = navbar.getBoundingClientRect().top;
                     var nheight = navbar.getBoundingClientRect().height;
 
-                    var snheight = secondarynavigation.getBoundingClientRect().height;
+                    //var snheight = secondarynavigation.getBoundingClientRect().height;
                     var sntop = secondarynavigation.getBoundingClientRect().top;
+                    var snft = false;
+                    log.debug('Wini ' + currentSY);
+                    log.debug('SNi  ' + sntop);
+                    var snfromtop = (currentSY + sntop);// + secondarynavigation.getBoundingClientRect().height;
+                    if (ntop != 0) {
+                        snfromtop = snfromtop - navbar.getBoundingClientRect().height;
+                    }
+                    log.debug('SNft ' + snfromtop);
 
                     var makeSecondaryNavigationSticky = function() {
-                        log.debug('Doc  ' + document.scrollY);
+                        newSY = window.scrollY;
+                        if (newSY > currentSY) {
+                            down = true;
+                        } else {
+                            down = false;
+                        }
+                        currentSY = newSY;
+
+                        if (currentSY > snfromtop) {
+                            if (down) {
+                                if (snft) {
+                                    secondarynavigation.classList.remove("fixed-top");
+                                    snft = false;
+                                }
+                            } else {
+                                if (!snft) {
+                                    secondarynavigation.classList.add("fixed-top");
+                                    secondarynavigation.style.top = nheight + 'px';
+                                    snft = true;
+                                }
+                            }
+                        } else {
+                            if (snft) {
+                                secondarynavigation.classList.remove("fixed-top");
+                                snft = false;
+                            }
+                        }
+
                         log.debug('Win  ' + window.scrollY);
-                        log.debug('Body ' + document.body.scrollTop);
-                        log.debug('Page ' + page.scrollTop);
                         sntop = secondarynavigation.getBoundingClientRect().top;
                         log.debug('SN   ' + sntop);
                         ntop = navbar.getBoundingClientRect().top;
@@ -34,8 +68,6 @@ define(['jquery', 'core/log'], function($, log) {
                         log.debug('NavH ' + nheight);
                     };
 
-                    //page.onscroll = function() {makeSecondaryNavigationSticky();};
-                    //document.body.onscroll = function() {makeSecondaryNavigationSticky();};
                     document.onscroll = function() {makeSecondaryNavigationSticky();};
 
                 } else {
