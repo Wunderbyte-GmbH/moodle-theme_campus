@@ -150,6 +150,11 @@ textarea, .uneditable-input {
 }
 
 .navbar {
+    &.fixed-top {
+        height: auto;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+    }
     &.fixed-top .nav-link,
     .nav-link {
         align-items: center;

@@ -411,9 +411,10 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     // Navbar brand.
     .brand {
         color: $navbarText;
-        margin-bottom: 0;
+        margin-bottom: auto;
+        margin-top: auto;
         max-width: $navbarPageHeadingMax;
-        padding: 0 5px 0 5px;
+        padding: 0 5px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;

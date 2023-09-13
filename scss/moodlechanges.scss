@@ -550,6 +550,17 @@ table.generaltable {
     white-space: pre-line; // http://www.w3schools.com/cssref/pr_text_white-space.asp.
 }
 
+// primarynavigation
+// --------------------------------------------------
+.primary-navigation {
+    .navigation {
+        height: auto;
+        .nav-link {
+            height: auto;
+        }
+    }
+}
+
 // question.less
 // --------------------------------------------------
 //.que .formulation {
