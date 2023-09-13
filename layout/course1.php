@@ -78,7 +78,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
                 $secondarynavigation = $OUTPUT->secondarynavigation();
                 if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['secondarynavigation']))) {
-                    echo html_writer::start_tag('div', array('class' => 'secondary-navigation d-print-none'));
+                    echo html_writer::start_tag('div', array('id' => 'secondary-navigation', 'class' => 'secondary-navigation d-print-none'));
                     echo $OUTPUT->render_from_template('core/moremenu', $secondarynavigation['secondarynavigation']);
                     echo html_writer::end_tag('div');
                 }

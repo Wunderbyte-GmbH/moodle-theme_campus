@@ -172,7 +172,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             if (!is_null($overflowdata)) {
                 $retr['overflow'] = $overflowdata->export_for_template($this);
             }
-            if ((!empty($retr['secondarynavigation'])) || (!empty($retr['overflow']))) {
+            if (!empty($retr['secondarynavigation'])) {
                 $this->page->requires->js_call_amd('theme_campus/secondary_navigation', 'init');
             }
         }
