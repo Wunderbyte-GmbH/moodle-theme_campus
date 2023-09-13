@@ -528,6 +528,20 @@ table.generaltable {
     }
 }
 
+// navbar
+// --------------------------------------------------
+.navbar.fixed-top {
+    border-bottom: none;
+    box-shadow: inherit;
+    .langmenu,
+    .usermenu {
+        .dropdown .dropdown-toggle {
+            padding-bottom: $btn-padding-y;
+            padding-top: $btn-padding-y;
+        }
+    }
+}
+
 // popover_region.less
 // --------------------------------------------------
 /*.navbar .popover-region-toggle {
