@@ -15,6 +15,8 @@ define(['jquery', 'core/log'], function($, log) {
                     var page = document.getElementById("page");
                     var pageScrollTop = page.scrollTop;
                     var navbar = document.getElementById("campusnavbar");
+                    var ntop = navbar.getBoundingClientRect().top;
+                    var nheight = navbar.getBoundingClientRect().height;
 
                     var snheight = secondarynavigation.getBoundingClientRect().height;
                     var sntop = secondarynavigation.getBoundingClientRect().top;
@@ -26,7 +28,10 @@ define(['jquery', 'core/log'], function($, log) {
                         log.debug('Page ' + page.scrollTop);
                         sntop = secondarynavigation.getBoundingClientRect().top;
                         log.debug('SN   ' + sntop);
-                        log.debug('Nav  ' + navbar.scrollTop);
+                        ntop = navbar.getBoundingClientRect().top;
+                        log.debug('Nav  ' + ntop);
+                        nheight = navbar.getBoundingClientRect().height;
+                        log.debug('NavH ' + nheight);
                     };
 
                     //page.onscroll = function() {makeSecondaryNavigationSticky();};
