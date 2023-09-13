@@ -6,6 +6,7 @@ Version 401.0.1 - TBR
   1. First version for Moodle 4.1.
   2. No more Gruntfile.js as SVG icon colour changed, so for the AMD JS files:  Use core, e.g. grunt amd --root=theme/campus.
      If on Windows, then set 'linebreak-style' to 'off' in root '.eslintrc' as Git will handle this for us.
+  3. Add sticky secondary navigation.
 
 TBD - Version 3.9.0.2
 ---------------------

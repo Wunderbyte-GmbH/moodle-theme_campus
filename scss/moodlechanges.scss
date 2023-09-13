@@ -336,18 +336,14 @@ body.notediting {
     top: 0;
 }
 
-.drawer-open-left .campusnavbar {
+.drawer-open-left .campusnavbar.fixed-top,
+.drawer-open-left .secondary-navigation.fixed-top {
     margin-left: 285px;
 }
 
 @media (min-width: 768px) {
-    .drawer-open-left .campusnavbar {
-        margin-left: auto;
-        &.fixed-top {
-            margin-left: 285px;
-        }
-    }
-    .campusnavbar.fixed-top {
+    .campusnavbar.fixed-top,
+    .secondary-navigation.fixed-top {
         max-width: none;
     }
 }
@@ -528,14 +524,19 @@ table.generaltable {
     }
 }
 
-// popover_region.less
+// navbar
 // --------------------------------------------------
-/*.navbar .popover-region-toggle {
-    height: $navbarHeight;
-    line-height: $navbarHeight;
-    padding-left: (($navbarHeight - $line-height-base) / 2);
-    padding-right: (($navbarHeight - $line-height-base) / 2);
-}*/
+.navbar.fixed-top {
+    border-bottom: none;
+    box-shadow: inherit;
+    .langmenu,
+    .usermenu {
+        .dropdown .dropdown-toggle {
+            padding-bottom: $btn-padding-y;
+            padding-top: $btn-padding-y;
+        }
+    }
+}
 
 // Grade report wrapping.
 // gradereport_grader.css.
@@ -605,6 +606,12 @@ table.generaltable {
 .editing .block.invisible {
     background: rgba(255, 255, 255, 0.4);
     opacity: 1;
+}
+
+// secondarynavigation
+// --------------------------------------------------
+.secondary-navigation.fixed-top {
+    z-index: 1029;
 }
 
 // search.less
