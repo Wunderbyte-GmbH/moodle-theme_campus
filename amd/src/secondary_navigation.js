@@ -17,13 +17,15 @@ define(['jquery', 'core/log'], function($, log) {
                     var navbar = document.getElementById("campusnavbar");
 
                     var snheight = secondarynavigation.getBoundingClientRect().height;
+                    var sntop = secondarynavigation.getBoundingClientRect().top;
 
                     var makeSecondaryNavigationSticky = function() {
                         log.debug('Doc  ' + document.scrollY);
                         log.debug('Win  ' + window.scrollY);
                         log.debug('Body ' + document.body.scrollTop);
                         log.debug('Page ' + page.scrollTop);
-                        log.debug('SN   ' + secondarynavigation.scrollY);
+                        sntop = secondarynavigation.getBoundingClientRect().top;
+                        log.debug('SN   ' + sntop);
                         log.debug('Nav  ' + navbar.scrollTop);
                     };
 
