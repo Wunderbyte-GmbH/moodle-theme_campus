@@ -617,6 +617,12 @@ table.generaltable {
     opacity: 1;
 }
 
+// secondarynavigation
+// --------------------------------------------------
+.secondary-navigation.fixed-top {
+    z-index: 1029;
+}
+
 // search.less
 // --------------------------------------------------
 .navbar .search-input-wrapper {
