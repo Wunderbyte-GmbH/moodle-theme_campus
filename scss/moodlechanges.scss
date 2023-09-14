@@ -336,18 +336,14 @@ body.notediting {
     top: 0;
 }
 
-.drawer-open-left .campusnavbar {
+.drawer-open-left .campusnavbar,
+.drawer-open-left .secondary-navigation.fixed-top {
     margin-left: 285px;
 }
 
 @media (min-width: 768px) {
-    .drawer-open-left .campusnavbar {
-        margin-left: auto;
-        &.fixed-top {
-            margin-left: 285px;
-        }
-    }
-    .campusnavbar.fixed-top {
+    .campusnavbar.fixed-top,
+    .secondary-navigation.fixed-top {
         max-width: none;
     }
 }
