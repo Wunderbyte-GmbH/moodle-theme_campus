@@ -573,15 +573,6 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settingpage->add($setting);
 
-    // Sticky navbar.
-    $name = 'theme_campus/stickynavbar';
-    $title = get_string('stickynavbar', 'theme_campus');
-    $description = get_string('stickynavbardesc', 'theme_campus');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    // No CSS change, so no need to reset caches.
-    $settingpage->add($setting);
-
     // Course and category page heading position setting.
     $name = 'theme_campus/coursepagepageheadinglocation';
     $title = get_string('coursepagepageheadinglocation', 'theme_campus');
@@ -670,15 +661,6 @@ if ($ADMIN->fulltree) {
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $settingpage->add($setting);
-
-    // Sticky navbar.
-    $name = 'theme_campus/frontpagestickynavbar';
-    $title = get_string('frontpagestickynavbar', 'theme_campus');
-    $description = get_string('frontpagestickynavbardesc', 'theme_campus');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    // No CSS change, so no need to reset caches.
     $settingpage->add($setting);
 
     // Logo file setting.
@@ -782,15 +764,6 @@ if ($ADMIN->fulltree) {
         $heading = get_string('coursecategoryheading', 'theme_campus', array('categoryname' => $value));
         $information = '';
         $setting = new admin_setting_heading($name, $heading, $information);
-        // No CSS change, so no need to reset caches.
-        $settingpage->add($setting);
-
-        // Sticky navbar.
-        $name = 'theme_campus/coursecategorystickynavbar' . $key;
-        $title = get_string('coursecategorystickynavbar', 'theme_campus');
-        $description = get_string('coursecategorystickynavbardesc', 'theme_campus', array('categoryname' => $value));
-        $default = true;
-        $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
         // No CSS change, so no need to reset caches.
         $settingpage->add($setting);
 

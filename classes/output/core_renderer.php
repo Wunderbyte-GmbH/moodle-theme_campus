@@ -991,89 +991,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Works out and adds optional jQuery on the page if needed by criteria.
-     * If logic in get_header_file() / course_category_header() changes, then change this
-     * and using_frontpage_header_on_another_page() too.
+     * Makes the navbar sticky.
      *
      * MUST be called before any page output happens.
      */
-    public function optional_jquery() {
-        $stickynavbar = false;
-
-        $pagelayout = $this->page->pagelayout;
-        if ($pagelayout == 'frontpage') {
-            /*$autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
-            if ($autoplay == 2) {
-                $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
-            } else {
-                $slideinterval = 0;
-            }
-            $data = array('data' => array('slideinterval' => $slideinterval));
-            $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.*/
-            // We are the front page setting enforce the intent.
-            if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
-                $stickynavbar = true;
-            }
-            $this->hasspecificheader = true;
-        } else {
-            if ($this->using_frontpage_header_on_another_page()) {
-                if (!empty($this->page->theme->settings->frontpagestickynavbar)) {
-                    $stickynavbar = true;
-                }
-                $this->hasspecificheader = true;
-            } else {
-                if (!empty($this->page->theme->settings->stickynavbar)) {
-                    $stickynavbar = true;
-                }
-                switch ($pagelayout) {
-                    case 'coursecategory':
-                        $currentcategory = $this->get_current_top_level_catetgory();
-                        /*$autoplay = (!empty($this->page->theme->settings->carouselautoplay)) ? $this->page->theme->settings->carouselautoplay : 2;  // Default of 'Yes'.
-                        if ($autoplay == 2) {
-                            $slideinterval = (!empty($this->page->theme->settings->slideinterval)) ? $this->page->theme->settings->slideinterval : 5000;
-                        } else {
-                            $slideinterval = 0;
-                        }
-                        $data = array('data' => array('slideinterval' => $slideinterval));
-                        $this->page->requires->js_call_amd('theme_campus/carousel', 'init', $data); // Carousel can only exist on front page or top level category pages.*/
-                        $this->hasspecificheader = true;
-                        $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
-                        if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
-                            // We have a custom setting so enforce the intent.
-                            $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
-                            if (!empty($this->page->theme->settings->$cchavestickysetting)) {
-                                $stickynavbar = true;
-                            } else {
-                                $stickynavbar = false;
-                            }
-                        }
-                        break;
-                    case 'course':
-                    case 'incourse':
-                    case 'report':
-                        // From our point of view, the same as is_course_page().
-                        $this->hasspecificheader = true;
-                        $currentcategory = $this->get_current_top_level_catetgory();
-                        $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
-                        if (!empty($this->page->theme->settings->$cchavecustomsetting)) {
-                            // We have a custom setting so enforce the intent.
-                            $cchavestickysetting = 'coursecategorystickynavbar' . $currentcategory;
-                            if (!empty($this->page->theme->settings->$cchavestickysetting)) {
-                                $stickynavbar = true;
-                            } else {
-                                $stickynavbar = false;
-                            }
-                        }
-                        break;
-                }
-            }
-        }
-
-        if ($stickynavbar) {
-            $this->page->requires->js_call_amd('theme_campus/affix', 'init');
-            if ($pagelayout == 'course') {
-                $this->page->requires->js_call_amd('theme_campus/course_navigation', 'init');
-            }
+    public function sticky_navbar() {
+        $this->page->requires->js_call_amd('theme_campus/affix', 'init');
+        if ($this->page->pagelayout == 'course') {
+            $this->page->requires->js_call_amd('theme_campus/course_navigation', 'init');
         }
     }
 

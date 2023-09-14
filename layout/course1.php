@@ -27,7 +27,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$OUTPUT->optional_jquery();
+$OUTPUT->sticky_navbar();
 // Get the HTML for the settings bits.
 $html = theme_campus_get_html_for_settings($OUTPUT, $PAGE);
 

@@ -291,9 +291,6 @@ $string['headerheadingdesc'] = 'Configure the header settings for the theme here
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 
-$string['stickynavbar'] = 'Sticky navbar';
-$string['stickynavbardesc'] = 'Have a sticky navbar.  Note: The front page and course catetgory have separate settings.';
-
 $string['pageheadinglocationnavbar'] = 'Navbar';
 $string['pageheadinglocationunderneathnavbar'] = 'Underneath the navbar';
 $string['pageheadinglocationheaderarea'] = 'Header area';
@@ -337,9 +334,6 @@ $string['frontpagelayoutdesc'] = 'Logo on top or to the side as set by the logo 
 $string['layoutontop'] = 'On top';
 $string['layoutonside'] = 'Side';
 
-$string['frontpagestickynavbar'] = 'Sticky navbar';
-$string['frontpagestickynavbardesc'] = 'Have a sticky navbar.  Note: This overrides the header sticky navbar setting above for other pages if \'use front page header on all pages\' is set.';
-
 $string['frontpagelogo'] = 'Logo';
 $string['frontpagelogodesc'] = 'Please upload your custom logo here for the header.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of {$a->pagewidthmax}px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of {$a->pagewidthmax}px.';
 
@@ -378,9 +372,6 @@ $string['coursecategorystickynavbardesc'] = 'Have a sticky navbar for category \
 
 $string['coursecategorybgcolour'] = 'Background colour';
 $string['coursecategorybgcolourdesc'] = 'Course category {$a->categoryname} background colour.';
-
-$string['coursecategorylayout'] = 'Layout';
-$string['coursecategorylayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
 
 $string['coursecategorylogo'] = 'Logo';
 $string['coursecategorylogodesc'] = 'Please upload your custom logo here for the header.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of {$a->pagewidthmax}px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of {$a->pagewidthmax}px.';

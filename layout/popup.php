@@ -28,7 +28,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$OUTPUT->optional_jquery();
+$OUTPUT->sticky_navbar();
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
