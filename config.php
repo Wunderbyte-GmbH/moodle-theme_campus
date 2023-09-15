@@ -184,3 +184,4 @@ $THEME->javascripts_footer = array(
 $THEME->csspostprocess = 'theme_campus_process_css';
 $THEME->iconsystem = '\\theme_campus\\output\\icon_system_fontawesome';
 $THEME->requiredblocks = '';
+$THEME->haseditswitch = true;

@@ -367,11 +367,11 @@ $string['coursecategoryhavecustomheadernone'] = 'No categories selected.';
 
 $string['coursecategoryheading'] = 'Course category: {$a->categoryname}';
 
-$string['coursecategorystickynavbar'] = 'Sticky navbar';
-$string['coursecategorystickynavbardesc'] = 'Have a sticky navbar for category \'{$a->categoryname}\'.  Note: This overrides the header / front page sticky navbar setting on the \'Header\' settings page.';
-
 $string['coursecategorybgcolour'] = 'Background colour';
 $string['coursecategorybgcolourdesc'] = 'Course category {$a->categoryname} background colour.';
+
+$string['coursecategorylayout'] = 'Layout';
+$string['coursecategorylayoutdesc'] = 'Logo on top or to the side as set by the logo position.';
 
 $string['coursecategorylogo'] = 'Logo';
 $string['coursecategorylogodesc'] = 'Please upload your custom logo here for the header.  The logo and background must be the same height.  For the \'On top\' layout, the background should be have a width of {$a->pagewidthmax}px, the logo can be any width.  For the \'Side\' layout, the logo and background should have a combined width of {$a->pagewidthmax}px.';
