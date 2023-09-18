@@ -135,12 +135,6 @@ $string['linkcolourdesc'] = 'Set the link text colour.';
 $string['contentcolour'] = 'Content colour';
 $string['contentcolourdesc'] = 'Set the content colour.';
 
-$string['iconcoloursetting'] = 'Use icon colour setting';
-$string['iconcoloursetting_desc'] = 'Use the icon colour setting for the non-FontAwesome icons.  The icon colour functionality is new.  If you experience problems with it, then turn it off and run \'grunt svg\' on the Node.js command prompt.  Please see \'Gruntfile.js\' for full details.';
-
-$string['iconcolour'] = 'Icon colour';
-$string['iconcolourdesc'] = 'The colour for the icons.';
-
 $string['headingcolour'] = 'Heading colour';
 $string['headingcolourdesc'] = 'Set the heading colour.';
 
