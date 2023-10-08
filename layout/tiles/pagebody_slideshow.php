@@ -29,5 +29,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 2)) {
-    require_once(dirname(__FILE__).'/slideshow.php');
+    require_once(dirname(__FILE__) . '/slideshow.php');
 }

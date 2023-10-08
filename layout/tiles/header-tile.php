@@ -48,17 +48,17 @@ if ((!$hdflexlayout) && (!$hdlogo)) {
     $hdextra = '';
 }
 
-echo '<div id="body-header" class="'.$hdtype.'">';
+echo '<div id="body-header" class="' . $hdtype . '">';
 echo '<div class="campusheadercontainer">';
 
 global $CFG;
 if ($hdlogoextrapos == 1) {
-    echo '<div class="logotitle'.$hdextra.'">';
+    echo '<div class="logotitle' . $hdextra . '">';
     if ($hdlogo) {
-        echo '<a href="'.$CFG->wwwroot.'">';
-        echo '<img class="campuslogodesktop" src="'.$hdlogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
+        echo '<a href="' . $CFG->wwwroot . '">';
+        echo '<img class="campuslogodesktop" src="' . $hdlogo . '" alt="' . get_string('headerlogo', 'theme_campus') . '">';
         if ($hdresponsive) {
-            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
+            echo '<img class="campuslogosmalldevice" src="' . $hdresponsivelogo . '" alt="' . get_string('headerlogo', 'theme_campus') . '">';
         }
         echo '</a>';
     } else if ($pageheadinglocationheaderarea) {
@@ -66,27 +66,27 @@ if ($hdlogoextrapos == 1) {
     }
     echo '</div>';
 }
-echo '<div class="backgroundcontainer '.$hdbackgroundextra.'">'; // Need the container regardless if there is a background image or not.  This is for the 'pageheadingheader'.
+echo '<div class="backgroundcontainer ' . $hdbackgroundextra . '">'; // Need the container regardless if there is a background image or not.  This is for the 'pageheadingheader'.
 if ($hdbackgroundimage) {
-    echo '<img class="campusdesktop" src="'.$hdbackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
+    echo '<img class="campusdesktop" src="' . $hdbackgroundimage . '" alt="' . get_string('headerimage', 'theme_campus') . '">';
     if ($hdresponsive) {
-        echo '<img class="campussmalldevice" src="'.$hdresponsivebackgroundimage.'" alt="'.get_string('headerimage', 'theme_campus').'">';
+        echo '<img class="campussmalldevice" src="' . $hdresponsivebackgroundimage . '" alt="' . get_string('headerimage', 'theme_campus') . '">';
     }
     if ($hdfancynavbar) {
-        include(dirname(__FILE__).'/navbar.php');
+        include(dirname(__FILE__) . '/navbar.php');
     }
 }
 if (($pageheadinglocationheaderarea) && ($hdlogo)) {
-    echo '<div class="pageheadingheader">'.$headertitle.'</div>';
+    echo '<div class="pageheadingheader">' . $headertitle . '</div>';
 }
 echo '</div>';
 if ($hdlogoextrapos == 2) {
     echo '<div class="logotitle">';
     if ($hdlogo) {
-        echo '<a href="'.$CFG->wwwroot.'">';
-        echo '<img class="campuslogodesktop" src="'.$hdlogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
+        echo '<a href="' . $CFG->wwwroot . '">';
+        echo '<img class="campuslogodesktop" src="' . $hdlogo . '" alt="' . get_string('headerlogo', 'theme_campus') . '">';
         if ($hdresponsive) {
-            echo '<img class="campuslogosmalldevice" src="'.$hdresponsivelogo.'" alt="'.get_string('headerlogo', 'theme_campus').'">';
+            echo '<img class="campuslogosmalldevice" src="' . $hdresponsivelogo . '" alt="' . get_string('headerlogo', 'theme_campus') . '">';
         }
         echo '</a>';
     } else if ($pageheadinglocationheaderarea) {
@@ -97,6 +97,6 @@ if ($hdlogoextrapos == 2) {
 echo '</div></div>';
 
 if ((!$hdbackgroundimage) || (!$hdfancynavbar)) {
-    include(dirname(__FILE__).'/navbar.php');
+    include(dirname(__FILE__) . '/navbar.php');
 }
 echo $OUTPUT->render_nav();

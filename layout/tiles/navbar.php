@@ -38,7 +38,7 @@ $primary = new core\navigation\output\primary($PAGE);
 $renderer = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
 
-$navbarcontext = new stdClass;
+$navbarcontext = new stdClass();
 $navbarcontext->output = $OUTPUT;
 $navbarcontext->logininfoheader = $logininfoheader;
 $navbarcontext->navbarclasses = $navbarclasses;
@@ -50,8 +50,8 @@ $navbarcontext->langmenu = $primarymenu['lang'];
 if (\theme_campus\toolbox::has_incourse_settings()) {
     $actionsmenustr = get_string('actionsmenu');
     $settingsmenu = '<div id="campus-course-settings-toggle" type="button" data-toggle="modal" data-target="#campus-course-settings">';
-    $settingsmenu .= '<i class="icon fa fa-cog fa-fw" title="'.$actionsmenustr.'" aria-label="'.$actionsmenustr.'">';
-    $settingsmenu .= '<span class="sr-only">'.$actionsmenustr.'</span></i></div>';
+    $settingsmenu .= '<i class="icon fa fa-cog fa-fw" title="' . $actionsmenustr . '" aria-label="' . $actionsmenustr . '">';
+    $settingsmenu .= '<span class="sr-only">' . $actionsmenustr . '</span></i></div>';
 } else {
     $settingsmenu = $OUTPUT->context_header_settings_menu();
 }

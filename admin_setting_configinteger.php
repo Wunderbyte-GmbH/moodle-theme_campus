@@ -27,7 +27,6 @@
  */
 
 class admin_setting_configinteger extends admin_setting_configtext {
-
     /** @var int lower range limit */
     public $lower;
     /** @var int upper range limit */
@@ -62,9 +61,9 @@ class admin_setting_configinteger extends admin_setting_configtext {
 
         if ($validated === true) {
             if ($data < $this->lower) {
-                $validated = get_string('asconfigintlower', 'theme_campus', array('value' => $data, 'lower' => $this->lower));
+                $validated = get_string('asconfigintlower', 'theme_campus', ['value' => $data, 'lower' => $this->lower]);
             } else if ($data > $this->upper) {
-                $validated = get_string('asconfigintupper', 'theme_campus', array('value' => $data, 'upper' => $this->upper));
+                $validated = get_string('asconfigintupper', 'theme_campus', ['value' => $data, 'upper' => $this->upper]);
             } else {
                 $validated = true;
             }

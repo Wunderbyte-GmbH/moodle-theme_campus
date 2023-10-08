@@ -32,14 +32,13 @@ namespace theme_campus\privacy;
  * The Campus theme does not store any user data bar 'draweropennav' from the Boost theme.
  */
 class provider implements \core_privacy\local\metadata\null_provider {
-
     /**
      * Get the language string identifier with the component's language
      * file to explain why this plugin stores no data.
      *
      * @return  string
      */
-    public static function get_reason() : string {
+    public static function get_reason(): string {
         return 'privacy:nop';
     }
 }

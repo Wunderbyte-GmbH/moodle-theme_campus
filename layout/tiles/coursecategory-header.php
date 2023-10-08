@@ -33,13 +33,15 @@ global $OUTPUT;
 $currentcategory = $OUTPUT->get_current_top_level_catetgory();
 
 // Image files.
-$cchavecustomsetting = 'coursecategoryhavecustomheader'.$currentcategory;
+$cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
 if (!empty($PAGE->theme->settings->$cchavecustomsetting)) {
-    $hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo'.$currentcategory, 'coursecategorylogo'.$currentcategory);
-    $hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage'.$currentcategory, 'coursecategorybackgroundimage'.$currentcategory);
-    $hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo'.$currentcategory, 'coursecategoryresponsivelogo'.$currentcategory);
-    $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('coursecategoryresponsivebackgroundimage'.$currentcategory,
-        'coursecategoryresponsivebackgroundimage'.$currentcategory);
+    $hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo' . $currentcategory, 'coursecategorylogo' . $currentcategory);
+    $hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage' . $currentcategory, 'coursecategorybackgroundimage' . $currentcategory);
+    $hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo' . $currentcategory, 'coursecategoryresponsivelogo' . $currentcategory);
+    $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url(
+        'coursecategoryresponsivebackgroundimage' . $currentcategory,
+        'coursecategoryresponsivebackgroundimage' . $currentcategory
+    );
 } else {
     $hdlogo = false;
     $hdbackgroundimage = false;
@@ -69,17 +71,21 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
 if ((!$hdlogo) || (!$hdbackgroundimage)) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
-        $hdlogo = $OUTPUT->image_url($logodetails['name'], 'theme');  // $hdlogo can still be false if 'image_url' fails for some unknown reason.
+        // Note: $hdlogo can still be false if 'image_url' fails for some unknown reason.
+        $hdlogo = $OUTPUT->image_url($logodetails['name'], 'theme');
     }
     if ($backgrounddetails = theme_campus_get_theme_background()) {
-        $hdbackgroundimage = $OUTPUT->image_url($backgrounddetails['name'], 'theme');  // $hdbackgroundimage can still be false if 'image_url' fails for some unknown reason.
+        // Note: $hdbackgroundimage can still be false if 'image_url' fails for some unknown reason.
+        $hdbackgroundimage = $OUTPUT->image_url($backgrounddetails['name'], 'theme');
     }
     // Use theme responsive versions.
     if ($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) {
-        $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');  // $hdresponsivelogo can still be false if 'image_url' fails for some unknown reason.
+        //  Note: $hdresponsivelogo can still be false if 'image_url' fails for some unknown reason.
+        $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');
     }
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
-        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
+        // Can still be false if 'image_url' fails for some unknown reason.
+        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');
     }
     // Fallback to frontpage settings as they are in 'front-pageheader.php' for the theme images.
     $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
@@ -92,9 +98,9 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
 
 // Layout only if not using front page or theme fallback.
 if ((!$frontpagesettings) && (!$themesettings)) {
-    $hdlayout = 'coursecategorylayout'.$currentcategory;
+    $hdlayout = 'coursecategorylayout' . $currentcategory;
     $hdlayout = (!empty($PAGE->theme->settings->$hdlayout)) ? $PAGE->theme->settings->$hdlayout : 'absolutelayout';
-    $ccsettingkey = 'coursecategorylogoposition'.$currentcategory;
+    $ccsettingkey = 'coursecategorylogoposition' . $currentcategory;
     $hdbackgroundextrapos = (!empty($PAGE->theme->settings->$ccsettingkey)) ? $PAGE->theme->settings->$ccsettingkey : 1;
 }
 // End of fall back section.
@@ -120,22 +126,22 @@ if ($hdbackgroundextrapos == 1) {
 }
 
 if ($frontpagesettings) {
-    $hdtype = 'frontpageheader '.$hdlayout;
+    $hdtype = 'frontpageheader ' . $hdlayout;
 } else {
-    $hdtype = 'coursecategoryheader '.$hdlayout.' category'.$currentcategory;
+    $hdtype = 'coursecategoryheader ' . $hdlayout . ' category' . $currentcategory;
 }
 
 $pageheadinglocationheaderarea = (empty($PAGE->theme->settings->coursepagepageheadinglocation)) ? false : $PAGE->theme->settings->coursepagepageheadinglocation;
-require_once(dirname(__FILE__).'/header-tile.php');
+require_once(dirname(__FILE__) . '/header-tile.php');
 
 if (!$OUTPUT->is_course_page()) {
     // Carousel pre-loading.
     $currentcoursecategory = $currentcategory;
-    $coursecategorycarouselstatus = 'coursecategorycarouselstatus'.$currentcoursecategory;
+    $coursecategorycarouselstatus = 'coursecategorycarouselstatus' . $currentcoursecategory;
     $coursecategorycarouselstatus = (!empty($PAGE->theme->settings->$coursecategorycarouselstatus)) ? $PAGE->theme->settings->$coursecategorycarouselstatus : 1;  // 1 is 'Draft'.
     if ($coursecategorycarouselstatus == 2) { // Only if published.
-        $numberofslides = 'numberofslidesforcategory'.$currentcoursecategory;
+        $numberofslides = 'numberofslidesforcategory' . $currentcoursecategory;
         $numberofslides = (!empty($PAGE->theme->settings->$numberofslides)) ? $PAGE->theme->settings->$numberofslides : 0;
-        $settingprefix = 'coursecategory'.$currentcoursecategory.'_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+        $settingprefix = 'coursecategory' . $currentcoursecategory . '_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
     }
 }

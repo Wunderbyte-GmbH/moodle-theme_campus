@@ -66,7 +66,7 @@ function theme_campus_get_pre_scss($theme) {
 
     $vars = theme_campus_sass_variables($theme);
     foreach ($vars as $varkey => $varval) {
-        $scss .= '$'.$varkey.':'.$varval.';'.PHP_EOL;
+        $scss .= '$' . $varkey . ':' . $varval . ';' . PHP_EOL;
     }
 
     $scss .= \theme_campus\toolbox::get_scss_file('variables-campus');
@@ -175,14 +175,15 @@ function theme_campus_extra_sccs($theme) {
                        @frontpageAbsoluteMixinPaddingBottom;
                        @frontpageFlexMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '@include fpresponsiveheaderlogo('.$fplogowidth.'%, '.$fpabsolutepaddingbottom.'%, '.$fpflexpaddingbottom.'%, '.$fpbackgroundwidth.'%);'.PHP_EOL;
+                $content .= '@include fpresponsiveheaderlogo(' . $fplogowidth . '%, ' . $fpabsolutepaddingbottom . '%, ' .
+                    $fpflexpaddingbottom . '%, ' . $fpbackgroundwidth . '%);' . PHP_EOL;
             }
         }
     } else {
         // Theme responsive images fall back.
         if (($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) && ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background())) {
             if (($logoresponsivedetails['fullname']) && ($dimensions = getimagesize($logoresponsivedetails['fullname']))) {
-                // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                // Ref: http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                 if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
                     $backgroundwidth = $backgrounddimensions[0];
                     $backgroundheight = $backgrounddimensions[1];
@@ -199,7 +200,8 @@ function theme_campus_extra_sccs($theme) {
                        @frontpageAbsoluteMixinPaddingBottom;
                        @frontpageFlexMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '@include fpresponsiveheaderlogo('.$fplogowidth.'%, '.$fpabsolutepaddingbottom.'%, '.$fpflexpaddingbottom.'%, '.$fpbackgroundwidth.'%);'.PHP_EOL;
+                $content .= '@include fpresponsiveheaderlogo(' . $fplogowidth . '%, ' . $fpabsolutepaddingbottom . '%, ' .
+                    $fpflexpaddingbottom . '%, ' . $fpbackgroundwidth . '%);' . PHP_EOL;
             }
         }
     }
@@ -207,9 +209,9 @@ function theme_campus_extra_sccs($theme) {
     // Course catetgory.
     foreach ($campuscategorytree as $key => $value) {
         $categorylogoused = false;
-        $cchavecustomsetting = 'coursecategoryhavecustomheader'.$key;
-        $ccsetting = 'coursecategorylogo'.$key;
-        $ccbsetting = 'coursecategorybackgroundimage'.$key;
+        $cchavecustomsetting = 'coursecategoryhavecustomheader' . $key;
+        $ccsetting = 'coursecategorylogo' . $key;
+        $ccbsetting = 'coursecategorybackgroundimage' . $key;
         if ((!empty($theme->settings->$cchavecustomsetting)) && (!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
@@ -236,10 +238,11 @@ function theme_campus_extra_sccs($theme) {
                      @courseCategoryMixinAbsolutePaddingBottom;
                      @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '@include ccheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.'%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                $content .= '@include ccheaderlogo(' . $key . ', ' . $cclogowidth . '%, ' . $ccabsolutepaddingbottom . '%, ' .
+                    $ccflexpaddingbottom . '%, ' . $ccbackgroundwidth . '%);' . PHP_EOL;
 
-                $ccsetting = 'coursecategoryresponsivelogo'.$key;
-                $ccbsetting = 'coursecategoryresponsivebackgroundimage'.$key;
+                $ccsetting = 'coursecategoryresponsivelogo' . $key;
+                $ccbsetting = 'coursecategoryresponsivebackgroundimage' . $key;
                 if ((!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
                     if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                         if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
@@ -259,8 +262,8 @@ function theme_campus_extra_sccs($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.
-                            '%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                        $content .= '@include ccresponsiveheaderlogo(' . $key . ', ' . $cclogowidth . '%, ' . $ccabsolutepaddingbottom .
+                            '%, ' . $ccflexpaddingbottom . '%, ' . $ccbackgroundwidth . '%);' . PHP_EOL;
                     }
                 }
                 $categorylogoused = true;
@@ -292,7 +295,8 @@ function theme_campus_extra_sccs($theme) {
                      @courseCategoryMixinAbsolutePaddingBottom;
                      @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '@include ccheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.'%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                $content .= '@include ccheaderlogo(' . $key . ', ' . $cclogowidth . '%, ' . $ccabsolutepaddingbottom . '%, ' .
+                    $ccflexpaddingbottom . '%, ' . $ccbackgroundwidth . '%);' . PHP_EOL;
 
                 if ((!empty($theme->settings->frontpageresponsivelogo)) && (!empty($theme->settings->frontpageresponsivebackgroundimage))) {
                     if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivelogo', 'frontpageresponsivelogo')) {
@@ -313,8 +317,8 @@ function theme_campus_extra_sccs($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.
-                            '%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                        $content .= '@include ccresponsiveheaderlogo(' . $key . ', ' . $cclogowidth . '%, ' . $ccabsolutepaddingbottom .
+                            '%, ' . $ccflexpaddingbottom . '%, ' . $ccbackgroundwidth . '%);' . PHP_EOL;
                     }
                 }
 
@@ -326,17 +330,17 @@ function theme_campus_extra_sccs($theme) {
                           @courseCategoryMixinPageHeadingHeaderPositionRight) */
                     switch ($theme->settings->frontpagelogoposition) {
                         case 1:
-                            $content .= '@include ccheaderlogoposition('.$key.', left, auto, 50px);';
-                        break;
+                            $content .= '@include ccheaderlogoposition(' . $key . ', left, auto, 50px);';
+                            break;
                         case 2:
-                            $content .= '@include ccheaderlogoposition('.$key.', right, 50px, auto);';
-                        break;
+                            $content .= '@include ccheaderlogoposition(' . $key . ', right, 50px, auto);';
+                            break;
                     }
                 }
             }
         } else if ($logodetails = theme_campus_get_theme_logo()) { // Theme images fall back.
             if (($logodetails['fullname']) && ($dimensions = getimagesize($logodetails['fullname']))) {
-                // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                // Ref: http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                 $backgrounddetails = theme_campus_get_theme_background();
                 if (($backgrounddetails['fullname']) && ($backgrounddimensions = getimagesize($backgrounddetails['fullname']))) {
                     $backgroundwidth = $backgrounddimensions[0];
@@ -362,12 +366,13 @@ function theme_campus_extra_sccs($theme) {
                      @courseCategoryMixinAbsolutePaddingBottom;
                      @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '@include ccheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.'%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                $content .= '@include ccheaderlogo(' . $key . ', ' . $cclogowidth . '%, ' . $ccabsolutepaddingbottom . '%, ' .
+                    $ccflexpaddingbottom . '%, ' . $ccbackgroundwidth . '%);' . PHP_EOL;
 
                 // Theme responsive images fall back.
                 if (($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) && ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background())) {
                     if (($logoresponsivedetails['fullname']) && ($dimensions = getimagesize($logoresponsivedetails['fullname']))) {
-                        // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                        // Ref: http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                         if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
                             $backgroundwidth = $backgrounddimensions[0];
                             $backgroundheight = $backgrounddimensions[1];
@@ -385,23 +390,23 @@ function theme_campus_extra_sccs($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '@include ccresponsiveheaderlogo('.$key.', '.$cclogowidth.'%, '.$ccabsolutepaddingbottom.
-                            '%, '.$ccflexpaddingbottom.'%, '.$ccbackgroundwidth.'%);'.PHP_EOL;
+                        $content .= '@include ccresponsiveheaderlogo(' . $key . ', ' . $cclogowidth . '%, ' . $ccabsolutepaddingbottom .
+                            '%, ' . $ccflexpaddingbottom . '%, ' . $ccbackgroundwidth . '%);' . PHP_EOL;
                     }
                 }
-                $content .= '@include ccheaderlogoposition('.$key.', left, auto, 50px);'.PHP_EOL; // Theme layout uses logo on left.
+                $content .= '@include ccheaderlogoposition(' . $key . ', left, auto, 50px);' . PHP_EOL; // Theme layout uses logo on left.
             }
         }
 
         if ($categorylogoused == true) {
-            $ccsetting = 'coursecategorybgcolour'.$key;
+            $ccsetting = 'coursecategorybgcolour' . $key;
             if (!empty($theme->settings->$ccsetting)) {
                 /* .ccheaderbackgroundcolour(@courseCategoryKey;
                      @courseCategoryMixinBackgroundColour) */
-                $content .= '@include ccheaderbackgroundcolour('.$key.', '.$theme->settings->$ccsetting.');'.PHP_EOL;
+                $content .= '@include ccheaderbackgroundcolour(' . $key . ', ' . $theme->settings->$ccsetting . ');' . PHP_EOL;
             }
 
-            $ccsetting = 'coursecategorylogoposition'.$key;
+            $ccsetting = 'coursecategorylogoposition' . $key;
             if (!empty($theme->settings->$ccsetting)) {
                 /* .ccheaderlogoposition(@courseCategoryKey;
                       @courseCategoryMixinLogoPosition;
@@ -409,11 +414,11 @@ function theme_campus_extra_sccs($theme) {
                       @courseCategoryMixinPageHeadingHeaderPositionRight) */
                 switch ($theme->settings->$ccsetting) {
                     case 1:
-                        $content .= '@include ccheaderlogoposition('.$key.', left, auto, 50px);'.PHP_EOL;
-                    break;
+                        $content .= '@include ccheaderlogoposition(' . $key . ', left, auto, 50px);' . PHP_EOL;
+                        break;
                     case 2:
-                        $content .= '@include ccheaderlogoposition('.$key.', right, 50px, auto);'.PHP_EOL;
-                    break;
+                        $content .= '@include ccheaderlogoposition(' . $key . ', right, 50px, auto);' . PHP_EOL;
+                        break;
                 }
             }
         }
@@ -432,19 +437,19 @@ function theme_campus_extra_sccs($theme) {
  * @return array of SASS variables without the $.
  */
 function theme_campus_sass_variables($theme) {
-    $variables = array();
+    $variables = [];
     if (!empty($theme->settings->pagewidthmax)) {
         if ($theme->settings->pagewidthmax == 100) { // Percentage value.
-            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'%';
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax . '%';
         } else {
-            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'px';
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax . 'px';
         }
     }
     if (!empty($theme->settings->headingfont)) {
-        $variables['headingsFontName'] = '"'.$theme->settings->headingfont.'"';
+        $variables['headingsFontName'] = '"' . $theme->settings->headingfont . '"';
     }
     if (!empty($theme->settings->bodyfont)) {
-        $variables['baseFontName'] = '"'.$theme->settings->bodyfont.'"';
+        $variables['baseFontName'] = '"' . $theme->settings->bodyfont . '"';
     }
     if (!empty($theme->settings->textcolour)) {
         $variables['body-color'] = $theme->settings->textcolour;
@@ -496,7 +501,7 @@ function theme_campus_sass_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = '0';
                 $variables['blockContentBorderBottomWidth'] = '0';
                 $variables['blockContentBorderLeftWidth'] = '0';
-            break;
+                break;
             case 2: // Border around the whole block.
                 $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
                 $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
@@ -506,7 +511,7 @@ function theme_campus_sass_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = $blockborderthickness;
                 $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
                 $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
-            break;
+                break;
             case 3: // Border on header only.
                 $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
                 $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
@@ -516,7 +521,7 @@ function theme_campus_sass_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = '0';
                 $variables['blockContentBorderBottomWidth'] = '0';
                 $variables['blockContentBorderLeftWidth'] = '0';
-            break;
+                break;
             case 4: // Border on content only.
                 $variables['blockHeadingBorderTopWidth'] = '0';
                 $variables['blockHeadingBorderRightWidth'] = '0';
@@ -526,7 +531,7 @@ function theme_campus_sass_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = $blockborderthickness;
                 $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
                 $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
-            break;
+                break;
             case 5: // Three horizontal lines: above header, between header/content and bottom.
                 $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
                 $variables['blockHeadingBorderRightWidth'] = '0';
@@ -536,7 +541,7 @@ function theme_campus_sass_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = '0';
                 $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
                 $variables['blockContentBorderLeftWidth'] = '0';
-            break;
+                break;
         }
     }
     if (!empty($theme->settings->blockbordercolour)) {
@@ -572,25 +577,25 @@ function theme_campus_sass_variables($theme) {
         $variables['infoBackground'] = $theme->settings->alertinfobackgroundcolour;
     }*/
     if (!empty($theme->settings->navbarpageheadingmax)) {
-        $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax.'px';
+        $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax . 'px';
     }
     if (!empty($theme->settings->frontpagelogoposition)) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:
                 $variables['frontpagePageHeadingHeaderPositionRight'] = '50px';
-            break;
+                break;
             case 2:
                 $variables['frontpagePageHeadingHeaderPositionLeft'] = '50px';
-            break;
+                break;
         }
         if ((!empty($theme->settings->frontpagelayout)) && ($theme->settings->frontpagelayout == 'absolutelayout')) {
             switch ($theme->settings->frontpagelogoposition) {
                 case 1:
                     $variables['frontpageLogoPosition'] = 'left';
-                break;
+                    break;
                 case 2:
                     $variables['frontpageLogoPosition'] = 'right';
-                break;
+                    break;
             }
         }
     }
@@ -615,12 +620,12 @@ function theme_campus_sass_variables($theme) {
             $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
             $fpflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
             $fpbackgroundwidth = 100 - $fplogowidth;
-            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
-            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageLogoWidth'] = $fplogowidth . '%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth . '%';
             // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
             $variables['frontpageHeaderHeightDefault'] = 'auto';
-            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
-            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom . '%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom . '%';
         }
     } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
         // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
@@ -645,12 +650,12 @@ function theme_campus_sass_variables($theme) {
             $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
             $fpflexpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
             $fpbackgroundwidth = 100 - $fplogowidth;
-            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
-            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageLogoWidth'] = $fplogowidth . '%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth . '%';
             // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
             $variables['frontpageHeaderHeightDefault'] = 'auto';
-            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
-            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom . '%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom . '%';
         }
     }
     if (!empty($theme->settings->carouseltextcolour)) {
@@ -688,12 +693,12 @@ function theme_campus_sass_variables($theme) {
  * @return array of LESS variables without the @.
  */
 function theme_campus_less_variables($theme) {
-    $variables = array();
+    $variables = [];
     if (!empty($theme->settings->pagewidthmax)) {
         if ($theme->settings->pagewidthmax == 100) { // Percentage value.
-            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'%';
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax . '%';
         } else {
-            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax.'px';
+            $variables['pageWidthMaximum'] = $theme->settings->pagewidthmax . 'px';
         }
     }
     if (!empty($theme->settings->headingfont)) {
@@ -755,7 +760,7 @@ function theme_campus_less_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = '0';
                 $variables['blockContentBorderBottomWidth'] = '0';
                 $variables['blockContentBorderLeftWidth'] = '0';
-            break;
+                break;
             case 2: // Border around the whole block.
                 $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
                 $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
@@ -765,7 +770,7 @@ function theme_campus_less_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = $blockborderthickness;
                 $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
                 $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
-            break;
+                break;
             case 3: // Border on header only.
                 $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
                 $variables['blockHeadingBorderRightWidth'] = $blockborderthickness;
@@ -775,7 +780,7 @@ function theme_campus_less_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = '0';
                 $variables['blockContentBorderBottomWidth'] = '0';
                 $variables['blockContentBorderLeftWidth'] = '0';
-            break;
+                break;
             case 4: // Border on content only.
                 $variables['blockHeadingBorderTopWidth'] = '0';
                 $variables['blockHeadingBorderRightWidth'] = '0';
@@ -785,7 +790,7 @@ function theme_campus_less_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = $blockborderthickness;
                 $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
                 $variables['blockContentBorderLeftWidth'] = $blockborderthickness;
-            break;
+                break;
             case 5: // Three horizontal lines: above header, between header/content and bottom.
                 $variables['blockHeadingBorderTopWidth'] = $blockborderthickness;
                 $variables['blockHeadingBorderRightWidth'] = '0';
@@ -795,7 +800,7 @@ function theme_campus_less_variables($theme) {
                 $variables['blockContentBorderRightWidth'] = '0';
                 $variables['blockContentBorderBottomWidth'] = $blockborderthickness;
                 $variables['blockContentBorderLeftWidth'] = '0';
-            break;
+                break;
         }
     }
     if (!empty($theme->settings->blockbordercolour)) {
@@ -831,25 +836,25 @@ function theme_campus_less_variables($theme) {
         $variables['infoBackground'] = $theme->settings->alertinfobackgroundcolour;
     }
     if (!empty($theme->settings->navbarpageheadingmax)) {
-        $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax.'px';
+        $variables['navbarPageHeadingMax'] = $theme->settings->navbarpageheadingmax . 'px';
     }
     if (!empty($theme->settings->frontpagelogoposition)) {
         switch ($theme->settings->frontpagelogoposition) {
             case 1:
                 $variables['frontpagePageHeadingHeaderPositionRight'] = '50px';
-            break;
+                break;
             case 2:
                 $variables['frontpagePageHeadingHeaderPositionLeft'] = '50px';
-            break;
+                break;
         }
         if ((!empty($theme->settings->frontpagelayout)) && ($theme->settings->frontpagelayout == 'absolutelayout')) {
             switch ($theme->settings->frontpagelogoposition) {
                 case 1:
                     $variables['frontpageLogoPosition'] = 'left';
-                break;
+                    break;
                 case 2:
                     $variables['frontpageLogoPosition'] = 'right';
-                break;
+                    break;
             }
         }
     }
@@ -874,12 +879,12 @@ function theme_campus_less_variables($theme) {
             $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
             $fpflexpaddingbottom = ($dimensions['height'] / $totalwidth) * 100;
             $fpbackgroundwidth = 100 - $fplogowidth;
-            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
-            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageLogoWidth'] = $fplogowidth . '%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth . '%';
             // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
             $variables['frontpageHeaderHeightDefault'] = 'auto';
-            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
-            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom . '%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom . '%';
         }
     } else if ($logodetails = theme_campus_get_theme_logo()) { // Fallback to theme logo.
         // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
@@ -904,12 +909,12 @@ function theme_campus_less_variables($theme) {
             $fpabsolutepaddingbottom = ($backgroundheight / $backgroundwidth) * 100;
             $fpflexpaddingbottom = ($dimensions[1] / $totalwidth) * 100;
             $fpbackgroundwidth = 100 - $fplogowidth;
-            $variables['frontpageLogoWidth'] = $fplogowidth.'%';
-            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth.'%';
+            $variables['frontpageLogoWidth'] = $fplogowidth . '%';
+            $variables['frontpageBackgroundWidth'] = $fpbackgroundwidth . '%';
             // This negates the setting of the height as there is a logo.  Without a logo there is no height to the header and things look bad.
             $variables['frontpageHeaderHeightDefault'] = 'auto';
-            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom.'%';
-            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom.'%';
+            $variables['frontpageAbsolutePaddingBottom'] = $fpabsolutepaddingbottom . '%';
+            $variables['frontpageFlexPaddingBottom'] = $fpflexpaddingbottom . '%';
         }
     }
     if (!empty($theme->settings->carouseltextcolour)) {
@@ -946,7 +951,7 @@ function theme_campus_extra_less($theme) {
 
     $campuscategorytree = theme_campus_get_top_level_categories();
 
-    $content = '@import "'.$CFG->dirroot.'/theme/bootstrapbase/less/moodle";';
+    $content = '@import "' . $CFG->dirroot . '/theme/bootstrapbase/less/moodle";';
     $content .= '@import "variables-campus";';
     $content .= '@import "bootstrapchanges";';
     $content .= '@import "moodlechanges";';
@@ -973,14 +978,14 @@ function theme_campus_extra_less($theme) {
                        @frontpageAbsoluteMixinPaddingBottom;
                        @frontpageFlexMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fpabsolutepaddingbottom.'%; '.$fpflexpaddingbottom.'%; '.$fpbackgroundwidth.'%);';
+                $content .= '.fpresponsiveheaderlogo(' . $fplogowidth . '%; ' . $fpabsolutepaddingbottom . '%; ' . $fpflexpaddingbottom . '%; ' . $fpbackgroundwidth . '%);';
             }
         }
     } else {
         // Theme responsive images fall back.
         if (($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) && ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background())) {
             if (($logoresponsivedetails['fullname']) && ($dimensions = getimagesize($logoresponsivedetails['fullname']))) {
-                // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                // Ref: http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                 if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
                     $backgroundwidth = $backgrounddimensions[0];
                     $backgroundheight = $backgrounddimensions[1];
@@ -997,7 +1002,7 @@ function theme_campus_extra_less($theme) {
                        @frontpageAbsoluteMixinPaddingBottom;
                        @frontpageFlexMixinPaddingBottom;
                        @frontpageMixinBackgroundWidth) */
-                $content .= '.fpresponsiveheaderlogo('.$fplogowidth.'%; '.$fpabsolutepaddingbottom.'%; '.$fpflexpaddingbottom.'%; '.$fpbackgroundwidth.'%);';
+                $content .= '.fpresponsiveheaderlogo(' . $fplogowidth . '%; ' . $fpabsolutepaddingbottom . '%; ' . $fpflexpaddingbottom . '%; ' . $fpbackgroundwidth . '%);';
             }
         }
     }
@@ -1005,9 +1010,9 @@ function theme_campus_extra_less($theme) {
     // Course catetgory.
     foreach ($campuscategorytree as $key => $value) {
         $categorylogoused = false;
-        $cchavecustomsetting = 'coursecategoryhavecustomheader'.$key;
-        $ccsetting = 'coursecategorylogo'.$key;
-        $ccbsetting = 'coursecategorybackgroundimage'.$key;
+        $cchavecustomsetting = 'coursecategoryhavecustomheader' . $key;
+        $ccsetting = 'coursecategorylogo' . $key;
+        $ccbsetting = 'coursecategorybackgroundimage' . $key;
         if ((!empty($theme->settings->$cchavecustomsetting)) && (!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
             if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                 if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
@@ -1034,10 +1039,10 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinAbsolutePaddingBottom;
                      @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo(' . $key . '; ' . $cclogowidth . '%; ' . $ccabsolutepaddingbottom . '%; ' . $ccflexpaddingbottom . '%; ' . $ccbackgroundwidth . '%);';
 
-                $ccsetting = 'coursecategoryresponsivelogo'.$key;
-                $ccbsetting = 'coursecategoryresponsivebackgroundimage'.$key;
+                $ccsetting = 'coursecategoryresponsivelogo' . $key;
+                $ccbsetting = 'coursecategoryresponsivebackgroundimage' . $key;
                 if ((!empty($theme->settings->$ccsetting)) && (!empty($theme->settings->$ccbsetting))) {
                     if ($dimensions = theme_campus_get_image_dimensions($theme, $ccsetting, $ccsetting)) {
                         if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, $ccbsetting, $ccbsetting)) {
@@ -1057,7 +1062,8 @@ function theme_campus_extra_less($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo(' . $key . '; ' . $cclogowidth . '%; ' . $ccabsolutepaddingbottom .
+                            '%; ' . $ccflexpaddingbottom . '%; ' . $ccbackgroundwidth . '%);';
                     }
                 }
                 $categorylogoused = true;
@@ -1089,11 +1095,14 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinAbsolutePaddingBottom;
                      @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo(' . $key . '; ' . $cclogowidth . '%; ' . $ccabsolutepaddingbottom . '%; ' .
+                    $ccflexpaddingbottom . '%; ' . $ccbackgroundwidth . '%);';
 
                 if ((!empty($theme->settings->frontpageresponsivelogo)) && (!empty($theme->settings->frontpageresponsivebackgroundimage))) {
                     if ($dimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivelogo', 'frontpageresponsivelogo')) {
-                        if ($backgrounddimensions = theme_campus_get_image_dimensions($theme, 'frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage')) {
+                        if ($backgrounddimensions = theme_campus_get_image_dimensions(
+                                $theme, 'frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage')
+                            ) {
                             $backgroundwidth = $backgrounddimensions['width'];
                             $backgroundheight = $backgrounddimensions['height'];
                         } else {
@@ -1110,7 +1119,8 @@ function theme_campus_extra_less($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo(' . $key . '; ' . $cclogowidth . '%; ' . $ccabsolutepaddingbottom .
+                            '%; ' . $ccflexpaddingbottom . '%; ' . $ccbackgroundwidth . '%);';
                     }
                 }
 
@@ -1122,11 +1132,11 @@ function theme_campus_extra_less($theme) {
                           @courseCategoryMixinPageHeadingHeaderPositionRight) */
                     switch ($theme->settings->frontpagelogoposition) {
                         case 1:
-                            $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
-                        break;
+                            $content .= '.ccheaderlogoposition(' . $key . '; left; auto; 50px);';
+                            break;
                         case 2:
-                            $content .= '.ccheaderlogoposition('.$key.'; right; 50px; auto);';
-                        break;
+                            $content .= '.ccheaderlogoposition(' . $key . '; right; 50px; auto);';
+                            break;
                     }
                 }
             }
@@ -1158,12 +1168,13 @@ function theme_campus_extra_less($theme) {
                      @courseCategoryMixinAbsolutePaddingBottom;
                      @courseCategoryMixinFlexPaddingBottom;
                      @courseCategoryMixinBackgroundWidth) */
-                $content .= '.ccheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                $content .= '.ccheaderlogo(' . $key . '; ' . $cclogowidth . '%; ' . $ccabsolutepaddingbottom . '%; ' .
+                    $ccflexpaddingbottom . '%; ' . $ccbackgroundwidth . '%);';
 
                 // Theme responsive images fall back.
                 if (($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) && ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background())) {
                     if (($logoresponsivedetails['fullname']) && ($dimensions = getimagesize($logoresponsivedetails['fullname']))) {
-                        // http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
+                        // Ref: http://php.net/manual/en/function.getimagesize.php - index 0 = width and index 1 = height.
                         if (($backgroundresponsivedetails['fullname']) && ($backgrounddimensions = getimagesize($backgroundresponsivedetails['fullname']))) {
                             $backgroundwidth = $backgrounddimensions[0];
                             $backgroundheight = $backgrounddimensions[1];
@@ -1181,22 +1192,23 @@ function theme_campus_extra_less($theme) {
                              @courseCategoryMixinAbsolutePaddingBottom;
                              @courseCategoryMixinFlexPaddingBottom;
                              @courseCategoryMixinBackgroundWidth) */
-                        $content .= '.ccresponsiveheaderlogo('.$key.'; '.$cclogowidth.'%; '.$ccabsolutepaddingbottom.'%; '.$ccflexpaddingbottom.'%; '.$ccbackgroundwidth.'%);';
+                        $content .= '.ccresponsiveheaderlogo(' . $key . '; ' . $cclogowidth . '%; ' . $ccabsolutepaddingbottom . '%; ' .
+                            $ccflexpaddingbottom . '%; ' . $ccbackgroundwidth . '%);';
                     }
                 }
-                $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);'; // Theme layout uses logo on left.
+                $content .= '.ccheaderlogoposition(' . $key . '; left; auto; 50px);'; // Theme layout uses logo on left.
             }
         }
 
         if ($categorylogoused == true) {
-            $ccsetting = 'coursecategorybgcolour'.$key;
+            $ccsetting = 'coursecategorybgcolour' . $key;
             if (!empty($theme->settings->$ccsetting)) {
                 /* .ccheaderbackgroundcolour(@courseCategoryKey;
                      @courseCategoryMixinBackgroundColour) */
-                $content .= '.ccheaderbackgroundcolour('.$key.'; '.$theme->settings->$ccsetting.');';
+                $content .= '.ccheaderbackgroundcolour(' . $key . '; ' . $theme->settings->$ccsetting . ');';
             }
 
-            $ccsetting = 'coursecategorylogoposition'.$key;
+            $ccsetting = 'coursecategorylogoposition' . $key;
             if (!empty($theme->settings->$ccsetting)) {
                 /* .ccheaderlogoposition(@courseCategoryKey;
                       @courseCategoryMixinLogoPosition;
@@ -1204,11 +1216,11 @@ function theme_campus_extra_less($theme) {
                       @courseCategoryMixinPageHeadingHeaderPositionRight) */
                 switch ($theme->settings->$ccsetting) {
                     case 1:
-                        $content .= '.ccheaderlogoposition('.$key.'; left; auto; 50px);';
-                    break;
+                        $content .= '.ccheaderlogoposition(' . $key . '; left; auto; 50px);';
+                        break;
                     case 2:
-                        $content .= '.ccheaderlogoposition('.$key.'; right; 50px; auto);';
-                    break;
+                        $content .= '.ccheaderlogoposition(' . $key . '; right; 50px; auto);';
+                        break;
                 }
             }
         }
@@ -1225,12 +1237,12 @@ function theme_campus_extra_less($theme) {
 function theme_campus_get_theme_logo() {
     global $CFG;
 
-    $logodetails = array();
+    $logodetails = [];
     $logodetails['name'] = 'logo';
     if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
-        $thelogofile = $CFG->dirroot . '/theme/campus/pix/'.$logodetails['name'];
+        $thelogofile = $CFG->dirroot . '/theme/campus/pix/' . $logodetails['name'];
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
-        $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
+        $thelogofile = $CFG->themedir . '/campus/pix/' . $logodetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thelogofile.png")) {
@@ -1258,12 +1270,12 @@ function theme_campus_get_theme_logo() {
 function theme_campus_get_theme_responsive_logo() {
     global $CFG;
 
-    $logodetails = array();
+    $logodetails = [];
     $logodetails['name'] = 'logo_responsive';
     if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
-        $thelogofile = $CFG->dirroot . '/theme/campus/pix/'.$logodetails['name'];
+        $thelogofile = $CFG->dirroot . '/theme/campus/pix/' . $logodetails['name'];
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
-        $thelogofile = $CFG->themedir . '/campus/pix/'.$logodetails['name'];
+        $thelogofile = $CFG->themedir . '/campus/pix/' . $logodetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thelogofile.png")) {
@@ -1291,12 +1303,12 @@ function theme_campus_get_theme_responsive_logo() {
 function theme_campus_get_theme_background() {
     global $CFG;
 
-    $backgrounddetails = array();
+    $backgrounddetails = [];
     $backgrounddetails['name'] = 'background';
     if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
-        $thebackgroundfile = $CFG->dirroot . '/theme/campus/pix/'.$backgrounddetails['name'];
+        $thebackgroundfile = $CFG->dirroot . '/theme/campus/pix/' . $backgrounddetails['name'];
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
-        $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
+        $thebackgroundfile = $CFG->themedir . '/campus/pix/' . $backgrounddetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thebackgroundfile.png")) {
@@ -1324,12 +1336,12 @@ function theme_campus_get_theme_background() {
 function theme_campus_get_theme_responsive_background() {
     global $CFG;
 
-    $backgrounddetails = array();
+    $backgrounddetails = [];
     $backgrounddetails['name'] = 'background_responsive';
     if (file_exists("{$CFG->dirroot}/theme/campus/pix/")) {
-        $thebackgroundfile = $CFG->dirroot . '/theme/campus/pix/'.$backgrounddetails['name'];
+        $thebackgroundfile = $CFG->dirroot . '/theme/campus/pix/' . $backgrounddetails['name'];
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/campus/pix/")) {
-        $thebackgroundfile = $CFG->themedir . '/campus/pix/'.$backgrounddetails['name'];
+        $thebackgroundfile = $CFG->themedir . '/campus/pix/' . $backgrounddetails['name'];
     }
     // Unfortunately the file extension is not in the URL from 'image_url', so no chance of extracting from there.
     if (file_exists("$thebackgroundfile.png")) {
@@ -1361,7 +1373,7 @@ function theme_campus_get_theme_responsive_background() {
  * @param array $options
  * @return bool
  */
-function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+function theme_campus_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     static $theme;
     if (empty($theme)) {
         $theme = theme_config::load('campus');
@@ -1413,7 +1425,7 @@ function theme_campus_get_setting($setting, $format = false) {
     } else if ($format === 'format_text') {
         return format_text($theme->settings->$setting, FORMAT_PLAIN);
     } else if ($format === 'format_html') {
-        return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
+        return format_text($theme->settings->$setting, FORMAT_HTML, ['trusted' => true, 'noclean' => true]);
     } else {
         return format_string($theme->settings->$setting);
     }
@@ -1428,7 +1440,7 @@ function theme_campus_render_slide($i, $settingprefix) {
     $slideextraclass = ($i === 1) ? ' active' : '';
     $slideimagealt = strip_tags($slidetitle);
     if (empty($slideimagealt)) {
-        $slideimagealt = get_string('slideno', 'theme_campus', array('slide' => $i));
+        $slideimagealt = get_string('slideno', 'theme_campus', ['slide' => $i]);
     }
 
     // Get slide image or fallback to default.
@@ -1440,13 +1452,13 @@ function theme_campus_render_slide($i, $settingprefix) {
 
     if ($slidelink) {
         $slidelinktarget = theme_campus_get_setting($settingprefix . $i . 'linktarget', true);
-        $slide = '<a href="'.$slidelink.'" target="'.$slidelinktarget.'" class="carousel-item' . $slideextraclass . '">';
+        $slide = '<a href="' . $slidelink . '" target="' . $slidelinktarget . '" class="carousel-item' . $slideextraclass . '">';
     } else {
         $slide = '<div class="carousel-item' . $slideextraclass . '">';
     }
 
     $nocaption = (!($slidetitle || $slidecaption)) ? ' nocaption' : '';
-    $slide .= '<div class="carousel-image-container'.$nocaption.'">';
+    $slide .= '<div class="carousel-image-container' . $nocaption . '">';
     $slide .= '<img src="' . $slideimage . '" alt="' . $slideimagealt . '" class="carousel-image"/>';
     $slide .= '</div>';
 
@@ -1478,10 +1490,10 @@ function theme_campus_render_slide_controls() {
         $faleft = $faright;
         $faright = $temp;
     }
-    $prev = '<a class="carousel-control carousel-control-prev" data-target="#campusCarousel" data-slide="prev" title="'.
-        $previous.'"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
-    $next = '<a class="carousel-control carousel-control-next" data-target="#campusCarousel" data-slide="next" title="'.
-        $next.'"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
+    $prev = '<a class="carousel-control carousel-control-prev" data-target="#campusCarousel" data-slide="prev" title="' .
+        $previous . '"><span class="fa fa-chevron-circle-' . $faleft . '"></span></a>';
+    $next = '<a class="carousel-control carousel-control-next" data-target="#campusCarousel" data-slide="next" title="' .
+        $next . '"><span class="fa fa-chevron-circle-' . $faright . '"></span></a>';
 
     return $prev . $next;
 }
@@ -1492,7 +1504,8 @@ function theme_campus_render_slide_controls() {
  * @param stdClass $theme null or theme object.
  * @param string $setting setting name for the admin_setting_configstoredfile setting.
  * @param string $filearea filearea for the admin_setting_configstoredfile setting.
- * @return bool|array false if not an image / no file uploaded or array of image dimensions and mime type as returned by 'get_imageinfo()' of 'stored_file.php'.
+ * @return bool|array false if not an image / no file uploaded or array of image dimensions
+ * and mime type as returned by 'get_imageinfo()' of 'stored_file.php'.
  */
 function theme_campus_get_image_dimensions($theme, $setting, $filearea) {
     if ($theme == null) {
@@ -1505,7 +1518,7 @@ function theme_campus_get_image_dimensions($theme, $setting, $filearea) {
 
     $filepath = $theme->settings->$setting;
     $syscontext = context_system::instance();
-    $fullpath = "/$syscontext->id/theme_campus/$filearea/0".$filepath;
+    $fullpath = "/$syscontext->id/theme_campus/$filearea/0" . $filepath;
     $fullpath = rtrim($fullpath, '/');
 
     $fs = get_file_storage();
@@ -1529,7 +1542,7 @@ function theme_campus_get_image_dimensions($theme, $setting, $filearea) {
  */
 function theme_campus_get_html_for_settings(renderer_base $output, moodle_page $page) {
     global $CFG;
-    $return = new stdClass;
+    $return = new stdClass();
 
     $return->navbarclass = '';
     if (!empty($page->theme->settings->invert)) {
@@ -1537,14 +1550,14 @@ function theme_campus_get_html_for_settings(renderer_base $output, moodle_page $
     }
 
     if (!empty($page->theme->settings->logo)) {
-        $return->heading = html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
+        $return->heading = html_writer::link($CFG->wwwroot, '', ['title' => get_string('home'), 'class' => 'logo']);
     } else {
         $return->heading = '';
     }
 
     $return->footnote = '';
     if (!empty($page->theme->settings->footnote)) {
-        $return->footnote = '<div class="footnote text-center">'.$page->theme->settings->footnote.'</div>';
+        $return->footnote = '<div class="footnote text-center">' . $page->theme->settings->footnote . '</div>';
     }
 
     return $return;

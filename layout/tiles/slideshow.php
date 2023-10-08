@@ -35,7 +35,7 @@ if (!empty($numberofslides)) {
     $options = '';
     if ($carouselautoplay == 2) {
         $slideinterval = theme_campus_get_setting('slideinterval');
-        $options = ' data-ride="carousel" data-interval="'.$slideinterval.'"';
+        $options = ' data-ride="carousel" data-interval="' . $slideinterval . '"';
     }
     ?>
     <div class="row-fluid">
@@ -44,7 +44,7 @@ if (!empty($numberofslides)) {
                 <ol class="carousel-indicators">
                     <?php
                     for ($indicatorslideindex = 0; $indicatorslideindex < $numberofslides; $indicatorslideindex++) {
-                        echo '<li data-target="#campusCarousel" data-slide-to="'.$indicatorslideindex.'"';
+                        echo '<li data-target="#campusCarousel" data-slide-to="' . $indicatorslideindex . '"';
                         if ($indicatorslideindex == 0) {
                             echo ' class="active"';
                         }

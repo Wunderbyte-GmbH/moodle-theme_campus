@@ -47,17 +47,17 @@ echo $OUTPUT->doctype() ?>
 
 <?php
 echo $OUTPUT->standard_top_of_body_html();
-require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
+require_once(dirname(__FILE__) . '/tiles/' . $OUTPUT->get_header_file());
 ?>
 
 <div id="page" class="container-fluid">
 
-    <?php require_once(dirname(__FILE__).'/tiles/page-header_frontpage.php'); ?>
+    <?php require_once(dirname(__FILE__) . '/tiles/page-header_frontpage.php'); ?>
 
     <div id="page-content" class="row-fluid">
         <div id="region-main" class="col-12">
             <?php
-            require_once(dirname(__FILE__).'/tiles/pagebody_slideshow.php');
+            require_once(dirname(__FILE__) . '/tiles/pagebody_slideshow.php');
             ?>
             <section id="region-main-campus">
             <?php
@@ -67,7 +67,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
 
             $secondarynavigation = $OUTPUT->secondarynavigation();
             if ((!is_null($secondarynavigation)) && (!empty($secondarynavigation['secondarynavigation']))) {
-                echo html_writer::start_tag('div', array('id' => 'secondary-navigation', 'class' => 'secondary-navigation d-print-none'));
+                echo html_writer::start_tag('div', ['id' => 'secondary-navigation', 'class' => 'secondary-navigation d-print-none']);
                 echo $OUTPUT->render_from_template('core/moremenu', $secondarynavigation['secondarynavigation']);
                 echo html_writer::end_tag('div');
             }
@@ -79,7 +79,7 @@ require_once(dirname(__FILE__).'/tiles/'.$OUTPUT->get_header_file());
     </div>
 
     <?php
-        require_once(dirname(__FILE__).'/tiles/footer.php');
+        require_once(dirname(__FILE__) . '/tiles/footer.php');
         echo $OUTPUT->standard_after_main_region_html();
     ?>
 </div>

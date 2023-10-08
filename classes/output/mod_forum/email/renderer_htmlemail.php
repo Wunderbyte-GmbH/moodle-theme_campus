@@ -31,7 +31,6 @@ namespace theme_campus\output\mod_forum\email;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class renderer_htmlemail extends \mod_forum\output\email\renderer {
-
     /**
      * Display a forum post in the relevant context.
      *

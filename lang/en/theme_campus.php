@@ -416,7 +416,7 @@ $string['socialnetworklink_desc'] = 'Social network link number ';
 $string['socialnetworkicon'] = 'Social network icon ';
 $string['socialnetworkicon_desc'] = 'Social network icon number ';
 
-// admin_setting_configinteger.
+// This is admin_setting_configinteger.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
 $string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';
 

@@ -49,5 +49,5 @@ defined('MOODLE_INTERNAL') || die();
 <?php
 // Note: $numberofslides established in the header file as pulled in by $OUTPUT->get_header_file() if there are any.
 if ((!empty($numberofslides)) && (\theme_campus\toolbox::get_setting('sliderposition') == 1)) {
-    require_once(dirname(__FILE__).'/slideshow.php');
+    require_once(dirname(__FILE__) . '/slideshow.php');
 }

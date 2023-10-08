@@ -27,7 +27,7 @@
  */
 
 function theme_campus_get_top_level_categories() {
-    $categoryids = array();
+    $categoryids = [];
     $categories = core_course_category::get(0)->get_children(); // Parent = 0 i.e. top-level categories only.
 
     foreach ($categories as $category) {

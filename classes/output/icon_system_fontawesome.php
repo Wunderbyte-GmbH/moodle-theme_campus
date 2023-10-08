@@ -28,7 +28,6 @@
 namespace theme_campus\output;
 
 class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
-
     /**
      * @var array $map Cached map of moodle icon names to font awesome icon names.
      */
@@ -43,6 +42,4 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
 
         return $iconmap;
     }
-
 }
-

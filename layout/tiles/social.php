@@ -32,24 +32,24 @@ $haveicons = false; // Define here for footer.php scope.
 
 // If there are social links then they are displayed.
 if ($numberofsociallinks) {
-    $choices = array(
+    $choices = [
         'dropbox' => 'Dropbox', 'facebook-square' => 'Facebook', 'flickr' => 'Flickr', 'github' => 'Github',
         'google-plus-square' => 'Google Plus', 'instagram' => 'Instagram', 'linkedin-square' => 'Linkedin',
         'pinterest-square' => 'Pinterest', 'skype' => 'Skype', 'tumblr-square' => 'Tumblr', 'twitter-square' => 'Twitter',
-        'users' => 'Unlisted', 'vimeo-square' => 'Vimeo', 'vk' => 'Vk', 'globe' => 'Website', 'youtube-square' => 'YouTube'
-    );
+        'users' => 'Unlisted', 'vimeo-square' => 'Vimeo', 'vk' => 'Vk', 'globe' => 'Website', 'youtube-square' => 'YouTube',
+    ];
     for ($i = 1; $i <= $numberofsociallinks; $i++) {
-        $name = 'social'.$i;
+        $name = 'social' . $i;
         if (!empty($PAGE->theme->settings->$name)) {
             if (!$haveicons) {
                 $haveicons = true;
                 $icons = '<div class="socialnetworkscontainer">';
                 $icons .= '<ul class="socialnetworks">';
             }
-            $iconname = 'socialicon'.$i;
-            $icons .= '<li><a href="'.$PAGE->theme->settings->$name.'" target="_blank">';
-            $icons .= '<span class="sr-only">'.$choices[$PAGE->theme->settings->$iconname].'</span>';
-            $icons .= '<span class="fa fa-2x fa-'.$PAGE->theme->settings->$iconname.'"></span>';  // Use of 'fa-' class here for custom Campus colours in campuscustom.less.
+            $iconname = 'socialicon' . $i;
+            $icons .= '<li><a href="' . $PAGE->theme->settings->$name . '" target="_blank">';
+            $icons .= '<span class="sr-only">' . $choices[$PAGE->theme->settings->$iconname] . '</span>';
+            $icons .= '<span class="fa fa-2x fa-' . $PAGE->theme->settings->$iconname . '"></span>';  // Use of 'fa-' class here for custom Campus colours in campuscustom.less.
             $icons .= '</a></li>';
         }
     }

@@ -28,12 +28,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once(dirname(__FILE__).'/social.php');
+require_once(dirname(__FILE__) . '/social.php');
 ?>
 <footer id="page-footer">
     <?php
     if ($PAGE->blocks->is_known_region('footer')) {
-        require_once(dirname(__FILE__).'/footer_blocks.php');
+        require_once(dirname(__FILE__) . '/footer_blocks.php');
     }
     if ($haveicons) {
         echo $icons;

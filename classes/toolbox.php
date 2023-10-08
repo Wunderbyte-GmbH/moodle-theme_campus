@@ -28,7 +28,6 @@
 namespace theme_campus;
 
 class toolbox {
-
     protected static $theme;
 
     /**
@@ -56,7 +55,7 @@ class toolbox {
         } else if ($format === 'format_text') {
             return format_text($theme->settings->$setting, FORMAT_PLAIN);
         } else if ($format === 'format_html') {
-            return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
+            return format_text($theme->settings->$setting, FORMAT_HTML, ['trusted' => true, 'noclean' => true]);
         } else {
             return format_string($theme->settings->$setting);
         }
@@ -90,7 +89,7 @@ class toolbox {
             $itemid = \theme_get_revision();
             $syscontext = \context_system::instance();
 
-            $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_campus/$setting/$itemid".$thesetting);
+            $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_campus/$setting/$itemid" . $thesetting);
             $settingurl = preg_replace('|^https?://|i', '//', $settingurl->out(false));
         }
         return $settingurl;
@@ -110,7 +109,7 @@ class toolbox {
             global $CFG;
             $syscontext = \context_system::instance();
 
-            $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_campus/$setting".$thesetting);
+            $settingurl = \moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_campus/$setting" . $thesetting);
             $settingurl = preg_replace('|^https?://|i', '//', $settingurl->out(false));
         }
         return $settingurl;
@@ -119,7 +118,7 @@ class toolbox {
     public static function get_scss_file($filename) {
         // TODO - themedir.
         global $CFG;
-        return file_get_contents($CFG->dirroot.'/theme/campus/scss/'.$filename.'.scss');
+        return file_get_contents($CFG->dirroot . '/theme/campus/scss/' . $filename . '.scss');
     }
 
 
@@ -172,32 +171,36 @@ class toolbox {
 
             /* If the setting 'incoursesettingsswitchtoroleposition' is set either set to the option 'yes'
                or to the option 'both', then add these to the $node. */
-            if (((self::get_setting('incoursesettingsswitchtoroleposition') == 'yes') ||
+            if (
+                ((self::get_setting('incoursesettingsswitchtoroleposition') == 'yes') ||
                 (self::get_setting('incoursesettingsswitchtoroleposition') == 'both')) &&
-                !is_role_switched($COURSE->id)) {
+                !is_role_switched($COURSE->id)
+            ) {
                 /* Build switch role link
                    We could only access the existing menu item by creating the user menu and traversing it.
                    So we decided to create this node from scratch with the values copied from Moodle core. */
                 $roles = get_switchable_roles($PAGE->context);
                 if (is_array($roles) && (count($roles) > 0)) {
                     // Define the properties for a new tab.
-                    $properties = array('text' => get_string('switchroleto', 'theme_campus'),
+                    $properties = ['text' => get_string('switchroleto', 'theme_campus'),
                         'type' => \navigation_node::TYPE_CONTAINER,
-                        'key'  => 'switchroletotab');
+                        'key'  => 'switchroletotab', ];
                     // Create the node.
                     $switchroletabnode = new \navigation_node($properties);
                     // Add the tab to the course administration node.
                     $node->add_node($switchroletabnode);
                     // Add the available roles as children nodes to the tab content.
                     foreach ($roles as $key => $role) {
-                        $properties = array('action' => new \moodle_url('/course/switchrole.php',
-                            array(
+                        $properties = ['action' => new \moodle_url(
+                            '/course/switchrole.php',
+                            [
                                 'id'         => $COURSE->id,
                                 'switchrole' => $key,
                                 'returnurl'  => $PAGE->url->out_as_local_url(false),
-                                'sesskey'    => sesskey())),
+                            'sesskey'    => sesskey(), ]
+                        ),
                                 'type'   => \navigation_node::TYPE_CUSTOM,
-                                'text'   => $role);
+                                'text'   => $role, ];
                         $switchroletabnode->add_node(new \navigation_node($properties));
                     }
                 }

@@ -43,5 +43,5 @@ if (\theme_campus\toolbox::get_setting('frontpagepageheadinglocation') == 2) {
 <?php
 // Note: $numberofslides established in the header file as pulled in by $OUTPUT->get_header_file() if there are any.
 if ((!empty($numberofslides)) && (!empty($PAGE->theme->settings->sliderposition)) && ($PAGE->theme->settings->sliderposition == 1)) {
-    require_once(dirname(__FILE__).'/slideshow.php');
+    require_once(dirname(__FILE__) . '/slideshow.php');
 }

@@ -38,17 +38,21 @@ $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsi
 if ((!$hdlogo) || (!$hdbackgroundimage)) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
-        $hdlogo = $OUTPUT->image_url($logodetails['name'], 'theme');  // $hdlogo can still be false if 'image_url' fails for some unknown reason.
+        // Note: $hdlogo can still be false if 'image_url' fails for some unknown reason.
+        $hdlogo = $OUTPUT->image_url($logodetails['name'], 'theme');
     }
     if ($backgrounddetails = theme_campus_get_theme_background()) {
-        $hdbackgroundimage = $OUTPUT->image_url($backgrounddetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
+        // Can still be false if 'image_url' fails for some unknown reason.
+        $hdbackgroundimage = $OUTPUT->image_url($backgrounddetails['name'], 'theme');
     }
     // Use theme responsive versions.
     if ($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) {
-        $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
+        // Can still be false if 'image_url' fails for some unknown reason.
+        $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');
     }
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
-        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');  // Can still be false if 'image_url' fails for some unknown reason.
+        // Can still be false if 'image_url' fails for some unknown reason.
+        $hdresponsivebackgroundimage = $OUTPUT->image_url($backgroundresponsivedetails['name'], 'theme');
     }
 }
 // End of fall back section.
@@ -77,10 +81,10 @@ if ($hdflexlayout) {
     // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
 }
 
-$hdtype = 'frontpageheader '.$hdlayout;
+$hdtype = 'frontpageheader ' . $hdlayout;
 
 $pageheadinglocationheaderarea = (empty($PAGE->theme->settings->frontpagepageheadinglocation)) ? false : $PAGE->theme->settings->frontpagepageheadinglocation;
-require_once(dirname(__FILE__).'/header-tile.php');
+require_once(dirname(__FILE__) . '/header-tile.php');
 
 // Carousel pre-loading if the frontpage.  If otherwise, then need to also alter theme_campus_page_init() in lib.php.
 if ($PAGE->pagelayout == 'frontpage') {

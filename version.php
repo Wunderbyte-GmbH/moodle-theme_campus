@@ -30,10 +30,10 @@ defined('MOODLE_INTERNAL') || die;
 
 $plugin->version   = 2023083000; // Note: Must never be less than M3.9 possible last version.
 $plugin->requires = 2022112800.00; // 4.1 (Build: 20221128).
-$plugin->supported = array(401, 401);
+$plugin->supported = [401, 401];
 $plugin->component = 'theme_campus';
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->release = '401.0.1';
-$plugin->dependencies = array(
-    'theme_boost'  => 2022112800
-);
+$plugin->dependencies = [
+    'theme_boost'  => 2022112800,
+];
