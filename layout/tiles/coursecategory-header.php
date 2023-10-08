@@ -36,8 +36,10 @@ $currentcategory = $OUTPUT->get_current_top_level_catetgory();
 $cchavecustomsetting = 'coursecategoryhavecustomheader' . $currentcategory;
 if (!empty($PAGE->theme->settings->$cchavecustomsetting)) {
     $hdlogo = $PAGE->theme->setting_file_url('coursecategorylogo' . $currentcategory, 'coursecategorylogo' . $currentcategory);
-    $hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage' . $currentcategory, 'coursecategorybackgroundimage' . $currentcategory);
-    $hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo' . $currentcategory, 'coursecategoryresponsivelogo' . $currentcategory);
+    $hdbackgroundimage = $PAGE->theme->setting_file_url('coursecategorybackgroundimage' . $currentcategory,
+        'coursecategorybackgroundimage' . $currentcategory);
+    $hdresponsivelogo = $PAGE->theme->setting_file_url('coursecategoryresponsivelogo' . $currentcategory,
+        'coursecategoryresponsivelogo' . $currentcategory);
     $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url(
         'coursecategoryresponsivebackgroundimage' . $currentcategory,
         'coursecategoryresponsivebackgroundimage' . $currentcategory
@@ -60,14 +62,18 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
         // Use Frontpage settings.
         $hdbackgroundimage = $PAGE->theme->setting_file_url('frontpagebackgroundimage', 'frontpagebackgroundimage');
         $hdresponsivelogo = $PAGE->theme->setting_file_url('frontpageresponsivelogo', 'frontpageresponsivelogo');
-        $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsivebackgroundimage', 'frontpageresponsivebackgroundimage');
-        $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
-        $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
+        $hdresponsivebackgroundimage = $PAGE->theme->setting_file_url('frontpageresponsivebackgroundimage',
+            'frontpageresponsivebackgroundimage');
+        $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ?
+            $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
+        $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ?
+            $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
         $frontpagesettings = true;
     }
 }
 
-// Fall back to theme logo and background if no frontpage logo or background and technically if the course category logo or background do not exist too.
+// Fall back to theme logo and background if no frontpage logo or background and technically if the course category logo
+// or background do not exist too.
 if ((!$hdlogo) || (!$hdbackgroundimage)) {
     // Note: Please remeber to set the image dimensions in 'theme_campus_extra_less()' of lib.php.
     if ($logodetails = theme_campus_get_theme_logo()) {
@@ -80,7 +86,7 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
     }
     // Use theme responsive versions.
     if ($logoresponsivedetails = theme_campus_get_theme_responsive_logo()) {
-        //  Note: $hdresponsivelogo can still be false if 'image_url' fails for some unknown reason.
+        // Note: $hdresponsivelogo can still be false if 'image_url' fails for some unknown reason.
         $hdresponsivelogo = $OUTPUT->image_url($logoresponsivedetails['name'], 'theme');
     }
     if ($backgroundresponsivedetails = theme_campus_get_theme_responsive_background()) {
@@ -89,7 +95,8 @@ if ((!$hdlogo) || (!$hdbackgroundimage)) {
     }
     // Fallback to frontpage settings as they are in 'front-pageheader.php' for the theme images.
     $hdlayout = (!empty($PAGE->theme->settings->frontpagelayout)) ? $PAGE->theme->settings->frontpagelayout : 'absolutelayout';
-    $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ? $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
+    $hdbackgroundextrapos = (!empty($PAGE->theme->settings->frontpagelogoposition)) ?
+        $PAGE->theme->settings->frontpagelogoposition : 1; // 1 is left and 2 is right.
     $hdlogoextrapos = $hdbackgroundextrapos;
 
     $themesettings = true;
@@ -114,11 +121,14 @@ if ($hdflexlayout) {
         $hdlayout .= ' fancynavbar';
     }
 } else {
-    $hdlogoextrapos = 2; // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top of the background.
+    // Absolute layout has to have the logo after the background for the negative margin to work to place the logo on top
+    // of the background.
+    $hdlogoextrapos = 2;
     // Fancy navbar will not work because background is 100% and thus would go underneath the logo.
 }
 
-// Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its adjusted for absolute layout.
+// Background is an inversion of logo position.  This has to reflect the true value and not that of $hdlogoextrapos because its
+// adjusted for absolute layout.
 if ($hdbackgroundextrapos == 1) {
     $hdbackgroundextra = 'right';
 } else {
@@ -131,17 +141,20 @@ if ($frontpagesettings) {
     $hdtype = 'coursecategoryheader ' . $hdlayout . ' category' . $currentcategory;
 }
 
-$pageheadinglocationheaderarea = (empty($PAGE->theme->settings->coursepagepageheadinglocation)) ? false : $PAGE->theme->settings->coursepagepageheadinglocation;
+$pageheadinglocationheaderarea = (empty($PAGE->theme->settings->coursepagepageheadinglocation)) ?
+    false : $PAGE->theme->settings->coursepagepageheadinglocation;
 require_once(dirname(__FILE__) . '/header-tile.php');
 
 if (!$OUTPUT->is_course_page()) {
     // Carousel pre-loading.
     $currentcoursecategory = $currentcategory;
     $coursecategorycarouselstatus = 'coursecategorycarouselstatus' . $currentcoursecategory;
-    $coursecategorycarouselstatus = (!empty($PAGE->theme->settings->$coursecategorycarouselstatus)) ? $PAGE->theme->settings->$coursecategorycarouselstatus : 1;  // 1 is 'Draft'.
+    $coursecategorycarouselstatus = (!empty($PAGE->theme->settings->$coursecategorycarouselstatus)) ?
+        $PAGE->theme->settings->$coursecategorycarouselstatus : 1;  // 1 is 'Draft'.
     if ($coursecategorycarouselstatus == 2) { // Only if published.
         $numberofslides = 'numberofslidesforcategory' . $currentcoursecategory;
         $numberofslides = (!empty($PAGE->theme->settings->$numberofslides)) ? $PAGE->theme->settings->$numberofslides : 0;
-        $settingprefix = 'coursecategory' . $currentcoursecategory . '_'; // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+        // Cross ref to theme_campus_pluginfile() image serving in lib.php.
+        $settingprefix = 'coursecategory' . $currentcoursecategory . '_';
     }
 }
