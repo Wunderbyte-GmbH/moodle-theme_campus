@@ -490,28 +490,18 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
             padding-right: 0;
         }
     }
-    &.affix {
+    &.fixed-top {
         left: 0;
-        max-width: none;
-        padding-left: 0;
-        padding-right: 0;
         top: 0;
-        width: 100%;
         z-index: 200;
     }
 }
 
 .frontpageheader.flexlayout.fancynavbar,
 .coursecategoryheader.flexlayout.fancynavbar {
-    .backgroundcontainer .navbar.affix {
+    .backgroundcontainer .navbar.fixed-top {
         bottom: auto;
-        left: 0;
-        max-width: none;
-        padding-left: 0;
-        padding-right: 0;
         position: fixed;
-        top: 0;
-        width: 100%;
         z-index: 200;
     }
 }
@@ -1064,10 +1054,7 @@ body.hidelocallogin .loginbox .loginsub { // See core_renderer::body_attributes(
     .backgroundcontainer {
         .navbar {
             bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
             position: absolute;
-            width: 100%;
             z-index: 2;
             .navbar-inner {
                 border-width: 0;
