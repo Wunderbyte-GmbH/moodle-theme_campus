@@ -3,7 +3,13 @@
 
     Example context (json): {}
 }}
-<div id="nav-drawer" data-region="drawer" class="drawer drawer-left d-print-none moodle-has-zindex {{^navdraweropen}}closed{{/navdraweropen}}" aria-hidden="{{#navdraweropen}}false{{/navdraweropen}}{{^navdraweropen}}true{{/navdraweropen}}" tabindex="-1">
+<div id="nav-drawer" 
+    data-region="drawer"
+    class="d-print-none moodle-has-zindex {{^navdraweropen}}closed{{/navdraweropen}}"
+    aria-hidden="{{#navdraweropen}}false{{/navdraweropen}}{{^navdraweropen}}true{{/navdraweropen}}"
+    tabindex="-1"
+    data-state="campus-left"
+    >
     <div class="drawerheader">
         <button
             class="btn drawertoggle icon-no-margin hidden"
@@ -17,11 +23,15 @@
             {{#pix}} e/cancel, core {{/pix}}
         </button>
         <button
-            aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}"
+            aria-expanded="true"
             aria-controls="nav-drawer" type="button" 
             class="btn drawertoggle icon-no-margin"
-            class="btn drawertoggle icon-no-margin"
-            data-action="toggle-drawer"
+            data-toggler="drawers"
+            data-action="closedrawer"
+            data-target="nav-drawer"
+            data-toggle="tooltip"
+            data-placement="right"
+            title="{{#str}}closedrawer, core{{/str}}"
             data-side="left"
             data-preference="drawer-open-nav">
                 {{#pix}} e/cancel{{/pix}}
