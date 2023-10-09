@@ -26,6 +26,10 @@
 }}
 <div data-region="drawer-toggle" class="d-inline-block my-auto mr-3">
     <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-light bg-gray" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
+    <button class="navbar-toggler aabtn d-block px-1 my-1 border-0" data-toggler="drawers" data-action="toggle" data-target="nav-drawer">
+        <span class="navbar-toggler-icon"></span>
+        <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
+    </button>
 </div>
 {{#js}}
 M.util.js_pending('theme_boost/drawer');

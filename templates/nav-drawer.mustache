@@ -1,10 +1,33 @@
 {{!
     @template theme_campus/nav-drawer
 
-
     Example context (json): {}
 }}
-<div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex {{^navdraweropen}}closed{{/navdraweropen}}" aria-hidden="{{#navdraweropen}}false{{/navdraweropen}}{{^navdraweropen}}true{{/navdraweropen}}" tabindex="-1">
+<div id="nav-drawer" data-region="drawer" class="drawer drawer-left d-print-none moodle-has-zindex {{^navdraweropen}}closed{{/navdraweropen}}" aria-hidden="{{#navdraweropen}}false{{/navdraweropen}}{{^navdraweropen}}true{{/navdraweropen}}" tabindex="-1">
+    <div class="drawerheader">
+        <button
+            class="btn drawertoggle icon-no-margin hidden"
+            data-toggler="drawers"
+            data-action="closedrawer"
+            data-target="nav-drawer"
+            data-toggle="tooltip"
+            data-placement="{{$tooltipplacement}}right{{/tooltipplacement}}"
+            title="{{$closebuttontext}}{{#str}}closedrawer, core{{/str}}{{/closebuttontext}}"
+        >
+            {{#pix}} e/cancel, core {{/pix}}
+        </button>
+        <button
+            aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}"
+            aria-controls="nav-drawer" type="button" 
+            class="btn drawertoggle icon-no-margin"
+            class="btn drawertoggle icon-no-margin"
+            data-action="toggle-drawer"
+            data-side="left"
+            data-preference="drawer-open-nav">
+                {{#pix}} e/cancel{{/pix}}
+                <span class="sr-only">{{#str}}closedrawer, core{{/str}}</span>
+            </button>
+    </div>
     {{#hasnavfakeblocks}}
     <section class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
         {{{ sidenavfakeblocks }}}
@@ -16,3 +39,6 @@
     </section>
     {{/hasnavblocks}}
 </div>
+{{#js}}
+require(['theme_boost/drawers']);
+{{/js}}
