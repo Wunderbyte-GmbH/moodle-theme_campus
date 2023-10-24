@@ -15,30 +15,99 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Campus theme with the underlying Bootstrap theme.
+ * Campus theme.
  *
- * @package    theme
- * @subpackage campus
+ * Provider class file. As required for any data privacy information required.
+ *
+ * @package    theme_campus
  * @copyright  &copy; 2018-onwards G J Barnard in respect to modifications of the Clean theme.
  * @copyright  &copy; 2018-onwards Work undertaken for David Bogner of Edulabs.org.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2023 G J Barnard.
+ * @author     G J Barnard -
+ *               {@link https://moodle.org/user/profile.php?id=442195}
+ *               {@link https://gjbarnard.co.uk}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace theme_campus\privacy;
 
+use core_privacy\local\request\writer;
+use core_privacy\local\metadata\collection;
+
 /**
- * The Campus theme does not store any user data bar 'draweropennav' from the Boost theme.
+ * Privacy provider.
  */
-class provider implements \core_privacy\local\metadata\null_provider {
+class provider implements
+    // This plugin has data.
+    \core_privacy\local\metadata\provider,
+
+    // This plugin has some sitewide user preferences to export.
+    \core_privacy\local\request\user_preference_provider {
+
     /**
-     * Get the language string identifier with the component's language
-     * file to explain why this plugin stores no data.
+     * Returns meta data about this system.
      *
-     * @return  string
+     * @param   collection $items The initialised item collection to add items to.
+     * @return  collection A listing of user data stored through this system.
      */
-    public static function get_reason(): string {
-        return 'privacy:nop';
+    public static function get_metadata(collection $items): collection {
+        $items->add_user_preference('drawer-open-index', 'privacy:metadata:preference:draweropenindex');
+        $items->add_user_preference('drawer-open-block', 'privacy:metadata:preference:draweropenblock');
+        $items->add_user_preference('drawer-open-nav', 'privacy:metadata:preference:draweropennav');
+        return $items;
+    }
+
+    /**
+     * Store all user preferences for the plugin.
+     *
+     * @param int $userid The user id of the user whose data is to be exported.
+     */
+    public static function export_user_preferences(int $userid) {
+        $preferences = get_user_preferences(null, null, $userid);
+        foreach ($preferences as $name => $value) {
+            $blockid = null;
+            $matches = [];
+            if ($name == 'drawer-open-index') {
+                $decoded = ($value) ? get_string('privacy:open', 'theme_campus') : get_string('privacy:closed', 'theme_campus');
+
+                writer::export_user_preference(
+                    'theme_campus',
+                    $name,
+                    $value,
+                    get_string('privacy:request:preference:draweropenindex', 'theme_campus', (object) [
+                        'name' => $name,
+                        'value' => $value,
+                        'decoded' => $decoded,
+                    ])
+                );
+            } else if ($name == 'drawer-open-block') {
+                $decoded = ($value) ? get_string('privacy:open', 'theme_campus') : get_string('privacy:closed', 'theme_campus');
+
+                writer::export_user_preference(
+                    'theme_campus',
+                    $name,
+                    $value,
+                    get_string('privacy:request:preference:draweropenblock', 'theme_campus', (object) [
+                        'name' => $name,
+                        'value' => $value,
+                        'decoded' => $decoded,
+                    ])
+                );
+            } else if ($name == 'drawer-open-nav') {
+                $decoded = ($value) ? get_string('privacy:open', 'theme_campus') : get_string('privacy:closed', 'theme_campus');
+
+                writer::export_user_preference(
+                    'theme_campus',
+                    $name,
+                    $value,
+                    get_string('privacy:request:preference:draweropennav', 'theme_campus', (object) [
+                        'name' => $name,
+                        'value' => $value,
+                        'decoded' => $decoded,
+                    ])
+                );
+            }
+        }
     }
 }

@@ -40,6 +40,9 @@ if ($ADMIN->fulltree) {
         require_once($CFG->themedir . '/campus/admin_setting_configinteger.php');
     }
 
+    $settingpage->add(new admin_setting_heading('theme_campus_privacy', '',
+        get_string('privacy:note', 'theme_campus')));
+
     $settingpage->add(new admin_setting_heading(
         'theme_campus_generalheading',
         null,
